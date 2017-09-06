@@ -1,0 +1,120 @@
+@import './variables';
+@import '~bootstrap/scss/bootstrap';
+@import './vendor/bootswatch';
+@import "~font-awesome/scss/variables";
+
+.container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+span.highlight {
+  font-weight: bold;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.btn-default {
+  color: white;
+  background-color: $brand-accent-light;
+  border: 1px solid $brand-accent-light;
+}
+
+.btn {
+  padding: 8px 12px;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active {
+  color: white;
+  background-color: $brand-accent-dark;
+  border: 1px solid $brand-accent-light;
+}
+
+.btn-link {
+  color: $brand-primary;
+}
+
+.input-group.input-group-search {
+
+  position: relative !important;
+
+  .form-control {
+    padding-left: 3rem !important;
+  }
+
+  &:before {
+    content: $fa-var-search;
+    font-family: FontAwesome;
+    top: 10px;
+    left: 15px;
+    font-size: $font-size-lg;
+    position: absolute;
+    z-index: 10;
+  }
+}
+
+.modal-header {
+
+  color: white;
+  border-color: darken($brand-primary, 5%);
+  background-color: $brand-primary;
+
+  h4 {
+    width: 100%;
+  }
+
+  span {
+    float: left;
+  }
+
+  a {
+    float: right;
+    cursor: pointer;
+  }
+
+  &.modal-header-warning {
+    color: $alert-warning-text;
+    border-color: $alert-warning-border;
+    background-color: $alert-warning-bg;
+
+    i {
+      color: $alert-warning-text;
+    }
+  }
+
+  &.modal-header-danger {
+    color: $alert-danger-text;
+    border-color: $alert-danger-border;
+    background-color: $alert-danger-bg;
+
+    i {
+      color: $alert-danger-text;
+    }
+  }
+}
+
+.modal-footer {
+  border-top: 1px solid #e5e5e5;
+}
+
+.modal-body {
+
+  display: inline-block;
+  width: 100%;
+
+  &.full-height {
+    height: calc(100vh - 200px);
+
+    > div.row {
+
+      height: 100%;
+
+      > div.col-md-4, div.col-md-6, div.col-md-12 {
+        height: 100%;
+        overflow-y: auto;
+      }
+    }
+  }
+}

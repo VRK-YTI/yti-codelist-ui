@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Email: { email }"
+msgstr ""
+
+msgid "You are expected at {{time}}', {time: moment.format('H:mm"
+msgstr ""
+
+msgid "Give feedback"
+msgstr ""
+
+msgid "Source code"
+msgstr ""
+
+msgid "CSC - IT Center for Science Ltd"
+msgstr ""
+
+msgid "licensed under the"
+msgstr ""
+
+msgid "Hello world!"
+msgstr ""
+
+msgid "Front page"
+msgstr ""
