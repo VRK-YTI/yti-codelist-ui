@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "buildProduction": "ng build --prod",
-    "create-translations": "node -- node_modules/@biesbjerg/ng2-translate-extract/bin/extract.js ./src/app --output ./po --format=pot --clean"
+    "create-translations": "node -- node_modules/@biesbjerg/ngx-translate-extract/bin/cli.js --input ./src/app --output ./po/template.pot --format=pot --clean"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +23,6 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-    "@biesbjerg/ng2-translate-extract": "^0.6.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.3",
     "bootstrap": "4.0.0-alpha.6",
     "core-js": "^2.4.1",
@@ -36,6 +35,7 @@
     "@angular/cli": "1.3.2",
     "@angular/compiler-cli": "^4.2.4",
     "@angular/language-service": "^4.2.4",
+    "@biesbjerg/ngx-translate-extract": "^2.3.2",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^8.0.26",
