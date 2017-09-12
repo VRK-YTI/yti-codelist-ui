@@ -16,11 +16,29 @@ import { FooterComponent } from './components/footer.component';
 import { TranslateValuePipe } from './pipes/translate-value.pipe';
 import { LocationService } from './services/location.service';
 import { Observable } from 'rxjs/Observable';
+import { CodeRegistriesComponent } from './components/coderegistries/coderegistries.component';
+import { CodeSchemesComponent } from './components/codeschemes/codeschemes.component';
+import { CodeSchemeComponent } from './components/codescheme/codescheme.component';
+import { CodeRegistryComponent } from './components/coderegistry/coderegistry.component';
+import { CodesComponent } from './components/codes/codes.component';
+import { CodeComponent } from './components/code/code.component';
+import { DataService } from './services/data.service';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
   en: require('json-loader!po-loader?format=mf!../../po/en.po')
 };
+
+const appRoutes: Routes = [
+  // { path: '', component: FrontpageComponent },
+  { path: '', redirectTo: '/coderegistries', pathMatch: 'full' },
+  { path: 'coderegistries', component: CodeRegistriesComponent, pathMatch: 'full' },
+  { path: 'coderegistry', component: CodeRegistryComponent, pathMatch: 'full' },
+  { path: 'codeschemes', component: CodeSchemesComponent, pathMatch: 'full' },
+  { path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full' },
+  { path: 'codes', component: CodesComponent, pathMatch: 'full' },
+  { path: 'code', component: CodeComponent, pathMatch: 'full' }
+];
 
 export function createTranslateLoader(): TranslateLoader {
   return { getTranslation: (lang: string) => Observable.of(localizations[lang]) };
@@ -38,9 +56,6 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
   };
 }
 
-const appRoutes: Routes = [
-  { path: '', component: FrontpageComponent },
-];
 
 @NgModule({
   declarations: [
@@ -49,11 +64,16 @@ const appRoutes: Routes = [
     NavigationBarComponent,
     BreadcrumbComponent,
     FooterComponent,
-    TranslateValuePipe
+    TranslateValuePipe,
+    CodeRegistryComponent,
+    CodeSchemeComponent,
+    CodeComponent,
+    CodeRegistriesComponent,
+    CodeSchemesComponent,
+    CodesComponent
   ],
   imports: [
     BrowserModule,
-
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
@@ -63,7 +83,8 @@ const appRoutes: Routes = [
   providers: [
     { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler },
     LanguageService,
-    LocationService
+    LocationService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

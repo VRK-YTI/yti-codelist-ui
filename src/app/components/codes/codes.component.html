@@ -1,0 +1,15 @@
+<h3>
+  Codes for <span *ngIf='codeScheme != null'>{{ codeScheme.prefLabels.en }}</span>
+</h3>
+
+<!--<button (click)=createCode()>Create new code</button>-->
+
+<div>
+  <table *ngFor="let code of codes">
+    <tr><td>{{code.prefLabels.en}}</td><td><button (click)="viewCode(code)">View</button></td></tr>
+  </table>
+</div>
+
+<p>
+  <button (click)='back()'>Back</button>
+</p>

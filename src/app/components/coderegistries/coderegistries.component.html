@@ -1,0 +1,18 @@
+<h3>
+  Coderegistries
+</h3>
+
+<!--<button (click)=createCodeRegistry()>Create new code registry</button>-->
+
+<div *ngIf='codeRegistries != null' else noRegistries>
+  <table *ngFor="let codeRegistry of codeRegistries">
+    <tr>
+      <td>{{codeRegistry.prefLabels.en}}</td>
+      <td><button (click)="viewCodeRegistry(codeRegistry)">View</button></td>
+      <td><button (click)="viewCodeSchemes(codeRegistry)">CodeSchemes</button></td>
+    </tr>
+  </table>
+</div>
+<ng-template #noRegistries>
+  <p>There are no registries available.</p>
+</ng-template>

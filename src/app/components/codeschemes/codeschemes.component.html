@@ -1,0 +1,22 @@
+<h3>
+  Codeschemes for <span *ngIf='codeRegistry != null'>{{ codeRegistry.prefLabels.en }}</span>
+</h3>
+
+<!--<button (click)=createCodeScheme()>Create new code scheme</button>-->
+
+<div *ngIf='codeSchemes != null && codeSchemes.length > 0' else noCodeSchemes>
+  <table *ngFor="let codeScheme of codeSchemes">
+    <tr>
+      <td>{{codeScheme.prefLabels.en}}</td>
+      <td><button (click)="viewCodeScheme(codeScheme)">View</button></td>
+      <td><button (click)="showCodes(codeScheme)">Codes</button></td>
+    </tr>
+  </table>
+</div>
+<ng-template #noCodeSchemes>
+  <p>No code schemes found.</p>
+</ng-template>
+
+<p>
+  <button (click)="back()">Back</button>
+</p>

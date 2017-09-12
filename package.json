@@ -4,7 +4,7 @@
   "license": "EUPL-1.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4400 --proxy-config proxy.conf.json",
+    "start": "ng serve --port 9700 --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

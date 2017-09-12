@@ -25,7 +25,7 @@ msgstr ""
 msgid "Source code"
 msgstr ""
 
-msgid "CSC - IT Center for Science Ltd"
+msgid "Population Registry Center of Finland"
 msgstr ""
 
 msgid "licensed under the"

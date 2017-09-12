@@ -1,0 +1,24 @@
+<h3>Code registry</h3>
+
+<div *ngIf='codeRegistry != null; else emptyRegistry'>
+  <table>
+    <tr><td>PrefLabel</td><td>{{codeRegistry.prefLabels.en}}</td></tr>
+    <tr><td>Code</td><td>{{codeRegistry.codeValue}}</td></tr>
+    <tr><td>Modified</td><td>{{codeRegistry.modified}}</td></tr>
+    <tr><td>Uri</td><td><a href="{{codeRegistry.uri}}">{{codeRegistry.uri}}</a></td></tr>
+  </table>
+</div>
+<ng-template #emptyRegistry>
+  <div>
+    <table>
+      <tr><td>PrefLabel</td><td></td></tr>
+      <tr><td>Code</td><td></td></tr>
+      <tr><td>Modified</td><td></td></tr>
+      <tr><td>Uri</td><td></td></tr>
+    </table>
+  </div>
+</ng-template>
+
+<p>
+  <button (click)="back()">Back</button>
+</p>

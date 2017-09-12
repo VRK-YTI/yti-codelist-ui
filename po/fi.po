@@ -25,8 +25,8 @@ msgstr "Anna palautetta"
 msgid "Source code"
 msgstr "Lähdekoodi"
 
-msgid "CSC - IT Center for Science Ltd"
-msgstr "CSC - Tieteen tietotekniikan keskus Oy"
+msgid "Population Registry Center of Finland"
+msgstr "VRK - Väestörekisterkeskus"
 
 msgid "licensed under the"
 msgstr "lisenssillä"

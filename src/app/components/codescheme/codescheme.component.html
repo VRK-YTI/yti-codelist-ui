@@ -1,0 +1,31 @@
+<h3>Code scheme</h3>
+
+<table *ngIf='codeScheme != null; else emptyCodeScheme'>
+  <tr><td>PrefLabel</td><td>{{ codeScheme.prefLabels.en }}</td></tr>
+  <tr><td>Code value</td><td>{{ codeScheme.codeValue }}</td></tr>
+  <tr><td>Description</td><td>{{ codeScheme.description }}</td></tr>
+  <tr><td>Change note</td><td>{{ codeScheme.changeNote }}</td></tr>
+  <tr><td>Source</td><td>{{ codeScheme.source }}</td></tr>
+  <tr><td>Status</td><td>{{codeScheme.status}}</td></tr>
+  <tr><td>Modified</td><td>{{codeScheme.modified}}</td></tr>
+  <tr><td>Start date</td><td>{{codeScheme.startDate}}</td></tr>
+  <tr><td>End date</td><td>{{codeScheme.endDate}}</td></tr>
+  <tr><td>Uri</td><td><a href="{{ codeScheme.uri }}">{{ codeScheme.uri }}</a></td></tr>
+</table>
+<ng-template #emptyCodeScheme>
+  <table>
+    <tr><td>PrefLabel</td><td></td></tr>
+    <tr><td>Code value</td><td></td></tr>
+    <tr><td>Description</td><td></td></tr>
+    <tr><td>Change note</td><td></td></tr>
+    <tr><td>Source</td><td></td></tr>
+    <tr><td>Status</td><td></td></tr>
+    <tr><td>Modified</td><td></td></tr>
+    <tr><td>Start date</td><td></td></tr>
+    <tr><td>End date</td><td></td></tr>
+    <tr><td>Uri</td><td></td></tr>
+  </table>
+</ng-template>
+<p>
+  <button (click)='back()'>Back</button>
+</p>
