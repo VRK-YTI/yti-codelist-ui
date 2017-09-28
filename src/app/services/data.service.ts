@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
 
-  public static readonly API_HOST = 'http://localhost:9600/';
+  public static readonly API_HOST = 'http://localhost:9601/';
   public static readonly API_BASE_PATH = 'api/v1/';
   public static readonly API_PATH_CODEREGISTRIES = 'coderegistries/';
   public static readonly API_PATH_CODESCHEMES = 'codeschemes/';

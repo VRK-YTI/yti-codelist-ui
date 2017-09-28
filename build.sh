@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 #
-docker build -t cls-webui .
+docker build -t yti-codelist-ui .

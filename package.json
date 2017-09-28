@@ -1,10 +1,10 @@
 {
-  "name": "cls-webui",
+  "name": "yti-codelist-ui",
   "version": "0.0.0",
   "license": "EUPL-1.2",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 9700 --proxy-config proxy.conf.json",
+    "start": "ng serve --port 9600 --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
