@@ -50,7 +50,7 @@ export class DataService {
   }
 
   getCodeRegistriesBasePath() {
-    return DataService.API_CONTEXT_PATH + DataService.API_BASE_PATH + DataService.API_PATH_CODEREGISTRIES;
+    return DataService.API_CONTEXT_PATH + DataService.API_BASE_PATH + DataService.API_PATH_CODEREGISTRIES + '/';
   }
 
 }
