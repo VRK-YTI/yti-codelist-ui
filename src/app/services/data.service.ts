@@ -7,7 +7,7 @@ export class DataService {
 
   public static readonly API_INTAKE_CONTEXT_PATH = '/codelist-intake';
   public static readonly API_CONTEXT_PATH = '/codelist-api';
-  public static readonly API_BASE_PATH = '/api/v1/';
+  public static readonly API_BASE_PATH = '/api/v1';
   public static readonly API_PATH_CODEREGISTRIES = '/coderegistries';
   public static readonly API_PATH_CODESCHEMES = '/codeschemes';
   public static readonly API_PATH_CODES = '/codes';
