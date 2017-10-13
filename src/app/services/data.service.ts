@@ -27,25 +27,25 @@ export class DataService {
   }
 
   getCodeSchemes(codeRegistryCodeValue: string) {
-    return this.http.get(this.getCodeRegistriesBasePath() + codeRegistryCodeValue + '/' + DataService.API_PATH_CODESCHEMES)
+    return this.http.get(this.getCodeRegistriesBasePath() + codeRegistryCodeValue + DataService.API_PATH_CODESCHEMES + '/' )
       .map(res => res.json());
   }
 
   getCodeScheme(codeRegistryCodeValue: string, codeSchemeCodeValue: string) {
-    return this.http.get(      this.getCodeRegistriesBasePath() + codeRegistryCodeValue + '/'
-      + DataService.API_PATH_CODESCHEMES + codeSchemeCodeValue + '/')
+    return this.http.get(      this.getCodeRegistriesBasePath() + codeRegistryCodeValue
+      + DataService.API_PATH_CODESCHEMES + '/' + codeSchemeCodeValue + '/')
       .map(res => res.json());
   }
 
   getCodes(codeRegistryCodeValue: string, codeSchemeCodeValue: string) {
-    return this.http.get(this.getCodeRegistriesBasePath() + codeRegistryCodeValue + '/'
-      + DataService.API_PATH_CODESCHEMES + codeSchemeCodeValue + '/' + DataService.API_PATH_CODES)
+    return this.http.get(this.getCodeRegistriesBasePath() + codeRegistryCodeValue
+      + DataService.API_PATH_CODESCHEMES + '/' + codeSchemeCodeValue + DataService.API_PATH_CODES + '/')
       .map(res => res.json());
   }
 
   getCode(codeRegistryCodeValue: string, codeSchemeCodeValue: string, codeCodeValue: string) {
-    return this.http.get(this.getCodeRegistriesBasePath() + codeRegistryCodeValue + '/'
-      + DataService.API_PATH_CODESCHEMES + codeSchemeCodeValue + '/' + DataService.API_PATH_CODES + codeCodeValue + '/')
+    return this.http.get(this.getCodeRegistriesBasePath() + codeRegistryCodeValue
+      + DataService.API_PATH_CODESCHEMES + '/' + codeSchemeCodeValue + DataService.API_PATH_CODES + '/' + codeCodeValue + '/')
       .map(res => res.json());
   }
 
