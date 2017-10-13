@@ -1,5 +1,5 @@
 {
-  "/codelist-api": {
+  "/codelist-api/*": {
     "target": "http://localhost:9601",
     "secure": false
   }
