@@ -5,11 +5,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
 
-  public static readonly API_HOST = 'http://localhost:9601/';
-  public static readonly API_BASE_PATH = 'api/v1/';
-  public static readonly API_PATH_CODEREGISTRIES = 'coderegistries/';
-  public static readonly API_PATH_CODESCHEMES = 'codeschemes/';
-  public static readonly API_PATH_CODES = 'codes/';
+  public static readonly API_INTAKE_CONTEXT_PATH = '/codelist-intake';
+  public static readonly API_CONTEXT_PATH = '/codelist-api';
+  public static readonly API_BASE_PATH = '/api/v1/';
+  public static readonly API_PATH_CODEREGISTRIES = '/coderegistries';
+  public static readonly API_PATH_CODESCHEMES = '/codeschemes';
+  public static readonly API_PATH_CODES = '/codes';
 
   constructor(private http: Http) {
     console.log('DataService connected!');
@@ -49,7 +50,7 @@ export class DataService {
   }
 
   getCodeRegistriesBasePath() {
-    return DataService.API_HOST + DataService.API_BASE_PATH + DataService.API_PATH_CODEREGISTRIES;
+    return DataService.API_CONTEXT_PATH + DataService.API_BASE_PATH + DataService.API_PATH_CODEREGISTRIES;
   }
 
 }
