@@ -2,6 +2,7 @@
 
 a {
   cursor: pointer;
+  font-weight: bold;
 }
 
 img {
@@ -11,5 +12,5 @@ img {
 }
 
 .nav-item.bg-inverse > a {
-  background-color: $brand-primary;
+  background-color: $brand-bg;
 }
