@@ -10,12 +10,13 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400
 .navbar {
   font-size: $font-size-sm;
   font-weight: $headings-font-weight;
+  flex-direction: row;
 }
 
 .bg-primary {
 
   .dropdown-menu {
-    background-color: $brand-primary;
+    background-color: $brand-bg;
 
     .dropdown-item,
     .dropdown-item:focus {
@@ -25,17 +26,17 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400
     .dropdown-item.active,
     .dropdown-item:hover,
     .dropdown-item:focus {
-      background-color: darken($brand-primary, 5%);
+      background-color: darken($brand-bg, 5%);
       color: #fff;
     }
   }
 }
 
 .bg-inverse {
-  background-color: $gray !important;
+  background-color: $white !important;
 
   .dropdown-menu {
-    background-color: $gray;
+    background-color: $white;
 
     .dropdown-item,
     .dropdown-item:focus {
@@ -45,7 +46,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400
     .dropdown-item.active,
     .dropdown-item:hover,
     .dropdown-item:focus  {
-      background-color: darken($gray, 5%);
+      background-color: darken($white, 5%);
       color: #fff;
     }
   }
