@@ -18,7 +18,7 @@ import { Language, LanguageService } from '../services/language.service';
       </g>
     </svg>
 
-    <a class="navbar-brand" [routerLink]="['/']">Koodistoeditori</a>
+    <h4><a [routerLink]="['/']">Koodistoeditori</a></h4>
     </nav>
   `
 })

@@ -1,7 +1,7 @@
 <!--<button (click)=createCodeRegistry()>Create new code registry</button>-->
-<div class="container">
+<div class="container py-5 px-4" style="border:1px solid #A5ACB0">
 
-<div class="row">
+<div class="row px-3">
   <div class="col-md-12">
     <div class="input-group input-group-lg input-group-search">
       <input class="form-control ng-untouched ng-pristine ng-valid" type="text" ng-reflect-model="" placeholder="Hae koodistoa...">
@@ -9,6 +9,7 @@
   </div>
 </div>
 
+<div class="row px-3">
 <div *ngIf='codeRegistries != null' else noRegistries>
   <table *ngFor="let codeRegistry of codeRegistries">
     <tr>
@@ -21,4 +22,5 @@
 <ng-template #noRegistries>
   <p>There are no registries available.</p>
 </ng-template>
+</div>
 </div>

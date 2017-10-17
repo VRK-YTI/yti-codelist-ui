@@ -1,14 +1,4 @@
 @import '../../variables';
-
-.panel-footer {
-  position: fixed;
-  bottom: 0;
-  height: 150px;
-  width: 100%;
-  font-size: small;
-  border: none;
-  padding: 15px;
-  background-color: $brand-bg;
-  color: $brand-primary;
-  border: 0;
+a {
+  cursor: pointer;
 }
