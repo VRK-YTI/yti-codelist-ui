@@ -3,7 +3,7 @@
 .panel-footer {
   position: fixed;
   bottom: 0;
-  height: $footer-height;
+  height: 150px;
   width: 100%;
   font-size: small;
   border: none;
@@ -11,7 +11,4 @@
   background-color: $brand-bg;
   color: $brand-primary;
   border: 0;
-  a {
-    color: white;
-  }
 }
