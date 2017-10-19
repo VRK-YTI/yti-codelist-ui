@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { CodeScheme } from '../model/codescheme';
 import { CodeRegistry } from '../model/coderegistry';
 import { Code } from '../model/code';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
@@ -20,32 +21,32 @@ export class DataService {
     console.log('DataService connected!');
   }
 
-  getCodeRegistries() {
+  getCodeRegistries(): Observable<CodeRegistry[]> {
     return this.http.get(this.getCodeRegistriesBasePath())
-      .map(res => res.json() as CodeRegistry);
+      .map(res => res.json().results as CodeRegistry[]);
   }
 
-  getCodeRegistry(codeRegistryCodeValue: string) {
+  getCodeRegistry(codeRegistryCodeValue: string): Observable<CodeRegistry> {
     return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/`)
       .map(res => res.json() as CodeRegistry);
   }
 
-  getCodeSchemes(codeRegistryCodeValue: string) {
+  getCodeSchemes(codeRegistryCodeValue: string): Observable<CodeScheme[]> {
     return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/`)
-      .map(res => res.json() as CodeScheme);
+      .map(res => res.json().results as CodeScheme[]);
   }
 
-  getCodeScheme(codeRegistryCodeValue: string, codeSchemeCodeValue: string) {
+  getCodeScheme(codeRegistryCodeValue: string, codeSchemeCodeValue: string): Observable<CodeScheme> {
     return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/`)
       .map(res => res.json() as CodeScheme);
   }
 
-  getCodes(codeRegistryCodeValue: string, codeSchemeCodeValue: string) {
+  getCodes(codeRegistryCodeValue: string, codeSchemeCodeValue: string): Observable<Code[]> {
     return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/`)
-      .map(res => res.json() as Code);
+      .map(res => res.json().results as Code[]);
   }
 
-  getCode(codeRegistryCodeValue: string, codeSchemeCodeValue: string, codeCodeValue: string) {
+  getCode(codeRegistryCodeValue: string, codeSchemeCodeValue: string, codeCodeValue: string): Observable<Code> {
     return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/${codeCodeValue}/`)
       .map(res => res.json() as Code);
   }

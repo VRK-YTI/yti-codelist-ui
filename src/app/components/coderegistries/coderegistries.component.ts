@@ -18,18 +18,18 @@ export class CodeRegistriesComponent implements OnInit {
 
   ngOnInit() {
     if (this.dataService != null) {
-      this.dataService.getCodeRegistries().subscribe((codeRegistries) => {
-        this.codeRegistries = codeRegistries['results'];
+      this.dataService.getCodeRegistries().subscribe(codeRegistries => {
+        this.codeRegistries = codeRegistries;
       });
     }
   }
 
-  viewCodeSchemes(codeRegistry) {
+  viewCodeSchemes(codeRegistry: CodeRegistry) {
     console.log('Viewing code schemes for coderegistry: ' + codeRegistry.codeValue);
     this.router.navigate(['/codeschemes', { codeRegistryCodeValue: codeRegistry.codeValue }]);
   }
 
-  viewCodeRegistry(codeRegistry) {
+  viewCodeRegistry(codeRegistry: CodeRegistry) {
     console.log('Viewing coderegistry: ' + codeRegistry.codeValue);
     this.router.navigate(['/coderegistry', { codeRegistryCodeValue: codeRegistry.codeValue }]);
   }

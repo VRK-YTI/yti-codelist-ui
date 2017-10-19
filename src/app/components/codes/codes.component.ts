@@ -25,21 +25,21 @@ export class CodesComponent implements OnInit {
 
   ngOnInit() {
     if (this.route != null) {
-      this.codeRegistryCodeValue = this.route.snapshot.params['codeRegistryCodeValue'];
-      this.codeSchemeCodeValue = this.route.snapshot.params['codeSchemeCodeValue'];
-      this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe((codeRegistry) => {
+      this.codeRegistryCodeValue = this.route.snapshot.params.codeRegistryCodeValue;
+      this.codeSchemeCodeValue = this.route.snapshot.params.codeSchemeCodeValue;
+      this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe(codeRegistry => {
         this.codeRegistry = codeRegistry;
       });
-      this.dataService.getCodeScheme(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe((codeScheme) => {
+      this.dataService.getCodeScheme(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codeScheme => {
         this.codeScheme = codeScheme;
       });
-      this.dataService.getCodes(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe((codes) => {
-        this.codes = codes['results'];
+      this.dataService.getCodes(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codes => {
+        this.codes = codes;
       });
     }
   }
 
-  viewCode(code) {
+  viewCode(code: Code) {
     console.log('View code: ' + code.codeValue);
     this.router.navigate(['/code',
       { codeRegistryCodeValue: this.codeRegistryCodeValue, codeSchemeCodeValue: this.codeSchemeCodeValue, codeCodeValue: code.codeValue }]);

@@ -19,9 +19,9 @@ export class CodeRegistryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.codeRegistryCodeValue = this.route.snapshot.params['codeRegistryCodeValue'];
+    this.codeRegistryCodeValue = this.route.snapshot.params.codeRegistryCodeValue;
     if (this.codeRegistryCodeValue != null) {
-      this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe((codeRegistry) => {
+      this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe(codeRegistry => {
         this.codeRegistry = codeRegistry;
       });
     }

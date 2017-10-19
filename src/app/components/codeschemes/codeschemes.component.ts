@@ -21,25 +21,25 @@ export class CodeSchemesComponent implements OnInit {
 
   ngOnInit() {
     if (this.route != null) {
-      this.codeRegistryCodeValue = this.route.snapshot.params['codeRegistryCodeValue'];
+      this.codeRegistryCodeValue = this.route.snapshot.params.codeRegistryCodeValue;
       if (this.codeRegistryCodeValue != null) {
-        this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe((codeRegistry) => {
+        this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe(codeRegistry => {
           this.codeRegistry = codeRegistry;
         });
-        this.dataService.getCodeSchemes(this.codeRegistryCodeValue).subscribe((codeSchemes) => {
-          this.codeSchemes = codeSchemes['results'];
+        this.dataService.getCodeSchemes(this.codeRegistryCodeValue).subscribe(codeSchemes => {
+          this.codeSchemes = codeSchemes;
         });
       }
     }
   }
 
-  showCodes(codeScheme) {
+  showCodes(codeScheme: CodeScheme) {
     console.log('Showing codes for coderegistry: ' + this.codeRegistryCodeValue + ', codescheme: ' + codeScheme.codeValue);
     this.router.navigate(['/codes',
       { codeRegistryCodeValue: this.codeRegistryCodeValue, codeSchemeCodeValue: codeScheme.codeValue }]);
   }
 
-  viewCodeScheme(codeScheme) {
+  viewCodeScheme(codeScheme: CodeScheme) {
     console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from coderegistry: ' + this.codeRegistryCodeValue);
     this.router.navigate(['/codescheme',
       { codeRegistryCodeValue: this.codeRegistryCodeValue, codeSchemeCodeValue: codeScheme.codeValue }]);

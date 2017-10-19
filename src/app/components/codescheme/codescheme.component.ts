@@ -22,13 +22,13 @@ export class CodeSchemeComponent implements OnInit {
 
   ngOnInit() {
     if (this.route != null) {
-      this.codeRegistryCodeValue = this.route.snapshot.params['codeRegistryCodeValue'];
-      this.codeSchemeCodeValue = this.route.snapshot.params['codeSchemeCodeValue'];
+      this.codeRegistryCodeValue = this.route.snapshot.params.codeRegistryCodeValue;
+      this.codeSchemeCodeValue = this.route.snapshot.params.codeSchemeCodeValue;
       if (this.codeRegistryCodeValue != null && this.codeSchemeCodeValue != null) {
-        this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe((codeRegistry) => {
+        this.dataService.getCodeRegistry(this.codeRegistryCodeValue).subscribe(codeRegistry => {
           this.codeRegistry = codeRegistry;
         });
-        this.dataService.getCodeScheme(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe((codeScheme) => {
+        this.dataService.getCodeScheme(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codeScheme => {
           this.codeScheme = codeScheme;
         });
       }
