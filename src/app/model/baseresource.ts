@@ -7,7 +7,7 @@ export interface BaseResource {
   prefLabels: {
     fi: string,
     en: string,
-    se: string
+    sv: string
   };
 
 }
