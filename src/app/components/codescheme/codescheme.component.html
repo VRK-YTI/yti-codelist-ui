@@ -19,8 +19,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <p class="description semibold" *ngIf='codeScheme != null'>{{codeScheme.descriptions.fi}}</p>
+    <div class="row" *ngIf='codeScheme != null && codeScheme.descriptions != null'>
+      <p class="description semibold">{{codeScheme.descriptions.fi}}</p>
     </div>
 
     <div class="row">
