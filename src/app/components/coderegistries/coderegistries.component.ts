@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-coderegistries',
   templateUrl: './coderegistries.component.html',
-  styleUrls: ['./coderegistries.component.css']
+  styleUrls: ['./coderegistries.component.scss']
 })
 export class CodeRegistriesComponent implements OnInit {
 

@@ -8,6 +8,19 @@
   margin-right: 0;
 }
 
+.input {
+  
+    &:after {
+      content: $fa-var-search;
+      font-family: FontAwesome;
+      top: 10px;
+      left: 15px;
+      font-size: $font-size-lg;
+      position: absolute;
+      z-index: 10;
+    }
+} 
+
 span.highlight {
   font-weight: bold;
 }
@@ -42,16 +55,6 @@ span.highlight {
 
   .form-control {
     padding-left: 3rem !important;
-  }
-
-  &:before {
-    content: $fa-var-search;
-    font-family: FontAwesome;
-    top: 10px;
-    left: 15px;
-    font-size: $font-size-lg;
-    position: absolute;
-    z-index: 10;
   }
 }
 
@@ -116,5 +119,5 @@ span.highlight {
         overflow-y: auto;
       }
     }
-  }
+  } 
 }
