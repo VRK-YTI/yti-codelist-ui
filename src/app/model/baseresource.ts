@@ -9,5 +9,9 @@ export interface BaseResource {
     en: string,
     sv: string
   };
-
+  definitions: {
+    fi: string,
+    en: string,
+    sv: string
+  };
 }

@@ -1,0 +1,31 @@
+.table th, .table td {
+  border-top: none !important;
+  border-left: none !important;
+}
+
+.fixed-table-container {
+  border: 0px;
+}
+
+.detailHeading {
+  font-size: medium;
+  padding: 15px 3px 3px 3px;
+  margin: 0;
+}
+
+.detailValue {
+  font-size: medium;
+  padding: 20px 0px 20px 0px;
+  margin: 0;
+  padding: 3px;
+}
+
+.content-area {
+  border:1px solid #A5ACB0;
+  background: #F6F6F7;
+}
+
+.content-box {
+  border:1px solid #A5ACB0;
+  background: white;
+}

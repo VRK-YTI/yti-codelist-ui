@@ -36,3 +36,39 @@ msgstr "Hei maailma!"
 
 msgid "Front page"
 msgstr "Etusivu"
+
+msgid "VALID"
+msgstr "VOIMASSA OLEVA"
+
+msgid "Export"
+msgstr "Lataa"
+
+msgid "Validity"
+msgstr "Voimassaolo"
+
+msgid "Code name"
+msgstr "Koodin nimi"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Status"
+msgstr "Tila"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Last modification"
+msgstr "Viimeisin muokkaus"
+
+msgid "Code value"
+msgstr "Tunnus"
+
+msgid "Code scheme"
+msgstr "Koodisto"
+
+msgid "INFORMATION"
+msgstr "TIEDOT"
+
+msgid "CODES"
+msgstr "KOODIT"

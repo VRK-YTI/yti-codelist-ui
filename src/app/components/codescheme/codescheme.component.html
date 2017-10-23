@@ -1,31 +1,40 @@
-<h3>Code scheme</h3>
+<div class="container-fluid py-5 px-4 content-area">
+  <div class="container-fluid py-4 px-4 content-box">
+    <div class="row">
+      <p>
+        <button type="button" class="backbutton" (click)="back()">←</button>
+      </p>
+    </div>
 
-<table *ngIf='codeScheme != null; else emptyCodeScheme'>
-  <tr><td>PrefLabel</td><td>{{ codeScheme.prefLabels.en }}</td></tr>
-  <tr><td>Code value</td><td>{{ codeScheme.codeValue }}</td></tr>
-  <tr><td>Description</td><td>{{ codeScheme.description }}</td></tr>
-  <tr><td>Change note</td><td>{{ codeScheme.changeNote }}</td></tr>
-  <tr><td>Source</td><td>{{ codeScheme.source }}</td></tr>
-  <tr><td>Status</td><td>{{codeScheme.status}}</td></tr>
-  <tr><td>Modified</td><td>{{codeScheme.modified}}</td></tr>
-  <tr><td>Start date</td><td>{{codeScheme.startDate}}</td></tr>
-  <tr><td>End date</td><td>{{codeScheme.endDate}}</td></tr>
-  <tr><td>Uri</td><td><a href="{{ codeScheme.uri }}">{{ codeScheme.uri }}</a></td></tr>
-</table>
-<ng-template #emptyCodeScheme>
-  <table>
-    <tr><td>PrefLabel</td><td></td></tr>
-    <tr><td>Code value</td><td></td></tr>
-    <tr><td>Description</td><td></td></tr>
-    <tr><td>Change note</td><td></td></tr>
-    <tr><td>Source</td><td></td></tr>
-    <tr><td>Status</td><td></td></tr>
-    <tr><td>Modified</td><td></td></tr>
-    <tr><td>Start date</td><td></td></tr>
-    <tr><td>End date</td><td></td></tr>
-    <tr><td>Uri</td><td></td></tr>
-  </table>
-</ng-template>
-<p>
-  <button (click)='back()'>Back</button>
-</p>
+    <div class="row">
+      <h1 *ngIf='codeScheme != null'>{{codeScheme.prefLabels.fi}}</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 px-0">
+        <span *ngIf='codeScheme != null' class="status bold alignLeft" translate>{{codeScheme.status}}</span>
+      </div>
+      <div class="col-md-2 px-0">
+        <a href='{{codeScheme.uri}}codes/?format=csv' target="_blank" *ngIf='codeScheme != null' class="actionbutton" translate>Export</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <p class="description semibold" *ngIf='codeScheme != null'>{{codeScheme.descriptions.fi}}</p>
+    </div>
+
+    <div class="row">
+      <span *ngIf='codeScheme != null' class="tabNavi bold" translate>CODES</span>
+    </div>
+
+    <div class="row">
+      <div class="table-responsive" *ngIf='codes != null'>
+        <table class="table" *ngFor="let code of codes">
+          <tr>
+            <td><button class="btn btn-link code semibold" (click)="viewCode(code)">{{code.codeValue}} - {{code.prefLabels.fi}}</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

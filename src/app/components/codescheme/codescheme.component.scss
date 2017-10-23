@@ -1,0 +1,36 @@
+.table {
+  padding: 0;
+  margin: 3px 0 3px 0;
+}
+
+.table th, .table td, .table tr {
+  border-top: none !important;
+  border-left: none !important;
+  background: #FAFAFA;
+  margin: 0;
+}
+
+.fixed-table-container {
+  border: 0px;
+}
+
+.code {
+  font-weight: 400;
+  font-size: large;
+  color: #2A6EBB;
+  padding: 15px 30px 15px 30px;
+}
+
+.description {
+  padding: 10px 0 10px 0;
+}
+
+.content-area {
+  border:1px solid #A5ACB0;
+  background: #F6F6F7;
+}
+
+.content-box {
+  border:1px solid #A5ACB0;
+  background: white;
+}

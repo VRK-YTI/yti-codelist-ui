@@ -31,24 +31,38 @@ export class DataService {
       .map(res => res.json() as CodeRegistry);
   }
 
-  getCodeSchemes(codeRegistryCodeValue: string): Observable<CodeScheme[]> {
-    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/`)
+  getCodeSchemes(): Observable<CodeScheme[]> {
+    return this.http.get(`${this.getCodeSchemesBasePath()}/?expand=codeRegistry`)
+      .map(res => res.json().results as CodeScheme[]);
+  }
+
+  getCodeSchemesWithTerm(searchTerm: string): Observable<CodeScheme[]> {
+    return this.http.get(`${this.getCodeSchemesBasePath()}/?expand=codeRegistry&prefLabel=${searchTerm}`)
+      .map(res => res.json().results as CodeScheme[]);
+  }
+
+  getCodeSchemesForRegistry(codeRegistryCodeValue: string): Observable<CodeScheme[]> {
+    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/?expand=codeRegistry`)
       .map(res => res.json().results as CodeScheme[]);
   }
 
   getCodeScheme(codeRegistryCodeValue: string, codeSchemeCodeValue: string): Observable<CodeScheme> {
-    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/`)
+    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/?expand=codeRegistry`)
       .map(res => res.json() as CodeScheme);
   }
 
   getCodes(codeRegistryCodeValue: string, codeSchemeCodeValue: string): Observable<Code[]> {
-    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/`)
+    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/?expand=codeScheme,codeRegistry`)
       .map(res => res.json().results as Code[]);
   }
 
   getCode(codeRegistryCodeValue: string, codeSchemeCodeValue: string, codeCodeValue: string): Observable<Code> {
-    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/${codeCodeValue}/`)
+    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/${codeCodeValue}/?expand=codeScheme,codeRegistry`)
       .map(res => res.json() as Code);
+  }
+
+  getCodeSchemesBasePath() {
+    return `/${DataService.API_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_CODESCHEMES}`;
   }
 
   getCodeRegistriesBasePath() {

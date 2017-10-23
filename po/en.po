@@ -36,3 +36,39 @@ msgstr ""
 
 msgid "Front page"
 msgstr ""
+
+msgid "VALID"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Validity"
+msgstr ""
+
+msgid "Code name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Last modification"
+msgstr ""
+
+msgid "Code value"
+msgstr ""
+
+msgid "Code scheme"
+msgstr ""
+
+msgid "INFORMATION"
+msgstr ""
+
+msgid "CODES"
+msgstr ""
