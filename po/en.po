@@ -72,3 +72,9 @@ msgstr ""
 
 msgid "CODES"
 msgstr ""
+
+msgid "Search did not find any code schemes."
+msgstr ""
+
+msgid "code schemes"
+msgstr ""

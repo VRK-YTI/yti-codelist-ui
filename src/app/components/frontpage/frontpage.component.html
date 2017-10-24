@@ -13,7 +13,7 @@
   <div class="row px-3 py-5">
     <div class="container col-12 py-3 px-2" style="border:1px solid #A5ACB0; background: white">
       <div *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 0; else noContent'>
-        <span class="codeschemecount semibold" >{{(codeSchemes |async)?.length}} koodistoa</span>
+        <span class="codeschemecount semibold" >{{(codeSchemes |async)?.length}} </span><span class="semibold" translate>code schemes</span>
       </div>
       <div class="table-responsive" *ngIf='codeSchemes != null'>
         <table class="table borderless table-no-bordered" *ngFor="let codeScheme of codeSchemes | async">
@@ -31,5 +31,5 @@
 </div>
 
 <ng-template #noContent>
-  <span>Haulla ei löytynyt yhtään koodistoa.</span>
+  <span translate>Your search did not find any codeschemes.</span>
 </ng-template>

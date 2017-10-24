@@ -19,18 +19,17 @@
     <div class="row table-responsive">
       <table class="table" *ngIf='code != null'>
         <tr><td class="detailHeading bold" translate>Code scheme</td></tr>
-        <tr><td class="detailValue semibold">{{code.codeScheme.prefLabels.fi}}</td></tr>
+        <tr><td class="detailValue semibold" *ngIf='code.codeScheme != null && code.codeScheme.prefLabels != null'>{{code.codeScheme.prefLabels.fi}}</td></tr>
         <tr><td class="detailHeading bold" translate>Code value</td></tr>
         <tr><td class="detailValue semibold">{{code.codeValue}}</td></tr>
         <tr><td class="detailHeading bold" translate>Code name</td></tr>
-        <tr><td class="detailValue semibold">{{code.prefLabels.fi}}</td></tr>
+        <tr><td class="detailValue semibold" *ngIf='code.descriptions != null'>{{code.prefLabels.fi}}</td></tr>
         <tr><td class="detailHeading bold" translate>Description</td></tr>
-        <tr><td class="detailValue semibold">{{code.descriptions.fi}}</td></tr>
+        <tr><td class="detailValue semibold" *ngIf='code.descriptions != null'>{{code.descriptions.fi}}</td></tr>
         <tr><td class="detailHeading bold" translate>Validity</td></tr>
-        <tr><td class="detailValue semibold">{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</td></tr>
+        <tr><td class="detailValue semibold" *ngIf='!code.startDate == null && !code.endDate == null'>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</td></tr>
         <tr><td class="detailHeading bold" translate>Last modification</td></tr>
         <tr><td class="detailValue semibold">{{code.modified | date:'d.M.y klo hh:mm'}}</td></tr>
-        <!--<tr><td>Uri</td><td><a href="{{code.uri}}">{{code.uri}}</a></td></tr>-->
       </table>
     </div>
   </div>
