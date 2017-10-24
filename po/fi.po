@@ -73,7 +73,7 @@ msgstr "TIEDOT"
 msgid "CODES"
 msgstr "KOODIT"
 
-msgid "Search did not find any code schemes."
+msgid "Search did not find any codeschemes."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "code schemes"
