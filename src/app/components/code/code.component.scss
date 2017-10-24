@@ -4,7 +4,7 @@
 }
 
 .fixed-table-container {
-  border: 0px;
+  border: 0;
 }
 
 .detailHeading {
@@ -15,17 +15,6 @@
 
 .detailValue {
   font-size: medium;
-  padding: 20px 0px 20px 0px;
+  padding: 20px 3px 20px 3px;
   margin: 0;
-  padding: 3px;
-}
-
-.content-area {
-  border:1px solid #A5ACB0;
-  background: #F6F6F7;
-}
-
-.content-box {
-  border:1px solid #A5ACB0;
-  background: white;
 }

@@ -1,23 +1,4 @@
 .search-box {
-
-}
-
-.rightcell {
-  text-align: right;
-}
-
-.codescheme {
-  font-weight: bold;
-  font-size: large;
-  color: #2A6EBB;
-}
-
-.container-fluid {
-  background-color: #F6F6F7;
-}
-
-.codeschemecount {
-  padding: 0 0 15px 10px;
 }
 
 .table th, .table td {
@@ -26,5 +7,19 @@
 }
 
 .fixed-table-container {
-  border: 0px;
+  border: 0;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic
+}
+
+.codescheme {
+  font-weight: bold;
+  font-size: large;
+  color: #2A6EBB;
+}
+
+.codeschemecount {
+  padding: 0 0 15px 10px;
 }

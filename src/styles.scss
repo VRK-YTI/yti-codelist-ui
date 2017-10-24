@@ -204,22 +204,18 @@ span.highlight {
   background: #2A6EBB;
   font-size: $font-size-h6;
   text-decoration: none;
-  font-family: SourceSansProSemibold, SourceSansProRegular, 'Helvetica Neue', Arial;
-  font-weight: 400;
 }
 
 .status {
   border-radius: 5px;
   background: #00B38A;
   padding: 3px 10px 3px 10px;
-  margin: 10px 0px 10px 0;
+  margin: 10px 0 10px 0;
   color: white;
-  font-family: SourceSansProSemibold, SourceSansProRegular, 'Helvetica Neue', Arial;
-  font-weight: 400;
 }
 
 .tabNavi {
-  margin: 20px 0px 20px 0px;
+  margin: 20px 0 20px 0;
   color: #2A6EBB;
   text-decoration: underline;
   font-size: large;
@@ -231,4 +227,18 @@ span.highlight {
 
 .alignLeft {
   text-align: left;
+}
+
+.content-box {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #A5ACB0;
+  background: #FFFFFF;
+}
+
+.content-area {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #A5ACB0;
+  background: #F6F6F7;
 }

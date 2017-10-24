@@ -1,17 +1,19 @@
-<div class="container-fluid py-5 px-4 content-box" style="border:1px solid #A5ACB0;">
-  <div class="row px-3">
-    <div class="col-md-6">
-      <div class="input-group input-group-lg input-group-search">
-        <div class="search">
-          <input #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa" />
-          <span class="fa fa-search"></span>
+<div class="container-fluid py-5 px-4 content-area">
+  <div class="container-fluid py-4 px-4">
+    <div class="row col-md-3">
+      <div class="content-box">
+        <div class="input-group input-group-lg input-group-search">
+          <div class="search">
+            <input #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa" />
+            <span class="fa fa-search"></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row px-3 py-5">
-    <div class="container col-12 py-3 px-2" style="border:1px solid #A5ACB0; background: white">
+  <div class="container-fluid py-4 px-4 content-box">
+    <div class="row">
       <div *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 0; else noContent'>
         <span class="codeschemecount semibold" >{{(codeSchemes |async)?.length}} </span><span class="semibold" translate>code schemes</span>
       </div>
@@ -19,8 +21,8 @@
         <table class="table borderless table-no-bordered" *ngFor="let codeScheme of codeSchemes | async">
           <tr>
             <td class="col-md-9"><button type="button" class="btn btn-link codescheme bold" (click)="viewCodeScheme(codeScheme)">{{codeScheme.prefLabels.fi}}</button></td>
-            <td class="col-md-3 rightcell">
-              <span translate class="status">{{codeScheme.status}}</span><br/>
+            <td class="col-md-3 alignright">
+              <span translate class="status bold alignright">{{codeScheme.status}}</span><br/>
               <button class="btn btn-link semibold" (click)="viewOrganization()">Testi organisaatio</button>
             </td>
           </tr>
