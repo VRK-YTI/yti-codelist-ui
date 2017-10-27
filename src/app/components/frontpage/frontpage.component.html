@@ -1,11 +1,11 @@
 <div class="container-fluid py-5 px-4 content-area">
   <div class="container-fluid py-4 px-4">
-    <div class="row col-md-3">
+      <div class="row col-md-3">
       <div class="content-box">
         <div class="input-group input-group-lg input-group-search">
           <div class="search">
-            <input #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa" />
-            <span class="fa fa-search"></span>
+            <input #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa"/>
+            <i class="fa fa-search"></i>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
   <div class="container-fluid py-4 px-4 content-box">
     <div class="row">
       <div *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 0; else noContent'>
-        <span class="codeschemecount semibold" >{{(codeSchemes |async)?.length}} </span><span class="semibold" translate>code schemes</span>
+        <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}</span><span class="semibold" translate>code schemes</span>
       </div>
       <div class="table-responsive" *ngIf='codeSchemes != null'>
         <table class="table borderless table-no-bordered" *ngFor="let codeScheme of codeSchemes | async">
