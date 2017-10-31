@@ -4,7 +4,17 @@ input {
 }
 
 i {
-  padding-right: 5px;
+  padding-right: 10px;
+  font-size: 17px;
+}
+
+button {
+  border: 0px;
+  color: black;
+}
+
+.blacktext {
+  color: black;
 }
 
 .table th, .table td {
@@ -17,7 +27,10 @@ i {
 }
 
 ::-webkit-input-placeholder {
-  font-style: italic
+  font-style: italic;
+  font-size: small;
+  font-weight: 600;
+  color: #A5ACB0;
 }
 
 .codescheme {
