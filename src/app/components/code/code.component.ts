@@ -48,6 +48,7 @@ export class CodeComponent implements OnInit {
         }
         this.locationService.atCodePage(code);
       });
+      this.storing = false;
     }
   }
 
@@ -73,8 +74,8 @@ export class CodeComponent implements OnInit {
       } else {
         console.log('Storing value failed, please try again.');
       }
+      this.storing = false;
     });
-    this.storing = false;
   }
 
   cancel() {

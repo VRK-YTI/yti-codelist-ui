@@ -40,6 +40,8 @@ export class CodeSchemeComponent implements OnInit {
         });
       }
       this.nav = 'codes';
+      console.log('onInit called');
+      this.storing = false;
     }
   }
 
@@ -52,10 +54,6 @@ export class CodeSchemeComponent implements OnInit {
         codeCodeValue: code.codeValue,
         codeId: code.id
       }]);
-  }
-
-  isStoring() {
-    return this.storing;
   }
 
   modify() {
@@ -75,8 +73,8 @@ export class CodeSchemeComponent implements OnInit {
       } else {
         console.log('Storing value failed, please try again.');
       }
+      this.storing = false;
     });
-    this.storing = false;
   }
 
   cancel() {
