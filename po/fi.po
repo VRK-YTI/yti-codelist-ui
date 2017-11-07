@@ -47,10 +47,10 @@ msgid "Export"
 msgstr "Lataa"
 
 msgid "Export CSV"
-msgstr "Lataa Excel"
+msgstr "Lataa CSV"
 
 msgid "Export Excel"
-msgstr "Lataa CSV"
+msgstr "Lataa Excel"
 
 msgid "Validity"
 msgstr "Voimassaolo"
