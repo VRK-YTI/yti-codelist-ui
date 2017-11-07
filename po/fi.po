@@ -40,8 +40,17 @@ msgstr "Etusivu"
 msgid "VALID"
 msgstr "VOIMASSA OLEVA"
 
+msgid "SUPERSEDED"
+msgstr "KORVATTU"
+
 msgid "Export"
 msgstr "Lataa"
+
+msgid "Export CSV"
+msgstr "Lataa Excel"
+
+msgid "Export Excel"
+msgstr "Lataa CSV"
 
 msgid "Validity"
 msgstr "Voimassaolo"
@@ -51,6 +60,9 @@ msgstr "Koodin nimi"
 
 msgid "Description"
 msgstr "Kuvaus"
+
+msgid "Short name"
+msgstr "Lyhyt nimi"
 
 msgid "Status"
 msgstr "Tila"
@@ -78,3 +90,12 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "code schemes"
 msgstr "koodistoa"
+
+msgid "Modify"
+msgstr "Muokkaa"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Save"
+msgstr "Tallenna"

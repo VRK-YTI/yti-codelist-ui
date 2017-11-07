@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, ResponseContentType } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CodeScheme } from '../model/codescheme';
 import { CodeRegistry } from '../model/coderegistry';
 import { Code } from '../model/code';
 import { Observable } from 'rxjs/Observable';
+import { ApiResponse } from '../model/apiresponse';
 
 @Injectable()
 export class DataService {
@@ -56,9 +57,19 @@ export class DataService {
       .map(res => res.json().results as Code[]);
   }
 
-  getCode(codeRegistryCodeValue: string, codeSchemeCodeValue: string, codeCodeValue: string): Observable<Code> {
-    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/${codeCodeValue}/?expand=codeScheme,codeRegistry`)
+  getCode(codeRegistryCodeValue: string, codeSchemeCodeValue: string, codeId: string): Observable<Code> {
+    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/${DataService.API_PATH_CODES}/${codeId}/?expand=codeScheme,codeRegistry`)
       .map(res => res.json() as Code);
+  }
+
+  saveCode(code: Code): Observable<ApiResponse> {
+    return this.http.post(`${this.getCodeRegistriesIntakeBasePath()}/${code.codeScheme.codeRegistry.codeValue}/${DataService.API_PATH_CODESCHEMES}/${code.codeScheme.codeValue}/${DataService.API_PATH_CODES}/${code.id}/`, code)
+      .map(res => res.json() as ApiResponse);
+  }
+
+  saveCodeScheme(codeScheme: CodeScheme): Observable<ApiResponse> {
+    return this.http.post(`${this.getCodeRegistriesIntakeBasePath()}/${codeScheme.codeRegistry.codeValue}/${DataService.API_PATH_CODESCHEMES}/${codeScheme.id}/`, codeScheme)
+      .map(res => res.json() as ApiResponse);
   }
 
   getCodeSchemesBasePath() {
@@ -67,5 +78,9 @@ export class DataService {
 
   getCodeRegistriesBasePath() {
     return `/${DataService.API_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_CODEREGISTRIES}`;
+  }
+
+  getCodeRegistriesIntakeBasePath() {
+    return `/${DataService.API_INTAKE_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_CODEREGISTRIES}`;
   }
 }

@@ -16,21 +16,38 @@
       <span *ngIf='code != null' class="tabNavi bold" translate>INFORMATION</span>
     </div>
 
-    <div class="row table-responsive">
-      <table class="table" *ngIf='code != null'>
-        <tr><td class="detailHeading bold" translate>Code scheme</td></tr>
-        <tr><td class="detailValue semibold" *ngIf='code.codeScheme != null && code.codeScheme.prefLabels != null'>{{code.codeScheme.prefLabels.fi}}</td></tr>
-        <tr><td class="detailHeading bold" translate>Code value</td></tr>
-        <tr><td class="detailValue semibold">{{code.codeValue}}</td></tr>
-        <tr><td class="detailHeading bold" translate>Code name</td></tr>
-        <tr><td class="detailValue semibold" *ngIf='code.descriptions != null'>{{code.prefLabels.fi}}</td></tr>
-        <tr><td class="detailHeading bold" translate>Description</td></tr>
-        <tr><td class="detailValue semibold" *ngIf='code.descriptions != null'>{{code.descriptions.fi}}</td></tr>
-        <tr><td class="detailHeading bold" translate>Validity</td></tr>
-        <tr><td class="detailValue semibold" *ngIf='!code.startDate == null && !code.endDate == null'>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</td></tr>
-        <tr><td class="detailHeading bold" translate>Last modification</td></tr>
-        <tr><td class="detailValue semibold">{{code.modified | date:'d.M.y klo hh:mm'}}</td></tr>
-      </table>
+    <div class="row">
+      <div class="col-md-8" *ngIf='code != null'>
+        <label translate>Code scheme</label>
+        <span>{{code.codeScheme.prefLabels | translateValue}}</span>
+        <label translate>Code value</label>
+        <span>{{code.codeValue}}</span>
+        <label for="prefLabel" translate>Code name</label>
+        <input id="prefLabel" *ngIf='modifyEnabled' [(ngModel)]="code.prefLabels.fi">
+        <span *ngIf='!modifyEnabled'>{{code.prefLabels | translateValue}}</span>
+        <label for="description" translate>Description</label>
+        <input id="description" *ngIf='modifyEnabled' [(ngModel)]="code.descriptions.fi">
+        <span *ngIf='!modifyEnabled'>{{code.descriptions | translateValue}}</span>
+        <label translate>Short name</label>
+        <input *ngIf='modifyEnabled' [(ngModel)]="code.shortName">
+        <span *ngIf='!modifyEnabled'>{{code.shortName}}</span>
+        <label translate>Validity</label>
+        <span>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</span>
+        <label translate>Last modification</label>
+        <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
+      </div>
+
+      <div class="col-md-4 float-right">
+        <div class="row" *ngIf='!modifyEnabled'>
+          <button type="button" class="btn actionbutton" (click)="modify()" translate>Modify</button>
+        </div>
+        <div class="row" *ngIf='modifyEnabled'>
+          <button type="button" [disabled]='storing' class="btn actionbutton" (click)="save()" translate>Save</button>
+        </div>
+        <div class="row" *ngIf='modifyEnabled'>
+          <button type="button" class="btn btn-link linkbutton" (click)="cancel()" translate>Cancel</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

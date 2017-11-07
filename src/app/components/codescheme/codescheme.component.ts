@@ -16,6 +16,9 @@ export class CodeSchemeComponent implements OnInit {
   codes: Code[];
   codeRegistryCodeValue: string;
   codeSchemeCodeValue: string;
+  nav: string;
+  modifyEnabled: boolean;
+  storing: boolean;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -36,16 +39,55 @@ export class CodeSchemeComponent implements OnInit {
           this.codes = codes;
         });
       }
+      this.nav = 'codes';
     }
   }
 
   viewCode(code: Code) {
     console.log('View code: ' + code.codeValue);
     this.router.navigate(['code',
-      { codeRegistryCodeValue: code.codeScheme.codeRegistry.codeValue, codeSchemeCodeValue: code.codeScheme.codeValue, codeCodeValue: code.codeValue }]);
+      {
+        codeRegistryCodeValue: code.codeScheme.codeRegistry.codeValue,
+        codeSchemeCodeValue: code.codeScheme.codeValue,
+        codeCodeValue: code.codeValue,
+        codeId: code.id
+      }]);
+  }
+
+  isStoring() {
+    return this.storing;
+  }
+
+  modify() {
+    this.modifyEnabled = !this.modifyEnabled;
+  }
+
+  save() {
+    this.storing = true;
+    console.log('Store CodeScheme changes to server!');
+    this.dataService.saveCodeScheme(this.codeScheme).subscribe(apiResponse => {
+      if (apiResponse.meta != null) {
+        console.log('Response status: ' + apiResponse.meta.code);
+        console.log('Response message: ' + apiResponse.meta.message);
+        if (apiResponse.meta.code !== 200) {
+          console.log('Storing value failed, please try again.');
+        }
+      } else {
+        console.log('Storing value failed, please try again.');
+      }
+    });
+    this.storing = false;
+  }
+
+  cancel() {
+    this.modifyEnabled = false;
+  }
+
+  showTab(value: string) {
+    this.nav = value;
   }
 
   back() {
-    this.router.navigate(['frontpage', { }]);
+    this.router.navigate(['frontpage', {}]);
   }
 }

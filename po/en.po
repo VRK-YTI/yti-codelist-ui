@@ -40,7 +40,16 @@ msgstr ""
 msgid "VALID"
 msgstr ""
 
+msgid "SUPERSEDED"
+msgstr ""
+
 msgid "Export"
+msgstr ""
+
+msgid "Export CSV"
+msgstr ""
+
+msgid "Export Excel"
 msgstr ""
 
 msgid "Validity"
@@ -50,6 +59,9 @@ msgid "Code name"
 msgstr ""
 
 msgid "Description"
+msgstr ""
+
+msgid "Short name"
 msgstr ""
 
 msgid "Status"
@@ -77,4 +89,13 @@ msgid "Search did not find any codeschemes."
 msgstr ""
 
 msgid "code schemes"
+msgstr ""
+
+msgid "Modify"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Save"
 msgstr ""

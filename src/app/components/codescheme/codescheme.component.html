@@ -11,11 +11,18 @@
     </div>
 
     <div class="row">
-      <div class="col-md-10 px-0">
-        <span *ngIf='codeScheme != null' class="status bold alignleft" translate>{{codeScheme.status}}</span>
+      <div class="col-md-9 px-0">
+        <span *ngIf='codeScheme != null' class="status bold alignLeft" translate>{{codeScheme.status}}</span>
       </div>
-      <div class="col-md-2 px-0">
-        <a href='{{codeScheme.uri}}codes/?format=csv' target="_blank" *ngIf='codeScheme != null' class="actionbutton" translate>Export</a>
+      <div class="col-md-3 px-0">
+
+        <div ngbDropdown class="d-inline-block content-box">
+          <button class="btn btn-outline-primary semibold" id="dropdownBasic1" ngbDropdownToggle translate>Export</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a href='{{codeScheme.uri}}codes/?format=csv' target="_blank" *ngIf='codeScheme != null' class="dropdown-item" translate>Export CSV</a>
+            <a href='{{codeScheme.uri}}codes/?format=excel' target="_blank" *ngIf='codeScheme != null' class="dropdown-item" translate>Export Excel</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -24,16 +31,46 @@
     </div>
 
     <div class="row">
-      <span *ngIf='codeScheme != null' class="tabNavi bold" translate>CODES</span>
+      <button class="btn btn-link bold tabNavi" (click)="showTab('codes')" translate>CODES</button>
+      <button class="btn btn-link bold tabNavi" (click)="showTab('information')" translate>INFORMATION</button>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf='nav === "codes"'>
       <div class="table-responsive" *ngIf='codes != null'>
         <table class="table" *ngFor="let code of codes">
           <tr>
             <td><button class="btn btn-link code semibold" (click)="viewCode(code)">{{code.codeValue}} - {{code.prefLabels.fi}}</button></td>
           </tr>
         </table>
+      </div>
+    </div>
+
+    <div class="row" *ngIf='nav === "information"'>
+      <div class="col-md-9 px-0" *ngIf='codeScheme != null'>
+        <label for="codeValue" translate>Code value</label>
+        <span id="codeValue">{{codeScheme.codeValue}}</span>
+        <label for="prefLabel" translate>Code name</label>
+        <input id="prefLabel" type="text" id="prefLabels" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.prefLabels.fi">
+        <span *ngIf='!modifyEnabled'>{{codeScheme.prefLabels | translateValue}}</span>
+        <label for="description" translate>Description</label>
+        <input id="description" type="text" id="description" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.descriptions.fi">
+        <span *ngIf='!modifyEnabled'>{{codeScheme.descriptions | translateValue}}</span>
+        <label for="validity" translate>Validity</label>
+        <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
+        <label for="lastModification" translate>Last modification</label>
+        <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
+      </div>
+
+      <div class="col-md-3 px-0 alignRight">
+        <div class="row" *ngIf='!modifyEnabled'>
+          <button type="button" class="btn actionbutton" (click)="modify()" translate>Modify</button>
+        </div>
+        <div class="row" *ngIf='modifyEnabled'>
+          <button type="button" [disabled]='storing' class="btn actionbutton" disabled (click)="save()" translate>Save</button>
+        </div>
+        <div class="row" *ngIf='modifyEnabled'>
+          <button type="button" class="btn btn-link linkbutton" (click)="cancel()" translate>Cancel</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,8 @@
 {
+  "/codelist-intake/*": {
+    "target": "http://localhost:9602",
+    "secure": false
+  },
   "/codelist-api/*": {
     "target": "http://localhost:9601",
     "secure": false

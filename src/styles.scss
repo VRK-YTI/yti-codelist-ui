@@ -197,13 +197,35 @@ span.highlight {
 }
 
 .actionbutton, .actionbutton:hover, .actionbutton:focus, .actionbutton:active {
+  margin: 5px 5px 5px 5px;
   border-radius: 3px;
   color: white;
   padding: 10px 20px 10px 20px;
+  min-width: 150px;
   height: 40px;
   background: #2A6EBB;
   font-size: $font-size-h6;
   text-decoration: none;
+}
+
+.actionbutton:disabled {
+  background: red;
+}
+
+.linkbutton, .linkbutton:hover, .linkbutton:focus, .linkbutton:active {
+  margin: 5px 5px 5px 5px;
+  border-radius: 3px;
+  color: #2A6EBB;
+  padding: 10px 20px 10px 20px;
+  min-width: 150px;
+  height: 40px;
+  font-size: $font-size-h6;
+  text-decoration: none;
+}
+
+.linkbutton:active, .linkbutton:hover {
+  border-bottom-style: solid;
+  border-bottom: 5px;
 }
 
 .status {
@@ -214,11 +236,23 @@ span.highlight {
   color: white;
 }
 
-.tabNavi {
+.tabNavi, .tabNavi:hover, .tabNavi:focus {
   margin: 20px 0 20px 0;
   color: #2A6EBB;
-  text-decoration: underline;
+  min-width: 120px;
   font-size: large;
+  text-decoration: none;
+  outline: 0;
+}
+
+.tabNavi.active {
+  border-bottom-style: solid;
+  border-bottom: 5px;
+  text-decoration: underline;
+}
+
+.btn:focus,.btn:active {
+  outline: none !important;
 }
 
 .alignRight {
@@ -241,4 +275,9 @@ span.highlight {
   border-style: solid;
   border-color: #A5ACB0;
   background: #F6F6F7;
+}
+
+label {
+  font-size: $font-size-h5;
+  display:block;
 }
