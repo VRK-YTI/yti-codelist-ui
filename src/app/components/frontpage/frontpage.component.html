@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="col-8">
-        <div class="row h-100">
+        <div class="row">
 
           <div class="h-10 col-md-auto mr-3">
             <div ngbDropdown class="d-inline-block content-box">
@@ -63,25 +63,23 @@
               </div>
             </div>
           </div>
-          <div class="content-box mt-4">
-            <div class="col-md-6 h-90">
-              <div *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 0; else noContent'>
-                <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}</span>
-                <span class="semibold" translate>code schemes</span>
+
+        </div>
+
+        <div class="row content-box mt-4">
+          <div *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 0; else noContent'>
+            <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}</span>
+            <span class="semibold" translate>code schemes</span>
+          </div>
+          <div class="container" *ngIf='codeSchemes != null'>
+            <div class="row mt-2 mb-2" *ngFor="let codeScheme of codeSchemes | async">
+              <div class="col-md-9">
+                <button type="button" class="btn btn-link codescheme bold" (click)="viewCodeScheme(codeScheme)">{{codeScheme.prefLabels.fi}}</button>
               </div>
-              <div class="table-responsive" *ngIf='codeSchemes != null'>
-                <table class="table borderless table-no-bordered" *ngFor="let codeScheme of codeSchemes | async">
-                  <tr>
-                    <td class="col-8">
-                      <button type="button" class="btn btn-link codescheme bold" (click)="viewCodeScheme(codeScheme)">{{codeScheme.prefLabels.fi}}</button>
-                    </td>
-                    <td class="col-2 alignright">
-                      <span translate class="status bold alignright">{{codeScheme.status}}</span>
-                      <br/>
-                      <button class="btn btn-link semibold" (click)="viewOrganization()">Testi organisaatio</button>
-                    </td>
-                  </tr>
-                </table>
+              <div class="col-md-3 alignRight">
+                <span translate class="status bold alignright">{{codeScheme.status}}</span>
+                <br/>
+                <button class="btn btn-link semibold" (click)="viewOrganization()">Testi organisaatio</button>
               </div>
             </div>
           </div>
@@ -93,3 +91,4 @@
   <ng-template #noContent>
     <span translate>Search did not find any codeschemes.</span>
   </ng-template>
+</div>

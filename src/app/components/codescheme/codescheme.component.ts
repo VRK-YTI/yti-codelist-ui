@@ -53,7 +53,6 @@ export class CodeSchemeComponent implements OnInit {
         });
       }
       this.nav = 'codes';
-      console.log('onInit called');
       this.storing = false;
     }
   }
