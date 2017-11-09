@@ -13,6 +13,24 @@ button {
   color: black;
 }
 
+.counttext {
+  color: #003479;
+}
+
+.serviceclassification {
+  border-left: 5px;
+  border-color: white;
+  border-left-style: solid;
+  font-weight: bold;
+  font-size: large;
+  color: black;
+}
+
+.serviceclassification:hover, .serviceclassification:focus, .serviceclassification:active {
+  border-color: #2A6EBB;
+  font-weight: bold;
+}
+
 .blacktext {
   color: black;
 }

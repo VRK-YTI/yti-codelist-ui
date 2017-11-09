@@ -88,6 +88,12 @@ msgstr ""
 msgid "Search did not find any codeschemes."
 msgstr ""
 
+msgid "Service classification"
+msgstr ""
+
+msgid "code scheme"
+msgstr ""
+
 msgid "code schemes"
 msgstr ""
 

@@ -12,25 +12,26 @@
     </div>
   </div>
 
-  <div class="container-fluid py-4 px-4">
+  <div class="container-fluid p-4">
     <div class="row">
-      <div class="col pl-0">
+      <div class="col-3">
         <div class="content-box">
-          <h4 class="blacktext ml-4">Palveluluokitus</h4>
-          <ul class="list-unstyled semibold blacktext ml-4">
-            <li>Asuminen</li>
-            <li>Demokratia</li>
-            <li>Elinkeinot</li>
-            <li>Eläkkeet</li>
-            <li>Hallinto</li>
-            <li>Järjestys</li>
-            <li>Kartat</li>
-          </ul>
+          <h4 class="blacktext p-3" translate>Service classification</h4>
+          <div class="container" *ngFor="let serviceClassification of serviceClassifications | async">
+            <div class="row pb-3" *ngIf='serviceClassification.count > 0'>
+              <div class="semibold serviceclassification col-md-9">
+                <button class="btn btn-link classification" (click)='selectServiceClassification(serviceClassification.codeValue)'>{{serviceClassification.prefLabels.fi}}</button>
+              </div>
+              <div class="semibold counttext col-md-3 pr-5 alignRight">
+                <span class="blacktext">({{serviceClassification.count}})</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-8">
-        <div class="row">
 
+      <div class="col-9">
+        <div class="row">
           <div class="h-10 col-md-auto mr-3">
             <div ngbDropdown class="d-inline-block content-box">
               <button class="btn btn-outline-primary semibold" id="dropdownBasic1" ngbDropdownToggle>Kaikki rekisterit</button>
@@ -63,18 +64,24 @@
               </div>
             </div>
           </div>
-
         </div>
 
-        <div class="row content-box mt-4">
-          <div *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 0; else noContent'>
-            <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}</span>
+        <div class="content-box container mt-3">
+          <div class="row mt-3 ml-0" *ngIf='codeSchemes != null && (codeSchemes | async)?.length == 1'>
+            <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}&nbsp;</span>
+            <span class="semibold" translate>code scheme</span>
+          </div>
+          <div class="row mt-3 ml-0" *ngIf='codeSchemes != null && (codeSchemes | async)?.length > 1'>
+            <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}&nbsp;</span>
             <span class="semibold" translate>code schemes</span>
           </div>
-          <div class="container" *ngIf='codeSchemes != null'>
+          <div class="row mt-3 ml-0" *ngIf='codeSchemes != null && (codeSchemes | async)?.length == 0'>
+            <span translate>Search did not find any codeschemes.</span>
+          </div>
+          <div *ngIf='codeSchemes != null'>
             <div class="row mt-2 mb-2" *ngFor="let codeScheme of codeSchemes | async">
-              <div class="col-md-9">
-                <button type="button" class="btn btn-link codescheme bold" (click)="viewCodeScheme(codeScheme)">{{codeScheme.prefLabels.fi}}</button>
+              <div class="col-md-9 alignLeft">
+                <button type="button" class="btn btn-link codescheme semibold" (click)="viewCodeScheme(codeScheme)">{{codeScheme.prefLabels.fi}}</button>
               </div>
               <div class="col-md-3 alignRight">
                 <span translate class="status bold alignright">{{codeScheme.status}}</span>
@@ -88,7 +95,4 @@
     </div>
   </div>
 
-  <ng-template #noContent>
-    <span translate>Search did not find any codeschemes.</span>
-  </ng-template>
 </div>

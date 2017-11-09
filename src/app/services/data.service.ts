@@ -17,6 +17,7 @@ export class DataService {
   public static readonly API_PATH_CODEREGISTRIES = 'coderegistries';
   public static readonly API_PATH_CODESCHEMES = 'codeschemes';
   public static readonly API_PATH_CODES = 'codes';
+  public static readonly API_PATH_SERVICECLASSIFICATIONS = 'serviceclassifications';
 
   constructor(private http: Http) {
     console.log('DataService connected!');
@@ -39,6 +40,16 @@ export class DataService {
 
   getCodeSchemesWithTerm(searchTerm: string): Observable<CodeScheme[]> {
     return this.http.get(`${this.getCodeSchemesBasePath()}/?expand=codeRegistry&prefLabel=${searchTerm}`)
+      .map(res => res.json().results as CodeScheme[]);
+  }
+
+  getServiceClassifications(): Observable<Code[]> {
+    return this.http.get(`${this.getServiceClassificationsBasePath()}/`)
+      .map(res => res.json().results as Code[]);
+  }
+
+  getCodeSchemesWithClassification(serviceClassification: string): Observable<CodeScheme[]> {
+    return this.http.get(`${this.getCodeSchemesBasePath()}/?expand=codeRegistry&serviceClassification=${serviceClassification}`)
       .map(res => res.json().results as CodeScheme[]);
   }
 
@@ -82,5 +93,9 @@ export class DataService {
 
   getCodeRegistriesIntakeBasePath() {
     return `/${DataService.API_INTAKE_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_CODEREGISTRIES}`;
+  }
+
+  getServiceClassificationsBasePath() {
+    return `/${DataService.API_INTAKE_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_SERVICECLASSIFICATIONS}`;
   }
 }
