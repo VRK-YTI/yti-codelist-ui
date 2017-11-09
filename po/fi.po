@@ -61,6 +61,21 @@ msgstr "Koodin nimi"
 msgid "Description"
 msgstr "Kuvaus"
 
+msgid "Definition"
+msgstr "Määritelmä"
+
+msgid "Source"
+msgstr "Lähde"
+
+msgid "Legal base"
+msgstr "Lakiperuste"
+
+msgid "Governance policy"
+msgstr "Sitovuustaso"
+
+msgid "License"
+msgstr "Lisenssi"
+
 msgid "Short name"
 msgstr "Lyhyt nimi"
 

@@ -61,6 +61,21 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Definition"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Legal base"
+msgstr ""
+
+msgid "Governance policy"
+msgstr ""
+
+msgid "License"
+msgstr ""
+
 msgid "Short name"
 msgstr ""
 

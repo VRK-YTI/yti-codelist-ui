@@ -20,19 +20,31 @@
       <div class="col-md-8" *ngIf='code != null'>
         <label translate>Code scheme</label>
         <span>{{code.codeScheme.prefLabels | translateValue}}</span>
+
         <label translate>Code value</label>
         <span>{{code.codeValue}}</span>
-        <label for="prefLabel" translate>Code name</label>
-        <input id="prefLabel" *ngIf='modifyEnabled' [(ngModel)]="code.prefLabels.fi">
-        <span *ngIf='!modifyEnabled'>{{code.prefLabels | translateValue}}</span>
-        <label for="description" translate>Description</label>
-        <input id="description" *ngIf='modifyEnabled' [(ngModel)]="code.descriptions.fi">
-        <span *ngIf='!modifyEnabled'>{{code.descriptions | translateValue}}</span>
-        <label translate>Short name</label>
-        <input *ngIf='modifyEnabled' [(ngModel)]="code.shortName">
-        <span *ngIf='!modifyEnabled'>{{code.shortName}}</span>
+
+        <div class="form-group">
+          <label for="prefLabel" translate>Code name</label>
+          <input id="prefLabel" class="form-control col-5" *ngIf='modifyEnabled' [(ngModel)]="code.prefLabels.fi">
+          <span *ngIf='!modifyEnabled'>{{code.prefLabels | translateValue}}</span>
+        </div>
+
+        <div class="form-group">
+          <label for="description" translate>Description</label>
+          <textarea id="description" rows="3" class="form-control col-10" *ngIf='modifyEnabled' [(ngModel)]="code.descriptions.fi"></textarea>
+          <span *ngIf='!modifyEnabled'>{{code.descriptions | translateValue}}</span>
+        </div>
+
+        <div class="form-group">
+          <label translate>Short name</label>
+          <input *ngIf='modifyEnabled' class="form-control col-5" [(ngModel)]="code.shortName">
+          <span *ngIf='!modifyEnabled'>{{code.shortName}}</span>
+        </div>
+
         <label translate>Validity</label>
         <span>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</span>
+
         <label translate>Last modification</label>
         <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
       </div>

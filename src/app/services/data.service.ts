@@ -59,7 +59,7 @@ export class DataService {
   }
 
   getCodeScheme(codeRegistryCodeValue: string, codeSchemeCodeValue: string): Observable<CodeScheme> {
-    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/?expand=codeRegistry`)
+    return this.http.get(`${this.getCodeRegistriesBasePath()}/${codeRegistryCodeValue}/${DataService.API_PATH_CODESCHEMES}/${codeSchemeCodeValue}/?expand=codeRegistry,code`)
       .map(res => res.json() as CodeScheme);
   }
 

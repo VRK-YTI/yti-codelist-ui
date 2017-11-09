@@ -46,6 +46,19 @@ export class CodeSchemeComponent implements OnInit {
               this.codeScheme.descriptions.en = '';
             }
           }
+          if (this.codeScheme.definitions == null) {
+            this.codeScheme.definitions = {fi: '', sv: '', en: ''};
+          } else {
+            if (this.codeScheme.definitions.fi == null) {
+              this.codeScheme.definitions.fi = '';
+            }
+            if (this.codeScheme.definitions.sv == null) {
+              this.codeScheme.definitions.sv = '';
+            }
+            if (this.codeScheme.definitions.en == null) {
+              this.codeScheme.definitions.en = '';
+            }
+          }
           this.locationService.atCodeSchemePage(codeScheme);
         });
         this.dataService.getCodes(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codes => {
