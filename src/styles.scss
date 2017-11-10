@@ -236,22 +236,28 @@ span.highlight {
   color: white;
 }
 
-.tabNavi, .tabNavi:hover, .tabNavi:focus {
+.tabNavi {
   margin: 20px 0 20px 0;
+  text-align: center;
   color: #2A6EBB;
   min-width: 120px;
   font-size: large;
+  font-weight: bold;
   text-decoration: none;
-  outline: none !important;
-  border-bottom: 5px solid transparent;
+  margin-left: 10px;
+  margin-right: 10px;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 4px solid transparent;
 }
 
-.tabNavi:active {
-  border-bottom-style: solid;
-  border-bottom-color: #0275d8;
-  border-bottom: 5px;
-  text-decoration: underline;
+.tabNavi:focus, .tabNavi:active, .tabNavi:hover {
+  border-bottom: 4px solid #0275d8;
+  text-decoration: none;
+  outline: 0;
 }
+
 .alignRight {
   text-align: right;
 }

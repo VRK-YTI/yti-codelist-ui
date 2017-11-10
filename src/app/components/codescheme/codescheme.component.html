@@ -28,8 +28,8 @@
     </div>
 
     <div class="row">
-      <button class="btn btn-link bold tabNavi" (click)="showTab('codes')" translate>CODES</button>
-      <button class="btn btn-link bold tabNavi" (click)="showTab('information')" translate>INFORMATION</button>
+      <button class="tabNavi" (click)="showTab('codes')" translate>CODES</button>
+      <button class="tabNavi" (click)="showTab('information')" translate>INFORMATION</button>
     </div>
 
     <div class="row" *ngIf='nav === "codes"'>
