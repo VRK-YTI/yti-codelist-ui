@@ -1,10 +1,10 @@
 <div class="container-fluid py-5 px-4 content-area">
   <div class="container-fluid py-4 px-4 content-box">
     <div class="row">
-      <button type="button" class="backbutton" (click)="back()">←</button>
+      <button class="medium-icon icon-arrow-left-circle" (click)="back()"></button>
     </div>
 
-    <div class="row">
+    <div class="row mt-2 mb-2">
       <h1 *ngIf='code != null'>{{code.codeValue}} - {{code.prefLabels.fi}}</h1>
     </div>
 
@@ -13,11 +13,11 @@
     </div>
 
     <div class="row">
-      <span *ngIf='code != null' class="tabNavi bold" translate>INFORMATION</span>
+      <button class="btn btn-link bold tabNavi" translate>INFORMATION</button>
     </div>
 
     <div class="row">
-      <div class="col-md-8" *ngIf='code != null'>
+      <div class="col-md-9" *ngIf='code != null'>
         <label translate>Code scheme</label>
         <span>{{code.codeScheme.prefLabels | translateValue}}</span>
 
@@ -49,7 +49,7 @@
         <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
       </div>
 
-      <div class="col-md-4 float-right">
+      <div class="col-md-3 alignRight">
         <div class="row" *ngIf='!modifyEnabled'>
           <button type="button" class="btn actionbutton" (click)="modify()" translate>Modify</button>
         </div>

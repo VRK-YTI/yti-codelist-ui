@@ -107,6 +107,10 @@ span.highlight {
   padding: 8px 12px;
 }
 
+.btn:focus,.btn:active {
+  outline: none !important;
+}
+
 .btn-default:hover, .btn-default:focus, .btn-default:active {
   color: white;
   background-color: $brand-accent-dark;
@@ -115,6 +119,8 @@ span.highlight {
 
 .btn-link {
   color: $brand-primary;
+  white-space: normal;
+  text-align: left;
 }
 
 .input-group.input-group-search {
@@ -190,12 +196,6 @@ span.highlight {
   }
 }
 
-.backbutton {
-  border-radius: 15px;
-  color: #A5ACB0;
-  background: white;
-}
-
 .actionbutton, .actionbutton:hover, .actionbutton:focus, .actionbutton:active {
   margin: 5px 5px 5px 5px;
   border-radius: 3px;
@@ -242,9 +242,8 @@ span.highlight {
   min-width: 120px;
   font-size: large;
   text-decoration: none;
-  //outline: 0;
   outline: none !important;
-  border:0px solid transparent; /* this was 1px earlier */
+  border-bottom: 5px solid transparent;
 }
 
 .tabNavi:active {
@@ -253,11 +252,6 @@ span.highlight {
   border-bottom: 5px;
   text-decoration: underline;
 }
-
-.btn:focus,.btn:active {
-  outline: none !important;
-}
-
 .alignRight {
   text-align: right;
 }
@@ -283,4 +277,16 @@ span.highlight {
 label {
   font-size: $font-size-h5;
   display:block;
+}
+
+.medium-icon {
+  background: none;
+  border: none;
+  font-size: 18pt;
+}
+
+.large-icon {
+  background: none;
+  border: none;
+  font-size: 22pt;
 }
