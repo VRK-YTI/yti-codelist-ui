@@ -13,7 +13,9 @@ import { ServiceClassification } from '../../model/serviceclassification';
 })
 export class FrontpageComponent implements OnInit {
   codeSchemes: Observable<CodeScheme[]>;
+  filteredCodeSchemes: Observable<CodeScheme[]>;
   serviceClassifications: Observable<ServiceClassification[]>;
+  status: string;
 
   constructor(private dataService: DataService,
               private router: Router,
@@ -23,7 +25,9 @@ export class FrontpageComponent implements OnInit {
 
   ngOnInit() {
     this.codeSchemes = this.dataService.getCodeSchemes();
+    this.filteredCodeSchemes = this.codeSchemes;
     this.getServiceClassifications();
+    this.status = 'ALL';
   }
 
   getServiceClassifications() {
@@ -32,6 +36,16 @@ export class FrontpageComponent implements OnInit {
 
   selectServiceClassification(serviceClassification: string) {
     this.codeSchemes = this.dataService.getCodeSchemesWithClassification(serviceClassification);
+    this.filterWithStatus(this.status);
+  }
+  
+  filterWithStatus(status: string) {
+    this.status = status;
+    if (status !== 'ALL') {
+      this.filteredCodeSchemes = this.codeSchemes.map(codeSchemes => codeSchemes.filter(codeScheme => codeScheme.status === status));
+    } else {
+      this.filteredCodeSchemes = this.codeSchemes;
+    }
   }
 
   searchCodeSchemes(term: string): void {

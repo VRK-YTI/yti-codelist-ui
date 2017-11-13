@@ -37,11 +37,26 @@ msgstr "Hei maailma!"
 msgid "Front page"
 msgstr "Etusivu"
 
-msgid "VALID"
-msgstr "VOIMASSA OLEVA"
+msgid "ALL"
+msgstr "Kaikki tilat"
 
 msgid "SUPERSEDED"
-msgstr "KORVATTU"
+msgstr "Korvattu"
+
+msgid "WAITING"
+msgstr "Odottaa hyväksyntää"
+
+msgid "REMOVED"
+msgstr "Poistettu"
+
+msgid "INCORRECT"
+msgstr "Virheellinen"
+
+msgid "VALID"
+msgstr "Voimassa oleva"
+
+msgid "DRAFT"
+msgstr "Luonnos"
 
 msgid "Export"
 msgstr "Lataa"
