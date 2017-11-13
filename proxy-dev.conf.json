@@ -1,0 +1,12 @@
+{
+  "/codelist-intake/**": {
+    "target": "https://koodistot-dev.suomi.fi",
+    "changeOrigin": true,
+    "secure": false
+  },
+  "/codelist-api/**": {
+    "target": "https://koodistot-dev.suomi.fi",
+    "changeOrigin": true,
+    "secure": false
+  }
+}
