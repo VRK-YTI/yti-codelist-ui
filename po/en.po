@@ -31,7 +31,7 @@ msgstr ""
 msgid "licensed under the"
 msgstr ""
 
-msgid "Hello world!"
+msgid "Log in"
 msgstr ""
 
 msgid "Front page"
@@ -106,6 +106,9 @@ msgstr ""
 msgid "Service classification"
 msgstr ""
 
+msgid "Code list service"
+msgstr ""
+
 msgid "code scheme"
 msgstr ""
 
@@ -119,4 +122,19 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Save"
+msgstr ""
+
+msgid "This service is developed and maintained by Population Registry Center of Finland"
+msgstr ""
+
+msgid "Information about the web service"
+msgstr ""
+
+msgid "Description of file"
+msgstr ""
+
+msgid "User support"
+msgstr ""
+
+msgid "Feedback"
 msgstr ""

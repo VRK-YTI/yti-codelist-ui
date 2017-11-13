@@ -31,8 +31,8 @@ msgstr "VRK - Väestörekisterkeskus"
 msgid "licensed under the"
 msgstr "lisenssillä"
 
-msgid "Hello world!"
-msgstr "Hei maailma!"
+msgid "Log in"
+msgstr "Kirjaudu sisään"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -121,6 +121,9 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 msgid "Service classification"
 msgstr "Palveluluokitus"
 
+msgid "Code list service"
+msgstr "Koodistoeditori"
+
 msgid "code scheme"
 msgstr "koodisto"
 
@@ -135,3 +138,21 @@ msgstr "Peruuta"
 
 msgid "Save"
 msgstr "Tallenna"
+
+msgid "This service is developed and maintained by Population Registry Center of Finland"
+msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus"
+
+msgid "Sourcecode is licensed under EUPL-1.2 license."
+msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."
+
+msgid "Information about the web service"
+msgstr "Tietoa verkkopalvelusta"
+
+msgid "Description of file"
+msgstr "Tietosuojaseloste"
+
+msgid "User support"
+msgstr "Käytön tuki"
+
+msgid "Feedback"
+msgstr "Ota yhteyttä"

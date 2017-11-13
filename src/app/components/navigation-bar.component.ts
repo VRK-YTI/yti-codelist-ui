@@ -8,15 +8,20 @@ import { Language, LanguageService } from '../services/language.service';
 })
 export class NavigationBarComponent {
 
+  selectedLanguage: string;
+
   languages = [
-    { code: 'fi' as Language, name: 'Suomeksi' },
-    { code: 'en' as Language, name: 'In english' }
+    { code: 'fi' as Language, name: 'Suomeksi (FI)' },
+    { code: 'sv' as Language, name: 'På svenska (SV)' },
+    { code: 'en' as Language, name: 'In English (EN)' }
   ];
 
   constructor(private languageService: LanguageService) {
+    this.selectedLanguage = 'FI';
   }
 
   setLanguage(language: Language) {
+    this.selectedLanguage = language.toUpperCase();
     this.languageService.language = language;
   }
 }

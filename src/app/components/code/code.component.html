@@ -9,7 +9,19 @@
     </div>
 
     <div class="row">
-      <span *ngIf='code != null' class="status bold alignleft" translate>{{code.status}}</span>
+      <div class="col-md-9 px-0">
+        <span *ngIf='code != null' class="status bold alignleft" translate>{{code.status}}</span>
+      </div>
+      <div class="col-md-3">
+        <div ngbDropdown class="d-inline-block content-box">
+          <button class="btn btn-outline-primary semibold" id="modifyLanguageDropdown" ngbDropdownToggle>{{modifyLanguage.toUpperCase()}}</button>
+          <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="modifyLanguageDropdown">
+            <div *ngFor="let language of languages">
+              <button class='dropdown-item' [ngClass]="{'bold': language.code === modifyLanguage}" type="button" (click)='setModifyLanguage(language.code)'>{{language.name}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -19,21 +31,21 @@
     <div class="row">
       <div class="col-md-9" *ngIf='code != null'>
         <label translate>Code scheme</label>
-        <span>{{code.codeScheme.prefLabels | translateValue}}</span>
+        <span>{{code.codeScheme.prefLabels[modifyLanguage]}}</span>
 
         <label translate>Code value</label>
         <span>{{code.codeValue}}</span>
 
         <div class="form-group">
           <label for="prefLabel" translate>Code name</label>
-          <input id="prefLabel" class="form-control col-5" *ngIf='modifyEnabled' [(ngModel)]="code.prefLabels.fi">
-          <span *ngIf='!modifyEnabled'>{{code.prefLabels | translateValue}}</span>
+          <input id="prefLabel" class="form-control col-5" *ngIf='modifyEnabled' [(ngModel)]="code.prefLabels[modifyLanguage]">
+          <span *ngIf='!modifyEnabled'>{{code.prefLabels[modifyLanguage]}}</span>
         </div>
 
         <div class="form-group">
           <label for="description" translate>Description</label>
-          <textarea id="description" rows="3" class="form-control col-10" *ngIf='modifyEnabled' [(ngModel)]="code.descriptions.fi"></textarea>
-          <span *ngIf='!modifyEnabled'>{{code.descriptions | translateValue}}</span>
+          <textarea id="description" rows="3" class="form-control col-10" *ngIf='modifyEnabled' [(ngModel)]="code.descriptions[modifyLanguage]"></textarea>
+          <span *ngIf='!modifyEnabled'>{{code.descriptions[modifyLanguage]}}</span>
         </div>
 
         <div class="form-group">

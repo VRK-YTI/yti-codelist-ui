@@ -6,39 +6,27 @@
   </svg>
 
   <h4>
-    <a [routerLink]="['/']">Koodistoeditori</a>
+    <a [routerLink]="['/']" translate>Code list service</a>
   </h4>
   <div class="login-container">
     <div class="logged-out">
       <a href="#">
-        <span class="top-row-link-login">Kirjaudu sisään</span>
+        <span class="top-row-link-login" translate>Log in</span>
       </a>
     </div>
-    <div class="language-selection">
-    
+
+    <div class="language-selection pr-5 mr-5">
       <div class="dropdown ml-4">
-        <button class="btn btn-primary dropdown-button" type="button" data-toggle="dropdown">FI
-          <i class="fa fa-angle-down"></i>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li>
-              <a class="language" href="/kansalaiselle">
-                <span lang="fi">Suomeksi (FI)</span>
-              </a>
-            </li>
-            <li>
-              <a class="language" href="/medborgare">
-                <span lang="sv">På svenska (SV)</span>
-              </a>
-            </li>
-            <li>
-              <a class="language" href="/citizen">
-                <span lang="en">In English (EN)</span>
-              </a>
-            </li>
-          </ul>
+        <div ngbDropdown class="d-inline-block content-box">
+          <button class="btn btn-outline-primary semibold" id="dropdownBasic1" ngbDropdownToggle>{{selectedLanguage}}</button>
+          <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1">
+            <div *ngFor="let language of languages">
+              <button class='dropdown-item dropdown-menu-left' [ngClass]="{'bold': language.code.toUpperCase() === selectedLanguage}" type="button" (click)='setLanguage(language.code)'>{{language.name}}</button>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
   </div>
 
 </nav>
