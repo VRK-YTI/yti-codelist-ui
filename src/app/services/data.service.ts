@@ -6,6 +6,7 @@ import { CodeRegistry } from '../model/coderegistry';
 import { Code } from '../model/code';
 import { Observable } from 'rxjs/Observable';
 import { ApiResponse } from '../model/apiresponse';
+import { ServiceClassification } from '../model/serviceclassification';
 
 @Injectable()
 export class DataService {
@@ -43,9 +44,9 @@ export class DataService {
       .map(res => res.json().results as CodeScheme[]);
   }
 
-  getServiceClassifications(): Observable<Code[]> {
+  getServiceClassifications(): Observable<ServiceClassification[]> {
     return this.http.get(`${this.getServiceClassificationsBasePath()}/`)
-      .map(res => res.json().results as Code[]);
+      .map(res => res.json().results as ServiceClassification[]);
   }
 
   getCodeSchemesWithClassification(serviceClassification: string): Observable<CodeScheme[]> {
