@@ -1,62 +1,54 @@
-input {
-  background-color: white;
-  border: 0;
+@import "../../../theme/variables";
+@import "~bootstrap/scss/mixins/clearfix";
+
+.classification {
+
+  display: inline-block;
+  width: 100%;
+  padding: 5px 10px 5px 5px;
+  cursor: pointer;
+  border-left: 5px solid white;
+
+  &:hover {
+    border-left: 5px solid $primary;
+  }
+
+  .name {
+    float: left;
+  }
+
+  .count {
+    float: right;
+    color: $primary;
+  }
 }
 
-i {
-  padding-right: 10px;
-  font-size: 17px;
-}
+.code-scheme {
 
-button {
-  border: 0;
-  color: black;
-}
+  display: inline-block;
+  width: 100%;
+  padding: 5px 10px 5px 5px;
+  cursor: pointer;
+  border-left: 5px solid white;
 
-.counttext {
-  color: #003479;
-}
+  &:hover {
+    border-left: 5px solid $primary;
+  }
 
-.serviceclassification {
-  border-left: 5px;
-  border-color: white;
-  border-left-style: solid;
-  font-weight: bold;
-  font-size: large;
-  color: black;
-}
+  .name {
+    color: $primary;
+    font-weight: 600;
+    float: left;
+  }
 
-.serviceclassification:hover, .serviceclassification:focus, .serviceclassification:active {
-  border-color: #2A6EBB;
-  font-weight: bold;
-}
+  .status {
+    float: right;
+    clear: right;
+  }
 
-.blacktext {
-  color: black;
-}
-
-.table th, .table td {
-  border-top: none !important;
-  border-left: none !important;
-}
-
-.fixed-table-container {
-  border: 0;
-}
-
-::-webkit-input-placeholder {
-  font-style: italic;
-  font-size: small;
-  font-weight: 600;
-  color: #A5ACB0;
-}
-
-.codescheme {
-  font-weight: bold;
-  font-size: large;
-  color: #2A6EBB;
-}
-
-.codeschemecount {
-  padding: 0 0 15px 10px;
+  .organization {
+    float: right;
+    clear: right;
+    color: $dark;
+  }
 }

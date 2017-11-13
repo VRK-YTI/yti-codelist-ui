@@ -62,6 +62,10 @@ export class CodeComponent implements OnInit {
     }
   }
 
+  get loading(): boolean {
+    return this.code == null;
+  }
+
   back() {
     this.router.navigate(['codescheme',
       { codeRegistryCodeValue: this.codeRegistryCodeValue, codeSchemeCodeValue: this.codeSchemeCodeValue }]);

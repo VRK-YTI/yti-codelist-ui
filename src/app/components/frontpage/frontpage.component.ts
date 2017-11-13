@@ -14,7 +14,7 @@ import { ServiceClassification } from '../../model/serviceclassification';
 export class FrontpageComponent implements OnInit {
   codeSchemes: Observable<CodeScheme[]>;
   filteredCodeSchemes: Observable<CodeScheme[]>;
-  serviceClassifications: Observable<ServiceClassification[]>;
+  serviceClassifications: ServiceClassification[];
   status: string;
 
   constructor(private dataService: DataService,
@@ -26,19 +26,21 @@ export class FrontpageComponent implements OnInit {
   ngOnInit() {
     this.codeSchemes = this.dataService.getCodeSchemes();
     this.filteredCodeSchemes = this.codeSchemes;
-    this.getServiceClassifications();
+    this.dataService.getServiceClassifications().subscribe(classifications => {
+      this.serviceClassifications = classifications.filter(c => c.count > 0);
+    });
     this.status = 'ALL';
   }
 
-  getServiceClassifications() {
-    this.serviceClassifications = this.dataService.getServiceClassifications();
+  get loading(): boolean {
+    return this.serviceClassifications == null;
   }
 
   selectServiceClassification(serviceClassification: string) {
     this.codeSchemes = this.dataService.getCodeSchemesWithClassification(serviceClassification);
     this.filterWithStatus(this.status);
   }
-  
+
   filterWithStatus(status: string) {
     this.status = status;
     if (status !== 'ALL') {

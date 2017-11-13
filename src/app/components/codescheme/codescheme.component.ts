@@ -80,6 +80,10 @@ export class CodeSchemeComponent implements OnInit {
     }
   }
 
+  get loading(): boolean {
+    return this.codeScheme == null || this.codes == null;
+  }
+
   viewCode(code: Code) {
     console.log('View code: ' + code.codeValue);
     this.router.navigate(['code',

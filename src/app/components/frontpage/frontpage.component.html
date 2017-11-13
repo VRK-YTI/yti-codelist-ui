@@ -1,98 +1,96 @@
-<div class="container-fluid py-4 px-4 content-area">
-  <div class="container-fluid py-4 px-4">
-    <div class="row">
-      <div class="col-md-auto">
-        <div class="content-box">
-          <div class="input-group input-group-lg input-group-search">
-            <input class="form-control input-lg" #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa"/>
-            <i class="fa fa-search mt-3"></i>
-          </div>
-        </div>
+<div *ngIf="loading">
+  Loading...
+  <!--TODO ajax indicator-->
+</div>
+
+<div *ngIf="!loading">
+  <div class="row mb-5">
+    <div class="col-md-3">
+      <div class="input-group input-group-lg input-group-search">
+        <input class="form-control" #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa"/>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid p-4">
-    <div class="row">
-      <div class="col-3">
-        <div class="content-box">
-          <h4 class="blacktext p-3" translate>Service classification</h4>
-          <div class="container" *ngFor="let serviceClassification of serviceClassifications | async">
-            <div class="row pb-3" *ngIf='serviceClassification.count > 0'>
-              <div class="semibold serviceclassification col-md-9">
-                <button class="btn btn-link classification" (click)='selectServiceClassification(serviceClassification.codeValue)'>{{serviceClassification.prefLabels.fi}}</button>
-              </div>
-              <div class="semibold counttext col-md-3 pr-5 alignRight">
-                <span class="blacktext">({{serviceClassification.count}})</span>
-              </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="content-box">
+        <h4 class="mb-4" translate>Service classification</h4>
+
+        <div class="classification"
+             *ngFor="let serviceClassification of serviceClassifications"
+             (click)="selectServiceClassification(serviceClassification.codeValue)">
+
+          <span class="name">{{serviceClassification.prefLabels.fi}}</span>
+          <span class="count">({{serviceClassification.count}})</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="row mb-4">
+        <div class="col-12">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="reg-dropdown" ngbDropdownToggle>Kaikki rekisterit</button>
+            <div ngbDropdownMenu aria-labelledby="reg-dropdown">
+              <button class="dropdown-item">Kaikki rekisterit</button>
+            </div>
+          </div>
+
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="org-dropdown" ngbDropdownToggle>Kaikki organisaatiot</button>
+            <div ngbDropdownMenu aria-labelledby="org-dropdown">
+              <button class="dropdown-item">Kaikki organisaatiot</button>
+            </div>
+          </div>
+
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="state-dropdown" ngbDropdownToggle>Kaikki tilat</button>
+            <div ngbDropdownMenu aria-labelledby="state-dropdown">
+              <button (click)="filterWithStatus('ALL')" class="dropdown-item" translate>ALL</button>
+              <button (click)="filterWithStatus('SUPERSEDED')" class="dropdown-item" translate>SUPERSEDED</button>
+              <button (click)="filterWithStatus('WAITING')" class="dropdown-item" translate>WAITING</button>
+              <button (click)="filterWithStatus('REMOVED')" class="dropdown-item" translate>REMOVED</button>
+              <button (click)="filterWithStatus('INCORRECT')" class="dropdown-item" translate>INCORRECT</button>
+              <button (click)="filterWithStatus('VALID')" class="dropdown-item" translate>VALID</button>
+              <button (click)="filterWithStatus('DRAFT')" class="dropdown-item" translate>DRAFT</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-9">
+      <div class="content-box">
+
+        <div class="row mb-4">
+          <div class="col-12">
+            <div *ngIf='(filteredCodeSchemes | async)?.length == 1'>
+              <span class="codeschemecount">{{(filteredCodeSchemes |async)?.length}}&nbsp;</span>
+              <span translate>code scheme</span>
+            </div>
+
+            <div *ngIf='(filteredCodeSchemes | async)?.length > 1'>
+              <span class="codeschemecount">{{(codeSchemes |async)?.length}}&nbsp;</span>
+              <span translate>code schemes</span>
+            </div>
+
+            <div *ngIf='(filteredCodeSchemes | async)?.length == 0'>
+              <span translate>Search did not find any codeschemes.</span>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
-          <div class="h-10 col-md-auto mr-3">
-            <div ngbDropdown class="d-inline-block content-box">
-              <button class="btn btn-outline-primary semibold" id="registerDropDown" ngbDropdownToggle>Kaikki rekisterit</button>
-              <div ngbDropdownMenu aria-labelledby="registerDropDown">
-                <button class="dropdown-item">Kaikki rekisterit</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="h-10 col-md-auto mr-3">
-            <div ngbDropdown class="d-inline-block content-box">
-              <button class="btn btn-outline-primary semibold" id="organizationDropdown" ngbDropdownToggle>Kaikki organisaatiot</button>
-              <div ngbDropdownMenu aria-labelledby="organizationDropdown">
-                <button class="dropdown-item">Kaikki organisaatiot</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="h-10 col-md-auto mr-3">
-            <div ngbDropdown class="d-inline-block content-box">
-              <button class="btn btn-outline-primary semibold" id="statusDropdown" ngbDropdownToggle translate>{{status}}</button>
-              <div ngbDropdownMenu aria-labelledby="statusDropdown">
-                <button (click)="filterWithStatus('ALL')" class="dropdown-item" translate>ALL</button>
-                <button (click)="filterWithStatus('SUPERSEDED')" class="dropdown-item" translate>SUPERSEDED</button>
-                <button (click)="filterWithStatus('WAITING')" class="dropdown-item" translate>WAITING</button>
-                <button (click)="filterWithStatus('REMOVED')" class="dropdown-item" translate>REMOVED</button>
-                <button (click)="filterWithStatus('INCORRECT')" class="dropdown-item" translate>INCORRECT</button>
-                <button (click)="filterWithStatus('VALID')" class="dropdown-item" translate>VALID</button>
-                <button (click)="filterWithStatus('DRAFT')" class="dropdown-item" translate>DRAFT</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="content-box container mt-3 mb-3">
-          <div class="row mt-3 ml-0" *ngIf='filteredCodeSchemes != null && (filteredCodeSchemes | async)?.length == 1'>
-            <span class="codeschemecount semibold">haull{{(codeSchemes |async)?.length}}&nbsp;</span>
-            <span class="semibold" translate>code scheme</span>
-          </div>
-          <div class="row mt-3 ml-0" *ngIf='filteredCodeSchemes != null && (filteredCodeSchemes | async)?.length > 1'>
-            <span class="codeschemecount semibold">{{(codeSchemes |async)?.length}}&nbsp;</span>
-            <span class="semibold" translate>code schemes</span>
-          </div>
-          <div class="row mt-3 mb-3 ml-0" *ngIf='filteredCodeSchemes != null && (filteredCodeSchemes | async)?.length == 0'>
-            <span translate>Search did not find any codeschemes.</span>
-          </div>
-          <div *ngIf='codeSchemes != null'>
-            <div class="row mt-2 mb-2" *ngFor="let codeScheme of filteredCodeSchemes | async">
-              <div class="col-md-9 alignLeft">
-                <button type="button" class="btn btn-link codescheme semibold" (click)="viewCodeScheme(codeScheme)">{{codeScheme.prefLabels.fi}}</button>
-              </div>
-              <div class="col-md-3 alignRight">
-                <span translate class="status bold alignright">{{codeScheme.status}}</span>
-                <br/>
-                <button class="btn btn-link semibold" (click)="viewOrganization()">Testi organisaatio</button>
-              </div>
+          <div class="col-12">
+            <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes | async">
+              <div class="name">{{codeScheme.prefLabels.fi}}</div>
+              <div class="status" translate>{{codeScheme.status}}</div>
+              <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
-
 </div>

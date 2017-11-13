@@ -1,4 +1,13 @@
-@import '../../variables';
+@import '../../theme/variables';
+
+.container-fluid {
+  background-color: white;
+}
+
+.title {
+  color: $brand-color;
+}
+
 a {
   cursor: pointer;
   font-size: smaller;

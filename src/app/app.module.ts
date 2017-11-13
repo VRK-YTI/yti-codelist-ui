@@ -19,6 +19,8 @@ import { Observable } from 'rxjs/Observable';
 import { CodeSchemeComponent } from './components/codescheme/codescheme.component';
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
+import { LogoComponent } from './components/logo.component';
+import { BackButtonComponent } from './components/back-button.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -57,7 +59,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     FooterComponent,
     TranslateValuePipe,
     CodeSchemeComponent,
-    CodeComponent
+    CodeComponent,
+    LogoComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,

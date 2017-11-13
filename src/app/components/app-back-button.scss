@@ -1,0 +1,15 @@
+@import "../../theme/variables";
+
+button {
+
+  border-radius: 15px;
+  color: $gray;
+  background: white;
+  border: none;
+  font-size: 25pt;
+
+  &:before {
+    font-family: simple-line-icons;
+    content: $sli-arrow-left-circle;
+  }
+}

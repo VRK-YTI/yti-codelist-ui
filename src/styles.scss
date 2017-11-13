@@ -1,126 +1,16 @@
-@import './variables';
-@import '~bootstrap/scss/bootstrap';
-@import './vendor/bootswatch';
 @import "~font-awesome/scss/variables";
-
-@font-face {
-  font-family: 'SourceSansProBold';
-  src: url('font/SourceSansProBold.eot');
-  src: url('font/SourceSansProBold.eot') format('embedded-opentype'),
-  url('font/SourceSansProBold.woff2') format('woff2'),
-  url('font/SourceSansProBold.woff') format('woff'),
-  url('font/SourceSansProBold.ttf') format('truetype'),
-  url('font/SourceSansProBold.svg#SourceSansProBold') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SourceSansProSemibold';
-  src: url('font/SourceSansProSemibold.eot');
-  src: url('font/SourceSansProSemibold.eot') format('embedded-opentype'),
-  url('font/SourceSansProSemibold.woff2') format('woff2'),
-  url('font/SourceSansProSemibold.woff') format('woff'),
-  url('font/SourceSansProSemibold.ttf') format('truetype'),
-  url('font/SourceSansProSemibold.svg#SourceSansProSemibold') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SourceSansProRegular';
-  src: url('font/SourceSansProRegular.eot');
-  src: url('font/SourceSansProRegular.eot') format('embedded-opentype'),
-  url('font/SourceSansProRegular.woff2') format('woff2'),
-  url('font/SourceSansProRegular.woff') format('woff'),
-  url('font/SourceSansProRegular.ttf') format('truetype'),
-  url('font/SourceSansProRegular.svg#SourceSansProRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SourceSansProLight';
-  src: url('font/SourceSansProLight.eot');
-  src: url('font/SourceSansProLight.eot') format('embedded-opentype'),
-  url('font/SourceSansProLight.woff2') format('woff2'),
-  url('font/SourceSansProLight.woff') format('woff'),
-  url('font/SourceSansProLight.ttf') format('truetype'),
-  url('font/SourceSansProLight.svg#SourceSansProLight') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-body {
-  font-family: SourceSansProRegular, 'Helvetica Neue', Arial;
-  -webkit-font-smoothing: antialiased;
-}
-
-.text-narrow {
-  font-family: SourceSansProLight, SourceSansProRegular, 'Helvetica Neue', Arial;
-  font-weight: 400;
-}
-
-.semibold {
-  font-family: SourceSansProSemibold, SourceSansProRegular, 'Helvetica Neue', Arial;
-  font-weight: 400;
-}
-
-.bold {
-  font-family: SourceSansProBold, SourceSansProRegular, 'Helvetica Neue', Arial;
-  font-weight: 400;
-}
-
-.container {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.input {
-
-    &:after {
-      content: $fa-var-search;
-      font-family: FontAwesome;
-      top: 10px;
-      left: 15px;
-      font-size: $font-size-lg;
-      position: absolute;
-      z-index: 10;
-    }
-}
-
-span.highlight {
-  font-weight: bold;
-}
+@import "./theme/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "./theme/theme";
 
 [hidden] {
   display: none !important;
 }
 
-.btn-default {
-  color: white;
-  background-color: $brand-accent-light;
-  border: 1px solid $brand-accent-light;
-}
-
-.btn {
-  padding: 8px 12px;
-}
-
-.btn:focus,.btn:active {
-  outline: none !important;
-}
-
-.btn-default:hover, .btn-default:focus, .btn-default:active {
-  color: white;
-  background-color: $brand-accent-dark;
-  border: 1px solid $brand-accent-light;
-}
-
-.btn-link {
-  color: $brand-primary;
-  white-space: normal;
-  text-align: left;
+.content-box {
+  border: 1px solid $gray;
+  background: #FFFFFF;
+  padding: 25px;
 }
 
 .input-group.input-group-search {
@@ -128,112 +18,29 @@ span.highlight {
   position: relative !important;
 
   .form-control {
-    padding-left: 3rem !important;
-  }
-}
+    padding-right: 3rem !important;
 
-.modal-header {
-
-  color: white;
-  border-color: darken($brand-primary, 5%);
-  background-color: $brand-primary;
-
-  h4 {
-    width: 100%;
-  }
-
-  span {
-    float: left;
-  }
-
-  a {
-    float: right;
-    cursor: pointer;
-  }
-
-  &.modal-header-warning {
-    color: $alert-warning-text;
-    border-color: $alert-warning-border;
-    background-color: $alert-warning-bg;
-
-    i {
-      color: $alert-warning-text;
+    &:focus {
+      outline: 0 none;
     }
   }
 
-  &.modal-header-danger {
-    color: $alert-danger-text;
-    border-color: $alert-danger-border;
-    background-color: $alert-danger-bg;
-
-    i {
-      color: $alert-danger-text;
-    }
+  &:before {
+    content: $fa-var-search;
+    font-family: FontAwesome;
+    top: 10px;
+    right: 15px;
+    font-size: $font-size-lg;
+    position: absolute;
+    z-index: 10;
   }
-}
-
-.modal-footer {
-  border-top: 1px solid #e5e5e5;
-}
-
-.modal-body {
-
-  display: inline-block;
-  width: 100%;
-
-  &.full-height {
-    height: calc(100vh - 200px);
-
-    > div.row {
-
-      height: 100%;
-
-      > div.col-md-4, div.col-md-6, div.col-md-12 {
-        height: 100%;
-        overflow-y: auto;
-      }
-    }
-  }
-}
-
-.actionbutton, .actionbutton:hover, .actionbutton:focus, .actionbutton:active {
-  margin: 5px 5px 5px 5px;
-  border-radius: 3px;
-  color: white;
-  padding: 10px 20px 10px 20px;
-  min-width: 150px;
-  height: 40px;
-  background: #2A6EBB;
-  font-size: $font-size-h6;
-  text-decoration: none;
-}
-
-.actionbutton:disabled {
-  background: #A5ACB0;
-}
-
-.linkbutton, .linkbutton:hover, .linkbutton:focus, .linkbutton:active {
-  margin: 5px 5px 5px 5px;
-  border-radius: 3px;
-  text-align: center;
-  color: #2A6EBB;
-  padding: 10px 20px 10px 20px;
-  min-width: 150px;
-  height: 40px;
-  font-size: $font-size-h6;
-  text-decoration: none;
-}
-
-.linkbutton:active, .linkbutton:hover {
-  border-bottom-style: solid;
-  border-bottom: 5px;
 }
 
 .status {
-  border-radius: 5px;
-  background: #00B38A;
-  padding: 3px 10px 3px 10px;
-  margin: 10px 0 10px 0;
+  border-radius: 3px;
+  background: $success; // TODO color depends on status?
+  padding: 3px 10px;
+  margin: 10px 0;
   color: white;
 }
 
@@ -257,43 +64,4 @@ span.highlight {
   border-bottom: 4px solid #0275d8;
   text-decoration: none;
   outline: 0;
-}
-
-.alignRight {
-  text-align: right;
-}
-
-.alignLeft {
-  text-align: left;
-}
-
-.content-box {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #A5ACB0;
-  background: #FFFFFF;
-}
-
-.content-area {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #A5ACB0;
-  background: #F6F6F7;
-}
-
-label {
-  font-size: $font-size-h5;
-  display:block;
-}
-
-.medium-icon {
-  background: none;
-  border: none;
-  font-size: 18pt;
-}
-
-.large-icon {
-  background: none;
-  border: none;
-  font-size: 22pt;
 }

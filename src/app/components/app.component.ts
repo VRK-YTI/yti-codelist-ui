@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
   template: `
     <ng-template ngbModalContainer></ng-template>
     <app-navigation-bar></app-navigation-bar>
-    <app-breadcrumb></app-breadcrumb>
-    <router-outlet></router-outlet>
+    <div class="container-fluid">
+      <app-breadcrumb></app-breadcrumb>
+      <router-outlet></router-outlet>
+    </div>
     <app-footer></app-footer>
   `
 })
