@@ -30,70 +30,81 @@
 
   <p *ngIf='codeScheme.descriptions != null' class="description">{{codeScheme.descriptions[modifyLanguage]}}</p>
 
-  <button class="tabNavi" (click)="showTab('codes')" translate>CODES</button>
-  <button class="tabNavi" (click)="showTab('information')" translate>INFORMATION</button>
+  <ngb-tabset>
+    <ngb-tab>
+      <ng-template ngbTabTitle>
+        <span translate>CODES</span>
+      </ng-template>
 
-  <div *ngIf='nav === "codes"' class="codes">
-    <div class="code" *ngFor="let code of codes" (click)="viewCode(code)">
-      {{code.codeValue}} - {{code.prefLabels[modifyLanguage]}}
-    </div>
-  </div>
+      <ng-template ngbTabContent>
+        <div class="codes">
+          <div class="code" *ngFor="let code of codes" (click)="viewCode(code)">
+            {{code.codeValue}} - {{code.prefLabels[modifyLanguage]}}
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
 
-  <div *ngIf='nav === "information"'>
+    <ngb-tab>
+      <ng-template ngbTabTitle>
+        <span translate>INFORMATION</span>
+      </ng-template>
 
-    <button *ngIf='!modifyEnabled' type="button" class="btn btn-action pull-right ml-3" (click)="modify()" translate>Modify</button>
-    <button *ngIf='modifyEnabled' type="button" class="btn btn-action pull-right ml-3" disabled (click)="save()" [disabled]='storing' translate>Save</button>
-    <button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
+      <ng-template ngbTabContent>
+        <button *ngIf='!modifyEnabled' type="button" class="btn btn-action pull-right ml-3" (click)="modify()" translate>Modify</button>
+        <button *ngIf='modifyEnabled' type="button" class="btn btn-action pull-right ml-3" disabled (click)="save()" [disabled]='storing' translate>Save</button>
+        <button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
 
-    <label for="codeValue" translate>Code value</label>
-    <span id="codeValue">{{codeScheme.codeValue}}</span>
+        <label for="codeValue" translate>Code value</label>
+        <span id="codeValue">{{codeScheme.codeValue}}</span>
 
-    <div class="form-group">
-      <label for="prefLabel" translate>Code name</label>
-      <input type="text" class="form-control" id="prefLabel" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.prefLabels[modifyLanguage]">
-      <span *ngIf='!modifyEnabled'>{{codeScheme.prefLabels[modifyLanguage]}}</span>
-    </div>
+        <div class="form-group">
+          <label for="prefLabel" translate>Code name</label>
+          <input type="text" class="form-control" id="prefLabel" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.prefLabels[modifyLanguage]">
+          <span *ngIf='!modifyEnabled'>{{codeScheme.prefLabels[modifyLanguage]}}</span>
+        </div>
 
-    <div class="form-group">
-      <label for="description" translate>Description</label>
-      <textarea type="text" rows="3" class="form-control" id="description" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.descriptions[modifyLanguage]"></textarea>
-      <span *ngIf='!modifyEnabled'>{{codeScheme.descriptions[modifyLanguage]}}</span>
-    </div>
+        <div class="form-group">
+          <label for="description" translate>Description</label>
+          <textarea type="text" rows="3" class="form-control" id="description" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.descriptions[modifyLanguage]"></textarea>
+          <span *ngIf='!modifyEnabled'>{{codeScheme.descriptions[modifyLanguage]}}</span>
+        </div>
 
-    <div class="form-group">
-      <label for="definition" translate>Definition</label>
-      <textarea type="text" rows="3" class="form-control" id="definition" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.definitions[modifyLanguage]"></textarea>
-      <span *ngIf='!modifyEnabled'>{{codeScheme.definitions[modifyLanguage]}}</span>
-    </div>
+        <div class="form-group">
+          <label for="definition" translate>Definition</label>
+          <textarea type="text" rows="3" class="form-control" id="definition" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.definitions[modifyLanguage]"></textarea>
+          <span *ngIf='!modifyEnabled'>{{codeScheme.definitions[modifyLanguage]}}</span>
+        </div>
 
-    <div class="form-group">
-      <label for="source" translate>Source</label>
-      <input type="text" class="form-control" id="source" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.source">
-      <span *ngIf='!modifyEnabled'>{{codeScheme.source}}</span>
-    </div>
+        <div class="form-group">
+          <label for="source" translate>Source</label>
+          <input type="text" class="form-control" id="source" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.source">
+          <span *ngIf='!modifyEnabled'>{{codeScheme.source}}</span>
+        </div>
 
-    <div class="form-group">
-      <label for="legalBase" translate>Legal base</label>
-      <input type="text" class="form-control" id="legalBase" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.legalBase">
-      <span *ngIf='!modifyEnabled'>{{codeScheme.legalBase}}</span>
-    </div>
-    <div class="form-group">
-      <label for="governancePolicy" translate>Governance policy</label>
-      <input type="text" class="form-control" id="governancePolicy" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.governancePolicy">
-      <span *ngIf='!modifyEnabled'>{{codeScheme.governancePolicy}}</span>
-    </div>
+        <div class="form-group">
+          <label for="legalBase" translate>Legal base</label>
+          <input type="text" class="form-control" id="legalBase" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.legalBase">
+          <span *ngIf='!modifyEnabled'>{{codeScheme.legalBase}}</span>
+        </div>
+        <div class="form-group">
+          <label for="governancePolicy" translate>Governance policy</label>
+          <input type="text" class="form-control" id="governancePolicy" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.governancePolicy">
+          <span *ngIf='!modifyEnabled'>{{codeScheme.governancePolicy}}</span>
+        </div>
 
-    <div class="form-group">
-      <label for="license" translate>License</label>
-      <input type="text" class="form-control" id="license" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.license">
-      <span *ngIf='!modifyEnabled'>{{codeScheme.license}}</span>
-    </div>
+        <div class="form-group">
+          <label for="license" translate>License</label>
+          <input type="text" class="form-control" id="license" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.license">
+          <span *ngIf='!modifyEnabled'>{{codeScheme.license}}</span>
+        </div>
 
-    <label for="validity" translate>Validity</label>
-    <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
+        <label for="validity" translate>Validity</label>
+        <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
 
-    <label for="lastModification" translate>Last modification</label>
-    <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
-  </div>
-
+        <label for="lastModification" translate>Last modification</label>
+        <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
 </div>

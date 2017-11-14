@@ -33,6 +33,36 @@ a {
   cursor: pointer;
 }
 
+// Tabs =====================================================================
+
+ul.nav-tabs {
+
+  padding: 0 0 0 40px;
+  width: calc(100% + 50px);
+  margin: 40px -25px;
+  border-bottom: 4px solid lighten($primary, 50%);
+
+  .nav-item {
+
+    margin-bottom: -4px;
+
+    > a {
+      color: $primary !important;
+      background-color: transparent;
+      border: none;
+      text-transform: uppercase;
+      font-size: larger;
+      font-weight: 500;
+      padding-left: 30px;
+      padding-right: 30px;
+
+      &.active {
+        border-bottom: 4px solid $primary;
+      }
+    }
+  }
+}
+
 // Buttons =====================================================================
 
 .btn {

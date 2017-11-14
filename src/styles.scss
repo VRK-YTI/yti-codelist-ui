@@ -23,26 +23,3 @@
     z-index: 10;
   }
 }
-
-.tabNavi {
-  background-color: transparent;
-  margin: 20px 0 20px 0;
-  text-align: center;
-  color: $primary;
-  min-width: 120px;
-  font-size: large;
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 10px;
-  margin-right: 10px;
-  outline: 0;
-  border: 0;
-  border-radius: 0;
-  border-bottom: 4px solid transparent;
-}
-
-.tabNavi:focus, .tabNavi:active, .tabNavi:hover {
-  border-bottom: 4px solid $primary;
-  text-decoration: none;
-  outline: 0;
-}
