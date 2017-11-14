@@ -56,7 +56,8 @@ ul.nav-tabs {
       padding-left: 30px;
       padding-right: 30px;
 
-      &.active {
+      &.active, &:hover {
+        background-color: transparent;
         border-bottom: $active-indicator-width solid $primary;
       }
     }
