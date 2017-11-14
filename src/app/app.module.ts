@@ -21,6 +21,7 @@ import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
 import { LogoComponent } from './components/logo.component';
 import { BackButtonComponent } from './components/back-button.component';
+import { StyleTestComponent } from './components/style-test.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   { path: 'frontpage', component: FrontpageComponent, pathMatch: 'full' },
   { path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full' },
   { path: 'code', component: CodeComponent, pathMatch: 'full' },
+  { path: 'styles', component: StyleTestComponent }
 ];
 
 export function createTranslateLoader(): TranslateLoader {
@@ -61,7 +63,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeComponent,
     CodeComponent,
     LogoComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    StyleTestComponent
   ],
   imports: [
     BrowserModule,
