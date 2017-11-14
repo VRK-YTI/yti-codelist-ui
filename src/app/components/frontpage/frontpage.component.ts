@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CodeScheme } from '../../model/codescheme';
 import { Observable } from 'rxjs/Observable';
 import { ServiceClassification } from '../../model/serviceclassification';
+import { statuses } from '../../entities/status';
 
 @Component({
   selector: 'app-frontpage',
@@ -16,6 +17,7 @@ export class FrontpageComponent implements OnInit {
   filteredCodeSchemes: Observable<CodeScheme[]>;
   serviceClassifications: ServiceClassification[];
   status: string;
+  statuses = statuses;
 
   constructor(private dataService: DataService,
               private router: Router,

@@ -46,15 +46,20 @@
           </div>
 
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle translate>{{status}}</button>
+            <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>{{status | translate}}</button>
             <div ngbDropdownMenu aria-labelledby="state-dropdown">
-              <button (click)="filterWithStatus('ALL')" class="dropdown-item" translate>ALL</button>
-              <button (click)="filterWithStatus('SUPERSEDED')" class="dropdown-item" translate>SUPERSEDED</button>
-              <button (click)="filterWithStatus('WAITING')" class="dropdown-item" translate>WAITING</button>
-              <button (click)="filterWithStatus('REMOVED')" class="dropdown-item" translate>REMOVED</button>
-              <button (click)="filterWithStatus('INCORRECT')" class="dropdown-item" translate>INCORRECT</button>
-              <button (click)="filterWithStatus('VALID')" class="dropdown-item" translate>VALID</button>
-              <button (click)="filterWithStatus('DRAFT')" class="dropdown-item" translate>DRAFT</button>
+              <button (click)="filterWithStatus('ALL')"
+                      class="dropdown-item"
+                      [class.active]="status == 'ALL'">
+                {{'ALL' | translate}}
+              </button>
+
+              <button *ngFor="let statusOption of statuses"
+                      (click)="filterWithStatus(statusOption)"
+                      class="dropdown-item"
+                      [class.active]="statusOption == status">
+                {{statusOption | translate}}
+              </button>
             </div>
           </div>
         </div>

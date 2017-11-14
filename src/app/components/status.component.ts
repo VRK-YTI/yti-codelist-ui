@@ -1,11 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-type Status = 'SUPERSEDED'
-            | 'REMOVED'
-            | 'INCORRECT'
-            | 'VALID'
-            | 'DRAFT';
-
 @Component({
   selector: 'app-status',
   styleUrls: ['./status.component.scss'],
@@ -19,7 +13,7 @@ type Status = 'SUPERSEDED'
 })
 export class StatusComponent {
 
-  @Input() status: Status;
+  @Input() status: string;
 
   get danger() {
     return this.status === 'INCORRECT' || this.status === 'REMOVED';
