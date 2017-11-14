@@ -40,11 +40,11 @@ ul.nav-tabs {
   padding: 0 0 0 40px;
   width: calc(100% + 50px);
   margin: 40px -25px;
-  border-bottom: 4px solid lighten($primary, 50%);
+  border-bottom: $active-indicator-width solid lighten($primary, 50%);
 
   .nav-item {
 
-    margin-bottom: -4px;
+    margin-bottom: -$active-indicator-width;
 
     > a {
       color: $primary !important;
@@ -57,7 +57,7 @@ ul.nav-tabs {
       padding-right: 30px;
 
       &.active {
-        border-bottom: 4px solid $primary;
+        border-bottom: $active-indicator-width solid $primary;
       }
     }
   }
@@ -150,16 +150,16 @@ ul.nav-tabs {
   color: $body-color !important;
   background: $white !important;
   background-color: $white;
-  border-left: 5px solid $white;
+  border-left: $active-indicator-width solid $white;
   cursor: pointer;
 
   &.active, :active {
-    border-left: 5px solid $primary;
+    border-left: $active-indicator-width solid $primary;
     font-weight: bold;
   }
 
   &:hover {
-    border-left: 5px solid $primary;
+    border-left: $active-indicator-width solid $primary;
   }
 }
 
