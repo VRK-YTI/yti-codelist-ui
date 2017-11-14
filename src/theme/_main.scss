@@ -23,47 +23,32 @@ a {
   cursor: pointer;
 }
 
+// Buttons =====================================================================
+
 .btn {
+  cursor: pointer;
   font-weight: 400;
-}
 
-.btn-outline-primary {
-  color: $body-color;
-  border-color: $gray;
-  background-color: white;
-}
-
-@mixin caret($color) {
-  &:after {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: small;
-    padding-left: 15px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: $fa-var-chevron-down;
-    color: $color;
+  &.disabled, &:disabled {
+    cursor: not-allowed;
   }
 }
 
-.dropdown-toggle {
+.btn-language {
+  @include button-outline-variant($primary, $white);
+  color: $body-color !important;
+  border-color: $gray !important;
+  background-color: $white !important;
 
-  &:not(.btn-outline-primary) {
-    @include caret(white);
-  }
-
-  &.btn-outline-primary {
-    @include caret($primary);
-  }
-
-  &.btn-outline-primary:hover {
-    @include caret(white);
+  .dropdown-item:focus {
+    color: $body-color;
+    background: $white;
   }
 }
 
-.show .dropdown-toggle.btn-outline-primary {
-  @include caret(white);
-}
+.btn-action             { @include button-variant($primary, $primary); }
+.btn-secondary-action   { @include button-outline-variant($primary, $primary); }
+.btn-dropdown           { @include button-variant($light, $gray); }
 
 // Navbar ======================================================================
 
@@ -85,31 +70,51 @@ a {
   color: $primary;
 
   .dropdown {
-
     padding-left: 20px;
-    background-color: white;
-
-    &.show > .dropdown-toggle {
-      color: white;
-    }
-
-    .dropdown-toggle:hover {
-      color: white;
-    }
-
-    .dropdown-item {
-      background-color: white;
-    }
   }
 }
 
 // Dropdown =====================================================================
 
-.dropdown-item {
-  background-color: white;
-  border-left: 5px solid white;
+@mixin action-caret($color) {
+  &:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    padding-left: 5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: $fa-var-chevron-down;
+    color: $color;
 
-  &.active {
+    // Disable bootstrap default caret
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    vertical-align: baseline;
+    border: none;
+  }
+}
+
+.dropdown-toggle {
+
+  &.btn-primary {
+    @include action-caret(white);
+  }
+
+  &.btn-language {
+    @include action-caret($primary);
+  }
+}
+
+.show .dropdown-item {
+  color: $body-color !important;
+  background: $white !important;
+  background-color: $white;
+  border-left: 5px solid $white;
+  cursor: pointer;
+
+  &.active, :active {
+    border-left: 5px solid $primary;
     font-weight: bold;
   }
 
@@ -123,10 +128,6 @@ a {
 .btn {
   &-primary {
     border-color: darken($primary, 5%);
-  }
-
-  &-secondary {
-    border-color: darken($secondary, 5%);
   }
 
   &-success {
@@ -175,20 +176,6 @@ a {
       .dropdown-item:hover,
       .dropdown-item:focus {
         background-color: darken($primary, 8%);
-      }
-    }
-
-    &.btn-secondary ~ .dropdown-menu {
-      background-color: $secondary;
-      border-color: darken($secondary, 5%);
-
-      .dropdown-item {
-        color: $white;
-      }
-
-      .dropdown-item:hover,
-      .dropdown-item:focus {
-        background-color: darken($secondary, 8%);
       }
     }
 

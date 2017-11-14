@@ -10,7 +10,7 @@
       <a class="nav-link">KIRJAUDU SISÄÄN</a>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
-      <a class="dropdown-toggle nav-link btn btn-outline-primary" ngbDropdownToggle>{{language.toUpperCase()}}</a>
+      <a class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>
       <div ngbDropdownMenu>
         <a *ngFor="let availableLanguage of availableLanguages"
            class="dropdown-item"

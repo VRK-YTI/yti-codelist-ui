@@ -1,7 +1,5 @@
 @import "~font-awesome/scss/variables";
-@import "./theme/variables";
-@import "~bootstrap/scss/bootstrap";
-@import "./theme/theme";
+@import "./theme/init";
 
 [hidden] {
   display: none !important;

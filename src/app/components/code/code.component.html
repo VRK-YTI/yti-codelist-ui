@@ -18,8 +18,8 @@
           <span class="status bold alignleft" translate>{{code.status}}</span>
         </div>
         <div class="col-md-3">
-          <div ngbDropdown class="d-inline-block content-box">
-            <button class="btn btn-outline-primary" id="modifyLanguageDropdown" ngbDropdownToggle>{{modifyLanguage.toUpperCase()}}</button>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-language" id="modifyLanguageDropdown" ngbDropdownToggle>{{modifyLanguage.toUpperCase()}}</button>
             <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="modifyLanguageDropdown">
               <div *ngFor="let language of languages">
                 <button class='dropdown-item' [ngClass]="{'bold': language.code === modifyLanguage}" type="button" (click)='setModifyLanguage(language.code)'>{{language.name}}</button>
@@ -68,13 +68,13 @@
 
         <div class="col-md-3 alignRight">
           <div class="row" *ngIf='!modifyEnabled'>
-            <button type="button" class="btn actionbutton" (click)="modify()" translate>Modify</button>
+            <button type="button" class="btn btn-action" (click)="modify()" translate>Modify</button>
           </div>
           <div class="row" *ngIf='modifyEnabled'>
-            <button type="button" [disabled]='storing' class="btn actionbutton" (click)="save()" translate>Save</button>
+            <button type="button" [disabled]='storing' class="btn btn-action" (click)="save()" translate>Save</button>
           </div>
           <div class="row" *ngIf='modifyEnabled'>
-            <button type="button" class="btn btn-link linkbutton" (click)="cancel()" translate>Cancel</button>
+            <button type="button" class="btn btn-link" (click)="cancel()" translate>Cancel</button>
           </div>
         </div>
       </div>
