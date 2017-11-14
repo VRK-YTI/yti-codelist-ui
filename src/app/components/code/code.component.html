@@ -16,7 +16,7 @@
     <button class="btn btn-language" id="modifyLanguageDropdown" ngbDropdownToggle>{{modifyLanguage.toUpperCase()}}</button>
     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="modifyLanguageDropdown">
       <div *ngFor="let language of languages">
-        <button class='dropdown-item' [ngClass]="{'bold': language.code === modifyLanguage}" type="button" (click)='setModifyLanguage(language.code)'>{{language.name}}</button>
+        <button class='dropdown-item' [ngClass]="{'active': language.code === modifyLanguage}" type="button" (click)='setModifyLanguage(language.code)'>{{language.name}}</button>
       </div>
     </div>
   </div>
