@@ -1,16 +1,6 @@
 @import "~font-awesome/scss/variables";
 @import "./theme/init";
 
-[hidden] {
-  display: none !important;
-}
-
-.content-box {
-  border: 1px solid $gray;
-  background: $white;
-  padding: 25px;
-}
-
 .input-group.input-group-search {
 
   position: relative !important;

@@ -6,6 +6,16 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200
 
 // Content =====================================================================
 
+[hidden] {
+  display: none !important;
+}
+
+.content-box {
+  border: 1px solid $gray;
+  background: $white;
+  padding: 25px;
+}
+
 $page-padding: 100px;
 
 nav.navbar {
