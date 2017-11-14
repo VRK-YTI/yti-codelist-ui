@@ -84,7 +84,7 @@
           <div class="col-12">
             <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes | async">
               <div class="name">{{codeScheme.prefLabels.fi}}</div>
-              <div class="status" translate>{{codeScheme.status}}</div>
+              <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>
             </div>
           </div>
