@@ -104,8 +104,8 @@ $dropdown-border-color:             rgba($black,.1) !default;
 $dropdown-divider-bg:               rgba($black,.1) !default;
 $dropdown-item-padding-y:           .25rem !default;
 $dropdown-item-padding-x:           0.8rem !default;
-$dropdown-link-hover-bg:            white; // custom handling in theme
-$dropdown-link-hover-bg:            white; // custom handling in theme
+$dropdown-link-hover-bg:            $white; // custom handling in theme
+$dropdown-link-hover-bg:            $white; // custom handling in theme
 
 // Navs
 

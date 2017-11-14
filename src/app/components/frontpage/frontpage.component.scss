@@ -1,5 +1,4 @@
 @import "../../../theme/variables";
-@import "~bootstrap/scss/mixins/clearfix";
 
 .classification {
 
@@ -7,7 +6,7 @@
   width: 100%;
   padding: 5px 10px 5px 5px;
   cursor: pointer;
-  border-left: 5px solid white;
+  border-left: 5px solid $white;
 
   &:hover {
     border-left: 5px solid $primary;
@@ -29,7 +28,7 @@
   width: 100%;
   padding: 5px 10px 5px 5px;
   cursor: pointer;
-  border-left: 5px solid white;
+  border-left: 5px solid $white;
 
   &:hover {
     border-left: 5px solid $primary;

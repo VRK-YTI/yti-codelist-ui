@@ -7,7 +7,7 @@
 
 .content-box {
   border: 1px solid $gray;
-  background: #FFFFFF;
+  background: $white;
   padding: 25px;
 }
 
@@ -39,13 +39,14 @@
   background: $success; // TODO color depends on status?
   padding: 3px 10px;
   margin: 10px 0;
-  color: white;
+  color: $white;
 }
 
 .tabNavi {
+  background-color: transparent;
   margin: 20px 0 20px 0;
   text-align: center;
-  color: #2A6EBB;
+  color: $primary;
   min-width: 120px;
   font-size: large;
   font-weight: bold;
@@ -59,7 +60,7 @@
 }
 
 .tabNavi:focus, .tabNavi:active, .tabNavi:hover {
-  border-bottom: 4px solid #0275d8;
+  border-bottom: 4px solid $primary;
   text-decoration: none;
   outline: 0;
 }

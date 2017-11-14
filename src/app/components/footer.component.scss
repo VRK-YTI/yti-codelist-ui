@@ -1,7 +1,7 @@
 @import '../../theme/variables';
 
 .container-fluid {
-  background-color: white;
+  background-color: $white;
 }
 
 .title {
@@ -23,5 +23,5 @@ ul {
 
 p {
   font-size: 18px;
-  color: #282828
+  color: $dark;
 }
