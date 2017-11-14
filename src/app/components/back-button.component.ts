@@ -6,11 +6,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
   template: `
     <div class="row">
       <div class="col-12">
-        <button (click)="click.next()"></button>
+        <button (click)="this.back.next()"></button>
       </div>
     </div>
   `
 })
 export class BackButtonComponent {
-  @Output() click = new EventEmitter();
+
+  @Output() back = new EventEmitter();
 }

@@ -1,21 +1,19 @@
 @import "../../../theme/variables";
 
-.table {
-  padding: 0;
-  margin: 3px 0 3px 0;
-}
+.codes {
 
-.table th, .table td, .table tr {
-  border-top: none !important;
-  border-left: none !important;
-  background: $gray-100;
-  margin: 0;
-}
+  width: 70%;
+  color: $primary;
+  font-size: large;
 
-.fixed-table-container {
-  border: 0;
+  .code {
+    cursor: pointer;
+    padding: 10px 40px;
+    background-color: $light;
+    margin-top: 5px;
+  }
 }
 
 .description {
-  padding: 10px 0 10px 0;
+  padding: 10px 0;
 }
