@@ -67,9 +67,12 @@ a {
 
 // Navbar ======================================================================
 
-.navbar-brand {
-  font-weight: 600;
-  font-size: 1.5rem;
+.navbar-light {
+  .navbar-brand {
+    color: $brand-color;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
 }
 
 .navbar {
