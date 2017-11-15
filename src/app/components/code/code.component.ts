@@ -35,19 +35,6 @@ export class CodeComponent implements OnInit {
       this.codeSchemeCodeValue = this.route.snapshot.params.codeSchemeCodeValue;
       this.dataService.getCode(this.codeRegistryCodeValue, this.codeSchemeCodeValue, this.codeId).subscribe(code => {
         this.code = code;
-        if (this.code.descriptions == null) {
-          this.code.descriptions = {fi: '', sv: '', en: ''};
-        } else {
-          if (this.code.descriptions.fi == null) {
-            this.code.descriptions.fi = '';
-          }
-          if (this.code.descriptions.sv == null) {
-            this.code.descriptions.sv = '';
-          }
-          if (this.code.descriptions.en == null) {
-            this.code.descriptions.en = '';
-          }
-        }
         this.locationService.atCodePage(code);
       });
       this.storing = false;

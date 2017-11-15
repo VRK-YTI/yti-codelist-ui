@@ -35,32 +35,6 @@ export class CodeSchemeComponent implements OnInit {
       if (this.codeRegistryCodeValue != null && this.codeSchemeCodeValue != null) {
         this.dataService.getCodeScheme(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codeScheme => {
           this.codeScheme = codeScheme;
-          if (this.codeScheme.descriptions == null) {
-            this.codeScheme.descriptions = {fi: '', sv: '', en: ''};
-          } else {
-            if (this.codeScheme.descriptions.fi == null) {
-              this.codeScheme.descriptions.fi = '';
-            }
-            if (this.codeScheme.descriptions.sv == null) {
-              this.codeScheme.descriptions.sv = '';
-            }
-            if (this.codeScheme.descriptions.en == null) {
-              this.codeScheme.descriptions.en = '';
-            }
-          }
-          if (this.codeScheme.definitions == null) {
-            this.codeScheme.definitions = {fi: '', sv: '', en: ''};
-          } else {
-            if (this.codeScheme.definitions.fi == null) {
-              this.codeScheme.definitions.fi = '';
-            }
-            if (this.codeScheme.definitions.sv == null) {
-              this.codeScheme.definitions.sv = '';
-            }
-            if (this.codeScheme.definitions.en == null) {
-              this.codeScheme.definitions.en = '';
-            }
-          }
           this.locationService.atCodeSchemePage(codeScheme);
         });
         this.dataService.getCodes(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codes => {
