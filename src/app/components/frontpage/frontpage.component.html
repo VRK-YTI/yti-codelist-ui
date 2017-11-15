@@ -18,11 +18,11 @@
         <h4 class="strong" translate>Service classification</h4>
 
         <div class="classification"
-             *ngFor="let serviceClassification of serviceClassifications"
-             (click)="selectServiceClassification(serviceClassification.codeValue)">
+             *ngFor="let dataClassification of dataClassifications"
+             (click)="selectDataClassification(dataClassification.codeValue)">
 
-          <span class="name">{{serviceClassification.prefLabels.fi}}</span>
-          <span class="count">({{serviceClassification.count}})</span>
+          <span class="name">{{dataClassification.prefLabels.fi}}</span>
+          <span class="count">({{dataClassification.count}})</span>
         </div>
       </div>
     </div>

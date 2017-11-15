@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, ResponseContentType } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CodeScheme } from '../model/codescheme';
 import { CodeRegistry } from '../model/coderegistry';
 import { Code } from '../model/code';
 import { Observable } from 'rxjs/Observable';
 import { ApiResponse } from '../model/apiresponse';
-import { ServiceClassification } from '../model/serviceclassification';
+import { DataClassification } from '../model/dataclassification';
 
 @Injectable()
 export class DataService {
@@ -18,7 +18,7 @@ export class DataService {
   public static readonly API_PATH_CODEREGISTRIES = 'coderegistries';
   public static readonly API_PATH_CODESCHEMES = 'codeschemes';
   public static readonly API_PATH_CODES = 'codes';
-  public static readonly API_PATH_SERVICECLASSIFICATIONS = 'serviceclassifications';
+  public static readonly API_PATH_DATACLASSIFICATIONS = 'dataclassifications';
 
   constructor(private http: Http) {
     console.log('DataService connected!');
@@ -44,13 +44,13 @@ export class DataService {
       .map(res => res.json().results as CodeScheme[]);
   }
 
-  getServiceClassifications(): Observable<ServiceClassification[]> {
-    return this.http.get(`${this.getServiceClassificationsBasePath()}/`)
-      .map(res => res.json().results as ServiceClassification[]);
+  getDataClassifications(): Observable<DataClassification[]> {
+    return this.http.get(`${this.getDataClassificationsBasePath()}/`)
+      .map(res => res.json().results as DataClassification[]);
   }
 
-  getCodeSchemesWithClassification(serviceClassification: string): Observable<CodeScheme[]> {
-    return this.http.get(`${this.getCodeSchemesBasePath()}/?expand=codeRegistry&serviceClassification=${serviceClassification}`)
+  getCodeSchemesWithClassification(dataClassification: string): Observable<CodeScheme[]> {
+    return this.http.get(`${this.getCodeSchemesBasePath()}/?expand=codeRegistry&dataClassification=${dataClassification}`)
       .map(res => res.json().results as CodeScheme[]);
   }
 
@@ -96,7 +96,7 @@ export class DataService {
     return `/${DataService.API_INTAKE_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_CODEREGISTRIES}`;
   }
 
-  getServiceClassificationsBasePath() {
-    return `/${DataService.API_INTAKE_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_SERVICECLASSIFICATIONS}`;
+  getDataClassificationsBasePath() {
+    return `/${DataService.API_INTAKE_CONTEXT_PATH}/${DataService.API_BASE_PATH}/${DataService.API_VERSION}/${DataService.API_PATH_DATACLASSIFICATIONS}`;
   }
 }

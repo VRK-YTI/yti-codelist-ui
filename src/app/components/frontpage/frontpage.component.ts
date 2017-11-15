@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../model/codescheme';
 import { Observable } from 'rxjs/Observable';
-import { ServiceClassification } from '../../model/serviceclassification';
+import { DataClassification } from '../../model/dataclassification';
 import { statuses } from '../../entities/status';
 
 @Component({
@@ -15,7 +15,7 @@ import { statuses } from '../../entities/status';
 export class FrontpageComponent implements OnInit {
   codeSchemes: Observable<CodeScheme[]>;
   filteredCodeSchemes: Observable<CodeScheme[]>;
-  serviceClassifications: ServiceClassification[];
+  dataClassifications: DataClassification[];
   status: string;
   statuses = statuses;
 
@@ -28,18 +28,18 @@ export class FrontpageComponent implements OnInit {
   ngOnInit() {
     this.codeSchemes = this.dataService.getCodeSchemes();
     this.filteredCodeSchemes = this.codeSchemes;
-    this.dataService.getServiceClassifications().subscribe(classifications => {
-      this.serviceClassifications = classifications.filter(c => c.count > 0);
+    this.dataService.getDataClassifications().subscribe(classifications => {
+      this.dataClassifications = classifications.filter(c => c.count > 0);
     });
     this.status = 'ALL';
   }
 
   get loading(): boolean {
-    return this.serviceClassifications == null;
+    return this.dataClassifications == null;
   }
 
-  selectServiceClassification(serviceClassification: string) {
-    this.codeSchemes = this.dataService.getCodeSchemesWithClassification(serviceClassification);
+  selectDataClassification(dataClassification: string) {
+    this.codeSchemes = this.dataService.getCodeSchemesWithClassification(dataClassification);
     this.filterWithStatus(this.status);
   }
 
