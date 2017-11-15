@@ -96,7 +96,7 @@ msgstr ""
 msgid "ALL"
 msgstr ""
 
-msgid "Service classification"
+msgid "Classification"
 msgstr ""
 
 msgid "1 code scheme"

@@ -118,8 +118,8 @@ msgstr "KOODIT"
 msgid "Search did not find any codeschemes."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
-msgid "Service classification"
-msgstr "Palveluluokitus"
+msgid "Classification"
+msgstr "Luokitus"
 
 msgid "Code List Service"
 msgstr "Koodistoeditori"

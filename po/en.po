@@ -103,7 +103,7 @@ msgstr ""
 msgid "Search did not find any codeschemes."
 msgstr ""
 
-msgid "Service classification"
+msgid "Classification"
 msgstr ""
 
 msgid "Code List Service"
