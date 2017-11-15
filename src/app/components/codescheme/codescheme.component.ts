@@ -17,7 +17,6 @@ export class CodeSchemeComponent implements OnInit {
   codes: Code[];
   codeRegistryCodeValue: string;
   codeSchemeCodeValue: string;
-  nav: string;
   modifyEnabled: boolean;
   storing: boolean;
 
@@ -41,7 +40,6 @@ export class CodeSchemeComponent implements OnInit {
           this.codes = codes;
         });
       }
-      this.nav = 'codes';
       this.storing = false;
     }
   }
@@ -88,10 +86,6 @@ export class CodeSchemeComponent implements OnInit {
 
   cancel() {
     this.modifyEnabled = false;
-  }
-
-  showTab(value: string) {
-    this.nav = value;
   }
 
   back() {
