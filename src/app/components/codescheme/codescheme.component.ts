@@ -20,20 +20,12 @@ export class CodeSchemeComponent implements OnInit {
   nav: string;
   modifyEnabled: boolean;
   storing: boolean;
-  modifyLanguage: string;
-
-  languages = [
-    { code: 'fi' as Language, name: 'Suomeksi (FI)' },
-    { code: 'sv' as Language, name: 'På svenska (SV)' },
-    { code: 'en' as Language, name: 'In English (EN)' }
-  ];
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
               private languageService: LanguageService) {
-    this.modifyLanguage = languageService.language;
   }
 
   ngOnInit() {
@@ -78,6 +70,10 @@ export class CodeSchemeComponent implements OnInit {
       this.nav = 'codes';
       this.storing = false;
     }
+  }
+
+  get contentLanguage() {
+    return this.languageService.contentLanguage;
   }
 
   get loading(): boolean {
@@ -126,9 +122,5 @@ export class CodeSchemeComponent implements OnInit {
 
   back() {
     this.router.navigate(['frontpage', {}]);
-  }
-
-  setModifyLanguage(language: Language) {
-    this.modifyLanguage = language;
   }
 }

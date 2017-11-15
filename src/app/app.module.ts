@@ -23,6 +23,7 @@ import { LogoComponent } from './components/logo.component';
 import { BackButtonComponent } from './components/back-button.component';
 import { StyleTestComponent } from './components/style-test.component';
 import { StatusComponent } from './components/status.component';
+import { ContentLanguageComponent } from './components/content-language.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -66,6 +67,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LogoComponent,
     BackButtonComponent,
     StatusComponent,
+    ContentLanguageComponent,
     StyleTestComponent
   ],
   imports: [

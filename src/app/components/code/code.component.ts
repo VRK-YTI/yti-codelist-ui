@@ -3,7 +3,7 @@ import { DataService } from '../../services/data.service';
 import { Code } from '../../model/code';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
-import { Language, LanguageService } from '../../services/language.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code',
@@ -19,20 +19,12 @@ export class CodeComponent implements OnInit {
   codeId: string;
   modifyEnabled: boolean;
   storing: boolean;
-  modifyLanguage: string;
-
-  languages = [
-    { code: 'fi' as Language, name: 'Suomeksi (FI)' },
-    { code: 'sv' as Language, name: 'På svenska (SV)' },
-    { code: 'en' as Language, name: 'In English (EN)' }
-  ];
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
               private languageService: LanguageService) {
-    this.modifyLanguage = languageService.language;
   }
 
   ngOnInit() {
@@ -60,6 +52,10 @@ export class CodeComponent implements OnInit {
       });
       this.storing = false;
     }
+  }
+
+  get contentLanguage() {
+    return this.languageService.contentLanguage;
   }
 
   get loading(): boolean {
@@ -94,9 +90,5 @@ export class CodeComponent implements OnInit {
 
   cancel() {
     this.modifyEnabled = false;
-  }
-
-  setModifyLanguage(language: Language) {
-    this.modifyLanguage = language;
   }
 }

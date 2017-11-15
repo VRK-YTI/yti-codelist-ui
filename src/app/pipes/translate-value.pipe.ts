@@ -10,25 +10,28 @@ import { Localizable } from '../entities/localization';
 export class TranslateValuePipe implements PipeTransform, OnDestroy {
 
   localization?: string;
-  changeSubscription?: Subscription;
+  languageSubscription?: Subscription;
 
   constructor(private languageService: LanguageService) {
   }
 
-  transform(value: Localizable): string {
+  transform(value: Localizable, useUILanguage = false): string {
 
-    this.localization = this.languageService.translate(value);
+    this.localization = this.languageService.translate(value, useUILanguage);
 
-    this.languageService.languageChange$.subscribe(() => {
-      this.localization = this.languageService.translate(value);
+    const languageObservable = useUILanguage ? this.languageService.language$
+                                             : this.languageService.contentLanguage$;
+
+    this.languageSubscription = languageObservable.subscribe(() => {
+      this.localization = this.languageService.translate(value, useUILanguage);
     });
 
     return this.localization;
   }
 
   ngOnDestroy() {
-    if (this.changeSubscription) {
-      this.changeSubscription.unsubscribe();
+    if (this.languageSubscription) {
+      this.languageSubscription.unsubscribe();
     }
   }
 }
