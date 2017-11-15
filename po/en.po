@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-15 15:36+0200\n"
+"PO-Revision-Date: 2017-11-15 20:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -12,18 +12,6 @@ msgstr ""
 "X-Generator: Poedit 1.8.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "INFORMATION"
-msgstr ""
-
-msgid "Modify"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
 
 msgid "Code scheme"
 msgstr ""
@@ -46,16 +34,16 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
-msgid "Export"
+msgid "Edit"
 msgstr ""
 
-msgid "Export CSV"
+msgid "Save"
 msgstr ""
 
-msgid "Export Excel"
+msgid "Cancel"
 msgstr ""
 
-msgid "CODES"
+msgid "INFORMATION"
 msgstr ""
 
 msgid "Definition"
@@ -71,6 +59,18 @@ msgid "Governance policy"
 msgstr ""
 
 msgid "License"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Export CSV"
+msgstr ""
+
+msgid "Export Excel"
+msgstr ""
+
+msgid "CODES"
 msgstr ""
 
 msgid "Code List Service"
@@ -102,16 +102,16 @@ msgstr ""
 msgid "ALL"
 msgstr ""
 
-msgid "Classification"
-msgstr ""
-
-msgid "1 code scheme"
-msgstr ""
-
 msgid "code schemes"
 msgstr ""
 
+msgid "Classification"
+msgstr ""
+
 msgid "Search did not find any codeschemes."
+msgstr ""
+
+msgid "1 code scheme"
 msgstr ""
 
 msgid "LOG IN"

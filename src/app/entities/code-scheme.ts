@@ -2,6 +2,7 @@ import { AbstractResource } from './abstract-resource';
 import { Localizable } from './localization';
 import { Location } from './location';
 import { CodeRegistry } from './code-registry';
+import { formatDate } from '../utils/date';
 
 export class CodeScheme extends AbstractResource {
 
@@ -18,6 +19,15 @@ export class CodeScheme extends AbstractResource {
   changeNotes: Localizable;
   definitions: Localizable;
   dataClassifications: { uri: string }[];
+
+
+  get validity(): string {
+    return `${formatDate(this.startDate)} - ${formatDate(this.endDate)}`;
+  }
+
+  get modifiedDisplayValue(): string {
+    return formatDate(this.modified);
+  }
 
   get route(): any[] {
     return [

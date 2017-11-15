@@ -27,6 +27,11 @@ import { ContentLanguageComponent } from './components/content-language.componen
 import { CodeSchemeCodesComponent } from './components/codescheme/code-scheme-codes.component';
 import { CodeSchemeInformationComponent } from './components/codescheme/code-scheme-information.component';
 import { CodeInformationComponent } from './components/code/code-information.component';
+import { LocalizableInputComponent } from './components/form/localizable-input';
+import { LocalizableTextareaComponent } from './components/form/localizable-textarea';
+import { LiteralInputComponent } from './components/form/literal-input';
+import { LiteralComponent } from './components/form/literal';
+import { LocalizableLiteralComponent } from './components/form/localizable-literal';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -74,6 +79,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeCodesComponent,
     CodeSchemeInformationComponent,
     CodeInformationComponent,
+    LocalizableInputComponent,
+    LocalizableTextareaComponent,
+    LiteralInputComponent,
+    LiteralComponent,
+    LocalizableLiteralComponent,
     StyleTestComponent
   ],
   imports: [

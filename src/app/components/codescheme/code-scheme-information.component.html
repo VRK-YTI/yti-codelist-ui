@@ -1,53 +1,33 @@
-<button *ngIf='!modifyEnabled' type="button" class="btn btn-action pull-right ml-3" (click)="modify()" translate>Modify</button>
-<button *ngIf='modifyEnabled' type="button" class="btn btn-action pull-right ml-3" disabled (click)="save()" [disabled]='storing' translate>Save</button>
-<button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
+<button *ngIf="canEdit()" type="button" class="btn btn-action pull-right ml-3" (click)="edit()" translate>Edit</button>
+<button *ngIf="canSave()" type="button" [disabled]="saving" class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
+<button *ngIf="canCancel()" type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
 
-<div class="form-group">
-  <label translate>Code value</label><br/>
-  <span>{{codeScheme.codeValue}}</span>
-</div>
+<app-literal [label]="'Code value' | translate"
+             [value]="codeScheme.codeValue"></app-literal>
 
-<div class="form-group">
-  <label for="prefLabel" translate>Code name</label>
-  <input type="text" class="form-control" id="prefLabel" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.prefLabels[contentLanguage]">
-</div>
+<app-localizable-input [label]="'Code name' | translate"
+                        [value]="codeScheme.prefLabels"></app-localizable-input>
 
-<div class="form-group">
-  <label for="description" translate>Description</label>
-  <textarea type="text" rows="3" class="form-control" id="description" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.descriptions[contentLanguage]"></textarea>
-</div>
+<app-localizable-textarea [label]="'Description' | translate"
+                          [value]="codeScheme.descriptions"></app-localizable-textarea>
 
-<div class="form-group">
-  <label for="definition" translate>Definition</label>
-  <textarea type="text" rows="3" class="form-control" id="definition" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.definitions[contentLanguage]"></textarea>
-</div>
+<app-localizable-textarea [label]="'Definition' | translate"
+                          [value]="codeScheme.definitions"></app-localizable-textarea>
 
-<div class="form-group">
-  <label for="source" translate>Source</label>
-  <input type="text" class="form-control" id="source" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.source">
-</div>
+<app-literal-input [label]="'Source' | translate"
+                   [(ngModel)]="codeScheme.source"></app-literal-input>
 
-<div class="form-group">
-  <label for="legalBase" translate>Legal base</label>
-  <input type="text" class="form-control" id="legalBase" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.legalBase">
-</div>
+<app-literal-input [label]="'Legal base' | translate"
+                   [(ngModel)]="codeScheme.legalBase"></app-literal-input>
 
-<div class="form-group">
-  <label for="governancePolicy" translate>Governance policy</label>
-  <input type="text" class="form-control" id="governancePolicy" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.governancePolicy">
-</div>
+<app-literal-input [label]="'Governance policy' | translate"
+                   [(ngModel)]="codeScheme.governancePolicy"></app-literal-input>
 
-<div class="form-group">
-  <label for="license" translate>License</label>
-  <input type="text" class="form-control" id="license" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.license">
-</div>
+<app-literal-input [label]="'License' | translate"
+                   [(ngModel)]="codeScheme.license"></app-literal-input>
 
-<div class="form-group">
-  <label for="validity" translate>Validity</label><br/>
-  <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
-</div>
+<app-literal [label]="'Validity' | translate"
+             [value]="codeScheme.validity"></app-literal>
 
-<div class="form-group">
-  <label for="lastModification" translate>Last modification</label><br/>
-  <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
-</div>
+<app-literal [label]="'Last modification' | translate"
+             [value]="codeScheme.modifiedDisplayValue"></app-literal>

@@ -2,6 +2,7 @@ import { Localizable } from './localization';
 import { Location } from './location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
+import { formatDate } from '../utils/date';
 
 export class Code extends AbstractResource {
 
@@ -19,6 +20,14 @@ export class Code extends AbstractResource {
 
   get schemeCode() {
     return this.codeScheme.codeValue;
+  }
+
+  get validity(): string {
+    return `${formatDate(this.startDate)} - ${formatDate(this.endDate)}`;
+  }
+
+  get modifiedDisplayValue(): string {
+    return formatDate(this.modified);
   }
 
   get route(): any[] {

@@ -1,40 +1,25 @@
-<button *ngIf='!modifyEnabled' type="button" class="btn btn-action pull-right ml-3" (click)="modify()" translate>Modify</button>
-<button *ngIf='modifyEnabled' type="button" [disabled]='storing' class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
-<button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
+<button *ngIf="canEdit()" type="button" class="btn btn-action pull-right ml-3" (click)="edit()" translate>Edit</button>
+<button *ngIf="canSave()" type="button" [disabled]="saving" class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
+<button *ngIf="canCancel()" type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
 
-<div class="form-group">
-  <label translate>Code scheme</label><br/>
-  <span>{{code.codeScheme.prefLabels[contentLanguage]}}</span>
-</div>
+<app-localizable-literal [label]="'Code scheme' | translate"
+                         [value]="code.codeScheme.prefLabels"></app-localizable-literal>
 
-<div class="form-group">
-  <label translate>Code value</label><br/>
-  <span>{{code.codeValue}}</span>
-</div>
+<app-literal [label]="'Code value' | translate"
+             [value]="code.codeValue"></app-literal>
 
-<div class="form-group">
-  <label for="prefLabel" translate>Code name</label>
-  <input id="prefLabel" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.prefLabels[contentLanguage]">
-</div>
+<app-localizable-input [label]="'Code name' | translate"
+                       [value]="code.prefLabels"></app-localizable-input>
 
-<div class="form-group">
-  <label for="description" translate>Description</label>
-  <textarea id="description" rows="3" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.descriptions[contentLanguage]"></textarea>
-  <span *ngIf='!modifyEnabled'>{{code.descriptions[contentLanguage]}}</span>
-</div>
 
-<div class="form-group">
-  <label for="shortName" translate>Short name</label>
-  <input id="shortName" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.shortName">
-  <span *ngIf='!modifyEnabled'>{{code.shortName}}</span>
-</div>
+<app-localizable-textarea [label]="'Description' | translate"
+                          [value]="code.descriptions"></app-localizable-textarea>
 
-<div class="form-group">
-  <label translate>Validity</label><br/>
-  <span>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</span>
-</div>
+<app-literal-input [label]="'Short name' | translate"
+                   [(ngModel)]="code.shortName"></app-literal-input>
 
-<div class="form-group">
-  <label translate>Last modification</label><br/>
-  <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
-</div>
+<app-literal [label]="'Validity' | translate"
+             [value]="code.validity"></app-literal>
+
+<app-literal [label]="'Last modification' | translate"
+             [value]="code.modifiedDisplayValue"></app-literal>
