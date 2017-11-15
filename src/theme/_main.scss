@@ -43,7 +43,7 @@ h1,h2,h3,h4,h5,h6 {
 
 ul.nav-tabs {
 
-  padding: 0 0 0 40px;
+  padding: 0 0 0 20px;
   width: calc(100% + 50px);
   margin: 40px -25px;
   border-bottom: $active-indicator-width solid lighten($primary, 50%);
@@ -51,6 +51,7 @@ ul.nav-tabs {
   .nav-item {
 
     margin-bottom: -$active-indicator-width;
+    margin-left: 20px;
 
     > a {
       color: $primary !important;
