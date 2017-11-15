@@ -31,15 +31,19 @@ export class CodeSchemeComponent implements OnInit {
       const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
       const schemeCode = this.route.snapshot.params.codeSchemeCodeValue;
 
-      if (registryCode && schemeCode) {
-        this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
-          this.codeScheme = codeScheme;
-          this.locationService.atCodeSchemePage(codeScheme);
-        });
-        this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {
-          this.codes = codes;
-        });
+      if (!registryCode || !schemeCode) {
+        throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}'`);
       }
+
+      this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
+        this.codeScheme = codeScheme;
+        this.locationService.atCodeSchemePage(codeScheme);
+      });
+
+      this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {
+        this.codes = codes;
+      });
+
       this.storing = false;
     }
   }
