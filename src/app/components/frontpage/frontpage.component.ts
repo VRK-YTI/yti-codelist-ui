@@ -63,8 +63,7 @@ export class FrontpageComponent implements OnInit {
 
   viewCodeScheme(codeScheme: CodeScheme) {
     console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from coderegistry: ' + codeScheme.codeRegistry.codeValue);
-    this.router.navigate(['/codescheme',
-      {codeRegistryCodeValue: codeScheme.codeRegistry.codeValue, codeSchemeCodeValue: codeScheme.codeValue}]);
+    this.router.navigate(codeScheme.route);
   }
 
   viewOrganization() {

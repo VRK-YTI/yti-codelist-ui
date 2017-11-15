@@ -17,4 +17,14 @@ export class CodeScheme extends AbstractResource {
   changeNotes: Localizable;
   definitions: Localizable;
   dataClassifications: { uri: string }[];
+
+  get route(): any[] {
+    return [
+      'codescheme',
+      {
+        codeRegistryCodeValue: this.codeRegistry.codeValue,
+        codeSchemeCodeValue: this.codeValue
+      }
+    ];
+  }
 }

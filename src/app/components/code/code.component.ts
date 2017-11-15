@@ -47,10 +47,7 @@ export class CodeComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate([
-      'codescheme',
-      { codeRegistryCodeValue: this.code.registryCode, codeSchemeCodeValue: this.code.schemeCode }]
-    );
+    this.router.navigate(this.code.codeScheme.route);
   }
 
   modify() {

@@ -54,13 +54,7 @@ export class CodeSchemeComponent implements OnInit {
 
   viewCode(code: Code) {
     console.log('View code: ' + code.codeValue);
-    this.router.navigate(['code',
-      {
-        codeRegistryCodeValue: code.codeScheme.codeRegistry.codeValue,
-        codeSchemeCodeValue: code.codeScheme.codeValue,
-        codeCodeValue: code.codeValue,
-        codeId: code.id
-      }]);
+    this.router.navigate(code.route);
   }
 
   modify() {
@@ -89,6 +83,6 @@ export class CodeSchemeComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['frontpage', {}]);
+    this.router.navigate(['frontpage']);
   }
 }

@@ -19,4 +19,16 @@ export class Code extends AbstractResource {
   get schemeCode() {
     return this.codeScheme.codeValue;
   }
+
+  get route(): any[] {
+    return [
+      'code',
+      {
+        codeRegistryCodeValue: this.registryCode,
+        codeSchemeCodeValue: this.schemeCode,
+        codeCodeValue: this.codeValue,
+        codeId: this.id
+      }
+    ];
+  }
 }
