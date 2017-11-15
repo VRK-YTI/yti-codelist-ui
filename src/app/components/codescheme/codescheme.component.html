@@ -55,55 +55,55 @@
         <button *ngIf='modifyEnabled' type="button" class="btn btn-action pull-right ml-3" disabled (click)="save()" [disabled]='storing' translate>Save</button>
         <button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
 
-        <label for="codeValue" translate>Code value</label>
-        <span id="codeValue">{{codeScheme.codeValue}}</span>
+        <div class="form-group">
+          <label translate>Code value</label><br/>
+          <span>{{codeScheme.codeValue}}</span>
+        </div>
 
         <div class="form-group">
           <label for="prefLabel" translate>Code name</label>
-          <input type="text" class="form-control" id="prefLabel" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.prefLabels[modifyLanguage]">
-          <span *ngIf='!modifyEnabled'>{{codeScheme.prefLabels[modifyLanguage]}}</span>
+          <input type="text" class="form-control" id="prefLabel" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.prefLabels[modifyLanguage]">
         </div>
 
         <div class="form-group">
           <label for="description" translate>Description</label>
-          <textarea type="text" rows="3" class="form-control" id="description" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.descriptions[modifyLanguage]"></textarea>
-          <span *ngIf='!modifyEnabled'>{{codeScheme.descriptions[modifyLanguage]}}</span>
+          <textarea type="text" rows="3" class="form-control" id="description" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.descriptions[modifyLanguage]"></textarea>
         </div>
 
         <div class="form-group">
           <label for="definition" translate>Definition</label>
-          <textarea type="text" rows="3" class="form-control" id="definition" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.definitions[modifyLanguage]"></textarea>
-          <span *ngIf='!modifyEnabled'>{{codeScheme.definitions[modifyLanguage]}}</span>
+          <textarea type="text" rows="3" class="form-control" id="definition" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.definitions[modifyLanguage]"></textarea>
         </div>
 
         <div class="form-group">
           <label for="source" translate>Source</label>
-          <input type="text" class="form-control" id="source" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.source">
-          <span *ngIf='!modifyEnabled'>{{codeScheme.source}}</span>
+          <input type="text" class="form-control" id="source" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.source">
         </div>
 
         <div class="form-group">
           <label for="legalBase" translate>Legal base</label>
-          <input type="text" class="form-control" id="legalBase" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.legalBase">
-          <span *ngIf='!modifyEnabled'>{{codeScheme.legalBase}}</span>
+          <input type="text" class="form-control" id="legalBase" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.legalBase">
         </div>
+
         <div class="form-group">
           <label for="governancePolicy" translate>Governance policy</label>
-          <input type="text" class="form-control" id="governancePolicy" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.governancePolicy">
-          <span *ngIf='!modifyEnabled'>{{codeScheme.governancePolicy}}</span>
+          <input type="text" class="form-control" id="governancePolicy" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.governancePolicy">
         </div>
 
         <div class="form-group">
           <label for="license" translate>License</label>
-          <input type="text" class="form-control" id="license" *ngIf='modifyEnabled' [(ngModel)]="codeScheme.license">
-          <span *ngIf='!modifyEnabled'>{{codeScheme.license}}</span>
+          <input type="text" class="form-control" id="license" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.license">
         </div>
 
-        <label for="validity" translate>Validity</label>
-        <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
+        <div class="form-group">
+          <label for="validity" translate>Validity</label><br/>
+          <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
+        </div>
 
-        <label for="lastModification" translate>Last modification</label>
-        <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
+        <div class="form-group">
+          <label for="lastModification" translate>Last modification</label><br/>
+          <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
+        </div>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

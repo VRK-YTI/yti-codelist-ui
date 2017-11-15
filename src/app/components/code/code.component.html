@@ -32,35 +32,42 @@
         <button *ngIf='modifyEnabled' type="button" [disabled]='storing' class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
         <button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
 
-        <label translate>Code scheme</label>
-        <span>{{code.codeScheme.prefLabels[modifyLanguage]}}</span>
+        <div class="form-group">
+          <label translate>Code scheme</label><br/>
+          <span>{{code.codeScheme.prefLabels[modifyLanguage]}}</span>
+        </div>
 
-        <label translate>Code value</label>
-        <span>{{code.codeValue}}</span>
+        <div class="form-group">
+          <label translate>Code value</label><br/>
+          <span>{{code.codeValue}}</span>
+        </div>
 
         <div class="form-group">
           <label for="prefLabel" translate>Code name</label>
-          <input id="prefLabel" class="form-control col-5" *ngIf='modifyEnabled' [(ngModel)]="code.prefLabels[modifyLanguage]">
-          <span *ngIf='!modifyEnabled'>{{code.prefLabels[modifyLanguage]}}</span>
+          <input id="prefLabel" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.prefLabels[modifyLanguage]">
         </div>
 
         <div class="form-group">
           <label for="description" translate>Description</label>
-          <textarea id="description" rows="3" class="form-control col-10" *ngIf='modifyEnabled' [(ngModel)]="code.descriptions[modifyLanguage]"></textarea>
+          <textarea id="description" rows="3" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.descriptions[modifyLanguage]"></textarea>
           <span *ngIf='!modifyEnabled'>{{code.descriptions[modifyLanguage]}}</span>
         </div>
 
         <div class="form-group">
           <label for="shortName" translate>Short name</label>
-          <input id="shortName" *ngIf='modifyEnabled' class="form-control col-5" [(ngModel)]="code.shortName">
+          <input id="shortName" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.shortName">
           <span *ngIf='!modifyEnabled'>{{code.shortName}}</span>
         </div>
 
-        <label translate>Validity</label>
-        <span>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</span>
+        <div class="form-group">
+          <label translate>Validity</label><br/>
+          <span>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</span>
+        </div>
 
-        <label translate>Last modification</label>
-        <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
+        <div class="form-group">
+          <label translate>Last modification</label><br/>
+          <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
+        </div>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>
