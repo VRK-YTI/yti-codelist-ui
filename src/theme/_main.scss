@@ -16,19 +16,6 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200
   padding: 25px;
 }
 
-$page-padding: 100px;
-
-nav.navbar {
-  padding-left: $page-padding;
-  padding-right: $page-padding;
-}
-
-.container-fluid {
-  padding: 20px $page-padding;
-  background-color: $light;
-  border-top: 1px solid $gray;
-}
-
 a {
   cursor: pointer;
 }

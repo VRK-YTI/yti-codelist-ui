@@ -1,6 +1,19 @@
 @import "~font-awesome/scss/variables";
 @import "./theme/init";
 
+$page-padding: 100px;
+
+nav.navbar {
+  padding-left: $page-padding;
+  padding-right: $page-padding;
+}
+
+.container-fluid {
+  padding: 20px $page-padding;
+  background-color: $light;
+  border-top: 1px solid $gray;
+}
+
 .input-group.input-group-search {
 
   position: relative !important;
