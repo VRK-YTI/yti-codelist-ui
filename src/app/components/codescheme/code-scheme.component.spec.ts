@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeSchemeComponent } from './codescheme.component';
+import { CodeSchemeComponent } from './code-scheme.component';
 
 describe('CodeSchemeComponent', () => {
   let component: CodeSchemeComponent;
