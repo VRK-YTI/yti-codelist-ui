@@ -58,6 +58,7 @@ export class FrontpageComponent implements OnInit {
     } else {
       this.codeSchemes = this.dataService.getCodeSchemesWithTerm(term);
     }
+    this.filterWithStatus(this.status);
   }
 
   viewCodeScheme(codeScheme: CodeScheme) {
