@@ -13,8 +13,8 @@ import { LanguageService } from '../../services/language.service';
 export class CodeComponent implements OnInit {
 
   code: Code;
-  modifyEnabled: boolean;
-  storing: boolean;
+  modifyEnabled = false;
+  storing = false;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -37,8 +37,6 @@ export class CodeComponent implements OnInit {
       this.code = code;
       this.locationService.atCodePage(code);
     });
-
-    this.storing = false;
   }
 
   get contentLanguage() {

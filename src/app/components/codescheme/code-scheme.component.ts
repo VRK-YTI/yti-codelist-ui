@@ -15,8 +15,8 @@ export class CodeSchemeComponent implements OnInit {
 
   codeScheme: CodeScheme;
   codes: Code[];
-  modifyEnabled: boolean;
-  storing: boolean;
+  modifyEnabled = false;
+  storing = false;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -42,8 +42,6 @@ export class CodeSchemeComponent implements OnInit {
     this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {
       this.codes = codes;
     });
-
-    this.storing = false;
   }
 
   get contentLanguage() {
