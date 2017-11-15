@@ -16,7 +16,7 @@ import { FooterComponent } from './components/footer.component';
 import { TranslateValuePipe } from './pipes/translate-value.pipe';
 import { LocationService } from './services/location.service';
 import { Observable } from 'rxjs/Observable';
-import { CodeSchemeComponent } from './components/codescheme/codescheme.component';
+import { CodeSchemeComponent } from './components/codescheme/code-scheme.component';
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
 import { LogoComponent } from './components/logo.component';

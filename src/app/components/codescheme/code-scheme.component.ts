@@ -7,9 +7,9 @@ import { LocationService } from '../../services/location.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-codescheme',
-  templateUrl: './codescheme.component.html',
-  styleUrls: ['./codescheme.component.scss']
+  selector: 'app-code-scheme',
+  templateUrl: './code-scheme.component.html',
+  styleUrls: ['./code-scheme.component.scss']
 })
 export class CodeSchemeComponent implements OnInit {
 
