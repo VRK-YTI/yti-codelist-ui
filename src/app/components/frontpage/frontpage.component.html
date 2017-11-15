@@ -7,7 +7,12 @@
   <div class="row mb-5">
     <div class="col-md-3">
       <div class="input-group input-group-lg input-group-search">
-        <input class="form-control" #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="{{'Search for code lists' | translate}}"/>
+        <input class="form-control"
+               #schemeSearch
+               id="search-box"
+               type="text"
+               [(ngModel)]="searchTerm"
+               placeholder="{{'Search for code lists' | translate}}"/>
       </div>
     </div>
   </div>
@@ -19,7 +24,8 @@
 
         <div class="classification"
              *ngFor="let dataClassification of dataClassifications"
-             (click)="selectDataClassification(dataClassification.codeValue)">
+             [class.active]="isClassificationSelected(dataClassification)"
+             (click)="toggleClassification(dataClassification)">
 
           <span class="name">{{dataClassification.prefLabels | translateValue:true }}</span>
           <span class="count">({{dataClassification.count}})</span>
@@ -46,16 +52,20 @@
           </div>
 
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>{{status | translate}}</button>
+            <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>
+              <span *ngIf="!status" translate>ALL</span>
+              <span *ngIf="status">{{status | translate}}</span>
+            </button>
+
             <div ngbDropdownMenu aria-labelledby="state-dropdown">
-              <button (click)="filterWithStatus('ALL')"
+              <button (click)="status = null"
                       class="dropdown-item"
-                      [class.active]="status == 'ALL'">
+                      [class.active]="status == null">
                 {{'ALL' | translate}}
               </button>
 
               <button *ngFor="let statusOption of statuses"
-                      (click)="filterWithStatus(statusOption)"
+                      (click)="status = statusOption"
                       class="dropdown-item"
                       [class.active]="statusOption == status">
                 {{statusOption | translate}}
@@ -65,28 +75,21 @@
         </div>
       </div>
 
-      <div class="content-box">
+      <div *ngIf="searchInProgress" class="content-box">Loading... </div> <!-- TODO ajax indicator -->
+
+      <div class="content-box" *ngIf="!searchInProgress">
 
         <div class="row mb-4">
           <div class="col-12">
-            <div *ngIf='(filteredCodeSchemes | async)?.length == 1'>
-              <span translate>1 code scheme</span>
-            </div>
-
-            <div *ngIf='(filteredCodeSchemes | async)?.length > 1'>
-              <span class="codeschemecount">{{(codeSchemes | async)?.length}}&nbsp;</span>
-              <span translate>code schemes</span>
-            </div>
-
-            <div *ngIf='(filteredCodeSchemes | async)?.length == 0'>
-              <span translate>Search did not find any codeschemes.</span>
-            </div>
+            <span *ngIf="filteredCodeSchemes.length == 0" translate>Search did not find any codeschemes.</span>
+            <span *ngIf="filteredCodeSchemes.length == 1" translate>1 code scheme</span>
+            <span *ngIf="filteredCodeSchemes.length > 1">{{filteredCodeSchemes.length}} {{'code schemes' | translate}}</span>
           </div>
         </div>
 
         <div class="row">
           <div class="col-12">
-            <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes | async">
+            <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="name">{{codeScheme.prefLabels | translateValue:true }}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>

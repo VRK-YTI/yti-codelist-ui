@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { URLSearchParams } from '@angular/http';
 import { CodeScheme } from '../entities/code-scheme';
 import { CodeRegistry } from '../entities/code-registry';
 import { Observable } from 'rxjs/Observable';
@@ -102,13 +102,20 @@ export class DataService {
       .map(res => createCodeRegistryEntity(res.json()));
   }
 
-  getCodeSchemes(): Observable<CodeScheme[]> {
-    return this.http.get(`${codeSchemesBasePath}/?expand=codeRegistry`)
-      .map(res => res.json().results.map(createCodeSchemeEntity));
-  }
+  searchCodeSchemes(searchTerm: string, classification: string|null): Observable<CodeScheme[]> {
 
-  getCodeSchemesWithTerm(searchTerm: string): Observable<CodeScheme[]> {
-    return this.http.get(`${codeSchemesBasePath}/?expand=codeRegistry&prefLabel=${searchTerm}`)
+    const params = new URLSearchParams();
+    params.append('expand', 'codeRegistry');
+
+    if (searchTerm) {
+      params.append('prefLabel', searchTerm);
+    }
+
+    if (classification) {
+      params.append('dataClassification', classification);
+    }
+
+    return this.http.get(`${codeSchemesBasePath}`, { params })
       .map(res => res.json().results.map(createCodeSchemeEntity));
   }
 
@@ -117,29 +124,34 @@ export class DataService {
       .map(res => res.json().results.map(createDataClassificationEntity));
   }
 
-  getCodeSchemesWithClassification(dataClassification: string): Observable<CodeScheme[]> {
-    return this.http.get(`${codeSchemesBasePath}/?expand=codeRegistry&dataClassification=${dataClassification}`)
-      .map(res => res.json().results.map(createCodeSchemeEntity));
-  }
-
-  getCodeSchemesForRegistry(codeRegistryCodeValue: string): Observable<CodeScheme[]> {
-    return this.http.get(`${codeRegistriesBasePath}/${codeRegistryCodeValue}/${codeSchemes}/?expand=codeRegistry`)
-      .map(res => res.json().results.map(createCodeSchemeEntity));
-  }
-
   getCodeScheme(registryCode: string, schemeCode: string): Observable<CodeScheme> {
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/?expand=codeRegistry,code`)
+
+    const params = new URLSearchParams();
+    params.append('expand', 'codeRegistry,code');
+
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/`, { params })
       .map(res => createCodeSchemeEntity(res.json()));
   }
 
-  getCodes(codeRegistryCodeValue: string, codeSchemeCodeValue: string): Observable<Code[]> {
-    return this.http.get(`${codeRegistriesBasePath}/${codeRegistryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${codes}/?expand=codeScheme,codeRegistry`)
+  getCodes(registryCode: string, schemeCode: string): Observable<Code[]> {
+
+    const params = new URLSearchParams();
+    params.append('expand', 'codeScheme,codeRegistry');
+
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/`, { params })
       .map(res => res.json().results.map(createCodeEntity));
   }
 
   getCode(registryCode: string, schemeCode: string, codeId: string): Observable<Code> {
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${codeId}/?expand=codeScheme,codeRegistry`)
-      .map(res => createCodeEntity(res.json()));
+
+    const params = new URLSearchParams();
+    params.append('expand', 'codeScheme,codeRegistry');
+
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${codeId}/`, { params })
+      .map(res => {
+        console.log(res.json());
+        return createCodeEntity(res.json());
+      });
   }
 
   saveCode(code: Code): Observable<ApiResponseType> {

@@ -8,8 +8,12 @@
   cursor: pointer;
   border-left: $active-indicator-width solid $white;
 
-  &:hover {
+  &:hover, &.active {
     border-left: $active-indicator-width solid $primary;
+  }
+
+  &.active {
+    font-weight: 500;
   }
 
   .name {
