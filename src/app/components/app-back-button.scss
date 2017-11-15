@@ -1,9 +1,9 @@
 @import "../../theme/variables";
 
-button {
+a {
 
   border-radius: 15px;
-  color: $gray;
+  color: $gray !important;
   background: transparent;
   border: none;
   font-size: 25pt;
