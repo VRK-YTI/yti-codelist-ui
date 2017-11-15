@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CodeScheme } from '../../model/codescheme';
+import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Code } from '../../model/code';
+import { Code } from '../../entities/code';
 import { LocationService } from '../../services/location.service';
-import { Language, LanguageService } from '../../services/language.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-codescheme',

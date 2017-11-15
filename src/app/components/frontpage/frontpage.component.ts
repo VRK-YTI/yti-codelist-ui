@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
-import { CodeScheme } from '../../model/codescheme';
+import { CodeScheme } from '../../entities/code-scheme';
 import { Observable } from 'rxjs/Observable';
-import { DataClassification } from '../../model/dataclassification';
+import { DataClassification } from '../../entities/data-classification';
 import { statuses } from '../../entities/status';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Localizable } from '../entities/localization';
 import { Subject } from 'rxjs/Subject';
-import { CodeScheme } from '../model/codescheme';
-import { Code } from '../model/code';
+import { CodeScheme } from '../entities/code-scheme';
+import { Code } from '../entities/code';
 
 export interface Location {
   localizationKey?: string;
