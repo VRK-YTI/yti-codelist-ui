@@ -24,23 +24,21 @@ export class CodeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.route != null) {
 
-      const codeId = this.route.snapshot.params.codeId;
-      const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
-      const schemeCode = this.route.snapshot.params.codeSchemeCodeValue;
+    const codeId = this.route.snapshot.params.codeId;
+    const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
+    const schemeCode = this.route.snapshot.params.codeSchemeCodeValue;
 
-      if (!codeId || !registryCode || !schemeCode) {
-        throw new Error(`Illegal route, codeId: '${codeId}', registry: '${registryCode}', scheme: '${schemeCode}'`);
-      }
-
-      this.dataService.getCode(registryCode, schemeCode, codeId).subscribe(code => {
-        this.code = code;
-        this.locationService.atCodePage(code);
-      });
-
-      this.storing = false;
+    if (!codeId || !registryCode || !schemeCode) {
+      throw new Error(`Illegal route, codeId: '${codeId}', registry: '${registryCode}', scheme: '${schemeCode}'`);
     }
+
+    this.dataService.getCode(registryCode, schemeCode, codeId).subscribe(code => {
+      this.code = code;
+      this.locationService.atCodePage(code);
+    });
+
+    this.storing = false;
   }
 
   get contentLanguage() {
