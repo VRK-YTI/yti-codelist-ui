@@ -7,7 +7,7 @@
   <div class="row mb-5">
     <div class="col-md-3">
       <div class="input-group input-group-lg input-group-search">
-        <input class="form-control" #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="Hae koodistoa"/>
+        <input class="form-control" #schemeSearch id="search-box" type="text" (keyup)="searchCodeSchemes(schemeSearch.value)" placeholder="{{'Search for code lists' | translate}}"/>
       </div>
     </div>
   </div>
@@ -71,11 +71,11 @@
           <div class="col-12">
             <div *ngIf='(filteredCodeSchemes | async)?.length == 1'>
               <span class="codeschemecount">{{(filteredCodeSchemes |async)?.length}}&nbsp;</span>
-              <span translate>code scheme</span>
+              <span translate>1 code scheme</span>
             </div>
 
             <div *ngIf='(filteredCodeSchemes | async)?.length > 1'>
-              <span class="codeschemecount">{{(codeSchemes |async)?.length}}&nbsp;</span>
+              <span class="codeschemecount">{{(codeSchemes | async)?.length}}&nbsp;</span>
               <span translate>code schemes</span>
             </div>
 

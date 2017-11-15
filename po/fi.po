@@ -31,8 +31,8 @@ msgstr "VRK - Väestörekisterkeskus"
 msgid "licensed under the"
 msgstr "lisenssillä"
 
-msgid "Log in"
-msgstr "Kirjaudu sisään"
+msgid "LOG IN"
+msgstr "KIRJAUDU SISÄÄN"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -121,11 +121,11 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 msgid "Service classification"
 msgstr "Palveluluokitus"
 
-msgid "Code list service"
+msgid "Code List Service"
 msgstr "Koodistoeditori"
 
-msgid "code scheme"
-msgstr "koodisto"
+msgid "1 code scheme"
+msgstr "1 koodisto"
 
 msgid "code schemes"
 msgstr "koodistoa"
@@ -156,3 +156,6 @@ msgstr "Käytön tuki"
 
 msgid "Feedback"
 msgstr "Ota yhteyttä"
+
+msgid "Search for code lists"
+msgstr "Hae koodistoa"

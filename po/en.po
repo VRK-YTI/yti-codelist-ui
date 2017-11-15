@@ -31,7 +31,7 @@ msgstr ""
 msgid "licensed under the"
 msgstr ""
 
-msgid "Log in"
+msgid "LOG IN"
 msgstr ""
 
 msgid "Front page"
@@ -106,10 +106,10 @@ msgstr ""
 msgid "Service classification"
 msgstr ""
 
-msgid "Code list service"
+msgid "Code List Service"
 msgstr ""
 
-msgid "code scheme"
+msgid "1 code scheme"
 msgstr ""
 
 msgid "code schemes"
@@ -137,4 +137,7 @@ msgid "User support"
 msgstr ""
 
 msgid "Feedback"
+msgstr ""
+
+msgid "Search for code lists"
 msgstr ""

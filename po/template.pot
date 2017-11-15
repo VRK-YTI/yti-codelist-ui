@@ -4,19 +4,111 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Give feedback"
+msgid "{{status}}"
 msgstr ""
 
-msgid "Source code"
+msgid "INFORMATION"
 msgstr ""
 
-msgid "Population Registry Center of Finland"
+msgid "Modify"
 msgstr ""
 
-msgid "licensed under the"
+msgid "Save"
 msgstr ""
 
-msgid "Hello world!"
+msgid "Cancel"
+msgstr ""
+
+msgid "Code scheme"
+msgstr ""
+
+msgid "Code value"
+msgstr ""
+
+msgid "Code name"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Short name"
+msgstr ""
+
+msgid "Validity"
+msgstr ""
+
+msgid "Last modification"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Export CSV"
+msgstr ""
+
+msgid "Export Excel"
+msgstr ""
+
+msgid "CODES"
+msgstr ""
+
+msgid "Definition"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Legal base"
+msgstr ""
+
+msgid "Governance policy"
+msgstr ""
+
+msgid "License"
+msgstr ""
+
+msgid "Code List Service"
+msgstr ""
+
+msgid ""
+"This service is developed and maintained by Population Registry Center of "
+"Finland"
+msgstr ""
+
+msgid "Information about the web service"
+msgstr ""
+
+msgid "Description of file"
+msgstr ""
+
+msgid "User support"
+msgstr ""
+
+msgid "Feedback"
+msgstr ""
+
+msgid "Sourcecode is licensed under EUPL-1.2 license."
+msgstr ""
+
+msgid "Search for code lists"
+msgstr ""
+
+msgid "ALL"
+msgstr ""
+
+msgid "Service classification"
+msgstr ""
+
+msgid "1 code scheme"
+msgstr ""
+
+msgid "code schemes"
+msgstr ""
+
+msgid "Search did not find any codeschemes."
+msgstr ""
+
+msgid "LOG IN"
 msgstr ""
 
 msgid "Front page"
