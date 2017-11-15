@@ -7,8 +7,7 @@ import { Component, Input } from '@angular/core';
     <span [class.bg-danger]="danger"
           [class.bg-warning]="warning"
           [class.bg-info]="info"
-          [class.bg-success]="success"
-          translate>{{status}}</span>
+          [class.bg-success]="success">{{status | translate}}</span>
   `
 })
 export class StatusComponent {
