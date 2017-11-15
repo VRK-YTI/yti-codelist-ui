@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-09-06 18:35+0300\n"
+"PO-Revision-Date: 2017-11-15 15:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -13,34 +13,37 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Email: { email }"
+msgid "INFORMATION"
 msgstr ""
 
-msgid "You are expected at {{time}}', {time: moment.format('H:mm"
+msgid "Modify"
 msgstr ""
 
-msgid "Give feedback"
+msgid "Save"
 msgstr ""
 
-msgid "Source code"
+msgid "Cancel"
 msgstr ""
 
-msgid "Population Registry Center of Finland"
+msgid "Code scheme"
 msgstr ""
 
-msgid "licensed under the"
+msgid "Code value"
 msgstr ""
 
-msgid "LOG IN"
+msgid "Code name"
 msgstr ""
 
-msgid "Front page"
+msgid "Description"
 msgstr ""
 
-msgid "VALID"
+msgid "Short name"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "Validity"
+msgstr ""
+
+msgid "Last modification"
 msgstr ""
 
 msgid "Export"
@@ -52,13 +55,7 @@ msgstr ""
 msgid "Export Excel"
 msgstr ""
 
-msgid "Validity"
-msgstr ""
-
-msgid "Code name"
-msgstr ""
-
-msgid "Description"
+msgid "CODES"
 msgstr ""
 
 msgid "Definition"
@@ -76,55 +73,12 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-msgid "Short name"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
-msgid "Description"
-msgstr ""
-
-msgid "Last modification"
-msgstr ""
-
-msgid "Code value"
-msgstr ""
-
-msgid "Code scheme"
-msgstr ""
-
-msgid "INFORMATION"
-msgstr ""
-
-msgid "CODES"
-msgstr ""
-
-msgid "Search did not find any codeschemes."
-msgstr ""
-
-msgid "Classification"
-msgstr ""
-
 msgid "Code List Service"
 msgstr ""
 
-msgid "1 code scheme"
-msgstr ""
-
-msgid "code schemes"
-msgstr ""
-
-msgid "Modify"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "This service is developed and maintained by Population Registry Center of Finland"
+msgid ""
+"This service is developed and maintained by Population Registry Center of "
+"Finland"
 msgstr ""
 
 msgid "Information about the web service"
@@ -139,5 +93,50 @@ msgstr ""
 msgid "Feedback"
 msgstr ""
 
+msgid "Sourcecode is licensed under EUPL-1.2 license."
+msgstr ""
+
 msgid "Search for code lists"
+msgstr ""
+
+msgid "ALL"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "1 code scheme"
+msgstr ""
+
+msgid "code schemes"
+msgstr ""
+
+msgid "Search did not find any codeschemes."
+msgstr ""
+
+msgid "LOG IN"
+msgstr ""
+
+msgid "Front page"
+msgstr ""
+
+msgid "SUPERSEDED"
+msgstr ""
+
+msgid "WAITING"
+msgstr ""
+
+msgid "REMOVED"
+msgstr ""
+
+msgid "INCORRECT"
+msgstr ""
+
+msgid "VALID"
+msgstr ""
+
+msgid "DRAFT"
+msgstr ""
+
+msgid "Code"
 msgstr ""

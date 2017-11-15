@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-09-06 18:34+0300\n"
+"PO-Revision-Date: 2017-11-15 15:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -13,32 +13,112 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Email: { email }"
-msgstr ""
+msgid "INFORMATION"
+msgstr "TIEDOT"
 
-msgid "You are expected at {{time}}', {time: moment.format('H:mm"
-msgstr ""
+msgid "Modify"
+msgstr "Muokkaa"
 
-msgid "Give feedback"
-msgstr "Anna palautetta"
+msgid "Save"
+msgstr "Tallenna"
 
-msgid "Source code"
-msgstr "Lähdekoodi"
+msgid "Cancel"
+msgstr "Peruuta"
 
-msgid "Population Registry Center of Finland"
-msgstr "VRK - Väestörekisterkeskus"
+msgid "Code scheme"
+msgstr "Koodisto"
 
-msgid "licensed under the"
-msgstr "lisenssillä"
+msgid "Code value"
+msgstr "Tunnus"
+
+msgid "Code name"
+msgstr "Koodin nimi"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Short name"
+msgstr "Lyhyt nimi"
+
+msgid "Validity"
+msgstr "Voimassaolo"
+
+msgid "Last modification"
+msgstr "Viimeisin muokkaus"
+
+msgid "Export"
+msgstr "Lataa"
+
+msgid "Export CSV"
+msgstr "Lataa CSV"
+
+msgid "Export Excel"
+msgstr "Lataa Excel"
+
+msgid "CODES"
+msgstr "KOODIT"
+
+msgid "Definition"
+msgstr "Määritelmä"
+
+msgid "Source"
+msgstr "Lähde"
+
+msgid "Legal base"
+msgstr "Lakiperuste"
+
+msgid "Governance policy"
+msgstr "Sitovuustaso"
+
+msgid "License"
+msgstr "Lisenssi"
+
+msgid "Code List Service"
+msgstr "Koodistoeditori"
+
+msgid ""
+"This service is developed and maintained by Population Registry Center of "
+"Finland"
+msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus"
+
+msgid "Information about the web service"
+msgstr "Tietoa verkkopalvelusta"
+
+msgid "Description of file"
+msgstr "Tietosuojaseloste"
+
+msgid "User support"
+msgstr "Käytön tuki"
+
+msgid "Feedback"
+msgstr "Ota yhteyttä"
+
+msgid "Sourcecode is licensed under EUPL-1.2 license."
+msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."
+
+msgid "Search for code lists"
+msgstr "Hae koodistoa"
+
+msgid "ALL"
+msgstr "Kaikki tilat"
+
+msgid "Classification"
+msgstr "Luokitus"
+
+msgid "1 code scheme"
+msgstr "1 koodisto"
+
+msgid "code schemes"
+msgstr "koodistoa"
+
+msgid "Search did not find any codeschemes."
+msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "LOG IN"
 msgstr "KIRJAUDU SISÄÄN"
 
 msgid "Front page"
 msgstr "Etusivu"
-
-msgid "ALL"
-msgstr "Kaikki tilat"
 
 msgid "SUPERSEDED"
 msgstr "Korvattu"
@@ -58,104 +138,20 @@ msgstr "Voimassa oleva"
 msgid "DRAFT"
 msgstr "Luonnos"
 
-msgid "Export"
-msgstr "Lataa"
+msgid "Code"
+msgstr "Koodi"
 
-msgid "Export CSV"
-msgstr "Lataa CSV"
+#~ msgid "Give feedback"
+#~ msgstr "Anna palautetta"
 
-msgid "Export Excel"
-msgstr "Lataa Excel"
+#~ msgid "Source code"
+#~ msgstr "Lähdekoodi"
 
-msgid "Validity"
-msgstr "Voimassaolo"
+#~ msgid "Population Registry Center of Finland"
+#~ msgstr "VRK - Väestörekisterkeskus"
 
-msgid "Code name"
-msgstr "Koodin nimi"
+#~ msgid "licensed under the"
+#~ msgstr "lisenssillä"
 
-msgid "Description"
-msgstr "Kuvaus"
-
-msgid "Definition"
-msgstr "Määritelmä"
-
-msgid "Source"
-msgstr "Lähde"
-
-msgid "Legal base"
-msgstr "Lakiperuste"
-
-msgid "Governance policy"
-msgstr "Sitovuustaso"
-
-msgid "License"
-msgstr "Lisenssi"
-
-msgid "Short name"
-msgstr "Lyhyt nimi"
-
-msgid "Status"
-msgstr "Tila"
-
-msgid "Description"
-msgstr "Kuvaus"
-
-msgid "Last modification"
-msgstr "Viimeisin muokkaus"
-
-msgid "Code value"
-msgstr "Tunnus"
-
-msgid "Code scheme"
-msgstr "Koodisto"
-
-msgid "INFORMATION"
-msgstr "TIEDOT"
-
-msgid "CODES"
-msgstr "KOODIT"
-
-msgid "Search did not find any codeschemes."
-msgstr "Haulla ei löytynyt yhtään koodistoa."
-
-msgid "Classification"
-msgstr "Luokitus"
-
-msgid "Code List Service"
-msgstr "Koodistoeditori"
-
-msgid "1 code scheme"
-msgstr "1 koodisto"
-
-msgid "code schemes"
-msgstr "koodistoa"
-
-msgid "Modify"
-msgstr "Muokkaa"
-
-msgid "Cancel"
-msgstr "Peruuta"
-
-msgid "Save"
-msgstr "Tallenna"
-
-msgid "This service is developed and maintained by Population Registry Center of Finland"
-msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus"
-
-msgid "Sourcecode is licensed under EUPL-1.2 license."
-msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."
-
-msgid "Information about the web service"
-msgstr "Tietoa verkkopalvelusta"
-
-msgid "Description of file"
-msgstr "Tietosuojaseloste"
-
-msgid "User support"
-msgstr "Käytön tuki"
-
-msgid "Feedback"
-msgstr "Ota yhteyttä"
-
-msgid "Search for code lists"
-msgstr "Hae koodistoa"
+#~ msgid "Status"
+#~ msgstr "Tila"

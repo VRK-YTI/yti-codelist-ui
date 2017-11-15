@@ -4,9 +4,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "{{status}}"
-msgstr ""
-
 msgid "INFORMATION"
 msgstr ""
 
@@ -112,4 +109,25 @@ msgid "LOG IN"
 msgstr ""
 
 msgid "Front page"
+msgstr ""
+
+msgid "SUPERSEDED"
+msgstr ""
+
+msgid "WAITING"
+msgstr ""
+
+msgid "REMOVED"
+msgstr ""
+
+msgid "INCORRECT"
+msgstr ""
+
+msgid "VALID"
+msgstr ""
+
+msgid "DRAFT"
+msgstr ""
+
+msgid "Code"
 msgstr ""

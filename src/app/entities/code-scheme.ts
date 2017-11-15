@@ -1,5 +1,6 @@
 import { AbstractResource } from './abstract-resource';
 import { Localizable } from './localization';
+import { Location } from './location';
 import { CodeRegistry } from './code-registry';
 
 export class CodeScheme extends AbstractResource {
@@ -26,5 +27,13 @@ export class CodeScheme extends AbstractResource {
         codeSchemeCodeValue: this.codeValue
       }
     ];
+  }
+
+  get location(): Location[] {
+    return [{
+      localizationKey: 'Code scheme',
+      label: this.prefLabels,
+      route: this.route
+    }];
   }
 }
