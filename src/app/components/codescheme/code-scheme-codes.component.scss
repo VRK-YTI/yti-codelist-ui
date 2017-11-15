@@ -1,0 +1,15 @@
+@import "../../../theme/variables";
+
+.codes {
+
+  width: 70%;
+  color: $primary;
+  font-size: large;
+
+  .code {
+    cursor: pointer;
+    padding: 10px 40px;
+    background-color: $light;
+    margin-top: 5px;
+  }
+}

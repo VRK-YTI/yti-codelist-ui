@@ -24,6 +24,9 @@ import { BackButtonComponent } from './components/back-button.component';
 import { StyleTestComponent } from './components/style-test.component';
 import { StatusComponent } from './components/status.component';
 import { ContentLanguageComponent } from './components/content-language.component';
+import { CodeSchemeCodesComponent } from './components/codescheme/code-scheme-codes.component';
+import { CodeSchemeInformationComponent } from './components/codescheme/code-scheme-information.component';
+import { CodeInformationComponent } from './components/code/code-information.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -68,6 +71,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     BackButtonComponent,
     StatusComponent,
     ContentLanguageComponent,
+    CodeSchemeCodesComponent,
+    CodeSchemeInformationComponent,
+    CodeInformationComponent,
     StyleTestComponent
   ],
   imports: [

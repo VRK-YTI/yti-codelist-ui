@@ -1,0 +1,53 @@
+<button *ngIf='!modifyEnabled' type="button" class="btn btn-action pull-right ml-3" (click)="modify()" translate>Modify</button>
+<button *ngIf='modifyEnabled' type="button" class="btn btn-action pull-right ml-3" disabled (click)="save()" [disabled]='storing' translate>Save</button>
+<button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
+
+<div class="form-group">
+  <label translate>Code value</label><br/>
+  <span>{{codeScheme.codeValue}}</span>
+</div>
+
+<div class="form-group">
+  <label for="prefLabel" translate>Code name</label>
+  <input type="text" class="form-control" id="prefLabel" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.prefLabels[contentLanguage]">
+</div>
+
+<div class="form-group">
+  <label for="description" translate>Description</label>
+  <textarea type="text" rows="3" class="form-control" id="description" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.descriptions[contentLanguage]"></textarea>
+</div>
+
+<div class="form-group">
+  <label for="definition" translate>Definition</label>
+  <textarea type="text" rows="3" class="form-control" id="definition" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.definitions[contentLanguage]"></textarea>
+</div>
+
+<div class="form-group">
+  <label for="source" translate>Source</label>
+  <input type="text" class="form-control" id="source" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.source">
+</div>
+
+<div class="form-group">
+  <label for="legalBase" translate>Legal base</label>
+  <input type="text" class="form-control" id="legalBase" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.legalBase">
+</div>
+
+<div class="form-group">
+  <label for="governancePolicy" translate>Governance policy</label>
+  <input type="text" class="form-control" id="governancePolicy" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.governancePolicy">
+</div>
+
+<div class="form-group">
+  <label for="license" translate>License</label>
+  <input type="text" class="form-control" id="license" [disabled]='!modifyEnabled' [(ngModel)]="codeScheme.license">
+</div>
+
+<div class="form-group">
+  <label for="validity" translate>Validity</label><br/>
+  <span id="validity">{{codeScheme.startDate | date:'d.M.y'}} - {{codeScheme.endDate | date:'d.M.y'}}</span>
+</div>
+
+<div class="form-group">
+  <label for="lastModification" translate>Last modification</label><br/>
+  <span id="lastModification">{{codeScheme.modified | date:'d.M.y klo hh:mm'}}</span>
+</div>

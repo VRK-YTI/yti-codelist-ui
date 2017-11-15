@@ -3,15 +3,18 @@
   <!--TODO ajax indicator-->
 </div>
 
-
 <div *ngIf="!loading" class="content-box">
 
   <app-back-button (back)="back()"></app-back-button>
 
-  <h1>{{code.codeValue}} - {{code.prefLabels.fi}}</h1>
+  <h1>{{code.codeValue}} - {{code.prefLabels | translateValue}}</h1>
 
-  <app-status [status]="code.status"></app-status>
-  <app-content-language class="pull-right"></app-content-language>
+  <div class="row">
+    <div class="col-12">
+      <app-status class="pull-left" [status]="code.status"></app-status>
+      <app-content-language class="pull-right"></app-content-language>
+    </div>
+  </div>
 
   <ngb-tabset>
     <ngb-tab>
@@ -20,46 +23,7 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <button *ngIf='!modifyEnabled' type="button" class="btn btn-action pull-right ml-3" (click)="modify()" translate>Modify</button>
-        <button *ngIf='modifyEnabled' type="button" [disabled]='storing' class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
-        <button *ngIf='modifyEnabled' type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
-
-        <div class="form-group">
-          <label translate>Code scheme</label><br/>
-          <span>{{code.codeScheme.prefLabels[contentLanguage]}}</span>
-        </div>
-
-        <div class="form-group">
-          <label translate>Code value</label><br/>
-          <span>{{code.codeValue}}</span>
-        </div>
-
-        <div class="form-group">
-          <label for="prefLabel" translate>Code name</label>
-          <input id="prefLabel" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.prefLabels[contentLanguage]">
-        </div>
-
-        <div class="form-group">
-          <label for="description" translate>Description</label>
-          <textarea id="description" rows="3" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.descriptions[contentLanguage]"></textarea>
-          <span *ngIf='!modifyEnabled'>{{code.descriptions[contentLanguage]}}</span>
-        </div>
-
-        <div class="form-group">
-          <label for="shortName" translate>Short name</label>
-          <input id="shortName" class="form-control" [disabled]='!modifyEnabled' [(ngModel)]="code.shortName">
-          <span *ngIf='!modifyEnabled'>{{code.shortName}}</span>
-        </div>
-
-        <div class="form-group">
-          <label translate>Validity</label><br/>
-          <span>{{code.startDate | date:'d.M.y'}} - {{code.endDate | date:'d.M.y'}}</span>
-        </div>
-
-        <div class="form-group">
-          <label translate>Last modification</label><br/>
-          <span>{{code.modified | date:'d.M.y klo hh:mm'}}</span>
-        </div>
+        <app-code-information [code]="code"></app-code-information>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>
