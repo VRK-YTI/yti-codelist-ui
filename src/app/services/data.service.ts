@@ -148,10 +148,7 @@ export class DataService {
     params.append('expand', 'codeScheme,codeRegistry');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${codeId}/`, { params })
-      .map(res => {
-        console.log(res.json());
-        return createCodeEntity(res.json());
-      });
+      .map(res => createCodeEntity(res.json()));
   }
 
   saveCode(code: Code): Observable<ApiResponseType> {
