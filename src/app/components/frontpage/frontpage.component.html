@@ -21,7 +21,7 @@
              *ngFor="let dataClassification of dataClassifications"
              (click)="selectDataClassification(dataClassification.codeValue)">
 
-          <span class="name">{{dataClassification.prefLabels.fi}}</span>
+          <span class="name">{{dataClassification.prefLabels | translateValue:true }}</span>
           <span class="count">({{dataClassification.count}})</span>
         </div>
       </div>
@@ -87,7 +87,7 @@
         <div class="row">
           <div class="col-12">
             <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes | async">
-              <div class="name">{{codeScheme.prefLabels.fi}}</div>
+              <div class="name">{{codeScheme.prefLabels | translateValue:true }}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>
             </div>
