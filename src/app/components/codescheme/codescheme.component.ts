@@ -15,8 +15,6 @@ export class CodeSchemeComponent implements OnInit {
 
   codeScheme: CodeScheme;
   codes: Code[];
-  codeRegistryCodeValue: string;
-  codeSchemeCodeValue: string;
   modifyEnabled: boolean;
   storing: boolean;
 
@@ -29,14 +27,16 @@ export class CodeSchemeComponent implements OnInit {
 
   ngOnInit() {
     if (this.route != null) {
-      this.codeRegistryCodeValue = this.route.snapshot.params.codeRegistryCodeValue;
-      this.codeSchemeCodeValue = this.route.snapshot.params.codeSchemeCodeValue;
-      if (this.codeRegistryCodeValue != null && this.codeSchemeCodeValue != null) {
-        this.dataService.getCodeScheme(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codeScheme => {
+
+      const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
+      const schemeCode = this.route.snapshot.params.codeSchemeCodeValue;
+
+      if (registryCode && schemeCode) {
+        this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
           this.codeScheme = codeScheme;
           this.locationService.atCodeSchemePage(codeScheme);
         });
-        this.dataService.getCodes(this.codeRegistryCodeValue, this.codeSchemeCodeValue).subscribe(codes => {
+        this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {
           this.codes = codes;
         });
       }

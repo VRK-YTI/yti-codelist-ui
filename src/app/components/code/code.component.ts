@@ -13,10 +13,6 @@ import { LanguageService } from '../../services/language.service';
 export class CodeComponent implements OnInit {
 
   code: Code;
-  codeRegistryCodeValue: string;
-  codeSchemeCodeValue: string;
-  codeCodeValue: string;
-  codeId: string;
   modifyEnabled: boolean;
   storing: boolean;
 
@@ -29,11 +25,12 @@ export class CodeComponent implements OnInit {
 
   ngOnInit() {
     if (this.route != null) {
-      this.codeCodeValue = this.route.snapshot.params.codeCodeValue;
-      this.codeId = this.route.snapshot.params.codeId;
-      this.codeRegistryCodeValue = this.route.snapshot.params.codeRegistryCodeValue;
-      this.codeSchemeCodeValue = this.route.snapshot.params.codeSchemeCodeValue;
-      this.dataService.getCode(this.codeRegistryCodeValue, this.codeSchemeCodeValue, this.codeId).subscribe(code => {
+
+      const codeId = this.route.snapshot.params.codeId;
+      const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
+      const schemeCode = this.route.snapshot.params.codeSchemeCodeValue;
+
+      this.dataService.getCode(registryCode, schemeCode, codeId).subscribe(code => {
         this.code = code;
         this.locationService.atCodePage(code);
       });
@@ -50,8 +47,10 @@ export class CodeComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['codescheme',
-      { codeRegistryCodeValue: this.codeRegistryCodeValue, codeSchemeCodeValue: this.codeSchemeCodeValue }]);
+    this.router.navigate([
+      'codescheme',
+      { codeRegistryCodeValue: this.code.registryCode, codeSchemeCodeValue: this.code.schemeCode }]
+    );
   }
 
   modify() {

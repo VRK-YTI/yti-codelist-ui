@@ -11,4 +11,12 @@ export class Code extends AbstractResource {
   endDate: string;
   descriptions: Localizable;
   definitions: Localizable;
+
+  get registryCode() {
+    return this.codeScheme.codeRegistry.codeValue;
+  }
+
+  get schemeCode() {
+    return this.codeScheme.codeValue;
+  }
 }
