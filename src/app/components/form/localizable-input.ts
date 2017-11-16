@@ -8,11 +8,10 @@ import { Localizable } from '../../entities/localization';
   selector: 'app-localizable-input',
   template: `
     <dl *ngIf="show">
-      <dt><label [for]="name">{{label}}</label></dt>
+      <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <input [id]="name" 
-                 type="text" 
+          <input type="text" 
                  class="form-control"
                  [ngClass]="{'is-invalid': !valid}"
                  [ngModel]="value[contentLanguage]" 
@@ -27,8 +26,6 @@ import { Localizable } from '../../entities/localization';
 export class LocalizableInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
-  @Input() name: string;
-
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};
