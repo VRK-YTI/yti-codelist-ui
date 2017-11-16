@@ -1,4 +1,4 @@
-<form #form="ngForm">
+<form [formGroup]="codeSchemeForm" #form="ngForm">
 
   <app-editable-buttons [form]="form"></app-editable-buttons>
 
@@ -6,32 +6,25 @@
                [value]="codeScheme.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code name' | translate"
-                         name="prefLabels"
-                         [(ngModel)]="codeScheme.prefLabels"></app-localizable-input>
+                         [formControlName]="'prefLabels'"></app-localizable-input>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            name="descriptions"
-                            [(ngModel)]="codeScheme.descriptions"></app-localizable-textarea>
+                            [formControlName]="'descriptions'"></app-localizable-textarea>
 
   <app-localizable-textarea [label]="'Definition' | translate"
-                            name="definitions"
-                            [(ngModel)]="codeScheme.definitions"></app-localizable-textarea>
+                            [formControlName]="'definitions'"></app-localizable-textarea>
 
   <app-literal-input [label]="'Source' | translate"
-                     name="source"
-                     [(ngModel)]="codeScheme.source"></app-literal-input>
+                     [formControlName]="'source'"></app-literal-input>
 
   <app-literal-input [label]="'Legal base' | translate"
-                     name="legalBase"
-                     [(ngModel)]="codeScheme.legalBase"></app-literal-input>
+                     [formControlName]="'legalBase'"></app-literal-input>
 
   <app-literal-input [label]="'Governance policy' | translate"
-                     name="governancePolicy"
-                     [(ngModel)]="codeScheme.governancePolicy"></app-literal-input>
+                     [formControlName]="'governancePolicy'"></app-literal-input>
 
   <app-literal-input [label]="'License' | translate"
-                     name="license"
-                     [(ngModel)]="codeScheme.license"></app-literal-input>
+                     [formControlName]="'license'"></app-literal-input>
 
   <app-literal [label]="'Validity' | translate"
                [value]="codeScheme.validity"></app-literal>

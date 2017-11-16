@@ -1,29 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
-import { DataService } from '../../services/data.service';
-import { EditableService } from '../../services/editable.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-code-scheme-information',
   templateUrl: './code-scheme-information.component.html',
   styleUrls: ['./code-scheme-information.component.scss']
 })
-export class CodeSchemeInformationComponent {
+export class CodeSchemeInformationComponent implements OnChanges {
 
   @Input() codeScheme: CodeScheme;
 
-  constructor(private dataService: DataService,
-              private editableService: EditableService) {
+  codeSchemeForm = new FormGroup({
+    prefLabels: new FormControl({}),
+    descriptions: new FormControl({}),
+    definitions: new FormControl({}),
+    source: new FormControl(''),
+    legalBase: new FormControl(''),
+    governancePolicy: new FormControl(''),
+    license: new FormControl('')
+  });
 
-    editableService.onSave = () => this.save();
-    editableService.onCanceled = () => this.cancel();
-  }
-
-  save() {
-    console.log('Store CodeScheme changes to server!');
-    return this.dataService.saveCodeScheme(this.codeScheme);
-  }
-
-  cancel() {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.codeSchemeForm.reset(this.codeScheme);
   }
 }

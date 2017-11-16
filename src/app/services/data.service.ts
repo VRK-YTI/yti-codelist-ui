@@ -151,7 +151,7 @@ export class DataService {
       .map(res => createCodeEntity(res.json()));
   }
 
-  saveCode(code: Code): Observable<ApiResponseType> {
+  saveCode(code: CodeType): Observable<ApiResponseType> {
 
     const registryCode = code.codeScheme.codeRegistry.codeValue;
     const schemeCode = code.codeScheme.codeValue;
@@ -160,7 +160,7 @@ export class DataService {
       .map(res => res.json() as ApiResponseType);
   }
 
-  saveCodeScheme(codeScheme: CodeScheme): Observable<ApiResponseType> {
+  saveCodeScheme(codeScheme: CodeSchemeType): Observable<ApiResponseType> {
 
     const registryCode = codeScheme.codeRegistry.codeValue;
 

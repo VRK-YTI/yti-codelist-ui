@@ -8,6 +8,7 @@ import { EditableService, EditingComponent } from '../../services/editable.servi
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalService } from '../common/confirmation-modal.component';
 import { ignoreModalClose } from '../../utils/modal';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-code-scheme',
@@ -28,6 +29,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private locationService: LocationService,
               private editableService: EditableService,
               private confirmationModalService: ConfirmationModalService) {
+
+    editableService.onSave = (formValue: any) => this.save(formValue);
+    editableService.onCanceled = () => this.cancel();
   }
 
   ngOnInit() {
@@ -76,5 +80,15 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   cancelEditing(): void {
     this.editableService.cancel();
+  }
+
+  save(formData: any): Observable<any> {
+
+    console.log('Store CodeScheme changes to server!');
+    return this.dataService.saveCodeScheme(Object.assign({}, this.codeScheme, formData))
+      .do(() => this.ngOnInit());
+  }
+
+  cancel() {
   }
 }

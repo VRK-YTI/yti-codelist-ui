@@ -38,7 +38,7 @@ export class EditableButtonsComponent {
   }
 
   save() {
-    this.editableService.save();
+    this.editableService.save(this.form.form.value);
   }
 
   cancel() {

@@ -14,7 +14,7 @@ export class EditableService {
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
 
-  onSave: () => Observable<any>;
+  onSave: (formValue: any) => Observable<any>;
   onCanceled: () => void;
 
   constructor(private errorModalService: ErrorModalService) {
@@ -42,7 +42,7 @@ export class EditableService {
     this.onCanceled();
   }
 
-  save() {
+  save(formValue: any) {
 
     if (!this.onSave) {
       throw new Error('Save handler missing');
@@ -51,7 +51,7 @@ export class EditableService {
     const that = this;
     this.saving$.next(true);
 
-    this.onSave().subscribe({
+    this.onSave(formValue).subscribe({
       next() {
         that.saving$.next(false);
         that.editing$.next(false);

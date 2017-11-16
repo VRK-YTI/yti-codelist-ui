@@ -1,4 +1,4 @@
-<form #form="ngForm">
+<form [formGroup]="codeForm" #form="ngForm">
 
   <app-editable-buttons [form]="form"></app-editable-buttons>
 
@@ -9,16 +9,13 @@
                [value]="code.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code name' | translate"
-                         name="codeName"
-                         [(ngModel)]="code.prefLabels"></app-localizable-input>
+                         [formControlName]="'prefLabels'"></app-localizable-input>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            name="description"
-                            [(ngModel)]="code.descriptions"></app-localizable-textarea>
+                            [formControlName]="'descriptions'"></app-localizable-textarea>
 
   <app-literal-input [label]="'Short name' | translate"
-                     name="shortName"
-                     [(ngModel)]="code.shortName"></app-literal-input>
+                     [formControlName]="'shortName'"></app-literal-input>
 
   <app-literal [label]="'Validity' | translate"
                [value]="code.validity"></app-literal>
