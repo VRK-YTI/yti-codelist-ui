@@ -1,0 +1,12 @@
+@import "../../../theme/variables";
+
+ul.errors {
+
+  padding-left: 0;
+  margin-bottom: 0;
+
+  li {
+    color: $danger;
+    list-style: none;
+  }
+}

@@ -1,14 +1,9 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-literal-input',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => LiteralInputComponent),
-    multi: true
-  }],
   template: `
     <dl *ngIf="show">
       <dt><label [for]="name">{{label}}</label></dt>
@@ -16,8 +11,10 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
         <div *ngIf="editing" class="form-group">
           <input id="name" 
                  type="text" 
-                 class="form-control" 
+                 class="form-control"
+                 [ngClass]="{'is-invalid': !valid}"
                  [formControl]="control" />
+          <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{control.value}}</span>
       </dd>
@@ -34,8 +31,18 @@ export class LiteralInputComponent implements ControlValueAccessor {
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
 
-  constructor(private editableService: EditableService) {
+  constructor(@Self() @Optional() public parentControl: NgControl,
+              private editableService: EditableService) {
+
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
+
+    if (parentControl) {
+      parentControl.valueAccessor = this;
+    }
+  }
+
+  get valid() {
+    return !this.parentControl || this.parentControl.valid;
   }
 
   get show() {

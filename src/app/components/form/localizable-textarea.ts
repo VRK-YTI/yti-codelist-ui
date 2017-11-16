@@ -1,16 +1,11 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { Localizable } from '../../entities/localization';
 import { EditableService } from '../../services/editable.service';
 import { LanguageService } from '../../services/language.service';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-localizable-textarea',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => LocalizableTextareaComponent),
-    multi: true
-  }],
   template: `
     <dl *ngIf="show">
       <dt><label [for]="name">{{label}}</label></dt>
@@ -18,9 +13,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         <div *ngIf="editing" class="form-group">
           <textarea [id]="name" 
                     rows="3" 
-                    class="form-control" 
+                    class="form-control"
+                    [ngClass]="{'is-invalid': !valid}"
                     [ngModel]="value[contentLanguage]" 
                     (ngModelChange)="onChange($event)"></textarea>
+          <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{value | translateValue}}</span>
       </dd>
@@ -36,8 +33,17 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
 
-  constructor(private editableService: EditableService,
+  constructor(@Self() @Optional() public parentControl: NgControl,
+              private editableService: EditableService,
               private languageService: LanguageService) {
+
+    if (parentControl) {
+      parentControl.valueAccessor = this;
+    }
+  }
+
+  get valid() {
+    return !this.parentControl || this.parentControl.valid;
   }
 
   onChange(value: string) {

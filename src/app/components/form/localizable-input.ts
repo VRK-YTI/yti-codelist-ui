@@ -1,16 +1,11 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
 import { Localizable } from '../../entities/localization';
 
 @Component({
   selector: 'app-localizable-input',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => LocalizableInputComponent),
-    multi: true
-  }],
   template: `
     <dl *ngIf="show">
       <dt><label [for]="name">{{label}}</label></dt>
@@ -18,9 +13,11 @@ import { Localizable } from '../../entities/localization';
         <div *ngIf="editing" class="form-group">
           <input [id]="name" 
                  type="text" 
-                 class="form-control" 
+                 class="form-control"
+                 [ngClass]="{'is-invalid': !valid}"
                  [ngModel]="value[contentLanguage]" 
                  (ngModelChange)="onChange($event)" />
+          <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{value | translateValue}}</span>
       </dd>
@@ -37,8 +34,17 @@ export class LocalizableInputComponent implements ControlValueAccessor {
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
 
-  constructor(private editableService: EditableService,
+  constructor(@Self() @Optional() public parentControl: NgControl,
+              private editableService: EditableService,
               private languageService: LanguageService) {
+
+    if (parentControl) {
+      parentControl.valueAccessor = this;
+    }
+  }
+
+  get valid() {
+    return !this.parentControl || this.parentControl.valid;
   }
 
   onChange(value: string) {
