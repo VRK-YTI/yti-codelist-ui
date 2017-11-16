@@ -4,6 +4,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Close"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
 msgid "Code scheme"
 msgstr ""
 
@@ -23,15 +35,6 @@ msgid "Validity"
 msgstr ""
 
 msgid "Last modification"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Cancel"
 msgstr ""
 
 msgid "INFORMATION"
@@ -108,10 +111,10 @@ msgstr ""
 msgid "LOG IN"
 msgstr ""
 
-msgid "Front page"
+msgid "VALID"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "Front page"
 msgstr ""
 
 msgid "WAITING"
@@ -123,11 +126,17 @@ msgstr ""
 msgid "INCORRECT"
 msgstr ""
 
-msgid "VALID"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "DRAFT"
 msgstr ""
 
 msgid "Code"
+msgstr ""
+
+msgid "Submit error"
+msgstr ""
+
+msgid "Unexpected error"
 msgstr ""

@@ -36,6 +36,7 @@ import { AjaxLoadingIndicatorComponent } from './components/common/ajax-loading-
 import { AjaxLoadingIndicatorSmallComponent } from './components/common/ajax-loading-indicator-small.component';
 import { EditableButtonsComponent } from './components/form/editable-buttons.component';
 import { ErrorMessagesComponent } from './components/form/error-messages.component';
+import { ErrorModalComponent, ErrorModalService } from './components/common/error-modal.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -92,7 +93,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     AjaxLoadingIndicatorSmallComponent,
     EditableButtonsComponent,
     ErrorMessagesComponent,
+    ErrorModalComponent,
     StyleTestComponent
+  ],
+  entryComponents: [ // needed for modal components
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +111,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler },
     LanguageService,
     LocationService,
-    DataService
+    DataService,
+    ErrorModalService
   ],
   bootstrap: [AppComponent]
 })

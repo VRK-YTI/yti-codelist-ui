@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-15 20:03+0200\n"
+"PO-Revision-Date: 2017-11-16 15:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -12,6 +12,18 @@ msgstr ""
 "X-Generator: Poedit 1.8.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Close"
+msgstr "Sulje"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Edit"
+msgstr "Muokkaa"
 
 msgid "Code scheme"
 msgstr "Koodisto"
@@ -33,15 +45,6 @@ msgstr "Voimassaolo"
 
 msgid "Last modification"
 msgstr "Viimeisin muokkaus"
-
-msgid "Edit"
-msgstr "Muokkaa"
-
-msgid "Save"
-msgstr "Tallenna"
-
-msgid "Cancel"
-msgstr "Peruuta"
 
 msgid "INFORMATION"
 msgstr "TIEDOT"
@@ -117,11 +120,11 @@ msgstr "1 koodisto"
 msgid "LOG IN"
 msgstr "KIRJAUDU SISÄÄN"
 
+msgid "VALID"
+msgstr "Voimassa oleva"
+
 msgid "Front page"
 msgstr "Etusivu"
-
-msgid "SUPERSEDED"
-msgstr "Korvattu"
 
 msgid "WAITING"
 msgstr "Odottaa hyväksyntää"
@@ -132,14 +135,20 @@ msgstr "Poistettu"
 msgid "INCORRECT"
 msgstr "Virheellinen"
 
-msgid "VALID"
-msgstr "Voimassa oleva"
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "DRAFT"
 msgstr "Luonnos"
 
 msgid "Code"
 msgstr "Koodi"
+
+msgid "Submit error"
+msgstr "Toiminnossa tapahtui virhe"
+
+msgid "Unexpected error"
+msgstr "Tapahtui odottomaton virhe"
 
 #~ msgid "Modify"
 #~ msgstr "Muokkaa"

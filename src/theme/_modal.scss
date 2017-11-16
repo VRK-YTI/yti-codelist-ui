@@ -1,8 +1,10 @@
+@import "variables";;
+
 .modal-header {
 
-  color: $white;
-  border-color: darken($primary, 5%);
-  background-color: $primary;
+  color: $body-color;
+  background-color: $white;
+  border-bottom: none;
 
   h4 {
     width: 100%;
@@ -18,19 +20,18 @@
   }
 
   &.modal-header-warning {
-    color: theme-color-level('warning', 6);
-    background-color: theme-color-level('warning', -10);
-    border-color: theme-color-level('warning', -9);
+    color: $white;
+    background-color: $warning;
   }
 
   &.modal-header-danger {
-    color: theme-color-level('danger', 6);
-    background-color: theme-color-level('danger', -10);
-    border-color: theme-color-level('danger', -9);
+    color: $white;
+    background-color: $danger;
   }
 }
 
 .modal-footer {
+  justify-content: flex-start;
   border-top: 1px solid $light;
 }
 

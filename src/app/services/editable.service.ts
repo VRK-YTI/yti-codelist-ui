@@ -1,6 +1,7 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { ErrorModalService } from '../components/common/error-modal.component';
 
 @Injectable()
 export class EditableService {
@@ -10,6 +11,9 @@ export class EditableService {
 
   onSave: () => Observable<any>;
   onCanceled: () => void;
+
+  constructor(private errorModalService: ErrorModalService) {
+  }
 
   get editing() {
     return this.editing$.getValue();
@@ -47,8 +51,9 @@ export class EditableService {
         that.saving$.next(false);
         that.editing$.next(false);
       },
-      error() {
+      error(err: any) {
         that.saving$.next(false);
+        that.errorModalService.openSubmitError(err);
       }
     });
   }
