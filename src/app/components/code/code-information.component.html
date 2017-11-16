@@ -9,11 +9,10 @@
              [value]="code.codeValue"></app-literal>
 
 <app-localizable-input [label]="'Code name' | translate"
-                       [value]="code.prefLabels"></app-localizable-input>
-
+                       [(ngModel)]="code.prefLabels"></app-localizable-input>
 
 <app-localizable-textarea [label]="'Description' | translate"
-                          [value]="code.descriptions"></app-localizable-textarea>
+                          [(ngModel)]="code.descriptions"></app-localizable-textarea>
 
 <app-literal-input [label]="'Short name' | translate"
                    [(ngModel)]="code.shortName"></app-literal-input>

@@ -6,13 +6,13 @@
              [value]="codeScheme.codeValue"></app-literal>
 
 <app-localizable-input [label]="'Code name' | translate"
-                        [value]="codeScheme.prefLabels"></app-localizable-input>
+                       [(ngModel)]="codeScheme.prefLabels"></app-localizable-input>
 
 <app-localizable-textarea [label]="'Description' | translate"
-                          [value]="codeScheme.descriptions"></app-localizable-textarea>
+                          [(ngModel)]="codeScheme.descriptions"></app-localizable-textarea>
 
 <app-localizable-textarea [label]="'Definition' | translate"
-                          [value]="codeScheme.definitions"></app-localizable-textarea>
+                          [(ngModel)]="codeScheme.definitions"></app-localizable-textarea>
 
 <app-literal-input [label]="'Source' | translate"
                    [(ngModel)]="codeScheme.source"></app-literal-input>
