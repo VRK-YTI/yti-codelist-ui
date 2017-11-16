@@ -64,7 +64,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    this.value = obj;
+    this.value = Object.assign({}, obj);
   }
 
   registerOnChange(fn: any): void {

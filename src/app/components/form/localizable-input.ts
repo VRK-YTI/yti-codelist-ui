@@ -65,7 +65,7 @@ export class LocalizableInputComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
-    this.value = obj;
+    this.value = Object.assign({}, obj);
   }
 
   registerOnChange(fn: any): void {
