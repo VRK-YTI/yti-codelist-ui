@@ -1,6 +1,7 @@
 <button *ngIf="canEdit()" type="button" class="btn btn-action pull-right ml-3" (click)="edit()" translate>Edit</button>
 <button *ngIf="canSave()" type="button" [disabled]="saving" class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
 <button *ngIf="canCancel()" type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
+<app-ajax-loading-indicator-small class="pull-right" *ngIf="saving"></app-ajax-loading-indicator-small>
 
 <app-localizable-literal [label]="'Code scheme' | translate"
                          [value]="code.codeScheme.prefLabels"></app-localizable-literal>

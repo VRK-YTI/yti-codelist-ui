@@ -1,6 +1,5 @@
 <div *ngIf="loading">
-  Loading...
-  <!--TODO ajax indicator-->
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>
 
 <div *ngIf="!loading" class="content-box">
