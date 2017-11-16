@@ -12,12 +12,12 @@ import { Location } from '../entities/location';
         <a *ngIf="!active && breadcrumb.route" [routerLink]="breadcrumb.route">
           <span *ngIf="breadcrumb.localizationKey">{{breadcrumb.localizationKey | translate}}</span>
           <span *ngIf="breadcrumb.localizationKey && breadcrumb.label">:</span>
-          <span *ngIf="breadcrumb.label">{{breadcrumb.label | translateValue}}</span>
+          <span *ngIf="breadcrumb.label">{{breadcrumb.label | translateValue:true}}</span>
         </a>
         <span *ngIf="active || !breadcrumb.route">
           <span *ngIf="breadcrumb.localizationKey">{{breadcrumb.localizationKey | translate}}</span>
           <span *ngIf="breadcrumb.localizationKey && breadcrumb.label">:</span>
-          <span *ngIf="breadcrumb.label">{{breadcrumb.label | translateValue}}</span>
+          <span *ngIf="breadcrumb.label">{{breadcrumb.label | translateValue:true}}</span>
         </span>
       </li>
     </ol>
