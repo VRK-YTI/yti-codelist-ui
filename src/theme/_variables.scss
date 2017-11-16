@@ -12,8 +12,8 @@ $gray-600:      #888 !default;
 $gray-700:      #495057 !default;
 $gray-800:      #333 !default;
 $gray-900:      #282828 !default;
-$black:         #000 !default;
 $gray:          $gray-500 !default;
+$black:         $gray-900 !default;
 
 $blue:          #003479 !default;
 $indigo:        #6610f2 !default;
@@ -32,7 +32,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-900 !default;
+$dark:          $gray-500 !default;
 
 $active-indicator-width: 4px;
 
@@ -59,7 +59,8 @@ $enable-transitions: false;
 
 // Components
 
-$breadcrumb-bg:               #ffffff solid;
+$breadcrumb-bg:               $white solid;
+$breadcrumb-active-color:     $body-color;
 
 $footer-height:               100px;
 
