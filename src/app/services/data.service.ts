@@ -92,9 +92,9 @@ export class DataService {
   constructor(private http: Http) {
   }
 
-  getCodeRegistries(): Observable<CodeRegistry[]> {
+  getCodeRegistries(): Observable<CodeRegistryType[]> {
     return this.http.get(codeRegistriesBasePath)
-      .map(res => res.json().results as BaseResourceType[]);
+      .map(res => res.json().results as CodeRegistryType[]);
   }
 
   getCodeRegistry(codeRegistryCodeValue: string): Observable<CodeRegistry> {
