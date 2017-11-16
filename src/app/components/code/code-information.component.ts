@@ -6,8 +6,7 @@ import { EditableService } from '../../services/editable.service';
 @Component({
   selector: 'app-code-information',
   templateUrl: './code-information.component.html',
-  styleUrls: ['./code-information.component.scss'],
-  providers: [EditableService]
+  styleUrls: ['./code-information.component.scss']
 })
 export class CodeInformationComponent {
 

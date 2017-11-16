@@ -3,6 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ErrorModalService } from '../components/common/error-modal.component';
 
+export interface EditingComponent {
+  isEditing(): boolean;
+  cancelEditing(): void;
+}
+
 @Injectable()
 export class EditableService {
 

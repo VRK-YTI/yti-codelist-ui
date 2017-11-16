@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Code } from '../../entities/code';
 import { LocationService } from '../../services/location.service';
+import { EditableService, EditingComponent } from '../../services/editable.service';
+import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalService } from '../common/confirmation-modal.component';
+import { ignoreModalClose } from '../../utils/modal';
 
 @Component({
   selector: 'app-code-scheme',
   templateUrl: './code-scheme.component.html',
-  styleUrls: ['./code-scheme.component.scss']
+  styleUrls: ['./code-scheme.component.scss'],
+  providers: [EditableService]
 })
-export class CodeSchemeComponent implements OnInit {
+export class CodeSchemeComponent implements OnInit, EditingComponent {
+
+  @ViewChild('tabSet') tabSet: NgbTabset;
 
   codeScheme: CodeScheme;
   codes: Code[];
@@ -18,7 +25,9 @@ export class CodeSchemeComponent implements OnInit {
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private editableService: EditableService,
+              private confirmationModalService: ConfirmationModalService) {
   }
 
   ngOnInit() {
@@ -44,7 +53,28 @@ export class CodeSchemeComponent implements OnInit {
     return this.codeScheme == null || this.codes == null;
   }
 
+  onTabChange(event: NgbTabChangeEvent) {
+
+    if (this.isEditing()) {
+      event.preventDefault();
+
+      this.confirmationModalService.openEditInProgress()
+        .then(() => {
+          this.cancelEditing();
+          this.tabSet.activeId = event.nextId;
+        }, ignoreModalClose);
+    }
+  }
+
   back() {
     this.router.navigate(['frontpage']);
+  }
+
+  isEditing(): boolean {
+    return this.editableService.editing;
+  }
+
+  cancelEditing(): void {
+    this.editableService.cancel();
   }
 }

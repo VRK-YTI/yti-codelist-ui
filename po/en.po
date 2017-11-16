@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-16 15:36+0200\n"
+"PO-Revision-Date: 2017-11-16 15:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -13,13 +13,16 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Yes"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
 msgid "Close"
 msgstr ""
 
 msgid "Save"
-msgstr ""
-
-msgid "Cancel"
 msgstr ""
 
 msgid "Edit"
@@ -120,7 +123,7 @@ msgstr ""
 msgid "LOG IN"
 msgstr ""
 
-msgid "VALID"
+msgid "DRAFT"
 msgstr ""
 
 msgid "Front page"
@@ -135,10 +138,10 @@ msgstr ""
 msgid "INCORRECT"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "VALID"
 msgstr ""
 
-msgid "DRAFT"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "Code"
@@ -148,4 +151,12 @@ msgid "Submit error"
 msgstr ""
 
 msgid "Unexpected error"
+msgstr ""
+
+msgid "Edit in progress"
+msgstr ""
+
+msgid ""
+"Are you sure that you want to continue? By continuing unsaved changes will "
+"be lost."
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-16 15:36+0200\n"
+"PO-Revision-Date: 2017-11-16 15:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -13,14 +13,17 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Yes"
+msgstr "Kyllä"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
 msgid "Close"
 msgstr "Sulje"
 
 msgid "Save"
 msgstr "Tallenna"
-
-msgid "Cancel"
-msgstr "Peruuta"
 
 msgid "Edit"
 msgstr "Muokkaa"
@@ -120,8 +123,8 @@ msgstr "1 koodisto"
 msgid "LOG IN"
 msgstr "KIRJAUDU SISÄÄN"
 
-msgid "VALID"
-msgstr "Voimassa oleva"
+msgid "DRAFT"
+msgstr "Luonnos"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -135,11 +138,11 @@ msgstr "Poistettu"
 msgid "INCORRECT"
 msgstr "Virheellinen"
 
+msgid "VALID"
+msgstr "Voimassa oleva"
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "DRAFT"
-msgstr "Luonnos"
 
 msgid "Code"
 msgstr "Koodi"
@@ -149,6 +152,16 @@ msgstr "Toiminnossa tapahtui virhe"
 
 msgid "Unexpected error"
 msgstr "Tapahtui odottomaton virhe"
+
+msgid "Edit in progress"
+msgstr "Muokkaaminen on kesken"
+
+msgid ""
+"Are you sure that you want to continue? By continuing unsaved changes will "
+"be lost."
+msgstr ""
+"Oletko varma, että haluat jatkaa? Jatkaessasi tallentamattomat muutokset "
+"katoavat."
 
 #~ msgid "Modify"
 #~ msgstr "Muokkaa"

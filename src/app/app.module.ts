@@ -37,6 +37,8 @@ import { AjaxLoadingIndicatorSmallComponent } from './components/common/ajax-loa
 import { EditableButtonsComponent } from './components/form/editable-buttons.component';
 import { ErrorMessagesComponent } from './components/form/error-messages.component';
 import { ErrorModalComponent, ErrorModalService } from './components/common/error-modal.component';
+import { ConfirmationModalComponent, ConfirmationModalService } from './components/common/confirmation-modal.component';
+import { EditGuard } from './components/common/edit.guard';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -46,8 +48,8 @@ const localizations: { [lang: string]: string} = {
 const appRoutes: Routes = [
   { path: '', redirectTo: '/frontpage', pathMatch: 'full' },
   { path: 'frontpage', component: FrontpageComponent, pathMatch: 'full' },
-  { path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full' },
-  { path: 'code', component: CodeComponent, pathMatch: 'full' },
+  { path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
+  { path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
   { path: 'styles', component: StyleTestComponent }
 ];
 
@@ -94,10 +96,12 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     EditableButtonsComponent,
     ErrorMessagesComponent,
     ErrorModalComponent,
+    ConfirmationModalComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components
-    ErrorModalComponent
+    ErrorModalComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +116,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LanguageService,
     LocationService,
     DataService,
-    ErrorModalService
+    EditGuard,
+    ErrorModalService,
+    ConfirmationModalService
   ],
   bootstrap: [AppComponent]
 })

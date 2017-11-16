@@ -4,13 +4,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Yes"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
 msgid "Close"
 msgstr ""
 
 msgid "Save"
-msgstr ""
-
-msgid "Cancel"
 msgstr ""
 
 msgid "Edit"
@@ -111,7 +114,7 @@ msgstr ""
 msgid "LOG IN"
 msgstr ""
 
-msgid "VALID"
+msgid "DRAFT"
 msgstr ""
 
 msgid "Front page"
@@ -126,10 +129,10 @@ msgstr ""
 msgid "INCORRECT"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "VALID"
 msgstr ""
 
-msgid "DRAFT"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "Code"
@@ -139,4 +142,12 @@ msgid "Submit error"
 msgstr ""
 
 msgid "Unexpected error"
+msgstr ""
+
+msgid "Edit in progress"
+msgstr ""
+
+msgid ""
+"Are you sure that you want to continue? By continuing unsaved changes will "
+"be lost."
 msgstr ""
