@@ -13,10 +13,14 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }],
   template: `
     <dl *ngIf="show">
-      <dt><label>{{label}}</label></dt>
+      <dt><label [for]="name">{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <textarea rows="3" class="form-control" [ngModel]="value[contentLanguage]" (ngModelChange)="onChange($event)"></textarea>
+          <textarea [id]="name" 
+                    rows="3" 
+                    class="form-control" 
+                    [ngModel]="value[contentLanguage]" 
+                    (ngModelChange)="onChange($event)"></textarea>
         </div>
         <span *ngIf="!editing">{{value | translateValue}}</span>
       </dd>
@@ -26,6 +30,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class LocalizableTextareaComponent implements ControlValueAccessor {
 
   @Input() label: string;
+  @Input() name: string;
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};

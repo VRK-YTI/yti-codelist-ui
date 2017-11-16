@@ -1,34 +1,42 @@
-<button *ngIf="canEdit()" type="button" class="btn btn-action pull-right ml-3" (click)="edit()" translate>Edit</button>
-<button *ngIf="canSave()" type="button" [disabled]="saving" class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
-<button *ngIf="canCancel()" type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
-<app-ajax-loading-indicator-small class="pull-right" *ngIf="saving"></app-ajax-loading-indicator-small>
+<form #ngForm>
 
-<app-literal [label]="'Code value' | translate"
-             [value]="codeScheme.codeValue"></app-literal>
+  <app-editable-buttons [form]="form"></app-editable-buttons>
 
-<app-localizable-input [label]="'Code name' | translate"
-                       [(ngModel)]="codeScheme.prefLabels"></app-localizable-input>
+  <app-literal [label]="'Code value' | translate"
+               [value]="codeScheme.codeValue"></app-literal>
 
-<app-localizable-textarea [label]="'Description' | translate"
-                          [(ngModel)]="codeScheme.descriptions"></app-localizable-textarea>
+  <app-localizable-input [label]="'Code name' | translate"
+                         name="prefLabels"
+                         [(ngModel)]="codeScheme.prefLabels"></app-localizable-input>
 
-<app-localizable-textarea [label]="'Definition' | translate"
-                          [(ngModel)]="codeScheme.definitions"></app-localizable-textarea>
+  <app-localizable-textarea [label]="'Description' | translate"
+                            name="descriptions"
+                            [(ngModel)]="codeScheme.descriptions"></app-localizable-textarea>
 
-<app-literal-input [label]="'Source' | translate"
-                   [(ngModel)]="codeScheme.source"></app-literal-input>
+  <app-localizable-textarea [label]="'Definition' | translate"
+                            name="definitions"
+                            [(ngModel)]="codeScheme.definitions"></app-localizable-textarea>
 
-<app-literal-input [label]="'Legal base' | translate"
-                   [(ngModel)]="codeScheme.legalBase"></app-literal-input>
+  <app-literal-input [label]="'Source' | translate"
+                     name="source"
+                     [(ngModel)]="codeScheme.source"></app-literal-input>
 
-<app-literal-input [label]="'Governance policy' | translate"
-                   [(ngModel)]="codeScheme.governancePolicy"></app-literal-input>
+  <app-literal-input [label]="'Legal base' | translate"
+                     name="legalBase"
+                     [(ngModel)]="codeScheme.legalBase"></app-literal-input>
 
-<app-literal-input [label]="'License' | translate"
-                   [(ngModel)]="codeScheme.license"></app-literal-input>
+  <app-literal-input [label]="'Governance policy' | translate"
+                     name="governancePolicy"
+                     [(ngModel)]="codeScheme.governancePolicy"></app-literal-input>
 
-<app-literal [label]="'Validity' | translate"
-             [value]="codeScheme.validity"></app-literal>
+  <app-literal-input [label]="'License' | translate"
+                     name="license"
+                     [(ngModel)]="codeScheme.license"></app-literal-input>
 
-<app-literal [label]="'Last modification' | translate"
-             [value]="codeScheme.modifiedDisplayValue"></app-literal>
+  <app-literal [label]="'Validity' | translate"
+               [value]="codeScheme.validity"></app-literal>
+
+  <app-literal [label]="'Last modification' | translate"
+               [value]="codeScheme.modifiedDisplayValue"></app-literal>
+
+</form>

@@ -34,6 +34,7 @@ import { LiteralComponent } from './components/form/literal';
 import { LocalizableLiteralComponent } from './components/form/localizable-literal';
 import { AjaxLoadingIndicatorComponent } from './components/common/ajax-loading-indicator.component';
 import { AjaxLoadingIndicatorSmallComponent } from './components/common/ajax-loading-indicator-small.component';
+import { EditableButtonsComponent } from './components/form/editable-buttons.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -88,6 +89,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LocalizableLiteralComponent,
     AjaxLoadingIndicatorComponent,
     AjaxLoadingIndicatorSmallComponent,
+    EditableButtonsComponent,
     StyleTestComponent
   ],
   imports: [

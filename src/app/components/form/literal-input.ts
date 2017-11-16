@@ -11,10 +11,13 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
   }],
   template: `
     <dl *ngIf="show">
-      <dt><label>{{label}}</label></dt>
+      <dt><label [for]="name">{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <input type="text" class="form-control" [formControl]="control" />
+          <input id="name" 
+                 type="text" 
+                 class="form-control" 
+                 [formControl]="control" />
         </div>
         <span *ngIf="!editing">{{control.value}}</span>
       </dd>
@@ -24,6 +27,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 export class LiteralInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
+  @Input() name: string;
 
   control = new FormControl();
 

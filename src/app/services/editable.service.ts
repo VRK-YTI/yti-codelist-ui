@@ -1,5 +1,6 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EditableService {
@@ -7,19 +8,48 @@ export class EditableService {
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
 
+  onSave: () => Observable<any>;
+  onCanceled: () => void;
+
   get editing() {
     return this.editing$.getValue();
-  }
-
-  set editing(value: boolean) {
-    this.editing$.next(value);
   }
 
   get saving() {
     return this.saving$.getValue();
   }
 
-  set saving(value: boolean) {
-    this.saving$.next(value);
+  edit() {
+    this.editing$.next(true);
+  }
+
+  cancel() {
+
+    if (!this.onCanceled) {
+      throw new Error('Cancel handler missing');
+    }
+
+    this.editing$.next(false);
+    this.onCanceled();
+  }
+
+  save() {
+
+    if (!this.onSave) {
+      throw new Error('Save handler missing');
+    }
+
+    const that = this;
+    this.saving$.next(true);
+
+    this.onSave().subscribe({
+      next() {
+        that.saving$.next(false);
+        that.editing$.next(false);
+      },
+      error() {
+        that.saving$.next(false);
+      }
+    });
   }
 }

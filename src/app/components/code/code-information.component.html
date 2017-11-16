@@ -1,25 +1,29 @@
-<button *ngIf="canEdit()" type="button" class="btn btn-action pull-right ml-3" (click)="edit()" translate>Edit</button>
-<button *ngIf="canSave()" type="button" [disabled]="saving" class="btn btn-action pull-right ml-3" (click)="save()" translate>Save</button>
-<button *ngIf="canCancel()" type="button" class="btn btn-link pull-right" (click)="cancel()" translate>Cancel</button>
-<app-ajax-loading-indicator-small class="pull-right" *ngIf="saving"></app-ajax-loading-indicator-small>
+<form #form="ngForm">
 
-<app-localizable-literal [label]="'Code scheme' | translate"
-                         [value]="code.codeScheme.prefLabels"></app-localizable-literal>
+  <app-editable-buttons [form]="form"></app-editable-buttons>
 
-<app-literal [label]="'Code value' | translate"
-             [value]="code.codeValue"></app-literal>
+  <app-localizable-literal [label]="'Code scheme' | translate"
+                           [value]="code.codeScheme.prefLabels"></app-localizable-literal>
 
-<app-localizable-input [label]="'Code name' | translate"
-                       [(ngModel)]="code.prefLabels"></app-localizable-input>
+  <app-literal [label]="'Code value' | translate"
+               [value]="code.codeValue"></app-literal>
 
-<app-localizable-textarea [label]="'Description' | translate"
-                          [(ngModel)]="code.descriptions"></app-localizable-textarea>
+  <app-localizable-input [label]="'Code name' | translate"
+                         name="codeName"
+                         [(ngModel)]="code.prefLabels"></app-localizable-input>
 
-<app-literal-input [label]="'Short name' | translate"
-                   [(ngModel)]="code.shortName"></app-literal-input>
+  <app-localizable-textarea [label]="'Description' | translate"
+                            name="description"
+                            [(ngModel)]="code.descriptions"></app-localizable-textarea>
 
-<app-literal [label]="'Validity' | translate"
-             [value]="code.validity"></app-literal>
+  <app-literal-input [label]="'Short name' | translate"
+                     name="shortName"
+                     [(ngModel)]="code.shortName"></app-literal-input>
 
-<app-literal [label]="'Last modification' | translate"
-             [value]="code.modifiedDisplayValue"></app-literal>
+  <app-literal [label]="'Validity' | translate"
+               [value]="code.validity"></app-literal>
+
+  <app-literal [label]="'Last modification' | translate"
+               [value]="code.modifiedDisplayValue"></app-literal>
+
+</form>

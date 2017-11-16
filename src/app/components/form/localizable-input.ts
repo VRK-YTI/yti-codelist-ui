@@ -13,10 +13,14 @@ import { Localizable } from '../../entities/localization';
   }],
   template: `
     <dl *ngIf="show">
-      <dt><label>{{label}}</label></dt>
+      <dt><label [for]="name">{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <input type="text" class="form-control" [ngModel]="value[contentLanguage]" (ngModelChange)="onChange($event)" />
+          <input [id]="name" 
+                 type="text" 
+                 class="form-control" 
+                 [ngModel]="value[contentLanguage]" 
+                 (ngModelChange)="onChange($event)" />
         </div>
         <span *ngIf="!editing">{{value | translateValue}}</span>
       </dd>
@@ -26,6 +30,7 @@ import { Localizable } from '../../entities/localization';
 export class LocalizableInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
+  @Input() name: string;
 
   value: Localizable = {};
 
