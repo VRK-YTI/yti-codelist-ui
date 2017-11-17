@@ -107,7 +107,6 @@
           <div class="col-12">
             <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="name">{{codeScheme.prefLabels | translateValue:true }}</div>
-              <div class="name">CODE VALUE {{codeScheme.codeValue}}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>
             </div>
