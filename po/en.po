@@ -150,6 +150,9 @@ msgstr ""
 msgid "SUPERSEDED"
 msgstr ""
 
+msgid "SUBMITTED"
+msgstr ""
+
 msgid "Code"
 msgstr ""
 

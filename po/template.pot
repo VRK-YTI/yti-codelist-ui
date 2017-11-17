@@ -123,6 +123,9 @@ msgstr ""
 msgid "Front page"
 msgstr ""
 
+msgid "SUBMITTED"
+msgstr ""
+
 msgid "WAITING"
 msgstr ""
 

@@ -150,6 +150,9 @@ msgstr "Voimassa oleva"
 msgid "SUPERSEDED"
 msgstr "Korvattu"
 
+msgid "SUBMITTED"
+msgstr "Odottaa hyväksyntää"
+
 msgid "Code"
 msgstr "Koodi"
 
