@@ -54,8 +54,7 @@
                       (click)="register = selectedRegister"
                       class="dropdown-item"
                       [class.active]="selectedRegister.codeValue == register">
-                <!-- TODO: use {{selectedRegister.prefLabels | translateValue:true}} ? -->
-                {{selectedRegister.codeValue}}
+                {{selectedRegister.prefLabels | translateValue:true}}
               </button>
             </div>
           </div>
