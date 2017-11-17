@@ -38,7 +38,7 @@
         <div class="col-12">
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-              <span *ngIf="!register" translate>REGISTER_ALL</span>
+              <span *ngIf="!register" translate>All registries</span>
               <span *ngIf="register">{{register.prefLabels | translateValue:true}}</span>
             </button>
 
@@ -46,7 +46,7 @@
               <button (click)="register = null"
                       class="dropdown-item"
                       [class.active]="register == null">
-                {{'REGISTER_ALL' | translate}}
+                {{'All registries' | translate}}
               </button>
 
               <button *ngFor="let selectedRegister of registers"
@@ -67,7 +67,7 @@
 
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>
-              <span *ngIf="!status" translate>STATUS_ALL</span>
+              <span *ngIf="!status" translate>All statuses</span>
               <span *ngIf="status">{{status | translate}}</span>
             </button>
 
@@ -75,7 +75,7 @@
               <button (click)="status = null"
                       class="dropdown-item"
                       [class.active]="status == null">
-                {{'STATUS_ALL' | translate}}
+                {{'All statuses' | translate}}
               </button>
 
               <button *ngFor="let statusOption of statuses"

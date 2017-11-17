@@ -96,13 +96,10 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "STATUS_ALL"
+msgid "All registries"
 msgstr ""
 
-msgid "REGISTER_ALL"
-msgstr ""
-
-msgid "ORGANIZATION_ALL"
+msgid "All statuses"
 msgstr ""
 
 msgid "code schemes"

@@ -105,14 +105,14 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "STATUS_ALL"
-msgstr "All statuses"
+msgid "All statuses"
+msgstr ""
 
-msgid "ORGANIZATION_ALL"
-msgstr "All organizations"
+msgid "All organizations"
+msgstr ""
 
-msgid "REGISTER_ALL"
-msgstr "All registers"
+msgid "All registries"
+msgstr ""
 
 msgid "code schemes"
 msgstr ""
