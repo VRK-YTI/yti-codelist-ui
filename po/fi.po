@@ -105,8 +105,14 @@ msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."
 msgid "Search for code lists"
 msgstr "Hae koodistoa"
 
-msgid "ALL"
+msgid "STATUS_ALL"
 msgstr "Kaikki tilat"
+
+msgid "ORGANIZATION_ALL"
+msgstr "Kaikki organisaatiot"
+
+msgid "REGISTER_ALL"
+msgstr "Kaikki rekisterit"
 
 msgid "code schemes"
 msgstr "koodistoa"

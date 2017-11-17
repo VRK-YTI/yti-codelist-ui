@@ -3,7 +3,9 @@ import { LocationService } from '../../services/location.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
+import { CodeRegistry } from '../../entities/code-registry';
 import { DataClassification } from '../../entities/data-classification';
+import { CodeRegistryType } from '../../services/api-schema';
 import { Status, statuses } from '../../entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +18,10 @@ import { Observable } from 'rxjs/Observable';
 export class FrontpageComponent implements OnInit {
 
   statuses = statuses;
+  registers: CodeRegistry[];
+  
   dataClassifications: DataClassification[];
+  register$ = new BehaviorSubject('');
 
   searchTerm$ = new BehaviorSubject('');
   classification$ = new BehaviorSubject<DataClassification|null>(null);
@@ -38,18 +43,24 @@ export class FrontpageComponent implements OnInit {
       this.dataClassifications = classifications.filter(c => c.count > 0);
     });
 
+    this.dataService.getCodeRegistries().subscribe(registers => {
+      this.registers = registers;
+    });
+
     const initialSearchTerm = this.searchTerm$.take(1);
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
-    const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
+    const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm); 
 
-    Observable.combineLatest(searchTerm$, this.classification$, this.status$).subscribe(([searchTerm, classification, status]) => {
+    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$)
+              .subscribe(([searchTerm, classification, status, register]) => {
 
       this.searchInProgress = true;
       const classificationCode = classification ? classification.codeValue : null;
       const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
-
-      this.dataService.searchCodeSchemes(searchTerm, classificationCode).subscribe(codeSchemes => {
-        this.filteredCodeSchemes = codeSchemes.filter(statusMatches);
+      const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register;
+       
+       this.dataService.searchCodeSchemes(searchTerm, classificationCode).subscribe(codeSchemes => {
+        this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
         this.searchInProgress = false;
       });
     });
@@ -77,6 +88,14 @@ export class FrontpageComponent implements OnInit {
 
   set status(value: Status|null) {
     this.status$.next(value);
+  }
+
+  get register(): string {
+    return this.register$.getValue();
+  }
+
+  set register(value: string) {
+    this.register$.next(value);
   }
 
   get loading(): boolean {

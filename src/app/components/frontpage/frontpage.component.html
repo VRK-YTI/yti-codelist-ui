@@ -37,9 +37,24 @@
       <div class="row mb-4">
         <div class="col-12">
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>Kaikki rekisterit</button>
+            <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
+              <span *ngIf="!register" translate>REGISTER_ALL</span>
+              <span *ngIf="register">{{register}}</span>
+            </button>
+
             <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-              <button class="dropdown-item">Kaikki rekisterit</button>
+              <button (click)="register = null"
+                      class="dropdown-item"
+                      [class.active]="register == null">
+                {{'REGISTER_ALL' | translate}}
+              </button>
+
+              <button *ngFor="let selectedRegister of registers"
+                      (click)="register = selectedRegister.codeValue"
+                      class="dropdown-item"
+                      [class.active]="selectedRegister.codeValue == register">
+                {{selectedRegister.codeValue}}
+              </button>
             </div>
           </div>
 
@@ -48,11 +63,11 @@
             <div ngbDropdownMenu aria-labelledby="org-dropdown">
               <button class="dropdown-item">Kaikki organisaatiot</button>
             </div>
-          </div>
-
+          </div> 
+          
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>
-              <span *ngIf="!status" translate>ALL</span>
+              <span *ngIf="!status" translate>STATUS_ALL</span>
               <span *ngIf="status">{{status | translate}}</span>
             </button>
 
@@ -60,7 +75,7 @@
               <button (click)="status = null"
                       class="dropdown-item"
                       [class.active]="status == null">
-                {{'ALL' | translate}}
+                {{'STATUS_ALL' | translate}}
               </button>
 
               <button *ngFor="let statusOption of statuses"
@@ -92,6 +107,7 @@
           <div class="col-12">
             <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="name">{{codeScheme.prefLabels | translateValue:true }}</div>
+              <div class="name">CODE VALUE {{codeScheme.codeValue}}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>
             </div>
