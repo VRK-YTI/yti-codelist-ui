@@ -39,7 +39,8 @@
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
               <span *ngIf="!register" translate>REGISTER_ALL</span>
-              <span *ngIf="register">{{register}}</span>
+              <!-- TODO: use {{register.prefLabels | translateValue:true}} ? -->
+              <span *ngIf="register">{{register.codeValue}}</span>
             </button>
 
             <div ngbDropdownMenu aria-labelledby="reg-dropdown">
@@ -50,9 +51,10 @@
               </button>
 
               <button *ngFor="let selectedRegister of registers"
-                      (click)="register = selectedRegister.codeValue"
+                      (click)="register = selectedRegister"
                       class="dropdown-item"
                       [class.active]="selectedRegister.codeValue == register">
+                <!-- TODO: use {{selectedRegister.prefLabels | translateValue:true}} ? -->
                 {{selectedRegister.codeValue}}
               </button>
             </div>
@@ -63,8 +65,8 @@
             <div ngbDropdownMenu aria-labelledby="org-dropdown">
               <button class="dropdown-item">Kaikki organisaatiot</button>
             </div>
-          </div> 
-          
+          </div>
+
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>
               <span *ngIf="!status" translate>STATUS_ALL</span>

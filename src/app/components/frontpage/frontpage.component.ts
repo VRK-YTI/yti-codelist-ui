@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataClassification } from '../../entities/data-classification';
-import { CodeRegistryType } from '../../services/api-schema';
 import { Status, statuses } from '../../entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -19,9 +18,9 @@ export class FrontpageComponent implements OnInit {
 
   statuses = statuses;
   registers: CodeRegistry[];
-  
+
   dataClassifications: DataClassification[];
-  register$ = new BehaviorSubject('');
+  register$ = new BehaviorSubject<CodeRegistry|null>(null);
 
   searchTerm$ = new BehaviorSubject('');
   classification$ = new BehaviorSubject<DataClassification|null>(null);
@@ -49,7 +48,7 @@ export class FrontpageComponent implements OnInit {
 
     const initialSearchTerm = this.searchTerm$.take(1);
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
-    const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm); 
+    const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
 
     Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$)
               .subscribe(([searchTerm, classification, status, register]) => {
@@ -57,8 +56,8 @@ export class FrontpageComponent implements OnInit {
       this.searchInProgress = true;
       const classificationCode = classification ? classification.codeValue : null;
       const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
-      const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register;
-       
+      const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register.codeValue;
+
       this.dataService.searchCodeSchemes(searchTerm, classificationCode).subscribe(codeSchemes => {
         this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
         this.searchInProgress = false;
@@ -90,11 +89,11 @@ export class FrontpageComponent implements OnInit {
     this.status$.next(value);
   }
 
-  get register(): string {
+  get register(): CodeRegistry|null {
     return this.register$.getValue();
   }
 
-  set register(value: string) {
+  set register(value: CodeRegistry|null) {
     this.register$.next(value);
   }
 
