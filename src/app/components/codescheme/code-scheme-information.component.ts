@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
+import { EditableService } from '../../services/editable.service';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -21,7 +22,15 @@ export class CodeSchemeInformationComponent implements OnChanges {
     license: new FormControl('')
   });
 
+  constructor(editableService: EditableService) {
+    editableService.onCancel = () => this.reset();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
+    this.reset();
+  }
+
+  private reset() {
     this.codeSchemeForm.reset(this.codeScheme);
   }
 }

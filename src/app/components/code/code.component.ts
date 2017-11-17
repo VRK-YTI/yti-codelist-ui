@@ -29,7 +29,6 @@ export class CodeComponent implements OnInit, EditingComponent {
               private confirmationModalService: ConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
-    editableService.onCanceled = () => this.cancel();
   }
 
   ngOnInit() {
@@ -82,8 +81,5 @@ export class CodeComponent implements OnInit, EditingComponent {
 
     return this.dataService.saveCode(Object.assign({}, this.code, formData))
       .do(() => this.ngOnInit());
-  }
-
-  cancel() {
   }
 }

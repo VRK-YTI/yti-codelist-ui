@@ -31,7 +31,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private confirmationModalService: ConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
-    editableService.onCanceled = () => this.cancel();
   }
 
   ngOnInit() {
@@ -87,8 +86,5 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     console.log('Store CodeScheme changes to server!');
     return this.dataService.saveCodeScheme(Object.assign({}, this.codeScheme, formData))
       .do(() => this.ngOnInit());
-  }
-
-  cancel() {
   }
 }

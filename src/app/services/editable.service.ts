@@ -14,10 +14,24 @@ export class EditableService {
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
 
-  onSave: (formValue: any) => Observable<any>;
-  onCanceled: () => void;
+  _onSave: (formValue: any) => Observable<any>;
+  _onCancel: () => void;
 
   constructor(private errorModalService: ErrorModalService) {
+  }
+
+  set onSave(value: (formValue: any) => Observable<any>) {
+    if (this._onSave) {
+      throw new Error('Save handler already set');
+    }
+    this._onSave = value;
+  }
+
+  set onCancel(value: () => void) {
+    if (this._onCancel) {
+      throw new Error('Cancel handler already set');
+    }
+    this._onCancel = value;
   }
 
   get editing() {
@@ -34,24 +48,24 @@ export class EditableService {
 
   cancel() {
 
-    if (!this.onCanceled) {
+    if (!this._onCancel) {
       throw new Error('Cancel handler missing');
     }
 
     this.editing$.next(false);
-    this.onCanceled();
+    this._onCancel();
   }
 
   save(formValue: any) {
 
-    if (!this.onSave) {
+    if (!this._onSave) {
       throw new Error('Save handler missing');
     }
 
     const that = this;
     this.saving$.next(true);
 
-    this.onSave(formValue).subscribe({
+    this._onSave(formValue).subscribe({
       next() {
         that.saving$.next(false);
         that.editing$.next(false);

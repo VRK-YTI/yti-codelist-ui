@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Code } from '../../entities/code';
 import { FormControl, FormGroup } from '@angular/forms';
+import { EditableService } from '../../services/editable.service';
 
 @Component({
   selector: 'app-code-information',
@@ -17,7 +18,15 @@ export class CodeInformationComponent implements OnChanges {
     shortName: new FormControl('')
   });
 
+  constructor(editableService: EditableService) {
+    editableService.onCancel = () => this.reset();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
+    this.reset();
+  }
+
+  reset() {
     this.codeForm.reset(this.code);
   }
 }
