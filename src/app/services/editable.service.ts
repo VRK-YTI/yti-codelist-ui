@@ -14,8 +14,8 @@ export class EditableService {
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
 
-  _onSave: (formValue: any) => Observable<any>;
-  _onCancel: () => void;
+  private _onSave: (formValue: any) => Observable<any>;
+  private _onCancel: () => void;
 
   constructor(private errorModalService: ErrorModalService) {
   }
