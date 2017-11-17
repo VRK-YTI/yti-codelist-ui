@@ -59,7 +59,7 @@ export class FrontpageComponent implements OnInit {
       const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
       const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register;
        
-       this.dataService.searchCodeSchemes(searchTerm, classificationCode).subscribe(codeSchemes => {
+      this.dataService.searchCodeSchemes(searchTerm, classificationCode).subscribe(codeSchemes => {
         this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
         this.searchInProgress = false;
       });
