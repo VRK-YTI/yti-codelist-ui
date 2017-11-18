@@ -1,16 +1,19 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Code } from '../../entities/code';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-code-information',
   templateUrl: './code-information.component.html',
   styleUrls: ['./code-information.component.scss']
 })
-export class CodeInformationComponent implements OnChanges {
+export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() code: Code;
+
+  cancelSubscription: Subscription;
 
   codeForm = new FormGroup({
     prefLabels: new FormControl(''),
@@ -19,7 +22,7 @@ export class CodeInformationComponent implements OnChanges {
   });
 
   constructor(editableService: EditableService) {
-    editableService.onCancel = () => this.reset();
+    this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -28,5 +31,10 @@ export class CodeInformationComponent implements OnChanges {
 
   reset() {
     this.codeForm.reset(this.code);
+  }
+
+
+  ngOnDestroy() {
+    this.cancelSubscription.unsubscribe();
   }
 }

@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
 
 @Component({
@@ -8,9 +9,11 @@ import { EditableService } from '../../services/editable.service';
   templateUrl: './code-scheme-information.component.html',
   styleUrls: ['./code-scheme-information.component.scss']
 })
-export class CodeSchemeInformationComponent implements OnChanges {
+export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeScheme: CodeScheme;
+
+  cancelSubscription: Subscription;
 
   codeSchemeForm = new FormGroup({
     prefLabels: new FormControl({}),
@@ -23,7 +26,7 @@ export class CodeSchemeInformationComponent implements OnChanges {
   });
 
   constructor(editableService: EditableService) {
-    editableService.onCancel = () => this.reset();
+    this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -32,5 +35,9 @@ export class CodeSchemeInformationComponent implements OnChanges {
 
   private reset() {
     this.codeSchemeForm.reset(this.codeScheme);
+  }
+
+  ngOnDestroy() {
+    this.cancelSubscription.unsubscribe();
   }
 }

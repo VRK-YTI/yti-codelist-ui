@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ErrorModalService } from '../components/common/error-modal.component';
 
@@ -13,9 +13,9 @@ export class EditableService {
 
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
+  cancel$ = new EventEmitter<void>();
 
   private _onSave: (formValue: any) => Observable<any>;
-  private _onCancel: () => void;
 
   constructor(private errorModalService: ErrorModalService) {
   }
@@ -25,13 +25,6 @@ export class EditableService {
       throw new Error('Save handler already set');
     }
     this._onSave = value;
-  }
-
-  set onCancel(value: () => void) {
-    if (this._onCancel) {
-      throw new Error('Cancel handler already set');
-    }
-    this._onCancel = value;
   }
 
   get editing() {
@@ -47,13 +40,8 @@ export class EditableService {
   }
 
   cancel() {
-
-    if (!this._onCancel) {
-      throw new Error('Cancel handler missing');
-    }
-
     this.editing$.next(false);
-    this._onCancel();
+    this.cancel$.next();
   }
 
   save(formValue: any) {
