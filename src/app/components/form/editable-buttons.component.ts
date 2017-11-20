@@ -48,8 +48,8 @@ export class EditableButtonsComponent {
     this.editableService.cancel();
   }
 
-  canEdit() {
-    this.authorizationManager.canEdit();
+  canEdit(): boolean {
+    return this.authorizationManager.canEdit();
   }
 
   canSave() {
