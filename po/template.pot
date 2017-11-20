@@ -19,6 +19,21 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+msgid "Login"
+msgstr ""
+
+msgid "eDuuni information"
+msgstr ""
+
+msgid "Login information"
+msgstr ""
+
+msgid "Log In"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
 msgid "Code scheme"
 msgstr ""
 
@@ -115,6 +130,9 @@ msgid "1 code scheme"
 msgstr ""
 
 msgid "LOG IN"
+msgstr ""
+
+msgid "LOG OUT"
 msgstr ""
 
 msgid "DRAFT"

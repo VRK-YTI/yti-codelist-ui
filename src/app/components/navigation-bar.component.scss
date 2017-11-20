@@ -1,0 +1,18 @@
+@import "../../theme/variables";
+
+
+.nav-item.logged-in {
+
+  text-align: right;
+  margin-bottom: -10px;
+
+  > a {
+    padding-top: 0;
+  }
+
+  > span {
+    color: $body-color;
+    padding-right: 10px;
+  }
+}
+

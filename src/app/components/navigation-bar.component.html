@@ -6,8 +6,12 @@
   </a>
 
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" translate>LOG IN</a>
+    <li class="nav-item" *ngIf="!isLoggedIn()">
+      <a class="nav-link" (click)="logIn()" translate>LOG IN</a>
+    </li>
+    <li class="nav-item logged-in" *ngIf="isLoggedIn()">
+      <span>{{username}}</span>
+      <a class="nav-link" (click)="logOut()" translate>LOG OUT</a>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
       <a class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>

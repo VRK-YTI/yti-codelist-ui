@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { NgForm } from '@angular/forms';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-editable-buttons',
@@ -20,7 +21,8 @@ import { NgForm } from '@angular/forms';
     
     <button [hidden]="editing" 
             type="button" 
-            class="btn btn-action pull-right ml-3" 
+            class="btn btn-action pull-right ml-3"
+            *ngIf="canEdit()"
             (click)="edit()" translate>Edit</button>
     
     <app-ajax-loading-indicator-small class="pull-right" *ngIf="operationPending"></app-ajax-loading-indicator-small>
@@ -30,7 +32,8 @@ export class EditableButtonsComponent {
 
   @Input() form: NgForm;
 
-  constructor(private editableService: EditableService) {
+  constructor(private editableService: EditableService,
+              private authorizationManager: AuthorizationManager) {
   }
 
   edit() {
@@ -43,6 +46,10 @@ export class EditableButtonsComponent {
 
   cancel() {
     this.editableService.cancel();
+  }
+
+  canEdit() {
+    this.authorizationManager.canEdit();
   }
 
   canSave() {

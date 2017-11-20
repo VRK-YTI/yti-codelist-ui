@@ -39,6 +39,9 @@ import { ErrorMessagesComponent } from './components/form/error-messages.compone
 import { ErrorModalComponent, ErrorModalService } from './components/common/error-modal.component';
 import { ConfirmationModalComponent, ConfirmationModalService } from './components/common/confirmation-modal.component';
 import { EditGuard } from './components/common/edit.guard';
+import { UserService } from './services/user.service';
+import { AuthorizationManager } from './services/authorization-manager.service';
+import { LoginModalComponent, LoginModalService } from './components/login-modal.component';
 
 const localizations: { [lang: string]: string} = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -97,11 +100,13 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ErrorMessagesComponent,
     ErrorModalComponent,
     ConfirmationModalComponent,
+    LoginModalComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components
     ErrorModalComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +123,10 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DataService,
     EditGuard,
     ErrorModalService,
-    ConfirmationModalService
+    LoginModalService,
+    ConfirmationModalService,
+    UserService,
+    AuthorizationManager
   ],
   bootstrap: [AppComponent]
 })

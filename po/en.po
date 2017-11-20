@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-16 15:53+0200\n"
+"PO-Revision-Date: 2017-11-20 15:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -26,6 +26,21 @@ msgid "Save"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "eDuuni information"
+msgstr ""
+
+msgid "Login information"
+msgstr ""
+
+msgid "Log In"
+msgstr ""
+
+msgid "Register"
 msgstr ""
 
 msgid "Code scheme"
@@ -105,13 +120,10 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "All statuses"
-msgstr ""
-
-msgid "All organizations"
-msgstr ""
-
 msgid "All registries"
+msgstr ""
+
+msgid "All statuses"
 msgstr ""
 
 msgid "code schemes"
@@ -135,6 +147,9 @@ msgstr ""
 msgid "Front page"
 msgstr ""
 
+msgid "SUBMITTED"
+msgstr ""
+
 msgid "WAITING"
 msgstr ""
 
@@ -148,9 +163,6 @@ msgid "VALID"
 msgstr ""
 
 msgid "SUPERSEDED"
-msgstr ""
-
-msgid "SUBMITTED"
 msgstr ""
 
 msgid "Code"
