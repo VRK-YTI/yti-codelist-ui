@@ -1,7 +1,9 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ErrorModalService } from '../components/common/error-modal.component';
+import { UserService } from './user.service';
+import { Subscription } from 'rxjs/Subscription';
 
 export interface EditingComponent {
   isEditing(): boolean;
@@ -9,7 +11,7 @@ export interface EditingComponent {
 }
 
 @Injectable()
-export class EditableService {
+export class EditableService implements OnDestroy {
 
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
@@ -17,7 +19,16 @@ export class EditableService {
 
   private _onSave: (formValue: any) => Observable<any>;
 
-  constructor(private errorModalService: ErrorModalService) {
+  private loggedInSubscription: Subscription;
+
+  constructor(private errorModalService: ErrorModalService,
+              userService: UserService) {
+
+    this.loggedInSubscription = userService.loggedIn$.subscribe(loggedIn => {
+      if (!loggedIn && this.editing) {
+        this.cancel();
+      }
+    });
   }
 
   set onSave(value: (formValue: any) => Observable<any>) {
@@ -63,5 +74,9 @@ export class EditableService {
         that.errorModalService.openSubmitError(err);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.loggedInSubscription.unsubscribe();
   }
 }
