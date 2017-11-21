@@ -1,6 +1,6 @@
 <form [formGroup]="codeSchemeForm" #form="ngForm">
 
-  <app-editable-buttons [form]="codeSchemeForm"></app-editable-buttons>
+  <app-editable-buttons [form]="form"></app-editable-buttons>
 
   <app-literal [label]="'Code value' | translate"
                [value]="codeScheme.codeValue"></app-literal>
