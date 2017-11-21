@@ -8,9 +8,11 @@ import { DataClassification } from '../entities/data-classification';
 import { Code } from '../entities/code';
 import {
   CodeType, ApiResponseType, BaseResourceType, CodeSchemeType, DataClassificationType,
-  CodeRegistryType
+  CodeRegistryType, PropertyTypeType, ExternalReferenceType
 } from './api-schema';
 import { AbstractResource } from '../entities/abstract-resource';
+import { PropertyType } from '../entities/property-type';
+import { ExternalReference } from '../entities/external-reference';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -19,12 +21,16 @@ const version = 'v1';
 const registries = 'coderegistries';
 const codeSchemes = 'codeschemes';
 const codes = 'codes';
+const externalReferences = 'externalreferences';
 const classifications = 'dataclassifications';
+const propertytypes = 'propertytypes';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
+const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
 const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
+const propertyTypesBasePath = `/${apiContext}/${api}/${version}/${propertytypes}`;
 
 function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
   entity.id = type.id;
@@ -59,6 +65,7 @@ function createCodeSchemeEntity(scheme: CodeSchemeType): CodeScheme {
   entity.changeNotes = scheme.changeNotes || {};
   entity.definitions = scheme.definitions || {};
   entity.dataClassifications = scheme.dataClassifications || [];
+  entity.externalReferences = scheme.externalReferences || [];
   return entity;
 }
 
@@ -73,6 +80,32 @@ function createCodeEntity(code: CodeType): Code {
   entity.endDate = code.endDate;
   entity.descriptions = code.descriptions || {};
   entity.definitions = code.definitions || {};
+  return entity;
+}
+
+function createPropertyTypeEntity(propertyType: PropertyTypeType): PropertyType {
+
+  const entity = new PropertyType();
+  entity.id = propertyType.id;
+  entity.prefLabels = propertyType.prefLabels || {};
+  entity.definitions = propertyType.definitions || {};
+  entity.uri = propertyType.uri;
+  entity.propertyUri = propertyType.propertyUri;
+  entity.context = propertyType.context;
+  entity.localName = propertyType.localName;
+  entity.type = propertyType.type;
+  return entity;
+}
+
+function createExternalReferenceEntity(externalReference: ExternalReferenceType): ExternalReference {
+
+  const entity = new ExternalReference();
+  entity.id = externalReference.id;
+  entity.titles = externalReference.titles || {};
+  entity.descriptions = externalReference.descriptions || {};
+  entity.uri = externalReference.uri;
+  entity.url = externalReference.url;
+  entity.propertyType = externalReference.propertyType;
   return entity;
 }
 
@@ -119,6 +152,15 @@ export class DataService {
       .map(res => res.json().results.map(createCodeSchemeEntity));
   }
 
+  getPropertyTypes(context: string): Observable<PropertyType[]> {
+
+    const params = new URLSearchParams();
+    params.append('context', context);
+
+    return this.http.get(`${propertyTypesBasePath}/`, { params })
+      .map(res => res.json().results.map(createPropertyTypeEntity));
+  }
+
   getDataClassifications(): Observable<DataClassification[]> {
     return this.http.get(`${dataClassificationsBasePath}/`)
       .map(res => res.json().results.map(createDataClassificationEntity));
@@ -127,10 +169,20 @@ export class DataService {
   getCodeScheme(registryCode: string, schemeCode: string): Observable<CodeScheme> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,code');
+    params.append('expand', 'codeRegistry,code,externalReference,propertyType');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/`, { params })
       .map(res => createCodeSchemeEntity(res.json()));
+  }
+
+  getExternalReferences(codeScheme: CodeScheme): Observable<ExternalReference[]> {
+
+    const params = new URLSearchParams();
+    params.append('codeSchemeId', codeScheme.id);
+    params.append('expand', 'propertyType');
+
+    return this.http.get(`${externalReferencesBasePath}/`, { params })
+      .map(res => res.json().results.map(createExternalReferenceEntity));
   }
 
   getCodes(registryCode: string, schemeCode: string): Observable<Code[]> {

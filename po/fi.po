@@ -194,6 +194,45 @@ msgstr ""
 #~ msgid "All organizations"
 #~ msgstr "Kaikki organisaatiot"
 
+msgid "Links"
+msgstr "Linkit"
+
+msgid "Link title"
+msgstr "Linkin nimi"
+
+msgid "Add link"
+msgstr "Lisää linkki"
+
+msgid "Edit link"
+msgstr "Muokkaa linkkiä"
+
+msgid "Add new link"
+msgstr "Lisää uusi linkki"
+
+msgid "Select"
+msgstr "Valitse"
+
+msgid "Select link"
+msgstr "Valitse linkki"
+
+msgid "Add"
+msgstr "Lisää"
+
+msgid "Type"
+msgstr "Tyyppi"
+
+msgid "There are no links."
+msgstr "Linkkejä ei ole."
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Ok"
+msgstr "Ok"
+
+msgid "Property type"
+msgstr "Ominaisuuden tyyppi"
+
 #~ msgid "Modify"
 #~ msgstr "Muokkaa"
 

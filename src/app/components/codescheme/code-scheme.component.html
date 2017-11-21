@@ -8,7 +8,6 @@
 
   <h1>{{codeScheme.prefLabels | translateValue}}</h1>
 
-
   <div class="row">
     <div class="col-12">
       <app-status class="pull-left" [status]="codeScheme.status"></app-status>
@@ -48,7 +47,7 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-scheme-information [codeScheme]="codeScheme"></app-code-scheme-information>
+        <app-code-scheme-information [codeScheme]="codeScheme" [externalReferences]="externalReferences"></app-code-scheme-information>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

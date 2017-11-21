@@ -9,6 +9,7 @@ import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalService } from '../common/confirmation-modal.component';
 import { ignoreModalClose } from '../../utils/modal';
 import { Observable } from 'rxjs/Observable';
+import { ExternalReference } from '../../entities/external-reference';
 
 @Component({
   selector: 'app-code-scheme',
@@ -22,6 +23,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   codeScheme: CodeScheme;
   codes: Code[];
+  externalReferences: ExternalReference[];
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -45,6 +47,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
       this.locationService.atCodeSchemePage(codeScheme);
+      this.dataService.getExternalReferences(this.codeScheme).subscribe(externalReferences => {
+        this.externalReferences = externalReferences;
+      });
     });
 
     this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {

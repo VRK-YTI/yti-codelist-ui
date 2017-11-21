@@ -181,3 +181,42 @@ msgid ""
 "Are you sure that you want to continue? By continuing unsaved changes will "
 "be lost."
 msgstr ""
+
+msgid "Links"
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
+msgid "Edit link"
+msgstr ""
+
+msgid "Add new link"
+msgstr ""
+
+msgid "Link title"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Select link"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "There are no links."
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Ok"
+msgstr ""
+
+msgid "Property type"
+msgstr ""

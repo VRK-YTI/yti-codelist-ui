@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
-  TranslateModule, TranslateLoader, MissingTranslationHandler,
-  MissingTranslationHandlerParams
+  MissingTranslationHandler,
+  MissingTranslationHandlerParams,
+  TranslateLoader,
+  TranslateModule
 } from 'ng2-translate';
 import { AppComponent } from './components/app.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
@@ -42,22 +44,25 @@ import { EditGuard } from './components/common/edit.guard';
 import { UserService } from './services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
 import { LoginModalComponent, LoginModalService } from './components/login-modal.component';
+import { LinkModalComponent } from './components/codescheme/link-modal.component';
+import { LinkListModalComponent } from './components/codescheme/link-list-modal.component';
+import { LinkModalService } from './components/codescheme/link-modal.service';
 
-const localizations: { [lang: string]: string} = {
+const localizations: { [lang: string]: string } = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
   en: require('json-loader!po-loader?format=mf!../../po/en.po')
 };
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/frontpage', pathMatch: 'full' },
-  { path: 'frontpage', component: FrontpageComponent, pathMatch: 'full' },
-  { path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
-  { path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
-  { path: 'styles', component: StyleTestComponent }
+  {path: '', redirectTo: '/frontpage', pathMatch: 'full'},
+  {path: 'frontpage', component: FrontpageComponent, pathMatch: 'full'},
+  {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'styles', component: StyleTestComponent}
 ];
 
 export function createTranslateLoader(): TranslateLoader {
-  return { getTranslation: (lang: string) => Observable.of(localizations[lang]) };
+  return {getTranslation: (lang: string) => Observable.of(localizations[lang])};
 }
 
 export function createMissingTranslationHandler(): MissingTranslationHandler {
@@ -101,12 +106,16 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ErrorModalComponent,
     ConfirmationModalComponent,
     LoginModalComponent,
+    LinkModalComponent,
+    LinkListModalComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components
     ErrorModalComponent,
     ConfirmationModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    LinkModalComponent,
+    LinkListModalComponent
   ],
   imports: [
     BrowserModule,
@@ -114,10 +123,10 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    TranslateModule.forRoot({ provide: TranslateLoader, useFactory: createTranslateLoader })
+    TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader})
   ],
   providers: [
-    { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler },
+    {provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler},
     LanguageService,
     LocationService,
     DataService,
@@ -126,8 +135,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LoginModalService,
     ConfirmationModalService,
     UserService,
-    AuthorizationManager
+    AuthorizationManager,
+    ConfirmationModalService,
+    LinkModalService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

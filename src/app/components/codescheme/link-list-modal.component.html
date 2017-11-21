@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title strong">
+    <a><i class="fa fa-times" (click)="close()"></i></a>
+    <span translate>Select link</span>
+  </h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="externalReferences !== undefined && externalReferences.length > 0">
+        <div *ngFor="let externalReference of externalReferences">
+          <div class="form-check">
+            <label class="form-check-label"><input class="form-check-input" type="radio" name="externalReference" (click)="selectedExternalReference = externalReference" [checked]="selectedExternalReference !== undefined && (externalReference.url == selectedExternalReference.url)" value="{{externalReference}}" title="{{externalReference.titles | translateValue}}">{{externalReference.titles | translateValue}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-action" [disabled]="selectedExternalReference === undefined" (click)="select();" translate>Select</button>
+  <button type="button" class="btn btn-action" (click)="create();" translate>Add new link</button>
+  <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
+</div>

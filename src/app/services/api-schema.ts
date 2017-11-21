@@ -1,4 +1,5 @@
 import { Localizable } from '../entities/localization';
+import { CodeScheme } from '../entities/code-scheme';
 
 export interface ApiResponseType {
 
@@ -36,6 +37,7 @@ export interface CodeSchemeType extends BaseResourceType {
   changeNotes?: Localizable;
   definitions?: Localizable;
   dataClassifications: { uri: string }[];
+  externalReferences?: ExternalReferenceType[];
 }
 
 export interface CodeType extends BaseResourceType {
@@ -47,6 +49,29 @@ export interface CodeType extends BaseResourceType {
   endDate: string;
   descriptions?: Localizable;
   definitions?: Localizable;
+}
+
+export interface ExternalReferenceType  {
+
+  id: string;
+  uri: string;
+  url: string;
+  titles?: Localizable;
+  descriptions?: Localizable;
+  propertyType: PropertyTypeType;
+}
+
+export interface PropertyTypeType  {
+
+  id: string;
+  prefLabels: Localizable;
+  definitions: Localizable;
+  localName: string;
+  uri: string;
+  propertyUri: string;
+  context: string;
+  externaluri: string;
+  type: string;
 }
 
 export interface DataClassificationType  {

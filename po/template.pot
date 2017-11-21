@@ -73,6 +73,18 @@ msgstr ""
 msgid "License"
 msgstr ""
 
+msgid "Links"
+msgstr ""
+
+msgid "Link title"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
 msgid "Export"
 msgstr ""
 
@@ -83,6 +95,27 @@ msgid "Export Excel"
 msgstr ""
 
 msgid "CODES"
+msgstr ""
+
+msgid "Select link"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Add new link"
+msgstr ""
+
+msgid "PropertyType"
+msgstr ""
+
+msgid "Edit link"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Ok"
 msgstr ""
 
 msgid "Code List Service"

@@ -3,6 +3,7 @@ import { Localizable } from './localization';
 import { Location } from './location';
 import { CodeRegistry } from './code-registry';
 import { formatDate } from '../utils/date';
+import { ExternalReference } from './external-reference';
 
 export class CodeScheme extends AbstractResource {
 
@@ -19,7 +20,7 @@ export class CodeScheme extends AbstractResource {
   changeNotes: Localizable;
   definitions: Localizable;
   dataClassifications: { uri: string }[];
-
+  externalReferences?: ExternalReference[];
 
   get validity(): string {
     return `${formatDate(this.startDate)} - ${formatDate(this.endDate)}`;
