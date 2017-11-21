@@ -34,7 +34,7 @@
 
 </form>
 
-<div *ngIf="codeScheme.externalReferences !== undefined && codeScheme.externalReferences.length > 0">
+<div *ngIf="codeScheme.externalReferences.length > 0">
   <app-literal [label]="'Links' | translate"></app-literal>
 
   <div *ngFor="let externalReference of codeScheme.externalReferences">

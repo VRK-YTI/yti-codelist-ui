@@ -20,7 +20,7 @@ export class CodeScheme extends AbstractResource {
   changeNotes: Localizable;
   definitions: Localizable;
   dataClassifications: { uri: string }[];
-  externalReferences?: ExternalReference[];
+  externalReferences: ExternalReference[];
 
   get validity(): string {
     return `${formatDate(this.startDate)} - ${formatDate(this.endDate)}`;
