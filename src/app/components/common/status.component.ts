@@ -19,7 +19,7 @@ export class StatusComponent {
   }
 
   get warning() {
-    return this.status === 'SUPERSEDED' || this.status === 'RETIRED';
+    return this.status === 'SUPERSEDED' || this.status === 'RETIRED' || this.status === 'SUBMITTED';
   }
 
   get info() {
