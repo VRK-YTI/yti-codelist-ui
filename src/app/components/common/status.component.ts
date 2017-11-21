@@ -15,11 +15,11 @@ export class StatusComponent {
   @Input() status: string;
 
   get danger() {
-    return this.status === 'SUBMITTED' || this.status === 'INVALID';
+    return this.status === 'RETIRED' || this.status === 'INVALID';
   }
 
   get warning() {
-    return this.status === 'SUPERSEDED' || this.status === 'RETIRED' || this.status === 'SUBMITTED';
+    return this.status === 'SUPERSEDED' || this.status === 'SUBMITTED';
   }
 
   get info() {
