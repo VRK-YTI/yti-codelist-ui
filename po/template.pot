@@ -76,12 +76,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "Link title"
-msgstr ""
-
-msgid "URL"
-msgstr ""
-
 msgid "Add link"
 msgstr ""
 
@@ -106,7 +100,13 @@ msgstr ""
 msgid "Add new link"
 msgstr ""
 
-msgid "PropertyType"
+msgid "Link title"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Property type"
 msgstr ""
 
 msgid "Edit link"
@@ -177,16 +177,13 @@ msgstr ""
 msgid "SUBMITTED"
 msgstr ""
 
-msgid "WAITING"
-msgstr ""
-
-msgid "REMOVED"
-msgstr ""
-
-msgid "INCORRECT"
+msgid "RETIRED"
 msgstr ""
 
 msgid "VALID"
+msgstr ""
+
+msgid "INVALID"
 msgstr ""
 
 msgid "SUPERSEDED"

@@ -157,11 +157,11 @@ msgstr "Etusivu"
 msgid "SUBMITTED"
 msgstr "Odottaa hyväksyntää"
 
-msgid "WAITING"
-msgstr "Odottaa hyväksyntää"
+msgid "INVALID"
+msgstr "Korvattu"
 
-msgid "REMOVED"
-msgstr "Poistettu"
+msgid "RETIRED"
+msgstr "Virheellinen"
 
 msgid "INCORRECT"
 msgstr "Virheellinen"
@@ -170,7 +170,7 @@ msgid "VALID"
 msgstr "Voimassa oleva"
 
 msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgstr "Poistettu"
 
 msgid "Code"
 msgstr "Koodi"

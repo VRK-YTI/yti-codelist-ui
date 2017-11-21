@@ -150,16 +150,16 @@ msgstr ""
 msgid "SUBMITTED"
 msgstr ""
 
-msgid "WAITING"
-msgstr ""
-
-msgid "REMOVED"
-msgstr ""
-
 msgid "INCORRECT"
 msgstr ""
 
 msgid "VALID"
+msgstr ""
+
+msgid "INVALID"
+msgstr ""
+
+msgid "RETIRED"
 msgstr ""
 
 msgid "SUPERSEDED"
