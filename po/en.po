@@ -150,9 +150,6 @@ msgstr ""
 msgid "SUBMITTED"
 msgstr ""
 
-msgid "INCORRECT"
-msgstr ""
-
 msgid "VALID"
 msgstr ""
 

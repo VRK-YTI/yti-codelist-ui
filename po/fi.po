@@ -163,9 +163,6 @@ msgstr "Korvattu"
 msgid "RETIRED"
 msgstr "Virheellinen"
 
-msgid "INCORRECT"
-msgstr "Virheellinen"
-
 msgid "VALID"
 msgstr "Voimassa oleva"
 

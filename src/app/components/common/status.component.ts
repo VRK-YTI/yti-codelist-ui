@@ -15,7 +15,7 @@ export class StatusComponent {
   @Input() status: string;
 
   get danger() {
-    return this.status === 'REMOVED' || this.status === 'INVALID';
+    return this.status === 'SUBMITTED' || this.status === 'INVALID';
   }
 
   get warning() {
