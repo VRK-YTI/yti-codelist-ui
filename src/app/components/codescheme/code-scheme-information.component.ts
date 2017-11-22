@@ -64,7 +64,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     this.linkModalService.openList(externalReferences)
       .then(link => {
         console.log('openList callback with success');
-        this.handleResult(link, false);
+        const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
+        this.codeScheme.addExternalReference(addedLink);
       })
       .catch((reason) => {
         console.log('openList callback with reason: ' + reason);
@@ -79,26 +80,24 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   openCreate() {
     this.linkModalService.openWithCreate()
       .then(link => {
-        this.handleResult(link, true);
+
+        const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
+
+        if (link.id === undefined) {
+          if (addedLink.id === undefined) {
+            this.codeScheme.addExternalReference(addedLink);
+          } else {
+            this.codeScheme.replaceExternalReference(addedLink);
+          }
+        }
+
       }, ignoreModalClose);
-  }
-
-  handleResult(link: ExternalReference, create: boolean) {
-    console.log('Handleresult!');
-
-    const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
-
-    if (addedLink.id === undefined || !create) {
-      console.log('Adding link with url' + addedLink.url);
-      this.codeScheme.addExternalReference(addedLink);
-    } else {
-      this.codeScheme.replaceExternalReference(addedLink);
-    }
   }
 
   editExternalReference(externalReference: ExternalReference) {
     this.linkModalService.openWithModify(externalReference).then(link => {
-      this.handleResult(link, false);
+      const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
+      this.codeScheme.addExternalReference(addedLink);
     }, ignoreModalClose);
   }
 
