@@ -1,9 +1,7 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { PropertyType } from '../../entities/property-type';
-import { DataService } from '../../services/data.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable()
@@ -25,43 +23,26 @@ export class LinkEditModalService {
   templateUrl: './link-edit-modal.component.html',
   providers: [EditableService]
 })
-export class LinkEditModalComponent {
+export class LinkEditModalComponent implements OnInit {
 
   @Input() link: ExternalReference;
-
-  initialized: boolean;
-
-  propertyTypes: PropertyType[];
 
   linkForm = new FormGroup({
     titles: new FormControl({}),
     descriptions: new FormControl({}),
-    url: new FormControl('')
+    url: new FormControl(''),
+    propertyType: new FormControl()
   });
 
-  propertyType: PropertyType;
-
-  constructor(private dataService: DataService,
-              private editableService: EditableService,
+  constructor(private editableService: EditableService,
               private modal: NgbActiveModal) {
 
     this.editableService.edit();
-    this.linkForm.reset(this.link);
-    this.propertyType = this.link.propertyType;
 
-    this.dataService.getPropertyTypes('ExternalReference').subscribe(types => {
-
-      if (types.length === 0) {
-        throw new Error('No types');
-      }
-
-      this.propertyTypes = types;
-      this.initialized = true;
-    });
   }
 
-  get initializing(): boolean {
-    return !this.propertyTypes;
+  ngOnInit() {
+    this.linkForm.reset(this.link);
   }
 
   close() {
@@ -70,7 +51,6 @@ export class LinkEditModalComponent {
 
   save() {
     Object.assign(this.link, this.linkForm.value);
-    this.link.propertyType = this.propertyType;
     this.modal.close();
   }
 }

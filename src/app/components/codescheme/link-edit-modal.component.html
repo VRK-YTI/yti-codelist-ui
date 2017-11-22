@@ -1,62 +1,35 @@
-<div *ngIf="initializing">
-  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+<div class="modal-header">
+  <h4 class="modal-title strong">
+    <a><i class="fa fa-times" (click)="close()"></i></a>
+    <span translate>Edit link</span>
+  </h4>
 </div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
 
-<div *ngIf="!initializing">
-  <div class="modal-header">
-    <h4 class="modal-title strong">
-      <a><i class="fa fa-times" (click)="close()"></i></a>
-      <span translate>Edit link</span>
-    </h4>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-md-12">
+      <app-content-language class="pull-right"></app-content-language>
 
-        <app-content-language class="pull-right"></app-content-language>
+      <form [formGroup]="linkForm" #form="ngForm">
 
-        <form [formGroup]="linkForm" #form="ngForm">
+        <app-localizable-input [label]="'Link title' | translate"
+                               [formControlName]="'titles'"></app-localizable-input>
 
-          <app-localizable-input [label]="'Link title' | translate"
-                                 [formControlName]="'titles'"></app-localizable-input>
+        <app-localizable-textarea [label]="'Description' | translate"
+                                  [formControlName]="'descriptions'"></app-localizable-textarea>
 
-          <app-localizable-textarea [label]="'Description' | translate"
-                                    [formControlName]="'descriptions'"></app-localizable-textarea>
+        <app-literal-input [label]="'URL' | translate"
+                           [formControlName]="'url'"></app-literal-input>
 
-          <app-literal-input [label]="'URL' | translate"
-                             [formControlName]="'url'"></app-literal-input>
+        <app-property-type-select [formControlName]="'propertyType'"></app-property-type-select>
 
-          <dl>
-            <dt><label translate>Property type</label></dt>
-            <dd>
-              <div class="form-group">
-                <div ngbDropdown class="d-inline-block">
-
-                  <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
-                    <span>{{propertyType.prefLabels | translateValue}}</span>
-                  </button>
-
-                  <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
-                    <button *ngFor="let propertyTypeOption of propertyTypes"
-                            (click)="propertyType = propertyTypeOption"
-                            class="dropdown-item"
-                            [class.active]="propertyTypeOption.id === propertyType.id">
-                      {{propertyTypeOption.prefLabels | translateValue}}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </dd>
-          </dl>
-
-        </form>
-      </div>
+      </form>
     </div>
   </div>
-  <div class="modal-footer">
-    <div>
-      <button type="button" class="btn btn-action" (click)="save()" translate>Save</button>
-      <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
-    </div>
+</div>
+<div class="modal-footer">
+  <div>
+    <button type="button" class="btn btn-action" (click)="save()" translate>Save</button>
+    <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
   </div>
 </div>
