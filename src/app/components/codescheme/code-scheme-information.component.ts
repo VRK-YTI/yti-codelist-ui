@@ -52,7 +52,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   addLink() {
-    if ((this.externalReferences === undefined || this.externalReferences.length === 0) || (this.codeScheme.externalReferences !== undefined && this.externalReferences.length === this.codeScheme.externalReferences.length)) {
+    if ((this.externalReferences === undefined || this.externalReferences.length === 0) || (this.externalReferences.length === this.codeScheme.externalReferences.length)) {
       this.openCreate();
     } else {
       this.openList(this.externalReferences);
