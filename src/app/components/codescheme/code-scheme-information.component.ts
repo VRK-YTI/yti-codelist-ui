@@ -9,6 +9,7 @@ import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkCreateModalService } from './link-create-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
+import { remove } from '../../utils/array';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -113,8 +114,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   removeExternalReference(externalReference: ExternalReference) {
-    if (this.codeScheme.externalReferences !== undefined) {
-      this.codeScheme.externalReferences = this.codeScheme.externalReferences.filter(obj => obj.url !== externalReference.url);
-    }
+    remove(this.codeScheme.externalReferences, externalReference);
   }
 }
