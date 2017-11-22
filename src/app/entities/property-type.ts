@@ -10,4 +10,8 @@ export class PropertyType {
   type: string;
   prefLabels: Localizable;
   definitions: Localizable;
+
+  clone() {
+    return Object.assign(new PropertyType(), this);
+  }
 }

@@ -56,7 +56,7 @@ function createExternalReferenceEntity(externalReference: ExternalReferenceType)
   entity.descriptions = externalReference.descriptions || {};
   entity.uri = externalReference.uri;
   entity.url = externalReference.url;
-  entity.propertyType = externalReference.propertyType;
+  entity.propertyType = createPropertyTypeEntity(externalReference.propertyType);
   return entity;
 }
 
