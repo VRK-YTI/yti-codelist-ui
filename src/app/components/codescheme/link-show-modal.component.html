@@ -24,9 +24,8 @@
         <app-literal [label]="'URL' | translate"
                      [value]="link.url"></app-literal>
 
-        <app-localizable-literal *ngIf="propertyType !== undefined"
-                                 [label]="'Property type' | translate"
-                                 [value]="propertyType.prefLabels"></app-localizable-literal>
+        <app-localizable-literal [label]="'Property type' | translate"
+                                 [value]="link.propertyType.prefLabels"></app-localizable-literal>
       </div>
     </div>
   </div>
