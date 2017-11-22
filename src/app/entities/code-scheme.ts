@@ -47,4 +47,19 @@ export class CodeScheme extends AbstractResource {
       route: this.route
     }];
   }
+
+  addExternalReference(addedLink: ExternalReference) {
+    this.externalReferences.push(addedLink);
+  }
+
+  replaceExternalReference(addedLink: ExternalReference) {
+    let index = 0;
+    for (const externalReference of this.externalReferences) {
+      if (externalReference.id === addedLink.id) {
+        console.log('Modifying link with id' + addedLink.id + ' and URL: ' + addedLink.url);
+        this.externalReferences[index] = addedLink;
+        index++;
+      }
+    }
+  }
 }
