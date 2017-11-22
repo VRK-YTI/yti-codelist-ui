@@ -158,16 +158,16 @@ msgid "SUBMITTED"
 msgstr "Odottaa hyväksyntää"
 
 msgid "INVALID"
-msgstr "Korvattu"
+msgstr "Virheellinen"
 
 msgid "RETIRED"
-msgstr "Virheellinen"
+msgstr "Poistettu"
 
 msgid "VALID"
 msgstr "Voimassa oleva"
 
 msgid "SUPERSEDED"
-msgstr "Poistettu"
+msgstr "Korvattu"
 
 msgid "Code"
 msgstr "Koodi"
