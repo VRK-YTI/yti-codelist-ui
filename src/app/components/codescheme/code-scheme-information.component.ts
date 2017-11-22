@@ -90,11 +90,11 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
     if (addedLink.id === undefined || !create) {
       console.log('Adding link with url' + addedLink.url);
-      this.codeScheme.externalReferences.push(addedLink);
+      this.codeScheme.addExternalReference(addedLink);
     } else {
       let index = 0;
-      for (const codeScheme of this.codeScheme.externalReferences) {
-        if (codeScheme.id === addedLink.id) {
+      for (const externalReference of this.codeScheme.externalReferences) {
+        if (externalReference.id === addedLink.id) {
           console.log('Modifying link with id' + addedLink.id + ' and URL: ' + addedLink.url);
           this.codeScheme.externalReferences[index] = addedLink;
           index++;
