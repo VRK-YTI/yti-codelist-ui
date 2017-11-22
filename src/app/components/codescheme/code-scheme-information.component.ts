@@ -5,8 +5,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { ignoreModalClose } from '../../utils/modal';
-import { LinkModalService } from './link-modal.component';
 import { LinkListModalService } from './link-list-modal.component';
+import { LinkShowModalService } from './link-show-modal.component';
+import { LinkCreateModalService } from './link-create-modal.component';
+import { LinkEditModalService } from './link-edit-modal.component';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -30,11 +32,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     license: new FormControl('')
   });
 
-  constructor(private linkModalService: LinkModalService,
+  constructor(private linkEditModalService: LinkEditModalService,
+              private linkCreateModalService: LinkCreateModalService,
+              private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
               private editableService: EditableService) {
+
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-    this.linkModalService = linkModalService;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -84,7 +88,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   openCreate() {
-    this.linkModalService.openWithCreate()
+    this.linkCreateModalService.open()
       .then(link => {
 
         const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
@@ -101,14 +105,14 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   editExternalReference(externalReference: ExternalReference) {
-    this.linkModalService.openWithModify(externalReference).then(link => {
+    this.linkEditModalService.open(externalReference).then(link => {
       const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
       this.codeScheme.addExternalReference(addedLink);
     }, ignoreModalClose);
   }
 
   showExternalReference(externalReference: ExternalReference) {
-    this.linkModalService.openWithShow(externalReference);
+    this.linkShowModalService.open(externalReference);
   }
 
   removeExternalReference(externalReference: ExternalReference) {

@@ -44,8 +44,10 @@ import { EditGuard } from './components/common/edit.guard';
 import { UserService } from './services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
 import { LoginModalComponent, LoginModalService } from './components/navigation/login-modal.component';
-import { LinkModalComponent, LinkModalService } from './components/codescheme/link-modal.component';
 import { LinkListModalComponent, LinkListModalService } from './components/codescheme/link-list-modal.component';
+import { LinkEditModalComponent, LinkEditModalService } from './components/codescheme/link-edit-modal.component';
+import { LinkCreateModalComponent, LinkCreateModalService } from './components/codescheme/link-create-modal.component';
+import { LinkShowModalComponent, LinkShowModalService } from './components/codescheme/link-show-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -105,7 +107,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ErrorModalComponent,
     ConfirmationModalComponent,
     LoginModalComponent,
-    LinkModalComponent,
+    LinkShowModalComponent,
+    LinkEditModalComponent,
+    LinkCreateModalComponent,
     LinkListModalComponent,
     StyleTestComponent
   ],
@@ -113,7 +117,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ErrorModalComponent,
     ConfirmationModalComponent,
     LoginModalComponent,
-    LinkModalComponent,
+    LinkShowModalComponent,
+    LinkEditModalComponent,
+    LinkCreateModalComponent,
     LinkListModalComponent
   ],
   imports: [
@@ -136,7 +142,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     UserService,
     AuthorizationManager,
     ConfirmationModalService,
-    LinkModalService,
+    LinkShowModalService,
+    LinkEditModalService,
+    LinkCreateModalService,
     LinkListModalService
   ],
   bootstrap: [AppComponent]

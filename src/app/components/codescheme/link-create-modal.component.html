@@ -6,8 +6,7 @@
   <div class="modal-header">
     <h4 class="modal-title strong">
       <a><i class="fa fa-times" (click)="close()"></i></a>
-      <span *ngIf="isCreating" translate>Add new link</span>
-      <span *ngIf="!isCreating" translate>Edit link</span>
+      <span translate>Add new link</span>
     </h4>
   </div>
   <div class="modal-body">
@@ -24,7 +23,7 @@
           <app-literal-input [label]="'URL' | translate"
                              [formControlName]="'url'"></app-literal-input>
 
-          <div *ngIf="isEditing()" ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block">
             <app-literal [label]="'Property type' | translate"></app-literal>
             <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
               <span>{{this.propertyType.prefLabels | translateValue}}</span>
@@ -39,25 +38,14 @@
               </button>
             </div>
           </div>
-          <div *ngIf="!isEditing() && propertyType !== undefined">
-            <app-literal [label]="'Property type' | translate"
-                         [value]="propertyType.prefLabels | translateValue"></app-literal>
-          </div>
         </form>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <div *ngIf="isEditing() && isCreating">
+    <div>
       <button type="button" class="btn btn-action" (click)="add()" translate>Add</button>
       <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
-    </div>
-    <div *ngIf="isEditing() && !isCreating">
-      <button type="button" class="btn btn-action" (click)="save()" translate>Save</button>
-      <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
-    </div>
-    <div *ngIf="!isEditing()">
-      <button type="button" class="btn btn-action" (click)="close()" translate>Ok</button>
     </div>
   </div>
 </div>
