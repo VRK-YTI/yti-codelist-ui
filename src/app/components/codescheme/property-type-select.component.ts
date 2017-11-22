@@ -7,14 +7,14 @@ import { EditableService } from '../../services/editable.service';
 @Component({
   selector: 'app-property-type-select',
   template: `
-    <dl *ngIf="show">
+    <dl>
       <dt><label translate>Property type</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
           <div ngbDropdown class="d-inline-block">
 
             <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
-              <span>{{value.prefLabels | translateValue}}</span>
+              <span *ngIf="value">{{value.prefLabels | translateValue}}</span>
             </button>
 
             <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
@@ -70,10 +70,6 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor {
   select(propertyType: PropertyType) {
     this.value = propertyType;
     this.propagateChange(propertyType);
-  }
-
-  get show() {
-    return this.value;
   }
 
   get editing() {
