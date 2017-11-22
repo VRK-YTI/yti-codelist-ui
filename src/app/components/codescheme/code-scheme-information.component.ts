@@ -86,7 +86,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   handleResult(link: ExternalReference, create: boolean) {
     console.log('Handleresult!');
 
-    const addedLink: ExternalReference = Object.assign({}, link);
+    const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
 
     if (addedLink.id === undefined || !create) {
       console.log('Adding link with url' + addedLink.url);
