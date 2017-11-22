@@ -52,7 +52,11 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   addLink() {
-    if ((this.externalReferences === undefined || this.externalReferences.length === 0) || (this.externalReferences.length === this.codeScheme.externalReferences.length)) {
+
+    // FIXME: what is this logic?
+    if (this.externalReferences === undefined
+        || this.externalReferences.length === 0
+        || this.externalReferences.length === this.codeScheme.externalReferences.length) {
       this.openCreate();
     } else {
       this.openList(this.externalReferences);
