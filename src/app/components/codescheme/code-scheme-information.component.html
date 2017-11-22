@@ -32,18 +32,19 @@
   <app-literal [label]="'Last modification' | translate"
                [value]="codeScheme.modifiedDisplayValue"></app-literal>
 
+  <dl *ngIf="externalReferences.length > 0">
+    <dt><label translate>Links</label></dt>
+    <dd>
+      <div *ngFor="let externalReference of externalReferences">
+        <button type="button" class="btn btn-link" (click)="showExternalReference(externalReference)">{{externalReference.titles | translateValue}}</button>
+        <button *ngIf="editing" type="button" class="icon-pencil" (click)="editExternalReference(externalReference)"></button>
+        <button *ngIf="editing" type="button" class="icon-trash" (click)="removeExternalReference(externalReference)"></button>
+      </div>
+
+      <div *ngIf="editing">
+        <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
+      </div>
+    </dd>
+  </dl>
+
 </form>
-
-<div *ngIf="externalReferences.length > 0">
-  <app-literal [label]="'Links' | translate"></app-literal>
-
-  <div *ngFor="let externalReference of externalReferences">
-    <button type="button" class="btn btn-link" (click)="showExternalReference(externalReference)">{{externalReference.titles | translateValue}}</button>
-    <button *ngIf="editing" type="button" class="icon-pencil" (click)="editExternalReference(externalReference)"></button>
-    <button *ngIf="editing" type="button" class="icon-trash" (click)="removeExternalReference(externalReference)"></button>
-  </div>
-</div>
-
-<div *ngIf="editing">
-  <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
-</div>
