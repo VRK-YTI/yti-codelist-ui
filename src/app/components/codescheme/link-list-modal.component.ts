@@ -28,4 +28,8 @@ export class LinkListModalComponent {
   create() {
     this.modal.dismiss('create');
   }
+
+  isChecked(externalReference: ExternalReference) {
+    return this.selectedExternalReference && externalReference.url === this.selectedExternalReference.url;
+  }
 }

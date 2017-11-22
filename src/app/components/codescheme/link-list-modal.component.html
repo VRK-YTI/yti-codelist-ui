@@ -10,7 +10,15 @@
       <div *ngIf="externalReferences !== undefined && externalReferences.length > 0">
         <div *ngFor="let externalReference of externalReferences">
           <div class="form-check">
-            <label class="form-check-label"><input class="form-check-input" type="radio" name="externalReference" (click)="selectedExternalReference = externalReference" [checked]="selectedExternalReference !== undefined && (externalReference.url == selectedExternalReference.url)" value="{{externalReference}}" title="{{externalReference.titles | translateValue}}">{{externalReference.titles | translateValue}}</label>
+            <label class="form-check-label">
+              <input class="form-check-input"
+                     type="radio"
+                     name="externalReference"
+                     (click)="selectedExternalReference = externalReference"
+                     [checked]="isChecked(externalReference)"
+                     value="{{externalReference}}" title="{{externalReference.titles | translateValue}}">
+              {{externalReference.titles | translateValue}}
+            </label>
           </div>
         </div>
       </div>
