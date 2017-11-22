@@ -2,8 +2,6 @@ import { Component, Injectable } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { PropertyType } from '../../entities/property-type';
-import { DataService } from '../../services/data.service';
 
 @Injectable()
 export class LinkCreateModalService {
@@ -25,27 +23,11 @@ export class LinkCreateModalService {
 export class LinkCreateModalComponent {
 
   link = new ExternalReference();
-  propertyTypes: PropertyType[];
 
-  constructor(private dataService: DataService,
-              private editableService: EditableService,
+  constructor(private editableService: EditableService,
               private modal: NgbActiveModal) {
 
     this.editableService.edit();
-
-    this.dataService.getPropertyTypes('ExternalReference').subscribe(types => {
-
-      if (types.length === 0) {
-        throw new Error('No types');
-      }
-
-      this.propertyTypes = types;
-      this.link.propertyType = types[0];
-    });
-  }
-
-  get initializing(): boolean {
-    return !this.propertyTypes;
   }
 
   close() {

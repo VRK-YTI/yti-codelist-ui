@@ -48,6 +48,7 @@ import { LinkListModalComponent, LinkListModalService } from './components/codes
 import { LinkEditModalComponent, LinkEditModalService } from './components/codescheme/link-edit-modal.component';
 import { LinkCreateModalComponent, LinkCreateModalService } from './components/codescheme/link-create-modal.component';
 import { LinkShowModalComponent, LinkShowModalService } from './components/codescheme/link-show-modal.component';
+import { PropertyTypeSelectComponent } from './components/codescheme/property-type-select.component';
 
 const localizations: { [lang: string]: string } = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -111,6 +112,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkEditModalComponent,
     LinkCreateModalComponent,
     LinkListModalComponent,
+    PropertyTypeSelectComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components
