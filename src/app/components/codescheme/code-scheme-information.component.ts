@@ -69,9 +69,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     const restrictIds = this.externalReferences.map(link => link.id);
 
     this.linkListModalService.open(this.codeScheme.id, restrictIds)
-      .then(link => {
-        this.externalReferences.push(link);
-      }, ignoreModalClose);
+      .then(link => this.externalReferences.push(link), ignoreModalClose);
   }
 
   editExternalReference(externalReference: ExternalReference) {
