@@ -5,19 +5,11 @@ import { EditableService, EditingComponent } from '../../services/editable.servi
 import { FormControl, FormGroup } from '@angular/forms';
 import { PropertyType } from '../../entities/property-type';
 import { DataService } from '../../services/data.service';
-import { LinkListModalComponent } from './link-list-modal.component';
 
 @Injectable()
 export class LinkModalService {
 
   constructor(private modalService: NgbModal) {
-  }
-
-  public openList(externalReferences: ExternalReference[]): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkListModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as LinkListModalComponent;
-    instance.externalReferences = externalReferences;
-    return modalRef.result;
   }
 
   public openWithShow(externalReference: ExternalReference): Promise<ExternalReference> {
@@ -51,7 +43,6 @@ export class LinkModalService {
     return modalRef.result;
   }
 }
-
 
 @Component({
   selector: 'app-link-modal',

@@ -1,7 +1,21 @@
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Component, Input } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Injectable, Input } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
+
+@Injectable()
+export class LinkListModalService {
+
+  constructor(private modalService: NgbModal) {
+  }
+
+  public open(externalReferences: ExternalReference[]): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkListModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as LinkListModalComponent;
+    instance.externalReferences = externalReferences;
+    return modalRef.result;
+  }
+}
 
 @Component({
   selector: 'app-link-list-modal',

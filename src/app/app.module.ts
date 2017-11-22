@@ -44,9 +44,8 @@ import { EditGuard } from './components/common/edit.guard';
 import { UserService } from './services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
 import { LoginModalComponent, LoginModalService } from './components/navigation/login-modal.component';
-import { LinkModalComponent } from './components/codescheme/link-modal.component';
-import { LinkListModalComponent } from './components/codescheme/link-list-modal.component';
-import { LinkModalService } from './components/codescheme/link-modal.component';
+import { LinkModalComponent, LinkModalService } from './components/codescheme/link-modal.component';
+import { LinkListModalComponent, LinkListModalService } from './components/codescheme/link-list-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -137,7 +136,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     UserService,
     AuthorizationManager,
     ConfirmationModalService,
-    LinkModalService
+    LinkModalService,
+    LinkListModalService
   ],
   bootstrap: [AppComponent]
 })

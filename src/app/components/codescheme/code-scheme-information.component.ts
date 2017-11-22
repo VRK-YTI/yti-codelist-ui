@@ -6,6 +6,7 @@ import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { ignoreModalClose } from '../../utils/modal';
 import { LinkModalService } from './link-modal.component';
+import { LinkListModalService } from './link-list-modal.component';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -30,6 +31,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   });
 
   constructor(private linkModalService: LinkModalService,
+              private linkListModalService: LinkListModalService,
               private editableService: EditableService) {
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
     this.linkModalService = linkModalService;
@@ -65,7 +67,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   openList(externalReferences: ExternalReference[]) {
     // TODO: filter only not used externalReferences to be shown as list.
-    this.linkModalService.openList(externalReferences)
+    this.linkListModalService.open(externalReferences)
       .then(link => {
         console.log('openList callback with success');
         const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
