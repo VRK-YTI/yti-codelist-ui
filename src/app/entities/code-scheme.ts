@@ -4,7 +4,6 @@ import { Location } from './location';
 import { CodeRegistry } from './code-registry';
 import { formatDate } from '../utils/date';
 import { ExternalReference } from './external-reference';
-import { replaceMatching } from '../utils/array';
 
 export class CodeScheme extends AbstractResource {
 
@@ -51,14 +50,5 @@ export class CodeScheme extends AbstractResource {
 
   addExternalReference(addedLink: ExternalReference) {
     this.externalReferences.push(addedLink);
-  }
-
-  replaceExternalReference(addedLink: ExternalReference) {
-
-    const replaced = replaceMatching(this.externalReferences, ref => ref.id === addedLink.id, addedLink);
-
-    if (!replaced) {
-      throw new Error('Matching reference not found');
-    }
   }
 }

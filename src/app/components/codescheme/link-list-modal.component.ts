@@ -1,7 +1,10 @@
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
+import { DataService } from '../../services/data.service';
+import { LinkCreateModalService } from './link-create-modal.component';
+import { ignoreModalClose } from '../../utils/modal';
 
 @Injectable()
 export class LinkListModalService {
@@ -9,10 +12,11 @@ export class LinkListModalService {
   constructor(private modalService: NgbModal) {
   }
 
-  public open(externalReferences: ExternalReference[]): Promise<ExternalReference> {
+  public open(codeSchemeId: string, restrictExternalReferenceIds: string[]): Promise<ExternalReference> {
     const modalRef = this.modalService.open(LinkListModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as LinkListModalComponent;
-    instance.externalReferences = externalReferences;
+    instance.codeSchemeId = codeSchemeId;
+    instance.restrictExternalReferenceIds = restrictExternalReferenceIds;
     return modalRef.result;
   }
 }
@@ -22,12 +26,23 @@ export class LinkListModalService {
   templateUrl: './link-list-modal.component.html',
   providers: [EditableService]
 })
-export class LinkListModalComponent {
+export class LinkListModalComponent implements OnInit {
 
-  @Input() externalReferences: ExternalReference[] = [];
+  @Input() codeSchemeId: string;
+  @Input() restrictExternalReferenceIds: string[];
+
+  externalReferences: ExternalReference[] = [];
   selectedExternalReference: ExternalReference;
 
-  constructor(private modal: NgbActiveModal) {
+  constructor(private modal: NgbActiveModal,
+              private dataService: DataService,
+              private linkCreateModalService: LinkCreateModalService) {
+  }
+
+  ngOnInit() {
+    this.dataService.getExternalReferences(this.codeSchemeId).subscribe(externalReferences => {
+      this.externalReferences = externalReferences.filter(link => this.restrictExternalReferenceIds.indexOf(link.id) !== -1);
+    });
   }
 
   close() {
@@ -40,11 +55,8 @@ export class LinkListModalComponent {
   }
 
   create() {
-    this.modal.dismiss('create');
-  }
-
-  isChecked(externalReference: ExternalReference) {
-    return this.selectedExternalReference && externalReference.url === this.selectedExternalReference.url;
+    this.linkCreateModalService.open()
+      .then(link => this.modal.close(link), ignoreModalClose);
   }
 
   canSelect() {

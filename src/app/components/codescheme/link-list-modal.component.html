@@ -14,7 +14,7 @@
                    type="radio"
                    name="externalReference"
                    (click)="selectedExternalReference = externalReference"
-                   [checked]="isChecked(externalReference)"
+                   [checked]="selectedExternalReference === externalReference"
                    title="{{externalReference.titles | translateValue}}">
             {{externalReference.titles | translateValue}}
           </label>
