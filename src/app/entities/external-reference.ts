@@ -8,5 +8,5 @@ export class ExternalReference {
   url = '';
   titles: Localizable = {};
   descriptions: Localizable = {};
-  propertyType?: PropertyType;
+  propertyType: PropertyType;
 }

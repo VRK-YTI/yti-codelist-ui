@@ -105,10 +105,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   editExternalReference(externalReference: ExternalReference) {
-    this.linkEditModalService.open(externalReference).then(link => {
-      const addedLink: ExternalReference = Object.assign(new ExternalReference(), link);
-      this.codeScheme.addExternalReference(addedLink);
-    }, ignoreModalClose);
+    this.linkEditModalService.open(externalReference);
   }
 
   showExternalReference(externalReference: ExternalReference) {
