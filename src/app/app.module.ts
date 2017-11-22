@@ -12,9 +12,9 @@ import {
 import { AppComponent } from './components/app.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { LanguageService } from './services/language.service';
-import { NavigationBarComponent } from './components/navigation-bar.component';
-import { BreadcrumbComponent } from './components/breadcrumb.component';
-import { FooterComponent } from './components/footer.component';
+import { NavigationBarComponent } from './components/navigation/navigation-bar.component';
+import { BreadcrumbComponent } from './components/navigation/breadcrumb.component';
+import { FooterComponent } from './components/navigation/footer.component';
 import { TranslateValuePipe } from './pipes/translate-value.pipe';
 import { LocationService } from './services/location.service';
 import { Observable } from 'rxjs/Observable';
@@ -43,7 +43,7 @@ import { ConfirmationModalComponent, ConfirmationModalService } from './componen
 import { EditGuard } from './components/common/edit.guard';
 import { UserService } from './services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
-import { LoginModalComponent, LoginModalService } from './components/login-modal.component';
+import { LoginModalComponent, LoginModalService } from './components/navigation/login-modal.component';
 import { LinkModalComponent } from './components/codescheme/link-modal.component';
 import { LinkListModalComponent } from './components/codescheme/link-list-modal.component';
 import { LinkModalService } from './components/codescheme/link-modal.service';
