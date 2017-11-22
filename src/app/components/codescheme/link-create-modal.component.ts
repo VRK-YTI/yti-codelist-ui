@@ -2,7 +2,6 @@ import { Component, Injectable } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { PropertyType } from '../../entities/property-type';
 import { DataService } from '../../services/data.service';
 
@@ -25,46 +24,28 @@ export class LinkCreateModalService {
 })
 export class LinkCreateModalComponent {
 
-  link: ExternalReference;
-  initialized: boolean;
+  link = new ExternalReference();
   propertyTypes: PropertyType[];
-  propertyType: PropertyType;
-
-  linkForm = new FormGroup({
-    titles: new FormControl({}),
-    descriptions: new FormControl({}),
-    url: new FormControl('')
-  });
 
   constructor(private dataService: DataService,
               private editableService: EditableService,
               private modal: NgbActiveModal) {
 
-    this.link = new ExternalReference();
-    this.link.titles = {};
-    this.link.descriptions = {};
+    this.editableService.edit();
 
     this.dataService.getPropertyTypes('ExternalReference').subscribe(types => {
-      this.propertyTypes = types;
-      if (this.link.propertyType !== undefined) {
-        this.propertyType = this.link.propertyType;
-      } else if (this.propertyTypes !== undefined && this.propertyTypes.length > 0) {
-        this.propertyType = this.propertyTypes[0];
-        this.link.propertyType = this.propertyType;
-      } else {
-        console.log('Issue with PropertyType not being set!');
+
+      if (types.length === 0) {
+        throw new Error('No types');
       }
-      this.linkForm.reset(this.link);
-      this.editableService.edit();
 
-      this.initialized = true;
+      this.propertyTypes = types;
+      this.link.propertyType = types[0];
     });
-
-    this.linkForm.reset(this.link);
   }
 
   get initializing(): boolean {
-    return this.propertyTypes == null && this.initialized;
+    return !this.propertyTypes;
   }
 
   close() {
@@ -72,7 +53,6 @@ export class LinkCreateModalComponent {
   }
 
   add() {
-    this.link.propertyType = this.propertyType;
-    this.modal.close(Object.assign({}, this.link, this.linkForm.value));
+    this.modal.close(this.link);
   }
 }

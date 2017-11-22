@@ -12,32 +12,46 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-md-12">
+
         <app-content-language class="pull-right"></app-content-language>
-        <form [formGroup]="linkForm" #form="ngForm">
+
+        <form #form="ngForm">
+
           <app-localizable-input [label]="'Link title' | translate"
-                                 [formControlName]="'titles'"></app-localizable-input>
+                                 [name]="'titles'"
+                                 [(ngModel)]="link.titles"></app-localizable-input>
 
           <app-localizable-textarea [label]="'Description' | translate"
-                                    [formControlName]="'descriptions'"></app-localizable-textarea>
+                                    [name]="'description'"
+                                    [(ngModel)]="link.descriptions"></app-localizable-textarea>
 
           <app-literal-input [label]="'URL' | translate"
-                             [formControlName]="'url'"></app-literal-input>
+                             [name]="'url'"
+                             [(ngModel)]="link.url"></app-literal-input>
 
-          <div ngbDropdown class="d-inline-block">
-            <app-literal [label]="'Property type' | translate"></app-literal>
-            <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
-              <span>{{this.propertyType.prefLabels | translateValue}}</span>
-            </button>
+          <dl>
+            <dt><label translate>Property type</label></dt>
+            <dd>
+              <div class="form-group">
+                <div ngbDropdown class="d-inline-block">
 
-            <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
-              <button *ngFor="let propertyTypeOption of propertyTypes"
-                      (click)="propertyType = propertyTypeOption"
-                      class="dropdown-item"
-                      [class.active]="propertyTypeOption == propertyType">
-                {{propertyTypeOption.prefLabels | translateValue}}
-              </button>
-            </div>
-          </div>
+                  <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
+                    <span>{{link.propertyType.prefLabels | translateValue}}</span>
+                  </button>
+
+                  <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
+                    <button *ngFor="let propertyTypeOption of propertyTypes"
+                            (click)="link.propertyType = propertyTypeOption"
+                            class="dropdown-item"
+                            [class.active]="propertyTypeOption == link.propertyType">
+                      {{propertyTypeOption.prefLabels | translateValue}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </dd>
+          </dl>
+
         </form>
       </div>
     </div>

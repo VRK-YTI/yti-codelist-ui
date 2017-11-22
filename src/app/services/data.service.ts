@@ -48,6 +48,18 @@ function createCodeRegistryEntity(registry: CodeRegistryType): CodeRegistry {
   return entity;
 }
 
+function createExternalReferenceEntity(externalReference: ExternalReferenceType): ExternalReference {
+
+  const entity = new ExternalReference();
+  entity.id = externalReference.id;
+  entity.titles = externalReference.titles || {};
+  entity.descriptions = externalReference.descriptions || {};
+  entity.uri = externalReference.uri;
+  entity.url = externalReference.url;
+  entity.propertyType = externalReference.propertyType;
+  return entity;
+}
+
 function createCodeSchemeEntity(scheme: CodeSchemeType): CodeScheme {
 
   const entity = new CodeScheme();
@@ -65,7 +77,7 @@ function createCodeSchemeEntity(scheme: CodeSchemeType): CodeScheme {
   entity.changeNotes = scheme.changeNotes || {};
   entity.definitions = scheme.definitions || {};
   entity.dataClassifications = scheme.dataClassifications || [];
-  entity.externalReferences = scheme.externalReferences || [];
+  entity.externalReferences = (scheme.externalReferences || []).map(createExternalReferenceEntity);
   return entity;
 }
 
@@ -94,18 +106,6 @@ function createPropertyTypeEntity(propertyType: PropertyTypeType): PropertyType 
   entity.context = propertyType.context;
   entity.localName = propertyType.localName;
   entity.type = propertyType.type;
-  return entity;
-}
-
-function createExternalReferenceEntity(externalReference: ExternalReferenceType): ExternalReference {
-
-  const entity = new ExternalReference();
-  entity.id = externalReference.id;
-  entity.titles = externalReference.titles || {};
-  entity.descriptions = externalReference.descriptions || {};
-  entity.uri = externalReference.uri;
-  entity.url = externalReference.url;
-  entity.propertyType = externalReference.propertyType;
   return entity;
 }
 
