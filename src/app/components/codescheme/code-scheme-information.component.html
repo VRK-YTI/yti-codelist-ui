@@ -38,8 +38,8 @@
   <app-literal [label]="'Links' | translate"></app-literal>
 
   <div *ngFor="let externalReference of codeScheme.externalReferences">
-    <button type="button" class="btn btn-link" (click)="showExternalReference(externalReference);">{{externalReference.titles | translateValue}}</button>
-    <button *ngIf="editing" type="button" class="icon-pencil" (click)="editExternalReference(externalReference);"></button>
+    <button type="button" class="btn btn-link" (click)="showExternalReference(externalReference)">{{externalReference.titles | translateValue}}</button>
+    <button *ngIf="editing" type="button" class="icon-pencil" (click)="editExternalReference(externalReference)"></button>
     <button *ngIf="editing" type="button" class="icon-trash" (click)="removeExternalReference(externalReference)"></button>
   </div>
 </div>
