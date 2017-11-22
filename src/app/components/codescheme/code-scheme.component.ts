@@ -47,7 +47,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
       this.locationService.atCodeSchemePage(codeScheme);
-      this.dataService.getExternalReferences(this.codeScheme).subscribe(externalReferences => {
+      this.dataService.getExternalReferences(codeScheme.id).subscribe(externalReferences => {
         this.externalReferences = externalReferences;
       });
     });

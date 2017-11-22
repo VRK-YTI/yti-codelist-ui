@@ -175,10 +175,10 @@ export class DataService {
       .map(res => createCodeSchemeEntity(res.json()));
   }
 
-  getExternalReferences(codeScheme: CodeScheme): Observable<ExternalReference[]> {
+  getExternalReferences(codeSchemeId: string): Observable<ExternalReference[]> {
 
     const params = new URLSearchParams();
-    params.append('codeSchemeId', codeScheme.id);
+    params.append('codeSchemeId', codeSchemeId);
     params.append('expand', 'propertyType');
 
     // FIXME why results can be undefined?
