@@ -32,7 +32,7 @@
   <app-literal [label]="'Last modification' | translate"
                [value]="codeScheme.modifiedDisplayValue"></app-literal>
 
-  <dl *ngIf="externalReferences.length > 0">
+  <dl *ngIf="editing || externalReferences.length > 0">
     <dt><label translate>Links</label></dt>
     <dd>
       <div *ngFor="let externalReference of externalReferences">
