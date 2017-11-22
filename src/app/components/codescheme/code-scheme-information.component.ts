@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { ignoreModalClose } from '../../utils/modal';
-import { LinkModalService } from './link-modal.service';
+import { LinkModalService } from './link-modal.component';
 
 @Component({
   selector: 'app-code-scheme-information',

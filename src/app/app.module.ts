@@ -46,7 +46,7 @@ import { AuthorizationManager } from './services/authorization-manager.service';
 import { LoginModalComponent, LoginModalService } from './components/navigation/login-modal.component';
 import { LinkModalComponent } from './components/codescheme/link-modal.component';
 import { LinkListModalComponent } from './components/codescheme/link-list-modal.component';
-import { LinkModalService } from './components/codescheme/link-modal.service';
+import { LinkModalService } from './components/codescheme/link-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),

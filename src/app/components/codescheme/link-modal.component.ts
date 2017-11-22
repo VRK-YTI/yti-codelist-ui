@@ -1,10 +1,57 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Injectable, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PropertyType } from '../../entities/property-type';
 import { DataService } from '../../services/data.service';
+import { LinkListModalComponent } from './link-list-modal.component';
+
+@Injectable()
+export class LinkModalService {
+
+  constructor(private modalService: NgbModal) {
+  }
+
+  public openList(externalReferences: ExternalReference[]): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkListModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as LinkListModalComponent;
+    instance.externalReferences = externalReferences;
+    return modalRef.result;
+  }
+
+  public openWithShow(externalReference: ExternalReference): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as LinkModalComponent;
+    instance.link = externalReference;
+    instance.enableEdit = false;
+    instance.isCreating = false;
+    return modalRef.result;
+  }
+
+  public openWithCreate(): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as LinkModalComponent;
+    const link: ExternalReference = new ExternalReference();
+    link.titles = {};
+    link.descriptions = {};
+    instance.link = link;
+    instance.isCreating = true;
+    instance.enableEdit = true;
+    return modalRef.result;
+  }
+
+  public openWithModify(externalReference: ExternalReference): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as LinkModalComponent;
+    console.log('Url: ' + externalReference.url);
+    instance.link = externalReference;
+    instance.enableEdit = true;
+    instance.isCreating = false;
+    return modalRef.result;
+  }
+}
+
 
 @Component({
   selector: 'app-link-modal',
