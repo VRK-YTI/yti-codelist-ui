@@ -47,8 +47,4 @@ export class CodeScheme extends AbstractResource {
       route: this.route
     }];
   }
-
-  addExternalReference(addedLink: ExternalReference) {
-    this.externalReferences.push(addedLink);
-  }
 }

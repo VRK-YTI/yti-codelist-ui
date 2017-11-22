@@ -9,4 +9,8 @@ export class ExternalReference {
   titles: Localizable = {};
   descriptions: Localizable = {};
   propertyType: PropertyType;
+
+  clone() {
+    return Object.assign(new ExternalReference(), this);
+  }
 }

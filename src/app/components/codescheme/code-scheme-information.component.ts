@@ -26,7 +26,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
-    license: new FormControl('')
+    license: new FormControl(''),
+    externalReferences: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -45,6 +46,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   private reset() {
     this.codeSchemeForm.reset(this.codeScheme);
+    // TODO doesn't feel quite right but we don't wan't to modify existing references
+    this.codeSchemeForm.patchValue({
+      externalReferences: this.codeScheme.externalReferences.map(link => link.clone())
+    });
   }
 
   ngOnDestroy() {
@@ -55,13 +60,17 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     return this.editableService.editing;
   }
 
+  get externalReferences(): ExternalReference[] {
+    return this.codeSchemeForm.value.externalReferences;
+  }
+
   addLink() {
 
-    const restrictIds = this.codeScheme.externalReferences.map(link => link.id);
+    const restrictIds = this.externalReferences.map(link => link.id);
 
     this.linkListModalService.open(this.codeScheme.id, restrictIds)
       .then(link => {
-        this.codeScheme.addExternalReference(link);
+        this.externalReferences.push(link);
       }, ignoreModalClose);
   }
 
@@ -74,6 +83,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   removeExternalReference(externalReference: ExternalReference) {
-    remove(this.codeScheme.externalReferences, externalReference);
+    remove(this.externalReferences, externalReference);
   }
 }
