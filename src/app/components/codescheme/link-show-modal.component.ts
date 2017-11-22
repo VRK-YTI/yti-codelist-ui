@@ -2,7 +2,6 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { PropertyType } from '../../entities/property-type';
 import { DataService } from '../../services/data.service';
 
@@ -32,12 +31,6 @@ export class LinkShowModalComponent implements OnInit {
   propertyTypes: PropertyType[];
   propertyType: PropertyType;
 
-  linkForm = new FormGroup({
-    titles: new FormControl({}),
-    descriptions: new FormControl({}),
-    url: new FormControl('')
-  });
-
   constructor(private dataService: DataService,
               private modal: NgbActiveModal) {
   }
@@ -53,11 +46,9 @@ export class LinkShowModalComponent implements OnInit {
       } else {
         console.log('Issue with PropertyType not being set!');
       }
-      this.linkForm.reset(this.link);
+
       this.initialized = true;
     });
-
-    this.linkForm.reset(this.link);
   }
 
   get initializing(): boolean {

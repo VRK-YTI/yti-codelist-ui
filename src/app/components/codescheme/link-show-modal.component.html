@@ -12,22 +12,21 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-md-12">
+
         <app-content-language class="pull-right"></app-content-language>
-        <form [formGroup]="linkForm" #form="ngForm">
-          <app-localizable-input [label]="'Link title' | translate"
-                                 [formControlName]="'titles'"></app-localizable-input>
 
-          <app-localizable-textarea [label]="'Description' | translate"
-                                    [formControlName]="'descriptions'"></app-localizable-textarea>
+        <app-localizable-literal [label]="'Link title' | translate"
+                                 [value]="link.titles"></app-localizable-literal>
 
-          <app-literal-input [label]="'URL' | translate"
-                             [formControlName]="'url'"></app-literal-input>
+        <app-localizable-literal [label]="'Description' | translate"
+                                 [value]="link.descriptions"></app-localizable-literal>
 
-          <div *ngIf="propertyType !== undefined">
-            <app-literal [label]="'Property type' | translate"
-                         [value]="propertyType.prefLabels | translateValue"></app-literal>
-          </div>
-        </form>
+        <app-literal [label]="'URL' | translate"
+                     [value]="link.url"></app-literal>
+
+        <app-localizable-literal *ngIf="propertyType !== undefined"
+                                 [label]="'Property type' | translate"
+                                 [value]="propertyType.prefLabels"></app-localizable-literal>
       </div>
     </div>
   </div>
