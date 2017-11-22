@@ -1,37 +1,31 @@
-<div *ngIf="initializing">
-  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+<div class="modal-header">
+  <h4 class="modal-title strong">
+    <a><i class="fa fa-times" (click)="close()"></i></a>
+    <span translate>Show link</span>
+  </h4>
 </div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
 
-<div *ngIf="!initializing">
-  <div class="modal-header">
-    <h4 class="modal-title strong">
-      <a><i class="fa fa-times" (click)="close()"></i></a>
-      <span translate>Show link</span>
-    </h4>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-md-12">
+      <app-content-language class="pull-right"></app-content-language>
 
-        <app-content-language class="pull-right"></app-content-language>
+      <app-localizable-literal [label]="'Link title' | translate"
+                               [value]="link.titles"></app-localizable-literal>
 
-        <app-localizable-literal [label]="'Link title' | translate"
-                                 [value]="link.titles"></app-localizable-literal>
+      <app-localizable-literal [label]="'Description' | translate"
+                               [value]="link.descriptions"></app-localizable-literal>
 
-        <app-localizable-literal [label]="'Description' | translate"
-                                 [value]="link.descriptions"></app-localizable-literal>
+      <app-literal [label]="'URL' | translate"
+                   [value]="link.url"></app-literal>
 
-        <app-literal [label]="'URL' | translate"
-                     [value]="link.url"></app-literal>
-
-        <app-localizable-literal [label]="'Property type' | translate"
-                                 [value]="link.propertyType.prefLabels"></app-localizable-literal>
-      </div>
+      <app-localizable-literal [label]="'Property type' | translate"
+                               [value]="link.propertyType.prefLabels"></app-localizable-literal>
     </div>
   </div>
-  <div class="modal-footer">
-    <div>
-      <button type="button" class="btn btn-action" (click)="close()" translate>Ok</button>
-    </div>
+</div>
+<div class="modal-footer">
+  <div>
+    <button type="button" class="btn btn-action" (click)="close()" translate>Ok</button>
   </div>
 </div>
