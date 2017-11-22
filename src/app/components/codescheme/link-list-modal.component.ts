@@ -10,7 +10,7 @@ import { ExternalReference } from '../../entities/external-reference';
 })
 export class LinkListModalComponent {
 
-  @Input() externalReferences: ExternalReference[];
+  @Input() externalReferences: ExternalReference[] = [];
   selectedExternalReference: ExternalReference;
 
   constructor(private modal: NgbActiveModal) {
