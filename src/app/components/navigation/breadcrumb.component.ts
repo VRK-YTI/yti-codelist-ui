@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { LocationService } from '../services/location.service';
-import { Location } from '../entities/location';
+import { LocationService } from '../../services/location.service';
+import { Location } from '../../entities/location';
 
 @Component({
   selector: 'app-breadcrumb',

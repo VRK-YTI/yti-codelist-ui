@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Language, LanguageService } from '../services/language.service';
-import { UserService } from '../services/user.service';
+import { Language, LanguageService } from '../../services/language.service';
+import { UserService } from '../../services/user.service';
 import { LoginModalService } from './login-modal.component';
 
 @Component({
