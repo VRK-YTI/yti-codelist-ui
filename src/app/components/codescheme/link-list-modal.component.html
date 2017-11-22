@@ -24,7 +24,7 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-action" [disabled]="selectedExternalReference === undefined" (click)="select()" translate>Select</button>
+  <button type="button" class="btn btn-action" [disabled]="!canSelect()" (click)="select()" translate>Select</button>
   <button type="button" class="btn btn-action" (click)="create()" translate>Add new link</button>
   <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
 </div>

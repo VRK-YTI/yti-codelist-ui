@@ -32,4 +32,8 @@ export class LinkListModalComponent {
   isChecked(externalReference: ExternalReference) {
     return this.selectedExternalReference && externalReference.url === this.selectedExternalReference.url;
   }
+
+  canSelect() {
+    return this.selectedExternalReference != null;
+  }
 }
