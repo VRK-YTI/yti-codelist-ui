@@ -138,7 +138,7 @@ export class DataService {
   searchCodeSchemes(searchTerm: string, classification: string|null): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry');
+    params.append('expand', 'codeRegistry,externalReference,propertyType');
 
     if (searchTerm) {
       params.append('prefLabel', searchTerm);
