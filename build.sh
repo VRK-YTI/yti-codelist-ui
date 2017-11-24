@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 #
-docker build -t yti-codelist-ui .
+docker build -f Dockerfile.local -t yti-codelist-ui .
