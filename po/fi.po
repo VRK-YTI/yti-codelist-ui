@@ -2,16 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-20 15:49+0200\n"
+"PO-Revision-Date: 2017-11-27 17:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Link type"
+msgstr "Linking tyyppi"
 
 msgid "Yes"
 msgstr "Kyllä"
@@ -83,8 +86,20 @@ msgstr "Lakiperuste"
 msgid "Governance policy"
 msgstr "Sitovuustaso"
 
+msgid "Status"
+msgstr "Tila"
+
 msgid "License"
 msgstr "Lisenssi"
+
+msgid "Classification"
+msgstr "Luokitus"
+
+msgid "Links"
+msgstr "Linkit"
+
+msgid "Add link"
+msgstr "Lisää linkki"
 
 msgid "Export"
 msgstr "Lataa"
@@ -97,6 +112,54 @@ msgstr "Lataa Excel"
 
 msgid "CODES"
 msgstr "KOODIT"
+
+msgid "Link title"
+msgstr "Linkin nimi"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Add new link"
+msgstr "Lisää uusi linkki"
+
+msgid "Add"
+msgstr "Lisää"
+
+msgid "Edit link"
+msgstr "Muokkaa"
+
+msgid "Select link"
+msgstr "Valitse linkki"
+
+msgid "There are no links available, please create new ones."
+msgstr "Linkkejä ei ole saatavilla. Luo uusia linkkejä."
+
+msgid "Select"
+msgstr "Valitse"
+
+msgid "Show link"
+msgstr "Näytä linkki"
+
+msgid "Ok"
+msgstr "Ok"
+
+msgid "Search for code lists"
+msgstr "Hae koodistoa"
+
+msgid "All registries"
+msgstr "Kaikki rekisterit"
+
+msgid "All statuses"
+msgstr "Kaikki tilat"
+
+msgid "code schemes"
+msgstr "koodistoa"
+
+msgid "Search did not find any codeschemes."
+msgstr "Haulla ei löytynyt yhtään koodistoa."
+
+msgid "1 code scheme"
+msgstr "1 koodisto"
 
 msgid "Code List Service"
 msgstr "Koodistoeditori"
@@ -121,35 +184,14 @@ msgstr "Ota yhteyttä"
 msgid "Sourcecode is licensed under EUPL-1.2 license."
 msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."
 
-msgid "Search for code lists"
-msgstr "Hae koodistoa"
-
-msgid "All registries"
-msgstr "Kaikki rekisterit"
-
-msgid "All statuses"
-msgstr "Kaikki tilat"
-
-msgid "code schemes"
-msgstr "koodistoa"
-
-msgid "Classification"
-msgstr "Luokitus"
-
-msgid "Search did not find any codeschemes."
-msgstr "Haulla ei löytynyt yhtään koodistoa."
-
-msgid "1 code scheme"
-msgstr "1 koodisto"
-
 msgid "LOG IN"
 msgstr "KIRJAUDU SISÄÄN"
 
 msgid "LOG OUT"
 msgstr "KIRJAUDU ULOS"
 
-msgid "DRAFT"
-msgstr "Luonnos"
+msgid "Code"
+msgstr "Koodi"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -157,20 +199,20 @@ msgstr "Etusivu"
 msgid "SUBMITTED"
 msgstr "Odottaa hyväksyntää"
 
-msgid "INVALID"
-msgstr "Virheellinen"
-
 msgid "RETIRED"
 msgstr "Poistettu"
 
 msgid "VALID"
 msgstr "Voimassa oleva"
 
+msgid "INVALID"
+msgstr "Virheellinen"
+
+msgid "DRAFT"
+msgstr "Luonnos"
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "Code"
-msgstr "Koodi"
 
 msgid "Submit error"
 msgstr "Toiminnossa tapahtui virhe"
@@ -188,53 +230,32 @@ msgstr ""
 "Oletko varma, että haluat jatkaa? Jatkaessasi tallentamattomat muutokset "
 "katoavat."
 
-#~ msgid "All organizations"
-#~ msgstr "Kaikki organisaatiot"
-
-msgid "Links"
-msgstr "Linkit"
-
-msgid "Link title"
-msgstr "Linkin nimi"
-
-msgid "Add link"
-msgstr "Lisää linkki"
-
-msgid "Edit link"
-msgstr "Muokkaa linkkiä"
-
-msgid "Add new link"
-msgstr "Lisää uusi linkki"
-
-msgid "Select"
-msgstr "Valitse"
-
-msgid "Select link"
-msgstr "Valitse linkki"
-
-msgid "Add"
-msgstr "Lisää"
-
-msgid "Type"
-msgstr "Tyyppi"
-
-msgid "There are no links."
-msgstr "Linkkejä ei ole."
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Ok"
-msgstr "Ok"
-
-msgid "Link type"
-msgstr "Linkin tyyppi"
-
-msgid "There are no links available, please create new ones."
-msgstr "Linkkejä ei ole saatavilla. Luo uusia linkkejä."
-
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
+
+#~ msgid "Property type"
+#~ msgstr "Ominaisuuden tyyppi"
+
+#~ msgid "Add externalReference"
+#~ msgstr "Lisää linkki"
+
+#~ msgid "Edit externalReference"
+#~ msgstr "Muokkaa linkkiä"
+
+#~ msgid "Add new externalReference"
+#~ msgstr "Lisää uusi linkki"
+
+#~ msgid "Select externalReference"
+#~ msgstr "Valitse linkki"
+
+#~ msgid "Type"
+#~ msgstr "Tyyppi"
+
+#~ msgid "There are no links."
+#~ msgstr "Linkkejä ei ole."
+
+#~ msgid "All organizations"
+#~ msgstr "Kaikki organisaatiot"
 
 #~ msgid "Modify"
 #~ msgstr "Muokkaa"
@@ -256,6 +277,3 @@ msgstr "POISTETAANKO LINKKI?"
 
 #~ msgid "licensed under the"
 #~ msgstr "lisenssillä"
-
-#~ msgid "Status"
-#~ msgstr "Tila"

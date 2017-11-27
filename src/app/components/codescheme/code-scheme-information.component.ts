@@ -9,6 +9,7 @@ import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
 import { remove } from '../../utils/array';
+import { PropertyType } from '../../entities/property-type';
 import { ConfirmationModalService } from '../common/confirmation-modal.component';
 
 @Component({
@@ -28,7 +29,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
     license: new FormControl(''),
-    externalReferences: new FormControl()
+    externalReferences: new FormControl(),
+    dataClassifications: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -64,6 +66,21 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   get externalReferences(): ExternalReference[] {
     return this.codeSchemeForm.value.externalReferences;
+  }
+
+  getUsedPropertyTypes(): PropertyType[] {
+    const propertyTypes: PropertyType[] = [];
+    for (const externalReference of this.codeSchemeForm.value.externalReferences) {
+      if (propertyTypes.findIndex(propertyType => propertyType.localName === externalReference.propertyType.localName) === -1) {
+        propertyTypes.push(externalReference.propertyType);
+      }
+    }
+    return propertyTypes;
+  }
+
+  getExternalReferencesByLocalName(localName: string): ExternalReference[] {
+    return this.codeSchemeForm.value.externalReferences.filter((externalReference: ExternalReference) =>
+        externalReference.propertyType.localName === localName);
   }
 
   addLink() {

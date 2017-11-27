@@ -34,8 +34,8 @@
   <app-literal-input [label]="'Governance policy' | translate"
                      [formControlName]="'governancePolicy'"></app-literal-input>
 
-  <app-literal-input [label]="'License' | translate"
-                     [formControlName]="'license'"></app-literal-input>
+  <app-literal [label]="'Status' | translate"
+               [value]="codeScheme.status | translate"></app-literal>
 
   <app-literal [label]="'Validity' | translate"
                [value]="codeScheme.validity"></app-literal>
@@ -46,10 +46,15 @@
   <dl *ngIf="editing || externalReferences.length > 0">
     <dt><label translate>Links</label></dt>
     <dd>
-      <div *ngFor="let externalReference of externalReferences">
-        <button type="button" class="btn btn-link" (click)="showExternalReference(externalReference)">{{externalReference.titles | translateValue}}</button>
-        <button *ngIf="editing" type="button" class="icon-pencil" (click)="editExternalReference(externalReference)"></button>
-        <button *ngIf="editing" type="button" class="icon-trash" (click)="removeExternalReference(externalReference)"></button>
+      <div *ngFor="let propertyType of getUsedPropertyTypes()">
+        <div *ngIf="getExternalReferencesByLocalName(propertyType.localName).length > 0">
+          <label>{{propertyType.prefLabels | translateValue}}</label>
+          <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
+            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">{{externalReference.titles | translateValue}}</button>
+            <button *ngIf="editing" type="button" class="icon icon-pencil" (click)="editExternalReference(externalReference)"></button>
+            <button *ngIf="editing" type="button" class="icon icon-trash" (click)="removeExternalReference(externalReference)"></button>
+          </div>
+        </div>
       </div>
 
       <div *ngIf="editing">
@@ -57,5 +62,8 @@
       </div>
     </dd>
   </dl>
+
+  <app-literal-input [label]="'License' | translate"
+                     [formControlName]="'license'"></app-literal-input>
 
 </form>

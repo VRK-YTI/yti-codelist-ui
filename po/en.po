@@ -2,16 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-20 15:12+0200\n"
+"PO-Revision-Date: 2017-11-27 17:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Link type"
+msgstr ""
 
 msgid "Yes"
 msgstr ""
@@ -79,7 +82,19 @@ msgstr ""
 msgid "Governance policy"
 msgstr ""
 
+msgid "Status"
+msgstr ""
+
 msgid "License"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "Links"
+msgstr ""
+
+msgid "Add link"
 msgstr ""
 
 msgid "Export"
@@ -92,6 +107,54 @@ msgid "Export Excel"
 msgstr ""
 
 msgid "CODES"
+msgstr ""
+
+msgid "Link title"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Add new link"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Edit link"
+msgstr ""
+
+msgid "Select link"
+msgstr ""
+
+msgid "There are no links available, please create new ones."
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Show link"
+msgstr ""
+
+msgid "Ok"
+msgstr ""
+
+msgid "Search for code lists"
+msgstr ""
+
+msgid "All registries"
+msgstr ""
+
+msgid "All statuses"
+msgstr ""
+
+msgid "code schemes"
+msgstr ""
+
+msgid "Search did not find any codeschemes."
+msgstr ""
+
+msgid "1 code scheme"
 msgstr ""
 
 msgid "Code List Service"
@@ -117,31 +180,13 @@ msgstr ""
 msgid "Sourcecode is licensed under EUPL-1.2 license."
 msgstr ""
 
-msgid "Search for code lists"
-msgstr ""
-
-msgid "All registries"
-msgstr ""
-
-msgid "All statuses"
-msgstr ""
-
-msgid "code schemes"
-msgstr ""
-
-msgid "Classification"
-msgstr ""
-
-msgid "Search did not find any codeschemes."
-msgstr ""
-
-msgid "1 code scheme"
-msgstr ""
-
 msgid "LOG IN"
 msgstr ""
 
-msgid "DRAFT"
+msgid "LOG OUT"
+msgstr ""
+
+msgid "Code"
 msgstr ""
 
 msgid "Front page"
@@ -150,19 +195,19 @@ msgstr ""
 msgid "SUBMITTED"
 msgstr ""
 
+msgid "RETIRED"
+msgstr ""
+
 msgid "VALID"
 msgstr ""
 
 msgid "INVALID"
 msgstr ""
 
-msgid "RETIRED"
+msgid "DRAFT"
 msgstr ""
 
 msgid "SUPERSEDED"
-msgstr ""
-
-msgid "Code"
 msgstr ""
 
 msgid "Submit error"
@@ -177,48 +222,6 @@ msgstr ""
 msgid ""
 "Are you sure that you want to continue? By continuing unsaved changes will "
 "be lost."
-msgstr ""
-
-msgid "Links"
-msgstr ""
-
-msgid "Add link"
-msgstr ""
-
-msgid "Edit link"
-msgstr ""
-
-msgid "Add new link"
-msgstr ""
-
-msgid "Link title"
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Select link"
-msgstr ""
-
-msgid "Add"
-msgstr ""
-
-msgid "Type"
-msgstr ""
-
-msgid "There are no links."
-msgstr ""
-
-msgid "URL"
-msgstr ""
-
-msgid "Ok"
-msgstr ""
-
-msgid "Link type"
-msgstr ""
-
-msgid "There are no links available, please create new ones."
 msgstr ""
 
 msgid "REMOVE LINK?"
