@@ -14,18 +14,18 @@
 
         <app-localizable-input [label]="'Link title' | translate"
                                [name]="'titles'"
-                               [(ngModel)]="link.titles"></app-localizable-input>
+                               [(ngModel)]="externalReference.titles"></app-localizable-input>
 
         <app-localizable-textarea [label]="'Description' | translate"
                                   [name]="'description'"
-                                  [(ngModel)]="link.descriptions"></app-localizable-textarea>
+                                  [(ngModel)]="externalReference.descriptions"></app-localizable-textarea>
 
         <app-literal-input [label]="'URL' | translate"
                            [name]="'url'"
-                           [(ngModel)]="link.url"></app-literal-input>
+                           [(ngModel)]="externalReference.url"></app-literal-input>
 
         <app-property-type-select [name]="'propertyType'"
-                                  [(ngModel)]="link.propertyType"></app-property-type-select>
+                                  [(ngModel)]="externalReference.propertyType"></app-property-type-select>
 
       </form>
     </div>

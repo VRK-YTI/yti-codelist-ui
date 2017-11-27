@@ -12,7 +12,7 @@ export class LinkShowModalService {
   public open(externalReference: ExternalReference): void {
     const modalRef = this.modalService.open(LinkShowModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as LinkShowModalComponent;
-    instance.link = externalReference;
+    instance.externalReference = externalReference;
   }
 }
 
@@ -23,7 +23,7 @@ export class LinkShowModalService {
 })
 export class LinkShowModalComponent {
 
-  @Input() link: ExternalReference;
+  @Input() externalReference: ExternalReference;
 
   constructor(private modal: NgbActiveModal) {
   }

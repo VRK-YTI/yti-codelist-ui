@@ -22,7 +22,7 @@ export class LinkCreateModalService {
 })
 export class LinkCreateModalComponent {
 
-  link = new ExternalReference();
+  externalReference = new ExternalReference();
 
   constructor(private editableService: EditableService,
               private modal: NgbActiveModal) {
@@ -35,6 +35,6 @@ export class LinkCreateModalComponent {
   }
 
   add() {
-    this.modal.close(this.link);
+    this.modal.close(this.externalReference);
   }
 }

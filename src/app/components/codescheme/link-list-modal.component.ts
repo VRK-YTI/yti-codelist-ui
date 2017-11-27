@@ -41,7 +41,8 @@ export class LinkListModalComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getExternalReferences(this.codeSchemeId).subscribe(externalReferences => {
-      this.externalReferences = externalReferences.filter(link => this.restrictExternalReferenceIds.indexOf(link.id) !== -1);
+      this.externalReferences = externalReferences.filter(externalReference =>
+        this.restrictExternalReferenceIds.indexOf(externalReference.id) === -1);
     });
   }
 
@@ -56,7 +57,7 @@ export class LinkListModalComponent implements OnInit {
 
   create() {
     this.linkCreateModalService.open()
-      .then(link => this.modal.close(link), ignoreModalClose);
+      .then(externalReference => this.modal.close(externalReference), ignoreModalClose);
   }
 
   canSelect() {

@@ -11,16 +11,16 @@
       <app-content-language class="pull-right"></app-content-language>
 
       <app-localizable-literal [label]="'Link title' | translate"
-                               [value]="link.titles"></app-localizable-literal>
+                               [value]="externalReference.titles"></app-localizable-literal>
 
       <app-localizable-literal [label]="'Description' | translate"
-                               [value]="link.descriptions"></app-localizable-literal>
+                               [value]="externalReference.descriptions"></app-localizable-literal>
 
       <app-literal [label]="'URL' | translate"
-                   [value]="link.url"></app-literal>
+                   [value]="externalReference.url"></app-literal>
 
       <app-localizable-literal [label]="'Property type' | translate"
-                               [value]="link.propertyType.prefLabels"></app-localizable-literal>
+                               [value]="externalReference.propertyType.prefLabels"></app-localizable-literal>
     </div>
   </div>
 </div>
