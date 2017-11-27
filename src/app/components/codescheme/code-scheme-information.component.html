@@ -8,6 +8,17 @@
   <app-localizable-input [label]="'Code name' | translate"
                          [formControlName]="'prefLabels'"></app-localizable-input>
 
+  <dl *ngIf="codeScheme.dataClassifications.length > 0">
+    <dt>
+      <label translate>Classification</label>
+    </dt>
+    <dd>
+      <div *ngFor="let dataClassification of codeScheme.dataClassifications">
+        <span>{{dataClassification.prefLabels | translateValue}}</span><br/>
+      </div>
+    </dd>
+  </dl>
+
   <app-localizable-textarea [label]="'Description' | translate"
                             [formControlName]="'descriptions'"></app-localizable-textarea>
 
