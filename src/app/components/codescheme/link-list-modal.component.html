@@ -20,6 +20,9 @@
           </label>
         </div>
       </div>
+      <div *ngIf="externalReferences.length === 0">
+        <span translate>There are no links available, please create new ones.</span>
+      </div>
     </div>
   </div>
 </div>

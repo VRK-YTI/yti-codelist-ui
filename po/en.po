@@ -217,3 +217,6 @@ msgstr ""
 
 msgid "Link type"
 msgstr ""
+
+msgid "There are no links available, please create new ones."
+msgstr ""

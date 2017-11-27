@@ -230,6 +230,9 @@ msgstr "Ok"
 msgid "Link type"
 msgstr "Linkin tyyppi"
 
+msgid "There are no links available, please create new ones."
+msgstr "Linkkejä ei ole saatavilla. Luo uusia linkkejä."
+
 #~ msgid "Modify"
 #~ msgstr "Muokkaa"
 

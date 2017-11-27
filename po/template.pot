@@ -205,3 +205,6 @@ msgid ""
 "Are you sure that you want to continue? By continuing unsaved changes will "
 "be lost."
 msgstr ""
+
+msgid "There are no links available, please create new ones."
+msgstr ""
