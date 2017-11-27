@@ -4,6 +4,7 @@ import { Location } from './location';
 import { CodeRegistry } from './code-registry';
 import { formatDate } from '../utils/date';
 import { ExternalReference } from './external-reference';
+import { DataClassification } from './data-classification';
 
 export class CodeScheme extends AbstractResource {
 
@@ -19,7 +20,7 @@ export class CodeScheme extends AbstractResource {
   descriptions: Localizable;
   changeNotes: Localizable;
   definitions: Localizable;
-  dataClassifications: { uri: string }[];
+  dataClassifications: DataClassification[];
   externalReferences: ExternalReference[];
 
   get validity(): string {

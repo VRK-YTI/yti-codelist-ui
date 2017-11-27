@@ -36,7 +36,7 @@ export interface CodeSchemeType extends BaseResourceType {
   descriptions?: Localizable;
   changeNotes?: Localizable;
   definitions?: Localizable;
-  dataClassifications: { uri: string }[];
+  dataClassifications: DataClassificationType[];
   externalReferences?: ExternalReferenceType[];
 }
 
@@ -76,6 +76,10 @@ export interface PropertyTypeType  {
 
 export interface DataClassificationType  {
 
+  id: string;
+  uri: string;
+  status: string;
+  modified: string;
   codeValue: string;
   prefLabels: Localizable;
   codeScheme: { uri: string };

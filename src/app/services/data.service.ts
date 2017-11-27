@@ -76,7 +76,7 @@ function createCodeSchemeEntity(scheme: CodeSchemeType): CodeScheme {
   entity.descriptions = scheme.descriptions || {};
   entity.changeNotes = scheme.changeNotes || {};
   entity.definitions = scheme.definitions || {};
-  entity.dataClassifications = scheme.dataClassifications || [];
+  entity.dataClassifications = (scheme.dataClassifications || []).map(createDataClassificationEntity);
   entity.externalReferences = (scheme.externalReferences || []).map(createExternalReferenceEntity);
   return entity;
 }
@@ -112,6 +112,10 @@ function createPropertyTypeEntity(propertyType: PropertyTypeType): PropertyType 
 function createDataClassificationEntity(classification: DataClassificationType): DataClassification {
 
   const entity = new DataClassification();
+  entity.id = classification.id;
+  entity.uri = classification.uri;
+  entity.status = classification.status;
+  entity.modified = classification.modified;
   entity.codeValue = classification.codeValue;
   entity.prefLabels = classification.prefLabels || {};
   entity.codeScheme = classification.codeScheme;
@@ -138,7 +142,7 @@ export class DataService {
   searchCodeSchemes(searchTerm: string, classification: string|null): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,externalReference,propertyType');
+    params.append('expand', 'codeRegistry,externalReference,propertyType,code');
 
     if (searchTerm) {
       params.append('prefLabel', searchTerm);
@@ -169,7 +173,7 @@ export class DataService {
   getCodeScheme(registryCode: string, schemeCode: string): Observable<CodeScheme> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,code,externalReference,propertyType');
+    params.append('expand', 'codeRegistry,code,externalReference,propertyType,code');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/`, { params })
       .map(res => createCodeSchemeEntity(res.json()));
