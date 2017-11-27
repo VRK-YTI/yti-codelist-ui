@@ -215,5 +215,5 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-msgid "Property type"
+msgid "Link type"
 msgstr ""

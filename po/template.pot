@@ -106,7 +106,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-msgid "Property type"
+msgid "Link type"
 msgstr ""
 
 msgid "Edit link"

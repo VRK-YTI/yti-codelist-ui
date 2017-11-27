@@ -8,7 +8,7 @@ import { EditableService } from '../../services/editable.service';
   selector: 'app-property-type-select',
   template: `
     <dl>
-      <dt><label translate>Property type</label></dt>
+      <dt><label translate>Link type</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
           <div ngbDropdown class="d-inline-block">
