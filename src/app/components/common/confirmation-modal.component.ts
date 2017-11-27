@@ -15,6 +15,10 @@ export class ConfirmationModalService {
     return modalRef.result;
   }
 
+  openRemoveLink() {
+    return this.open('REMOVE LINK?', '');
+  }
+
   openEditInProgress() {
     return this.open('Edit in progress', 'Are you sure that you want to continue? By continuing unsaved changes will be lost.');
   }

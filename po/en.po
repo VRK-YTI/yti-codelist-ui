@@ -220,3 +220,6 @@ msgstr ""
 
 msgid "There are no links available, please create new ones."
 msgstr ""
+
+msgid "REMOVE LINK?"
+msgstr ""

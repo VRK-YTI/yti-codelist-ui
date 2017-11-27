@@ -9,6 +9,7 @@ import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
 import { remove } from '../../utils/array';
+import { ConfirmationModalService } from '../common/confirmation-modal.component';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -35,7 +36,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   constructor(private linkEditModalService: LinkEditModalService,
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
-              private editableService: EditableService) {
+              private editableService: EditableService,
+              private confirmationModalService: ConfirmationModalService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
@@ -81,6 +83,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   removeExternalReference(externalReference: ExternalReference) {
-    remove(this.externalReferences, externalReference);
+    this.confirmationModalService.openRemoveLink()
+      .then(() => {
+        remove(this.externalReferences, externalReference);
+      }, ignoreModalClose);
   }
 }
