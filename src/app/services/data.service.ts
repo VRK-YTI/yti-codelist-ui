@@ -44,7 +44,7 @@ function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
   entity.uri = type.uri;
   entity.codeValue = type.codeValue;
   entity.modified = type.modified;
-  entity.prefLabels = type.prefLabels || {};
+  entity.prefLabel = type.prefLabel || {};
 }
 
 function createCodeRegistryEntity(registry: CodeRegistryType): CodeRegistry {
@@ -56,7 +56,7 @@ function createCodeRegistryEntity(registry: CodeRegistryType): CodeRegistry {
 }
 
 function createOrganizationEntity(organization: OrganizationType): Organization {
-  
+
   const entity = new Organization();
   entity.uuid = organization.uuid;
   entity.prefLabel = organization.prefLabel || {};
@@ -69,8 +69,8 @@ function createExternalReferenceEntity(externalReference: ExternalReferenceType)
 
   const entity = new ExternalReference();
   entity.id = externalReference.id;
-  entity.titles = externalReference.titles || {};
-  entity.descriptions = externalReference.descriptions || {};
+  entity.title = externalReference.title || {};
+  entity.description = externalReference.description || {};
   entity.uri = externalReference.uri;
   entity.url = externalReference.url;
   entity.propertyType = createPropertyTypeEntity(externalReference.propertyType);
@@ -90,9 +90,9 @@ function createCodeSchemeEntity(scheme: CodeSchemeType): CodeScheme {
   entity.startDate = scheme.startDate;
   entity.endDate = scheme.endDate;
   entity.codeRegistry = createCodeRegistryEntity(scheme.codeRegistry);
-  entity.descriptions = scheme.descriptions || {};
-  entity.changeNotes = scheme.changeNotes || {};
-  entity.definitions = scheme.definitions || {};
+  entity.description = scheme.description || {};
+  entity.changeNote = scheme.changeNote || {};
+  entity.definition = scheme.definition || {};
   entity.dataClassifications = (scheme.dataClassifications || []).map(createDataClassificationEntity);
   entity.externalReferences = (scheme.externalReferences || []).map(createExternalReferenceEntity);
   return entity;
@@ -107,8 +107,8 @@ function createCodeEntity(code: CodeType): Code {
   entity.status = code.status;
   entity.startDate = code.startDate;
   entity.endDate = code.endDate;
-  entity.descriptions = code.descriptions || {};
-  entity.definitions = code.definitions || {};
+  entity.description = code.description || {};
+  entity.definition = code.definition || {};
   return entity;
 }
 
@@ -116,8 +116,8 @@ function createPropertyTypeEntity(propertyType: PropertyTypeType): PropertyType 
 
   const entity = new PropertyType();
   entity.id = propertyType.id;
-  entity.prefLabels = propertyType.prefLabels || {};
-  entity.definitions = propertyType.definitions || {};
+  entity.prefLabel = propertyType.prefLabel || {};
+  entity.definition = propertyType.definition || {};
   entity.uri = propertyType.uri;
   entity.propertyUri = propertyType.propertyUri;
   entity.context = propertyType.context;
@@ -134,7 +134,7 @@ function createDataClassificationEntity(classification: DataClassificationType):
   entity.status = classification.status;
   entity.modified = classification.modified;
   entity.codeValue = classification.codeValue;
-  entity.prefLabels = classification.prefLabels || {};
+  entity.prefLabel = classification.prefLabel || {};
   entity.codeScheme = classification.codeScheme;
   entity.count = classification.count;
   return entity;
@@ -154,7 +154,7 @@ export class DataService {
   getOrganizations(): Observable<Organization[]> {
     return this.http.get(organizationsBasePath)
       .map(res => res.json().map(createOrganizationEntity));
-  } 
+  }
 
   getCodeRegistry(codeRegistryCodeValue: string): Observable<CodeRegistry> {
     return this.http.get(`${codeRegistriesBasePath}/${codeRegistryCodeValue}/`)

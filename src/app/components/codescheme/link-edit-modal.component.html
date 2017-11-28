@@ -13,10 +13,10 @@
       <form [formGroup]="linkForm" #form="ngForm">
 
         <app-localizable-input [label]="'Link title' | translate"
-                               [formControlName]="'titles'"></app-localizable-input>
+                               [formControlName]="'title'"></app-localizable-input>
 
         <app-localizable-textarea [label]="'Description' | translate"
-                                  [formControlName]="'descriptions'"></app-localizable-textarea>
+                                  [formControlName]="'description'"></app-localizable-textarea>
 
         <app-literal-input [label]="'URL' | translate"
                            [formControlName]="'url'"></app-literal-input>

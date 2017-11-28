@@ -14,7 +14,7 @@ import { EditableService } from '../../services/editable.service';
           <div ngbDropdown class="d-inline-block">
 
             <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
-              <span *ngIf="value">{{value.prefLabels | translateValue}}</span>
+              <span *ngIf="value">{{value.prefLabel | translateValue}}</span>
             </button>
 
             <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
@@ -22,7 +22,7 @@ import { EditableService } from '../../services/editable.service';
                       (click)="select(propertyTypeOption)"
                       class="dropdown-item"
                       [class.active]="isSelected(propertyTypeOption)">
-                {{propertyTypeOption.prefLabels | translateValue}}
+                {{propertyTypeOption.prefLabel | translateValue}}
               </button>
             </div>
           </div>

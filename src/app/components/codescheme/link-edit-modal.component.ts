@@ -28,8 +28,8 @@ export class LinkEditModalComponent implements OnInit {
   @Input() link: ExternalReference;
 
   linkForm = new FormGroup({
-    titles: new FormControl({}),
-    descriptions: new FormControl({}),
+    title: new FormControl({}),
+    description: new FormControl({}),
     url: new FormControl(''),
     propertyType: new FormControl()
   });

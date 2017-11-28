@@ -22,9 +22,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   @Input() codeScheme: CodeScheme;
 
   codeSchemeForm = new FormGroup({
-    prefLabels: new FormControl({}),
-    descriptions: new FormControl({}),
-    definitions: new FormControl({}),
+    prefLabel: new FormControl({}),
+    description: new FormControl({}),
+    definition: new FormControl({}),
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),

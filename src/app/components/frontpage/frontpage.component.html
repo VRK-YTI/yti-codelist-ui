@@ -26,7 +26,7 @@
              [class.active]="isClassificationSelected(dataClassification)"
              (click)="toggleClassification(dataClassification)">
 
-          <span class="name">{{dataClassification.prefLabels | translateValue:true }}</span>
+          <span class="name">{{dataClassification.prefLabel | translateValue:true }}</span>
           <span class="count">({{dataClassification.count}})</span>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
               <span *ngIf="!register" translate>All registries</span>
-              <span *ngIf="register">{{register.prefLabels | translateValue:true}}</span>
+              <span *ngIf="register">{{register.prefLabel | translateValue:true}}</span>
             </button>
 
             <div ngbDropdownMenu aria-labelledby="reg-dropdown">
@@ -53,7 +53,7 @@
                       (click)="register = selectedRegister"
                       class="dropdown-item"
                       [class.active]="selectedRegister.codeValue == register">
-                {{selectedRegister.prefLabels | translateValue:true}}
+                {{selectedRegister.prefLabel | translateValue:true}}
               </button>
             </div>
           </div>
@@ -63,14 +63,14 @@
                 <span *ngIf="!organization">{{'All organizations' | translate}}</span>
                 <span *ngIf="organization">{{organization.prefLabel | translateValue:true}}</span>
               </button>
-  
+
               <div ngbDropdownMenu aria-labelledby="org-dropdown">
                 <button (click)="organization = null"
                         class="dropdown-item"
                         [class.active]="organization == null">
                   {{'All organizations' | translate}}
                 </button>
-  
+
                 <button *ngFor="let selectedOrganization of organizations"
                         (click)="organization = selectedOrganization"
                         class="dropdown-item"
@@ -121,7 +121,7 @@
         <div class="row">
           <div class="col-12">
             <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
-              <div class="name">{{codeScheme.prefLabels | translateValue:true }}</div>
+              <div class="name">{{codeScheme.prefLabel | translateValue:true }}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization" (click)="viewOrganization()">Testi organisaatio</div>
             </div>

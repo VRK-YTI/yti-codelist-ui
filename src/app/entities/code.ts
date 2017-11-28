@@ -11,8 +11,8 @@ export class Code extends AbstractResource {
   status: string;
   startDate: string;
   endDate: string;
-  descriptions: Localizable;
-  definitions: Localizable;
+  description: Localizable;
+  definition: Localizable;
 
   get registryCode() {
     return this.codeScheme.codeRegistry.codeValue;
@@ -47,7 +47,7 @@ export class Code extends AbstractResource {
       ...this.codeScheme.location,
       {
         localizationKey: 'Code',
-        label: this.prefLabels,
+        label: this.prefLabel,
         route: this.route
       }
     ];

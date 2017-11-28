@@ -13,12 +13,12 @@
       <form #form="ngForm">
 
         <app-localizable-input [label]="'Link title' | translate"
-                               [name]="'titles'"
-                               [(ngModel)]="externalReference.titles"></app-localizable-input>
+                               [name]="'title'"
+                               [(ngModel)]="externalReference.title"></app-localizable-input>
 
         <app-localizable-textarea [label]="'Description' | translate"
                                   [name]="'description'"
-                                  [(ngModel)]="externalReference.descriptions"></app-localizable-textarea>
+                                  [(ngModel)]="externalReference.description"></app-localizable-textarea>
 
         <app-literal-input [label]="'URL' | translate"
                            [name]="'url'"

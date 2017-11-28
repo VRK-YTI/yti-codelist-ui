@@ -8,8 +8,8 @@ export class PropertyType {
   context: string;
   localName: string;
   type: string;
-  prefLabels: Localizable;
-  definitions: Localizable;
+  prefLabel: Localizable;
+  definition: Localizable;
 
   clone() {
     return Object.assign(new PropertyType(), this);

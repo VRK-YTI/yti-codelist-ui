@@ -6,7 +6,7 @@
                [value]="codeScheme.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code name' | translate"
-                         [formControlName]="'prefLabels'"></app-localizable-input>
+                         [formControlName]="'prefLabel'"></app-localizable-input>
 
   <dl *ngIf="codeScheme.dataClassifications.length > 0">
     <dt>
@@ -14,16 +14,16 @@
     </dt>
     <dd>
       <div *ngFor="let dataClassification of codeScheme.dataClassifications">
-        <span>{{dataClassification.prefLabels | translateValue}}</span><br/>
+        <span>{{dataClassification.prefLabel | translateValue}}</span><br/>
       </div>
     </dd>
   </dl>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'descriptions'"></app-localizable-textarea>
+                            [formControlName]="'description'"></app-localizable-textarea>
 
   <app-localizable-textarea [label]="'Definition' | translate"
-                            [formControlName]="'definitions'"></app-localizable-textarea>
+                            [formControlName]="'definition'"></app-localizable-textarea>
 
   <app-literal-input [label]="'Source' | translate"
                      [formControlName]="'source'"></app-literal-input>
@@ -48,9 +48,9 @@
     <dd>
       <div *ngFor="let propertyType of getUsedPropertyTypes()">
         <div *ngIf="getExternalReferencesByLocalName(propertyType.localName).length > 0">
-          <label>{{propertyType.prefLabels | translateValue}}</label>
+          <label>{{propertyType.prefLabel | translateValue}}</label>
           <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
-            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">{{externalReference.titles | translateValue}}</button>
+            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">{{externalReference.title | translateValue}}</button>
             <button *ngIf="editing" type="button" class="icon icon-pencil" (click)="editExternalReference(externalReference)"></button>
             <button *ngIf="editing" type="button" class="icon icon-trash" (click)="removeExternalReference(externalReference)"></button>
           </div>

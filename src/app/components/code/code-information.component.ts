@@ -16,8 +16,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   cancelSubscription: Subscription;
 
   codeForm = new FormGroup({
-    prefLabels: new FormControl(''),
-    descriptions: new FormControl(''),
+    prefLabel: new FormControl(''),
+    description: new FormControl(''),
     shortName: new FormControl('')
   });
 

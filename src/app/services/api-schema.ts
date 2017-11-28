@@ -15,7 +15,7 @@ export interface BaseResourceType {
   uri: string;
   codeValue: string;
   modified: string;
-  prefLabels?: Localizable;
+  prefLabel?: Localizable;
 }
 
 export interface CodeRegistryType extends BaseResourceType {
@@ -33,9 +33,9 @@ export interface CodeSchemeType extends BaseResourceType {
   startDate: string;
   endDate: string;
   codeRegistry: CodeRegistryType;
-  descriptions?: Localizable;
-  changeNotes?: Localizable;
-  definitions?: Localizable;
+  description?: Localizable;
+  changeNote?: Localizable;
+  definition?: Localizable;
   dataClassifications: DataClassificationType[];
   externalReferences?: ExternalReferenceType[];
 }
@@ -47,8 +47,8 @@ export interface CodeType extends BaseResourceType {
   status: string;
   startDate: string;
   endDate: string;
-  descriptions?: Localizable;
-  definitions?: Localizable;
+  description?: Localizable;
+  definition?: Localizable;
 }
 
 export interface ExternalReferenceType  {
@@ -56,16 +56,16 @@ export interface ExternalReferenceType  {
   id: string;
   uri: string;
   url: string;
-  titles?: Localizable;
-  descriptions?: Localizable;
+  title?: Localizable;
+  description?: Localizable;
   propertyType: PropertyTypeType;
 }
 
 export interface PropertyTypeType  {
 
   id: string;
-  prefLabels: Localizable;
-  definitions: Localizable;
+  prefLabel: Localizable;
+  definition: Localizable;
   localName: string;
   uri: string;
   propertyUri: string;
@@ -81,13 +81,13 @@ export interface DataClassificationType  {
   status: string;
   modified: string;
   codeValue: string;
-  prefLabels: Localizable;
+  prefLabel: Localizable;
   codeScheme: { uri: string };
   count: number;
 }
 
 export interface OrganizationType {
-  
+
     uuid: string;
     prefLabel: Localizable;
     description: Localizable;

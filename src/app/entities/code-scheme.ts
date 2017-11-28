@@ -17,9 +17,9 @@ export class CodeScheme extends AbstractResource {
   startDate: string;
   endDate: string;
   codeRegistry: CodeRegistry;
-  descriptions: Localizable;
-  changeNotes: Localizable;
-  definitions: Localizable;
+  description: Localizable;
+  changeNote: Localizable;
+  definition: Localizable;
   dataClassifications: DataClassification[];
   externalReferences: ExternalReference[];
 
@@ -44,7 +44,7 @@ export class CodeScheme extends AbstractResource {
   get location(): Location[] {
     return [{
       localizationKey: 'Code scheme',
-      label: this.prefLabels,
+      label: this.prefLabel,
       route: this.route
     }];
   }

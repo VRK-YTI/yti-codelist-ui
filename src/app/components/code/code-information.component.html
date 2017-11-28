@@ -3,16 +3,16 @@
   <app-editable-buttons [form]="form"></app-editable-buttons>
 
   <app-localizable-literal [label]="'Code scheme' | translate"
-                           [value]="code.codeScheme.prefLabels"></app-localizable-literal>
+                           [value]="code.codeScheme.prefLabel"></app-localizable-literal>
 
   <app-literal [label]="'Code value' | translate"
                [value]="code.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code name' | translate"
-                         [formControlName]="'prefLabels'"></app-localizable-input>
+                         [formControlName]="'prefLabel'"></app-localizable-input>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'descriptions'"></app-localizable-textarea>
+                            [formControlName]="'description'"></app-localizable-textarea>
 
   <app-literal-input [label]="'Short name' | translate"
                      [formControlName]="'shortName'"></app-literal-input>

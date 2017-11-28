@@ -7,7 +7,7 @@ export class DataClassification {
   status: string;
   modified: string;
   codeValue: string;
-  prefLabels: Localizable;
+  prefLabel: Localizable;
   codeScheme: { uri: string };
   count: number;
 }

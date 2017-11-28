@@ -6,8 +6,8 @@ export class ExternalReference {
   id = '';
   uri = '';
   url = '';
-  titles: Localizable = {};
-  descriptions: Localizable = {};
+  title: Localizable = {};
+  description: Localizable = {};
   propertyType: PropertyType;
 
   clone() {

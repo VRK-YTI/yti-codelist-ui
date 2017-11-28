@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-27 17:42+0200\n"
+"PO-Revision-Date: 2017-11-28 14:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -130,10 +130,7 @@ msgstr ""
 msgid "There are no links available, please create new ones."
 msgstr ""
 
-msgid "All organizations"
-msgstr ""
-
-msgid "code schemes"
+msgid "Select"
 msgstr ""
 
 msgid "Show link"
@@ -146,6 +143,9 @@ msgid "Search for code lists"
 msgstr ""
 
 msgid "All registries"
+msgstr ""
+
+msgid "All organizations"
 msgstr ""
 
 msgid "All statuses"

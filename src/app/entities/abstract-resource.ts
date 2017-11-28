@@ -7,5 +7,5 @@ export abstract class AbstractResource implements BaseResourceType {
   uri: string;
   codeValue: string;
   modified: string;
-  prefLabels: Localizable;
+  prefLabel: Localizable;
 }

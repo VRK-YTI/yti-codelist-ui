@@ -136,6 +136,9 @@ msgstr ""
 msgid "All registries"
 msgstr ""
 
+msgid "All organizations"
+msgstr ""
+
 msgid "All statuses"
 msgstr ""
 
@@ -159,10 +162,7 @@ msgstr ""
 msgid "Information about the web service"
 msgstr ""
 
-msgid "All organizations"
-msgstr ""
-
-msgid "code schemes"
+msgid "Description of file"
 msgstr ""
 
 msgid "User support"

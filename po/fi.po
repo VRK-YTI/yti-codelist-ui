@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-27 17:42+0200\n"
+"PO-Revision-Date: 2017-11-28 14:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -149,11 +149,11 @@ msgstr "Hae koodistoa"
 msgid "All registries"
 msgstr "Kaikki rekisterit"
 
-msgid "All statuses"
-msgstr "Kaikki tilat"
-
 msgid "All organizations"
 msgstr "Kaikki organisaatiot"
+
+msgid "All statuses"
+msgstr "Kaikki tilat"
 
 msgid "code schemes"
 msgstr "koodistoa"
@@ -233,8 +233,11 @@ msgstr ""
 "Oletko varma, että haluat jatkaa? Jatkaessasi tallentamattomat muutokset "
 "katoavat."
 
-msgid "Links"
-msgstr "Linkit"
+msgid "REMOVE LINK?"
+msgstr "POISTETAANKO LINKKI?"
+
+#~ msgid "Property type"
+#~ msgstr "Ominaisuuden tyyppi"
 
 #~ msgid "Add externalReference"
 #~ msgstr "Lisää linkki"
@@ -253,9 +256,6 @@ msgstr "Linkit"
 
 #~ msgid "There are no links."
 #~ msgstr "Linkkejä ei ole."
-
-#~ msgid "All organizations"
-#~ msgstr "Kaikki organisaatiot"
 
 #~ msgid "Modify"
 #~ msgstr "Muokkaa"
