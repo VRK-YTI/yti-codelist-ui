@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataClassification } from '../../entities/data-classification';
+import { Organization } from '../../entities/organization';
 import { Status, statuses } from '../../entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -18,6 +19,7 @@ export class FrontpageComponent implements OnInit {
 
   statuses = statuses;
   registers: CodeRegistry[];
+  organizations: Organization[];
 
   dataClassifications: DataClassification[];
   register$ = new BehaviorSubject<CodeRegistry|null>(null);
@@ -25,6 +27,7 @@ export class FrontpageComponent implements OnInit {
   searchTerm$ = new BehaviorSubject('');
   classification$ = new BehaviorSubject<DataClassification|null>(null);
   status$ = new BehaviorSubject<Status|null>(null);
+  organization$ = new BehaviorSubject<Organization|null>(null);
 
   filteredCodeSchemes: CodeScheme[];
 
@@ -46,12 +49,16 @@ export class FrontpageComponent implements OnInit {
       this.registers = registers;
     });
 
+    this.dataService.getOrganizations().subscribe(organizations => {
+      this.organizations = organizations;
+    });
+
     const initialSearchTerm = this.searchTerm$.take(1);
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
 
-    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$)
-              .subscribe(([searchTerm, classification, status, register]) => {
+    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$)
+              .subscribe(([searchTerm, classification, status, register, organization]) => {
 
       this.searchInProgress = true;
       const classificationCode = classification ? classification.codeValue : null;
@@ -95,6 +102,14 @@ export class FrontpageComponent implements OnInit {
 
   set register(value: CodeRegistry|null) {
     this.register$.next(value);
+  }
+
+  get organization(): Organization|null {
+    return this.organization$.getValue();
+  }
+
+  set organization(value: Organization|null) {
+    this.organization$.next(value);
   }
 
   get loading(): boolean {

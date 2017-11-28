@@ -130,7 +130,10 @@ msgstr ""
 msgid "There are no links available, please create new ones."
 msgstr ""
 
-msgid "Select"
+msgid "All organizations"
+msgstr ""
+
+msgid "code schemes"
 msgstr ""
 
 msgid "Show link"

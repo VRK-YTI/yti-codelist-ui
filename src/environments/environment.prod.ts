@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  rhpUrl: 'https://rhp.suomi.fi',
 };

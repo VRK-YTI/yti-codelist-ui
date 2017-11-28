@@ -59,11 +59,26 @@
           </div>
 
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-dropdown" id="org-dropdown" ngbDropdownToggle>Kaikki organisaatiot</button>
-            <div ngbDropdownMenu aria-labelledby="org-dropdown">
-              <button class="dropdown-item">Kaikki organisaatiot</button>
+              <button class="btn btn-dropdown" id="org-dropdown" ngbDropdownToggle>
+                <span *ngIf="!organization">{{'All organizations' | translate}}</span>
+                <span *ngIf="organization">{{organization.prefLabel | translateValue:true}}</span>
+              </button>
+  
+              <div ngbDropdownMenu aria-labelledby="org-dropdown">
+                <button (click)="organization = null"
+                        class="dropdown-item"
+                        [class.active]="organization == null">
+                  {{'All organizations' | translate}}
+                </button>
+  
+                <button *ngFor="let selectedOrganization of organizations"
+                        (click)="organization = selectedOrganization"
+                        class="dropdown-item"
+                        [class.active]="selectedOrganization == organization">
+                  {{selectedOrganization.prefLabel | translateValue:true}}
+                </button>
+              </div>
             </div>
-          </div>
 
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>

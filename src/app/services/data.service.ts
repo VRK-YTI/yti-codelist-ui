@@ -8,15 +8,19 @@ import { DataClassification } from '../entities/data-classification';
 import { Code } from '../entities/code';
 import {
   CodeType, ApiResponseType, BaseResourceType, CodeSchemeType, DataClassificationType,
-  CodeRegistryType, PropertyTypeType, ExternalReferenceType
+  CodeRegistryType, PropertyTypeType, ExternalReferenceType, OrganizationType
 } from './api-schema';
 import { AbstractResource } from '../entities/abstract-resource';
 import { PropertyType } from '../entities/property-type';
 import { ExternalReference } from '../entities/external-reference';
+import { environment } from '../../environments/environment';
+import { Organization } from '../entities/organization';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
 const api = 'api';
+const publicApi = 'public-api';
+
 const version = 'v1';
 const registries = 'coderegistries';
 const codeSchemes = 'codeschemes';
@@ -24,6 +28,8 @@ const codes = 'codes';
 const externalReferences = 'externalreferences';
 const classifications = 'dataclassifications';
 const propertytypes = 'propertytypes';
+const organizations = 'organizations';
+const rhpBasePath = environment.rhpUrl;
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -31,6 +37,7 @@ const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalR
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
 const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
 const propertyTypesBasePath = `/${apiContext}/${api}/${version}/${propertytypes}`;
+const organizationsBasePath = `${rhpBasePath}/${publicApi}/${organizations}`;
 
 function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
   entity.id = type.id;
@@ -45,6 +52,16 @@ function createCodeRegistryEntity(registry: CodeRegistryType): CodeRegistry {
   const entity = new CodeRegistry();
   setBaseValues(entity, registry);
   entity.codeSchemes = registry.codeSchemes;
+  return entity;
+}
+
+function createOrganizationEntity(organization: OrganizationType): Organization {
+  
+  const entity = new Organization();
+  entity.uuid = organization.uuid;
+  entity.prefLabel = organization.prefLabel || {};
+  entity.description = organization.description || {};
+  entity.url = organization.url;
   return entity;
 }
 
@@ -133,6 +150,11 @@ export class DataService {
     return this.http.get(codeRegistriesBasePath)
       .map(res => res.json().results.map(createCodeRegistryEntity));
   }
+
+  getOrganizations(): Observable<Organization[]> {
+    return this.http.get(organizationsBasePath)
+      .map(res => res.json().map(createOrganizationEntity));
+  } 
 
   getCodeRegistry(codeRegistryCodeValue: string): Observable<CodeRegistry> {
     return this.http.get(`${codeRegistriesBasePath}/${codeRegistryCodeValue}/`)

@@ -85,3 +85,11 @@ export interface DataClassificationType  {
   codeScheme: { uri: string };
   count: number;
 }
+
+export interface OrganizationType {
+  
+    uuid: string;
+    prefLabel: Localizable;
+    description: Localizable;
+    url: string;
+  }

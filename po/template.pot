@@ -159,7 +159,10 @@ msgstr ""
 msgid "Information about the web service"
 msgstr ""
 
-msgid "Description of file"
+msgid "All organizations"
+msgstr ""
+
+msgid "code schemes"
 msgstr ""
 
 msgid "User support"

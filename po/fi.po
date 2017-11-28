@@ -152,6 +152,9 @@ msgstr "Kaikki rekisterit"
 msgid "All statuses"
 msgstr "Kaikki tilat"
 
+msgid "All organizations"
+msgstr "Kaikki organisaatiot"
+
 msgid "code schemes"
 msgstr "koodistoa"
 
@@ -230,11 +233,8 @@ msgstr ""
 "Oletko varma, että haluat jatkaa? Jatkaessasi tallentamattomat muutokset "
 "katoavat."
 
-msgid "REMOVE LINK?"
-msgstr "POISTETAANKO LINKKI?"
-
-#~ msgid "Property type"
-#~ msgstr "Ominaisuuden tyyppi"
+msgid "Links"
+msgstr "Linkit"
 
 #~ msgid "Add externalReference"
 #~ msgstr "Lisää linkki"
