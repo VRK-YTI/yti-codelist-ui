@@ -88,7 +88,7 @@ export interface DataClassificationType  {
 
 export interface OrganizationType {
 
-    uuid: string;
+    id: string;
     prefLabel: Localizable;
     description: Localizable;
     url: string;

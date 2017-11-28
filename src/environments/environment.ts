@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  rhpUrl: 'https://rhp-dev.suomi.fi',
+
 };

@@ -2,8 +2,9 @@ import { Localizable } from './localization';
 
 export class Organization {
 
-  uuid: string;
+  id: string;
+  url: string;
   prefLabel: Localizable;
   description: Localizable;
-  url: string;
+
 }

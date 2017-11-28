@@ -19,7 +19,6 @@ import { Organization } from '../entities/organization';
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
 const api = 'api';
-const publicApi = 'public-api';
 
 const version = 'v1';
 const registries = 'coderegistries';
@@ -29,7 +28,6 @@ const externalReferences = 'externalreferences';
 const classifications = 'dataclassifications';
 const propertytypes = 'propertytypes';
 const organizations = 'organizations';
-const rhpBasePath = environment.rhpUrl;
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -37,7 +35,7 @@ const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalR
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
 const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
 const propertyTypesBasePath = `/${apiContext}/${api}/${version}/${propertytypes}`;
-const organizationsBasePath = `${rhpBasePath}/${publicApi}/${organizations}`;
+const organizationsBasePath = `/${intakeContext}/${api}/${version}/${organizations}`;
 
 function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
   entity.id = type.id;
@@ -58,7 +56,7 @@ function createCodeRegistryEntity(registry: CodeRegistryType): CodeRegistry {
 function createOrganizationEntity(organization: OrganizationType): Organization {
 
   const entity = new Organization();
-  entity.uuid = organization.uuid;
+  entity.id = organization.id;
   entity.prefLabel = organization.prefLabel || {};
   entity.description = organization.description || {};
   entity.url = organization.url;
@@ -153,7 +151,7 @@ export class DataService {
 
   getOrganizations(): Observable<Organization[]> {
     return this.http.get(organizationsBasePath)
-      .map(res => res.json().map(createOrganizationEntity));
+      .map(res => res.json().results.map(createOrganizationEntity));
   }
 
   getCodeRegistry(codeRegistryCodeValue: string): Observable<CodeRegistry> {
