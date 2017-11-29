@@ -1,5 +1,6 @@
 import { Localizable } from '../entities/localization';
 import { CodeScheme } from '../entities/code-scheme';
+import { Organization } from '../entities/organization';
 
 export interface ApiResponseType {
 
@@ -20,6 +21,7 @@ export interface BaseResourceType {
 
 export interface CodeRegistryType extends BaseResourceType {
   codeSchemes?: { uri: string };
+  organizations: Organization[];
 }
 
 export interface CodeSchemeType extends BaseResourceType {

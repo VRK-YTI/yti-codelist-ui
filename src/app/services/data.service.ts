@@ -159,10 +159,10 @@ export class DataService {
       .map(res => createCodeRegistryEntity(res.json()));
   }
 
-  searchCodeSchemes(searchTerm: string, classification: string|null): Observable<CodeScheme[]> {
+  searchCodeSchemes(searchTerm: string, classification: string|null, organization: string|null): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,externalReference,propertyType,code');
+    params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization');
 
     if (searchTerm) {
       params.append('prefLabel', searchTerm);
@@ -170,6 +170,10 @@ export class DataService {
 
     if (classification) {
       params.append('dataClassification', classification);
+    }
+
+    if (organization) {
+      params.append('organizationId', organization);
     }
 
     return this.http.get(`${codeSchemesBasePath}`, { params })

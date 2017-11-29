@@ -62,12 +62,13 @@ export class FrontpageComponent implements OnInit {
 
       this.searchInProgress = true;
       const classificationCode = classification ? classification.codeValue : null;
+      const organizationId = organization ? organization.id : null;
       const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
       const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register.codeValue;
 
-      this.dataService.searchCodeSchemes(searchTerm, classificationCode).subscribe(codeSchemes => {
-        this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
-        this.searchInProgress = false;
+      this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).subscribe(codeSchemes => {
+           this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
+           this.searchInProgress = false;     
       });
     });
   }
