@@ -205,9 +205,8 @@ export class DataService {
     params.append('codeSchemeId', codeSchemeId);
     params.append('expand', 'propertyType');
 
-    // FIXME why results can be undefined?
     return this.http.get(`${externalReferencesBasePath}/`, { params })
-      .map(res => (res.json().results || []).map(createExternalReferenceEntity));
+      .map(res => res.json().results.map(createExternalReferenceEntity));
   }
 
   getCodes(registryCode: string, schemeCode: string): Observable<Code[]> {
