@@ -29,8 +29,8 @@ export class NavigationBarComponent {
     this.userService.logout();
   }
 
-  get username() {
-    return this.userService.user ? this.userService.user.name : '';
+  get user() {
+    return this.userService.user;
   }
 
   isLoggedIn() {

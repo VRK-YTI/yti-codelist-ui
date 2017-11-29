@@ -50,10 +50,20 @@ export class User {
   }
 }
 
+const anonymousUser = new User({
+  email: '',
+  firstName: '',
+  lastName: '',
+  anonymous: true,
+  superuser: false,
+  rolesInOrganizations: {},
+  organizationsInRole: {}
+});
+
 @Injectable()
 export class UserService {
 
-  user: User|null = null;
+  user: User = anonymousUser;
   loggedIn$ = new BehaviorSubject(false);
 
   constructor(http: Http) {
@@ -66,7 +76,7 @@ export class UserService {
   }
 
   isLoggedIn() {
-    return this.user !== null && !this.user.anonymous;
+    return !this.user.anonymous;
   }
 
   logout() {

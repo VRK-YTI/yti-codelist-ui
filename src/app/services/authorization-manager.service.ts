@@ -13,6 +13,6 @@ export class AuthorizationManager {
 
   canEdit(/* TODO: organization as parameter */): boolean {
     // TODO replace dummy implementation
-    return this.user ? !this.user.anonymous : false;
+    return !this.user.anonymous;
   }
 }

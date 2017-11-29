@@ -10,7 +10,7 @@
       <a class="nav-link" (click)="logIn()" translate>LOG IN</a>
     </li>
     <li class="nav-item logged-in" *ngIf="isLoggedIn()">
-      <span>{{username}}</span>
+      <span>{{user.name}}</span>
       <a class="nav-link" (click)="logOut()" translate>LOG OUT</a>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
