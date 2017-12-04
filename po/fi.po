@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-28 14:16+0200\n"
+"PO-Revision-Date: 2017-12-04 09:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Link type"
-msgstr "Linking tyyppi"
+msgstr "Linkin tyyppi"
 
 msgid "Yes"
 msgstr "Kyllä"
@@ -158,11 +158,17 @@ msgstr "Kaikki tilat"
 msgid "code schemes"
 msgstr "koodistoa"
 
+msgid "organizations"
+msgstr "organisaatiota"
+
 msgid "Search did not find any codeschemes."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "1 code scheme"
 msgstr "1 koodisto"
+
+msgid "No organization"
+msgstr "Ei organisaatiota"
 
 msgid "Code List Service"
 msgstr "Koodistoeditori"
@@ -235,6 +241,9 @@ msgstr ""
 
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
+
+#~ msgid "Import codescheme"
+#~ msgstr "Tuo koodisto"
 
 #~ msgid "Property type"
 #~ msgstr "Ominaisuuden tyyppi"

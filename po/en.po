@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-11-28 14:15+0200\n"
+"PO-Revision-Date: 2017-12-04 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -154,10 +154,16 @@ msgstr ""
 msgid "code schemes"
 msgstr ""
 
+msgid "organizations"
+msgstr ""
+
 msgid "Search did not find any codeschemes."
 msgstr ""
 
 msgid "1 code scheme"
+msgstr ""
+
+msgid "No organization"
 msgstr ""
 
 msgid "Code List Service"

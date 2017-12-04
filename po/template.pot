@@ -145,10 +145,16 @@ msgstr ""
 msgid "code schemes"
 msgstr ""
 
+msgid "organizations"
+msgstr ""
+
 msgid "Search did not find any codeschemes."
 msgstr ""
 
 msgid "1 code scheme"
+msgstr ""
+
+msgid "No organization"
 msgstr ""
 
 msgid "Code List Service"

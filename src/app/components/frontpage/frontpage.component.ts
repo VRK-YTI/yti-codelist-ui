@@ -68,7 +68,7 @@ export class FrontpageComponent implements OnInit {
 
       this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).subscribe(codeSchemes => {
            this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
-           this.searchInProgress = false;     
+           this.searchInProgress = false;
       });
     });
   }
@@ -120,9 +120,5 @@ export class FrontpageComponent implements OnInit {
   viewCodeScheme(codeScheme: CodeScheme) {
     console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from coderegistry: ' + codeScheme.codeRegistry.codeValue);
     this.router.navigate(codeScheme.route);
-  }
-
-  viewOrganization() {
-    console.log('Organization viewing not implemented yet.');
   }
 }
