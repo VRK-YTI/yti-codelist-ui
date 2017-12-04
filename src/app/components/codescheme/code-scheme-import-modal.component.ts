@@ -24,7 +24,6 @@ export class CodeSchemeImportModalService {
 })
 export class CodeSchemeImportModalComponent implements OnInit {
 
-  loading = true;
   codeRegistries: CodeRegistry[];
   codeRegistry?: CodeRegistry;
   file?: File;
@@ -38,9 +37,12 @@ export class CodeSchemeImportModalComponent implements OnInit {
     this.editableService.edit();
   }
 
+  get loading(): boolean {
+    return this.codeRegistries !== undefined;
+  }
+
   ngOnInit() {
     this.dataService.getCodeRegistries().subscribe(registers => {
-      this.loading = false;
       this.codeRegistries = registers;
     });
   }
