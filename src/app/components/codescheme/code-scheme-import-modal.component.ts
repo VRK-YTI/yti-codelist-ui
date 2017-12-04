@@ -38,7 +38,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return this.codeRegistries !== undefined;
+    return this.codeRegistries === undefined;
   }
 
   ngOnInit() {
