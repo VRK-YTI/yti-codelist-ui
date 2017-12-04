@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-04 09:30+0200\n"
+"PO-Revision-Date: 2017-12-04 13:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -73,6 +73,51 @@ msgstr "Viimeisin muokkaus"
 
 msgid "INFORMATION"
 msgstr "TIEDOT"
+
+msgid "Import codes to codescheme"
+msgstr "Tuo koodeja koodistoon"
+
+msgid "Import"
+msgstr "Tuo"
+
+msgid "This codescheme does not have any codes yet."
+msgstr "Tällä koodistolla ei ole yhtään koodia."
+
+msgid "Import codes"
+msgstr "Tuo koodeja"
+
+msgid "Import codescheme"
+msgstr "Tuo koodisto"
+
+msgid ""
+"Import codescheme by uploading a CSV- or Excel formatted file. Look up more "
+"detailed guide and information about using codescheme-files from service "
+"help."
+msgstr ""
+"Tuo koodisto lataamalla CSV- tai Excel-muotoinen tiedosto. Katso tarkemmat "
+"ohjeet ja tiedot koodisto-tiedoston käyttämisestä palvelun ohjeista."
+
+msgid ""
+"Using the imported file, a new codescheme is created or an older codescheme "
+"is update with new meta-information. Upon uploading the file, you get to "
+"review and cancel the changes if needed."
+msgstr ""
+"Tuodun tiedoston perusteella luodaan uusi koodisto tai korvataan tietoja "
+"vastaava olemassa oleva koodisto. Tiedoston tuomisen jälkeen pääset vielä "
+"tarkistamaan tuodut tiedot ja tarvittaessa peruuttamaan muutokset."
+
+msgid "Import codescheme from a file"
+msgstr "Tuo koodisto tiedostosta"
+
+msgid ""
+"You can also add a new codescheme by creating it via the user interface of "
+"the Code List Service."
+msgstr ""
+"Voit myös lisätä uuden koodiston syöttämällä tiedot Koodistoeditorin "
+"käyttöliittymän kautta."
+
+msgid "No registry"
+msgstr "Ei rekisteriä"
 
 msgid "Definition"
 msgstr "Määritelmä"
@@ -241,48 +286,3 @@ msgstr ""
 
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
-
-#~ msgid "Import codescheme"
-#~ msgstr "Tuo koodisto"
-
-#~ msgid "Property type"
-#~ msgstr "Ominaisuuden tyyppi"
-
-#~ msgid "Add externalReference"
-#~ msgstr "Lisää linkki"
-
-#~ msgid "Edit externalReference"
-#~ msgstr "Muokkaa linkkiä"
-
-#~ msgid "Add new externalReference"
-#~ msgstr "Lisää uusi linkki"
-
-#~ msgid "Select externalReference"
-#~ msgstr "Valitse linkki"
-
-#~ msgid "Type"
-#~ msgstr "Tyyppi"
-
-#~ msgid "There are no links."
-#~ msgstr "Linkkejä ei ole."
-
-#~ msgid "Modify"
-#~ msgstr "Muokkaa"
-
-#~ msgid "code"
-#~ msgstr "Koodi"
-
-#~ msgid "code scheme"
-#~ msgstr "Koodisto"
-
-#~ msgid "Give feedback"
-#~ msgstr "Anna palautetta"
-
-#~ msgid "Source code"
-#~ msgstr "Lähdekoodi"
-
-#~ msgid "Population Registry Center of Finland"
-#~ msgstr "VRK - Väestörekisterkeskus"
-
-#~ msgid "licensed under the"
-#~ msgstr "lisenssillä"

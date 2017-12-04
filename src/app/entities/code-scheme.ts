@@ -36,7 +36,7 @@ export class CodeScheme extends AbstractResource {
       'codescheme',
       {
         codeRegistryCodeValue: this.codeRegistry.codeValue,
-        codeSchemeCodeValue: this.codeValue
+        codeSchemeId: this.id
       }
     ];
   }

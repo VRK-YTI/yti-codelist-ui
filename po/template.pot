@@ -61,6 +61,44 @@ msgstr ""
 msgid "INFORMATION"
 msgstr ""
 
+msgid "Import codes to codescheme"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "This codescheme does not have any codes yet."
+msgstr ""
+
+msgid "Import codes"
+msgstr ""
+
+msgid "Import codescheme"
+msgstr ""
+
+msgid ""
+"Import codescheme by uploading a CSV- or Excel formatted file. Look up more "
+"detailed guide and information about using codescheme-files from service "
+"help."
+msgstr ""
+
+msgid ""
+"Using the imported file, a new codescheme is created or an older codescheme "
+"is update with new meta-information. Upon uploading the file, you get to "
+"review and cancel the changes if needed."
+msgstr ""
+
+msgid "Import codescheme from a file"
+msgstr ""
+
+msgid ""
+"You can also add a new codescheme by creating it via the user interface of "
+"the Code List Service."
+msgstr ""
+
+msgid "No registry"
+msgstr ""
+
 msgid "Definition"
 msgstr ""
 

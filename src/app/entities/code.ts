@@ -18,8 +18,8 @@ export class Code extends AbstractResource {
     return this.codeScheme.codeRegistry.codeValue;
   }
 
-  get schemeCode() {
-    return this.codeScheme.codeValue;
+  get schemeId() {
+    return this.codeScheme.id;
   }
 
   get validity(): string {
@@ -35,8 +35,7 @@ export class Code extends AbstractResource {
       'code',
       {
         codeRegistryCodeValue: this.registryCode,
-        codeSchemeCodeValue: this.schemeCode,
-        codeCodeValue: this.codeValue,
+        codeSchemeId: this.schemeId,
         codeId: this.id
       }
     ];

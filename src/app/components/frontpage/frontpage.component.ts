@@ -9,6 +9,7 @@ import { Organization } from '../../entities/organization';
 import { Status, statuses } from '../../entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-frontpage',
@@ -35,6 +36,7 @@ export class FrontpageComponent implements OnInit {
 
   constructor(private dataService: DataService,
               private router: Router,
+              private userService: UserService,
               locationService: LocationService) {
     locationService.atFrontPage();
   }
@@ -115,6 +117,14 @@ export class FrontpageComponent implements OnInit {
 
   get loading(): boolean {
     return this.dataClassifications == null || this.filteredCodeSchemes == null;
+  }
+
+  isLoggedIn() {
+    return this.userService.isLoggedIn();
+  }
+
+  importCodeScheme() {
+    this.router.navigate(['createcodescheme']);
   }
 
   viewCodeScheme(codeScheme: CodeScheme) {

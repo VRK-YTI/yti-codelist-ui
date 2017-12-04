@@ -1,5 +1,19 @@
-<div class="codes">
-  <div class="code" *ngFor="let code of codes" (click)="viewCode(code)">
-    {{code.codeValue}} - {{code.prefLabel | translateValue}}
+<div class="codes row">
+  <div class="md-9">
+    <div class="code" *ngFor="let code of codes" (click)="viewCode(code)">
+      {{code.codeValue}} - {{code.prefLabel | translateValue}}
+    </div>
+    <div *ngIf="codes.length === 0">
+      <span translate>This codescheme does not have any codes yet.</span>
+    </div>
+  </div>
+
+  <div class="md-3">
+    <div *ngIf="isLoggedIn()" class="d-inline-block">
+      <button type="button"
+              class="btn btn-action pull-right"
+              (click)="importCodes()"
+              translate>Import codes</button>
+    </div>
   </div>
 </div>

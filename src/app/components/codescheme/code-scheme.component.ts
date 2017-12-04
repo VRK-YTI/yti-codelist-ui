@@ -36,18 +36,18 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   ngOnInit() {
 
     const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
-    const schemeCode = this.route.snapshot.params.codeSchemeCodeValue;
+    const schemeId = this.route.snapshot.params.codeSchemeId;
 
-    if (!registryCode || !schemeCode) {
-      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}'`);
+    if (!registryCode || !schemeId) {
+      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeId}'`);
     }
 
-    this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
+    this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
       this.locationService.atCodeSchemePage(codeScheme);
     });
 
-    this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {
+    this.dataService.getCodes(registryCode, schemeId).subscribe(codes => {
       this.codes = codes;
     });
   }

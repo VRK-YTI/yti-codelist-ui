@@ -214,30 +214,30 @@ export class DataService {
       .map(res => res.json().results.map(createExternalReferenceEntity));
   }
 
-  getCodes(registryCode: string, schemeCode: string): Observable<Code[]> {
+  getCodes(registryCode: string, schemeId: string): Observable<Code[]> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry');
 
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/`, { params })
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/`, { params })
       .map(res => res.json().results.map(createCodeEntity));
   }
 
-  getCode(registryCode: string, schemeCode: string, codeId: string): Observable<Code> {
+  getCode(registryCode: string, schemeId: string, codeId: string): Observable<Code> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry');
 
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${codeId}/`, { params })
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/${codeId}/`, { params })
       .map(res => createCodeEntity(res.json()));
   }
 
   saveCode(code: CodeType): Observable<ApiResponseType> {
 
     const registryCode = code.codeScheme.codeRegistry.codeValue;
-    const schemeCode = code.codeScheme.codeValue;
+    const schemeId = code.codeScheme.id;
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code.id}/`, code)
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/${code.id}/`, code)
       .map(res => res.json() as ApiResponseType);
   }
 
@@ -247,5 +247,27 @@ export class DataService {
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.id}/`, codeScheme)
       .map(res => res.json() as ApiResponseType);
+  }
+
+  uploadCodeSchemes(registryCode: string, file: File, format: string): Observable<CodeScheme[]> {
+
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    const params = new URLSearchParams();
+    params.append('format', format);
+
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`, formData, { params })
+      .map(res => res.json().results.map(createCodeSchemeEntity));
+  }
+
+  uploadCodes(registryCode: string, codeSchemeId: string, file: File, format: string): Observable<CodeScheme[]> {
+
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    const params = new URLSearchParams();
+    params.append('format', format);
+
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeId}/${codes}`, formData, { params })
+      .map(res => res.json().results.map(createCodeEntity));
   }
 }

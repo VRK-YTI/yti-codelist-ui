@@ -49,6 +49,15 @@ import { LinkEditModalComponent, LinkEditModalService } from './components/codes
 import { LinkCreateModalComponent, LinkCreateModalService } from './components/codescheme/link-create-modal.component';
 import { LinkShowModalComponent, LinkShowModalService } from './components/codescheme/link-show-modal.component';
 import { PropertyTypeSelectComponent } from './components/codescheme/property-type-select.component';
+import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-create.component';
+import {
+  CodeSchemeImportModalComponent,
+  CodeSchemeImportModalService
+} from './components/codescheme/code-scheme-import-modal.component';
+import {
+  CodeSchemeCodesImportModalComponent,
+  CodeSchemeCodesImportModalService
+} from './components/codescheme/code-scheme-codes-import-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
@@ -58,6 +67,7 @@ const localizations: { [lang: string]: string } = {
 const appRoutes: Routes = [
   {path: '', redirectTo: '/frontpage', pathMatch: 'full'},
   {path: 'frontpage', component: FrontpageComponent, pathMatch: 'full'},
+  {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent}
@@ -95,7 +105,10 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
     CodeSchemeInformationComponent,
+    CodeSchemeCreateComponent,
     CodeInformationComponent,
+    CodeSchemeCodesImportModalComponent,
+    CodeSchemeImportModalComponent,
     LocalizableInputComponent,
     LocalizableTextareaComponent,
     LiteralInputComponent,
@@ -117,6 +130,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
   ],
   entryComponents: [ // needed for modal components
     ErrorModalComponent,
+    CodeSchemeImportModalComponent,
+    CodeSchemeCodesImportModalComponent,
     ConfirmationModalComponent,
     LoginModalComponent,
     LinkShowModalComponent,
@@ -143,6 +158,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ConfirmationModalService,
     UserService,
     AuthorizationManager,
+    CodeSchemeImportModalService,
+    CodeSchemeCodesImportModalService,
     ConfirmationModalService,
     LinkShowModalService,
     LinkEditModalService,
