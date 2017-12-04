@@ -50,7 +50,7 @@ function createCodeRegistryEntity(registry: CodeRegistryType): CodeRegistry {
   const entity = new CodeRegistry();
   setBaseValues(entity, registry);
   entity.codeSchemes = registry.codeSchemes;
-  entity.organizations = registry.organizations;
+  entity.organizations = (registry.organizations || []).map(createOrganizationEntity);
   return entity;
 }
 
