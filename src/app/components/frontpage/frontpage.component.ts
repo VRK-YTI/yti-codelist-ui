@@ -17,7 +17,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./frontpage.component.scss'],
 })
 export class FrontpageComponent implements OnInit {
-
+  
   statuses = statuses;
   registers: CodeRegistry[];
   organizations: Organization[];
@@ -55,24 +55,44 @@ export class FrontpageComponent implements OnInit {
       this.organizations = organizations;
     });
 
+    this.status$.next('VALID');
     const initialSearchTerm = this.searchTerm$.take(1);
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
-
+    
     Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$)
               .subscribe(([searchTerm, classification, status, register, organization]) => {
 
-      this.searchInProgress = true;
+                this.searchInProgress = true;
       const classificationCode = classification ? classification.codeValue : null;
+      
+      if (this.dataClassifications) {
+        this.dataClassifications.map(dc => dc.resetCount());
+      }
+
       const organizationId = organization ? organization.id : null;
       const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
       const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register.codeValue;
 
-      this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).subscribe(codeSchemes => {
-           this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
-           this.searchInProgress = false;
-      });
+      this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).delay(100).subscribe(codeSchemes => {
+          this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
+          this.updateResultsCount();
+          this.searchInProgress = false;
+        }
+      );
     });
+  }
+
+  private updateResultsCount() {
+    const foundClassIds: string[] = [];
+    this.filteredCodeSchemes.forEach(fcs => {
+      if (fcs.dataClassifications[0]) {
+        foundClassIds.push(fcs.dataClassifications[0].id);
+      }
+    });
+    if (this.dataClassifications) {
+      foundClassIds.forEach(id => this.dataClassifications.map(dc => dc.updateCount(id)));
+    }
   }
 
   isClassificationSelected(classification: DataClassification) {
