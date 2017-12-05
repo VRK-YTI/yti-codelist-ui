@@ -49,7 +49,7 @@ import { LinkEditModalComponent, LinkEditModalService } from './components/codes
 import { LinkCreateModalComponent, LinkCreateModalService } from './components/codescheme/link-create-modal.component';
 import { LinkShowModalComponent, LinkShowModalService } from './components/codescheme/link-show-modal.component';
 import { PropertyTypeSelectComponent } from './components/codescheme/property-type-select.component';
-import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-create.component';
+import { CodeSchemeImportAndCreateComponent } from './components/codescheme/code-scheme-import-and-create.component';
 import {
   CodeSchemeImportModalComponent,
   CodeSchemeImportModalService
@@ -67,7 +67,7 @@ const localizations: { [lang: string]: string } = {
 const appRoutes: Routes = [
   {path: '', redirectTo: '/frontpage', pathMatch: 'full'},
   {path: 'frontpage', component: FrontpageComponent, pathMatch: 'full'},
-  {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
+  {path: 'createcodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent}
@@ -105,7 +105,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
     CodeSchemeInformationComponent,
-    CodeSchemeCreateComponent,
+    CodeSchemeImportAndCreateComponent,
     CodeInformationComponent,
     CodeSchemeCodesImportModalComponent,
     CodeSchemeImportModalComponent,

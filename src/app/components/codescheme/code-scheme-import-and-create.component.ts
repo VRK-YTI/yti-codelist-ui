@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
 
 @Component({
-  selector: 'app-code-scheme-create',
-  templateUrl: './code-scheme-create.component.html',
-  styleUrls: ['./code-scheme-create.component.scss']
+  selector: 'app-code-scheme-import-and-create',
+  templateUrl: './code-scheme-import-and-create.component.html',
+  styleUrls: ['./code-scheme-import-and-create.component.scss']
 })
-export class CodeSchemeCreateComponent {
+export class CodeSchemeImportAndCreateComponent {
 
   constructor(private router: Router,
               private codeSchemeImportModalService: CodeSchemeImportModalService) {
@@ -23,7 +23,6 @@ export class CodeSchemeCreateComponent {
   }
 
   createNewCodeScheme() {
-    // TODO
     console.log('Create new codescheme clicked!');
   }
 }

@@ -52,7 +52,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   canSave() {
-    return this.codeRegistry === undefined || this.file === undefined;
+    return this.codeRegistry !== undefined && this.file !== undefined;
   }
 
   onChange(event: EventTarget) {

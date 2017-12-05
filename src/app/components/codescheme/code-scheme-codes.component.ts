@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { CodeScheme } from '../../entities/code-scheme';
+import { ignoreModalClose } from '../../utils/modal';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-code-scheme-codes',
@@ -17,6 +19,7 @@ export class CodeSchemeCodesComponent {
 
   constructor(private userService: UserService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
+              private dataService: DataService,
               private router: Router) {
   }
 
@@ -26,8 +29,17 @@ export class CodeSchemeCodesComponent {
   }
 
   importCodes() {
-    console.log('Import codes pressed!');
-    this.codeSchemeCodesImportModalService.open(this.codeScheme);
+    this.codeSchemeCodesImportModalService.open(this.codeScheme).then(success => {
+      if (success) {
+        this.refreshCodes();
+      }
+    }, ignoreModalClose);
+  }
+
+  refreshCodes() {
+    this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id).subscribe(codes => {
+      this.codes = codes;
+    });
   }
 
   isLoggedIn() {

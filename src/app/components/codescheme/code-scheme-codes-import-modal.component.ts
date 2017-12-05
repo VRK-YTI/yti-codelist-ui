@@ -1,8 +1,7 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
-import { CodeRegistry } from '../../entities/code-registry';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 
@@ -44,10 +43,11 @@ export class CodeSchemeCodesImportModalComponent {
   }
 
   canSave() {
-    return this.file === undefined;
+    return this.file !== undefined;
   }
 
   onChange(event: EventTarget) {
+
     const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
     const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
     if (target.files != null) {
@@ -59,10 +59,10 @@ export class CodeSchemeCodesImportModalComponent {
   }
 
   uploadCodesFile() {
-    if (this.file !== undefined) {
 
+    if (this.file !== undefined) {
       this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
-        this.modal.close(false);
+        this.modal.close(true);
       });
     }
   }
