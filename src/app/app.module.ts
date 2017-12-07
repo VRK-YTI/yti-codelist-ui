@@ -41,7 +41,7 @@ import { ErrorModalComponent, ErrorModalService } from 'yti-common-ui/components
 import { ConfirmationModalComponent, ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { CodeListConfirmationModalService } from './components/common/confirmation-modal.service';
 import { EditGuard } from './components/common/edit.guard';
-import { UserService } from './services/user.service';
+import { UserService } from 'yti-common-ui/services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
 import { LoginModalComponent, LoginModalService } from 'yti-common-ui/components/login-modal.component';
 import { LinkListModalComponent, LinkListModalService } from './components/codescheme/link-list-modal.component';
@@ -59,6 +59,7 @@ import {
   CodeSchemeCodesImportModalService
 } from './components/codescheme/code-scheme-codes-import-modal.component';
 import { MenuComponent } from 'yti-common-ui/components/menu.component';
+import { AUTHENTICATED_USER_ENDPOINT } from 'yti-common-ui';
 
 const localizations: { [lang: string]: string} = {
   fi: Object.assign({},
@@ -80,6 +81,10 @@ const appRoutes: Routes = [
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent}
 ];
+
+export function resolveAuthenticatedUserEndpoint() {
+  return '/codelist-intake/api/authenticated-user';
+}
 
 export function createTranslateLoader(): TranslateLoader {
   return {getTranslation: (lang: string) => Observable.of(localizations[lang])};
@@ -156,6 +161,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader})
   ],
   providers: [
+    {provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint},
     {provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler},
     LanguageService,
     LocationService,

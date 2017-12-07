@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Code } from '../../entities/code';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ignoreModalClose } from '../../utils/modal';

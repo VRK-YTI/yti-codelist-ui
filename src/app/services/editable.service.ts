@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
-import { UserService } from './user.service';
+import { UserService } from 'yti-common-ui/services/user.service';
 import { Subscription } from 'rxjs/Subscription';
 
 export interface EditingComponent {

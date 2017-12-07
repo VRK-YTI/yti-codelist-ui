@@ -9,7 +9,7 @@ import { Organization } from '../../entities/organization';
 import { Status, statuses } from '../../entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../services/user.service';
+import { UserService } from 'yti-common-ui/services/user.service';
 
 @Component({
   selector: 'app-frontpage',
@@ -17,7 +17,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./frontpage.component.scss'],
 })
 export class FrontpageComponent implements OnInit {
-  
+
   statuses = statuses;
   registers: CodeRegistry[];
   organizations: Organization[];
@@ -59,13 +59,13 @@ export class FrontpageComponent implements OnInit {
     const initialSearchTerm = this.searchTerm$.take(1);
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
-    
+
     Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$)
               .subscribe(([searchTerm, classification, status, register, organization]) => {
 
                 this.searchInProgress = true;
       const classificationCode = classification ? classification.codeValue : null;
-      
+
       if (this.dataClassifications) {
         this.dataClassifications.map(dc => dc.resetCount());
       }
