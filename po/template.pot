@@ -7,34 +7,13 @@ msgstr ""
 msgid "Link type"
 msgstr ""
 
-msgid "Yes"
+msgid "Save"
 msgstr ""
 
 msgid "Cancel"
 msgstr ""
 
-msgid "Close"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
 msgid "Edit"
-msgstr ""
-
-msgid "Login"
-msgstr ""
-
-msgid "eDuuni information"
-msgstr ""
-
-msgid "Login information"
-msgstr ""
-
-msgid "Log In"
-msgstr ""
-
-msgid "Register"
 msgstr ""
 
 msgid "Code scheme"
@@ -93,7 +72,7 @@ msgstr ""
 
 msgid ""
 "You can also add a new codescheme by creating it via the user interface of "
-"the Code List Service."
+"the Koodistot service."
 msgstr ""
 
 msgid "Create new codescheme"
@@ -196,29 +175,6 @@ msgid "1 code scheme"
 msgstr ""
 
 msgid "No organization"
-msgstr ""
-
-msgid "Code List Service"
-msgstr ""
-
-msgid ""
-"This service is developed and maintained by Population Registry Center of "
-"Finland"
-msgstr ""
-
-msgid "Information about the web service"
-msgstr ""
-
-msgid "Description of file"
-msgstr ""
-
-msgid "User support"
-msgstr ""
-
-msgid "Feedback"
-msgstr ""
-
-msgid "Sourcecode is licensed under EUPL-1.2 license."
 msgstr ""
 
 msgid "LOG IN"

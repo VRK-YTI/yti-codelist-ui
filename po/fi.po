@@ -2,53 +2,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-04 18:53+0200\n"
+"PO-Revision-Date: 2017-12-07 16:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Link type"
 msgstr "Linkin tyyppi"
 
-msgid "Yes"
-msgstr "Kyllä"
+msgid "Save"
+msgstr "Tallenna"
 
 msgid "Cancel"
 msgstr "Peruuta"
 
-msgid "Close"
-msgstr "Sulje"
-
-msgid "Save"
-msgstr "Tallenna"
-
 msgid "Edit"
 msgstr "Muokkaa"
-
-msgid "Login"
-msgstr "Sisäänkirjautuminen"
-
-msgid "eDuuni information"
-msgstr ""
-"Palveluun kirjaudutaan eDuuni-tunnuksilla. Kirjautumista vaaditaan jos "
-"haluat muokata palvelun sisältöä."
-
-msgid "Login information"
-msgstr ""
-"Alla olevalla painikkeella ohjaudut eDuuni-palvelun kirjautumiseen. Palaa "
-"sen jälkeen takaisin palveluun."
-
-msgid "Log In"
-msgstr "Kirjaudu sisään"
-
-msgid "Register"
-msgstr "Luo tunnukset"
 
 msgid "Code scheme"
 msgstr "Koodisto"
@@ -109,9 +84,13 @@ msgstr ""
 msgid "Import codescheme from a file"
 msgstr "Tuo koodisto tiedostosta"
 
+#, fuzzy
+#| msgid ""
+#| "You can also add a new codescheme by creating it via the user interface "
+#| "of the Code List Service."
 msgid ""
 "You can also add a new codescheme by creating it via the user interface of "
-"the Code List Service."
+"the Koodistot service."
 msgstr ""
 "Voit myös lisätä uuden koodiston syöttämällä tiedot Koodistoeditorin "
 "käyttöliittymän kautta."
@@ -218,29 +197,6 @@ msgstr "1 koodisto"
 msgid "No organization"
 msgstr "Ei organisaatiota"
 
-msgid "Code List Service"
-msgstr "Koodistoeditori"
-
-msgid ""
-"This service is developed and maintained by Population Registry Center of "
-"Finland"
-msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus"
-
-msgid "Information about the web service"
-msgstr "Tietoa verkkopalvelusta"
-
-msgid "Description of file"
-msgstr "Tietosuojaseloste"
-
-msgid "User support"
-msgstr "Käytön tuki"
-
-msgid "Feedback"
-msgstr "Ota yhteyttä"
-
-msgid "Sourcecode is licensed under EUPL-1.2 license."
-msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."
-
 msgid "LOG IN"
 msgstr "KIRJAUDU SISÄÄN"
 
@@ -289,3 +245,48 @@ msgstr ""
 
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
+
+#~ msgid "Yes"
+#~ msgstr "Kyllä"
+
+#~ msgid "Close"
+#~ msgstr "Sulje"
+
+#~ msgid "Login"
+#~ msgstr "Sisäänkirjautuminen"
+
+#~ msgid "eDuuni information"
+#~ msgstr ""
+#~ "Palveluun kirjaudutaan eDuuni-tunnuksilla. Kirjautumista vaaditaan jos "
+#~ "haluat muokata palvelun sisältöä."
+
+#~ msgid "Login information"
+#~ msgstr ""
+#~ "Alla olevalla painikkeella ohjaudut eDuuni-palvelun kirjautumiseen. Palaa "
+#~ "sen jälkeen takaisin palveluun."
+
+#~ msgid "Log In"
+#~ msgstr "Kirjaudu sisään"
+
+#~ msgid "Register"
+#~ msgstr "Luo tunnukset"
+
+#~ msgid ""
+#~ "This service is developed and maintained by Population Registry Center of "
+#~ "Finland"
+#~ msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus"
+
+#~ msgid "Information about the web service"
+#~ msgstr "Tietoa verkkopalvelusta"
+
+#~ msgid "Description of file"
+#~ msgstr "Tietosuojaseloste"
+
+#~ msgid "User support"
+#~ msgstr "Käytön tuki"
+
+#~ msgid "Feedback"
+#~ msgstr "Ota yhteyttä"
+
+#~ msgid "Sourcecode is licensed under EUPL-1.2 license."
+#~ msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."

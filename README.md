@@ -1,5 +1,5 @@
 # yti-codelist-ui
-User interface for Code List Service project
+User interface for Koodistot project
 
 ## Prepare tools
 
