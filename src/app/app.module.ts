@@ -21,7 +21,7 @@ import { Observable } from 'rxjs/Observable';
 import { CodeSchemeComponent } from './components/codescheme/code-scheme.component';
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
-import { BackButtonComponent } from './components/common/back-button.component';
+import { BackButtonComponent } from 'yti-common-ui/components/back-button.component';
 import { StyleTestComponent } from './components/style-test.component';
 import { StatusComponent } from './components/common/status.component';
 import { ContentLanguageComponent } from './components/common/content-language.component';
