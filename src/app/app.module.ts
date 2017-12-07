@@ -13,8 +13,8 @@ import { AppComponent } from './components/app.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { LanguageService } from './services/language.service';
 import { NavigationBarComponent } from './components/navigation/navigation-bar.component';
-import { BreadcrumbComponent } from './components/navigation/breadcrumb.component';
-import { FooterComponent } from './components/navigation/footer.component';
+import { BreadcrumbComponent } from 'yti-common-ui/components/breadcrumb.component';
+import { FooterComponent } from 'yti-common-ui/components/footer.component';
 import { TranslateValuePipe } from './pipes/translate-value.pipe';
 import { LocationService } from './services/location.service';
 import { Observable } from 'rxjs/Observable';
@@ -34,16 +34,17 @@ import { LocalizableTextareaComponent } from './components/form/localizable-text
 import { LiteralInputComponent } from './components/form/literal-input';
 import { LiteralComponent } from './components/form/literal';
 import { LocalizableLiteralComponent } from './components/form/localizable-literal';
-import { AjaxLoadingIndicatorComponent } from './components/common/ajax-loading-indicator.component';
-import { AjaxLoadingIndicatorSmallComponent } from './components/common/ajax-loading-indicator-small.component';
+import { AjaxLoadingIndicatorComponent } from 'yti-common-ui/components/ajax-loading-indicator.component';
+import { AjaxLoadingIndicatorSmallComponent } from 'yti-common-ui/components/ajax-loading-indicator-small.component';
 import { EditableButtonsComponent } from './components/form/editable-buttons.component';
 import { ErrorMessagesComponent } from './components/form/error-messages.component';
-import { ErrorModalComponent, ErrorModalService } from './components/common/error-modal.component';
-import { ConfirmationModalComponent, ConfirmationModalService } from './components/common/confirmation-modal.component';
+import { ErrorModalComponent, ErrorModalService } from 'yti-common-ui/components/error-modal.component';
+import { ConfirmationModalComponent, ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
+import { CodeListConfirmationModalService } from './components/common/confirmation-modal.service';
 import { EditGuard } from './components/common/edit.guard';
 import { UserService } from './services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
-import { LoginModalComponent, LoginModalService } from './components/navigation/login-modal.component';
+import { LoginModalComponent, LoginModalService } from 'yti-common-ui/components/login-modal.component';
 import { LinkListModalComponent, LinkListModalService } from './components/codescheme/link-list-modal.component';
 import { LinkEditModalComponent, LinkEditModalService } from './components/codescheme/link-edit-modal.component';
 import { LinkCreateModalComponent, LinkCreateModalService } from './components/codescheme/link-create-modal.component';
@@ -161,6 +162,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeImportModalService,
     CodeSchemeCodesImportModalService,
     ConfirmationModalService,
+    CodeListConfirmationModalService,
     LinkShowModalService,
     LinkEditModalService,
     LinkCreateModalService,

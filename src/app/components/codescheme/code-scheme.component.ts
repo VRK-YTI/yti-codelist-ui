@@ -6,7 +6,7 @@ import { Code } from '../../entities/code';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationModalService } from '../common/confirmation-modal.component';
+import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { ignoreModalClose } from '../../utils/modal';
 import { Observable } from 'rxjs/Observable';
 

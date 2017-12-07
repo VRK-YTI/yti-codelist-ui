@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Language, LanguageService } from '../../services/language.service';
 import { UserService } from '../../services/user.service';
-import { LoginModalService } from './login-modal.component';
+import { LoginModalService } from 'yti-common-ui/components/login-modal.component';
 
 @Component({
   selector: 'app-navigation-bar',

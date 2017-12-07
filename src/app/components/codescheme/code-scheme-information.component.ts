@@ -10,7 +10,7 @@ import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
 import { remove } from '../../utils/array';
 import { PropertyType } from '../../entities/property-type';
-import { ConfirmationModalService } from '../common/confirmation-modal.component';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -39,7 +39,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
               private editableService: EditableService,
-              private confirmationModalService: ConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
