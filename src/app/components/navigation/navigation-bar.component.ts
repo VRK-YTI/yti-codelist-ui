@@ -21,6 +21,10 @@ export class NavigationBarComponent {
               private loginModal: LoginModalService) {
   }
 
+  get noMenuItemsAvailable() {
+    return true;
+  }
+
   logIn() {
     this.loginModal.open();
   }

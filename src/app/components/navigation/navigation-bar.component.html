@@ -23,6 +23,22 @@
         </a>
       </div>
     </li>
+    <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
+      <a class="nav-link btn-menu" ngbDropdownToggle>
+        <app-menu></app-menu>
+      </a>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
+          <i class="fa fa-sign-out"></i>
+          <span translate>LOG OUT</span>
+        </a>
+        <a class="dropdown-item" *ngIf="!isLoggedIn()" (click)="logIn()">
+          <i class="fa fa-sign-in"></i>
+          <span translate>LOG IN</span>
+        </a>
+        <div class="dropdown-divider" [hidden]="noMenuItemsAvailable"></div>
+      </div>
+    </li>
   </ul>
 
 </nav>

@@ -58,10 +58,18 @@ import {
   CodeSchemeCodesImportModalComponent,
   CodeSchemeCodesImportModalService
 } from './components/codescheme/code-scheme-codes-import-modal.component';
+import { MenuComponent } from 'yti-common-ui/components/menu.component';
 
-const localizations: { [lang: string]: string } = {
-  fi: require('json-loader!po-loader?format=mf!../../po/fi.po'),
-  en: require('json-loader!po-loader?format=mf!../../po/en.po')
+const localizations: { [lang: string]: string} = {
+  fi: Object.assign({},
+    require('json-loader!po-loader?format=mf!../../po/fi.po'),
+    require('json-loader!po-loader?format=mf!yti-common-ui/po/fi.po')
+  )
+  ,
+  en: Object.assign({},
+    require('json-loader!po-loader?format=mf!../../po/en.po'),
+    require('json-loader!po-loader?format=mf!yti-common-ui/po/en.po')
+  )
 };
 
 const appRoutes: Routes = [
@@ -125,6 +133,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkCreateModalComponent,
     LinkListModalComponent,
     PropertyTypeSelectComponent,
+    MenuComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components
