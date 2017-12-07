@@ -1,6 +1,9 @@
 # alpine version should match the version in .nvmrc as closely as possible
 FROM node:6.11-alpine
 
+# Install git
+RUN apk add --update git
+
 # Install nginx
 RUN apk add --update nginx && \
     rm -rf /var/cache/apk/*
