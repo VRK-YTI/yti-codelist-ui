@@ -21,7 +21,6 @@ import { Observable } from 'rxjs/Observable';
 import { CodeSchemeComponent } from './components/codescheme/code-scheme.component';
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
-import { LogoComponent } from './components/common/logo.component';
 import { BackButtonComponent } from './components/common/back-button.component';
 import { StyleTestComponent } from './components/style-test.component';
 import { StatusComponent } from './components/common/status.component';
@@ -100,7 +99,6 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     TranslateValuePipe,
     CodeSchemeComponent,
     CodeComponent,
-    LogoComponent,
     BackButtonComponent,
     StatusComponent,
     ContentLanguageComponent,
