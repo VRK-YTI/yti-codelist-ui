@@ -4,7 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { DataService } from '../../services/data.service';
 import { LinkCreateModalService } from './link-create-modal.component';
-import { ignoreModalClose } from '../../utils/modal';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 
 @Injectable()
 export class LinkListModalService {

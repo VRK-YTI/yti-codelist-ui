@@ -1,4 +1,4 @@
-import { Localizable } from './localization';
+import { Localizable } from 'yti-common-ui/types/localization';
 import { PropertyType } from './property-type';
 
 export class ExternalReference {

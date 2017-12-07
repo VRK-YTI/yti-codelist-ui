@@ -1,5 +1,4 @@
-import { Localizable } from '../entities/localization';
-import { CodeScheme } from '../entities/code-scheme';
+import { Localizable } from 'yti-common-ui/types/localization';
 import { Organization } from '../entities/organization';
 
 export interface ApiResponseType {

@@ -1,5 +1,5 @@
-import { Localizable } from './localization';
-import { Location } from './location';
+import { Localizable } from 'yti-common-ui/types/localization';
+import { Location } from 'yti-common-ui/types/location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
 import { formatDate } from '../utils/date';

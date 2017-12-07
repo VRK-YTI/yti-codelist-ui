@@ -1,4 +1,4 @@
-import { Localizable } from './localization';
+import { Localizable } from 'yti-common-ui/types/localization';
 
 export class DataClassification {
 
@@ -15,7 +15,7 @@ export class DataClassification {
   updateCount(id: string) {
     if (id === this.id) {
       this.filteredCount++;
-    } 
+    }
   }
   resetCount() {
     this.filteredCount = 0;

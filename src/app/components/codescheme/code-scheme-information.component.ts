@@ -4,11 +4,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
-import { ignoreModalClose } from '../../utils/modal';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
-import { remove } from '../../utils/array';
+import { remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 

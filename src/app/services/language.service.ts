@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
-import { Localizable } from '../entities/localization';
+import { Localizable } from 'yti-common-ui/types/localization';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export type Language = string;
@@ -43,7 +43,7 @@ export class LanguageService implements Localizer {
     }
   }
 
-  translate(localizable: Localizable, useUILanguage = false) {
+  translate(localizable: Localizable, useUILanguage = false): string {
 
     if (!localizable) {
       return '';

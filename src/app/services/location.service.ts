@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
-import { Location } from '../entities/location';
+import { Location } from 'yti-common-ui/types/location';
 
 const frontPage = { localizationKey: 'Front page', route: [''] };
 

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { CodeScheme } from '../../entities/code-scheme';
-import { ignoreModalClose } from '../../utils/modal';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { DataService } from '../../services/data.service';
 
 @Component({

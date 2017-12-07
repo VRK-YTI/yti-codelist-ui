@@ -1,6 +1,6 @@
 import { AbstractResource } from './abstract-resource';
-import { Localizable } from './localization';
-import { Location } from './location';
+import { Localizable } from 'yti-common-ui/types/localization';
+import { Location } from 'yti-common-ui/types/location';
 import { CodeRegistry } from './code-registry';
 import { formatDate } from '../utils/date';
 import { ExternalReference } from './external-reference';

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Localizable } from '../../entities/localization';
+import { Localizable } from 'yti-common-ui/types/localization';
 
 @Component({
   selector: 'app-localizable-literal',

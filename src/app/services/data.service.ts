@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { CodeScheme } from '../entities/code-scheme';
 import { CodeRegistry } from '../entities/code-registry';
 import { Observable } from 'rxjs/Observable';
 import { DataClassification } from '../entities/data-classification';
 import { Code } from '../entities/code';
 import {
-  CodeType, ApiResponseType, BaseResourceType, CodeSchemeType, DataClassificationType,
-  CodeRegistryType, PropertyTypeType, ExternalReferenceType, OrganizationType
+  ApiResponseType,
+  BaseResourceType,
+  CodeRegistryType,
+  CodeSchemeType,
+  CodeType,
+  DataClassificationType,
+  ExternalReferenceType,
+  OrganizationType,
+  PropertyTypeType
 } from './api-schema';
 import { AbstractResource } from '../entities/abstract-resource';
 import { PropertyType } from '../entities/property-type';
 import { ExternalReference } from '../entities/external-reference';
-import { environment } from '../../environments/environment';
 import { Organization } from '../entities/organization';
 
 const intakeContext = 'codelist-intake';
