@@ -23,11 +23,11 @@
 
         <div class="classification"
              *ngFor="let dataClassification of dataClassifications"
-             [class.active]="isClassificationSelected(dataClassification)"
-             (click)="toggleClassification(dataClassification)">
+             [class.active]="isClassificationSelected(dataClassification.entity)"
+             (click)="toggleClassification(dataClassification.entity)">
 
-          <span class="name">{{dataClassification.prefLabel | translateValue:true }}</span>
-          <span class="count">({{dataClassification.filteredCount}})</span>
+          <span class="name">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
+          <span class="count">({{dataClassification.count}})</span>
         </div>
       </div>
     </div>

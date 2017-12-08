@@ -13,6 +13,8 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from 'ng2-translate';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { anyMatching } from 'yti-common-ui/utils/array';
 
 @Component({
   selector: 'app-frontpage',
@@ -25,7 +27,7 @@ export class FrontpageComponent implements OnInit {
   registerOptions: FilterOptions<CodeRegistry>;
   organizationOptions: FilterOptions<Organization>;
 
-  dataClassifications: DataClassification[];
+  dataClassifications: { entity: DataClassification, count: number }[];
   register$ = new BehaviorSubject<CodeRegistry|null>(null);
 
   searchTerm$ = new BehaviorSubject('');
@@ -48,10 +50,6 @@ export class FrontpageComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.dataService.getDataClassifications().subscribe(classifications => {
-      this.dataClassifications = classifications.filter(c => c.count > 0);
-    });
 
     this.dataService.getCodeRegistries().subscribe(registers => {
       this.registerOptions = [null, ...registers].map(register => ({
@@ -78,39 +76,57 @@ export class FrontpageComponent implements OnInit {
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
 
+    const dataClassifications$ = this.dataService.getDataClassifications().map(classifications => {
+      classifications.sort(comparingLocalizable<DataClassification>(this.languageService, c => c.prefLabel));
+      return classifications;
+    });
+
+    function statusMatches(status: Status|null, codeScheme: CodeScheme) {
+      return !status || codeScheme.status === status;
+    }
+
+    function registerMatches(register: CodeRegistry|null, codeScheme: CodeScheme) {
+      return !register || codeScheme.codeRegistry.codeValue === register.codeValue;
+    }
+
+    function calculateCount(classification: DataClassification, codeSchemes: CodeScheme[]) {
+      return codeSchemes.filter(cs =>
+        anyMatching(cs.dataClassifications, rc => rc.id === classification.id)).length;
+    }
+
     Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$)
-      .subscribe(([searchTerm, classification, status, register, organization]) => {
+      .do(() => this.searchInProgress = true)
+      .flatMap(([searchTerm, classification, status, register, organization]) => {
 
-        this.searchInProgress = true;
         const classificationCode = classification ? classification.codeValue : null;
+        const organizationId = organization ? organization.id : null;
 
-        if (this.dataClassifications) {
-          this.dataClassifications.map(dc => dc.resetCount());
-        }
+        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId)
+          .map(codeSchemes => codeSchemes.filter(codeScheme =>
+            statusMatches(status, codeScheme) &&
+            registerMatches(register, codeScheme))
+          );
+      })
+      .do(() => this.searchInProgress = false)
+      .subscribe(results => this.filteredCodeSchemes = results);
+
+    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$)
+      .subscribe(([classifications, searchTerm, status, register, organization]) => {
 
         const organizationId = organization ? organization.id : null;
-        const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
-        const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register.codeValue;
 
-        this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).delay(100).subscribe(codeSchemes => {
-            this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
-            this.updateResultsCount();
-            this.searchInProgress = false;
-          }
-        );
+        this.dataService.searchCodeSchemes(searchTerm, null, organizationId)
+          .map(codeSchemes => codeSchemes.filter(codeScheme =>
+            statusMatches(status, codeScheme) &&
+            registerMatches(register, codeScheme))
+          )
+          .subscribe(codeSchemes => {
+            this.dataClassifications = classifications.map(classification => ({
+              entity: classification,
+              count: calculateCount(classification, codeSchemes)
+            }));
+          });
       });
-  }
-
-  private updateResultsCount() {
-    const foundClassIds: string[] = [];
-    this.filteredCodeSchemes.forEach(fcs => {
-      if (fcs.dataClassifications[0]) {
-        foundClassIds.push(fcs.dataClassifications[0].id);
-      }
-    });
-    if (this.dataClassifications) {
-      foundClassIds.forEach(id => this.dataClassifications.map(dc => dc.updateCount(id)));
-    }
   }
 
   isClassificationSelected(classification: DataClassification) {
