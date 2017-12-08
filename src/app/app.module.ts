@@ -33,7 +33,6 @@ import { EditableButtonsComponent } from './components/form/editable-buttons.com
 import { ErrorMessagesComponent } from './components/form/error-messages.component';
 import { CodeListConfirmationModalService } from './components/common/confirmation-modal.service';
 import { EditGuard } from './components/common/edit.guard';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
 import { LinkListModalComponent, LinkListModalService } from './components/codescheme/link-list-modal.component';
 import { LinkEditModalComponent, LinkEditModalService } from './components/codescheme/link-edit-modal.component';
@@ -140,13 +139,12 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
   ],
   providers: [
     {provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint},
-    {provide: LOCALIZER, useClass: LanguageService},
+    {provide: LOCALIZER, useExisting: LanguageService},
     {provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler},
     LanguageService,
     LocationService,
     DataService,
     EditGuard,
-    UserService,
     AuthorizationManager,
     CodeSchemeImportModalService,
     CodeSchemeCodesImportModalService,
