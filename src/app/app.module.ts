@@ -60,6 +60,8 @@ import {
 } from './components/codescheme/code-scheme-codes-import-modal.component';
 import { MenuComponent } from 'yti-common-ui/components/menu.component';
 import { AUTHENTICATED_USER_ENDPOINT } from 'yti-common-ui';
+import { DropdownComponent } from 'yti-common-ui/components/dropdown.component';
+import { FilterDropdownComponent } from 'yti-common-ui/components/filter-dropdown.component';
 
 const localizations: { [lang: string]: string} = {
   fi: Object.assign({},
@@ -139,6 +141,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkListModalComponent,
     PropertyTypeSelectComponent,
     MenuComponent,
+    DropdownComponent,
+    FilterDropdownComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components

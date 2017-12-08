@@ -10,6 +10,9 @@ import { Status, statuses } from '../../entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from 'yti-common-ui/services/user.service';
+import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
+import { LanguageService } from '../../services/language.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-frontpage',
@@ -18,16 +21,16 @@ import { UserService } from 'yti-common-ui/services/user.service';
 })
 export class FrontpageComponent implements OnInit {
 
-  statuses = statuses;
-  registers: CodeRegistry[];
-  organizations: Organization[];
+  statusOptions: FilterOptions<Status>;
+  registerOptions: FilterOptions<CodeRegistry>;
+  organizationOptions: FilterOptions<Organization>;
 
   dataClassifications: DataClassification[];
   register$ = new BehaviorSubject<CodeRegistry|null>(null);
 
   searchTerm$ = new BehaviorSubject('');
   classification$ = new BehaviorSubject<DataClassification|null>(null);
-  status$ = new BehaviorSubject<Status|null>(null);
+  status$ = new BehaviorSubject<Status|null>('VALID');
   organization$ = new BehaviorSubject<Organization|null>(null);
 
   filteredCodeSchemes: CodeScheme[];
@@ -37,7 +40,10 @@ export class FrontpageComponent implements OnInit {
   constructor(private dataService: DataService,
               private router: Router,
               private userService: UserService,
+              private languageService: LanguageService,
+              private translateService: TranslateService,
               locationService: LocationService) {
+
     locationService.atFrontPage();
   }
 
@@ -48,39 +54,51 @@ export class FrontpageComponent implements OnInit {
     });
 
     this.dataService.getCodeRegistries().subscribe(registers => {
-      this.registers = registers;
+      this.registerOptions = [null, ...registers].map(register => ({
+        value: register,
+        name: () => register ? this.languageService.translate(register.prefLabel)
+                             : this.translateService.instant('All registries')
+      }));
     });
 
     this.dataService.getOrganizations().subscribe(organizations => {
-      this.organizations = organizations;
+      this.organizationOptions = [null, ...organizations].map(organization => ({
+        value: organization,
+        name: () => organization ? this.languageService.translate(organization.prefLabel)
+                                 : this.translateService.instant('All organizations')
+      }));
     });
 
-    this.status$.next('VALID');
+    this.statusOptions = [null, ...statuses].map(status => ({
+      value: status,
+      name: () => this.translateService.instant(status ? status : 'All statuses')
+    }));
+
     const initialSearchTerm = this.searchTerm$.take(1);
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
 
     Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$)
-              .subscribe(([searchTerm, classification, status, register, organization]) => {
+      .subscribe(([searchTerm, classification, status, register, organization]) => {
 
-                this.searchInProgress = true;
-      const classificationCode = classification ? classification.codeValue : null;
+        this.searchInProgress = true;
+        const classificationCode = classification ? classification.codeValue : null;
 
-      if (this.dataClassifications) {
-        this.dataClassifications.map(dc => dc.resetCount());
-      }
-
-      const organizationId = organization ? organization.id : null;
-      const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
-      const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register.codeValue;
-
-      this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).delay(100).subscribe(codeSchemes => {
-          this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
-          this.updateResultsCount();
-          this.searchInProgress = false;
+        if (this.dataClassifications) {
+          this.dataClassifications.map(dc => dc.resetCount());
         }
-      );
-    });
+
+        const organizationId = organization ? organization.id : null;
+        const statusMatches = (codeScheme: CodeScheme) => !status || codeScheme.status === status;
+        const registerMatches = (codeScheme: CodeScheme) => !register || codeScheme.codeRegistry.codeValue === register.codeValue;
+
+        this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId).delay(100).subscribe(codeSchemes => {
+            this.filteredCodeSchemes = codeSchemes.filter(statusMatches).filter(registerMatches);
+            this.updateResultsCount();
+            this.searchInProgress = false;
+          }
+        );
+      });
   }
 
   private updateResultsCount() {
@@ -109,30 +127,6 @@ export class FrontpageComponent implements OnInit {
 
   set searchTerm(value: string) {
     this.searchTerm$.next(value);
-  }
-
-  get status(): Status|null {
-    return this.status$.getValue();
-  }
-
-  set status(value: Status|null) {
-    this.status$.next(value);
-  }
-
-  get register(): CodeRegistry|null {
-    return this.register$.getValue();
-  }
-
-  set register(value: CodeRegistry|null) {
-    this.register$.next(value);
-  }
-
-  get organization(): Organization|null {
-    return this.organization$.getValue();
-  }
-
-  set organization(value: Organization|null) {
-    this.organization$.next(value);
   }
 
   get loading(): boolean {

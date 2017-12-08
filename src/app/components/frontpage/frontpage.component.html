@@ -36,71 +36,18 @@
 
       <div class="row mb-4">
         <div class="col-12">
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-              <span *ngIf="!register" translate>All registries</span>
-              <span *ngIf="register">{{register.prefLabel | translateValue:true}}</span>
-            </button>
 
-            <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-              <button (click)="register = null"
-                      class="dropdown-item"
-                      [class.active]="register == null">
-                {{'All registries' | translate}}
-              </button>
+          <app-filter-dropdown class="d-inline-block"
+                               [filterSubject]="register$"
+                               [options]="registerOptions"></app-filter-dropdown>
 
-              <button *ngFor="let selectedRegister of registers"
-                      (click)="register = selectedRegister"
-                      class="dropdown-item"
-                      [class.active]="selectedRegister.codeValue == register">
-                {{selectedRegister.prefLabel | translateValue:true}}
-              </button>
-            </div>
-          </div>
+          <app-filter-dropdown class="d-inline-block"
+                               [filterSubject]="organization$"
+                               [options]="organizationOptions"></app-filter-dropdown>
 
-          <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-dropdown" id="org-dropdown" ngbDropdownToggle>
-                <span *ngIf="!organization">{{'All organizations' | translate}}</span>
-                <span *ngIf="organization">{{organization.prefLabel | translateValue:true}}</span>
-              </button>
-
-              <div ngbDropdownMenu aria-labelledby="org-dropdown">
-                <button (click)="organization = null"
-                        class="dropdown-item"
-                        [class.active]="organization == null">
-                  {{'All organizations' | translate}}
-                </button>
-
-                <button *ngFor="let selectedOrganization of organizations"
-                        (click)="organization = selectedOrganization"
-                        class="dropdown-item"
-                        [class.active]="selectedOrganization == organization">
-                  {{selectedOrganization.prefLabel | translateValue:true}}
-                </button>
-              </div>
-            </div>
-
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-dropdown" id="state-dropdown" ngbDropdownToggle>
-              <span *ngIf="!status" translate>All statuses</span>
-              <span *ngIf="status">{{status | translate}}</span>
-            </button>
-
-            <div ngbDropdownMenu aria-labelledby="state-dropdown">
-              <button (click)="status = null"
-                      class="dropdown-item"
-                      [class.active]="status == null">
-                {{'All statuses' | translate}}
-              </button>
-
-              <button *ngFor="let statusOption of statuses"
-                      (click)="status = statusOption"
-                      class="dropdown-item"
-                      [class.active]="statusOption == status">
-                {{statusOption | translate}}
-              </button>
-            </div>
-          </div>
+          <app-filter-dropdown class="d-inline-block"
+                               [filterSubject]="status$"
+                               [options]="statusOptions"></app-filter-dropdown>
 
           <div *ngIf="isLoggedIn()" class="pull-right d-inline-block">
             <button type="button"
