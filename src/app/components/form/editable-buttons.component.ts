@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { NgForm } from '@angular/forms';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { Organization } from '../../entities/organization';
 
 @Component({
   selector: 'app-editable-buttons',
@@ -31,6 +32,8 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 export class EditableButtonsComponent {
 
   @Input() form: NgForm;
+  @Input() organizations: Organization[];
+
 
   constructor(private editableService: EditableService,
               private authorizationManager: AuthorizationManager) {
@@ -49,7 +52,7 @@ export class EditableButtonsComponent {
   }
 
   canEdit(): boolean {
-    return this.authorizationManager.canEdit();
+    return this.authorizationManager.canEdit(this.organizations);
   }
 
   canSave() {
