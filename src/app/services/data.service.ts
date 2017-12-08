@@ -141,7 +141,6 @@ function createDataClassificationEntity(classification: DataClassificationType):
   entity.prefLabel = classification.prefLabel || {};
   entity.codeScheme = classification.codeScheme;
   entity.count = classification.count;
-  entity.filteredCount = 0;
   return entity;
 }
 
