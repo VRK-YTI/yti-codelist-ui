@@ -13,15 +13,11 @@ import { AppComponent } from './components/app.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { LanguageService } from './services/language.service';
 import { NavigationBarComponent } from './components/navigation/navigation-bar.component';
-import { BreadcrumbComponent } from 'yti-common-ui/components/breadcrumb.component';
-import { FooterComponent } from 'yti-common-ui/components/footer.component';
-import { TranslateValuePipe } from './pipes/translate-value.pipe';
 import { LocationService } from './services/location.service';
 import { Observable } from 'rxjs/Observable';
 import { CodeSchemeComponent } from './components/codescheme/code-scheme.component';
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
-import { BackButtonComponent } from 'yti-common-ui/components/back-button.component';
 import { StyleTestComponent } from './components/style-test.component';
 import { StatusComponent } from './components/common/status.component';
 import { ContentLanguageComponent } from './components/common/content-language.component';
@@ -33,17 +29,12 @@ import { LocalizableTextareaComponent } from './components/form/localizable-text
 import { LiteralInputComponent } from './components/form/literal-input';
 import { LiteralComponent } from './components/form/literal';
 import { LocalizableLiteralComponent } from './components/form/localizable-literal';
-import { AjaxLoadingIndicatorComponent } from 'yti-common-ui/components/ajax-loading-indicator.component';
-import { AjaxLoadingIndicatorSmallComponent } from 'yti-common-ui/components/ajax-loading-indicator-small.component';
 import { EditableButtonsComponent } from './components/form/editable-buttons.component';
 import { ErrorMessagesComponent } from './components/form/error-messages.component';
-import { ErrorModalComponent, ErrorModalService } from 'yti-common-ui/components/error-modal.component';
-import { ConfirmationModalComponent, ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { CodeListConfirmationModalService } from './components/common/confirmation-modal.service';
 import { EditGuard } from './components/common/edit.guard';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { AuthorizationManager } from './services/authorization-manager.service';
-import { LoginModalComponent, LoginModalService } from 'yti-common-ui/components/login-modal.component';
 import { LinkListModalComponent, LinkListModalService } from './components/codescheme/link-list-modal.component';
 import { LinkEditModalComponent, LinkEditModalService } from './components/codescheme/link-edit-modal.component';
 import { LinkCreateModalComponent, LinkCreateModalService } from './components/codescheme/link-create-modal.component';
@@ -58,10 +49,7 @@ import {
   CodeSchemeCodesImportModalComponent,
   CodeSchemeCodesImportModalService
 } from './components/codescheme/code-scheme-codes-import-modal.component';
-import { MenuComponent } from 'yti-common-ui/components/menu.component';
-import { AUTHENTICATED_USER_ENDPOINT } from 'yti-common-ui';
-import { DropdownComponent } from 'yti-common-ui/components/dropdown.component';
-import { FilterDropdownComponent } from 'yti-common-ui/components/filter-dropdown.component';
+import { YtiCommonModule, AUTHENTICATED_USER_ENDPOINT, LOCALIZER } from 'yti-common-ui';
 
 const localizations: { [lang: string]: string} = {
   fi: Object.assign({},
@@ -109,12 +97,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     AppComponent,
     FrontpageComponent,
     NavigationBarComponent,
-    BreadcrumbComponent,
-    FooterComponent,
-    TranslateValuePipe,
     CodeSchemeComponent,
     CodeComponent,
-    BackButtonComponent,
     StatusComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
@@ -128,29 +112,18 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LiteralInputComponent,
     LiteralComponent,
     LocalizableLiteralComponent,
-    AjaxLoadingIndicatorComponent,
-    AjaxLoadingIndicatorSmallComponent,
     EditableButtonsComponent,
     ErrorMessagesComponent,
-    ErrorModalComponent,
-    ConfirmationModalComponent,
-    LoginModalComponent,
     LinkShowModalComponent,
     LinkEditModalComponent,
     LinkCreateModalComponent,
     LinkListModalComponent,
     PropertyTypeSelectComponent,
-    MenuComponent,
-    DropdownComponent,
-    FilterDropdownComponent,
     StyleTestComponent
   ],
   entryComponents: [ // needed for modal components
-    ErrorModalComponent,
     CodeSchemeImportModalComponent,
     CodeSchemeCodesImportModalComponent,
-    ConfirmationModalComponent,
-    LoginModalComponent,
     LinkShowModalComponent,
     LinkEditModalComponent,
     LinkCreateModalComponent,
@@ -162,23 +135,21 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader})
+    TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader}),
+    YtiCommonModule
   ],
   providers: [
     {provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint},
+    {provide: LOCALIZER, useClass: LanguageService},
     {provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler},
     LanguageService,
     LocationService,
     DataService,
     EditGuard,
-    ErrorModalService,
-    LoginModalService,
-    ConfirmationModalService,
     UserService,
     AuthorizationManager,
     CodeSchemeImportModalService,
     CodeSchemeCodesImportModalService,
-    ConfirmationModalService,
     CodeListConfirmationModalService,
     LinkShowModalService,
     LinkEditModalService,
