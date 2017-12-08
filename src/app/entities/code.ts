@@ -3,8 +3,9 @@ import { Location } from 'yti-common-ui/types/location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
 import { formatDate } from '../utils/date';
+import { EditableEntity } from './editable-entity';
 
-export class Code extends AbstractResource {
+export class Code extends AbstractResource implements EditableEntity {
 
   codeScheme: CodeScheme;
   shortName: string;
@@ -50,5 +51,9 @@ export class Code extends AbstractResource {
         route: this.route
       }
     ];
+  }
+
+  getOwningOrganizationIds(): string[] {
+    return this.codeScheme.codeRegistry.organizations.map(org => org.id);
   }
 }

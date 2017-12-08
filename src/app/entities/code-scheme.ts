@@ -5,8 +5,9 @@ import { CodeRegistry } from './code-registry';
 import { formatDate } from '../utils/date';
 import { ExternalReference } from './external-reference';
 import { DataClassification } from './data-classification';
+import { EditableEntity } from './editable-entity';
 
-export class CodeScheme extends AbstractResource {
+export class CodeScheme extends AbstractResource implements EditableEntity {
 
   version: string;
   source: string;
@@ -47,5 +48,9 @@ export class CodeScheme extends AbstractResource {
       label: this.prefLabel,
       route: this.route
     }];
+  }
+
+  getOwningOrganizationIds(): string[] {
+    return this.codeRegistry.organizations.map(org => org.id);
   }
 }

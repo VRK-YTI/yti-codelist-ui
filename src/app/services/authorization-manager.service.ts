@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserService, UUID } from 'yti-common-ui/services/user.service';
-import { Organization } from '../entities/organization';
+import { UserService } from 'yti-common-ui/services/user.service';
+import { EditableEntity } from '../entities/editable-entity';
 
 @Injectable()
 export class AuthorizationManager {
@@ -12,11 +12,10 @@ export class AuthorizationManager {
     return this.userService.user;
   }
 
-  canEdit(organizations: Organization[]): boolean {
+  canEdit(editableEntity: EditableEntity): boolean {
     if (this.user.superuser) {
       return true;
     }
-    const orgIds: UUID[] = organizations.map(org => org.id); 
-    return this.user.isInOrganization(orgIds, ['ADMIN', 'CODE_LIST_EDITOR']);
+    return this.user.isInOrganization(editableEntity.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
   }
 }
