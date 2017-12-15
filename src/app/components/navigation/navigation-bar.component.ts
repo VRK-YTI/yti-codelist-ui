@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Language, LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { LoginModalService } from 'yti-common-ui/components/login-modal.component';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -16,9 +17,17 @@ export class NavigationBarComponent {
     { code: 'en' as Language, name: 'In English (EN)' }
   ];
 
+  fakeableUsers: { email: string, firstName: string, lastName: string }[] = [];
+
   constructor(private languageService: LanguageService,
               private userService: UserService,
-              private loginModal: LoginModalService) {
+              private loginModal: LoginModalService,
+              private dataService: DataService) {
+
+    dataService.getFakeableUsers().subscribe(users => {
+      this.fakeableUsers = users;
+    });
+
   }
 
   get noMenuItemsAvailable() {
@@ -51,5 +60,9 @@ export class NavigationBarComponent {
 
   isLanguageSelected(language: Language) {
     return language === this.language;
+  }
+
+  fakeUser(userEmail: string) {
+    this.userService.updateLoggedInUser(userEmail);
   }
 }

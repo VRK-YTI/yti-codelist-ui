@@ -5,6 +5,15 @@
   </a>
 
   <ul class="navbar-nav ml-auto">
+  
+    <li *ngIf="fakeableUsers.length > 0" class="nav-item dropdown" ngbDropdown>
+      <a class="nav-link" ngbDropdownToggle translate>Impersonate user</a>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item" *ngFor="let user of fakeableUsers" (click)="fakeUser(user.email)">
+          {{user.firstName}} {{user.lastName}}
+        </a>
+      </div>
+    </li>
     <li class="nav-item" *ngIf="!isLoggedIn()">
       <a class="nav-link" (click)="logIn()" translate>LOG IN</a>
     </li>

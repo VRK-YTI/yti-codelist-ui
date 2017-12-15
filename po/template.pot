@@ -223,3 +223,6 @@ msgstr ""
 
 msgid "REMOVE LINK?"
 msgstr ""
+
+msgid "Impersonate user"
+msgstr ""

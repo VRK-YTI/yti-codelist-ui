@@ -33,6 +33,7 @@ const externalReferences = 'externalreferences';
 const classifications = 'dataclassifications';
 const propertytypes = 'propertytypes';
 const organizations = 'organizations';
+const fakeableUsers = 'fakeableUsers';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -41,6 +42,7 @@ const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${regi
 const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
 const propertyTypesBasePath = `/${apiContext}/${api}/${version}/${propertytypes}`;
 const organizationsBasePath = `/${intakeContext}/${api}/${version}/${organizations}`;
+const fakeableUsersPath = `/${intakeContext}/${api}/${fakeableUsers}`;
 
 function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
   entity.id = type.id;
@@ -149,6 +151,11 @@ export class DataService {
 
   constructor(private http: Http) {
   }
+
+  getFakeableUsers(): Observable<{ email: string, firstName: string, lastName: string }[]> { 
+        return this.http.get(fakeableUsersPath)
+          .map(response => response.json());
+     }
 
   getCodeRegistries(): Observable<CodeRegistry[]> {
     return this.http.get(codeRegistriesBasePath)
