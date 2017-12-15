@@ -6,7 +6,7 @@
   <app-literal [label]="'Code value' | translate"
                [value]="codeScheme.codeValue"></app-literal>
 
-  <app-localizable-input [label]="'Code name' | translate"
+  <app-localizable-input [label]="'Codescheme name' | translate"
                          [formControlName]="'prefLabel'"></app-localizable-input>
 
   <dl *ngIf="codeScheme.dataClassifications.length > 0">
@@ -35,11 +35,74 @@
   <app-literal-input [label]="'Governance policy' | translate"
                      [formControlName]="'governancePolicy'"></app-literal-input>
 
-  <app-literal [label]="'Status' | translate"
-               [value]="codeScheme.status | translate"></app-literal>
+  <div *ngIf="!editing">
+    <app-literal [label]="'Status' | translate"
+                 [value]="codeScheme.status | translate"></app-literal>
+  </div>
+  <div *ngIf="editing">
+    <dl>
+      <dt>
+        <label translate>Status</label>
+      </dt>
+      <dd>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
+            <span *ngIf="!codeScheme.status" translate>DRAFT</span>
+            <span *ngIf="codeScheme.status">{{codeScheme.status | translate}}</span>
+          </button>
 
-  <app-literal [label]="'Validity' | translate"
-               [value]="codeScheme.validity"></app-literal>
+          <div ngbDropdownMenu aria-labelledby="status-dropdown">
+            <button *ngFor="let status of statuses"
+                    (click)="codeScheme.status = status"
+                    class="dropdown-item"
+                    [class.active]="codeScheme.status == status">
+              {{status | translate}}
+            </button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+  </div>
+
+  <div *ngIf="!editing">
+    <app-literal [label]="'Validity' | translate"
+                 [value]="codeScheme.validity"></app-literal>
+  </div>
+
+  <div *ngIf="editing">
+    <dl>
+      <dt>
+        <label translate>Start date</label>
+      </dt>
+      <dd>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="startDate" value="{{codeScheme.getStartDate()}}" ngbDatepicker #startDate="ngbDatepicker">
+              <button class="input-group-addon icon icon-calendar" (click)="startDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </form>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <label translate>End date</label>
+      </dt>
+      <dd>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="endDate" value="{{codeScheme.getEndDate()}}" ngbDatepicker #endDate="ngbDatepicker">
+              <button class="input-group-addon icon icon-calendar" (click)="endDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </form>
+      </dd>
+    </dl>
+  </div>
 
   <app-literal [label]="'Last modification' | translate"
                [value]="codeScheme.modifiedDisplayValue"></app-literal>
@@ -51,9 +114,13 @@
         <div *ngIf="getExternalReferencesByLocalName(propertyType.localName).length > 0">
           <label>{{propertyType.prefLabel | translateValue}}</label>
           <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
-            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">{{externalReference.title | translateValue}}</button>
-            <button *ngIf="editing" type="button" class="icon icon-pencil" (click)="editExternalReference(externalReference)"></button>
-            <button *ngIf="editing" type="button" class="icon icon-trash" (click)="removeExternalReference(externalReference)"></button>
+            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
+              {{externalReference.title | translateValue}}
+            </button>
+            <button *ngIf="editing" type="button" class="icon icon-pencil"
+                    (click)="editExternalReference(externalReference)"></button>
+            <button *ngIf="editing" type="button" class="icon icon-trash"
+                    (click)="removeExternalReference(externalReference)"></button>
           </div>
         </div>
       </div>
@@ -63,8 +130,4 @@
       </div>
     </dd>
   </dl>
-
-  <app-literal-input [label]="'License' | translate"
-                     [formControlName]="'license'"></app-literal-input>
-
 </form>

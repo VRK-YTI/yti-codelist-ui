@@ -3389,6 +3389,10 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
+moment@^2.19.4:
+  version "2.19.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.4.tgz#17e5e2c6ead8819c8ecfad83a0acccb312e94682"
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -5845,9 +5849,9 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
 
-"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git#143c636175c43f6b6cb7574077669c7aaa7315c6":
+"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git#04389f7a5157d101a05a43e4e69113b1a20c4d60":
   version "0.0.0"
-  resolved "https://github.com/VRK-YTI/yti-common-ui.git#143c636175c43f6b6cb7574077669c7aaa7315c6"
+  resolved "https://github.com/VRK-YTI/yti-common-ui.git#04389f7a5157d101a05a43e4e69113b1a20c4d60"
 
 zone.js@^0.8.14:
   version "0.8.17"

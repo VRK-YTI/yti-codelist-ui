@@ -24,5 +24,6 @@ export class CodeSchemeImportAndCreateComponent {
 
   createNewCodeScheme() {
     console.log('Create new codescheme clicked!');
+    this.router.navigate(['createcodescheme']);
   }
 }

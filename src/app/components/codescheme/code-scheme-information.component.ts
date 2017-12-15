@@ -11,6 +11,7 @@ import { LinkEditModalService } from './link-edit-modal.component';
 import { remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { statusList } from '../../entities/status';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -28,7 +29,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
-    license: new FormControl(''),
     externalReferences: new FormControl(),
     dataClassifications: new FormControl()
   });
@@ -49,11 +49,16 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
+
     this.codeSchemeForm.reset(this.codeScheme);
     // TODO doesn't feel quite right but we don't wan't to modify existing references
     this.codeSchemeForm.patchValue({
       externalReferences: this.codeScheme.externalReferences.map(link => link.clone())
     });
+  }
+
+  get statuses(): string[] {
+    return statusList;
   }
 
   ngOnDestroy() {
@@ -69,6 +74,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getUsedPropertyTypes(): PropertyType[] {
+
     const propertyTypes: PropertyType[] = [];
     for (const externalReference of this.codeSchemeForm.value.externalReferences) {
       if (propertyTypes.findIndex(propertyType => propertyType.localName === externalReference.propertyType.localName) === -1) {
@@ -80,7 +86,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   getExternalReferencesByLocalName(localName: string): ExternalReference[] {
     return this.codeSchemeForm.value.externalReferences.filter((externalReference: ExternalReference) =>
-        externalReference.propertyType.localName === localName);
+      externalReference.propertyType.localName === localName);
   }
 
   addLink() {
@@ -100,6 +106,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   removeExternalReference(externalReference: ExternalReference) {
+
     this.confirmationModalService.openRemoveLink()
       .then(() => {
         remove(this.externalReferences, externalReference);

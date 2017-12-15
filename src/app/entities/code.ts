@@ -2,7 +2,7 @@ import { Localizable } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
-import { formatDate } from '../utils/date';
+import { formatDate, formatMoment } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 
 export class Code extends AbstractResource implements EditableEntity {
@@ -24,7 +24,7 @@ export class Code extends AbstractResource implements EditableEntity {
   }
 
   get validity(): string {
-    return `${formatDate(this.startDate)} - ${formatDate(this.endDate)}`;
+    return `${formatMoment(this.startDate)} - ${formatMoment(this.endDate)}`;
   }
 
   get modifiedDisplayValue(): string {

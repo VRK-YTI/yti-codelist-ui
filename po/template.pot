@@ -16,6 +16,12 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+msgid "All registries"
+msgstr ""
+
+msgid "All organizations"
+msgstr ""
+
 msgid "Code scheme"
 msgstr ""
 
@@ -29,6 +35,15 @@ msgid "Description"
 msgstr ""
 
 msgid "Short name"
+msgstr ""
+
+msgid "Create code"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "Validity"
@@ -50,6 +65,45 @@ msgid "This codescheme does not have any codes yet."
 msgstr ""
 
 msgid "Import codes"
+msgstr ""
+
+msgid "Codescheme value"
+msgstr ""
+
+msgid "Codescheme name"
+msgstr ""
+
+msgid "Definition"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Legal base"
+msgstr ""
+
+msgid "Governance policy"
+msgstr ""
+
+msgid "Create codescheme"
+msgstr ""
+
+msgid "Coderegistry"
+msgstr ""
+
+msgid "No registry"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "No classification"
+msgstr ""
+
+msgid "Start date"
+msgstr ""
+
+msgid "End date"
 msgstr ""
 
 msgid "Import codescheme"
@@ -78,28 +132,7 @@ msgstr ""
 msgid "Create new codescheme"
 msgstr ""
 
-msgid "No registry"
-msgstr ""
-
-msgid "Definition"
-msgstr ""
-
-msgid "Source"
-msgstr ""
-
-msgid "Legal base"
-msgstr ""
-
-msgid "Governance policy"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
-msgid "License"
-msgstr ""
-
-msgid "Classification"
+msgid "DRAFT"
 msgstr ""
 
 msgid "Links"
@@ -153,15 +186,6 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "All registries"
-msgstr ""
-
-msgid "All organizations"
-msgstr ""
-
-msgid "All statuses"
-msgstr ""
-
 msgid "code schemes"
 msgstr ""
 
@@ -183,7 +207,7 @@ msgstr ""
 msgid "LOG OUT"
 msgstr ""
 
-msgid "Code"
+msgid "All statuses"
 msgstr ""
 
 msgid "Front page"
@@ -201,10 +225,10 @@ msgstr ""
 msgid "INVALID"
 msgstr ""
 
-msgid "DRAFT"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "Code"
 msgstr ""
 
 msgid "Submit error"

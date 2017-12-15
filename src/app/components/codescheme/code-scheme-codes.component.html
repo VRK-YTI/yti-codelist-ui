@@ -3,17 +3,21 @@
     <div class="code" *ngFor="let code of codes" (click)="viewCode(code)">
       {{code.codeValue}} - {{code.prefLabel | translateValue}}
     </div>
-    <div *ngIf="codes.length === 0">
+    <div class="emptyCodes" *ngIf="codes.length === 0">
       <span translate>This codescheme does not have any codes yet.</span>
     </div>
   </div>
 
-  <div class="md-3">
-    <div *ngIf="isLoggedIn()" class="d-inline-block">
+  <div class="md-3 pull-right">
+    <div *ngIf="canEdit()" class="d-inline-block pull-right">
       <button type="button"
-              class="btn btn-action pull-right"
+              class="btn btn-action ml-3 pull-right"
               (click)="importCodes()"
               translate>Import codes</button>
+      <button type="button"
+              class="btn btn-action pull-right"
+              (click)="createCode()"
+              translate>Create code</button>
     </div>
   </div>
 </div>

@@ -27,10 +27,11 @@
     "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "moment": "^2.19.4",
     "ng2-translate": "^5.0.0",
     "rxjs": "^5.4.2",
     "simple-line-icons": "^2.4.1",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git#143c636175c43f6b6cb7574077669c7aaa7315c6",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git#04389f7a5157d101a05a43e4e69113b1a20c4d60",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

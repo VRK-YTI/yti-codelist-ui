@@ -2,10 +2,10 @@ import { AbstractResource } from './abstract-resource';
 import { Localizable } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { CodeRegistry } from './code-registry';
-import { formatDate } from '../utils/date';
+import { formatDate, formatMoment } from '../utils/date';
 import { ExternalReference } from './external-reference';
-import { DataClassification } from './data-classification';
 import { EditableEntity } from './editable-entity';
+import { Code } from './code';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -21,11 +21,19 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   description: Localizable;
   changeNote: Localizable;
   definition: Localizable;
-  dataClassifications: DataClassification[];
+  dataClassifications: Code[];
   externalReferences: ExternalReference[];
 
+  getStartDate(): Date {
+    return new Date(this.startDate);
+  }
+
+  getEndDate(): Date {
+    return new Date(this.endDate);
+  }
+
   get validity(): string {
-    return `${formatDate(this.startDate)} - ${formatDate(this.endDate)}`;
+    return `${formatMoment(this.startDate)} - ${formatMoment(this.endDate)}`;
   }
 
   get modifiedDisplayValue(): string {

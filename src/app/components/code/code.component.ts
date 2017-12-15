@@ -77,8 +77,8 @@ export class CodeComponent implements OnInit, EditingComponent {
   }
 
   save(formData: any): Observable<any> {
-    console.log('Store Code changes to server!');
 
+    console.log('Store Code changes to server!');
     return this.dataService.saveCode(Object.assign({}, this.code, formData))
       .do(() => this.ngOnInit());
   }

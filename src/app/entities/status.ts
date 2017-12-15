@@ -1,4 +1,3 @@
-
 export type Status = 'SUPERSEDED'
                    | 'SUBMITTED'
                    | 'RETIRED'
@@ -7,3 +6,5 @@ export type Status = 'SUPERSEDED'
                    | 'DRAFT';
 
 export const statuses: Status[] = ['SUPERSEDED', 'SUBMITTED', 'RETIRED', 'INVALID', 'VALID', 'DRAFT'];
+
+export const statusList: string[] = ['DRAFT', 'SUBMITTED', 'VALID', 'SUPERSEDED', 'RETIRED', 'INVALID'];

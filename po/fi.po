@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-14 14:56+0200\n"
+"PO-Revision-Date: 2017-12-15 18:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -25,6 +25,12 @@ msgstr "Peruuta"
 msgid "Edit"
 msgstr "Muokkaa"
 
+msgid "All registries"
+msgstr "Kaikki rekisterit"
+
+msgid "All organizations"
+msgstr "Kaikki organisaatiot"
+
 msgid "Code scheme"
 msgstr "Koodisto"
 
@@ -39,6 +45,15 @@ msgstr "Kuvaus"
 
 msgid "Short name"
 msgstr "Lyhyt nimi"
+
+msgid "Create code"
+msgstr "Luo koodi"
+
+msgid "Create"
+msgstr "Luo"
+
+msgid "Status"
+msgstr "Tila"
 
 msgid "Validity"
 msgstr "Voimassaolo"
@@ -60,6 +75,45 @@ msgstr "Tällä koodistolla ei ole yhtään koodia."
 
 msgid "Import codes"
 msgstr "Tuo koodeja"
+
+msgid "Codescheme value"
+msgstr "Koodiston tunnus"
+
+msgid "Codescheme name"
+msgstr "Koodiston nimi"
+
+msgid "Definition"
+msgstr "Määritelmä"
+
+msgid "Source"
+msgstr "Lähde"
+
+msgid "Legal base"
+msgstr "Lakiperuste"
+
+msgid "Governance policy"
+msgstr "Sitovuustaso"
+
+msgid "Create codescheme"
+msgstr "Luo koodisto"
+
+msgid "Coderegistry"
+msgstr "Rekisteri"
+
+msgid "No registry"
+msgstr "Ei rekisteriä"
+
+msgid "Classification"
+msgstr "Luokitus"
+
+msgid "No classification"
+msgstr "Ei luokitusta"
+
+msgid "Start date"
+msgstr "Voimassaolon alku"
+
+msgid "End date"
+msgstr "Voimassaolon loppu"
 
 msgid "Import codescheme"
 msgstr "Tuo koodisto"
@@ -84,43 +138,18 @@ msgstr ""
 msgid "Import codescheme from a file"
 msgstr "Tuo koodisto tiedostosta"
 
-#, fuzzy
-#| msgid ""
-#| "You can also add a new codescheme by creating it via the user interface "
-#| "of the Code List Service."
 msgid ""
 "You can also add a new codescheme by creating it via the user interface of "
 "the Koodistot service."
 msgstr ""
-"Voit myös lisätä uuden koodiston syöttämällä tiedot Koodistoeditorin "
+"Voit myös lisätä uuden koodiston syöttämällä tiedot Koodistot-palvelun "
 "käyttöliittymän kautta."
 
 msgid "Create new codescheme"
 msgstr "Luo uusi koodisto"
 
-msgid "No registry"
-msgstr "Ei rekisteriä"
-
-msgid "Definition"
-msgstr "Määritelmä"
-
-msgid "Source"
-msgstr "Lähde"
-
-msgid "Legal base"
-msgstr "Lakiperuste"
-
-msgid "Governance policy"
-msgstr "Sitovuustaso"
-
-msgid "Status"
-msgstr "Tila"
-
-msgid "License"
-msgstr "Lisenssi"
-
-msgid "Classification"
-msgstr "Luokitus"
+msgid "DRAFT"
+msgstr "Luonnos"
 
 msgid "Links"
 msgstr "Linkit"
@@ -173,15 +202,6 @@ msgstr "Ok"
 msgid "Search for code lists"
 msgstr "Hae koodistoa"
 
-msgid "All registries"
-msgstr "Kaikki rekisterit"
-
-msgid "All organizations"
-msgstr "Kaikki organisaatiot"
-
-msgid "All statuses"
-msgstr "Kaikki tilat"
-
 msgid "code schemes"
 msgstr "koodistoa"
 
@@ -203,8 +223,8 @@ msgstr "KIRJAUDU SISÄÄN"
 msgid "LOG OUT"
 msgstr "KIRJAUDU ULOS"
 
-msgid "Code"
-msgstr "Koodi"
+msgid "All statuses"
+msgstr "Kaikki tilat"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -221,11 +241,11 @@ msgstr "Voimassa oleva"
 msgid "INVALID"
 msgstr "Virheellinen"
 
-msgid "DRAFT"
-msgstr "Luonnos"
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "Code"
+msgstr "Koodi"
 
 msgid "Submit error"
 msgstr "Toiminnossa tapahtui virhe"
@@ -248,48 +268,3 @@ msgstr "POISTETAANKO LINKKI?"
 
 msgid "Impersonate user"
 msgstr "Esiinny käyttäjänä"
-
-#~ msgid "Yes"
-#~ msgstr "Kyllä"
-
-#~ msgid "Close"
-#~ msgstr "Sulje"
-
-#~ msgid "Login"
-#~ msgstr "Sisäänkirjautuminen"
-
-#~ msgid "eDuuni information"
-#~ msgstr ""
-#~ "Palveluun kirjaudutaan eDuuni-tunnuksilla. Kirjautumista vaaditaan jos "
-#~ "haluat muokata palvelun sisältöä."
-
-#~ msgid "Login information"
-#~ msgstr ""
-#~ "Alla olevalla painikkeella ohjaudut eDuuni-palvelun kirjautumiseen. Palaa "
-#~ "sen jälkeen takaisin palveluun."
-
-#~ msgid "Log In"
-#~ msgstr "Kirjaudu sisään"
-
-#~ msgid "Register"
-#~ msgstr "Luo tunnukset"
-
-#~ msgid ""
-#~ "This service is developed and maintained by Population Registry Center of "
-#~ "Finland"
-#~ msgstr "Verkkopalvelun kehittämisestä vastaa Väestörekisterikeskus"
-
-#~ msgid "Information about the web service"
-#~ msgstr "Tietoa verkkopalvelusta"
-
-#~ msgid "Description of file"
-#~ msgstr "Tietosuojaseloste"
-
-#~ msgid "User support"
-#~ msgstr "Käytön tuki"
-
-#~ msgid "Feedback"
-#~ msgstr "Ota yhteyttä"
-
-#~ msgid "Sourcecode is licensed under EUPL-1.2 license."
-#~ msgstr "Lähdekoodi on lisenssoitu EUPL-1.2 -lisenssillä."

@@ -154,7 +154,7 @@ export class FrontpageComponent implements OnInit {
   }
 
   importCodeScheme() {
-    this.router.navigate(['createcodescheme']);
+    this.router.navigate(['importandcreatecodescheme']);
   }
 
   viewCodeScheme(codeScheme: CodeScheme) {

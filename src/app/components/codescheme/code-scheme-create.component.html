@@ -1,0 +1,147 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading" class="content-box">
+
+  <app-back-button (back)="back()"></app-back-button>
+
+  <h1 translate>Create codescheme</h1>
+
+  <button [hidden]="!editing"
+          type="button"
+          [disabled]="!canSave() || operationPending"
+          class="btn btn-action pull-right ml-3"
+          (click)="save()" translate>Create
+  </button>
+
+  <app-content-language class="pull-right"></app-content-language>
+
+  <form [formGroup]="codeSchemeForm" #form="ngForm">
+
+    <!-- TODO fetch or filter coderegistries only for this user -->
+    <dl>
+      <dt>
+        <label translate>Coderegistry</label>
+      </dt>
+      <dd>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
+            <span *ngIf="!codeScheme.codeRegistry" translate>No registry</span>
+            <span *ngIf="codeScheme.codeRegistry">{{codeScheme.codeRegistry.prefLabel | translateValue:true}}</span>
+          </button>
+
+          <div ngbDropdownMenu aria-labelledby="reg-dropdown">
+            <button *ngFor="let codeRegistry of codeRegistries"
+                    (click)="setRegistry(codeRegistry)"
+                    class="dropdown-item"
+                    [class.active]="codeScheme.codeRegistry == codeRegistry">
+              {{codeRegistry.prefLabel | translateValue:true}}
+            </button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+
+    <app-literal-input [label]="'Codescheme value' | translate"
+                       [formControlName]="'codeValue'"></app-literal-input>
+
+    <app-localizable-input [label]="'Codescheme name' | translate"
+                           [formControlName]="'prefLabel'"></app-localizable-input>
+
+    <dl>
+      <dt>
+        <label translate>Classification</label>
+      </dt>
+
+      <dd>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-dropdown" id="classification-dropdown" ngbDropdownToggle>
+            <span *ngIf="!codeScheme.dataClassifications || codeScheme.dataClassifications.length === 0" translate>No classification</span>
+            <span *ngIf="codeScheme.dataClassifications !== undefined && codeScheme.dataClassifications[0] !== undefined">{{codeScheme.dataClassifications[0].prefLabel | translateValue:true}}</span>
+          </button>
+
+          <div ngbDropdownMenu aria-labelledby="classification-dropdown">
+            <button *ngFor="let dataClassification of dataClassifications"
+                    (click)="setDataClassification(dataClassification)"
+                    class="dropdown-item"
+                    [class.active]="codeScheme.dataClassifications !== undefined && codeScheme.dataClassifications.length > 0 && codeScheme.dataClassifications[0] == dataClassification">
+              {{dataClassification.prefLabel | translateValue:true}}
+            </button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+
+    <app-localizable-textarea [label]="'Description' | translate"
+                              [formControlName]="'description'"></app-localizable-textarea>
+
+    <app-localizable-textarea [label]="'Definition' | translate"
+                              [formControlName]="'definition'"></app-localizable-textarea>
+
+    <app-literal-input [label]="'Source' | translate"
+                       [formControlName]="'source'"></app-literal-input>
+
+    <app-literal-input [label]="'Legal base' | translate"
+                       [formControlName]="'legalBase'"></app-literal-input>
+
+    <app-literal-input [label]="'Governance policy' | translate"
+                       [formControlName]="'governancePolicy'"></app-literal-input>
+
+    <dl>
+      <dt>
+        <label translate>Status</label>
+      </dt>
+      <dd>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
+            <span *ngIf="codeScheme.status">{{codeScheme.status | translate}}</span>
+          </button>
+
+          <div ngbDropdownMenu aria-labelledby="status-dropdown">
+            <button *ngFor="let status of statuses"
+                    (click)="codeScheme.status = status"
+                    class="dropdown-item"
+                    [class.active]="codeScheme.status == status">
+              {{status | translate}}
+            </button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>
+        <label translate>Start date</label>
+      </dt>
+      <dd>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="startDate" [(ngModel)]="startDateValue" ngbDatepicker #startDate="ngbDatepicker">
+              <button class="input-group-addon icon icon-calendar" (click)="startDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </form>
+      </dd>
+    </dl>
+
+    <dl>
+      <dt>
+        <label translate>End date</label>
+      </dt>
+      <dd>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="endDate" [(ngModel)]="endDateValue" ngbDatepicker #endDate="ngbDatepicker">
+              <button class="input-group-addon icon icon-calendar" (click)="endDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </form>
+      </dd>
+    </dl>
+  </form>
+</div>

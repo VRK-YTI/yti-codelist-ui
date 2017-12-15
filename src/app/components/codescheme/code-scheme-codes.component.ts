@@ -36,10 +36,25 @@ export class CodeSchemeCodesComponent {
     }, ignoreModalClose);
   }
 
+  createCode() {
+    this.router.navigate(
+      ['createcode',
+        {
+          codeRegistryCodeValue: this.codeScheme.codeRegistry.codeValue,
+          codeSchemeId: this.codeScheme.id
+        }
+      ]
+    );
+  }
+
   refreshCodes() {
     this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id).subscribe(codes => {
       this.codes = codes;
     });
+  }
+
+  canEdit() {
+    return this.isLoggedIn() && (this.codeScheme.status === 'DRAFT' || this.codeScheme.status === 'SUBMITTED');
   }
 
   isLoggedIn() {

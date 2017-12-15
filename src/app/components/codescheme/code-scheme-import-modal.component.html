@@ -9,38 +9,50 @@
       <span translate>Import codescheme</span>
     </h4>
   </div>
+
   <div class="modal-body">
     <div class="row">
       <div class="col-md-12">
         <div ngbDropdown class="d-inline-block">
-          <label for="reg-dropdown">Registry for the codescheme</label>
-          <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-            <span *ngIf="!codeRegistry" translate>No registry</span>
-            <span *ngIf="codeRegistry">{{codeRegistry.prefLabel | translateValue:true}}</span>
-          </button>
+          <dl>
+            <dt>
+              <label for="reg-dropdown">Registry for the codescheme</label>
+            </dt>
+            <dd>
+              <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
+                <span *ngIf="!codeRegistry" translate>No registry</span>
+                <span *ngIf="codeRegistry">{{codeRegistry.prefLabel | translateValue:true}}</span>
+              </button>
 
-          <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-            <button (click)="codeRegistry = null"
-                    class="dropdown-item"
-                    [class.active]="codeRegistry == null">
-              {{'No registry' | translate}}
-            </button>
+              <div ngbDropdownMenu aria-labelledby="reg-dropdown">
+                <button (click)="codeRegistry = null"
+                        class="dropdown-item"
+                        [class.active]="codeRegistry == null">
+                  {{'No registry' | translate}}
+                </button>
 
-            <button *ngFor="let selectedRegistry of codeRegistries"
-                    (click)="codeRegistry = selectedRegistry"
-                    class="dropdown-item"
-                    [class.active]="selectedRegistry.codeValue == register">
-              {{selectedRegistry.prefLabel | translateValue:true}}
-            </button>
-          </div>
+                <button *ngFor="let selectedRegistry of codeRegistries"
+                        (click)="codeRegistry = selectedRegistry"
+                        class="dropdown-item"
+                        [class.active]="selectedRegistry.codeValue == register">
+                  {{selectedRegistry.prefLabel | translateValue:true}}
+                </button>
+              </div>
+            </dd>
+          </dl>
         </div>
+      </div>
+    </div>
 
-        <div ngbDropdown class="d-inline-block">
+    <div ngbDropdown class="d-inline-block">
+      <dl>
+        <dt>
           <label for="format-dropdown">File format</label>
+        </dt>
+        <dd>
           <button class="btn btn-dropdown" id="format-dropdown" ngbDropdownToggle>
             <span>{{format}}</span>
           </button>
-
           <div ngbDropdownMenu aria-labelledby="format-dropdown">
             <button (click)="format = 'CSV'"
                     class="dropdown-item"
@@ -54,18 +66,25 @@
               'Excel'
             </button>
           </div>
-        </div>
+        </dd>
+      </dl>
+    </div>
 
-        <div class="form-group">
+    <div class="form-group">
+      <dl>
+        <dt>
           <label for="fileupload">File to be uploaded</label>
+        </dt>
+        <dd>
           <input name="file" id="fileupload" type="file" (change)="onChange($event)"/>
-        </div>
-      </div>
+        </dd>
+      </dl>
     </div>
   </div>
   <div class="modal-footer">
     <div>
-      <button [disabled]="!canSave()" type="button" class="btn btn-action" (click)="uploadFile()" translate>Import</button>
+      <button [disabled]="!canSave()" type="button" class="btn btn-action" (click)="uploadFile()" translate>Import
+      </button>
       <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
     </div>
   </div>

@@ -33,7 +33,6 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     this.codeForm.reset(this.code);
   }
 
-
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
   }

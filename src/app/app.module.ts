@@ -49,8 +49,10 @@ import {
   CodeSchemeCodesImportModalService
 } from './components/codescheme/code-scheme-codes-import-modal.component';
 import { YtiCommonModule, AUTHENTICATED_USER_ENDPOINT, LOCALIZER } from 'yti-common-ui';
+import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-create.component';
+import { CodeCreateComponent } from './components/code/code-create.component';
 
-const localizations: { [lang: string]: string} = {
+const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
     require('json-loader!po-loader?format=mf!../../po/fi.po'),
     require('json-loader!po-loader?format=mf!yti-common-ui/po/fi.po')
@@ -65,7 +67,9 @@ const localizations: { [lang: string]: string} = {
 const appRoutes: Routes = [
   {path: '', redirectTo: '/frontpage', pathMatch: 'full'},
   {path: 'frontpage', component: FrontpageComponent, pathMatch: 'full'},
-  {path: 'createcodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
+  {path: 'createcode', component: CodeCreateComponent, pathMatch: 'full'},
+  {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
+  {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent}
@@ -98,6 +102,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     NavigationBarComponent,
     CodeSchemeComponent,
     CodeComponent,
+    CodeCreateComponent,
     StatusComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
@@ -106,6 +111,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeInformationComponent,
     CodeSchemeCodesImportModalComponent,
     CodeSchemeImportModalComponent,
+    CodeSchemeCreateComponent,
     LocalizableInputComponent,
     LocalizableTextareaComponent,
     LiteralInputComponent,
