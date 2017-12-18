@@ -152,7 +152,7 @@ export class DataService {
   constructor(private http: Http) {
   }
 
-  getFakeableUsers(): Observable<{ email: string, firstName: string, lastName: string }[]> { 
+  getFakeableUsers(): Observable<{ email: string, firstName: string, lastName: string }[]> {
         return this.http.get(fakeableUsersPath)
           .map(response => response.json());
      }
@@ -253,7 +253,7 @@ export class DataService {
   }
 
   createCode(code: CodeType, registryCode: string, schemeId: string): Observable<Code[]> {
-    console.log('Adding code with value: ' + code.codeValue);
+
     const codeList: CodeType[] = [];
     codeList.push(code);
 
@@ -262,7 +262,6 @@ export class DataService {
 
   createCodes(codeList: CodeType[], registryCode: string, schemeId: string): Observable<Code[]> {
 
-    console.log('Creating new Codes to codeScheme: ' + schemeId + ' in registry: ' + registryCode);
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/`,
       codeList)
       .map(res => res.json().results.map(createCodeEntity));
@@ -287,7 +286,6 @@ export class DataService {
 
   createCodeSchemes(codeSchemeList: CodeSchemeType[], registryCode: string): Observable<CodeScheme[]> {
 
-    console.log('Creating new CodeSchemes to registry: ' + registryCode);
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`,
       codeSchemeList)
       .map(res => res.json().results.map(createCodeSchemeEntity));
