@@ -1,4 +1,15 @@
+@import '~yti-common-ui/theme/variables';
 
 .description {
   padding: 10px 0;
+}
+
+.metabar {
+  padding: 10px;
+
+  .metaitem {
+    color: $blue;
+    padding: 5px 15px 5px 0;
+    font-size: small;
+  }
 }
