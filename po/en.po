@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-15 18:16+0200\n"
+"PO-Revision-Date: 2017-12-18 11:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -53,6 +53,12 @@ msgid "Create"
 msgstr ""
 
 msgid "Status"
+msgstr ""
+
+msgid "Start date"
+msgstr ""
+
+msgid "End date"
 msgstr ""
 
 msgid "Validity"
@@ -109,12 +115,6 @@ msgstr ""
 msgid "No classification"
 msgstr ""
 
-msgid "Start date"
-msgstr ""
-
-msgid "End date"
-msgstr ""
-
 msgid "Import codescheme"
 msgstr ""
 
@@ -139,6 +139,9 @@ msgid ""
 msgstr ""
 
 msgid "Create new codescheme"
+msgstr ""
+
+msgid "Organization"
 msgstr ""
 
 msgid "DRAFT"
@@ -210,6 +213,9 @@ msgstr ""
 msgid "No organization"
 msgstr ""
 
+msgid "Impersonate user"
+msgstr ""
+
 msgid "LOG IN"
 msgstr ""
 
@@ -255,7 +261,4 @@ msgid ""
 msgstr ""
 
 msgid "REMOVE LINK?"
-msgstr ""
-
-msgid "Impersonate user"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-15 18:24+0200\n"
+"PO-Revision-Date: 2017-12-18 11:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -54,6 +54,12 @@ msgstr "Luo"
 
 msgid "Status"
 msgstr "Tila"
+
+msgid "Start date"
+msgstr "Voimassaolon alku"
+
+msgid "End date"
+msgstr "Voimassaolon loppu"
 
 msgid "Validity"
 msgstr "Voimassaolo"
@@ -109,12 +115,6 @@ msgstr "Luokitus"
 msgid "No classification"
 msgstr "Ei luokitusta"
 
-msgid "Start date"
-msgstr "Voimassaolon alku"
-
-msgid "End date"
-msgstr "Voimassaolon loppu"
-
 msgid "Import codescheme"
 msgstr "Tuo koodisto"
 
@@ -147,6 +147,9 @@ msgstr ""
 
 msgid "Create new codescheme"
 msgstr "Luo uusi koodisto"
+
+msgid "Organization"
+msgstr "Organisaatio"
 
 msgid "DRAFT"
 msgstr "Luonnos"
@@ -217,6 +220,9 @@ msgstr "1 koodisto"
 msgid "No organization"
 msgstr "Ei organisaatiota"
 
+msgid "Impersonate user"
+msgstr "Esiinny käyttäjänä"
+
 msgid "LOG IN"
 msgstr "KIRJAUDU SISÄÄN"
 
@@ -265,6 +271,3 @@ msgstr ""
 
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
-
-msgid "Impersonate user"
-msgstr "Esiinny käyttäjänä"

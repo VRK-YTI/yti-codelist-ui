@@ -218,7 +218,7 @@ export class DataService {
   getCodeScheme(registryCode: string, schemeCode: string): Observable<CodeScheme> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,code,externalReference,propertyType,code');
+    params.append('expand', 'codeRegistry,organization,code,externalReference,propertyType,code');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/`, {params})
       .map(res => createCodeSchemeEntity(res.json()));

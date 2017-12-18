@@ -46,6 +46,12 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+msgid "Start date"
+msgstr ""
+
+msgid "End date"
+msgstr ""
+
 msgid "Validity"
 msgstr ""
 
@@ -100,12 +106,6 @@ msgstr ""
 msgid "No classification"
 msgstr ""
 
-msgid "Start date"
-msgstr ""
-
-msgid "End date"
-msgstr ""
-
 msgid "Import codescheme"
 msgstr ""
 
@@ -130,6 +130,9 @@ msgid ""
 msgstr ""
 
 msgid "Create new codescheme"
+msgstr ""
+
+msgid "Organization"
 msgstr ""
 
 msgid "DRAFT"
@@ -201,6 +204,9 @@ msgstr ""
 msgid "No organization"
 msgstr ""
 
+msgid "Impersonate user"
+msgstr ""
+
 msgid "LOG IN"
 msgstr ""
 
@@ -246,7 +252,4 @@ msgid ""
 msgstr ""
 
 msgid "REMOVE LINK?"
-msgstr ""
-
-msgid "Impersonate user"
 msgstr ""

@@ -9,6 +9,15 @@
   <app-localizable-input [label]="'Codescheme name' | translate"
                          [formControlName]="'prefLabel'"></app-localizable-input>
 
+  <dl *ngIf="codeScheme.codeRegistry">
+    <dt>
+      <label translate>Coderegistry</label>
+    </dt>
+    <dd>
+      <span>{{codeScheme.codeRegistry.prefLabel | translateValue}}</span><br/>
+    </dd>
+  </dl>
+
   <dl *ngIf="codeScheme.dataClassifications.length > 0">
     <dt>
       <label translate>Classification</label>
@@ -16,6 +25,17 @@
     <dd>
       <div *ngFor="let dataClassification of codeScheme.dataClassifications">
         <span>{{dataClassification.prefLabel | translateValue}}</span><br/>
+      </div>
+    </dd>
+  </dl>
+
+  <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
+    <dt>
+      <label translate>Organization</label>
+    </dt>
+    <dd>
+      <div *ngFor="let organization of codeScheme.codeRegistry.organizations">
+        <span>{{organization.prefLabel | translateValue}}</span><br/>
       </div>
     </dd>
   </dl>
