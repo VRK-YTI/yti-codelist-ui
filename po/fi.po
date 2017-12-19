@@ -230,13 +230,13 @@ msgid "LOG OUT"
 msgstr "KIRJAUDU ULOS"
 
 msgid "User details"
-msgstr ""
+msgstr "Käyttäjätiedot"
 
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 msgid "Email"
-msgstr ""
+msgstr "Sähköposti"
 
 msgid "All statuses"
 msgstr "Kaikki tilat"
