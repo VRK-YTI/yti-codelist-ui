@@ -222,7 +222,13 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-msgid "All statuses"
+msgid "Organizations and roles"
+msgstr ""
+
+msgid "Unknown organization"
+msgstr ""
+
+msgid "Waiting for approval"
 msgstr ""
 
 msgid "Front page"
@@ -243,10 +249,13 @@ msgstr ""
 msgid "required"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "All statuses"
 msgstr ""
 
 msgid "Code"
+msgstr ""
+
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "Submit error"
@@ -264,4 +273,16 @@ msgid ""
 msgstr ""
 
 msgid "REMOVE LINK?"
+msgstr ""
+
+msgid "ADMIN"
+msgstr ""
+
+msgid "DATA_MODEL_EDITOR"
+msgstr ""
+
+msgid "TERMINOLOGY_EDITOR"
+msgstr ""
+
+msgid "CODE_LIST_EDITOR"
 msgstr ""

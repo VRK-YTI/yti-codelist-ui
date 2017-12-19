@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-19 14:49+0200\n"
+"PO-Revision-Date: 2017-12-19 17:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -231,7 +231,13 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-msgid "All statuses"
+msgid "Organizations and roles"
+msgstr ""
+
+msgid "Unknown organization"
+msgstr ""
+
+msgid "Waiting for approval"
 msgstr ""
 
 msgid "Front page"
@@ -252,10 +258,13 @@ msgstr ""
 msgid "required"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "All statuses"
 msgstr ""
 
 msgid "Code"
+msgstr ""
+
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "Submit error"
@@ -274,3 +283,15 @@ msgstr ""
 
 msgid "REMOVE LINK?"
 msgstr ""
+
+msgid "ADMIN"
+msgstr "Admin"
+
+msgid "DATA_MODEL_EDITOR"
+msgstr "Data model editor"
+
+msgid "TERMINOLOGY_EDITOR"
+msgstr "Terminology editor"
+
+msgid "CODE_LIST_EDITOR"
+msgstr "Code list editor"
