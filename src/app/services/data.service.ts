@@ -115,6 +115,7 @@ function createCodeEntity(code: CodeType): Code {
   entity.endDate = code.endDate;
   entity.description = code.description || {};
   entity.definition = code.definition || {};
+  entity.externalReferences = (code.externalReferences || []).map(createExternalReferenceEntity);
   return entity;
 }
 
@@ -237,7 +238,7 @@ export class DataService {
   getCodes(registryCode: string, schemeId: string): Observable<Code[]> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeScheme,codeRegistry');
+    params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/`, {params})
       .map(res => res.json().results.map(createCodeEntity));
@@ -246,7 +247,7 @@ export class DataService {
   getCode(registryCode: string, schemeId: string, codeId: string): Observable<Code> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeScheme,codeRegistry');
+    params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/${codeId}/`, {params})
       .map(res => createCodeEntity(res.json()));

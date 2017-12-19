@@ -4,6 +4,7 @@ import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
 import { formatDate, formatMoment } from '../utils/date';
 import { EditableEntity } from './editable-entity';
+import { ExternalReference } from './external-reference';
 
 export class Code extends AbstractResource implements EditableEntity {
 
@@ -14,6 +15,7 @@ export class Code extends AbstractResource implements EditableEntity {
   endDate: string;
   description: Localizable;
   definition: Localizable;
+  externalReferences: ExternalReference[];
 
   get registryCode() {
     return this.codeScheme.codeRegistry.codeValue;

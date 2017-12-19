@@ -58,6 +58,12 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
+msgid "Links"
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
 msgid "INFORMATION"
 msgstr ""
 
@@ -136,12 +142,6 @@ msgid "Organization"
 msgstr ""
 
 msgid "DRAFT"
-msgstr ""
-
-msgid "Links"
-msgstr ""
-
-msgid "Add link"
 msgstr ""
 
 msgid "Export"
@@ -238,6 +238,9 @@ msgid "VALID"
 msgstr ""
 
 msgid "INVALID"
+msgstr ""
+
+msgid "required"
 msgstr ""
 
 msgid "SUPERSEDED"

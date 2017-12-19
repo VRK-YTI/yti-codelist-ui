@@ -50,6 +50,7 @@ export interface CodeType extends BaseResourceType {
   endDate: string;
   description?: Localizable;
   definition?: Localizable;
+  externalReferences?: ExternalReferenceType[];
 }
 
 export interface ExternalReferenceType  {

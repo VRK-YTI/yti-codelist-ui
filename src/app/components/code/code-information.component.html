@@ -23,4 +23,29 @@
 
   <app-literal [label]="'Last modification' | translate"
                [value]="code.modifiedDisplayValue"></app-literal>
+
+  <dl *ngIf="editing || code.externalReferences.length > 0">
+    <dt><label translate>Links</label></dt>
+    <dd>
+      <div *ngFor="let propertyType of getUsedPropertyTypes()">
+        <div *ngIf="getExternalReferencesByLocalName(propertyType.localName).length > 0">
+          <label>{{propertyType.prefLabel | translateValue}}</label>
+          <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
+            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
+              {{externalReference.title | translateValue}}
+            </button>
+            <button *ngIf="editing" type="button" class="icon icon-pencil"
+                    (click)="editExternalReference(externalReference)"></button>
+            <button *ngIf="editing" type="button" class="icon icon-trash"
+                    (click)="removeExternalReference(externalReference)"></button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="editing">
+        <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
+      </div>
+    </dd>
+  </dl>
+
 </form>
