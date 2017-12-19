@@ -45,6 +45,7 @@ const organizationsBasePath = `/${intakeContext}/${api}/${version}/${organizatio
 const fakeableUsersPath = `/${intakeContext}/${api}/${fakeableUsers}`;
 
 function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
+
   entity.id = type.id;
   entity.uri = type.uri;
   entity.codeValue = type.codeValue;
@@ -108,7 +109,9 @@ function createCodeEntity(code: CodeType): Code {
 
   const entity = new Code();
   setBaseValues(entity, code);
-  entity.codeScheme = createCodeSchemeEntity(code.codeScheme);
+  if (code.codeScheme) {
+    entity.codeScheme = createCodeSchemeEntity(code.codeScheme);
+  }
   entity.shortName = code.shortName;
   entity.status = code.status;
   entity.startDate = code.startDate;
