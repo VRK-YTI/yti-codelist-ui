@@ -213,6 +213,15 @@ msgstr ""
 msgid "LOG OUT"
 msgstr ""
 
+msgid "User details"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
 msgid "All statuses"
 msgstr ""
 

@@ -22,6 +22,13 @@ export class LocationService {
     this.changeLocation([]);
   }
 
+  atUserDetails(): void {
+    this.changeLocation([{
+      localizationKey: 'User details',
+      route: ['userDetails']
+    }]);
+  }
+
   atCodeSchemePage(codeScheme: CodeScheme): void {
     this.changeLocation(codeScheme.location);
   }
