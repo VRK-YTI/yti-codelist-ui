@@ -8,6 +8,7 @@ import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Observable } from 'rxjs/Observable';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-code',
@@ -20,6 +21,7 @@ export class CodeComponent implements OnInit, EditingComponent {
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   code: Code;
+  codeScheme: CodeScheme;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -45,10 +47,14 @@ export class CodeComponent implements OnInit, EditingComponent {
       this.code = code;
       this.locationService.atCodePage(code);
     });
+
+    this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+    });
   }
 
   get loading(): boolean {
-    return this.code == null;
+    return this.code == null && this.codeScheme == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {

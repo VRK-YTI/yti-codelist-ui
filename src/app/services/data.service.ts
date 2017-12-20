@@ -109,7 +109,7 @@ function createCodeEntity(code: CodeType): Code {
 
   const entity = new Code();
   setBaseValues(entity, code);
-  if (code.codeScheme) {
+  if (code.codeScheme !== undefined) {
     entity.codeScheme = createCodeSchemeEntity(code.codeScheme);
   }
   entity.shortName = code.shortName;
@@ -222,7 +222,7 @@ export class DataService {
   getCodeScheme(registryCode: string, schemeCode: string): Observable<CodeScheme> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,organization,code,externalReference,propertyType,code');
+    params.append('expand', 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/`, {params})
       .map(res => createCodeSchemeEntity(res.json()));
@@ -250,7 +250,7 @@ export class DataService {
   getCode(registryCode: string, schemeId: string, codeId: string): Observable<Code> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
+    params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,organization');
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/${codeId}/`, {params})
       .map(res => createCodeEntity(res.json()));
