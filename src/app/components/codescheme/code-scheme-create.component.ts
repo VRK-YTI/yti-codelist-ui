@@ -23,7 +23,6 @@ import { Code } from '../../entities/code';
 export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
 
   codeScheme: CodeScheme;
-  codeRegistry: CodeRegistry;
   codeRegistries: CodeRegistry[];
   dataClassifications: Code[];
   startDateValue: NgbDateStruct;
@@ -66,7 +65,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setRegistry(codeRegistry: CodeRegistry) {
-    this.codeRegistry = codeRegistry;
+    this.codeScheme.codeRegistry = codeRegistry;
   }
 
   setDataClassification(dataClassification: Code) {
@@ -116,7 +115,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     if (this.endDateValue !== undefined) {
       this.codeScheme.endDate = this.endDateValue.year + '-' + this.endDateValue.month + '-' + this.endDateValue.day;
     }
-    this.dataService.createCodeScheme(Object.assign({}, this.codeScheme, this.codeSchemeForm.value), this.codeRegistry.codeValue)
+    this.dataService.createCodeScheme(Object.assign({}, this.codeScheme, this.codeSchemeForm.value), this.codeScheme.codeRegistry.codeValue)
       .subscribe(codeSchemes => {
         console.log('Saved new CodeScheme');
         if (codeSchemes.length > 0) {
@@ -132,7 +131,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
 
   canSave() {
     // TODO check form validity more properly here!
-    return this.codeSchemeForm.valid && this.codeRegistry !== undefined && !this.saving;
+    return this.codeSchemeForm.valid && this.codeScheme.codeRegistry !== undefined && !this.saving;
   }
 
   ngOnDestroy() {
