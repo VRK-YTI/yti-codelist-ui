@@ -18,8 +18,46 @@
   <app-literal-input [label]="'Short name' | translate"
                      [formControlName]="'shortName'"></app-literal-input>
 
-  <app-literal [label]="'Validity' | translate"
-               [value]="code.validity"></app-literal>
+
+  <div *ngIf="!editing">
+    <app-literal [label]="'Validity' | translate"
+                 [value]="code.validity"></app-literal>
+  </div>
+
+  <div *ngIf="editing">
+    <dl>
+      <dt>
+        <label translate>Start date</label>
+      </dt>
+      <dd>
+        <div class="input-group">
+          <input class="form-control"
+                 placeholder="yyyy-mm-dd"
+                 [formControlName]="'startDate'"
+                 ngbDatepicker
+                 #startDate="ngbDatepicker">
+          <button class="input-group-addon icon-calendar" (click)="startDate.toggle()" type="button"></button>
+          <app-error-messages [control]="form.form.get('startDate')"></app-error-messages>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <label translate>End date</label>
+      </dt>
+      <dd>
+        <div class="input-group">
+          <input class="form-control"
+                 placeholder="yyyy-mm-dd"
+                 [formControlName]="'endDate'"
+                 ngbDatepicker
+                 #endDate="ngbDatepicker">
+          <button class="input-group-addon icon-calendar" (click)="endDate.toggle()" type="button"></button>
+          <app-error-messages [control]="form.form.get('endDate')"></app-error-messages>
+        </div>
+      </dd>
+    </dl>
+  </div>
 
   <app-literal [label]="'Last modification' | translate"
                [value]="code.modifiedDisplayValue"></app-literal>

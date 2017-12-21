@@ -7,7 +7,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { statusList } from '../../entities/status';
 import { CodeScheme } from '../../entities/code-scheme';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { fromPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code-create',
@@ -21,8 +21,6 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
   codeScheme: CodeScheme;
   registryCode: string;
   schemeId: string;
-  startDateValue: NgbDateStruct;
-  endDateValue: NgbDateStruct;
 
   cancelSubscription: Subscription;
 
@@ -30,7 +28,9 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
     codeValue: new FormControl('', Validators.required),
     prefLabel: new FormControl({}),
     description: new FormControl({}),
-    shortName: new FormControl('')
+    shortName: new FormControl(''),
+    startDate: new FormControl(),
+    endDate: new FormControl()
   });
 
   constructor(private dataService: DataService,
@@ -93,18 +93,24 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
   save() {
     console.log('Saving new Code');
     this.editableService.saving$.next(true);
-    if (this.startDateValue !== undefined) {
-      this.code.startDate = this.startDateValue.year + '-' + this.startDateValue.month + '-' + this.startDateValue.day;
-    }
-    if (this.endDateValue !== undefined) {
-      this.code.endDate = this.endDateValue.year + '-' + this.endDateValue.month + '-' + this.endDateValue.day;
-    }
-    this.dataService.createCode(Object.assign({}, this.code, this.codeForm.value),
-      this.codeScheme.codeRegistry.codeValue, this.codeScheme.id)
+
+    const { startDate, endDate, ...rest } = this.codeForm.value;
+
+    this.dataService.createCode(Object.assign({}, this.code, rest, {
+      startDate: fromPickerDate(startDate),
+      endDate: fromPickerDate(endDate)
+    }), this.codeScheme.codeRegistry.codeValue, this.codeScheme.id)
       .subscribe(codes => {
         console.log('Saved new Code');
         if (codes.length > 0) {
-          this.router.navigate(codes[0].route);
+          this.router.navigate([
+            'code',
+            {
+              codeRegistryCodeValue: this.registryCode,
+              codeSchemeId: this.schemeId,
+              codeId: codes[0].id
+            }
+          ]);
         }
         this.editableService.saving$.next(false);
       }, error => {

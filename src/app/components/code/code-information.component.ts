@@ -27,7 +27,9 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     prefLabel: new FormControl(''),
     description: new FormControl(''),
     shortName: new FormControl(''),
-    externalReferences: new FormControl()
+    externalReferences: new FormControl(),
+    startDate: new FormControl(),
+    endDate: new FormControl()
   });
 
   constructor(private linkEditModalService: LinkEditModalService,

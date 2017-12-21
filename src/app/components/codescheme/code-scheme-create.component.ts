@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
 import { statusList } from '../../entities/status';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Code } from '../../entities/code';
+import { fromPickerDate, toPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -25,8 +25,6 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
   codeScheme: CodeScheme;
   codeRegistries: CodeRegistry[];
   dataClassifications: Code[];
-  startDateValue: NgbDateStruct;
-  endDateValue: NgbDateStruct;
 
   codeSchemeForm = new FormGroup({
     codeValue: new FormControl('', Validators.required),
@@ -37,6 +35,8 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
     license: new FormControl(''),
+    startDate: new FormControl(),
+    endDate: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -86,7 +86,12 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private reset() {
-    this.codeSchemeForm.reset(this.codeScheme);
+    const { externalReferences, ...rest } = this.codeScheme;
+
+    this.codeSchemeForm.reset(Object.assign({}, rest, {
+      startDate: toPickerDate(this.codeScheme.startDate),
+      endDate: toPickerDate(this.codeScheme.endDate)
+    }));
   }
 
   back() {
@@ -108,14 +113,13 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
   save() {
     console.log('Saving new CodeScheme');
     this.editableService.saving$.next(true);
-    const formData = new FormData();
-    if (this.startDateValue !== undefined) {
-      this.codeScheme.startDate = this.startDateValue.year + '-' + this.startDateValue.month + '-' + this.startDateValue.day;
-    }
-    if (this.endDateValue !== undefined) {
-      this.codeScheme.endDate = this.endDateValue.year + '-' + this.endDateValue.month + '-' + this.endDateValue.day;
-    }
-    this.dataService.createCodeScheme(Object.assign({}, this.codeScheme, this.codeSchemeForm.value), this.codeScheme.codeRegistry.codeValue)
+
+    const { startDate, endDate, ...rest } = this.codeSchemeForm.value;
+
+    this.dataService.createCodeScheme(Object.assign({}, this.codeScheme, rest, {
+      startDate: fromPickerDate(startDate),
+      endDate: fromPickerDate(endDate)
+    }), this.codeScheme.codeRegistry.codeValue)
       .subscribe(codeSchemes => {
         console.log('Saved new CodeScheme');
         if (codeSchemes.length > 0) {
