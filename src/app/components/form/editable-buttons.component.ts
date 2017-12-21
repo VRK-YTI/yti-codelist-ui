@@ -9,7 +9,7 @@ import { EditableEntity } from '../../entities/editable-entity';
   template: `
     <button [hidden]="!editing" 
             type="button"
-            [disabled]="!canSave() || operationPending" 
+            [disabled]="!canSave() || operationPending || form.invalid || form.pending" 
             class="btn btn-action pull-right ml-3" 
             (click)="save()" translate>Save</button>
     
