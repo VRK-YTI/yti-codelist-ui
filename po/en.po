@@ -151,7 +151,7 @@ msgid "Organization"
 msgstr ""
 
 msgid "DRAFT"
-msgstr ""
+msgstr "Draft"
 
 msgid "Export"
 msgstr ""
@@ -244,16 +244,16 @@ msgid "Front page"
 msgstr ""
 
 msgid "SUBMITTED"
-msgstr ""
+msgstr "Submitted"
 
 msgid "RETIRED"
-msgstr ""
+msgstr "Retired"
 
 msgid "VALID"
-msgstr ""
+msgstr "Valid"
 
 msgid "INVALID"
-msgstr ""
+msgstr "Invalid"
 
 msgid "required"
 msgstr ""
@@ -265,7 +265,7 @@ msgid "Code"
 msgstr ""
 
 msgid "SUPERSEDED"
-msgstr ""
+msgstr "Superseded"
 
 msgid "Submit error"
 msgstr ""
