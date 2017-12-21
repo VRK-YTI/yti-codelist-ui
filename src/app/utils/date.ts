@@ -4,8 +4,6 @@ import * as moment from 'moment';
 export const formatDate = (dateString: string) => dateString ? new Date(dateString).toLocaleString('fi') : '';
 
 export function formatMoment(dateString: string): string {
-
-  const moment = require('moment');
   return dateString ? `${moment(dateString).format('DD.MM.YYYY')}` : '';
 }
 
@@ -15,7 +13,7 @@ export interface PickerDate {
   day: number;
 }
 
-export function toPickerDate(dateStr: string) {
+export function toPickerDate(dateStr: string): PickerDate|null {
 
   if (!dateStr) {
     return null;
