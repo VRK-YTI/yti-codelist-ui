@@ -55,7 +55,7 @@ export class CodeComponent implements OnInit, EditingComponent {
   }
 
   get loading(): boolean {
-    return this.code == null && this.codeScheme == null;
+    return this.code == null || this.codeScheme == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
