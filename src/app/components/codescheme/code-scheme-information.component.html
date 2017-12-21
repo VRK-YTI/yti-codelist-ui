@@ -119,15 +119,15 @@
         <label translate>Start date</label>
       </dt>
       <dd>
-        <form class="form-inline">
-          <div class="form-group">
-            <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"
-                     name="startDate" value="{{codeScheme.getStartDate()}}" ngbDatepicker #startDate="ngbDatepicker">
-              <button class="input-group-addon icon icon-calendar" (click)="startDate.toggle()" type="button"></button>
-            </div>
-          </div>
-        </form>
+        <div class="input-group">
+          <input class="form-control"
+                 placeholder="yyyy-mm-dd"
+                 [formControlName]="'startDate'"
+                 ngbDatepicker
+                 #startDate="ngbDatepicker">
+          <button class="input-group-addon icon-calendar" (click)="startDate.toggle()" type="button"></button>
+          <app-error-messages [control]="form.form.get('startDate')"></app-error-messages>
+        </div>
       </dd>
     </dl>
     <dl>
@@ -135,15 +135,15 @@
         <label translate>End date</label>
       </dt>
       <dd>
-        <form class="form-inline">
-          <div class="form-group">
-            <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"
-                     name="endDate" value="{{codeScheme.getEndDate()}}" ngbDatepicker #endDate="ngbDatepicker">
-              <button class="input-group-addon icon icon-calendar" (click)="endDate.toggle()" type="button"></button>
-            </div>
-          </div>
-        </form>
+        <div class="input-group">
+          <input class="form-control"
+                 placeholder="yyyy-mm-dd"
+                 [formControlName]="'endDate'"
+                 ngbDatepicker
+                 #endDate="ngbDatepicker">
+          <button class="input-group-addon icon-calendar" (click)="endDate.toggle()" type="button"></button>
+          <app-error-messages [control]="form.form.get('endDate')"></app-error-messages>
+        </div>
       </dd>
     </dl>
   </div>

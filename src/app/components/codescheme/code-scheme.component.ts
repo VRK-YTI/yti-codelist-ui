@@ -9,6 +9,7 @@ import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs/Observable';
+import { fromPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code-scheme',
@@ -84,7 +85,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   save(formData: any): Observable<any> {
 
     console.log('Store CodeScheme changes to server!');
-    return this.dataService.saveCodeScheme(Object.assign({}, this.codeScheme, formData))
+
+    const { startDate, endDate, ...rest } = formData;
+
+    return this.dataService.saveCodeScheme(Object.assign({}, this.codeScheme, rest, {
+      startDate: fromPickerDate(startDate),
+      endDate: fromPickerDate(endDate)
+    }))
       .do(() => this.ngOnInit());
   }
 }

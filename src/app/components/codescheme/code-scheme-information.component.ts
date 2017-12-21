@@ -14,6 +14,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { statusList } from '../../entities/status';
 import { Code } from '../../entities/code';
 import { DataService } from '../../services/data.service';
+import { toPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -33,7 +34,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
-    dataClassifications: new FormControl()
+    dataClassifications: new FormControl(),
+    startDate: new FormControl(),
+    endDate: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -60,11 +63,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   private reset() {
 
-    this.codeSchemeForm.reset(this.codeScheme);
-    // TODO doesn't feel quite right but we don't wan't to modify existing references
-    this.codeSchemeForm.patchValue({
-      externalReferences: this.codeScheme.externalReferences.map(link => link.clone())
-    });
+    const { externalReferences, ...rest } = this.codeScheme;
+
+    this.codeSchemeForm.reset(Object.assign({}, rest, {
+      externalReferences: externalReferences.map(link => link.clone()),
+      startDate: toPickerDate(this.codeScheme.startDate),
+      endDate: toPickerDate(this.codeScheme.endDate)
+    }));
   }
 
   get statuses(): string[] {

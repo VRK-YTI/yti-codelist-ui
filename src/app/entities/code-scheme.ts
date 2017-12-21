@@ -24,14 +24,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   dataClassifications: Code[];
   externalReferences: ExternalReference[];
 
-  getStartDate(): Date {
-    return new Date(this.startDate);
-  }
-
-  getEndDate(): Date {
-    return new Date(this.endDate);
-  }
-
   get validity(): string {
     return `${formatMoment(this.startDate)} - ${formatMoment(this.endDate)}`;
   }
