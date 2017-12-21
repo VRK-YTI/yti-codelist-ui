@@ -109,7 +109,7 @@ function createCodeEntity(code: CodeType): Code {
 
   const entity = new Code();
   setBaseValues(entity, code);
-  if (code.codeScheme !== undefined) {
+  if (code.codeScheme !== undefined && code.codeScheme !== null) {
     entity.codeScheme = createCodeSchemeEntity(code.codeScheme);
   }
   entity.shortName = code.shortName;
