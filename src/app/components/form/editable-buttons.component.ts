@@ -9,7 +9,7 @@ import { EditableEntity } from '../../entities/editable-entity';
   template: `
     <button [hidden]="!editing" 
             type="button"
-            [disabled]="!canSave() || operationPending || form.invalid || form.pending" 
+            [disabled]="!canSave() || operationPending || invalid" 
             class="btn btn-action pull-right ml-3" 
             (click)="save()" translate>Save</button>
     
@@ -36,6 +36,12 @@ export class EditableButtonsComponent {
 
   constructor(private editableService: EditableService,
               private authorizationManager: AuthorizationManager) {
+  }
+
+  get invalid() {
+    const invalid = this.form.invalid || false;
+    const pending = this.form.pending || false;
+    return invalid || pending;
   }
 
   edit() {
