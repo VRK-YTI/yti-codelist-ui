@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,15 +12,18 @@ import { remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { statusList } from '../../entities/status';
+import { Code } from '../../entities/code';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-code-scheme-information',
   templateUrl: './code-scheme-information.component.html',
   styleUrls: ['./code-scheme-information.component.scss']
 })
-export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
+export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() codeScheme: CodeScheme;
+  dataClassifications: Code[];
 
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -38,10 +41,17 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   constructor(private linkEditModalService: LinkEditModalService,
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
+              private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private dataService: DataService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+  }
+
+  ngOnInit() {
+    this.dataService.getDataClassificationsAsCodes().subscribe(dataClassifications => {
+      this.dataClassifications = dataClassifications;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -111,5 +121,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
       .then(() => {
         remove(this.externalReferences, externalReference);
       }, ignoreModalClose);
+  }
+
+  setDataClassification(dataClassification: Code) {
+    this.codeScheme.dataClassifications = [];
+    this.codeScheme.dataClassifications[0] = dataClassification;
   }
 }

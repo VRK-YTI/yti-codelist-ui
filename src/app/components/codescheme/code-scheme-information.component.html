@@ -18,13 +18,37 @@
     </dd>
   </dl>
 
-  <dl *ngIf="codeScheme.dataClassifications.length > 0">
+  <dl *ngIf="codeScheme.dataClassifications.length > 0 && !editing">
     <dt>
       <label translate>Classification</label>
     </dt>
     <dd>
       <div *ngFor="let dataClassification of codeScheme.dataClassifications">
         <span>{{dataClassification.prefLabel | translateValue}}</span><br/>
+      </div>
+    </dd>
+  </dl>
+
+  <dl *ngIf="editing">
+    <dt>
+      <label translate>Classification</label>
+    </dt>
+
+    <dd>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-dropdown" id="classification-dropdown" ngbDropdownToggle>
+          <span *ngIf="!codeScheme.dataClassifications || codeScheme.dataClassifications.length === 0" translate>No classification</span>
+          <span *ngIf="codeScheme.dataClassifications !== undefined && codeScheme.dataClassifications[0] !== undefined">{{codeScheme.dataClassifications[0].prefLabel | translateValue:true}}</span>
+        </button>
+
+        <div ngbDropdownMenu aria-labelledby="classification-dropdown">
+          <button *ngFor="let dataClassification of dataClassifications"
+                  (click)="setDataClassification(dataClassification)"
+                  class="dropdown-item"
+                  [class.active]="codeScheme.dataClassifications !== undefined && codeScheme.dataClassifications.length > 0 && codeScheme.dataClassifications[0] == dataClassification">
+            {{dataClassification.prefLabel | translateValue:true}}
+          </button>
+        </div>
       </div>
     </dd>
   </dl>
