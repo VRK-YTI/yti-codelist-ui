@@ -131,7 +131,10 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
 
   canSave() {
     // TODO check form validity more properly here!
-    return this.codeSchemeForm.valid && this.codeScheme.codeRegistry !== undefined && !this.saving;
+    return this.codeSchemeForm.valid &&
+      this.codeScheme.codeRegistry !== undefined &&
+      !this.saving && this.codeScheme.dataClassifications !== undefined &&
+      this.codeScheme.dataClassifications.length > 0;
   }
 
   ngOnDestroy() {
