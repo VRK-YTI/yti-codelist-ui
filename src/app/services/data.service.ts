@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, RequestOptionsArgs, URLSearchParams } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { CodeScheme } from '../entities/code-scheme';
 import { CodeRegistry } from '../entities/code-registry';
 import { Observable } from 'rxjs/Observable';
@@ -20,6 +20,7 @@ import { AbstractResource } from '../entities/abstract-resource';
 import { PropertyType } from '../entities/property-type';
 import { ExternalReference } from '../entities/external-reference';
 import { Organization } from '../entities/organization';
+import { ServiceConfiguration } from '../entities/service-configuration';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -27,6 +28,7 @@ const api = 'api';
 
 const version = 'v1';
 const registries = 'coderegistries';
+const configuration = 'configuration';
 const codeSchemes = 'codeschemes';
 const codes = 'codes';
 const externalReferences = 'externalreferences';
@@ -37,6 +39,7 @@ const fakeableUsers = 'fakeableUsers';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
+const configurationIntakeBasePath = `/${intakeContext}/${api}/${version}/${configuration}`;
 const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
 const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
@@ -157,9 +160,9 @@ export class DataService {
   }
 
   getFakeableUsers(): Observable<{ email: string, firstName: string, lastName: string }[]> {
-        return this.http.get(fakeableUsersPath)
-          .map(response => response.json());
-     }
+    return this.http.get(fakeableUsersPath)
+      .map(response => response.json());
+  }
 
   getCodeRegistries(): Observable<CodeRegistry[]> {
     return this.http.get(codeRegistriesBasePath)
@@ -323,5 +326,10 @@ export class DataService {
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeId}/${codes}`, formData, {params})
       .map(res => res.json().results.map(createCodeEntity));
+  }
+
+  getServiceConfiguration() {
+    return this.http.get(`${configurationIntakeBasePath}`)
+      .map(res => res.json() as ServiceConfiguration);
   }
 }
