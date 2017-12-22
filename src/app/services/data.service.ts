@@ -21,6 +21,7 @@ import { PropertyType } from '../entities/property-type';
 import { ExternalReference } from '../entities/external-reference';
 import { Organization } from '../entities/organization';
 import { ServiceConfiguration } from '../entities/service-configuration';
+import { UserRequest } from '../entities/user-request';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -36,6 +37,9 @@ const classifications = 'dataclassifications';
 const propertytypes = 'propertytypes';
 const organizations = 'organizations';
 const fakeableUsers = 'fakeableUsers';
+const groupmanagement = 'groupmanagement';
+const requests = 'requests';
+const request = 'request';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -46,6 +50,8 @@ const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${class
 const propertyTypesBasePath = `/${apiContext}/${api}/${version}/${propertytypes}`;
 const organizationsBasePath = `/${intakeContext}/${api}/${version}/${organizations}`;
 const fakeableUsersPath = `/${intakeContext}/${api}/${fakeableUsers}`;
+const groupManagementRequestBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${request}`;
+const groupManagementRequestsBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${requests}`;
 
 function setBaseValues(entity: AbstractResource, type: BaseResourceType) {
 
@@ -112,7 +118,7 @@ function createCodeEntity(code: CodeType): Code {
 
   const entity = new Code();
   setBaseValues(entity, code);
-  if (code.codeScheme !== undefined && code.codeScheme !== null) {
+  if (code.codeScheme != null) {
     entity.codeScheme = createCodeSchemeEntity(code.codeScheme);
   }
   entity.shortName = code.shortName;
@@ -331,5 +337,14 @@ export class DataService {
   getServiceConfiguration() {
     return this.http.get(`${configurationIntakeBasePath}`)
       .map(res => res.json() as ServiceConfiguration);
+  }
+
+  getUserRequests(): Observable<UserRequest[]> {
+    return this.http.get(`${groupManagementRequestsBasePath}/`, undefined)
+      .map(response => response.json() as UserRequest[]);
+  }
+
+  sendUserRequest(organizationId: string): Observable<any> {
+    return this.http.post(`${groupManagementRequestBasePath}/?organizationId=${organizationId}`, null, undefined);
   }
 }
