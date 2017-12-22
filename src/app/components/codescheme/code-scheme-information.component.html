@@ -161,7 +161,7 @@
             <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
               {{externalReference.title | translateValue}}
             </button>
-            <button *ngIf="editing" type="button" class="icon icon-pencil"
+            <button *ngIf="editing && externalReference.global !== true" type="button" class="icon icon-pencil"
                     (click)="editExternalReference(externalReference)"></button>
             <button *ngIf="editing" type="button" class="icon icon-trash"
                     (click)="removeExternalReference(externalReference)"></button>

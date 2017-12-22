@@ -7,6 +7,7 @@ export class ExternalReference {
   uri = '';
   url = '';
   title: Localizable = {};
+  global = false;
   description: Localizable = {};
   propertyType: PropertyType;
 

@@ -87,6 +87,7 @@ function createExternalReferenceEntity(externalReference: ExternalReferenceType)
   entity.id = externalReference.id;
   entity.title = externalReference.title || {};
   entity.description = externalReference.description || {};
+  entity.global = externalReference.global;
   entity.uri = externalReference.uri;
   entity.url = externalReference.url;
   entity.propertyType = createPropertyTypeEntity(externalReference.propertyType);

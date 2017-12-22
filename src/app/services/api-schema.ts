@@ -58,6 +58,7 @@ export interface ExternalReferenceType  {
   id: string;
   uri: string;
   url: string;
+  global: boolean;
   title?: Localizable;
   description?: Localizable;
   propertyType: PropertyTypeType;
