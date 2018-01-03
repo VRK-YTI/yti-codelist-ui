@@ -11,7 +11,7 @@ import { LinkEditModalService } from './link-edit-modal.component';
 import { remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { statusList } from '../../entities/status';
+import { selectableStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { DataService } from '../../services/data.service';
 import { toPickerDate } from '../../utils/date';
@@ -73,7 +73,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   get statuses(): string[] {
-    return statusList;
+    return selectableStatuses;
   }
 
   ngOnDestroy() {

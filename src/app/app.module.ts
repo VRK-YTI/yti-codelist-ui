@@ -19,7 +19,7 @@ import { CodeSchemeComponent } from './components/codescheme/code-scheme.compone
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
 import { StyleTestComponent } from './components/style-test.component';
-import { StatusComponent } from './components/common/status.component';
+import { StatusComponent } from 'yti-common-ui/components/status.component';
 import { ContentLanguageComponent } from './components/common/content-language.component';
 import { CodeSchemeCodesComponent } from './components/codescheme/code-scheme-codes.component';
 import { CodeSchemeInformationComponent } from './components/codescheme/code-scheme-information.component';

@@ -10,7 +10,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { Router } from '@angular/router';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
-import { statusList } from '../../entities/status';
+import { selectableStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { fromPickerDate, toPickerDate } from '../../utils/date';
 
@@ -74,7 +74,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   get statuses(): string[] {
-    return statusList;
+    return selectableStatuses;
   }
 
   get loading(): boolean {

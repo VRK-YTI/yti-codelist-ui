@@ -5,7 +5,7 @@ import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { statusList } from '../../entities/status';
+import { selectableStatuses } from 'yti-common-ui/entities/status';
 import { CodeScheme } from '../../entities/code-scheme';
 import { fromPickerDate } from '../../utils/date';
 
@@ -71,7 +71,7 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   get statuses(): string[] {
-    return statusList;
+    return selectableStatuses;
   }
 
   get operationPending() {

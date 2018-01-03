@@ -6,7 +6,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataClassification } from '../../entities/data-classification';
 import { Organization } from '../../entities/organization';
-import { Status, statuses } from '../../entities/status';
+import { Status, selectableStatuses } from 'yti-common-ui/entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from 'yti-common-ui/services/user.service';
@@ -67,7 +67,7 @@ export class FrontpageComponent implements OnInit {
       }));
     });
 
-    this.statusOptions = [null, ...statuses].map(status => ({
+    this.statusOptions = [null, ...selectableStatuses].map(status => ({
       value: status,
       name: () => this.translateService.instant(status ? status : 'All statuses')
     }));
