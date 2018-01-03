@@ -342,7 +342,7 @@ export class DataService {
 
   getUserRequests(): Observable<UserRequest[]> {
     return this.http.get(`${groupManagementRequestsBasePath}/`, undefined)
-      .map(response => response.json() as UserRequest[]);
+      .map(response => response.json().results as UserRequest[]);
   }
 
   sendUserRequest(organizationId: string): Observable<any> {
