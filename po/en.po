@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-19 17:25+0200\n"
+"PO-Revision-Date: 2018-01-04 14:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -29,6 +29,9 @@ msgid "All registries"
 msgstr ""
 
 msgid "All organizations"
+msgstr ""
+
+msgid "Choose organization"
 msgstr ""
 
 msgid "Code scheme"
@@ -73,6 +76,15 @@ msgstr ""
 msgid "Add link"
 msgstr ""
 
+msgid "Coderegistry"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "Organization"
+msgstr ""
+
 msgid "INFORMATION"
 msgstr ""
 
@@ -109,13 +121,7 @@ msgstr ""
 msgid "Create codescheme"
 msgstr ""
 
-msgid "Coderegistry"
-msgstr ""
-
 msgid "No registry"
-msgstr ""
-
-msgid "Classification"
 msgstr ""
 
 msgid "No classification"
@@ -145,9 +151,6 @@ msgid ""
 msgstr ""
 
 msgid "Create new codescheme"
-msgstr ""
-
-msgid "Organization"
 msgstr ""
 
 msgid "DRAFT"
@@ -225,6 +228,9 @@ msgstr ""
 msgid "User details"
 msgstr ""
 
+msgid "Group management service"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -238,6 +244,12 @@ msgid "Unknown organization"
 msgstr ""
 
 msgid "Waiting for approval"
+msgstr ""
+
+msgid "Send access request"
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Front page"

@@ -22,6 +22,9 @@ msgstr ""
 msgid "All organizations"
 msgstr ""
 
+msgid "Choose organization"
+msgstr ""
+
 msgid "Code scheme"
 msgstr ""
 
@@ -64,6 +67,15 @@ msgstr ""
 msgid "Add link"
 msgstr ""
 
+msgid "Coderegistry"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "Organization"
+msgstr ""
+
 msgid "INFORMATION"
 msgstr ""
 
@@ -100,13 +112,7 @@ msgstr ""
 msgid "Create codescheme"
 msgstr ""
 
-msgid "Coderegistry"
-msgstr ""
-
 msgid "No registry"
-msgstr ""
-
-msgid "Classification"
 msgstr ""
 
 msgid "No classification"
@@ -136,9 +142,6 @@ msgid ""
 msgstr ""
 
 msgid "Create new codescheme"
-msgstr ""
-
-msgid "Organization"
 msgstr ""
 
 msgid "DRAFT"
@@ -216,6 +219,9 @@ msgstr ""
 msgid "User details"
 msgstr ""
 
+msgid "Group management service"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -229,6 +235,12 @@ msgid "Unknown organization"
 msgstr ""
 
 msgid "Waiting for approval"
+msgstr ""
+
+msgid "Send access request"
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Front page"

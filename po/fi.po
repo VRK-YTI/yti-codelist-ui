@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2017-12-19 17:53+0200\n"
+"PO-Revision-Date: 2018-01-04 14:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -30,6 +30,9 @@ msgstr "Kaikki rekisterit"
 
 msgid "All organizations"
 msgstr "Kaikki organisaatiot"
+
+msgid "Choose organization"
+msgstr "Valitse organisaatio"
 
 msgid "Code scheme"
 msgstr "Koodisto"
@@ -73,6 +76,15 @@ msgstr "Linkit"
 msgid "Add link"
 msgstr "Lisää linkki"
 
+msgid "Coderegistry"
+msgstr "Rekisteri"
+
+msgid "Classification"
+msgstr "Luokitus"
+
+msgid "Organization"
+msgstr "Organisaatio"
+
 msgid "INFORMATION"
 msgstr "TIEDOT"
 
@@ -109,14 +121,8 @@ msgstr "Sitovuustaso"
 msgid "Create codescheme"
 msgstr "Luo koodisto"
 
-msgid "Coderegistry"
-msgstr "Rekisteri"
-
 msgid "No registry"
 msgstr "Ei rekisteriä"
-
-msgid "Classification"
-msgstr "Luokitus"
 
 msgid "No classification"
 msgstr "Ei luokitusta"
@@ -153,9 +159,6 @@ msgstr ""
 
 msgid "Create new codescheme"
 msgstr "Luo uusi koodisto"
-
-msgid "Organization"
-msgstr "Organisaatio"
 
 msgid "DRAFT"
 msgstr "Luonnos"
@@ -232,6 +235,9 @@ msgstr "KIRJAUDU ULOS"
 msgid "User details"
 msgstr "Käyttäjätiedot"
 
+msgid "Group management service"
+msgstr "Ryhmienhallintapalvelu"
+
 msgid "Name"
 msgstr "Nimi"
 
@@ -246,6 +252,12 @@ msgstr "Tuntematon organisaatio"
 
 msgid "Waiting for approval"
 msgstr "Odottaa hyväksymistä"
+
+msgid "Send access request"
+msgstr "Lähetä käyttöoikeuspyyntö"
+
+msgid "Send"
+msgstr "Lähetä"
 
 msgid "Front page"
 msgstr "Etusivu"

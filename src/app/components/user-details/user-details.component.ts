@@ -3,12 +3,14 @@ import { Role, UserService } from 'yti-common-ui/services/user.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { index } from 'yti-common-ui/utils/array';
+import { Options } from 'yti-common-ui/components/dropdown.component';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { TranslateService } from 'ng2-translate';
 import { LanguageService } from '../../services/language.service';
 import { LocationService } from '../../services/location.service';
 import { DataService } from '../../services/data.service';
 import { Organization } from '../../entities/organization';
+import { combineSets, hasAny } from 'yti-common-ui/utils/set';
 
 interface UserOrganizationRoles {
   organization?: Organization;
@@ -49,6 +51,8 @@ export class UserDetailsComponent implements OnDestroy  {
       this.allOrganizations = organizations;
       this.allOrganizationsById = index(organizations, org => org.id);
     });
+
+    this.refreshRequests();
   }
 
   ngOnDestroy() {
@@ -75,11 +79,59 @@ export class UserDetailsComponent implements OnDestroy  {
         organization: this.allOrganizationsById.get(organizationId),
         roles: Array.from(this.user.getRoles(organizationId)),
         requests: Array.from(this.requestsInOrganizations.get(organizationId) || [])
-      }
+      };
     });
 
-    result.sort(comparingLocalizable<UserOrganizationRoles>(this.languageService, org => org.organization ? org.organization.prefLabel : {}));
+    result.sort(comparingLocalizable<UserOrganizationRoles>(this.languageService, org => 
+      org.organization ? org.organization.prefLabel : {}));
 
     return result;
+  }
+
+  get organizationOptions(): Options<Organization> {
+
+    const hasExistingRoleOrRequest = (org: Organization) => {
+
+      const rolesOrRequests = combineSets([
+        this.user.getRoles(org.id),
+        this.requestsInOrganizations.get(org.id) || new Set<Role>()
+      ]);
+
+      return hasAny(rolesOrRequests, ['CODE_LIST_EDITOR', 'ADMIN']);
+    };
+
+    const requestableOrganizations = this.allOrganizations.filter(organization => !hasExistingRoleOrRequest(organization));
+
+    return [null, ...requestableOrganizations].map(org => {
+      return {
+        value: org,
+        name: () => org ? this.languageService.translate(org.prefLabel, true)
+                        : this.translateService.instant('Choose organization')
+      };
+    });
+  }
+
+  sendRequest() {
+
+    if (!this.selectedOrganization) {
+      throw new Error('No organization selected for request');
+    }
+
+    this.dataService.sendUserRequest(this.selectedOrganization.id)
+      .subscribe(() => this.refreshRequests());
+  }
+
+  refreshRequests() {
+
+    this.selectedOrganization = null;
+
+    this.dataService.getUserRequests().subscribe(userRequests => {
+
+      this.requestsInOrganizations.clear();
+
+      for (const userRequest of userRequests) {
+        this.requestsInOrganizations.set(userRequest.organizationId, new Set<Role>(userRequest.role));
+      }
+    });
   }
 }
