@@ -48,7 +48,10 @@
         <div class="dropdown-divider" [hidden]="noMenuItemsAvailable"></div>
         <a class="dropdown-item"
            *ngIf="isLoggedIn()"
-           [routerLink]="['/userDetails']" translate>User details</a>      
+           [routerLink]="['/userDetails']" translate>User details</a>
+        <a class="dropdown-item"
+           *ngIf="isUserAdmin()"
+           href="{{groupManagementUrl}}" target="_blank" translate>Group management service</a>
       </div>
     </li>
   </ul>

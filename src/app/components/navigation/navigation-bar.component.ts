@@ -19,6 +19,8 @@ export class NavigationBarComponent {
 
   fakeableUsers: { email: string, firstName: string, lastName: string }[] = [];
 
+  groupManagementUrl: string;
+
   constructor(private languageService: LanguageService,
               private userService: UserService,
               private loginModal: LoginModalService,
@@ -28,6 +30,9 @@ export class NavigationBarComponent {
       this.fakeableUsers = users;
     });
 
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.groupManagementUrl = configuration.groupManagementConfig.url;
+    });
   }
 
   get noMenuItemsAvailable() {
@@ -64,5 +69,9 @@ export class NavigationBarComponent {
 
   fakeUser(userEmail: string) {
     this.userService.updateLoggedInUser(userEmail);
+  }
+
+  isUserAdmin() {
+    return this.user.isAdminInAnyOrganization();
   }
 }
