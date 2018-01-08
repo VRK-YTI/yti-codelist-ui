@@ -11,6 +11,7 @@ import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { remove } from 'yti-common-ui/utils/array';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { selectableStatuses } from 'yti-common-ui/entities/status';
 
 @Component({
   selector: 'app-code-information',
@@ -46,6 +47,10 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   reset() {
     this.codeForm.reset(this.code);
+  }
+
+  get statuses(): string[] {
+    return selectableStatuses;
   }
 
   get editing() {

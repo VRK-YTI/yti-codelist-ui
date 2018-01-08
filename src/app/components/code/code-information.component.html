@@ -12,6 +12,34 @@
   <app-localizable-input [label]="'Code name' | translate"
                          [formControlName]="'prefLabel'"></app-localizable-input>
 
+  <div *ngIf="!editing">
+    <app-literal [label]="'Status' | translate"
+                 [value]="code.status | translate"></app-literal>
+  </div>
+  <div *ngIf="editing">
+    <dl>
+      <dt>
+        <label translate>Status</label>
+      </dt>
+      <dd>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
+            <span *ngIf="code.status">{{code.status | translate}}</span>
+          </button>
+
+          <div ngbDropdownMenu aria-labelledby="status-dropdown">
+            <button *ngFor="let status of statuses"
+                    (click)="code.status = status"
+                    class="dropdown-item"
+                    [class.active]="code.status == status">
+              {{status | translate}}
+            </button>
+          </div>
+        </div>
+      </dd>
+    </dl>
+  </div>
+
   <app-localizable-textarea [label]="'Description' | translate"
                             [formControlName]="'description'"></app-localizable-textarea>
 
