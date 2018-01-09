@@ -4,7 +4,7 @@
   "license": "EUPL-1.2",
   "scripts": {
     "start": "node -- node_modules/@angular/cli/bin/ng serve --port 9600 --proxy-config proxy.conf.json",
-    "start-dev": "node -- node_modules/@angular/cli/bin/ng serve --port 9600 --proxy-config proxy-dev.conf.json",
+    "start-dev": "node -- node_modules/@angular/cli/bin/ng serve --port 9600 --proxy-config proxy-dev.conf.json --ssl true",
     "build": "node -- node_modules/@angular/cli/bin/ng build",
     "test": "node -- node_modules/@angular/cli/bin/ng test",
     "lint": "node -- node_modules/@angular/cli/bin/ng lint",
