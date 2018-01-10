@@ -11,7 +11,7 @@ import { LinkEditModalService } from './link-edit-modal.component';
 import { remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { selectableStatuses } from 'yti-common-ui/entities/status';
+import { selectableStatuses, restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { DataService } from '../../services/data.service';
 import { toPickerDate } from '../../utils/date';
@@ -24,6 +24,7 @@ import { toPickerDate } from '../../utils/date';
 export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() codeScheme: CodeScheme;
+  @Input() currentStatus: string;
   dataClassifications: Code[];
 
   codeSchemeForm = new FormGroup({
@@ -73,7 +74,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   get statuses(): string[] {
-    return selectableStatuses;
+    return restrictedStatuses.find(status => status === this.currentStatus) ? restrictedStatuses : selectableStatuses;
   }
 
   ngOnDestroy() {

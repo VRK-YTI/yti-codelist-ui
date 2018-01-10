@@ -23,6 +23,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   codeScheme: CodeScheme;
   codes: Code[];
+  currentStatus: string;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -46,6 +47,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
       this.locationService.atCodeSchemePage(codeScheme);
+      this.currentStatus = codeScheme.status ? codeScheme.status : 'DRAFT';
     });
 
     this.dataService.getCodes(registryCode, schemeId).subscribe(codes => {

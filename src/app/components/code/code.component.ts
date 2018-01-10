@@ -23,6 +23,7 @@ export class CodeComponent implements OnInit, EditingComponent {
 
   code: Code;
   codeScheme: CodeScheme;
+  currentStatus: string;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -47,6 +48,7 @@ export class CodeComponent implements OnInit, EditingComponent {
     this.dataService.getCode(registryCode, schemeId, codeId).subscribe(code => {
       this.code = code;
       this.locationService.atCodePage(code);
+      this.currentStatus = code.status ? code.status : 'DRAFT';
     });
 
     this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {

@@ -24,6 +24,7 @@
       <dd>
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
+            <span *ngIf="!code.status" translate>DRAFT</span>
             <span *ngIf="code.status">{{code.status | translate}}</span>
           </button>
 
