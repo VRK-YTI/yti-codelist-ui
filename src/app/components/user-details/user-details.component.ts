@@ -45,6 +45,8 @@ export class UserDetailsComponent implements OnDestroy  {
       }
     });
 
+    userService.updateLoggedInUser();
+
     locationService.atUserDetails();
 
     this.dataService.getOrganizations().subscribe(organizations => {
