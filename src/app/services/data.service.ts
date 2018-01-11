@@ -223,7 +223,7 @@ export class DataService {
 
   getDataClassificationsAsCodes(): Observable<Code[]> {
     const params = new URLSearchParams();
-    params.append('expand', 'codeScheme,codeRegistry');
+    params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
 
     return this.http.get(`${codeRegistriesBasePath}/yti/${codeSchemes}/dcat/${codes}/`, {params})
       .map(res => res.json().results.map(createCodeEntity));
