@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-01-04 14:36+0200\n"
+"PO-Revision-Date: 2018-01-11 12:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -70,6 +70,9 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
+msgid "DRAFT"
+msgstr "Draft"
+
 msgid "Links"
 msgstr ""
 
@@ -89,6 +92,12 @@ msgid "INFORMATION"
 msgstr ""
 
 msgid "Import codes to codescheme"
+msgstr ""
+
+msgid "File format"
+msgstr ""
+
+msgid "File to be uploaded"
 msgstr ""
 
 msgid "Import"
@@ -153,8 +162,8 @@ msgstr ""
 msgid "Create new codescheme"
 msgstr ""
 
-msgid "DRAFT"
-msgstr "Draft"
+msgid "Registry for the codescheme"
+msgstr ""
 
 msgid "Export"
 msgstr ""

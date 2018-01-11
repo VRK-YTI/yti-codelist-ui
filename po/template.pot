@@ -61,6 +61,9 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
+msgid "DRAFT"
+msgstr ""
+
 msgid "Links"
 msgstr ""
 
@@ -80,6 +83,12 @@ msgid "INFORMATION"
 msgstr ""
 
 msgid "Import codes to codescheme"
+msgstr ""
+
+msgid "File format"
+msgstr ""
+
+msgid "File to be uploaded"
 msgstr ""
 
 msgid "Import"
@@ -144,7 +153,7 @@ msgstr ""
 msgid "Create new codescheme"
 msgstr ""
 
-msgid "DRAFT"
+msgid "Registry for the codescheme"
 msgstr ""
 
 msgid "Export"

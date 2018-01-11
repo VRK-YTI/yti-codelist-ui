@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-01-04 14:35+0200\n"
+"PO-Revision-Date: 2018-01-11 12:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -70,6 +70,9 @@ msgstr "Voimassaolo"
 msgid "Last modification"
 msgstr "Viimeisin muokkaus"
 
+msgid "DRAFT"
+msgstr "Luonnos"
+
 msgid "Links"
 msgstr "Linkit"
 
@@ -90,6 +93,12 @@ msgstr "TIEDOT"
 
 msgid "Import codes to codescheme"
 msgstr "Tuo koodeja koodistoon"
+
+msgid "File format"
+msgstr "Valitse tiedoston muoto"
+
+msgid "File to be uploaded"
+msgstr "Valitse tuotava tiedosto"
 
 msgid "Import"
 msgstr "Tuo"
@@ -160,8 +169,8 @@ msgstr ""
 msgid "Create new codescheme"
 msgstr "Luo uusi koodisto"
 
-msgid "DRAFT"
-msgstr "Luonnos"
+msgid "Registry for the codescheme"
+msgstr "Valitse rekisteri"
 
 msgid "Export"
 msgstr "Lataa"
