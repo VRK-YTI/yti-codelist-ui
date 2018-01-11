@@ -6,7 +6,7 @@
 
   <app-back-button (back)="back()"></app-back-button>
 
-  <h1>{{codeScheme.prefLabel | translateValue}}</h1>
+  <h1 class="text-content-wrap">{{codeScheme.prefLabel | translateValue}}</h1>
 
   <div class="row">
     <div class="col-12">
@@ -40,7 +40,7 @@
 
   <div class="row" *ngIf="codeScheme.description | translateValue">
     <div class="col-12">
-      <p class="description">{{codeScheme.description | translateValue}}</p>
+      <p class="description text-content-wrap">{{codeScheme.description | translateValue}}</p>
     </div>
   </div>
 

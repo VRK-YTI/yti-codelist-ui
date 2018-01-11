@@ -15,7 +15,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
                  [formControl]="control" />
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
-        <span *ngIf="!editing">{{control.value}}</span>
+        <span class="text-content-wrap" *ngIf="!editing">{{control.value}}</span>
       </dd>
     </dl>
   `
