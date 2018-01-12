@@ -11,7 +11,7 @@ import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { remove } from 'yti-common-ui/utils/array';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { selectableStatuses, restrictedStatuses } from 'yti-common-ui/entities/status';
+import { selectableStatuses, restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 
 @Component({
   selector: 'app-code-information',
@@ -51,7 +51,11 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get statuses(): string[] {
-    return restrictedStatuses.find(status => status === this.currentStatus) ? restrictedStatuses : selectableStatuses;
+    return this.restrictedCurrentStatus ? restrictedStatuses : selectableStatuses;
+  }
+
+  get restrictedCurrentStatus(): boolean {
+    return restrictedStatuses.includes(this.currentStatus as Status);
   }
 
   get editing() {
