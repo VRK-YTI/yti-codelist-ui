@@ -22,6 +22,7 @@ import { ExternalReference } from '../entities/external-reference';
 import { Organization } from '../entities/organization';
 import { ServiceConfiguration } from '../entities/service-configuration';
 import { UserRequest } from '../entities/user-request';
+import { AuthorizationManager } from './authorization-manager.service';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -163,7 +164,8 @@ function createDataClassificationEntity(classification: DataClassificationType):
 @Injectable()
 export class DataService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private authorizationManager: AuthorizationManager) {
   }
 
   getFakeableUsers(): Observable<{ email: string, firstName: string, lastName: string }[]> {
@@ -174,6 +176,10 @@ export class DataService {
   getCodeRegistries(): Observable<CodeRegistry[]> {
     return this.http.get(codeRegistriesBasePath)
       .map(res => res.json().results.map(createCodeRegistryEntity));
+  }
+
+  getCodeRegistriesForUser(): Observable<CodeRegistry[]> {
+    return this.getCodeRegistries().map(registries => this.authorizationManager.filterAllowedRegistriesForUser(registries));
   }
 
   getOrganizations(): Observable<Organization[]> {

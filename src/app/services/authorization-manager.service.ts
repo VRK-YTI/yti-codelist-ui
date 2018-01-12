@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { EditableEntity } from '../entities/editable-entity';
+import { CodeRegistry } from '../entities/code-registry';
+import { Organization } from '../entities/organization';
 
 @Injectable()
 export class AuthorizationManager {
@@ -18,4 +20,11 @@ export class AuthorizationManager {
     }
     return this.user.isInOrganization(editableEntity.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
   }
+
+  filterAllowedRegistriesForUser(codeRegistries: CodeRegistry[]): CodeRegistry[] {
+    return codeRegistries.filter(registry => 
+      this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.map(org => org.id)));
+  }
+
+  
 }

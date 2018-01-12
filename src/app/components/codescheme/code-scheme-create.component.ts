@@ -13,6 +13,8 @@ import { DataService } from '../../services/data.service';
 import { selectableStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { fromPickerDate, toPickerDate } from '../../utils/date';
+import { UserService, Role } from 'yti-common-ui/services/user.service';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -47,7 +49,9 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
               private editableService: EditableService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private userService: UserService,
+              private authorizationManager: AuthorizationManager) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
@@ -55,7 +59,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.codeScheme = new CodeScheme();
     this.codeScheme.status = 'DRAFT';
-    this.dataService.getCodeRegistries().subscribe(codeRegistries => {
+    this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistries = codeRegistries;
     });
     this.dataService.getDataClassificationsAsCodes().subscribe(dataClassifications => {

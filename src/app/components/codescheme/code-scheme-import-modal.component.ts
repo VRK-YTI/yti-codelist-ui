@@ -42,7 +42,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getCodeRegistries().subscribe(registers => {
+    this.dataService.getCodeRegistriesForUser().subscribe(registers => {
       this.codeRegistries = registers;
     });
   }
