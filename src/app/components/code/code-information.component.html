@@ -48,12 +48,12 @@
                      [formControlName]="'shortName'"></app-literal-input>
 
 
-  <div *ngIf="!editing">
+  <div *ngIf="!editingWhenNotRestricted">
     <app-literal [label]="'Validity' | translate"
                  [value]="code.validity"></app-literal>
   </div>
 
-  <div *ngIf="editing">
+  <div *ngIf="editingWhenNotRestricted">
     <dl>
       <dt>
         <label translate>Start date</label>
@@ -91,7 +91,7 @@
   <app-literal [label]="'Last modification' | translate"
                [value]="code.modifiedDisplayValue"></app-literal>
 
-  <dl *ngIf="editing || code.externalReferences.length > 0">
+  <dl *ngIf="editingWhenNotRestricted || code.externalReferences.length > 0">
     <dt><label translate>Links</label></dt>
     <dd>
       <div *ngFor="let propertyType of getUsedPropertyTypes()">
@@ -101,15 +101,15 @@
             <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
               {{externalReference.title | translateValue}}
             </button>
-            <button *ngIf="editing && externalReference.global !== true" type="button" class="icon icon-pencil"
+            <button *ngIf="editingWhenNotRestricted && externalReference.global !== true" type="button" class="icon icon-pencil"
                     (click)="editExternalReference(externalReference)"></button>
-            <button *ngIf="editing" type="button" class="icon icon-trash"
+            <button *ngIf="editingWhenNotRestricted" type="button" class="icon icon-trash"
                     (click)="removeExternalReference(externalReference)"></button>
           </div>
         </div>
       </div>
 
-      <div *ngIf="editing">
+      <div *ngIf="editingWhenNotRestricted">
         <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
       </div>
     </dd>

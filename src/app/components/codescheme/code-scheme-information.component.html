@@ -18,7 +18,7 @@
     </dd>
   </dl>
 
-  <dl *ngIf="codeScheme.dataClassifications.length > 0 && !editing">
+  <dl *ngIf="codeScheme.dataClassifications.length > 0 && !editingWhenNotRestricted">
     <dt>
       <label translate>Classification</label>
     </dt>
@@ -29,7 +29,7 @@
     </dd>
   </dl>
 
-  <dl *ngIf="editing">
+  <dl *ngIf="editingWhenNotRestricted">
     <dt>
       <label translate>Classification</label>
     </dt>
@@ -108,12 +108,12 @@
     </dl>
   </div>
 
-  <div *ngIf="!editing">
+  <div *ngIf="!editingWhenNotRestricted">
     <app-literal [label]="'Validity' | translate"
                  [value]="codeScheme.validity"></app-literal>
   </div>
 
-  <div *ngIf="editing">
+  <div *ngIf="editingWhenNotRestricted">
     <dl>
       <dt>
         <label translate>Start date</label>
@@ -151,7 +151,7 @@
   <app-literal [label]="'Last modification' | translate"
                [value]="codeScheme.modifiedDisplayValue"></app-literal>
 
-  <dl *ngIf="editing || externalReferences.length > 0">
+  <dl *ngIf="editingWhenNotRestricted || externalReferences.length > 0">
     <dt><label translate>Links</label></dt>
     <dd>
       <div *ngFor="let propertyType of getUsedPropertyTypes()">
@@ -161,15 +161,15 @@
             <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
               {{externalReference.title | translateValue}}
             </button>
-            <button *ngIf="editing && externalReference.global !== true" type="button" class="icon icon-pencil"
+            <button *ngIf="editingWhenNotRestricted && externalReference.global !== true" type="button" class="icon icon-pencil"
                     (click)="editExternalReference(externalReference)"></button>
-            <button *ngIf="editing" type="button" class="icon icon-trash"
+            <button *ngIf="editingWhenNotRestricted" type="button" class="icon icon-trash"
                     (click)="removeExternalReference(externalReference)"></button>
           </div>
         </div>
       </div>
 
-      <div *ngIf="editing">
+      <div *ngIf="editingWhenNotRestricted">
         <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
       </div>
     </dd>

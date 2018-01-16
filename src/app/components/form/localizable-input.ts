@@ -54,7 +54,7 @@ export class LocalizableInputComponent implements ControlValueAccessor {
   }
 
   get editing() {
-    return this.editableService.editing;
+    return this.editableService.editing && !this.editableService.restrictedEditing;
   }
 
   get contentLanguage() {

@@ -89,6 +89,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     return this.editableService.editing;
   }
 
+  get editingWhenNotRestricted() {
+    return this.editableService.editing && !this.editableService.restrictedEditing;
+  }
+
   get externalReferences(): ExternalReference[] {
     return this.codeSchemeForm.value.externalReferences;
   }

@@ -62,6 +62,10 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     return this.editableService.editing;
   }
 
+  get editingWhenNotRestricted() {
+    return this.editableService.editing && !this.editableService.restrictedEditing;
+  }
+
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
   }
