@@ -18,7 +18,7 @@ import { Localizable } from 'yti-common-ui/types/localization';
                  (ngModelChange)="onChange($event)" />
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
-        <span class="text-content-wrap" *ngIf="!editing">{{value | translateValue}}</span>
+        <div class="text-content-wrap" *ngIf="!editing">{{value | translateValue}}</div>
       </dd>
     </dl>
   `
