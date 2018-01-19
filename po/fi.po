@@ -299,7 +299,7 @@ msgid "Submit error"
 msgstr "Toiminnossa tapahtui virhe"
 
 msgid "Unexpected error"
-msgstr "Tapahtui odottomaton virhe"
+msgstr "Tapahtui odottamaton virhe"
 
 msgid "Edit in progress"
 msgstr "Muokkaaminen on kesken"

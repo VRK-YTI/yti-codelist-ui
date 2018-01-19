@@ -80,7 +80,7 @@ export class EditableService implements OnDestroy {
       },
       error(err: any) {
         that.saving$.next(false);
-        that.errorModalService.openSubmitError(err);
+        that.errorModalService.openSubmitError();
       }
     });
   }

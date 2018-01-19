@@ -4,6 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { Router } from '@angular/router';
+import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
 
 @Injectable()
 export class CodeSchemeImportModalService {
@@ -32,7 +33,8 @@ export class CodeSchemeImportModalComponent implements OnInit {
   constructor(private editableService: EditableService,
               private dataService: DataService,
               private router: Router,
-              private modal: NgbActiveModal) {
+              private modal: NgbActiveModal,
+              private errorModalService: ErrorModalService) {
 
     this.editableService.edit();
   }
@@ -73,6 +75,8 @@ export class CodeSchemeImportModalComponent implements OnInit {
           this.router.navigate(codeSchemes[0].route);
           this.modal.close(false);
         }
+      }, error => {
+        this.errorModalService.openSubmitError();
       });
     }
   }
