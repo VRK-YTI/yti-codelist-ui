@@ -30,11 +30,11 @@
     </div>
     <div class="metaitem" *ngIf="codeScheme.dataClassifications.length > 0">
       <span translate>Classification</span><span>: </span>
-      <span *ngFor="let dataClassification of codeScheme.dataClassifications">{{dataClassification.prefLabel | translateValue}}{{!last ? '' : ', '}}</span>
+      <span *ngFor="let dataClassification of codeScheme.dataClassifications; let last = last">{{dataClassification.prefLabel | translateValue}}{{last ? '' : ', '}}</span>
     </div>
     <div class="metaitem" *ngIf="codeScheme.codeRegistry.organizations.length > 0">
       <span translate>Organization</span><span>: </span>
-      <span *ngFor="let organization of codeScheme.codeRegistry.organizations">{{organization.prefLabel | translateValue}}{{!last ? '' : ', '}}</span>
+      <span *ngFor="let organization of codeScheme.codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue}}{{last ? '' : ', '}}</span>
     </div>
   </div>
 
