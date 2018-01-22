@@ -8,7 +8,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
-import { remove } from 'yti-common-ui/utils/array';
+import { normalizeAsArray, remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { selectableStatuses, restrictedStatuses, Status } from 'yti-common-ui/entities/status';
@@ -137,8 +137,27 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
       }, ignoreModalClose);
   }
 
+  isClassificationSelected(code: Code) {
+    return this.dataClassification === code;
+  }
+
+  get dataClassification(): Code|null {
+    const current = normalizeAsArray(this.dataClassificationsControl.value);
+    return current.length > 0 ? current[0] : null;
+  }
+
   setDataClassification(dataClassification: Code) {
-    this.codeScheme.dataClassifications = [];
-    this.codeScheme.dataClassifications[0] = dataClassification;
+    this.dataClassificationsControl.setValue([dataClassification]);
+  }
+
+  private get dataClassificationsControl() {
+
+    const dcControl = this.codeSchemeForm.get('dataClassifications');
+
+    if (dcControl == null) {
+      throw new Error('Form control not found');
+    }
+
+    return dcControl;
   }
 }

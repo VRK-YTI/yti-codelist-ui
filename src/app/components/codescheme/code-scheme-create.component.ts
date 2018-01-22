@@ -15,6 +15,7 @@ import { Code } from '../../entities/code';
 import { fromPickerDate, toPickerDate } from '../../utils/date';
 import { UserService, Role } from 'yti-common-ui/services/user.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { normalizeAsArray } from 'yti-common-ui/utils/array';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -38,7 +39,8 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     governancePolicy: new FormControl(''),
     license: new FormControl(''),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    dataClassifications: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -72,9 +74,28 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     this.codeScheme.codeRegistry = codeRegistry;
   }
 
+  isClassificationSelected(code: Code) {
+    return this.dataClassification === code;
+  }
+
+  get dataClassification(): Code|null {
+    const current = normalizeAsArray(this.dataClassificationsControl.value);
+    return current.length > 0 ? current[0] : null;
+  }
+
   setDataClassification(dataClassification: Code) {
-    this.codeScheme.dataClassifications = [];
-    this.codeScheme.dataClassifications[0] = dataClassification;
+    this.dataClassificationsControl.setValue([dataClassification]);
+  }
+
+  private get dataClassificationsControl() {
+
+    const dcControl = this.codeSchemeForm.get('dataClassifications');
+
+    if (dcControl == null) {
+      throw new Error('Form control not found');
+    }
+
+    return dcControl;
   }
 
   get statuses(): string[] {
@@ -141,8 +162,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     // TODO check form validity more properly here!
     return this.codeSchemeForm.valid &&
       this.codeScheme.codeRegistry !== undefined &&
-      !this.saving && this.codeScheme.dataClassifications !== undefined &&
-      this.codeScheme.dataClassifications.length > 0;
+      !this.saving && this.dataClassification !== undefined;
   }
 
   ngOnDestroy() {
