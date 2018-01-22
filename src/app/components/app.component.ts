@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocationService } from '../services/location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,18 @@ import { LocationService } from '../services/location.service';
       <app-breadcrumb [location]="location"></app-breadcrumb>
       <router-outlet></router-outlet>
     </div>
-    <app-footer [title]="'Koodistot'"></app-footer>
+    <app-footer [title]="'Koodistot'" [onInformationClick]="navigateToInformation"></app-footer>
   `
 })
 export class AppComponent {
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService,
+              private router: Router) {
   }
 
   get location() {
     return this.locationService.location;
   }
+
+  navigateToInformation = () => this.router.navigate(['/information']);
 }
