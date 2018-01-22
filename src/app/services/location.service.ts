@@ -36,4 +36,11 @@ export class LocationService {
   atCodePage(code: Code): void {
     this.changeLocation(code.location);
   }
+
+  atInformationAboutService(): void {
+    this.changeLocation([{
+      localizationKey: 'Information about the web service',
+      route: ['information']
+    }]);
+  }
 }

@@ -52,6 +52,7 @@ import { YtiCommonModule, AUTHENTICATED_USER_ENDPOINT, LOCALIZER } from 'yti-com
 import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-create.component';
 import { CodeCreateComponent } from './components/code/code-create.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { InformationAboutServiceComponent } from './components/information/information-about-service.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
-  {path: 'userDetails', component: UserDetailsComponent}
+  {path: 'userDetails', component: UserDetailsComponent},
+  {path: 'information', component: InformationAboutServiceComponent}
 ];
 
 export function resolveAuthenticatedUserEndpoint() {
@@ -127,7 +129,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkListModalComponent,
     PropertyTypeSelectComponent,
     StyleTestComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    InformationAboutServiceComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
