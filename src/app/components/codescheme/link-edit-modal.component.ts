@@ -2,7 +2,7 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Injectable()
 export class LinkEditModalService {
@@ -30,7 +30,7 @@ export class LinkEditModalComponent implements OnInit {
   linkForm = new FormGroup({
     title: new FormControl({}),
     description: new FormControl({}),
-    url: new FormControl(''),
+    url: new FormControl('', Validators.required),
     propertyType: new FormControl()
   });
 
@@ -55,5 +55,9 @@ export class LinkEditModalComponent implements OnInit {
   save() {
     Object.assign(this.link, this.linkForm.value);
     this.modal.close();
+  }
+
+  canSave() {
+    return this.linkForm.valid;
   }
 }

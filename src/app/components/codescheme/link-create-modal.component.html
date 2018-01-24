@@ -22,6 +22,7 @@
 
         <app-literal-input [label]="'URL' | translate"
                            [name]="'url'"
+                           required
                            [(ngModel)]="externalReference.url"></app-literal-input>
 
         <app-property-type-select [name]="'propertyType'"
@@ -33,7 +34,7 @@
 </div>
 <div class="modal-footer">
   <div>
-    <button type="button" class="btn btn-action" (click)="add()" translate>Add</button>
+    <button type="button" class="btn btn-action" [disabled]="!form.valid" (click)="add()" translate>Add</button>
     <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
   </div>
 </div>

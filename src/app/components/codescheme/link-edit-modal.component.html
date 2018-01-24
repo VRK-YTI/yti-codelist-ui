@@ -29,7 +29,7 @@
 </div>
 <div class="modal-footer">
   <div>
-    <button type="button" class="btn btn-action" (click)="save()" translate>Save</button>
+    <button type="button" class="btn btn-action" (click)="save()" [disabled]="!canSave()" translate>Save</button>
     <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
   </div>
 </div>
