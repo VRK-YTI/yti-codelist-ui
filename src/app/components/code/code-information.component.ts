@@ -12,6 +12,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { remove } from 'yti-common-ui/utils/array';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { selectableStatuses, restrictedStatuses, Status } from 'yti-common-ui/entities/status';
+import { toPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code-information',
@@ -47,7 +48,11 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   reset() {
-    this.codeForm.reset(this.code);
+    this.codeForm.reset(Object.assign({}, {
+      externalReferences: this.code.externalReferences.map(link => link.clone()),
+      startDate: toPickerDate(this.code.startDate),
+      endDate: toPickerDate(this.code.endDate)
+    }));
   }
 
   get statuses(): string[] {
