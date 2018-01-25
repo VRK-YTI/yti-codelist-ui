@@ -14,4 +14,8 @@ export class ExternalReference {
   clone() {
     return Object.assign(new ExternalReference(), this);
   }
+
+  titleHasValue() {
+    return Object.entries(this.title).filter(([language, value]) => value !== '').length > 0;
+  }
 }
