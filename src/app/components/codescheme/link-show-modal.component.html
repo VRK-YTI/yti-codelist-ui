@@ -15,10 +15,12 @@
 
       <app-localizable-literal [label]="'Description' | translate"
                                [value]="externalReference.description"></app-localizable-literal>
-
-      <app-literal [label]="'URL' | translate"
-                   [value]="externalReference.url"></app-literal>
-
+      
+      <dt><label translate>URL</label></dt>
+      <dd>      
+        <div class="text-content-wrap"><a [href]="externalReference.url" target="_blank">{{externalReference.url}}</a></div>
+      </dd>
+      
       <app-localizable-literal [label]="'Link type' | translate"
                                [value]="externalReference.propertyType.prefLabel"></app-localizable-literal>
     </div>
