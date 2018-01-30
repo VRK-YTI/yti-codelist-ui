@@ -15,6 +15,7 @@ import { LanguageService } from '../../services/language.service';
 import { TranslateService } from 'ng2-translate';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { anyMatching } from 'yti-common-ui/utils/array';
+import { Option } from 'yti-common-ui/components/dropdown.component';
 
 @Component({
   selector: 'app-frontpage',
@@ -65,6 +66,7 @@ export class FrontpageComponent implements OnInit {
         name: () => organization ? this.languageService.translate(organization.prefLabel)
                                  : this.translateService.instant('All organizations')
       }));
+      this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c => c.value ? c.value.prefLabel : {}));
     });
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
