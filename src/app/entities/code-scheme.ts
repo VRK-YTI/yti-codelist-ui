@@ -44,7 +44,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   get location(): Location[] {
     return [{
-      localizationKey: 'Code scheme',
+      localizationKey: 'Code list',
       label: this.prefLabel,
       route: this.route
     }];

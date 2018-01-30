@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-01-11 12:30+0200\n"
+"PO-Revision-Date: 2018-01-30 12:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -34,7 +34,7 @@ msgstr "Kaikki organisaatiot"
 msgid "Choose organization"
 msgstr "Valitse organisaatio"
 
-msgid "Code scheme"
+msgid "Code list"
 msgstr "Koodisto"
 
 msgid "Code value"
@@ -91,7 +91,7 @@ msgstr "Organisaatio"
 msgid "INFORMATION"
 msgstr "TIEDOT"
 
-msgid "Import codes to codescheme"
+msgid "Import codes to code list"
 msgstr "Tuo koodeja koodistoon"
 
 msgid "File format"
@@ -103,16 +103,16 @@ msgstr "Valitse tuotava tiedosto"
 msgid "Import"
 msgstr "Tuo"
 
-msgid "This codescheme does not have any codes yet."
+msgid "This code list does not have any codes yet."
 msgstr "Tällä koodistolla ei ole yhtään koodia."
 
 msgid "Import codes"
 msgstr "Tuo koodeja"
 
-msgid "Codescheme value"
+msgid "Code list value"
 msgstr "Koodiston tunnus"
 
-msgid "Codescheme name"
+msgid "Code list name"
 msgstr "Koodiston nimi"
 
 msgid "Definition"
@@ -127,7 +127,7 @@ msgstr "Lakiperuste"
 msgid "Governance policy"
 msgstr "Sitovuustaso"
 
-msgid "Create codescheme"
+msgid "Create code list"
 msgstr "Luo koodisto"
 
 msgid "No registry"
@@ -136,40 +136,39 @@ msgstr "Ei rekisteriä"
 msgid "No classification"
 msgstr "Ei luokitusta"
 
-msgid "Import codescheme"
+msgid "Import code list"
 msgstr "Tuo koodisto"
 
 msgid ""
-"Import codescheme by uploading a CSV- or Excel formatted file. Look up more "
-"detailed guide and information about using codescheme-files from service "
-"help."
+"Import code list by uploading a CSV- or Excel formatted file. Look up more "
+"detailed guide and information about using code list files from service help."
 msgstr ""
 "Tuo koodisto lataamalla CSV- tai Excel-muotoinen tiedosto. Katso tarkemmat "
 "ohjeet ja tiedot koodisto-tiedoston käyttämisestä palvelun ohjeista."
 
 msgid ""
-"Using the imported file, a new codescheme is created or an older codescheme "
-"is update with new meta-information. Upon uploading the file, you get to "
-"review and cancel the changes if needed."
+"Using the imported file, a new code list is created or an older code list is "
+"update with new meta-information. Upon uploading the file, you get to review "
+"and cancel the changes if needed."
 msgstr ""
 "Tuodun tiedoston perusteella luodaan uusi koodisto tai korvataan tietoja "
 "vastaava olemassa oleva koodisto. Tiedoston tuomisen jälkeen pääset vielä "
 "tarkistamaan tuodut tiedot ja tarvittaessa peruuttamaan muutokset."
 
-msgid "Import codescheme from a file"
+msgid "Import code list from a file"
 msgstr "Tuo koodisto tiedostosta"
 
 msgid ""
-"You can also add a new codescheme by creating it via the user interface of "
+"You can also add a new code list by creating it via the user interface of "
 "the Koodistot service."
 msgstr ""
 "Voit myös lisätä uuden koodiston syöttämällä tiedot Koodistot-palvelun "
 "käyttöliittymän kautta."
 
-msgid "Create new codescheme"
+msgid "Create new code list"
 msgstr "Luo uusi koodisto"
 
-msgid "Registry for the codescheme"
+msgid "Registry for the code list"
 msgstr "Valitse rekisteri"
 
 msgid "Export"
@@ -217,16 +216,16 @@ msgstr "Ok"
 msgid "Search for code lists"
 msgstr "Hae koodistoa"
 
-msgid "code schemes"
+msgid "code lists"
 msgstr "koodistoa"
 
 msgid "organizations"
 msgstr "organisaatiota"
 
-msgid "Search did not find any codeschemes."
+msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
-msgid "1 code scheme"
+msgid "1 code list"
 msgstr "1 koodisto"
 
 msgid "No organization"
@@ -325,3 +324,21 @@ msgstr "Sanastotyöntekijä"
 
 msgid "CODE_LIST_EDITOR"
 msgstr "Koodistotyöntekijä"
+
+#~ msgid "Code scheme"
+#~ msgstr "Koodisto"
+
+#~ msgid "Codescheme value"
+#~ msgstr "Koodiston tunnus"
+
+#~ msgid "Codescheme name"
+#~ msgstr "Koodiston nimi"
+
+#~ msgid "Create codescheme"
+#~ msgstr "Luo koodisto"
+
+#~ msgid "Import codescheme"
+#~ msgstr "Tuo koodisto"
+
+#~ msgid "code schemes"
+#~ msgstr "koodistoa"

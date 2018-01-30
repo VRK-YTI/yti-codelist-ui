@@ -53,7 +53,7 @@
             <button type="button"
                     class="btn btn-action"
                     (click)="importCodeScheme()"
-                    translate>Import codescheme</button>
+                    translate>Import code list</button>
           </div>
         </div>
       </div>
@@ -66,9 +66,9 @@
 
         <div class="row mb-4">
           <div class="col-12">
-            <span *ngIf="filteredCodeSchemes.length == 0" translate>Search did not find any codeschemes.</span>
-            <span *ngIf="filteredCodeSchemes.length == 1" translate>1 code scheme</span>
-            <span *ngIf="filteredCodeSchemes.length > 1">{{filteredCodeSchemes.length}} {{'code schemes' | translate}}</span>
+            <span *ngIf="filteredCodeSchemes.length == 0" translate>Search did not find any code lists.</span>
+            <span *ngIf="filteredCodeSchemes.length == 1" translate>1 code list</span>
+            <span *ngIf="filteredCodeSchemes.length > 1">{{filteredCodeSchemes.length}} {{'code lists' | translate}}</span>
           </div>
         </div>
 

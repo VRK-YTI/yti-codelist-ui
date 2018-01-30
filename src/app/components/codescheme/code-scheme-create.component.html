@@ -6,7 +6,7 @@
 
   <app-back-button (back)="back()"></app-back-button>
 
-  <h1 translate>Create codescheme</h1>
+  <h1 translate>Create code list</h1>
 
   <button [hidden]="!editing"
           type="button"
@@ -43,10 +43,10 @@
       </dd>
     </dl>
 
-    <app-literal-input [label]="'Codescheme value' | translate"
+    <app-literal-input [label]="'Code list value' | translate"
                        [formControlName]="'codeValue'"></app-literal-input>
 
-    <app-localizable-input [label]="'Codescheme name' | translate"
+    <app-localizable-input [label]="'Code list name' | translate"
                            [formControlName]="'prefLabel'"></app-localizable-input>
 
     <dl>

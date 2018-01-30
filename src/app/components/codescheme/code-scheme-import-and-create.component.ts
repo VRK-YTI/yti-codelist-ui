@@ -18,12 +18,12 @@ export class CodeSchemeImportAndCreateComponent {
   }
 
   importFromFile() {
-    console.log('Importing codescheme from file!');
+    console.log('Importing code list from file!');
     this.codeSchemeImportModalService.open();
   }
 
   createNewCodeScheme() {
-    console.log('Create new codescheme clicked!');
+    console.log('Create new code list clicked!');
     this.router.navigate(['createcodescheme']);
   }
 }
