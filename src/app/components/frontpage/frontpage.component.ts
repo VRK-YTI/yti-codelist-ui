@@ -55,7 +55,7 @@ export class FrontpageComponent implements OnInit {
     this.dataService.getCodeRegistries().subscribe(registers => {
       this.registerOptions = [null, ...registers].map(register => ({
         value: register,
-        name: () => register ? this.languageService.translate(register.prefLabel)
+        name: () => register ? this.languageService.translate(register.prefLabel, true)
                              : this.translateService.instant('All registries')
       }));
     });
@@ -63,7 +63,7 @@ export class FrontpageComponent implements OnInit {
     this.dataService.getOrganizations().subscribe(organizations => {
       this.organizationOptions = [null, ...organizations].map(organization => ({
         value: organization,
-        name: () => organization ? this.languageService.translate(organization.prefLabel)
+        name: () => organization ? this.languageService.translate(organization.prefLabel, true)
                                  : this.translateService.instant('All organizations')
       }));
       this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c => c.value ? c.value.prefLabel : {}));
