@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-01-11 12:31+0200\n"
+"PO-Revision-Date: 2018-01-30 12:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Choose organization"
 msgstr ""
 
-msgid "Code scheme"
+msgid "Code list"
 msgstr ""
 
 msgid "Code value"
@@ -91,7 +91,7 @@ msgstr ""
 msgid "INFORMATION"
 msgstr ""
 
-msgid "Import codes to codescheme"
+msgid "Import codes to code list"
 msgstr ""
 
 msgid "File format"
@@ -103,16 +103,16 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-msgid "This codescheme does not have any codes yet."
+msgid "This code list does not have any codes yet."
 msgstr ""
 
 msgid "Import codes"
 msgstr ""
 
-msgid "Codescheme value"
+msgid "Code list value"
 msgstr ""
 
-msgid "Codescheme name"
+msgid "Code list name"
 msgstr ""
 
 msgid "Definition"
@@ -127,7 +127,7 @@ msgstr ""
 msgid "Governance policy"
 msgstr ""
 
-msgid "Create codescheme"
+msgid "Create code list"
 msgstr ""
 
 msgid "No registry"
@@ -136,33 +136,32 @@ msgstr ""
 msgid "No classification"
 msgstr ""
 
-msgid "Import codescheme"
+msgid "Import code list"
 msgstr ""
 
 msgid ""
-"Import codescheme by uploading a CSV- or Excel formatted file. Look up more "
-"detailed guide and information about using codescheme-files from service "
-"help."
+"Import code list by uploading a CSV- or Excel formatted file. Look up more "
+"detailed guide and information about using code list files from service help."
 msgstr ""
 
 msgid ""
-"Using the imported file, a new codescheme is created or an older codescheme "
-"is update with new meta-information. Upon uploading the file, you get to "
-"review and cancel the changes if needed."
+"Using the imported file, a new code list is created or an older code list is "
+"update with new meta-information. Upon uploading the file, you get to review "
+"and cancel the changes if needed."
 msgstr ""
 
-msgid "Import codescheme from a file"
+msgid "Import code list from a file"
 msgstr ""
 
 msgid ""
-"You can also add a new codescheme by creating it via the user interface of "
+"You can also add a new code list by creating it via the user interface of "
 "the Koodistot service."
 msgstr ""
 
-msgid "Create new codescheme"
+msgid "Create new code list"
 msgstr ""
 
-msgid "Registry for the codescheme"
+msgid "Registry for the code list"
 msgstr ""
 
 msgid "Export"
@@ -210,16 +209,16 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "code schemes"
+msgid "code lists"
 msgstr ""
 
 msgid "organizations"
 msgstr ""
 
-msgid "Search did not find any codeschemes."
+msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "1 code scheme"
+msgid "1 code list"
 msgstr ""
 
 msgid "No organization"
