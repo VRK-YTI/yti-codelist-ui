@@ -66,7 +66,8 @@ export class FrontpageComponent implements OnInit {
         name: () => organization ? this.languageService.translate(organization.prefLabel, true)
                                  : this.translateService.instant('All organizations')
       }));
-      this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c => c.value ? c.value.prefLabel : {}));
+      this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c => 
+        c.value ? c.value.prefLabel : {}));
     });
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
