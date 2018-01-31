@@ -30,6 +30,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
     description: new FormControl({}),
+    changeNote: new FormControl({}),
     definition: new FormControl({}),
     source: new FormControl(''),
     legalBase: new FormControl(''),

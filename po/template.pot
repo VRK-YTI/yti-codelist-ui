@@ -156,6 +156,9 @@ msgstr ""
 msgid "Registry for the codescheme"
 msgstr ""
 
+msgid "Changenote"
+msgstr ""
+
 msgid "Export"
 msgstr ""
 
