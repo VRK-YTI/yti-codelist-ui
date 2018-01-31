@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
       <app-breadcrumb [location]="location"></app-breadcrumb>
       <router-outlet></router-outlet>
     </div>
-    <app-footer [title]="'Koodistot'" [onInformationClick]="navigateToInformation"></app-footer>
+    <app-footer [title]="'Koodistot'" 
+                (informationClick)="navigateToInformation()"></app-footer>
   `
 })
 export class AppComponent {
@@ -25,5 +26,7 @@ export class AppComponent {
     return this.locationService.location;
   }
 
-  navigateToInformation = () => this.router.navigate(['/information']);
+  navigateToInformation() {
+    this.router.navigate(['/information']);
+  }
 }
