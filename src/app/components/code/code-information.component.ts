@@ -48,16 +48,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   reset() {
-    const { externalReferences, ...rest } = this.code;
+    const { externalReferences, startDate, endDate, ...rest } = this.code;
     
-    this.codeForm.reset(Object.assign({}, rest, {
+    this.codeForm.reset({
+      ...rest,
       externalReferences: this.code.externalReferences.map(link => link.clone()),
       startDate: toPickerDate(this.code.startDate),
       endDate: toPickerDate(this.code.endDate),
-      prefLabel: this.code.prefLabel,
-      description: this.code.description,
-      shortName: this.code.shortName
-    }));
+    });    
   }
 
   get statuses(): string[] {

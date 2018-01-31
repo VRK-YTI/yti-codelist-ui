@@ -64,14 +64,14 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   private reset() {
+    const { externalReferences, startDate, endDate, ...rest } = this.codeScheme;
 
-    const { externalReferences, ...rest } = this.codeScheme;
-
-    this.codeSchemeForm.reset(Object.assign({}, rest, {
+    this.codeSchemeForm.reset({
+      ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
       startDate: toPickerDate(this.codeScheme.startDate),
       endDate: toPickerDate(this.codeScheme.endDate)
-    }));
+    });
   }
 
   get statuses(): string[] {
