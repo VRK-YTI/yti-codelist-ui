@@ -1,15 +1,16 @@
 import { Component, Injectable, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
+import { ModalService } from '../../services/modal.service';
 
 @Injectable()
 export class CodeSchemeCodesImportModalService {
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: ModalService) {
   }
 
   public open(codeScheme: CodeScheme): Promise<boolean> {

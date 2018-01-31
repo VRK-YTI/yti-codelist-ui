@@ -1,13 +1,14 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalService } from '../../services/modal.service';
 
 @Injectable()
 export class LinkEditModalService {
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: ModalService) {
   }
 
   public open(externalReference: ExternalReference): void {

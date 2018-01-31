@@ -1,15 +1,16 @@
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { DataService } from '../../services/data.service';
 import { LinkCreateModalService } from './link-create-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { ModalService } from '../../services/modal.service';
 
 @Injectable()
 export class LinkListModalService {
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: ModalService) {
   }
 
   public open(codeSchemeId: string, restrictExternalReferenceIds: string[]): Promise<ExternalReference> {

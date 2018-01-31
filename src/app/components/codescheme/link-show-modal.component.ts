@@ -1,9 +1,10 @@
 import { Component, Injectable, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ExternalReference, CCBy40LicenseLinkId, CC0LicenseLinkId } from '../../entities/external-reference';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CC0LicenseLinkId, CCBy40LicenseLinkId, ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { Localizable } from 'yti-common-ui/types/localization';
 import { LanguageService } from '../../services/language.service';
+import { ModalService } from '../../services/modal.service';
 
 const CCBy40LicenseImage = 'assets/images/ccby40-icon-88x31.png';
 const CC0LicenseImage = 'assets/images/cc0-icon-88x31.png';
@@ -16,7 +17,7 @@ const titleCCBy40: Localizable = {
 @Injectable()
 export class LinkShowModalService {
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: ModalService) {
   }
 
   public open(externalReference: ExternalReference): void {
@@ -35,7 +36,7 @@ export class LinkShowModalService {
 export class LinkShowModalComponent {
 
   @Input() externalReference: ExternalReference;
-  
+
   srcCCBy40 = CCBy40LicenseImage;
   srcCC0 = CC0LicenseImage;
 
@@ -57,5 +58,5 @@ export class LinkShowModalComponent {
 
   get titleCCBy40() {
     return this.languageService.translate(titleCCBy40);
-  }  
+  }
 }

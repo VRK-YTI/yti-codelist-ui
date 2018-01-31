@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ResolveEnd, Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -53,6 +53,7 @@ import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-c
 import { CodeCreateComponent } from './components/code/code-create.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { InformationAboutServiceComponent } from './components/information/information-about-service.component';
+import { ModalService } from './services/modal.service';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -164,9 +165,20 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkShowModalService,
     LinkEditModalService,
     LinkCreateModalService,
-    LinkListModalService
+    LinkListModalService,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  constructor(router: Router,
+              modalService: ModalService) {
+
+    router.events.subscribe(event => {
+      if (event instanceof ResolveEnd) {
+        modalService.closeAllModals();
+      }
+    });
+  }
 }
