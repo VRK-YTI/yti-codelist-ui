@@ -10,7 +10,6 @@ import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { fromPickerDate } from '../../utils/date';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 
 @Component({
   selector: 'app-code-scheme',
@@ -24,7 +23,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   codeScheme: CodeScheme;
   codes: Code[];
-  currentStatus: string;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -48,8 +46,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
       this.locationService.atCodeSchemePage(codeScheme);
-      this.currentStatus = codeScheme.status ? codeScheme.status : 'DRAFT';      
-      this.editableService.restrictedEditing = restrictedStatuses.includes(this.currentStatus as Status);
     });
 
     this.dataService.getCodes(registryCode, schemeId).subscribe(codes => {

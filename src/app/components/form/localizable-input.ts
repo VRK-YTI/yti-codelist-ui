@@ -26,6 +26,7 @@ import { Localizable } from 'yti-common-ui/types/localization';
 export class LocalizableInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
+  @Input() restrict = false;
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};
@@ -54,7 +55,7 @@ export class LocalizableInputComponent implements ControlValueAccessor {
   }
 
   get editing() {
-    return this.editableService.editing && !this.editableService.restrictedEditing;
+    return this.editableService.editing && !this.restrict;
   }
 
   get contentLanguage() {

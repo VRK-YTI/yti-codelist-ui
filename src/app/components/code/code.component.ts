@@ -10,7 +10,6 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { CodeScheme } from '../../entities/code-scheme';
 import { fromPickerDate } from '../../utils/date';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 
 @Component({
   selector: 'app-code',
@@ -24,7 +23,6 @@ export class CodeComponent implements OnInit, EditingComponent {
 
   code: Code;
   codeScheme: CodeScheme;
-  currentStatus: string;
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -49,8 +47,6 @@ export class CodeComponent implements OnInit, EditingComponent {
     this.dataService.getCode(registryCode, schemeId, codeId).subscribe(code => {
       this.code = code;
       this.locationService.atCodePage(code);
-      this.currentStatus = code.status ? code.status : 'DRAFT';
-      this.editableService.restrictedEditing = restrictedStatuses.includes(this.currentStatus as Status);
     });
 
     this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {

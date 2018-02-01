@@ -11,7 +11,7 @@ import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { remove } from 'yti-common-ui/utils/array';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { selectableStatuses, restrictedStatuses, Status } from 'yti-common-ui/entities/status';
+import { selectableStatuses, restrictedStatuses } from 'yti-common-ui/entities/status';
 import { toPickerDate } from '../../utils/date';
 
 @Component({
@@ -22,7 +22,6 @@ import { toPickerDate } from '../../utils/date';
 export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() code: Code;
-  @Input() currentStatus: string;
 
   cancelSubscription: Subscription;
 
@@ -32,7 +31,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     shortName: new FormControl(''),
     externalReferences: new FormControl(),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    status: new FormControl()
   });
 
   constructor(private linkEditModalService: LinkEditModalService,
@@ -49,29 +49,21 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   reset() {
     const { externalReferences, startDate, endDate, ...rest } = this.code;
-    
+
     this.codeForm.reset({
       ...rest,
-      externalReferences: this.code.externalReferences.map(link => link.clone()),
-      startDate: toPickerDate(this.code.startDate),
-      endDate: toPickerDate(this.code.endDate),
-    });    
-  }
-
-  get statuses(): string[] {
-    return this.restrictedCurrentStatus ? restrictedStatuses : selectableStatuses;
-  }
-
-  get restrictedCurrentStatus(): boolean {
-    return restrictedStatuses.includes(this.currentStatus as Status);
+      externalReferences: externalReferences.map(link => link.clone()),
+      startDate: toPickerDate(startDate),
+      endDate: toPickerDate(endDate),
+    });
   }
 
   get editing() {
     return this.editableService.editing;
   }
 
-  get editingWhenNotRestricted() {
-    return this.editableService.editing && !this.editableService.restrictedEditing;
+  get restricted() {
+    return restrictedStatuses.includes(this.code.status);
   }
 
   ngOnDestroy() {

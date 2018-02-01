@@ -101,7 +101,7 @@ function createCodeSchemeEntity(scheme: CodeSchemeType): CodeScheme {
   setBaseValues(entity, scheme);
   entity.version = scheme.version;
   entity.source = scheme.source;
-  entity.status = scheme.status;
+  entity.status = scheme.status || 'DRAFT';
   entity.legalBase = scheme.legalBase;
   entity.governancePolicy = scheme.governancePolicy;
   entity.license = scheme.license;
@@ -124,7 +124,7 @@ function createCodeEntity(code: CodeType): Code {
     entity.codeScheme = createCodeSchemeEntity(code.codeScheme);
   }
   entity.shortName = code.shortName;
-  entity.status = code.status;
+  entity.status = code.status || 'DRAFT';
   entity.startDate = code.startDate;
   entity.endDate = code.endDate;
   entity.description = code.description || {};

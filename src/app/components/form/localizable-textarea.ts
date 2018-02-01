@@ -26,6 +26,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 export class LocalizableTextareaComponent implements ControlValueAccessor {
 
   @Input() label: string;
+  @Input() restrict = false;
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};
@@ -54,7 +55,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
   }
 
   get editing() {
-    return this.editableService.editing && !this.editableService.restrictedEditing;
+    return this.editableService.editing && !this.restrict;
   }
 
   get contentLanguage() {

@@ -11,7 +11,7 @@ import { LinkEditModalService } from './link-edit-modal.component';
 import { normalizeAsArray, remove } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { selectableStatuses, restrictedStatuses, Status } from 'yti-common-ui/entities/status';
+import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { DataService } from '../../services/data.service';
 import { toPickerDate } from '../../utils/date';
@@ -24,7 +24,7 @@ import { toPickerDate } from '../../utils/date';
 export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() codeScheme: CodeScheme;
-  @Input() currentStatus: string;
+
   dataClassifications: Code[];
 
   codeSchemeForm = new FormGroup({
@@ -38,7 +38,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     externalReferences: new FormControl(),
     dataClassifications: new FormControl(),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    status: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -69,17 +70,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     this.codeSchemeForm.reset({
       ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
-      startDate: toPickerDate(this.codeScheme.startDate),
-      endDate: toPickerDate(this.codeScheme.endDate)
+      startDate: toPickerDate(startDate),
+      endDate: toPickerDate(endDate)
     });
-  }
-
-  get statuses(): string[] {
-    return this.restrictedCurrentStatus ? restrictedStatuses : selectableStatuses;
-  }
-
-  get restrictedCurrentStatus(): boolean {
-    return restrictedStatuses.includes(this.currentStatus as Status);
   }
 
   ngOnDestroy() {
@@ -90,8 +83,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     return this.editableService.editing;
   }
 
-  get editingWhenNotRestricted() {
-    return this.editableService.editing && !this.editableService.restrictedEditing;
+  get restricted(): boolean {
+    return restrictedStatuses.includes(this.codeScheme.status);
   }
 
   get externalReferences(): ExternalReference[] {

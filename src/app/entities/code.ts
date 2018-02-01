@@ -5,12 +5,13 @@ import { CodeScheme } from './code-scheme';
 import { formatDate, formatMoment } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { ExternalReference } from './external-reference';
+import { Status } from 'yti-common-ui/entities/status';
 
 export class Code extends AbstractResource implements EditableEntity {
 
   codeScheme: CodeScheme;
   shortName: string;
-  status: string;
+  status: Status;
   startDate: string;
   endDate: string;
   description: Localizable;

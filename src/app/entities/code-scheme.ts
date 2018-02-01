@@ -6,12 +6,13 @@ import { formatDate, formatMoment } from '../utils/date';
 import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
 import { Code } from './code';
+import { Status } from 'yti-common-ui/entities/status';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
   version: string;
   source: string;
-  status: string;
+  status: Status;
   legalBase: string;
   governancePolicy: string;
   license: string;

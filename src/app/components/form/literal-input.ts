@@ -23,6 +23,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 export class LiteralInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
+  @Input() restrict = false;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};
@@ -47,7 +48,7 @@ export class LiteralInputComponent implements ControlValueAccessor {
   }
 
   get editing() {
-    return this.editableService.editing && !this.editableService.restrictedEditing;
+    return this.editableService.editing && !this.restrict;
   }
 
   writeValue(obj: any): void {

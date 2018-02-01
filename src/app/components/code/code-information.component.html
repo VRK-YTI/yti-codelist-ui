@@ -10,50 +10,39 @@
                [value]="code.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code name' | translate"
-                         [formControlName]="'prefLabel'"></app-localizable-input>
+                         [formControlName]="'prefLabel'"
+                         [restrict]="restricted"></app-localizable-input>
 
-  <div *ngIf="!editing">
-    <app-literal [label]="'Status' | translate"
-                 [value]="code.status | translate"></app-literal>
-  </div>
-  <div *ngIf="editing">
-    <dl>
-      <dt>
-        <label translate>Status</label>
-      </dt>
-      <dd>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
-            <span *ngIf="!code.status" translate>DRAFT</span>
-            <span *ngIf="code.status">{{code.status | translate}}</span>
-          </button>
+  <!--TODO componentify as editable aware-->
+  <dl>
+    <dt>
+      <label translate>Status</label>
+    </dt>
+    <dd>
 
-          <div ngbDropdownMenu aria-labelledby="status-dropdown">
-            <button *ngFor="let status of statuses"
-                    (click)="code.status = status"
-                    class="dropdown-item"
-                    [class.active]="code.status == status">
-              {{status | translate}}
-            </button>
-          </div>
-        </div>
-      </dd>
-    </dl>
-  </div>
+      <span *ngIf="!editing">{{code.status | translate}}</span>
+
+      <app-status-dropdown *ngIf="editing"
+                           [formControlName]="'status'"
+                           [restrict]="restricted"></app-status-dropdown>
+    </dd>
+  </dl>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'description'"></app-localizable-textarea>
+                            [formControlName]="'description'"
+                            [restrict]="restricted"></app-localizable-textarea>
 
   <app-literal-input [label]="'Short name' | translate"
-                     [formControlName]="'shortName'"></app-literal-input>
+                     [formControlName]="'shortName'"
+                     [restrict]="restricted"></app-literal-input>
 
-
-  <div *ngIf="!editingWhenNotRestricted">
+  <!-- TODO componentify as editable aware date range selection -->
+  <div *ngIf="!editing || restricted">
     <app-literal [label]="'Validity' | translate"
                  [value]="code.validity"></app-literal>
   </div>
 
-  <div *ngIf="editingWhenNotRestricted">
+  <div *ngIf="editing && !restricted">
     <dl>
       <dt>
         <label translate>Start date</label>
@@ -91,26 +80,30 @@
   <app-literal [label]="'Last modification' | translate"
                [value]="code.modifiedDisplayValue"></app-literal>
 
-  <dl *ngIf="editingWhenNotRestricted || code.externalReferences.length > 0">
+  <!--TODO componentify as editable aware-->
+  <dl *ngIf="editing || code.externalReferences.length > 0">
     <dt><label translate>Links</label></dt>
     <dd>
       <div *ngFor="let propertyType of getUsedPropertyTypes()">
         <div *ngIf="getExternalReferencesByLocalName(propertyType.localName).length > 0">
           <label>{{propertyType.prefLabel | translateValue}}</label>
           <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
-            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">              
+            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
               <span *ngIf="externalReference.titleHasValue()">{{externalReference.title | translateValue}}</span>
               <span *ngIf="!externalReference.titleHasValue()"> {{externalReference.url}}</span>
             </button>
-            <button *ngIf="editingWhenNotRestricted && externalReference.global !== true" type="button" class="icon icon-pencil"
-                    (click)="editExternalReference(externalReference)"></button>
-            <button *ngIf="editingWhenNotRestricted" type="button" class="icon icon-trash"
-                    (click)="removeExternalReference(externalReference)"></button>
+
+            <div *ngIf="editing && !restricted">
+              <button *ngIf="externalReference.global == false" type="button" class="icon icon-pencil"
+                      (click)="editExternalReference(externalReference)"></button>
+              <button type="button" class="icon icon-trash"
+                      (click)="removeExternalReference(externalReference)"></button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div *ngIf="editingWhenNotRestricted">
+      <div *ngIf="editing && !restricted">
         <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
       </div>
     </dd>

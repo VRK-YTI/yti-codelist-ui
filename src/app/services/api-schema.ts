@@ -1,5 +1,6 @@
 import { Localizable } from 'yti-common-ui/types/localization';
 import { Organization } from '../entities/organization';
+import { Status } from 'yti-common-ui/entities/status';
 
 export interface ApiResponseType {
 
@@ -27,7 +28,7 @@ export interface CodeSchemeType extends BaseResourceType {
 
   version: string;
   source: string;
-  status: string;
+  status: Status;
   legalBase: string;
   governancePolicy: string;
   license: string;
@@ -45,7 +46,7 @@ export interface CodeType extends BaseResourceType {
 
   codeScheme: CodeSchemeType;
   shortName: string;
-  status: string;
+  status: Status;
   startDate: string;
   endDate: string;
   description?: Localizable;

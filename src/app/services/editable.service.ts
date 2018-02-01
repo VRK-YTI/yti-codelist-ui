@@ -16,7 +16,6 @@ export class EditableService implements OnDestroy {
   editing$ = new BehaviorSubject<boolean>(false);
   saving$ = new BehaviorSubject<boolean>(false);
   cancel$ = new EventEmitter<void>();
-  restrictedEditing$ = new BehaviorSubject<boolean>(false);
 
   private _onSave: (formValue: any) => Observable<any>;
 
@@ -41,14 +40,6 @@ export class EditableService implements OnDestroy {
 
   get editing() {
     return this.editing$.getValue();
-  }
-
-  get restrictedEditing() {
-    return this.restrictedEditing$.getValue();
-  }
-
-  set restrictedEditing(value: boolean) {
-    this.restrictedEditing$.next(value);
   }
 
   get saving() {
