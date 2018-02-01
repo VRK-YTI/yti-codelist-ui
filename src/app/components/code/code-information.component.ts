@@ -9,9 +9,9 @@ import { LinkEditModalService } from '../codescheme/link-edit-modal.component';
 import { LinkShowModalService } from '../codescheme/link-show-modal.component';
 import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { remove } from 'yti-common-ui/utils/array';
+import { remove, contains } from 'yti-common-ui/utils/array';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { selectableStatuses, restrictedStatuses } from 'yti-common-ui/entities/status';
+import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { toPickerDate } from '../../utils/date';
 
 @Component({
@@ -63,7 +63,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get restricted() {
-    return restrictedStatuses.includes(this.code.status);
+    return contains(restrictedStatuses, this.code.status);
   }
 
   ngOnDestroy() {

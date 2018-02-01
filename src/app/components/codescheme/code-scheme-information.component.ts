@@ -8,7 +8,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
-import { normalizeAsArray, remove } from 'yti-common-ui/utils/array';
+import { normalizeAsArray, remove, contains } from 'yti-common-ui/utils/array';
 import { PropertyType } from '../../entities/property-type';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { restrictedStatuses } from 'yti-common-ui/entities/status';
@@ -84,7 +84,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   get restricted(): boolean {
-    return restrictedStatuses.includes(this.codeScheme.status);
+    return contains(restrictedStatuses, this.codeScheme.status);
   }
 
   get externalReferences(): ExternalReference[] {
