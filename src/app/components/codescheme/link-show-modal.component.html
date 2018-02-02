@@ -10,21 +10,12 @@
 
       <app-content-language class="pull-right"></app-content-language>
 
-      <div *ngIf="CCBy40LicenseLink">
-        <a rel="license" [href]="externalReference.url" target="_blank">
-          <img class="ccby40" [title]="titleCCBy40" [src]="srcCCBy40" /></a>        
-        <br />
-        <br />
+      <div *ngIf="externalReference.image" class="mb-4">
+        <a [href]="externalReference.url" target="_blank">
+            <img class="link-image" [src]="externalReference.image" title="{{externalReference.title | translateValue}}" />
+        </a>   
       </div>
 
-      <div *ngIf="CC0LicenseLink">
-          <a rel="license" [href]="externalReference.url" target="_blank">
-            <img class="cc0" [src]="srcCC0" title="CC0" /></a>   
-          <br />   
-          <br />   
-        <br />
-      </div>
-      
       <app-localizable-literal [label]="'Link title' | translate"
                                [value]="externalReference.title"></app-localizable-literal>
 

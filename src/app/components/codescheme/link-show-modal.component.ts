@@ -3,16 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CC0LicenseLinkId, CCBy40LicenseLinkId, ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { Localizable } from 'yti-common-ui/types/localization';
-import { LanguageService } from '../../services/language.service';
 import { ModalService } from '../../services/modal.service';
-
-const CCBy40LicenseImage = 'assets/images/ccby40-icon-88x31.png';
-const CC0LicenseImage = 'assets/images/cc0-icon-88x31.png';
-const titleCCBy40: Localizable = {
-  'fi': 'Creative Commons -lisenssi',
-  'sv': 'Creative Commons-licens',
-  'en': 'Creative Commons License'
-};
 
 @Injectable()
 export class LinkShowModalService {
@@ -37,26 +28,10 @@ export class LinkShowModalComponent {
 
   @Input() externalReference: ExternalReference;
 
-  srcCCBy40 = CCBy40LicenseImage;
-  srcCC0 = CC0LicenseImage;
-
-  constructor(private modal: NgbActiveModal,
-              private languageService: LanguageService) {
+  constructor(private modal: NgbActiveModal) {
   }
 
   close() {
     this.modal.dismiss('cancel');
-  }
-
-  get CCBy40LicenseLink() {
-    return this.externalReference.id === CCBy40LicenseLinkId;
-  }
-
-  get CC0LicenseLink() {
-    return this.externalReference.id === CC0LicenseLinkId;
-  }
-
-  get titleCCBy40() {
-    return this.languageService.translate(titleCCBy40);
   }
 }

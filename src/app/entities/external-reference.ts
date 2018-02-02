@@ -21,4 +21,15 @@ export class ExternalReference {
   titleHasValue() {
     return Object.entries(this.title).filter(([language, value]) => value !== '').length > 0;
   }
+
+  get image(): any {
+    switch (this.id) {
+      case CCBy40LicenseLinkId: 
+        return require('../../assets/images/ccby40-icon-88x31.png');
+      case CC0LicenseLinkId: 
+        return require('../../assets/images/cc0-icon-88x31.png');
+      default:
+        return null;
+    }
+  }
 }
