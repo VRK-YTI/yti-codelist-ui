@@ -231,7 +231,7 @@ export class DataService {
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
 
-    return this.http.get(`${codeRegistriesBasePath}/eu/${codeSchemes}/dcat/${codes}/`, {params})
+    return this.http.get(`${codeRegistriesBasePath}/jupo/${codeSchemes}/serviceclassification/${codes}/`, {params})
       .map(res => res.json().results.map(createCodeEntity));
   }
 
