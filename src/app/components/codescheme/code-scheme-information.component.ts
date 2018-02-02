@@ -15,6 +15,7 @@ import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { DataService } from '../../services/data.service';
 import { toPickerDate } from '../../utils/date';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -49,7 +50,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
               private linkListModalService: LinkListModalService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }

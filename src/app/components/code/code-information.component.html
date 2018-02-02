@@ -89,8 +89,7 @@
           <label>{{propertyType.prefLabel | translateValue}}</label>
           <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
             <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
-              <span *ngIf="externalReference.titleHasValue()">{{externalReference.title | translateValue}}</span>
-              <span *ngIf="!externalReference.titleHasValue()"> {{externalReference.url}}</span>
+              <span>{{externalReference.getDisplayName(languageService)}}</span>
             </button>
 
             <div *ngIf="editing && !restricted">

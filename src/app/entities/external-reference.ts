@@ -1,4 +1,4 @@
-import { Localizable } from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { PropertyType } from './property-type';
 
 export const CCBy40LicenseLinkId = '9a25f7fc-e4be-11e7-82ab-479f4f288376';
@@ -18,8 +18,9 @@ export class ExternalReference {
     return Object.assign(new ExternalReference(), this);
   }
 
-  titleHasValue() {
-    return Object.entries(this.title).filter(([language, value]) => value !== '').length > 0;
+  getDisplayName(localizer: Localizer): string {
+    const title = localizer.translate(this.title);
+    return title ? title : this.url;
   }
 
   get image(): any {

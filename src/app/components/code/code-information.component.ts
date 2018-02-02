@@ -13,6 +13,7 @@ import { remove, contains } from 'yti-common-ui/utils/array';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { toPickerDate } from '../../utils/date';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code-information',
@@ -39,7 +40,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
               private editableService: EditableService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              public languageService: LanguageService) {
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
 
