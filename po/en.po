@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-01-30 12:31+0200\n"
+"PO-Revision-Date: 2018-02-05 16:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -69,9 +69,6 @@ msgstr ""
 
 msgid "Last modification"
 msgstr ""
-
-msgid "DRAFT"
-msgstr "Draft"
 
 msgid "Links"
 msgstr ""
@@ -164,6 +161,9 @@ msgstr ""
 msgid "Registry for the code list"
 msgstr ""
 
+msgid "Changenote"
+msgstr ""
+
 msgid "Export"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "User details"
 msgstr ""
 
-msgid "Group management service"
+msgid "User right management"
 msgstr ""
 
 msgid "Name"
@@ -274,6 +274,9 @@ msgstr "Valid"
 
 msgid "INVALID"
 msgstr "Invalid"
+
+msgid "DRAFT"
+msgstr "Draft"
 
 msgid "required"
 msgstr ""
