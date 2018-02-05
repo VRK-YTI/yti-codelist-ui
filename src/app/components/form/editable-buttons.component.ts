@@ -57,7 +57,11 @@ export class EditableButtonsComponent {
   }
 
   canEdit(): boolean {
-    return this.authorizationManager.canEdit(this.entity);
+    if (!this.entity) {
+      return true;
+    } else {
+      return this.authorizationManager.canEdit(this.entity);
+    }
   }
 
   canSave() {

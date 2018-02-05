@@ -88,8 +88,10 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getExternalReferencesByLocalName(localName: string): ExternalReference[] {
-    return this.codeForm.value.externalReferences.filter((externalReference: ExternalReference) =>
-      externalReference.propertyType.localName === localName);
+    return this.codeForm.value.externalReferences.filter((externalReference: ExternalReference) => {
+      const propertyType = externalReference.propertyType;
+      return propertyType && propertyType.localName === localName;
+    });
   }
 
   addLink() {

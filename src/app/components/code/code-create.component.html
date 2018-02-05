@@ -3,20 +3,19 @@
 </div>
 
 <div *ngIf="!loading" class="content-box">
+
   <app-back-button (back)="back()"></app-back-button>
 
-  <h1 translate>Create code</h1>
-
-  <button [hidden]="!editing"
-          type="button"
-          [disabled]="!canSave() || operationPending"
-          class="btn btn-action pull-right ml-3"
-          (click)="save()" translate>Create
-  </button>
-
-  <app-content-language class="pull-right"></app-content-language>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="pull-left" translate>Create code</h1>
+      <app-content-language></app-content-language>
+    </div>
+  </div>
 
   <form [formGroup]="codeForm" #form="ngForm">
+
+    <app-editable-buttons [form]="form"></app-editable-buttons>
 
     <app-localizable-literal [label]="'Code list' | translate"
                              [value]="codeScheme.prefLabel"></app-localizable-literal>
@@ -32,7 +31,7 @@
         <label translate>Status</label>
       </dt>
       <dd>
-          <app-status-dropdown [formControlName]="'status'"></app-status-dropdown>
+        <app-status-dropdown [formControlName]="'status'"></app-status-dropdown>
       </dd>
     </dl>
 

@@ -105,8 +105,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   getExternalReferencesByLocalName(localName: string): ExternalReference[] {
-    return this.codeSchemeForm.value.externalReferences.filter((externalReference: ExternalReference) =>
-      externalReference.propertyType.localName === localName);
+    return this.codeSchemeForm.value.externalReferences.filter((externalReference: ExternalReference) => {
+      const propertyType = externalReference.propertyType;
+      return propertyType && propertyType.localName === localName;
+    });
   }
 
   addLink() {

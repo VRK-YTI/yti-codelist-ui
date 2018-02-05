@@ -88,11 +88,14 @@ export class CodeComponent implements OnInit, EditingComponent {
     console.log('Store Code changes to server!');
 
     const { startDate, endDate, ...rest } = formData;
+    const updatedCode = this.code.clone();
 
-    return this.dataService.saveCode(Object.assign({}, this.code, rest, {
+    Object.assign(updatedCode, {
+      ...rest,
       startDate: fromPickerDate(startDate),
       endDate: fromPickerDate(endDate)
-    }))
-      .do(() => this.ngOnInit());
+    });
+
+    return this.dataService.saveCode(updatedCode.serialize()).do(() => this.ngOnInit());
   }
 }
