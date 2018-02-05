@@ -7,7 +7,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { selectableStatuses } from 'yti-common-ui/entities/status';
 import { CodeScheme } from '../../entities/code-scheme';
-import { fromPickerDate } from '../../utils/date';
+import { fromPickerDate, toPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code-create',
@@ -15,7 +15,7 @@ import { fromPickerDate } from '../../utils/date';
   styleUrls: ['./code-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
+export class CodeCreateComponent implements OnInit, OnDestroy {
 
   code: Code;
   codeScheme: CodeScheme;
@@ -30,7 +30,8 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
     description: new FormControl({}),
     shortName: new FormControl(''),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    status: new FormControl()
   });
 
   constructor(private dataService: DataService,
@@ -56,6 +57,7 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
       this.code = new Code();
       this.code.status = 'DRAFT';
       this.editableService.edit();
+      this.reset();
     });
   }
 
@@ -124,12 +126,14 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
     return this.code == null;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.reset();
-  }
-
   reset() {
-    this.codeForm.reset(this.code);
+    const { startDate, endDate, ...rest } = this.code;
+
+    this.codeForm.reset({
+      ...rest,
+      startDate: toPickerDate(startDate),
+      endDate: toPickerDate(endDate),
+    });
   }
 
   ngOnDestroy() {

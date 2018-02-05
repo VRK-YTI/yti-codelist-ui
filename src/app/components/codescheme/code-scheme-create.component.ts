@@ -23,7 +23,7 @@ import { normalizeAsArray } from 'yti-common-ui/utils/array';
   styleUrls: ['./code-scheme-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
+export class CodeSchemeCreateComponent implements OnInit, OnDestroy {
 
   codeScheme: CodeScheme;
   codeRegistries: CodeRegistry[];
@@ -40,7 +40,8 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     license: new FormControl(''),
     startDate: new FormControl(),
     endDate: new FormControl(),
-    dataClassifications: new FormControl()
+    dataClassifications: new FormControl(),
+    status: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -68,6 +69,7 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
       this.dataClassifications = dataClassifications;
     });
     this.editableService.edit();
+    this.reset();
   }
 
   setRegistry(codeRegistry: CodeRegistry) {
@@ -106,17 +108,14 @@ export class CodeSchemeCreateComponent implements OnInit, OnChanges, OnDestroy {
     return this.codeRegistries == null || this.dataClassifications == null;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.reset();
-  }
-
   private reset() {
-    const { externalReferences, ...rest } = this.codeScheme;
+    const { startDate, endDate, ...rest } = this.codeScheme;
 
-    this.codeSchemeForm.reset(Object.assign({}, rest, {
-      startDate: toPickerDate(this.codeScheme.startDate),
-      endDate: toPickerDate(this.codeScheme.endDate)
-    }));
+    this.codeSchemeForm.reset({
+      ...rest,
+      startDate: toPickerDate(startDate),
+      endDate: toPickerDate(endDate)
+    });
   }
 
   back() {

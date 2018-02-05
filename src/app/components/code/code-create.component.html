@@ -32,20 +32,7 @@
         <label translate>Status</label>
       </dt>
       <dd>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
-            <span *ngIf="code.status">{{code.status | translate}}</span>
-          </button>
-
-          <div ngbDropdownMenu aria-labelledby="status-dropdown">
-            <button *ngFor="let status of statuses"
-                    (click)="code.status = status"
-                    class="dropdown-item"
-                    [class.active]="code.status == status">
-              {{status | translate}}
-            </button>
-          </div>
-        </div>
+          <app-status-dropdown [formControlName]="'status'"></app-status-dropdown>
       </dd>
     </dl>
 
