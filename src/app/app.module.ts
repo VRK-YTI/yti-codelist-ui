@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, Pipe, PipeTransform} from '@angular/core';
 import { ResolveEnd, Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +26,7 @@ import { CodeSchemeInformationComponent } from './components/codescheme/code-sch
 import { CodeInformationComponent } from './components/code/code-information.component';
 import { LocalizableInputComponent } from './components/form/localizable-input';
 import { LocalizableTextareaComponent } from './components/form/localizable-textarea';
+import { ReplaceNewlinesPipe} from './components/pipes/replace-newlines.pipe';
 import { LiteralInputComponent } from './components/form/literal-input';
 import { LiteralComponent } from './components/form/literal';
 import { LocalizableLiteralComponent } from './components/form/localizable-literal';
@@ -131,7 +132,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     PropertyTypeSelectComponent,
     StyleTestComponent,
     UserDetailsComponent,
-    InformationAboutServiceComponent
+    InformationAboutServiceComponent,
+    ReplaceNewlinesPipe
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
