@@ -33,7 +33,7 @@ export class DataClassification {
       modified: formatDateTime(this.modified),
       codeValue: this.codeValue,
       prefLabel: { ...this.prefLabel },
-      codeScheme: { ...this.codeScheme },
+      codeScheme: this.codeScheme,
       count: this.count
     };
   }
