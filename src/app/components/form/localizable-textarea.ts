@@ -1,12 +1,10 @@
-import {Component, Input, Optional, Self} from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { Localizable } from 'yti-common-ui/types/localization';
 import { EditableService } from '../../services/editable.service';
 import { LanguageService } from '../../services/language.service';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { ReplaceNewlinesPipe } from '../pipes/replace-newlines.pipe';
 
 @Component({
-  // pipes:[ReplaceNewlinesPipe],
   selector: 'app-localizable-textarea',
   template: `
     <dl *ngIf="show">
@@ -20,14 +18,11 @@ import { ReplaceNewlinesPipe } from '../pipes/replace-newlines.pipe';
                     (ngModelChange)="onChange($event)"></textarea>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
-        <!--div class="text-content-wrap" style="white-space: pre-line;" *ngIf="!editing" >{{value | translateValue | nonewlines}}</div-->
-        <div class="text-content-wrap" style="white-space: pre-line;" *ngIf="!editing" 
-             [innerHtml]="value | translateValue | nonewlines"></div>
+        <div class="text-content-wrap" *ngIf="!editing">{{value | translateValue}}</div>
       </dd>
     </dl>
-  `,
+  `
 })
-
 export class LocalizableTextareaComponent implements ControlValueAccessor {
 
   @Input() label: string;
