@@ -13,7 +13,7 @@ export class ExternalReference {
   title: Localizable = {};
   global = false;
   description: Localizable = {};
-  propertyType?: PropertyType;
+  propertyType?: PropertyType; // FIXME new link creation doesn't set this afaik
 
   constructor(data?: ExternalReferenceType) {
     if (data) {

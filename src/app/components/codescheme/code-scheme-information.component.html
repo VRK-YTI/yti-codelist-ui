@@ -146,31 +146,9 @@
   <app-literal [label]="'Last modification' | translate"
                [value]="codeScheme.modifiedDisplayValue"></app-literal>
 
-  <!--TODO componentify as editable aware-->
-  <dl *ngIf="editing || externalReferences.length > 0">
-    <dt><label translate>Links</label></dt>
-    <dd>
-      <div *ngFor="let propertyType of getUsedPropertyTypes()">
-        <div *ngIf="getExternalReferencesByLocalName(propertyType.localName).length > 0">
-          <label>{{propertyType.prefLabel | translateValue}}</label>
-          <div *ngFor="let externalReference of getExternalReferencesByLocalName(propertyType.localName)">
-            <button type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
-              <span>{{externalReference.getDisplayName(languageService)}}</span>
-            </button>
+  <app-external-references-input [label]="'Links' | translate"
+                                 [codeSchemeId]="codeScheme.id"
+                                 [formControlName]="'externalReferences'"
+                                 [restrict]="restricted"></app-external-references-input>
 
-            <div *ngIf="editing && !restricted">
-            <button *ngIf="externalReference.global == false" type="button" class="icon icon-pencil"
-                    (click)="editExternalReference(externalReference)"></button>
-            <button type="button" class="icon icon-trash"
-                    (click)="removeExternalReference(externalReference)"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="editing && !restricted">
-        <button class="btn btn-action" (click)="addLink()" translate>Add link</button>
-      </div>
-    </dd>
-  </dl>
 </form>

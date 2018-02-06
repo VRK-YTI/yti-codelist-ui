@@ -3,14 +3,7 @@ import { Code } from '../../entities/code';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
-import { PropertyType } from '../../entities/property-type';
-import { ExternalReference } from '../../entities/external-reference';
-import { LinkEditModalService } from '../codescheme/link-edit-modal.component';
-import { LinkShowModalService } from '../codescheme/link-show-modal.component';
-import { LinkListModalService } from '../codescheme/link-list-modal.component';
-import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { remove, contains } from 'yti-common-ui/utils/array';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { contains } from 'yti-common-ui/utils/array';
 import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { toPickerDate } from '../../utils/date';
 import { LanguageService } from '../../services/language.service';
@@ -36,11 +29,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     status: new FormControl()
   });
 
-  constructor(private linkEditModalService: LinkEditModalService,
-              private linkShowModalService: LinkShowModalService,
-              private linkListModalService: LinkListModalService,
-              private editableService: EditableService,
-              private confirmationModalService: CodeListConfirmationModalService,
+  constructor(private editableService: EditableService,
               public languageService: LanguageService) {
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
@@ -71,51 +60,4 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
   }
-
-  get externalReferences(): ExternalReference[] {
-    return this.codeForm.value.externalReferences;
-  }
-
-  getUsedPropertyTypes(): PropertyType[] {
-
-    const propertyTypes: PropertyType[] = [];
-    for (const externalReference of this.codeForm.value.externalReferences) {
-      if (propertyTypes.findIndex(propertyType => propertyType.localName === externalReference.propertyType.localName) === -1) {
-        propertyTypes.push(externalReference.propertyType);
-      }
-    }
-    return propertyTypes;
-  }
-
-  getExternalReferencesByLocalName(localName: string): ExternalReference[] {
-    return this.codeForm.value.externalReferences.filter((externalReference: ExternalReference) => {
-      const propertyType = externalReference.propertyType;
-      return propertyType && propertyType.localName === localName;
-    });
-  }
-
-  addLink() {
-
-    const restrictIds = this.externalReferences.map(link => link.id);
-
-    this.linkListModalService.open(this.code.codeScheme.id, restrictIds)
-      .then(link => this.externalReferences.push(link), ignoreModalClose);
-  }
-
-  editExternalReference(externalReference: ExternalReference) {
-    this.linkEditModalService.open(externalReference);
-  }
-
-  showExternalReference(externalReference: ExternalReference) {
-    this.linkShowModalService.open(externalReference);
-  }
-
-  removeExternalReference(externalReference: ExternalReference) {
-
-    this.confirmationModalService.openRemoveLink()
-      .then(() => {
-        remove(this.externalReferences, externalReference);
-      }, ignoreModalClose);
-  }
-
 }

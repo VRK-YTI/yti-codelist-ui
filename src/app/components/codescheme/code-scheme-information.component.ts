@@ -3,13 +3,10 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
-import { ExternalReference } from '../../entities/external-reference';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
-import { normalizeAsArray, remove, contains } from 'yti-common-ui/utils/array';
-import { PropertyType } from '../../entities/property-type';
+import { contains, normalizeAsArray } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
@@ -87,52 +84,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   get restricted(): boolean {
     return contains(restrictedStatuses, this.codeScheme.status);
-  }
-
-  get externalReferences(): ExternalReference[] {
-    return this.codeSchemeForm.value.externalReferences;
-  }
-
-  getUsedPropertyTypes(): PropertyType[] {
-
-    const propertyTypes: PropertyType[] = [];
-    for (const externalReference of this.codeSchemeForm.value.externalReferences) {
-      if (propertyTypes.findIndex(propertyType => propertyType.localName === externalReference.propertyType.localName) === -1) {
-        propertyTypes.push(externalReference.propertyType);
-      }
-    }
-    return propertyTypes;
-  }
-
-  getExternalReferencesByLocalName(localName: string): ExternalReference[] {
-    return this.codeSchemeForm.value.externalReferences.filter((externalReference: ExternalReference) => {
-      const propertyType = externalReference.propertyType;
-      return propertyType && propertyType.localName === localName;
-    });
-  }
-
-  addLink() {
-
-    const restrictIds = this.externalReferences.map(link => link.id);
-
-    this.linkListModalService.open(this.codeScheme.id, restrictIds)
-      .then(link => this.externalReferences.push(link), ignoreModalClose);
-  }
-
-  editExternalReference(externalReference: ExternalReference) {
-    this.linkEditModalService.open(externalReference);
-  }
-
-  showExternalReference(externalReference: ExternalReference) {
-    this.linkShowModalService.open(externalReference);
-  }
-
-  removeExternalReference(externalReference: ExternalReference) {
-
-    this.confirmationModalService.openRemoveLink()
-      .then(() => {
-        remove(this.externalReferences, externalReference);
-      }, ignoreModalClose);
   }
 
   isClassificationSelected(code: Code) {
