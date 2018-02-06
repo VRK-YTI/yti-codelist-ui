@@ -55,6 +55,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { InformationAboutServiceComponent } from './components/information/information-about-service.component';
 import { ModalService } from './services/modal.service';
 import { ExternalReferencesInputComponent } from './components/form/external-references-input.component';
+import { StatusInputComponent } from './components/form/status-input.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -133,7 +134,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     StyleTestComponent,
     UserDetailsComponent,
     InformationAboutServiceComponent,
-    ExternalReferencesInputComponent
+    ExternalReferencesInputComponent,
+    StatusInputComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,

@@ -87,20 +87,8 @@
                      [formControlName]="'governancePolicy'"
                      [restrict]="restricted"></app-literal-input>
 
-  <!--TODO componentify as editable aware-->
-  <dl>
-    <dt>
-      <label translate>Status</label>
-    </dt>
-    <dd>
-
-      <span *ngIf="!editing">{{codeScheme.status | translate}}</span>
-
-      <app-status-dropdown *ngIf="editing"
-                           [formControlName]="'status'"
-                           [restrict]="restricted"></app-status-dropdown>
-    </dd>
-  </dl>
+  <app-status-input [formControlName]="'status'"
+                    [restrict]="restricted"></app-status-input>
 
   <div *ngIf="!editing || restricted">
     <app-literal [label]="'Validity' | translate"
