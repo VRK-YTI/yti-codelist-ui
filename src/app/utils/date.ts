@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import { Moment } from 'moment';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 
 function assertValid(moment: Moment): Moment {
   if (moment.isValid()) {
@@ -39,26 +40,16 @@ export function formatDisplayDateTime(dateTime: Moment|null): string {
   return dateTime ? dateTime.format(displayDateTimeFormat) : '';
 }
 
-export interface PickerDate {
-  year: number;
-  month: number;
-  day: number;
-}
-
-export function toPickerDate(date: Moment|null): PickerDate|null {
+export function toPickerDate(date: Moment|null): NgbDate|null {
 
   if (!date) {
     return null;
   }
 
-  return {
-    year: date.year(),
-    month: date.month() + 1,
-    day: date.date()
-  };
+  return new NgbDate(date.year(), date.month() + 1, date.date());
 }
 
-export function fromPickerDate(date: PickerDate|null): Moment|null {
+export function fromPickerDate(date: NgbDate|null): Moment|null {
 
   if (date == null) {
     return null;
