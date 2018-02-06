@@ -6,18 +6,16 @@
 
   <app-back-button (back)="back()"></app-back-button>
 
-  <h1 translate>Create code list</h1>
-
-  <button [hidden]="!editing"
-          type="button"
-          [disabled]="!canSave() || operationPending"
-          class="btn btn-action pull-right ml-3"
-          (click)="save()" translate>Create
-  </button>
-
-  <app-content-language class="pull-right"></app-content-language>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="pull-left" translate>Create code list</h1>
+      <app-content-language></app-content-language>
+    </div>
+  </div>
 
   <form [formGroup]="codeSchemeForm" #form="ngForm">
+
+    <app-editable-buttons [form]="form"></app-editable-buttons>
 
     <!-- TODO fetch or filter coderegistries only for this user -->
     <dl>
@@ -27,16 +25,16 @@
       <dd>
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-            <span *ngIf="!codeScheme.codeRegistry" translate>No registry</span>
-            <span *ngIf="codeScheme.codeRegistry">{{codeScheme.codeRegistry.prefLabel | translateValue:true}}</span>
+            <span *ngIf="!codeRegistry" translate>No registry</span>
+            <span *ngIf="codeRegistry">{{codeRegistry.prefLabel | translateValue:true}}</span>
           </button>
 
           <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-            <button *ngFor="let codeRegistry of codeRegistries"
-                    (click)="setRegistry(codeRegistry)"
+            <button *ngFor="let cr of codeRegistries"
+                    (click)="codeRegistry = cr"
                     class="dropdown-item"
-                    [class.active]="codeScheme.codeRegistry == codeRegistry">
-              {{codeRegistry.prefLabel | translateValue:true}}
+                    [class.active]="codeRegistry == cr">
+              {{cr.prefLabel | translateValue:true}}
             </button>
           </div>
         </div>
@@ -62,11 +60,11 @@
           </button>
 
           <div ngbDropdownMenu aria-labelledby="classification-dropdown">
-            <button *ngFor="let dataClassification of dataClassifications"
-                    (click)="setDataClassification(dataClassification)"
+            <button *ngFor="let dc of dataClassifications"
+                    (click)="dataClassification = dc"
                     class="dropdown-item"
-                    [class.active]="isClassificationSelected(dataClassification)">
-              {{dataClassification.prefLabel | translateValue:true}}
+                    [class.active]="isClassificationSelected(dc)">
+              {{dc.prefLabel | translateValue:true}}
             </button>
           </div>
         </div>
@@ -93,20 +91,7 @@
         <label translate>Status</label>
       </dt>
       <dd>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="status-dropdown" ngbDropdownToggle>
-            <span *ngIf="codeScheme.status">{{codeScheme.status | translate}}</span>
-          </button>
-
-          <div ngbDropdownMenu aria-labelledby="status-dropdown">
-            <button *ngFor="let status of statuses"
-                    (click)="codeScheme.status = status"
-                    class="dropdown-item"
-                    [class.active]="codeScheme.status == status">
-              {{status | translate}}
-            </button>
-          </div>
-        </div>
+        <app-status-dropdown [formControlName]="'status'"></app-status-dropdown>
       </dd>
     </dl>
 

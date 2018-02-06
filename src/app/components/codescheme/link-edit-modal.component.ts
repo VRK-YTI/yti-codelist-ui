@@ -42,10 +42,12 @@ export class LinkEditModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.linkForm.reset(this.link);
-    // TODO doesn't feel right,but without assigning actual clone value in plain object without PropertyType prototype
-    this.linkForm.patchValue({
-      propertyType: this.link.propertyType.clone()
+
+    const { propertyType, ...rest } = this.link;
+
+    this.linkForm.reset({
+      ...rest,
+      propertyType: propertyType ? propertyType.clone() : undefined
     });
   }
 

@@ -1,5 +1,4 @@
 import { Localizable } from 'yti-common-ui/types/localization';
-import { Organization } from '../entities/organization';
 import { Status } from 'yti-common-ui/entities/status';
 
 export interface ApiResponseType {
@@ -21,7 +20,7 @@ export interface BaseResourceType {
 
 export interface CodeRegistryType extends BaseResourceType {
   codeSchemes?: { uri: string };
-  organizations: Organization[];
+  organizations: OrganizationType[];
 }
 
 export interface CodeSchemeType extends BaseResourceType {
@@ -32,13 +31,13 @@ export interface CodeSchemeType extends BaseResourceType {
   legalBase: string;
   governancePolicy: string;
   license: string;
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  endDate?: string;
   codeRegistry: CodeRegistryType;
   description?: Localizable;
   changeNote?: Localizable;
   definition?: Localizable;
-  dataClassifications: CodeType[];
+  dataClassifications: DataClassificationType[];
   externalReferences?: ExternalReferenceType[];
 }
 
@@ -47,8 +46,8 @@ export interface CodeType extends BaseResourceType {
   codeScheme: CodeSchemeType;
   shortName: string;
   status: Status;
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  endDate?: string;
   description?: Localizable;
   definition?: Localizable;
   externalReferences?: ExternalReferenceType[];
@@ -62,7 +61,7 @@ export interface ExternalReferenceType  {
   global: boolean;
   title?: Localizable;
   description?: Localizable;
-  propertyType: PropertyTypeType;
+  propertyType?: PropertyTypeType;
 }
 
 export interface PropertyTypeType  {
@@ -83,7 +82,7 @@ export interface DataClassificationType  {
   id: string;
   uri: string;
   status: string;
-  modified: string;
+  modified?: string;
   codeValue: string;
   prefLabel: Localizable;
   codeScheme: { uri: string };
@@ -92,8 +91,8 @@ export interface DataClassificationType  {
 
 export interface OrganizationType {
 
-    id: string;
-    prefLabel: Localizable;
-    description: Localizable;
-    url: string;
-  }
+  id: string;
+  prefLabel: Localizable;
+  description: Localizable;
+  url: string;
+}

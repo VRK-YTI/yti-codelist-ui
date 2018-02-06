@@ -87,11 +87,14 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     console.log('Store CodeScheme changes to server!');
 
     const { startDate, endDate, ...rest } = formData;
+    const updatedCodeScheme = this.codeScheme.clone();
 
-    return this.dataService.saveCodeScheme(Object.assign({}, this.codeScheme, rest, {
+    Object.assign(updatedCodeScheme, {
+      ...rest,
       startDate: fromPickerDate(startDate),
       endDate: fromPickerDate(endDate)
-    }))
-      .do(() => this.ngOnInit());
+    });
+
+    return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).do(() => this.ngOnInit());
   }
 }

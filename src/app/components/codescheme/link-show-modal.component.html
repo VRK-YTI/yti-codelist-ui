@@ -10,33 +10,25 @@
 
       <app-content-language class="pull-right"></app-content-language>
 
-      <div *ngIf="CCBy40LicenseLink">
-        <a rel="license" [href]="externalReference.url" target="_blank">
-          <img class="ccby40" [title]="titleCCBy40" [src]="srcCCBy40" /></a>        
-        <br />
-        <br />
+      <div *ngIf="externalReference.image" class="mb-4">
+        <a [href]="externalReference.url" target="_blank">
+            <img class="link-image" [src]="externalReference.image" title="{{externalReference.title | translateValue}}" />
+        </a>
       </div>
 
-      <div *ngIf="CC0LicenseLink">
-          <a rel="license" [href]="externalReference.url" target="_blank">
-            <img class="cc0" [src]="srcCC0" title="CC0" /></a>   
-          <br />   
-          <br />   
-        <br />
-      </div>
-      
       <app-localizable-literal [label]="'Link title' | translate"
                                [value]="externalReference.title"></app-localizable-literal>
 
       <app-localizable-literal [label]="'Description' | translate"
                                [value]="externalReference.description"></app-localizable-literal>
-      
+
       <dt><label translate>URL</label></dt>
-      <dd>      
+      <dd>
         <div class="text-content-wrap"><a [href]="externalReference.url" target="_blank">{{externalReference.url}}</a></div>
       </dd>
-      
-      <app-localizable-literal [label]="'Link type' | translate"
+
+      <app-localizable-literal *ngIf="externalReference.propertyType != null"
+                               [label]="'Link type' | translate"
                                [value]="externalReference.propertyType.prefLabel"></app-localizable-literal>
     </div>
   </div>

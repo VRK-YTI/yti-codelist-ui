@@ -1,10 +1,39 @@
 import * as moment from 'moment';
+import { Moment } from 'moment';
 
-// TODO user proper date library such as https://js-joda.github.io/js-joda/
-export const formatDate = (dateString: string) => dateString ? new Date(dateString).toLocaleString('fi') : '';
+function assertValid(moment: Moment): Moment {
+  if (moment.isValid()) {
+    return moment;
+  } else {
+    console.log(moment);
+    throw new Error('Not a valid moment object');
+  }
+}
 
-export function formatMoment(dateString: string): string {
-  return dateString ? `${moment(dateString).format('DD.MM.YYYY')}` : '';
+const dateTimeFormat = 'YYYY-MM-DDTHH:mm:ss.SSSZZ';
+
+export function parseDateTime(dateTime: string): Moment {
+  return assertValid(moment(dateTime, dateTimeFormat));
+}
+
+export function formatDateTime(dateTime: Moment|null): string {
+  return dateTime ? dateTime.format(dateTimeFormat) : '';
+}
+
+export function parseDate(dateStr: string): Moment {
+  return assertValid(moment(dateStr, 'YYYY-MM-DD'));
+}
+
+export function formatDate(date: Moment|null): string {
+  return date ? date.format('YYYY-MM-DD') : '';
+}
+
+export function formatDisplayDate(date: Moment|null): string {
+  return date ? date.format('DD.MM.YYYY') : '';
+}
+
+export function formatDisplayDateTime(dateTime: Moment|null): string {
+  return dateTime ? dateTime.format('DD.MM.YYYY HH:mm') : '';
 }
 
 export interface PickerDate {
@@ -13,13 +42,11 @@ export interface PickerDate {
   day: number;
 }
 
-export function toPickerDate(dateStr: string): PickerDate|null {
+export function toPickerDate(date: Moment|null): PickerDate|null {
 
-  if (!dateStr) {
+  if (!date) {
     return null;
   }
-
-  const date = moment(dateStr);
 
   return {
     year: date.year(),
@@ -28,11 +55,11 @@ export function toPickerDate(dateStr: string): PickerDate|null {
   };
 }
 
-export function fromPickerDate(date: PickerDate|null): string {
+export function fromPickerDate(date: PickerDate|null): Moment|null {
 
   if (date == null) {
-    return '';
+    return null;
   }
 
-  return `${date.year}-${date.month}-${date.day}`;
+  return parseDate(`${date.year}-${date.month}-${date.day}`);
 }

@@ -6,6 +6,7 @@ import { DataService } from '../../services/data.service';
 import { LinkCreateModalService } from './link-create-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ModalService } from '../../services/modal.service';
+import { LanguageService } from '../../services/language.service';
 
 @Injectable()
 export class LinkListModalService {
@@ -37,7 +38,8 @@ export class LinkListModalComponent implements OnInit {
 
   constructor(private modal: NgbActiveModal,
               private dataService: DataService,
-              private linkCreateModalService: LinkCreateModalService) {
+              private linkCreateModalService: LinkCreateModalService,
+              public languageService: LanguageService) {
   }
 
   ngOnInit() {

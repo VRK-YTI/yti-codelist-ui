@@ -16,8 +16,7 @@
                    (click)="selectedExternalReference = externalReference"
                    [checked]="selectedExternalReference === externalReference"
                    title="{{externalReference.title | translateValue}}">
-            <span *ngIf="externalReference.titleHasValue()">{{externalReference.title | translateValue}}</span>
-            <span *ngIf="!externalReference.titleHasValue()"> {{externalReference.url}}</span>
+            <span>{{externalReference.getDisplayName(languageService)}}</span>
           </label>
         </div>
       </div>

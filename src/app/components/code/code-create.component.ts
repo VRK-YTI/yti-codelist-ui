@@ -1,13 +1,13 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Code } from '../../entities/code';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
-import { Subscription } from 'rxjs/Subscription';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { selectableStatuses } from 'yti-common-ui/entities/status';
+import { formatDate, fromPickerDate } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
-import { fromPickerDate } from '../../utils/date';
+import { CodeType } from '../../services/api-schema';
+import { Status } from 'yti-common-ui/entities/status';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-code-create',
@@ -15,14 +15,9 @@ import { fromPickerDate } from '../../utils/date';
   styleUrls: ['./code-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
+export class CodeCreateComponent implements OnInit {
 
-  code: Code;
   codeScheme: CodeScheme;
-  registryCode: string;
-  schemeId: string;
-
-  cancelSubscription: Subscription;
 
   codeForm = new FormGroup({
     codeValue: new FormControl('', Validators.required),
@@ -30,109 +25,60 @@ export class CodeCreateComponent implements OnInit, OnChanges, OnDestroy {
     description: new FormControl({}),
     shortName: new FormControl(''),
     startDate: new FormControl(),
-    endDate: new FormControl()
+    endDate: new FormControl(),
+    status: new FormControl('DRAFT' as Status)
   });
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private editableService: EditableService) {
-    this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+
+    editableService.onSave = (formValue: any) => this.save(formValue);
+    editableService.cancel$.subscribe(() => this.back());
+    this.editableService.edit();
   }
 
   ngOnInit() {
     console.log('CodeCreateComponent onInit');
-    this.registryCode = this.route.snapshot.params.codeRegistryCodeValue;
-    console.log('CodeCreateComponent onInit registryCode: ' + this.registryCode);
-    this.schemeId = this.route.snapshot.params.codeSchemeId;
-    console.log('CodeCreateComponent onInit schemeId: ' + this.schemeId);
+    const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
+    console.log('CodeCreateComponent onInit registryCode: ' + registryCode);
+    const schemeId = this.route.snapshot.params.codeSchemeId;
+    console.log('CodeCreateComponent onInit schemeId: ' + schemeId);
 
-    if (!this.registryCode || !this.schemeId) {
-      throw new Error(`Illegal route, registry: '${this.registryCode}', scheme: '${this.schemeId}'`);
+    if (!registryCode || !schemeId) {
+      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeId}'`);
     }
 
-    this.dataService.getCodeScheme(this.registryCode, this.schemeId).subscribe(codeScheme => {
+    this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-      this.code = new Code();
-      this.code.status = 'DRAFT';
-      this.editableService.edit();
     });
   }
 
   back() {
-    this.router.navigate(
-      ['codescheme',
-        {
-          codeRegistryCodeValue: this.registryCode,
-          codeSchemeId: this.schemeId
-        }
-      ]
-    );
+    this.router.navigate(this.codeScheme.route);
   }
 
-  get statuses(): string[] {
-    return selectableStatuses;
-  }
+  save(formData: any): Observable<any> {
 
-  get operationPending() {
-    return this.saving;
-  }
-
-  get editing() {
-    return this.editableService.editing;
-  }
-
-  get saving() {
-    return this.editableService.saving;
-  }
-
-  canSave() {
-    return this.codeForm.valid && !this.saving;
-  }
-
-  save() {
     console.log('Saving new Code');
-    this.editableService.saving$.next(true);
 
-    const { startDate, endDate, ...rest } = this.codeForm.value;
+    const { startDate, endDate, ...rest } = formData;
 
-    this.dataService.createCode(Object.assign({}, this.code, rest, {
-      startDate: fromPickerDate(startDate),
-      endDate: fromPickerDate(endDate)
-    }), this.codeScheme.codeRegistry.codeValue, this.codeScheme.id)
-      .subscribe(codes => {
+    const code: CodeType = {
+      ...rest,
+      startDate: formatDate(fromPickerDate(startDate)),
+      endDate: formatDate(fromPickerDate(endDate))
+    };
+
+    return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.id)
+      .do(createdCode => {
         console.log('Saved new Code');
-        if (codes.length > 0) {
-          this.router.navigate([
-            'code',
-            {
-              codeRegistryCodeValue: this.registryCode,
-              codeSchemeId: this.schemeId,
-              codeId: codes[0].id
-            }
-          ]);
-        }
-        this.editableService.saving$.next(false);
-      }, error => {
-        // TODO proper error handling!
-        console.log('Error creating Code: ' + error);
-        this.editableService.saving$.next(false);
+        this.router.navigate(createdCode.route);
       });
   }
 
   get loading(): boolean {
-    return this.code == null;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.reset();
-  }
-
-  reset() {
-    this.codeForm.reset(this.code);
-  }
-
-  ngOnDestroy() {
-    this.cancelSubscription.unsubscribe();
+    return this.codeScheme == null;
   }
 }

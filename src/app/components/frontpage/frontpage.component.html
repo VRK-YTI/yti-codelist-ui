@@ -21,13 +21,13 @@
       <div class="content-box">
         <h4 class="strong" translate>Classification</h4>
 
-        <div class="classification"
-             *ngFor="let dataClassification of dataClassifications"
-             [class.active]="isClassificationSelected(dataClassification.entity)"
-             (click)="toggleClassification(dataClassification.entity)">
-
-          <span class="name">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
-          <span class="count">({{dataClassification.count}})</span>
+        <div *ngFor="let dataClassification of dataClassifications">
+          <div *ngIf="dataClassification.count > 0" class="classification"
+               [class.active]="isClassificationSelected(dataClassification.entity)"
+               (click)="toggleClassification(dataClassification.entity)">
+            <span class="name">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
+            <span class="count">({{dataClassification.count}})</span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-export class ServiceConfiguration {
+export interface ServiceConfiguration {
 
   groupManagementConfig: { url: string };
 }
