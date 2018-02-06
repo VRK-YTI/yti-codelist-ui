@@ -14,41 +14,9 @@
                [label]="'Coderegistry'"
                [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>
 
-  <!--TODO componentify as editable aware the classifications selection -->
-  <dl *ngIf="codeScheme.dataClassifications.length > 0 && !editing || restricted">
-    <dt>
-      <label translate>Classification</label>
-    </dt>
-    <dd>
-      <div *ngFor="let dataClassification of codeScheme.dataClassifications">
-        <span>{{dataClassification.prefLabel | translateValue}}</span><br/>
-      </div>
-    </dd>
-  </dl>
 
-  <dl *ngIf="editing && !restricted">
-    <dt>
-      <label translate>Classification</label>
-    </dt>
-
-    <dd>
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-dropdown" id="classification-dropdown" ngbDropdownToggle>
-          <span *ngIf="!dataClassification" translate>No classification</span>
-          <span *ngIf="dataClassification as dataClassification">{{dataClassification.prefLabel | translateValue:true}}</span>
-        </button>
-
-        <div ngbDropdownMenu aria-labelledby="classification-dropdown">
-          <button *ngFor="let dataClassification of dataClassifications"
-                  (click)="setDataClassification(dataClassification)"
-                  class="dropdown-item"
-                  [class.active]="isClassificationSelected(dataClassification)">
-            {{dataClassification.prefLabel | translateValue:true}}
-          </button>
-        </div>
-      </div>
-    </dd>
-  </dl>
+  <app-classifications-input [formControlName]="'dataClassifications'"
+                             [restrict]="restricted"></app-classifications-input>
 
   <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
     <dt>

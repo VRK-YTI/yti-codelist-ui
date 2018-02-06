@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -6,11 +6,10 @@ import { EditableService } from '../../services/editable.service';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
-import { contains, normalizeAsArray } from 'yti-common-ui/utils/array';
+import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
-import { DataService } from '../../services/data.service';
 import { toPickerDate } from '../../utils/date';
 import { LanguageService } from '../../services/language.service';
 
@@ -19,7 +18,7 @@ import { LanguageService } from '../../services/language.service';
   templateUrl: './code-scheme-information.component.html',
   styleUrls: ['./code-scheme-information.component.scss']
 })
-export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
+export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeScheme: CodeScheme;
 
@@ -47,16 +46,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
               private linkListModalService: LinkListModalService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              private dataService: DataService,
               public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-  }
-
-  ngOnInit() {
-    this.dataService.getDataClassificationsAsCodes().subscribe(dataClassifications => {
-      this.dataClassifications = dataClassifications;
-    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -84,29 +76,5 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   get restricted(): boolean {
     return contains(restrictedStatuses, this.codeScheme.status);
-  }
-
-  isClassificationSelected(code: Code) {
-    return this.dataClassification === code;
-  }
-
-  get dataClassification(): Code|null {
-    const current = normalizeAsArray(this.dataClassificationsControl.value);
-    return current.length > 0 ? current[0] : null;
-  }
-
-  setDataClassification(dataClassification: Code) {
-    this.dataClassificationsControl.setValue([dataClassification]);
-  }
-
-  private get dataClassificationsControl() {
-
-    const dcControl = this.codeSchemeForm.get('dataClassifications');
-
-    if (dcControl == null) {
-      throw new Error('Form control not found');
-    }
-
-    return dcControl;
   }
 }
