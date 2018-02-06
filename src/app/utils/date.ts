@@ -10,7 +10,10 @@ function assertValid(moment: Moment): Moment {
   }
 }
 
+const dateFormat = 'YYYY-MM-DD';
 const dateTimeFormat = 'YYYY-MM-DDTHH:mm:ss.SSSZZ';
+const displayDateFormat = 'DD.MM.YYYY';
+const displayDateTimeFormat = 'DD.MM.YYYY HH:mm';
 
 export function parseDateTime(dateTime: string): Moment {
   return assertValid(moment(dateTime, dateTimeFormat));
@@ -21,19 +24,19 @@ export function formatDateTime(dateTime: Moment|null): string {
 }
 
 export function parseDate(dateStr: string): Moment {
-  return assertValid(moment(dateStr, 'YYYY-MM-DD'));
+  return assertValid(moment(dateStr, dateFormat));
 }
 
 export function formatDate(date: Moment|null): string {
-  return date ? date.format('YYYY-MM-DD') : '';
+  return date ? date.format(dateFormat) : '';
 }
 
 export function formatDisplayDate(date: Moment|null): string {
-  return date ? date.format('DD.MM.YYYY') : '';
+  return date ? date.format(displayDateFormat) : '';
 }
 
 export function formatDisplayDateTime(dateTime: Moment|null): string {
-  return dateTime ? dateTime.format('DD.MM.YYYY HH:mm') : '';
+  return dateTime ? dateTime.format(displayDateTimeFormat) : '';
 }
 
 export interface PickerDate {
