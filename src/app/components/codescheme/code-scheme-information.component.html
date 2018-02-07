@@ -11,7 +11,7 @@
                          [restrict]="restricted"></app-localizable-input>
 
   <app-literal *ngIf="codeScheme.codeRegistry"
-               [label]="'Coderegistry'"
+               [label]="'Coderegistry' | translate"
                [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>
 
 
