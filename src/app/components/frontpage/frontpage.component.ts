@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
@@ -16,13 +16,14 @@ import { TranslateService } from 'ng2-translate';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { anyMatching } from 'yti-common-ui/utils/array';
 import { Option } from 'yti-common-ui/components/dropdown.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-frontpage',
   templateUrl: './frontpage.component.html',
   styleUrls: ['./frontpage.component.scss'],
 })
-export class FrontpageComponent implements OnInit {
+export class FrontpageComponent implements OnInit, OnDestroy {
 
   statusOptions: FilterOptions<Status>;
   registerOptions: FilterOptions<CodeRegistry>;
@@ -39,6 +40,8 @@ export class FrontpageComponent implements OnInit {
   filteredCodeSchemes: CodeScheme[];
 
   searchInProgress = true;
+
+  private subscriptionToClean: Subscription[] = [];
 
   constructor(private dataService: DataService,
               private router: Router,
@@ -60,15 +63,16 @@ export class FrontpageComponent implements OnInit {
       }));
     });
 
-    this.dataService.getOrganizations().subscribe(organizations => {
-      this.organizationOptions = [null, ...organizations].map(organization => ({
-        value: organization,
-        name: () => organization ? this.languageService.translate(organization.prefLabel, true)
-                                 : this.translateService.instant('All organizations')
-      }));
-      this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c =>
-        c.value ? c.value.prefLabel : {}));
-    });
+    this.subscriptionToClean.push(Observable.combineLatest(this.dataService.getOrganizations(), this.languageService.language$)
+      .subscribe(([organizations]) => {
+        this.organizationOptions = [null, ...organizations].map(organization => ({
+          value: organization,
+          name: () => organization ? this.languageService.translate(organization.prefLabel, true)
+                                   : this.translateService.instant('All organizations')
+        }));
+        this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c =>
+          c.value ? c.value.prefLabel : {}));
+      }));      
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
       value: status,
@@ -79,10 +83,7 @@ export class FrontpageComponent implements OnInit {
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
 
-    const dataClassifications$ = this.dataService.getDataClassifications().map(classifications => {
-      classifications.sort(comparingLocalizable<DataClassification>(this.languageService, c => c.prefLabel));
-      return classifications;
-    });
+    const dataClassifications$ = this.dataService.getDataClassifications();
 
     function statusMatches(status: Status|null, codeScheme: CodeScheme) {
       return !status || codeScheme.status === status;
@@ -113,9 +114,11 @@ export class FrontpageComponent implements OnInit {
       .do(() => this.searchInProgress = false)
       .subscribe(results => this.filteredCodeSchemes = results);
 
-    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$)
+    this.subscriptionToClean.push(Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, 
+                                                           this.organization$, this.languageService.language$)
       .subscribe(([classifications, searchTerm, status, register, organization]) => {
 
+        classifications.sort(comparingLocalizable<DataClassification>(this.languageService, c => c.prefLabel));
         const organizationId = organization ? organization.id : null;
 
         this.dataService.searchCodeSchemes(searchTerm, null, organizationId)
@@ -129,7 +132,7 @@ export class FrontpageComponent implements OnInit {
               count: calculateCount(classification, codeSchemes)
             }));
           });
-      });
+      }));
   }
 
   isClassificationSelected(classification: DataClassification) {
@@ -163,5 +166,9 @@ export class FrontpageComponent implements OnInit {
   viewCodeScheme(codeScheme: CodeScheme) {
     console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from coderegistry: ' + codeScheme.codeRegistry.codeValue);
     this.router.navigate(codeScheme.route);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionToClean.forEach(s => s.unsubscribe());
   }
 }
