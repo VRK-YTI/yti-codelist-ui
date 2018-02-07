@@ -49,7 +49,7 @@ export class StatusInputComponent implements ControlValueAccessor {
   }
 
   get editing() {
-    return this.editableService.editing && !this.restrict;
+    return this.editableService.editing;
   }
 
   writeValue(obj: any): void {
