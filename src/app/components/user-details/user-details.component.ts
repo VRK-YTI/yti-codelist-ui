@@ -11,6 +11,7 @@ import { LocationService } from '../../services/location.service';
 import { DataService } from '../../services/data.service';
 import { Organization } from '../../entities/organization';
 import { combineSets, hasAny } from 'yti-common-ui/utils/set';
+import { Observable } from 'rxjs/Observable';
 
 interface UserOrganizationRoles {
   organization?: Organization;
@@ -25,7 +26,7 @@ interface UserOrganizationRoles {
 })
 export class UserDetailsComponent implements OnDestroy  {
 
-  private loggedInSubscription: Subscription;
+  private subscriptionToClean: Subscription[] = [];
 
   allOrganizations: Organization[];
   allOrganizationsById: Map<string, Organization>;
@@ -39,26 +40,30 @@ export class UserDetailsComponent implements OnDestroy  {
               private languageService: LanguageService,
               private translateService: TranslateService) {
 
-    this.loggedInSubscription = this.userService.loggedIn$.subscribe(loggedIn => {
+    this.subscriptionToClean.push(this.userService.loggedIn$.subscribe(loggedIn => {
       if (!loggedIn) {
         router.navigate(['/']);
       }
-    });
+    }));
 
     userService.updateLoggedInUser();
 
     locationService.atUserDetails();
 
-    this.dataService.getOrganizations().subscribe(organizations => {
-      this.allOrganizations = organizations;
-      this.allOrganizationsById = index(organizations, org => org.id);
-    });
+    this.subscriptionToClean.push(
+      Observable.combineLatest(this.dataService.getOrganizations(), languageService.language$)
+        .subscribe(([organizations]) => {
+          organizations.sort(comparingLocalizable<Organization>(languageService, org => org.prefLabel));
+          this.allOrganizations = organizations;
+          this.allOrganizationsById = index(organizations, org => org.id);
+        })
+    );
 
     this.refreshRequests();
   }
 
   ngOnDestroy() {
-    this.loggedInSubscription.unsubscribe();
+    this.subscriptionToClean.forEach(s => s.unsubscribe());
   }
 
   get user() {
