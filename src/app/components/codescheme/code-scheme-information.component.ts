@@ -75,6 +75,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get restricted(): boolean {
-    return contains(restrictedStatuses, this.codeScheme.status);
+    return this.codeScheme.restricted;
   }
 }

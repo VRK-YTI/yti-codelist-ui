@@ -5,9 +5,10 @@ import { CodeScheme } from './code-scheme';
 import { formatDate, formatDateTime, formatDisplayDate, formatDisplayDateTime, parseDate } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { ExternalReference } from './external-reference';
-import { Status } from 'yti-common-ui/entities/status';
+import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { CodeType } from '../services/api-schema';
+import { contains } from 'yti-common-ui/utils/array';
 
 export class Code extends AbstractResource implements EditableEntity {
 
@@ -75,6 +76,10 @@ export class Code extends AbstractResource implements EditableEntity {
         route: this.route
       }
     ];
+  }
+
+  get restricted() {
+    return contains(restrictedStatuses, this.status);
   }
 
   getOwningOrganizationIds(): string[] {

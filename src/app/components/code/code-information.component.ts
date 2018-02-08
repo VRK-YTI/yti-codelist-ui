@@ -54,7 +54,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get restricted() {
-    return contains(restrictedStatuses, this.code.status);
+    return this.code.restricted;
   }
 
   ngOnDestroy() {

@@ -6,6 +6,7 @@ import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-mo
 import { CodeScheme } from '../../entities/code-scheme';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { DataService } from '../../services/data.service';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-code-scheme-codes',
@@ -20,7 +21,8 @@ export class CodeSchemeCodesComponent {
   constructor(private userService: UserService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
               private dataService: DataService,
-              private router: Router) {
+              private router: Router,
+              private authorizationManager: AuthorizationManager) {
   }
 
   viewCode(code: Code) {
@@ -53,11 +55,7 @@ export class CodeSchemeCodesComponent {
     });
   }
 
-  canEdit() {
-    return this.isLoggedIn() && (this.codeScheme.status === 'DRAFT' || this.codeScheme.status === 'SUBMITTED');
-  }
-
-  isLoggedIn() {
-    return this.userService.isLoggedIn();
+  canAddCode() {
+    return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
   }
 }
