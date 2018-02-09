@@ -10,15 +10,13 @@
                [value]="code.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code name' | translate"
-                         [formControlName]="'prefLabel'"
-                         [restrict]="restricted"></app-localizable-input>
+                         [formControlName]="'prefLabel'"></app-localizable-input>
 
   <app-status-input [formControlName]="'status'"
                     [restrict]="restricted"></app-status-input>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'description'"
-                            [restrict]="restricted"></app-localizable-textarea>
+                            [formControlName]="'description'"></app-localizable-textarea>
 
   <app-literal-input [label]="'Short name' | translate"
                      [formControlName]="'shortName'"
@@ -30,7 +28,7 @@
                  [value]="code.validity"></app-literal>
   </div>
 
-  <div *ngIf="editing && !restricted">
+  <div *ngIf="editing">
     <app-date-input [label]="'Start date' | translate"
                     [formControlName]="'startDate'"></app-date-input>
 

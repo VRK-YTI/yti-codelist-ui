@@ -7,16 +7,14 @@
                [value]="codeScheme.codeValue"></app-literal>
 
   <app-localizable-input [label]="'Code list name' | translate"
-                         [formControlName]="'prefLabel'"
-                         [restrict]="restricted"></app-localizable-input>
+                         [formControlName]="'prefLabel'"></app-localizable-input>
 
   <app-literal *ngIf="codeScheme.codeRegistry"
                [label]="'Coderegistry' | translate"
                [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>
 
 
-  <app-classifications-input [formControlName]="'dataClassifications'"
-                             [restrict]="restricted"></app-classifications-input>
+  <app-classifications-input [formControlName]="'dataClassifications'"></app-classifications-input>
 
   <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
     <dt>
@@ -30,17 +28,13 @@
   </dl>
 
   <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'description'"
-                            [restrict]="restricted"></app-localizable-textarea>
-
+                            [formControlName]="'description'"></app-localizable-textarea>
 
   <app-localizable-textarea [label]="'Definition' | translate"
-                            [formControlName]="'definition'"
-                            [restrict]="restricted"></app-localizable-textarea>
+                            [formControlName]="'definition'"></app-localizable-textarea>
 
   <app-localizable-textarea [label]="'Changenote' | translate"
-                            [formControlName]="'changeNote'"
-                            [restrict]="restricted"></app-localizable-textarea>
+                            [formControlName]="'changeNote'"></app-localizable-textarea>
 
 
   <app-literal-input [label]="'Source' | translate"
@@ -64,7 +58,7 @@
   </div>
 
   <!-- TODO componentify as editable aware date range selection -->
-  <div *ngIf="editing && !restricted">
+  <div *ngIf="editing">
     <app-date-input [label]="'Start date' | translate"
                     [formControlName]="'startDate'"></app-date-input>
 
