@@ -1,56 +1,62 @@
-<div class="modal-header">
-  <h4 class="modal-title strong">
-    <a><i class="fa fa-times" (click)="close()"></i></a>
-    <span translate>Import codes to code list</span>
-  </h4>
+<div *ngIf="uploading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>
-<div class="modal-body">
-  <div class="row">
-    <div class="col-md-12">
-      <div ngbDropdown class="d-inline-block">
-        <dl>
-          <dt>
-            <label for="format-dropdown" translate>File format</label>
-          </dt>
-          <dd>
-            <button class="btn btn-dropdown" id="format-dropdown" ngbDropdownToggle>
-              <span>{{format}}</span>
-            </button>
 
-            <div ngbDropdownMenu aria-labelledby="format-dropdown">
-              <button (click)="format = 'CSV'"
-                      class="dropdown-item"
-                      [class.active]="format === 'CSV'">
-                'CSV'
+<div *ngIf="!uploading">
+  <div class="modal-header">
+    <h4 class="modal-title strong">
+      <a><i class="fa fa-times" (click)="close()"></i></a>
+      <span translate>Import codes to code list</span>
+    </h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div ngbDropdown class="d-inline-block">
+          <dl>
+            <dt>
+              <label for="format-dropdown" translate>File format</label>
+            </dt>
+            <dd>
+              <button class="btn btn-dropdown" id="format-dropdown" ngbDropdownToggle>
+                <span>{{format}}</span>
               </button>
 
-              <button (click)="format = 'Excel'"
-                      class="dropdown-item"
-                      [class.active]="format === 'Excel'">
-                'Excel'
-              </button>
-            </div>
-          </dd>
-        </dl>
-      </div>
+              <div ngbDropdownMenu aria-labelledby="format-dropdown">
+                <button (click)="format = 'CSV'"
+                        class="dropdown-item"
+                        [class.active]="format === 'CSV'">
+                  'CSV'
+                </button>
 
-      <div class="form-group">
-        <dl>
-          <dt>
-            <label for="fileupload" translate>File to be uploaded</label>
-          </dt>
-          <dd>
-            <input name="file" id="fileupload" type="file" (change)="onChange($event)"/>
-          </dd>
-        </dl>
+                <button (click)="format = 'Excel'"
+                        class="dropdown-item"
+                        [class.active]="format === 'Excel'">
+                  'Excel'
+                </button>
+              </div>
+            </dd>
+          </dl>
+        </div>
+
+        <div class="form-group">
+          <dl>
+            <dt>
+              <label for="fileupload" translate>File to be uploaded</label>
+            </dt>
+            <dd>
+              <input name="file" id="fileupload" type="file" (change)="onChange($event)"/>
+            </dd>
+          </dl>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="modal-footer">
-  <div>
-    <button [disabled]="!canSave()" type="button" class="btn btn-action" (click)="uploadCodesFile()" translate>Import
-    </button>
-    <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
+  <div class="modal-footer">
+    <div>
+      <button [disabled]="!canSave()" type="button" class="btn btn-action" (click)="uploadCodesFile()" translate>Import
+      </button>
+      <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
+    </div>
   </div>
 </div>

@@ -13,9 +13,8 @@ export class CodeSchemeImportModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(): Promise<boolean> {
+  public open(): void {
     const modalRef = this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
-    return modalRef.result;
   }
 }
 
@@ -30,6 +29,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   codeRegistry?: CodeRegistry;
   file?: File;
   format = 'CSV';
+  uploading = false;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -41,7 +41,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return this.codeRegistries === undefined;
+    return this.codeRegistries === undefined || this.uploading;
   }
 
   ngOnInit() {
@@ -70,15 +70,21 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   uploadFile() {
-    if (this.file !== undefined && this.codeRegistry !== undefined) {
-      this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
-        if (codeSchemes.length > 0) {
-          this.router.navigate(codeSchemes[0].route);
-          this.modal.close(false);
-        }
-      }, error => {
-        this.errorModalService.openSubmitError();
-      });
+
+    if (!this.file || !this.codeRegistry) {
+      throw new Error('File and code registry must be set');
     }
+
+    this.uploading = true;
+
+    this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
+      if (codeSchemes.length > 0) {
+        this.router.navigate(codeSchemes[0].route);
+        this.modal.close();                  
+      }        
+    }, error => {
+      this.uploading = false;
+      this.errorModalService.openSubmitError();
+    });    
   }
 }

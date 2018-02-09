@@ -31,6 +31,7 @@ export class CodeSchemeCodesImportModalComponent {
   @Input() codeScheme: CodeScheme;
   file?: File;
   format = 'CSV';
+  uploading = false;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -63,12 +64,17 @@ export class CodeSchemeCodesImportModalComponent {
 
   uploadCodesFile() {
 
-    if (this.file !== undefined) {
-      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
-        this.modal.close(true);
-      }, error => {
-        this.errorModalService.openSubmitError();
-      });
+    if (!this.file) {
+      throw new Error('File must be set');
     }
+    
+    this.uploading = true;
+
+    this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
+      this.modal.close(true);
+    }, error => {
+      this.uploading = false;
+      this.errorModalService.openSubmitError();
+    });    
   }
 }
