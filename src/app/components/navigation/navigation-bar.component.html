@@ -5,7 +5,7 @@
   </a>
 
   <ul class="navbar-nav ml-auto">
-  
+
     <li *ngIf="fakeableUsers.length > 0" class="nav-item dropdown" ngbDropdown>
       <a class="nav-link" ngbDropdownToggle translate>Impersonate user</a>
       <div ngbDropdownMenu>
@@ -50,7 +50,7 @@
            *ngIf="isLoggedIn()"
            [routerLink]="['/userDetails']" translate>User details</a>
         <a class="dropdown-item"
-           *ngIf="isUserAdmin()"
+           *ngIf="showGroupManagementUrl()"
            [href]="groupManagementUrl" target="_blank" translate>User right management</a>
       </div>
     </li>
