@@ -114,27 +114,23 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .do(() => this.searchInProgress = false)
       .subscribe(results => this.filteredCodeSchemes = results);
 
-    this.subscriptionToClean.push(
-      Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$, 
-                               this.languageService.language$)
-        .subscribe(([classifications, searchTerm, status, register, organization]) => {
+    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$)
+      .subscribe(([classifications, searchTerm, status, register, organization]) => {
 
-          classifications.sort(comparingLocalizable<DataClassification>(this.languageService, c => c.prefLabel));
-          const organizationId = organization ? organization.id : null;
+        const organizationId = organization ? organization.id : null;
 
-          this.dataService.searchCodeSchemes(searchTerm, null, organizationId)
-            .map(codeSchemes => codeSchemes.filter(codeScheme =>
-              statusMatches(status, codeScheme) &&
-              registerMatches(register, codeScheme))
-            )
-            .subscribe(codeSchemes => {
-              this.dataClassifications = classifications.map(classification => ({
-                entity: classification,
-                count: calculateCount(classification, codeSchemes)
-              }));
-            });
-        })
-    );
+        this.dataService.searchCodeSchemes(searchTerm, null, organizationId)
+          .map(codeSchemes => codeSchemes.filter(codeScheme =>
+            statusMatches(status, codeScheme) &&
+            registerMatches(register, codeScheme))
+          )
+          .subscribe(codeSchemes => {
+            this.dataClassifications = classifications.map(classification => ({
+              entity: classification,
+              count: calculateCount(classification, codeSchemes)
+            }));
+          });
+      });
   }
 
   isClassificationSelected(classification: DataClassification) {
