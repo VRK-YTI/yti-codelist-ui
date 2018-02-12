@@ -10,7 +10,6 @@ import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { formatDate, fromPickerDate } from '../../utils/date';
-import { normalizeAsArray } from 'yti-common-ui/utils/array';
 import { CodeSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
 
