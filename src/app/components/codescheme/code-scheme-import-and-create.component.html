@@ -6,7 +6,7 @@
   <p translate>Using the imported file, a new code list is created or an older code list is update with new meta-information. Upon uploading the file, you get to review and cancel the changes if needed.</p>
   <button type="button" class="btn btn-action" (click)="importFromFile()" translate>Import code list from a file</button>
   <br/><br/>
-  <p translate>You can also add a new code list by creating it via the user interface of the Koodistot service.</p>
-  <button type="button" class="btn btn-action" (click)="createNewCodeScheme()" translate>Create new code list</button>
+  <p *ngIf="codeRegistries.length > 0" translate>You can also add a new code list by creating it via the user interface of the Koodistot service.</p>
+  <button *ngIf="codeRegistries.length > 0" type="button" class="btn btn-action" (click)="createNewCodeScheme()" translate>Create new code list</button>
   <br/><br/>
 </div>
