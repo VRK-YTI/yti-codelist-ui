@@ -47,29 +47,7 @@
     <app-localizable-input [label]="'Code list name' | translate"
                            [formControlName]="'prefLabel'"></app-localizable-input>
 
-    <dl>
-      <dt>
-        <label translate>Classification</label>
-      </dt>
-
-      <dd>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="classification-dropdown" ngbDropdownToggle>
-            <span *ngIf="!dataClassification" translate>No classification</span>
-            <span *ngIf="dataClassification as dataClassification">{{dataClassification.prefLabel | translateValue:true}}</span>
-          </button>
-
-          <div ngbDropdownMenu aria-labelledby="classification-dropdown">
-            <button *ngFor="let dc of dataClassifications"
-                    (click)="dataClassification = dc"
-                    class="dropdown-item"
-                    [class.active]="isClassificationSelected(dc)">
-              {{dc.prefLabel | translateValue:true}}
-            </button>
-          </div>
-        </div>
-      </dd>
-    </dl>
+    <app-classifications-input [formControlName]="'dataClassifications'"></app-classifications-input>
 
     <app-localizable-textarea [label]="'Description' | translate"
                               [formControlName]="'description'"></app-localizable-textarea>

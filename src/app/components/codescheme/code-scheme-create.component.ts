@@ -10,7 +10,6 @@ import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { formatDate, fromPickerDate } from '../../utils/date';
-import { normalizeAsArray } from 'yti-common-ui/utils/array';
 import { CodeSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
 
@@ -57,9 +56,6 @@ export class CodeSchemeCreateComponent implements OnInit {
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistries = codeRegistries;
     });
-    this.dataService.getDataClassificationsAsCodes().subscribe(dataClassifications => {
-      this.dataClassifications = dataClassifications;
-    });
   }
 
   set codeRegistry(codeRegistry: CodeRegistry) {
@@ -81,32 +77,8 @@ export class CodeSchemeCreateComponent implements OnInit {
     return crControl;
   }
 
-  isClassificationSelected(code: Code) {
-    return this.dataClassification === code;
-  }
-
-  get dataClassification(): Code|null {
-    const current = normalizeAsArray(this.dataClassificationsControl.value);
-    return current.length > 0 ? current[0] : null;
-  }
-
-  set dataClassification(dataClassification: Code|null) {
-    this.dataClassificationsControl.setValue(dataClassification ? [dataClassification] : []);
-  }
-
-  private get dataClassificationsControl() {
-
-    const dcControl = this.codeSchemeForm.get('dataClassifications');
-
-    if (dcControl == null) {
-      throw new Error('Form control not found');
-    }
-
-    return dcControl;
-  }
-
   get loading(): boolean {
-    return this.codeRegistries == null || this.dataClassifications == null;
+    return this.codeRegistries == null;
   }
 
   back() {
