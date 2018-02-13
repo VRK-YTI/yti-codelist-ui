@@ -71,7 +71,7 @@ export class NavigationBarComponent {
     this.userService.updateLoggedInUser(userEmail);
   }
 
-  isUserAdmin() {
-    return this.user.isAdminInAnyOrganization();
+  showGroupManagementUrl() {
+    return this.user.superuser || this.user.isAdminInAnyOrganization();
   }
 }
