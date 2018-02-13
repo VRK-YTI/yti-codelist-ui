@@ -18,12 +18,16 @@ import { anyMatching } from 'yti-common-ui/utils/array';
 import { Option } from 'yti-common-ui/components/dropdown.component';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-frontpage',
   templateUrl: './frontpage.component.html',
   styleUrls: ['./frontpage.component.scss'],
 })
 export class FrontpageComponent implements OnInit, OnDestroy {
+
+
+  codeRegistries: CodeRegistry[];
 
   statusOptions: FilterOptions<Status>;
   registerOptions: FilterOptions<CodeRegistry>;
@@ -54,6 +58,10 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
+      this.codeRegistries = codeRegistries;
+    });
+
 
     this.dataService.getCodeRegistries().subscribe(registers => {
       this.registerOptions = [null, ...registers].map(register => ({
@@ -72,7 +80,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         }));
         this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c =>
           c.value ? c.value.prefLabel : {}));
-      }));      
+      }));
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
       value: status,
@@ -168,5 +176,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptionToClean.forEach(s => s.unsubscribe());
+  }
+
+  canCreateCodeScheme() {
+    return this.codeRegistries.length > 0;
   }
 }
