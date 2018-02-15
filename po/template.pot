@@ -7,6 +7,9 @@ msgstr ""
 msgid "Link type"
 msgstr ""
 
+msgid "Add classification"
+msgstr ""
+
 msgid "Classification"
 msgstr ""
 
@@ -23,6 +26,12 @@ msgid "Edit"
 msgstr ""
 
 msgid "Add link"
+msgstr ""
+
+msgid "Search classification"
+msgstr ""
+
+msgid "Choose classification"
 msgstr ""
 
 msgid "Status"

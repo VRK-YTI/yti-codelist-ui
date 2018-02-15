@@ -37,4 +37,8 @@ export class DataClassification {
       count: this.count
     };
   }
+
+  clone() {
+    return new DataClassification(this.serialize());
+  }
 }

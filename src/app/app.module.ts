@@ -58,6 +58,10 @@ import { ExternalReferencesInputComponent } from './components/form/external-ref
 import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
 import { ClassificationsInputComponent } from './components/form/classifications-input.component';
+import { 
+  SearchClassificationModalComponent, 
+  SearchClassificationModalService 
+} from './components/form/search-classification-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -139,7 +143,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ExternalReferencesInputComponent,
     StatusInputComponent,
     DateInputComponent,
-    ClassificationsInputComponent
+    ClassificationsInputComponent,
+    SearchClassificationModalComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -147,7 +152,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkShowModalComponent,
     LinkEditModalComponent,
     LinkCreateModalComponent,
-    LinkListModalComponent
+    LinkListModalComponent,
+    SearchClassificationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -174,7 +180,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkEditModalService,
     LinkCreateModalService,
     LinkListModalService,
-    ModalService
+    ModalService,
+    SearchClassificationModalService
   ],
   bootstrap: [AppComponent]
 })

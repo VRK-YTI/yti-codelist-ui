@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-05 16:47+0200\n"
+"PO-Revision-Date: 2018-02-15 14:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -16,6 +16,15 @@ msgstr ""
 msgid "Link type"
 msgstr "Linkin tyyppi"
 
+msgid "Add classification"
+msgstr "Lisää luokitus"
+
+msgid "Classification"
+msgstr "Luokitus"
+
+msgid "No classification"
+msgstr "Ei luokitusta"
+
 msgid "Save"
 msgstr "Tallenna"
 
@@ -24,6 +33,18 @@ msgstr "Peruuta"
 
 msgid "Edit"
 msgstr "Muokkaa"
+
+msgid "Add link"
+msgstr "Lisää linkki"
+
+msgid "Search classification"
+msgstr "Hae luokitusta"
+
+msgid "Choose classification"
+msgstr "Valitse luokitus"
+
+msgid "Status"
+msgstr "Tila"
 
 msgid "All registries"
 msgstr "Kaikki rekisterit"
@@ -52,12 +73,6 @@ msgstr "Lyhyt nimi"
 msgid "Create code"
 msgstr "Luo koodi"
 
-msgid "Create"
-msgstr "Luo"
-
-msgid "Status"
-msgstr "Tila"
-
 msgid "Start date"
 msgstr "Voimassaolon alku"
 
@@ -73,14 +88,8 @@ msgstr "Viimeisin muokkaus"
 msgid "Links"
 msgstr "Linkit"
 
-msgid "Add link"
-msgstr "Lisää linkki"
-
 msgid "Coderegistry"
 msgstr "Rekisteri"
-
-msgid "Classification"
-msgstr "Luokitus"
 
 msgid "Organization"
 msgstr "Organisaatio"
@@ -130,14 +139,8 @@ msgstr "Luo koodisto"
 msgid "No registry"
 msgstr "Ei rekisteriä"
 
-msgid "No classification"
-msgstr "Ei luokitusta"
-
 msgid "Add code list"
 msgstr "Lisää koodisto"
-
-msgid "Import code list"
-msgstr "Tuo koodisto"
 
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
@@ -167,6 +170,9 @@ msgstr ""
 
 msgid "Create new code list"
 msgstr "Luo uusi koodisto"
+
+msgid "Import code list"
+msgstr "Tuo koodisto"
 
 msgid "Registry for the code list"
 msgstr "Valitse rekisteri"
@@ -330,6 +336,9 @@ msgstr "Sanastotyöntekijä"
 
 msgid "CODE_LIST_EDITOR"
 msgstr "Koodistotyöntekijä"
+
+#~ msgid "Create"
+#~ msgstr "Luo"
 
 #~ msgid "Group management service"
 #~ msgstr "Ryhmienhallintapalvelu"

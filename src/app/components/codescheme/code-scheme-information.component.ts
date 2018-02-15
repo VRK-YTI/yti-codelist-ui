@@ -56,11 +56,12 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
-    const { externalReferences, startDate, endDate, ...rest } = this.codeScheme;
+    const { externalReferences, dataClassifications, startDate, endDate, ...rest } = this.codeScheme;
 
     this.codeSchemeForm.reset({
       ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
+      dataClassifications: dataClassifications.map(classification => classification.clone()),      
       startDate: toPickerDate(startDate),
       endDate: toPickerDate(endDate)
     });

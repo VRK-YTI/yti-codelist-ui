@@ -1,89 +1,76 @@
-import { Component, Input, Optional, Self } from '@angular/core';
-import { EditableService } from '../../services/editable.service';
-import { FormControl, NgControl } from '@angular/forms';
-import { DataService } from '../../services/data.service';
+import { Component, Input, Self, Optional } from '@angular/core';
 import { Code } from '../../entities/code';
-import { contains } from 'yti-common-ui/utils/array';
+import { EditableService } from '../../services/editable.service';
+import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { SearchClassificationModalService } from './search-classification-modal.component';
+import { LanguageService } from '../../services/language.service';
+import { remove } from 'yti-common-ui/utils/array';
 
 @Component({
   selector: 'app-classifications-input',
   template: `
-    <dl *ngIf="show">
+    <dl *ngIf="editing || dataClassifications.length > 0">
       <dt>
-        <label translate>Classification</label>
+        <label>{{label}}</label>
       </dt>
-      <dd *ngIf="!editing">
-        <div *ngFor="let dataClassification of value">
-          <span>{{dataClassification.prefLabel | translateValue}}</span><br/>
-        </div>
-      </dd>
-      <dd *ngIf="editing">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="classification-dropdown" ngbDropdownToggle>
-            <span *ngIf="!singleValue" translate>No classification</span>
-            <span *ngIf="singleValue">{{singleValue.prefLabel | translateValue:true}}</span>
-          </button>
-
-          <div ngbDropdownMenu aria-labelledby="classification-dropdown">
-            <button *ngFor="let dataClassification of dataClassifications"
-                    (click)="singleValue = dataClassification"
-                    class="dropdown-item"
-                    [class.active]="isClassificationSelected(dataClassification)">
-              {{dataClassification.prefLabel | translateValue:true}}
-            </button>
+      <dd>
+        <div *ngIf="!editing">
+          <div *ngFor="let dataClassification of dataClassifications">  
+            <span>{{dataClassification.prefLabel | translateValue:true}}</span>
           </div>
         </div>
+        <div *ngIf="editing">
+          <div *ngFor="let classification of dataClassifications">
+            <a><i class="fa fa-times" (click)="removeDataClassification(classification)"></i></a>
+            <span>{{classification.prefLabel | translateValue:true}}</span>
+          </div>
+        </div>
+
+        <button type="button"
+                class="btn btn-sm btn-action mt-2"
+                *ngIf="editing"
+                (click)="addDataClassification()" translate>Add classification</button>
       </dd>
     </dl>
   `
 })
-export class ClassificationsInputComponent {
+export class ClassificationsInputComponent implements ControlValueAccessor {
 
+  @Input() label: string;
   @Input() restrict = false;
   control = new FormControl([]);
-
-  dataClassifications: Code[];
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
 
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService,
-              dataService: DataService) {
+              public languageService: LanguageService,
+              private searchClassificationModalService: SearchClassificationModalService) {
+
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
     if (parentControl) {
       parentControl.valueAccessor = this;
     }
-
-    dataService.getDataClassificationsAsCodes().subscribe(dataClassifications => {
-      this.dataClassifications = dataClassifications;
-    });
   }
 
-  isClassificationSelected(code: Code) {
-    return contains(this.value, code, (lhs, rhs) => lhs.id === rhs.id);
-  }
-
-  get value(): Code[] {
+  get dataClassifications(): Code[] {
     return this.control.value;
   }
 
-  set value(classifications: Code[]) {
-    this.control.setValue(classifications);
+  addDataClassification() {
+
+    const restrictIds = this.dataClassifications.map(classification => classification.id);
+
+    this.searchClassificationModalService.open(restrictIds)
+      .then(classification => this.dataClassifications.push(classification), ignoreModalClose);
   }
 
-  get singleValue(): Code|null {
-    return this.value.length > 0 ? this.value[0] : null;
-  }
-
-  set singleValue(classification: Code|null) {
-    this.value = classification ? [classification] : [];
-  }
-
-  get show() {
-    return this.editing || this.control.value.length > 0;
+  removeDataClassification(classification: Code) {
+    remove(this.dataClassifications, classification);
   }
 
   get editing() {

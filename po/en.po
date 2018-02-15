@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-05 16:48+0200\n"
+"PO-Revision-Date: 2018-02-15 14:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -16,6 +16,15 @@ msgstr ""
 msgid "Link type"
 msgstr ""
 
+msgid "Add classification"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "No classification"
+msgstr ""
+
 msgid "Save"
 msgstr ""
 
@@ -23,6 +32,18 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
+msgid "Search classification"
+msgstr ""
+
+msgid "Choose classification"
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "All registries"
@@ -52,12 +73,6 @@ msgstr ""
 msgid "Create code"
 msgstr ""
 
-msgid "Create"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
 msgid "Start date"
 msgstr ""
 
@@ -73,13 +88,7 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "Add link"
-msgstr ""
-
 msgid "Coderegistry"
-msgstr ""
-
-msgid "Classification"
 msgstr ""
 
 msgid "Organization"
@@ -130,10 +139,7 @@ msgstr ""
 msgid "No registry"
 msgstr ""
 
-msgid "No classification"
-msgstr ""
-
-msgid "Import code list"
+msgid "Add code list"
 msgstr ""
 
 msgid ""
@@ -156,6 +162,9 @@ msgid ""
 msgstr ""
 
 msgid "Create new code list"
+msgstr ""
+
+msgid "Import code list"
 msgstr ""
 
 msgid "Registry for the code list"
@@ -318,6 +327,3 @@ msgstr "Terminology editor"
 
 msgid "CODE_LIST_EDITOR"
 msgstr "Code list editor"
-
-msgid "Import code list"
-msgstr ""

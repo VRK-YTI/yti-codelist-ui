@@ -13,8 +13,9 @@
                [label]="'Coderegistry' | translate"
                [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>
 
-
-  <app-classifications-input [formControlName]="'dataClassifications'"></app-classifications-input>
+  <app-classifications-input [label]="'Classification' | translate"
+                             [formControlName]="'dataClassifications'"
+                             [restrict]="restricted"></app-classifications-input>
 
   <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
     <dt>

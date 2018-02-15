@@ -47,7 +47,8 @@
     <app-localizable-input [label]="'Code list name' | translate"
                            [formControlName]="'prefLabel'"></app-localizable-input>
 
-    <app-classifications-input [formControlName]="'dataClassifications'"></app-classifications-input>
+    <app-classifications-input [label]="'Classification' | translate"
+                               [formControlName]="'dataClassifications'"></app-classifications-input>
 
     <app-localizable-textarea [label]="'Description' | translate"
                               [formControlName]="'description'"></app-localizable-textarea>
