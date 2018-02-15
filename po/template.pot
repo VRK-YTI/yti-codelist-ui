@@ -7,6 +7,12 @@ msgstr ""
 msgid "Link type"
 msgstr ""
 
+msgid "Classification"
+msgstr ""
+
+msgid "No classification"
+msgstr ""
+
 msgid "Save"
 msgstr ""
 
@@ -14,6 +20,12 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "All registries"
@@ -43,12 +55,6 @@ msgstr ""
 msgid "Create code"
 msgstr ""
 
-msgid "Create"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
 msgid "Start date"
 msgstr ""
 
@@ -64,13 +70,7 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "Add link"
-msgstr ""
-
 msgid "Coderegistry"
-msgstr ""
-
-msgid "Classification"
 msgstr ""
 
 msgid "Organization"
@@ -121,10 +121,7 @@ msgstr ""
 msgid "No registry"
 msgstr ""
 
-msgid "No classification"
-msgstr ""
-
-msgid "Import code list"
+msgid "Add code list"
 msgstr ""
 
 msgid ""
@@ -148,6 +145,9 @@ msgid ""
 msgstr ""
 
 msgid "Create new code list"
+msgstr ""
+
+msgid "Import code list"
 msgstr ""
 
 msgid "Registry for the code list"
