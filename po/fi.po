@@ -136,6 +136,9 @@ msgstr "Ei luokitusta"
 msgid "Add code list"
 msgstr "Lisää koodisto"
 
+msgid "Import code list"
+msgstr "Tuo koodisto"
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from service help."

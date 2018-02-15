@@ -318,3 +318,6 @@ msgstr "Terminology editor"
 
 msgid "CODE_LIST_EDITOR"
 msgstr "Code list editor"
+
+msgid "Import code list"
+msgstr ""
