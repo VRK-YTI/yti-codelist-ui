@@ -133,8 +133,8 @@ msgstr "Ei rekisteriä"
 msgid "No classification"
 msgstr "Ei luokitusta"
 
-msgid "Import code list"
-msgstr "Tuo koodisto"
+msgid "Add code list"
+msgstr "Lisää koodisto"
 
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
