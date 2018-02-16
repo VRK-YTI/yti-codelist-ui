@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-15 14:53+0200\n"
+"PO-Revision-Date: 2018-02-16 16:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -18,12 +18,6 @@ msgstr "Linkin tyyppi"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
-
-msgid "Classification"
-msgstr "Luokitus"
-
-msgid "No classification"
-msgstr "Ei luokitusta"
 
 msgid "Save"
 msgstr "Tallenna"
@@ -91,6 +85,9 @@ msgstr "Linkit"
 msgid "Coderegistry"
 msgstr "Rekisteri"
 
+msgid "Classification"
+msgstr "Luokitus"
+
 msgid "Organization"
 msgstr "Organisaatio"
 
@@ -151,8 +148,8 @@ msgstr ""
 
 msgid ""
 "Using the imported file, a new code list is created or an older code list is "
-"update with new meta-information. Upon uploading the file, you get to review "
-"and cancel the changes if needed."
+"updated with new meta-information. Upon uploading the file, you get to "
+"review and cancel the changes if needed."
 msgstr ""
 "Tuodun tiedoston perusteella luodaan uusi koodisto tai korvataan tietoja "
 "vastaava olemassa oleva koodisto. Tiedoston tuomisen jälkeen pääset vielä "
@@ -336,6 +333,9 @@ msgstr "Sanastotyöntekijä"
 
 msgid "CODE_LIST_EDITOR"
 msgstr "Koodistotyöntekijä"
+
+#~ msgid "No classification"
+#~ msgstr "Ei luokitusta"
 
 #~ msgid "Create"
 #~ msgstr "Luo"

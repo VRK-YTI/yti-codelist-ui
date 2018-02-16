@@ -10,12 +10,6 @@ msgstr ""
 msgid "Add classification"
 msgstr ""
 
-msgid "Classification"
-msgstr ""
-
-msgid "No classification"
-msgstr ""
-
 msgid "Save"
 msgstr ""
 
@@ -82,6 +76,9 @@ msgstr ""
 msgid "Coderegistry"
 msgstr ""
 
+msgid "Classification"
+msgstr ""
+
 msgid "Organization"
 msgstr ""
 
@@ -141,7 +138,7 @@ msgstr ""
 
 msgid ""
 "Using the imported file, a new code list is created or an older code list "
-"is update with new meta-information. Upon uploading the file, you get to "
+"is updated with new meta-information. Upon uploading the file, you get to "
 "review and cancel the changes if needed."
 msgstr ""
 

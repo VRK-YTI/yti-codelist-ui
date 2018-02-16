@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-15 14:56+0200\n"
+"PO-Revision-Date: 2018-02-16 16:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -17,12 +17,6 @@ msgid "Link type"
 msgstr ""
 
 msgid "Add classification"
-msgstr ""
-
-msgid "Classification"
-msgstr ""
-
-msgid "No classification"
 msgstr ""
 
 msgid "Save"
@@ -91,6 +85,9 @@ msgstr ""
 msgid "Coderegistry"
 msgstr ""
 
+msgid "Classification"
+msgstr ""
+
 msgid "Organization"
 msgstr ""
 
@@ -149,8 +146,8 @@ msgstr ""
 
 msgid ""
 "Using the imported file, a new code list is created or an older code list is "
-"update with new meta-information. Upon uploading the file, you get to review "
-"and cancel the changes if needed."
+"updated with new meta-information. Upon uploading the file, you get to "
+"review and cancel the changes if needed."
 msgstr ""
 
 msgid "Import code list from a file"
