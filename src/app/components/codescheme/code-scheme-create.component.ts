@@ -12,6 +12,7 @@ import { Code } from '../../entities/code';
 import { formatDate, fromPickerDate } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
+import { requiredList } from 'yti-common-ui/utils/validator';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -35,7 +36,7 @@ export class CodeSchemeCreateComponent implements OnInit {
     license: new FormControl(''),
     startDate: new FormControl(),
     endDate: new FormControl(),
-    dataClassifications: new FormControl([]),
+    dataClassifications: new FormControl([], [requiredList]),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required)
   });

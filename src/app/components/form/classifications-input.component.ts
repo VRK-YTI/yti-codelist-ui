@@ -7,6 +7,18 @@ import { SearchClassificationModalService } from './search-classification-modal.
 import { LanguageService } from '../../services/language.service';
 import { remove } from 'yti-common-ui/utils/array';
 
+function addToControl<T>(control: FormControl, itemToAdd: T) {
+  
+  const previous = control.value as T[];
+  control.setValue([...previous, itemToAdd]);
+}
+
+function removeFromControl<T>(control: FormControl, itemToRemove: T) {
+  
+  const previous = control.value as T[];
+  control.setValue(previous.filter(item => item !== itemToRemove));
+}
+
 @Component({
   selector: 'app-classifications-input',
   template: `
@@ -25,6 +37,7 @@ import { remove } from 'yti-common-ui/utils/array';
             <a><i class="fa fa-times" (click)="removeDataClassification(classification)"></i></a>
             <span>{{classification.prefLabel | translateValue:true}}</span>
           </div>
+          <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
 
         <button type="button"
@@ -66,11 +79,11 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
     const restrictIds = this.dataClassifications.map(classification => classification.id);
 
     this.searchClassificationModalService.open(restrictIds)
-      .then(classification => this.dataClassifications.push(classification), ignoreModalClose);
+      .then(classification => addToControl(this.control, classification), ignoreModalClose);
   }
 
   removeDataClassification(classification: Code) {
-    remove(this.dataClassifications, classification);
+    removeFromControl(this.control, classification);
   }
 
   get editing() {

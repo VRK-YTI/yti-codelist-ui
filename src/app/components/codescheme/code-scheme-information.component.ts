@@ -12,6 +12,7 @@ import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { toPickerDate } from '../../utils/date';
 import { LanguageService } from '../../services/language.service';
+import { requiredList } from 'yti-common-ui/utils/validator';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -33,7 +34,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
-    dataClassifications: new FormControl(),
+    dataClassifications: new FormControl([], [requiredList]),
     startDate: new FormControl(),
     endDate: new FormControl(),
     status: new FormControl()
