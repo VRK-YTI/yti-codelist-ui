@@ -22,7 +22,7 @@
     </dt>
     <dd>
       <div *ngFor="let organization of codeScheme.codeRegistry.organizations">
-        <span>{{organization.prefLabel | translateValue}}</span><br/>
+        <span>{{organization.prefLabel | translateValue:true}}</span><br/>
       </div>
     </dd>
   </dl>
