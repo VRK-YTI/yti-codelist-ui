@@ -18,7 +18,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   status: Status = 'DRAFT';
   legalBase: string;
   governancePolicy: string;
-  license: string;
   startDate: Moment|null = null;
   endDate: Moment|null = null;
   codeRegistry: CodeRegistry;
@@ -38,7 +37,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     }
     this.legalBase = data.legalBase;
     this.governancePolicy = data.governancePolicy;
-    this.license = data.license;
     if (data.startDate) {
       this.startDate = parseDate(data.startDate);
     }
@@ -99,7 +97,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       status: this.status,
       legalBase: this.legalBase,
       governancePolicy: this.governancePolicy,
-      license: this.license,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate),
       codeRegistry: this.codeRegistry.serialize(),

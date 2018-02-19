@@ -33,7 +33,6 @@ export class CodeSchemeCreateComponent implements OnInit {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
-    license: new FormControl(''),
     startDate: new FormControl(),
     endDate: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),

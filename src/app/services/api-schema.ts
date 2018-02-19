@@ -30,7 +30,6 @@ export interface CodeSchemeType extends BaseResourceType {
   status: Status;
   legalBase: string;
   governancePolicy: string;
-  license: string;
   startDate?: string;
   endDate?: string;
   codeRegistry: CodeRegistryType;
