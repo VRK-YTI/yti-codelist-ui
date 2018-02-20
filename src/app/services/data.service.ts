@@ -121,6 +121,7 @@ export class DataService {
   getDataClassificationsAsCodes(): Observable<Code[]> {
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
+    params.append('hierarchyLevel', '1');
 
     return this.http.get(`${codeRegistriesBasePath}/jupo/${codeSchemes}/serviceclassification/${codes}/`, {params})
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
