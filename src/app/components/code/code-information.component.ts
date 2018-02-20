@@ -3,8 +3,6 @@ import { Code } from '../../entities/code';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
-import { contains } from 'yti-common-ui/utils/array';
-import { restrictedStatuses } from 'yti-common-ui/entities/status';
 import { toPickerDate } from '../../utils/date';
 import { LanguageService } from '../../services/language.service';
 
