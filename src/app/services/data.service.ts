@@ -234,7 +234,7 @@ export class DataService {
     params.append('format', format);
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeId}/${codes}`, formData, {params})
-      .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+      .map(res => res.json().results.map((data: CodeType) => new Code(data)));
   }
 
   getServiceConfiguration() {
