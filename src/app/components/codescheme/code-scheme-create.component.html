@@ -37,6 +37,7 @@
               {{cr.prefLabel | translateValue:true}}
             </button>
           </div>
+          <app-error-messages [control]="form.form.get('codeRegistry')"></app-error-messages>
         </div>
       </dd>
     </dl>
