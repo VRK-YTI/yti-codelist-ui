@@ -1,7 +1,7 @@
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
-import { ExternalReference } from '../../entities/external-reference';
+import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
 import { DataService } from '../../services/data.service';
 import { LinkCreateModalService } from './link-create-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
@@ -66,5 +66,9 @@ export class LinkListModalComponent implements OnInit {
 
   canSelect() {
     return this.selectedExternalReference != null;
+  }
+
+  get externalReferencesByType(): PropertyTypeExternalReferences[] {
+    return groupByType(this.externalReferences);
   }
 }

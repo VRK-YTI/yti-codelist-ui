@@ -6,20 +6,26 @@
 </div>
 <div class="modal-body">
   <div class="row">
-    <div class="col-md-12">
-      <div *ngFor="let externalReference of externalReferences">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input text-content-wrap"
-                   type="radio"
-                   name="externalReference"
-                   (click)="selectedExternalReference = externalReference"
-                   [checked]="selectedExternalReference === externalReference"
-                   title="{{externalReference.title | translateValue}}">
-            <span>{{externalReference.getDisplayName(languageService)}}</span>
-          </label>
+    <div class="col-md-12">      
+      <div *ngFor="let propertyExternalReferences of externalReferencesByType">
+
+        <label>{{propertyExternalReferences.label | translateValue}}</label>
+
+        <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input text-content-wrap"
+                    type="radio"
+                    name="externalReference"
+                    (click)="selectedExternalReference = externalReference"
+                    [checked]="selectedExternalReference === externalReference"
+                    title="{{externalReference.title | translateValue}}">
+              <span>{{externalReference.getDisplayName(languageService)}}</span>
+            </label>
+          </div>
         </div>
       </div>
+
       <div *ngIf="externalReferences.length === 0">
         <span translate>There are no links available, please create new ones.</span>
       </div>
