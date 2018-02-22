@@ -26,6 +26,7 @@ export class LinkListModalService {
 @Component({
   selector: 'app-link-list-modal',
   templateUrl: './link-list-modal.component.html',
+  styleUrls: ['./link-list-modal.component.scss'],
   providers: [EditableService]
 })
 export class LinkListModalComponent implements OnInit {
