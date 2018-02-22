@@ -1,17 +1,14 @@
 import { Component, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { ExternalReference } from '../../entities/external-reference';
-import { PropertyType } from '../../entities/property-type';
-import { groupBy, index, remove } from 'yti-common-ui/utils/array';
+import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
+import { remove } from 'yti-common-ui/utils/array';
 import { EditableService } from '../../services/editable.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { LinkEditModalService } from '../codescheme/link-edit-modal.component';
 import { LinkShowModalService } from '../codescheme/link-show-modal.component';
 import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { LanguageService } from '../../services/language.service';
-import { requireDefined } from 'yti-common-ui/utils/object';
-import { Localizable } from 'yti-common-ui/types/localization';
 
 @Component({
   selector: 'app-external-references-input',
@@ -79,13 +76,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
   }
 
   get externalReferencesByType(): PropertyTypeExternalReferences[] {
-
-    const propertyTypes = this.externalReferences.map(er => requireDefined(er.propertyType));
-    const propertyTypesByName = index(propertyTypes, pt => pt.localName);
-    const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
-
-    return Array.from(groupBy(this.externalReferences, er => mapNormalizedType(requireDefined(er.propertyType))))
-      .map(([propertyType, externalReferences]) => ({ label: propertyType.prefLabel, externalReferences }));
+    return groupByType(this.externalReferences);
   }
 
   addLink() {
@@ -135,9 +126,4 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.propagateTouched = fn;
   }
-}
-
-interface PropertyTypeExternalReferences {
-  label: Localizable;
-  externalReferences: ExternalReference[];
 }
