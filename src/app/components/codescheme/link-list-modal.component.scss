@@ -1,7 +1,4 @@
 .form-check-label, .form-check-input {
   word-wrap: break-word;
-}
-
-#externalrefname {
-  word-wrap: break-word;
+  word-break: break-all;
 }
