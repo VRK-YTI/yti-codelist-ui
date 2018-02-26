@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { LinkListModalService } from './link-list-modal.component';
@@ -20,10 +20,9 @@ import { requiredList } from 'yti-common-ui/utils/validator';
   styleUrls: ['./code-scheme-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeSchemeCreateComponent implements OnInit {
-
-  codeRegistries: CodeRegistry[];
-  dataClassifications: Code[];
+export class CodeSchemeCreateComponent {
+  
+  codeRegistriesLoading: boolean;
 
   codeSchemeForm = new FormGroup({
     codeValue: new FormControl('', Validators.required),
@@ -52,33 +51,8 @@ export class CodeSchemeCreateComponent implements OnInit {
     this.editableService.edit();
   }
 
-  ngOnInit() {
-    this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
-      this.codeRegistries = codeRegistries;
-    });
-  }
-
-  set codeRegistry(codeRegistry: CodeRegistry) {
-    this.codeRegistryControl.setValue(codeRegistry);
-  }
-
-  get codeRegistry(): CodeRegistry {
-    return this.codeRegistryControl.value;
-  }
-
-  private get codeRegistryControl() {
-
-    const crControl = this.codeSchemeForm.get('codeRegistry');
-
-    if (crControl == null) {
-      throw new Error('Form control not found');
-    }
-
-    return crControl;
-  }
-
   get loading(): boolean {
-    return this.codeRegistries == null;
+    return this.codeRegistriesLoading;
   }
 
   back() {

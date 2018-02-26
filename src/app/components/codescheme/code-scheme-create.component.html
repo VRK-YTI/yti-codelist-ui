@@ -1,8 +1,8 @@
-<div *ngIf="loading">
+<div [hidden]="!loading">
   <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>
 
-<div *ngIf="!loading" class="content-box">
+<div [hidden]="loading" class="content-box">
 
   <app-back-button (back)="back()"></app-back-button>
 
@@ -18,29 +18,9 @@
     <app-editable-buttons [form]="form"></app-editable-buttons>
 
     <!-- TODO fetch or filter coderegistries only for this user -->
-    <dl>
-      <dt>
-        <label translate>Coderegistry</label>
-      </dt>
-      <dd>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-            <span *ngIf="!codeRegistry" translate>No registry</span>
-            <span *ngIf="codeRegistry">{{codeRegistry.prefLabel | translateValue:true}}</span>
-          </button>
 
-          <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-            <button *ngFor="let cr of codeRegistries"
-                    (click)="codeRegistry = cr"
-                    class="dropdown-item"
-                    [class.active]="codeRegistry == cr">
-              {{cr.prefLabel | translateValue:true}}
-            </button>
-          </div>
-          <app-error-messages [control]="form.form.get('codeRegistry')"></app-error-messages>
-        </div>
-      </dd>
-    </dl>
+    <app-coderegistry-input (loading)="codeRegistriesLoading = $event"
+                            [formControlName]="'codeRegistry'"></app-coderegistry-input>
 
     <app-literal-input [label]="'Code list value' | translate"
                        [formControlName]="'codeValue'"></app-literal-input>

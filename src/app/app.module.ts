@@ -62,6 +62,7 @@ import {
   SearchClassificationModalComponent, 
   SearchClassificationModalService 
 } from './components/form/search-classification-modal.component';
+import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -144,7 +145,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     StatusInputComponent,
     DateInputComponent,
     ClassificationsInputComponent,
-    SearchClassificationModalComponent
+    SearchClassificationModalComponent,
+    CodeRegistryInputComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
