@@ -63,9 +63,17 @@ export class CodeSchemeCodesImportModalComponent {
   }
 
   uploadCodesFile() {
-
     if (!this.file) {
       throw new Error('File must be set');
+    }
+    console.log('uploadCodesFile');
+    if (this.file !== undefined) {
+      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
+        this.modal.close(true);
+      }, error => {
+        console.log(error);
+        this.errorModalService.openSubmitError(error);
+      });
     }
     
     this.uploading = true;

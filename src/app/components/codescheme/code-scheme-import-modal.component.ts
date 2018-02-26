@@ -3,9 +3,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { CodeRegistry } from '../../entities/code-registry';
+import { ErrorModel } from '../../entities/error-model';
 import { Router } from '@angular/router';
 import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
 import { ModalService } from '../../services/modal.service';
+import { ApiResponseType } from '../../services/api-schema';
+import { LanguageService } from '../../services/language.service';
+import { TranslateService } from 'ng2-translate';
 
 @Injectable()
 export class CodeSchemeImportModalService {
@@ -35,7 +39,9 @@ export class CodeSchemeImportModalComponent implements OnInit {
               private dataService: DataService,
               private router: Router,
               private modal: NgbActiveModal,
-              private errorModalService: ErrorModalService) {
+              private errorModalService: ErrorModalService,
+              private languageService: LanguageService,
+              private translateService: TranslateService) {
 
     this.editableService.edit();
   }
@@ -74,17 +80,23 @@ export class CodeSchemeImportModalComponent implements OnInit {
     if (!this.file || !this.codeRegistry) {
       throw new Error('File and code registry must be set');
     }
+    console.log('uploadFile');
 
     this.uploading = true;
 
-    this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
-      if (codeSchemes.length > 0) {
-        this.router.navigate(codeSchemes[0].route);
-        this.modal.close();                  
-      }        
-    }, error => {
-      this.uploading = false;
-      this.errorModalService.openSubmitError();
-    });    
+    if (this.file !== undefined && this.codeRegistry !== undefined) {
+      this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
+        if (codeSchemes.length > 0) {
+          this.router.navigate(codeSchemes[0].route);
+          this.modal.close(false);
+        }
+      }, error => {
+        let errorModel : ApiResponseType = <ApiResponseType> error.json();
+        this.uploading = false;
+        const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
+        const errorObject = showDebug ? errorModel : undefined;
+        this.errorModalService.open('Submit error', errorModel.meta.message, errorObject);
+      });
+    }  
   }
 }
