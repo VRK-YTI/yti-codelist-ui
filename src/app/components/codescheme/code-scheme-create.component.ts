@@ -21,8 +21,8 @@ import { requiredList } from 'yti-common-ui/utils/validator';
   providers: [EditableService]
 })
 export class CodeSchemeCreateComponent {
-  
-  codeRegistriesLoading: boolean;
+
+  codeRegistriesLoaded = false;
 
   codeSchemeForm = new FormGroup({
     codeValue: new FormControl('', Validators.required),
@@ -52,7 +52,7 @@ export class CodeSchemeCreateComponent {
   }
 
   get loading(): boolean {
-    return this.codeRegistriesLoading;
+    return !this.codeRegistriesLoaded;
   }
 
   back() {

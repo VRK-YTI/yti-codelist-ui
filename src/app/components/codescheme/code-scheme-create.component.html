@@ -1,4 +1,4 @@
-<div [hidden]="!loading">
+<div *ngIf="loading">
   <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>
 
@@ -19,7 +19,7 @@
 
     <!-- TODO fetch or filter coderegistries only for this user -->
 
-    <app-coderegistry-input (loading)="codeRegistriesLoading = $event"
+    <app-coderegistry-input (loaded)="codeRegistriesLoaded = true"
                             [formControlName]="'codeRegistry'"></app-coderegistry-input>
 
     <app-literal-input [label]="'Code list value' | translate"

@@ -3,6 +3,9 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
+import { Options } from 'yti-common-ui/components/dropdown.component';
+import { TranslateService } from 'ng2-translate';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-coderegistry-input',
@@ -13,19 +16,7 @@ import { DataService } from '../../services/data.service';
       </dt>
       <dd>
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-            <span *ngIf="!selection" translate>No registry</span>
-            <span *ngIf="selection">{{selection.prefLabel | translateValue:true}}</span>
-          </button>
-
-          <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-          <button *ngFor="let option of options"
-                (click)="select(option)"
-                class="dropdown-item"
-                [class.active]="isSelected(option)">
-              {{option.prefLabel | translateValue:true}}
-            </button>
-          </div>
+          <app-dropdown [options]="codeRegistryOptions" [formControl]="control"></app-dropdown>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
       </dd>
@@ -34,19 +25,20 @@ import { DataService } from '../../services/data.service';
 })
 export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit {
 
-  @Output() loading = new EventEmitter<boolean>();
-  
+  @Output() loaded = new EventEmitter();
   control = new FormControl();
-
-  selection: CodeRegistry;
+  
   codeRegistries: CodeRegistry[];
+  codeRegistryOptions: Options<CodeRegistry>; 
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
 
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private translateService: TranslateService,
+              private languageService: LanguageService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
     
@@ -55,13 +47,16 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
     }
   }
 
-  ngOnInit() {
-
-    this.loading.emit(true);
-    
+  ngOnInit() {    
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistries = codeRegistries;
-      this.loading.emit(false);
+
+      this.codeRegistryOptions = [
+        { value: null, name: () => this.translateService.instant('No registry') },
+        ...codeRegistries.map(reg => ({ value: reg, name: () => this.languageService.translate(reg.prefLabel, true)}))
+      ];
+
+      this.loaded.emit();
     });
   }
 
@@ -77,16 +72,12 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
     return this.codeRegistries;
   }
 
-  isSelected(option: CodeRegistry) {
-    return this.selection === option;
-  }
-
-  select(option: CodeRegistry) {
-    this.selection = option;
-    this.propagateChange(option);
-  }
-
   writeValue(obj: any): void {
+
+    if (obj != null && !(obj instanceof CodeRegistry)) {
+      throw new Error('Not an CodeRegistry');
+    }
+
     this.control.setValue(obj);
   }
 
