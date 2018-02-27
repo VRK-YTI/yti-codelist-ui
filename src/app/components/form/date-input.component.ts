@@ -2,25 +2,27 @@ import { Component, Input, Optional, Self, ViewChild } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, NgControl } from '@angular/forms';
 import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { formatDisplayDate, fromPickerDate } from '../../utils/date';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-date-input',
   template: `
-    <dl>
+    <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
       </dt>
       <dd>
-        <div class="input-group">
+        <div *ngIf="editing" class="input-group">          
           <input class="form-control"
-                 placeholder="yyyy-mm-dd"
-                 [formControl]="control"
-                 ngbDatepicker
-                 #date="ngbDatepicker">
+                placeholder="yyyy-mm-dd"
+                [formControl]="control"
+                ngbDatepicker
+                #date="ngbDatepicker">
           <button class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
-          
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
+        <span *ngIf="!editing">{{value}}</span>
       </dd>
     </dl>
   `
@@ -52,6 +54,11 @@ export class DateInputComponent {
 
   get editing() {
     return this.editableService.editing && !this.restrict;
+  }
+
+  get value() {
+    const date = fromPickerDate(this.control.value);
+    return date ? formatDisplayDate(date) : '';
   }
 
   writeValue(obj: any): void {
