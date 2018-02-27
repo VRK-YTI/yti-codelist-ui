@@ -91,7 +91,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
           this.modal.close(false);
         }
       }, error => {
-        let errorModel : ApiResponseType = <ApiResponseType> error.json();
+        const errorModel: ApiResponseType = <ApiResponseType> error.json();
         this.uploading = false;
         const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
         const errorObject = showDebug ? errorModel : undefined;
