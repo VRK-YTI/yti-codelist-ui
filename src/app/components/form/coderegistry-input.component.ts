@@ -15,10 +15,11 @@ import { LanguageService } from '../../services/language.service';
         <label translate>Coderegistry</label>
       </dt>
       <dd>
-        <div ngbDropdown class="d-inline-block">
+        <div *ngIf="editing" ngbDropdown class="d-inline-block">
           <app-dropdown [options]="codeRegistryOptions" [formControl]="control"></app-dropdown>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
+        <span *ngIf="!editing">{{selection.prefLabel | translateValue:true}}</span>
       </dd>
     </dl>
   `
@@ -28,8 +29,7 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
   @Output() loaded = new EventEmitter();
   control = new FormControl();
   
-  codeRegistries: CodeRegistry[];
-  codeRegistryOptions: Options<CodeRegistry>; 
+  codeRegistryOptions: Options<CodeRegistry>;
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -49,8 +49,6 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
 
   ngOnInit() {    
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
-      this.codeRegistries = codeRegistries;
-
       this.codeRegistryOptions = [
         { value: null, name: () => this.translateService.instant('No registry') },
         ...codeRegistries.map(reg => ({ value: reg, name: () => this.languageService.translate(reg.prefLabel, true)}))
@@ -68,8 +66,8 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
     return this.editableService.editing;
   }
 
-  get options(): CodeRegistry[] {
-    return this.codeRegistries;
+  get selection(): CodeRegistry {
+    return this.control.value;
   }
 
   writeValue(obj: any): void {
