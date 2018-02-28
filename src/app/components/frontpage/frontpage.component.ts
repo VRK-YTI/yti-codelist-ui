@@ -17,6 +17,7 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { anyMatching } from 'yti-common-ui/utils/array';
 import { Option } from 'yti-common-ui/components/dropdown.component';
 import { Subscription } from 'rxjs';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 
 @Component({
@@ -52,6 +53,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
               private userService: UserService,
               private languageService: LanguageService,
               private translateService: TranslateService,
+              private authorizationManager: AuthorizationManager,
               locationService: LocationService) {
 
     locationService.atFrontPage();
@@ -161,10 +163,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     return this.dataClassifications == null || this.filteredCodeSchemes == null;
   }
 
-  isLoggedIn() {
-    return this.userService.isLoggedIn();
-  }
-
   importCodeScheme() {
     this.router.navigate(['importandcreatecodescheme']);
   }
@@ -179,6 +177,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   }
 
   canCreateCodeScheme() {
-    return this.codeRegistries.length > 0;
+    return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
   }
 }

@@ -49,8 +49,8 @@
                                [filterSubject]="status$"
                                [options]="statusOptions"></app-filter-dropdown>
 
-          <div *ngIf="isLoggedIn()" class="pull-right d-inline-block">
-            <button type="button" *ngIf ="canCreateCodeScheme()"
+          <div *ngIf="canCreateCodeScheme()" class="pull-right d-inline-block">
+            <button type="button"
                     class="btn btn-action"
                     (click)="importCodeScheme()"
                     translate>Add code list</button>
