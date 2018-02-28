@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-16 16:00+0200\n"
+"PO-Revision-Date: 2018-02-28 17:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 1.8.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -17,6 +17,21 @@ msgid "Link type"
 msgstr ""
 
 msgid "Add classification"
+msgstr ""
+
+msgid "Coderegistry"
+msgstr ""
+
+msgid "No registry"
+msgstr ""
+
+msgid "Invalid date"
+msgstr ""
+
+msgid "Start date"
+msgstr ""
+
+msgid "End date"
 msgstr ""
 
 msgid "Save"
@@ -64,25 +79,16 @@ msgstr ""
 msgid "Short name"
 msgstr ""
 
-msgid "Create code"
-msgstr ""
-
-msgid "Start date"
-msgstr ""
-
-msgid "End date"
-msgstr ""
-
 msgid "Validity"
+msgstr ""
+
+msgid "Create code"
 msgstr ""
 
 msgid "Last modification"
 msgstr ""
 
 msgid "Links"
-msgstr ""
-
-msgid "Coderegistry"
 msgstr ""
 
 msgid "Classification"
@@ -131,9 +137,6 @@ msgid "Governance policy"
 msgstr ""
 
 msgid "Create code list"
-msgstr ""
-
-msgid "No registry"
 msgstr ""
 
 msgid "Add code list"
@@ -266,6 +269,9 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
+msgid "ADMIN"
+msgstr "Admin"
+
 msgid "Front page"
 msgstr ""
 
@@ -293,9 +299,6 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
-
 msgid "Submit error"
 msgstr ""
 
@@ -313,8 +316,8 @@ msgstr ""
 msgid "REMOVE LINK?"
 msgstr ""
 
-msgid "ADMIN"
-msgstr "Admin"
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "DATA_MODEL_EDITOR"
 msgstr "Data model editor"

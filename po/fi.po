@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-28 17:10+0200\n"
+"PO-Revision-Date: 2018-02-28 17:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -18,6 +18,21 @@ msgstr "Linkin tyyppi"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
+
+msgid "Coderegistry"
+msgstr "Rekisteri"
+
+msgid "No registry"
+msgstr "Ei rekisteriä"
+
+msgid "Invalid date"
+msgstr "Virheellinen päivämäärä"
+
+msgid "Start date"
+msgstr "Alkupäivä"
+
+msgid "End date"
+msgstr "Loppupäivä"
 
 msgid "Save"
 msgstr "Tallenna"
@@ -64,26 +79,17 @@ msgstr "Kuvaus"
 msgid "Short name"
 msgstr "Lyhyt nimi"
 
-msgid "Create code"
-msgstr "Luo koodi"
-
-msgid "Start date"
-msgstr "Alkupäivä"
-
-msgid "End date"
-msgstr "Loppupäivä"
-
 msgid "Validity"
 msgstr "Voimassaolo"
+
+msgid "Create code"
+msgstr "Luo koodi"
 
 msgid "Last modification"
 msgstr "Viimeisin muokkaus"
 
 msgid "Links"
 msgstr "Linkit"
-
-msgid "Coderegistry"
-msgstr "Rekisteri"
 
 msgid "Classification"
 msgstr "Luokitus"
@@ -132,9 +138,6 @@ msgstr "Sitovuustaso"
 
 msgid "Create code list"
 msgstr "Luo koodisto"
-
-msgid "No registry"
-msgstr "Ei rekisteriä"
 
 msgid "Add code list"
 msgstr "Lisää koodisto"
@@ -273,6 +276,9 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
+msgid "ADMIN"
+msgstr "Ylläpitäjä"
+
 msgid "Front page"
 msgstr "Etusivu"
 
@@ -300,9 +306,6 @@ msgstr "Kaikki tilat"
 msgid "Code"
 msgstr "Koodi"
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
-
 msgid "Submit error"
 msgstr "Toiminnossa tapahtui virhe"
 
@@ -322,8 +325,8 @@ msgstr ""
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
 
-msgid "ADMIN"
-msgstr "Ylläpitäjä"
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "DATA_MODEL_EDITOR"
 msgstr "Tietomallintaja"
