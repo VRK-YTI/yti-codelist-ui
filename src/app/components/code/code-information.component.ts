@@ -3,7 +3,6 @@ import { Code } from '../../entities/code';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
-import { toPickerDate } from '../../utils/date';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
@@ -22,13 +21,13 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     description: new FormControl(''),
     shortName: new FormControl(''),
     externalReferences: new FormControl(),
-    startDate: new FormControl(),
-    endDate: new FormControl(),
+    validity: new FormControl(),
     status: new FormControl()
   });
 
   constructor(private editableService: EditableService,
               public languageService: LanguageService) {
+
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
 
@@ -41,9 +40,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
     this.codeForm.reset({
       ...rest,
-      externalReferences: externalReferences.map(link => link.clone()),
-      startDate: toPickerDate(startDate),
-      endDate: toPickerDate(endDate),
+      validity: { start: startDate, end: endDate },
+      externalReferences: externalReferences.map(link => link.clone())
     });
   }
 

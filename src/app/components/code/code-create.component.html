@@ -15,31 +15,34 @@
 
   <form [formGroup]="codeForm" #form="ngForm">
 
-    <app-editable-buttons [form]="form"></app-editable-buttons>
+    <div class="row">
+      <div class="col-12">
+        <app-editable-buttons [form]="form"></app-editable-buttons>
+      </div>
+    </div>
 
-    <app-localizable-literal [label]="'Code list' | translate"
-                             [value]="codeScheme.prefLabel"></app-localizable-literal>
+    <div class="row">
+      <div class="col-lg-8 col-md-10">
+        <app-localizable-literal [label]="'Code list' | translate"
+                                 [value]="codeScheme.prefLabel"></app-localizable-literal>
 
-    <app-literal-input [label]="'Code value' | translate"
-                       [formControlName]="'codeValue'"></app-literal-input>
+        <app-literal-input [label]="'Code value' | translate"
+                           [formControlName]="'codeValue'"></app-literal-input>
 
-    <app-localizable-input [label]="'Code name' | translate"
-                           [formControlName]="'prefLabel'"></app-localizable-input>
+        <app-localizable-input [label]="'Code name' | translate"
+                               [formControlName]="'prefLabel'"></app-localizable-input>
 
-    <app-status-input [formControlName]="'status'"></app-status-input>
+        <app-status-input [formControlName]="'status'"></app-status-input>
 
-    <app-localizable-textarea [label]="'Description' | translate"
-                              [formControlName]="'description'"></app-localizable-textarea>
+        <app-localizable-textarea [label]="'Description' | translate"
+                                  [formControlName]="'description'"></app-localizable-textarea>
 
-    <app-literal-input [label]="'Short name' | translate"
-                       [formControlName]="'shortName'"></app-literal-input>
+        <app-literal-input [label]="'Short name' | translate"
+                           [formControlName]="'shortName'"></app-literal-input>
 
-    <div>
-      <app-date-input [label]="'Start date' | translate"
-                      [formControlName]="'startDate'"></app-date-input>
-  
-      <app-date-input [label]="'End date' | translate"
-                      [formControlName]="'endDate'"></app-date-input>
+        <app-date-range-input [label]="'Validity' | translate"
+                              [formControlName]="'validity'"></app-date-range-input>
+      </div>
     </div>
   </form>
 </div>

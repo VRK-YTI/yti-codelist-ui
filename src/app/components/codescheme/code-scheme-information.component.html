@@ -1,76 +1,73 @@
 <form [formGroup]="codeSchemeForm" #form="ngForm">
 
-  <app-editable-buttons [form]="form"
-                        [entity]="codeScheme"></app-editable-buttons>
-
-  <app-literal [label]="'Code value' | translate"
-               [value]="codeScheme.codeValue"></app-literal>
-
-  <app-localizable-input [label]="'Code list name' | translate"
-                         [formControlName]="'prefLabel'"></app-localizable-input>
-
-  <app-literal *ngIf="codeScheme.codeRegistry"
-               [label]="'Coderegistry' | translate"
-               [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>
-
-  <app-classifications-input [label]="'Classification' | translate"
-                             [formControlName]="'dataClassifications'"></app-classifications-input>
-
-  <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
-    <dt>
-      <label translate>Organization</label>
-    </dt>
-    <dd>
-      <div *ngFor="let organization of codeScheme.codeRegistry.organizations">
-        <span>{{organization.prefLabel | translateValue:true}}</span><br/>
-      </div>
-    </dd>
-  </dl>
-
-  <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'description'"></app-localizable-textarea>
-
-  <app-localizable-textarea [label]="'Definition' | translate"
-                            [formControlName]="'definition'"></app-localizable-textarea>
-
-  <app-localizable-textarea [label]="'Changenote' | translate"
-                            [formControlName]="'changeNote'"></app-localizable-textarea>
-
-
-  <app-literal-input [label]="'Source' | translate"
-                     [formControlName]="'source'"
-                     [restrict]="restricted"></app-literal-input>
-
-  <app-literal-input [label]="'Legal base' | translate"
-                     [formControlName]="'legalBase'"
-                     [restrict]="restricted"></app-literal-input>
-
-  <app-literal-input [label]="'Governance policy' | translate"
-                     [formControlName]="'governancePolicy'"
-                     [restrict]="restricted"></app-literal-input>
-
-  <app-status-input [formControlName]="'status'"
-                    [restrict]="restricted"></app-status-input>
-
-  <div *ngIf="!editing || restricted">
-    <app-literal [label]="'Validity' | translate"
-                 [value]="codeScheme.validity"></app-literal>
+  <div class="row">
+    <div class="col-12">
+      <app-editable-buttons [form]="form"
+                            [entity]="codeScheme"></app-editable-buttons>
+    </div>
   </div>
 
-  <!-- TODO componentify as editable aware date range selection -->
-  <div *ngIf="editing">
-    <app-date-input [label]="'Start date' | translate"
-                    [formControlName]="'startDate'"></app-date-input>
+  <div class="row">
+    <div class="col-lg-8 col-md-10">
+      <app-literal [label]="'Code value' | translate"
+                   [value]="codeScheme.codeValue"></app-literal>
 
-    <app-date-input [label]="'End date' | translate"
-                    [formControlName]="'endDate'"></app-date-input>
+      <app-localizable-input [label]="'Code list name' | translate"
+                             [formControlName]="'prefLabel'"></app-localizable-input>
+
+      <app-literal *ngIf="codeScheme.codeRegistry"
+                   [label]="'Coderegistry' | translate"
+                   [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>
+
+      <app-classifications-input [label]="'Classification' | translate"
+                                 [formControlName]="'dataClassifications'"></app-classifications-input>
+
+      <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
+        <dt>
+          <label translate>Organization</label>
+        </dt>
+        <dd>
+          <div *ngFor="let organization of codeScheme.codeRegistry.organizations">
+            <span>{{organization.prefLabel | translateValue:true}}</span><br/>
+          </div>
+        </dd>
+      </dl>
+
+      <app-localizable-textarea [label]="'Description' | translate"
+                                [formControlName]="'description'"></app-localizable-textarea>
+
+      <app-localizable-textarea [label]="'Definition' | translate"
+                                [formControlName]="'definition'"></app-localizable-textarea>
+
+      <app-localizable-textarea [label]="'Changenote' | translate"
+                                [formControlName]="'changeNote'"></app-localizable-textarea>
+
+
+      <app-literal-input [label]="'Source' | translate"
+                         [formControlName]="'source'"
+                         [restrict]="restricted"></app-literal-input>
+
+      <app-literal-input [label]="'Legal base' | translate"
+                         [formControlName]="'legalBase'"
+                         [restrict]="restricted"></app-literal-input>
+
+      <app-literal-input [label]="'Governance policy' | translate"
+                         [formControlName]="'governancePolicy'"
+                         [restrict]="restricted"></app-literal-input>
+
+      <app-status-input [formControlName]="'status'"
+                        [restrict]="restricted"></app-status-input>
+
+      <app-date-range-input [label]="'Validity' | translate"
+                            [formControlName]="'validity'"></app-date-range-input>
+
+      <app-literal [label]="'Last modification' | translate"
+                   [value]="codeScheme.modifiedDisplayValue"></app-literal>
+
+      <app-external-references-input [label]="'Links' | translate"
+                                     [codeSchemeId]="codeScheme.id"
+                                     [formControlName]="'externalReferences'"></app-external-references-input>
+    </div>
   </div>
-
-  <app-literal [label]="'Last modification' | translate"
-               [value]="codeScheme.modifiedDisplayValue"></app-literal>
-
-  <app-external-references-input [label]="'Links' | translate"
-                                 [codeSchemeId]="codeScheme.id"
-                                 [formControlName]="'externalReferences'"></app-external-references-input>
 
 </form>

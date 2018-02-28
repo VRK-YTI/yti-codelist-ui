@@ -8,7 +8,6 @@ import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Code } from '../../entities/code';
-import { toPickerDate } from '../../utils/date';
 import { LanguageService } from '../../services/language.service';
 import { requiredList } from 'yti-common-ui/utils/validator';
 
@@ -33,8 +32,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),
-    startDate: new FormControl(),
-    endDate: new FormControl(),
+    validity: new FormControl(),
     status: new FormControl()
   });
 
@@ -60,9 +58,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     this.codeSchemeForm.reset({
       ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
-      dataClassifications: dataClassifications.map(classification => classification.clone()),      
-      startDate: toPickerDate(startDate),
-      endDate: toPickerDate(endDate)
+      dataClassifications: dataClassifications.map(classification => classification.clone()),
+      validity: { start: startDate, end: endDate }
     });
   }
 

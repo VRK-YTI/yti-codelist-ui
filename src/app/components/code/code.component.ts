@@ -9,7 +9,6 @@ import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { CodeScheme } from '../../entities/code-scheme';
-import { fromPickerDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code',
@@ -87,13 +86,13 @@ export class CodeComponent implements OnInit, EditingComponent {
 
     console.log('Store Code changes to server!');
 
-    const { startDate, endDate, ...rest } = formData;
+    const { validity, ...rest } = formData;
     const updatedCode = this.code.clone();
 
     Object.assign(updatedCode, {
       ...rest,
-      startDate: fromPickerDate(startDate),
-      endDate: fromPickerDate(endDate)
+      startDate: validity.start,
+      endDate: validity.end
     });
 
     return this.dataService.saveCode(updatedCode.serialize()).do(() => this.ngOnInit());

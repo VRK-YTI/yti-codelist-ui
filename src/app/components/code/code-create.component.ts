@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { formatDate, fromPickerDate } from '../../utils/date';
+import { formatDate } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
 import { Status } from 'yti-common-ui/entities/status';
@@ -24,8 +24,7 @@ export class CodeCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     shortName: new FormControl(''),
-    startDate: new FormControl(),
-    endDate: new FormControl(),
+    validity: new FormControl(),
     status: new FormControl('DRAFT' as Status)
   });
 
@@ -63,12 +62,12 @@ export class CodeCreateComponent implements OnInit {
 
     console.log('Saving new Code');
 
-    const { startDate, endDate, ...rest } = formData;
+    const { validity, ...rest } = formData;
 
     const code: CodeType = {
       ...rest,
-      startDate: formatDate(fromPickerDate(startDate)),
-      endDate: formatDate(fromPickerDate(endDate))
+      startDate: formatDate(validity.start),
+      endDate: formatDate(validity.end)
     };
 
     return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.id)

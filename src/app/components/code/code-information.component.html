@@ -1,46 +1,43 @@
 <form [formGroup]="codeForm" #form="ngForm">
 
-  <app-editable-buttons [form]="form"
-                        [entity]="code"></app-editable-buttons>
-
-  <app-localizable-literal [label]="'Code list' | translate"
-                           [value]="code.codeScheme.prefLabel"></app-localizable-literal>
-
-  <app-literal [label]="'Code value' | translate"
-               [value]="code.codeValue"></app-literal>
-
-  <app-localizable-input [label]="'Code name' | translate"
-                         [formControlName]="'prefLabel'"></app-localizable-input>
-
-  <app-status-input [formControlName]="'status'"
-                    [restrict]="restricted"></app-status-input>
-
-  <app-localizable-textarea [label]="'Description' | translate"
-                            [formControlName]="'description'"></app-localizable-textarea>
-
-  <app-literal-input [label]="'Short name' | translate"
-                     [formControlName]="'shortName'"
-                     [restrict]="restricted"></app-literal-input>
-
-  <!-- TODO componentify as editable aware date range selection -->
-  <div *ngIf="!editing || restricted">
-    <app-literal [label]="'Validity' | translate"
-                 [value]="code.validity"></app-literal>
+  <div class="row">
+    <div class="col-12">
+      <app-editable-buttons [form]="form"
+                            [entity]="code"></app-editable-buttons>
+    </div>
   </div>
 
-  <div *ngIf="editing">
-    <app-date-input [label]="'Start date' | translate"
-                    [formControlName]="'startDate'"></app-date-input>
+  <div class="row">
+    <div class="col-lg-8 col-md-10">
+      <app-localizable-literal [label]="'Code list' | translate"
+                               [value]="code.codeScheme.prefLabel"></app-localizable-literal>
 
-    <app-date-input [label]="'End date' | translate"
-                    [formControlName]="'endDate'"></app-date-input>
+      <app-literal [label]="'Code value' | translate"
+                   [value]="code.codeValue"></app-literal>
+
+      <app-localizable-input [label]="'Code name' | translate"
+                             [formControlName]="'prefLabel'"></app-localizable-input>
+
+      <app-status-input [formControlName]="'status'"
+                        [restrict]="restricted"></app-status-input>
+
+      <app-localizable-textarea [label]="'Description' | translate"
+                                [formControlName]="'description'"></app-localizable-textarea>
+
+      <app-literal-input [label]="'Short name' | translate"
+                         [formControlName]="'shortName'"
+                         [restrict]="restricted"></app-literal-input>
+
+      <app-date-range-input [label]="'Validity' | translate"
+                            [formControlName]="'validity'" ></app-date-range-input>
+
+      <app-literal [label]="'Last modification' | translate"
+                   [value]="code.modifiedDisplayValue"></app-literal>
+
+      <app-external-references-input [label]="'Links' | translate"
+                                     [codeSchemeId]="code.codeScheme.id"
+                                     [formControlName]="'externalReferences'"></app-external-references-input>
+    </div>
   </div>
-
-  <app-literal [label]="'Last modification' | translate"
-               [value]="code.modifiedDisplayValue"></app-literal>
-
-  <app-external-references-input [label]="'Links' | translate"
-                             [codeSchemeId]="code.codeScheme.id"
-                             [formControlName]="'externalReferences'"></app-external-references-input>
 
 </form>
