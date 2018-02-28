@@ -2,7 +2,7 @@ import { Component, Input, Optional, Self, ViewChild } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, NgControl } from '@angular/forms';
 import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
-import { formatDisplayDate, fromPickerDate } from '../../utils/date';
+import { formatDisplayDate, fromPickerDate, toPickerDate } from '../../utils/date';
 import { Moment } from 'moment';
 
 @Component({
@@ -13,16 +13,16 @@ import { Moment } from 'moment';
         <label>{{label}}</label>
       </dt>
       <dd>
-        <div *ngIf="editing" class="input-group">          
+        <div *ngIf="editing" class="input-group">
           <input class="form-control"
-                placeholder="yyyy-mm-dd"
-                [formControl]="control"
-                ngbDatepicker
-                #date="ngbDatepicker">
+                 placeholder="yyyy-mm-dd"
+                 [formControl]="control"
+                 ngbDatepicker
+                 #date="ngbDatepicker">
           <button class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
-        <span *ngIf="!editing">{{value}}</span>
+        <span *ngIf="!editing">{{displayName}}</span>
       </dd>
     </dl>
   `
@@ -41,7 +41,7 @@ export class DateInputComponent {
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService) {
 
-    this.control.valueChanges.subscribe(x => this.propagateChange(x));
+    this.control.valueChanges.subscribe(() => this.propagateChange(this.value));
 
     if (parentControl) {
       parentControl.valueAccessor = this;
@@ -56,13 +56,16 @@ export class DateInputComponent {
     return this.editableService.editing && !this.restrict;
   }
 
-  get value() {
-    const date = fromPickerDate(this.control.value);
-    return date ? formatDisplayDate(date) : '';
+  get value(): Moment|null {
+    return fromPickerDate(this.control.value);
   }
 
-  writeValue(obj: any): void {
-    this.control.setValue(obj);
+  get displayName() {
+    return formatDisplayDate(fromPickerDate(this.control.value));
+  }
+
+  writeValue(obj: Moment|null): void {
+    this.control.setValue(toPickerDate(obj));
   }
 
   registerOnChange(fn: any): void {
