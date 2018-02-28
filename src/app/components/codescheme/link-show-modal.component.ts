@@ -1,8 +1,7 @@
 import { Component, Injectable, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CC0LicenseLinkId, CCBy40LicenseLinkId, ExternalReference } from '../../entities/external-reference';
+import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { Localizable } from 'yti-common-ui/types/localization';
 import { ModalService } from '../../services/modal.service';
 
 @Injectable()
