@@ -69,6 +69,7 @@ export class NavigationBarComponent {
 
   fakeUser(userEmail: string) {
     this.userService.updateLoggedInUser(userEmail);
+    window.location.reload();
   }
 
   showGroupManagementUrl() {
