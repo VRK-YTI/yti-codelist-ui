@@ -6,6 +6,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchClassificationModalService } from './search-classification-modal.component';
 import { LanguageService } from '../../services/language.service';
 import { remove } from 'yti-common-ui/utils/array';
+import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
   
@@ -71,7 +72,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
   }
 
   get dataClassifications(): Code[] {
-    return this.control.value;
+    return (this.control.value as Code[]).sort(comparingPrimitive<Code>(classification => classification.codeValue));
   }
 
   addDataClassification() {
