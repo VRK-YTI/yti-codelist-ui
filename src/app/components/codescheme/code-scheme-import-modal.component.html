@@ -34,7 +34,7 @@
                 <button *ngFor="let selectedRegistry of codeRegistries"
                         (click)="codeRegistry = selectedRegistry"
                         class="dropdown-item"
-                        [class.active]="selectedRegistry.codeValue == register">
+                        [class.active]="codeRegistry != null && selectedRegistry.codeValue == codeRegistry.codeValue">
                   {{selectedRegistry.prefLabel | translateValue:true}}
                 </button>
               </div>
