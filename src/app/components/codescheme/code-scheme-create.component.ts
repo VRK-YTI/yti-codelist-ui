@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
-import { formatDate } from '../../utils/date';
+import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
 import { requiredList } from 'yti-common-ui/utils/validator';
@@ -31,7 +31,7 @@ export class CodeSchemeCreateComponent {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
-    validity: new FormControl(),
+    validity: new FormControl(null, validDateRange),
     dataClassifications: new FormControl([], [requiredList]),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required)

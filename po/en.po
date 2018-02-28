@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-02-28 17:51+0200\n"
+"PO-Revision-Date: 2018-02-28 18:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -23,9 +23,6 @@ msgid "Coderegistry"
 msgstr ""
 
 msgid "No registry"
-msgstr ""
-
-msgid "Invalid date"
 msgstr ""
 
 msgid "Start date"
@@ -366,3 +363,9 @@ msgstr "Coderegistry already exists."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "The data is missing a column with the header CLASSIFICATION."
+
+msgid "invalidDate"
+msgstr "Invalid date"
+
+msgid "invalidDateRange"
+msgstr "Invalid date range"

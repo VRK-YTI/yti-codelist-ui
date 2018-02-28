@@ -16,9 +16,6 @@ msgstr ""
 msgid "No registry"
 msgstr ""
 
-msgid "Invalid date"
-msgstr ""
-
 msgid "Start date"
 msgstr ""
 
@@ -357,4 +354,10 @@ msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr ""
+
+msgid "invalidDate"
+msgstr ""
+
+msgid "invalidDateRange"
 msgstr ""

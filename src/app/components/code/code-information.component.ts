@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LanguageService } from '../../services/language.service';
+import { validDateRange } from '../../utils/date';
 
 @Component({
   selector: 'app-code-information',
@@ -21,7 +22,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     description: new FormControl(''),
     shortName: new FormControl(''),
     externalReferences: new FormControl(),
-    validity: new FormControl(),
+    validity: new FormControl(null, validDateRange),
     status: new FormControl()
   });
 

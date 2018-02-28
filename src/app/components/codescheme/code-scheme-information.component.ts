@@ -10,6 +10,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { Code } from '../../entities/code';
 import { LanguageService } from '../../services/language.service';
 import { requiredList } from 'yti-common-ui/utils/validator';
+import { validDateRange } from '../../utils/date';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -32,7 +33,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),
-    validity: new FormControl(),
+    validity: new FormControl(null, validDateRange),
     status: new FormControl()
   });
 

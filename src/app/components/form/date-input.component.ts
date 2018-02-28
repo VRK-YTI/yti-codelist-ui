@@ -13,17 +13,14 @@ import { Moment } from 'moment';
         <label>{{label}}</label>
       </dt>
       <dd>
-        <div *ngIf="editing" class="input-group">
-          <input class="form-control"
-                 placeholder="yyyy-mm-dd"
-                 [formControl]="control"
-                 ngbDatepicker
-                 #date="ngbDatepicker">
-          <button class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
-          <div *ngIf="invalid">
-            <ul class="errors">
-              <li translate>Invalid date</li>
-            </ul>
+        <div *ngIf="editing">
+          <div class="input-group">
+            <input class="form-control"
+                   placeholder="yyyy-mm-dd"
+                   [formControl]="control"
+                   ngbDatepicker
+                   #date="ngbDatepicker">
+            <button class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
           </div>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
@@ -47,9 +44,7 @@ export class DateInputComponent {
               private editableService: EditableService) {
 
     this.control.valueChanges.subscribe(() => {
-      if (!this.invalid) {
-        this.propagateChange(this.value);
-      }
+      this.propagateChange(this.value);
     });
 
     if (parentControl) {

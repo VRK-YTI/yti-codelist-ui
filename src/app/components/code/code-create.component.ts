@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { formatDate } from '../../utils/date';
+import { formatDate, validDateRange } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
 import { Status } from 'yti-common-ui/entities/status';
@@ -24,7 +24,7 @@ export class CodeCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     shortName: new FormControl(''),
-    validity: new FormControl(),
+    validity: new FormControl(null, validDateRange),
     status: new FormControl('DRAFT' as Status)
   });
 

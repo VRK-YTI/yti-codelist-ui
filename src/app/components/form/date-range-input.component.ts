@@ -1,8 +1,7 @@
-import { Component, Input, Optional, Self, ViewChild } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, NgControl } from '@angular/forms';
-import { NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
-import { DateRange, formatDisplayDate, fromPickerDate, toPickerDate } from '../../utils/date';
+import { DateRange, formatDisplayDate, validDate } from '../../utils/date';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -17,47 +16,14 @@ import { Observable } from 'rxjs/Observable';
 
           <div class="row">
             <div class="col-md-6">
-              <dl>
-                <dt translate>Start date</dt>
-                <dd>
-                  <div class="input-group">
-                    <input class="form-control"
-                           placeholder="yyyy-mm-dd"
-                           [formControl]="startControl"
-                           ngbDatepicker
-                           #startDate="ngbDatepicker">
-                    <button class="input-group-addon icon-calendar" (click)="startDate.toggle()" type="button"></button>
-                  </div>
-                  <div *ngIf="invalidStart">
-                    <ul class="errors">
-                      <li translate>Invalid date</li>
-                    </ul>
-                  </div>
-                </dd>
-              </dl>
+              <app-date-input [label]="'Start date' | translate" [formControl]="startControl"></app-date-input>
             </div>
             
             <div class="col-md-6">
-              <dl>
-                <dt translate>End date</dt>
-                <dd>
-                  <div class="input-group">
-                    <input class="form-control"
-                           placeholder="yyyy-mm-dd"
-                           [formControl]="endControl"
-                           ngbDatepicker
-                           #endDate="ngbDatepicker">
-                    <button class="input-group-addon icon-calendar" (click)="endDate.toggle()" type="button"></button>
-                  </div>
-                  <div *ngIf="invalidEnd">
-                    <ul class="errors">
-                      <li translate>Invalid date</li>
-                    </ul>
-                  </div>
-                </dd>
-              </dl>
+              <app-date-input [label]="'End date' | translate" [formControl]="endControl"></app-date-input>
             </div>
           </div>
+          
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
 
@@ -68,14 +34,11 @@ import { Observable } from 'rxjs/Observable';
 })
 export class DateRangeInputComponent {
 
-  @ViewChild('startDate') startDate: NgbInputDatepicker;
-  @ViewChild('endDate') endDate: NgbInputDatepicker;
-
   @Input() label: string;
   @Input() restrict = false;
 
-  startControl = new FormControl();
-  endControl = new FormControl();
+  startControl = new FormControl(null, validDate);
+  endControl = new FormControl(null, validDate);
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -84,11 +47,7 @@ export class DateRangeInputComponent {
               private editableService: EditableService) {
 
     Observable.combineLatest(this.startControl.valueChanges, this.endControl.valueChanges)
-      .subscribe(() => {
-        if (!this.invalid) {
-          this.propagateChange(this.value);
-        }
-      });
+      .subscribe(() => this.propagateChange(this.value));
 
     if (parentControl) {
       parentControl.valueAccessor = this;
@@ -108,11 +67,11 @@ export class DateRangeInputComponent {
   }
 
   get invalidStart() {
-    return typeof this.startControl.value === 'string';
+    return this.startControl.value === undefined;
   }
 
   get invalidEnd() {
-    return typeof this.endControl.value === 'string';
+    return this.endControl.value === undefined;
   }
 
   get displayName() {
@@ -135,19 +94,14 @@ export class DateRangeInputComponent {
     }
 
     return {
-      start: fromPickerDate(this.startControl.value),
-      end: fromPickerDate(this.endControl.value)
+      start: this.startControl.value,
+      end: this.endControl.value
     };
   }
 
   writeValue(obj: DateRange): void {
-    if (obj) {
-      this.startControl.setValue(toPickerDate(obj.start));
-      this.endControl.setValue(toPickerDate(obj.end));
-    } else {
-      this.startControl.setValue(null);
-      this.endControl.setValue(null);
-    }
+    this.startControl.setValue(obj ? obj.start : null);
+    this.endControl.setValue(obj ? obj.end : null);
   }
 
   registerOnChange(fn: any): void {

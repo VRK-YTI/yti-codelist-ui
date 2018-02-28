@@ -1,6 +1,7 @@
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
+import { FormControl } from '@angular/forms';
 
 export interface DateRange {
   start: Moment|null;
@@ -61,4 +62,21 @@ export function fromPickerDate(date: NgbDate|null): Moment|null {
   }
 
   return parseDate(`${date.year}-${date.month}-${date.day}`);
+}
+
+export function validDate(control: FormControl) {
+  return control.value !== undefined ? null : {
+    invalidDate: {
+      valid: false
+    }
+  };
+}
+
+export function validDateRange(control: FormControl) {
+
+  return control.value !== undefined ? null : {
+    invalidDateRange: {
+      valid: false
+    }
+  };
 }
