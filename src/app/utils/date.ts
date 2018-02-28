@@ -2,6 +2,11 @@ import * as moment from 'moment';
 import { Moment } from 'moment';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 
+export interface DateRange {
+  start: Moment|null;
+  end: Moment|null;
+}
+
 function assertValid(moment: Moment): Moment {
   if (moment.isValid()) {
     return moment;

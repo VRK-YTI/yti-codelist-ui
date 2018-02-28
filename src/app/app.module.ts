@@ -58,11 +58,12 @@ import { ExternalReferencesInputComponent } from './components/form/external-ref
 import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
 import { ClassificationsInputComponent } from './components/form/classifications-input.component';
-import { 
-  SearchClassificationModalComponent, 
-  SearchClassificationModalService 
+import {
+  SearchClassificationModalComponent,
+  SearchClassificationModalService
 } from './components/form/search-classification-modal.component';
 import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
+import { DateRangeInputComponent } from './components/form/date-range-input.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -144,6 +145,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ExternalReferencesInputComponent,
     StatusInputComponent,
     DateInputComponent,
+    DateRangeInputComponent,
     ClassificationsInputComponent,
     SearchClassificationModalComponent,
     CodeRegistryInputComponent
