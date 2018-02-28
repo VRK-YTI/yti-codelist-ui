@@ -17,8 +17,6 @@
 
     <app-editable-buttons [form]="form"></app-editable-buttons>
 
-    <!-- TODO fetch or filter coderegistries only for this user -->
-
     <app-coderegistry-input (loaded)="codeRegistriesLoaded = true"
                             [formControlName]="'codeRegistry'"></app-coderegistry-input>
 

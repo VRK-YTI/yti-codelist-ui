@@ -1,4 +1,4 @@
-import { Component, Input, Optional, Self, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Optional, Self, OnInit, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { CodeRegistry } from '../../entities/code-registry';
@@ -28,7 +28,7 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
 
   @Output() loaded = new EventEmitter();
   control = new FormControl();
-  
+
   codeRegistryOptions: Options<CodeRegistry>;
 
   private propagateChange: (fn: any) => void = () => {};
@@ -41,13 +41,16 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
               private languageService: LanguageService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
-    
+
     if (parentControl) {
       parentControl.valueAccessor = this;
     }
   }
 
-  ngOnInit() {    
+  ngOnInit() {
+
+    // TODO: fetch or filter code registries only for this user
+
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistryOptions = [
         { value: null, name: () => this.translateService.instant('No registry') },
