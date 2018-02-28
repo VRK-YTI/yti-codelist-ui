@@ -48,6 +48,7 @@ import { Observable } from 'rxjs/Observable';
               </dl>
             </div>
           </div>
+          <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
 
         <span *ngIf="!editing">{{displayName}}</span>
