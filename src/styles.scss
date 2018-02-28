@@ -54,3 +54,14 @@ nav.navbar {
   white-space: -moz-pre-wrap;
   white-space: -o-pre-wrap;
 }
+
+ul.errors {
+
+  padding-left: 0;
+  margin-bottom: 0;
+
+  li {
+    color: $danger;
+    list-style: none;
+  }
+}

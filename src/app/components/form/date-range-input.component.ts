@@ -28,6 +28,11 @@ import { Observable } from 'rxjs/Observable';
                            #startDate="ngbDatepicker">
                     <button class="input-group-addon icon-calendar" (click)="startDate.toggle()" type="button"></button>
                   </div>
+                  <div *ngIf="invalidStart">
+                    <ul class="errors">
+                      <li translate>Invalid date</li>
+                    </ul>
+                  </div>
                 </dd>
               </dl>
             </div>
@@ -43,6 +48,11 @@ import { Observable } from 'rxjs/Observable';
                            ngbDatepicker
                            #endDate="ngbDatepicker">
                     <button class="input-group-addon icon-calendar" (click)="endDate.toggle()" type="button"></button>
+                  </div>
+                  <div *ngIf="invalidEnd">
+                    <ul class="errors">
+                      <li translate>Invalid date</li>
+                    </ul>
                   </div>
                 </dd>
               </dl>
@@ -74,7 +84,11 @@ export class DateRangeInputComponent {
               private editableService: EditableService) {
 
     Observable.combineLatest(this.startControl.valueChanges, this.endControl.valueChanges)
-      .subscribe(() => this.propagateChange(this.value));
+      .subscribe(() => {
+        if (!this.invalid) {
+          this.propagateChange(this.value);
+        }
+      });
 
     if (parentControl) {
       parentControl.valueAccessor = this;
@@ -89,13 +103,37 @@ export class DateRangeInputComponent {
     return this.editableService.editing && !this.restrict;
   }
 
-  get displayName() {
-    const start = formatDisplayDate(fromPickerDate(this.startControl.value));
-    const end = formatDisplayDate(fromPickerDate(this.endControl.value));
-    return (start || end) ? start + ' - ' + end : '';
+  get invalid() {
+    return this.invalidStart || this.invalidEnd;
   }
 
-  get value(): DateRange {
+  get invalidStart() {
+    return typeof this.startControl.value === 'string';
+  }
+
+  get invalidEnd() {
+    return typeof this.endControl.value === 'string';
+  }
+
+  get displayName() {
+
+    const value = this.value;
+
+    if (!value) {
+      return '';
+    } else {
+      const start = formatDisplayDate(value.start);
+      const end = formatDisplayDate(value.end);
+      return (start || end) ? start + ' - ' + end : '';
+    }
+  }
+
+  get value(): DateRange|undefined {
+
+    if (this.invalid) {
+      return undefined;
+    }
+
     return {
       start: fromPickerDate(this.startControl.value),
       end: fromPickerDate(this.endControl.value)

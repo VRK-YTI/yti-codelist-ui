@@ -20,6 +20,11 @@ import { Moment } from 'moment';
                  ngbDatepicker
                  #date="ngbDatepicker">
           <button class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
+          <div *ngIf="invalid">
+            <ul class="errors">
+              <li translate>Invalid date</li>
+            </ul>
+          </div>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{displayName}}</span>
@@ -41,7 +46,11 @@ export class DateInputComponent {
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService) {
 
-    this.control.valueChanges.subscribe(() => this.propagateChange(this.value));
+    this.control.valueChanges.subscribe(() => {
+      if (!this.invalid) {
+        this.propagateChange(this.value);
+      }
+    });
 
     if (parentControl) {
       parentControl.valueAccessor = this;
@@ -56,12 +65,22 @@ export class DateInputComponent {
     return this.editableService.editing && !this.restrict;
   }
 
-  get value(): Moment|null {
+  get invalid() {
+    return typeof this.control.value === 'string';
+  }
+
+  get value(): Moment|undefined|null {
+
+    if (this.invalid) {
+      return undefined;
+    }
+
     return fromPickerDate(this.control.value);
   }
 
   get displayName() {
-    return formatDisplayDate(fromPickerDate(this.control.value));
+    const value = this.value;
+    return value ? formatDisplayDate(value) : '';
   }
 
   writeValue(obj: Moment|null): void {
