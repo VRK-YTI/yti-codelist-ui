@@ -68,21 +68,15 @@ export class CodeSchemeCodesImportModalComponent {
     }
     console.log('uploadCodesFile');
     if (this.file !== undefined) {
+      this.uploading = true;
+
       this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
         this.modal.close(true);
       }, error => {
         console.log(error);
+        this.uploading = false;
         this.errorModalService.openSubmitError(error);
       });
     }
-    
-    this.uploading = true;
-
-    this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
-      this.modal.close(true);
-    }, error => {
-      this.uploading = false;
-      this.errorModalService.openSubmitError();
-    });    
   }
 }
