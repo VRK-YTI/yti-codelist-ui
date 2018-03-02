@@ -258,7 +258,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ADMIN"
+msgid "DATA_MODEL_EDITOR"
 msgstr ""
 
 msgid "Front page"
@@ -305,10 +305,10 @@ msgstr ""
 msgid "REMOVE LINK?"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ADMIN"
 msgstr ""
 
-msgid "DATA_MODEL_EDITOR"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "TERMINOLOGY_EDITOR"
@@ -354,6 +354,9 @@ msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr ""
+
+msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr ""
 
 msgid "invalidDate"

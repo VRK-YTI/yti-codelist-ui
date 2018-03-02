@@ -63,7 +63,6 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService) {
 
-
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
     if (parentControl) {
