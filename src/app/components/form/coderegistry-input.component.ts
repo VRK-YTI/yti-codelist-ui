@@ -1,4 +1,4 @@
-import { Component, Optional, Self, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Optional, Self, OnInit, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { CodeRegistry } from '../../entities/code-registry';
@@ -12,7 +12,7 @@ import { LanguageService } from '../../services/language.service';
   template: `
     <dl *ngIf="show">
       <dt>
-        <label translate>Coderegistry</label>
+        <label>{{label}}</label>
       </dt>
       <dd>
         <div *ngIf="editing" ngbDropdown class="d-inline-block">
@@ -26,7 +26,9 @@ import { LanguageService } from '../../services/language.service';
 })
 export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit {
 
+  @Input() label: string;
   @Output() loaded = new EventEmitter();
+
   control = new FormControl();
 
   codeRegistryOptions: Options<CodeRegistry>;

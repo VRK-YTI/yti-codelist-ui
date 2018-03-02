@@ -23,7 +23,8 @@
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-coderegistry-input (loaded)="codeRegistriesLoaded = true"
+        <app-coderegistry-input [label]="'Coderegistry' | translate" 
+                                (loaded)="codeRegistriesLoaded = true"
                                 [formControlName]="'codeRegistry'"></app-coderegistry-input>
 
         <app-literal-input [label]="'Code list value' | translate"
