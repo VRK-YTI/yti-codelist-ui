@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-02 12:01+0200\n"
+"PO-Revision-Date: 2018-03-02 13:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -375,6 +375,9 @@ msgstr "Aineistosta puuttuu kolumni otsikolla CLASSIFICATION."
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr "Väärä CODEVALUE arvo CLASSIFICATION sarakkeessa."
+
+msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
+msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

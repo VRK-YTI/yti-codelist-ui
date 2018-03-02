@@ -359,6 +359,9 @@ msgstr ""
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr ""
 
+msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
