@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
@@ -27,13 +27,13 @@ export class CodeSchemeImportModalService {
   templateUrl: './code-scheme-import-modal.component.html',
   providers: [EditableService]
 })
-export class CodeSchemeImportModalComponent implements OnInit {
+export class CodeSchemeImportModalComponent {
 
-  codeRegistries: CodeRegistry[];
-  codeRegistry?: CodeRegistry;
+  codeRegistry: CodeRegistry | null = null;
   file?: File;
   format = 'CSV';
   uploading = false;
+  codeRegistriesLoaded = false;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -47,13 +47,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return this.codeRegistries === undefined || this.uploading;
-  }
-
-  ngOnInit() {
-    this.dataService.getCodeRegistriesForUser().subscribe(registers => {
-      this.codeRegistries = registers;
-    });
+    return !this.codeRegistriesLoaded || this.uploading;
   }
 
   close() {
@@ -61,7 +55,7 @@ export class CodeSchemeImportModalComponent implements OnInit {
   }
 
   canSave() {
-    return this.codeRegistry !== undefined && this.file !== undefined;
+    return this.codeRegistry !== null && this.file !== undefined;
   }
 
   onChange(event: EventTarget) {

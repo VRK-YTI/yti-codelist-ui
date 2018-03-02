@@ -2,7 +2,7 @@
   <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>
 
-<div *ngIf="!loading">
+<div [hidden]="loading">
   <div class="modal-header">
     <h4 class="modal-title strong">
       <a><i class="fa fa-times" (click)="close()"></i></a>
@@ -13,34 +13,9 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-md-12">
-        <div ngbDropdown class="d-inline-block">
-          <dl>
-            <dt>
-              <label for="reg-dropdown" translate>Registry for the code list</label>
-            </dt>
-            <dd>
-              <button class="btn btn-dropdown" id="reg-dropdown" ngbDropdownToggle>
-                <span *ngIf="!codeRegistry" translate>No registry</span>
-                <span *ngIf="codeRegistry">{{codeRegistry.prefLabel | translateValue:true}}</span>
-              </button>
-
-              <div ngbDropdownMenu aria-labelledby="reg-dropdown">
-                <button (click)="codeRegistry = null"
-                        class="dropdown-item"
-                        [class.active]="codeRegistry == null">
-                  {{'No registry' | translate}}
-                </button>
-
-                <button *ngFor="let selectedRegistry of codeRegistries"
-                        (click)="codeRegistry = selectedRegistry"
-                        class="dropdown-item"
-                        [class.active]="codeRegistry != null && selectedRegistry.codeValue == codeRegistry.codeValue">
-                  {{selectedRegistry.prefLabel | translateValue:true}}
-                </button>
-              </div>
-            </dd>
-          </dl>
-        </div>
+        <app-coderegistry-input [label]="'Registry for the code list' | translate"
+                                (loaded)="codeRegistriesLoaded = true" 
+                                [(ngModel)]="codeRegistry"></app-coderegistry-input>
       </div>
     </div>
 
