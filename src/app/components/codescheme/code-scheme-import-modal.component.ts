@@ -5,7 +5,7 @@ import { DataService } from '../../services/data.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { ErrorModel } from '../../entities/error-model';
 import { Router } from '@angular/router';
-import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
+import { ErrorModalService, ErrorOptions } from 'yti-common-ui/components/error-modal.component';
 import { ModalService } from '../../services/modal.service';
 import { ApiResponseType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
@@ -89,7 +89,12 @@ export class CodeSchemeImportModalComponent {
         this.uploading = false;
         const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
         const errorObject = showDebug ? errorModel : undefined;
-        this.errorModalService.open('Submit error', errorModel.meta.message, errorObject);
+        const errorOptions: ErrorOptions = <ErrorOptions> {};
+        errorOptions.title = 'Submit error';
+        errorOptions.body = errorModel.meta.message;
+        errorOptions.bodyParams = errorModel.meta.entityIdentifier;
+        errorOptions.err = errorObject;
+        this.errorModalService.openWithOptions(errorOptions);
       });
     }  
   }

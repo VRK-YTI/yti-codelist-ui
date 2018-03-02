@@ -332,16 +332,16 @@ msgid "ERR_MSG_USER_406"
 msgstr "Epäsopivaa dataa"
 
 msgid "ERR_MSG_USER_500"
-msgstr "Tapahtui odottamaton virhe."
+msgstr "Unexpected error"
 
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
-msgstr "Loppupäivä ennen alkupäivä."
+msgstr "The enddate is before the startdate."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr "A row in the data is missing the value in the column CODEVALUE."
+msgstr "Row number {{ identifier }} in the data is missing a value in the column CODEVALUE."
 
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
-msgstr "A row in the data is missing the value in the column STATUS."
+msgstr "Row number {{ identifier}} in the data is missing the value in the column STATUS."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
@@ -350,13 +350,13 @@ msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "The data is missing a column with the header STATUS."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
-msgstr "Erroneous start date."
+msgstr "Erroneous start date on row {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
-msgstr "Erroneous end date."
+msgstr "Erroneous end date on row {{ identifier }}."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Code already exists."
+msgstr "Code {{ identifier }} already exists."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Coderegistry already exists."
