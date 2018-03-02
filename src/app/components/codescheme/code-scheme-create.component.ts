@@ -31,7 +31,7 @@ export class CodeSchemeCreateComponent {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
-    validity: new FormControl(null, validDateRange),
+    validity: new FormControl({ start: null, end: null }, validDateRange),
     dataClassifications: new FormControl([], [requiredList]),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required)

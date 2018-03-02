@@ -24,7 +24,7 @@ export class CodeCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     shortName: new FormControl(''),
-    validity: new FormControl(null, validDateRange),
+    validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status)
   });
 
