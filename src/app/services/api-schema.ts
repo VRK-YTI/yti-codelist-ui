@@ -51,6 +51,7 @@ export interface CodeType extends BaseResourceType {
   description?: Localizable;
   definition?: Localizable;
   externalReferences?: ExternalReferenceType[];
+  broaderCodeId?: string;
 }
 
 export interface ExternalReferenceType  {

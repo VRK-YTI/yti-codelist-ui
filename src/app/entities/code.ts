@@ -20,6 +20,7 @@ export class Code extends AbstractResource implements EditableEntity {
   description: Localizable = {};
   definition: Localizable = {};
   externalReferences: ExternalReference[] = [];
+  broaderCodeId: string;
 
   constructor(data: CodeType) {
     super(data);
@@ -38,6 +39,9 @@ export class Code extends AbstractResource implements EditableEntity {
     this.description = data.description || {};
     this.definition = data.definition || {};
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
+    if (data.broaderCodeId) {
+      this.broaderCodeId = data.broaderCodeId;
+    }
   }
 
   get registryCode() {
@@ -96,7 +100,8 @@ export class Code extends AbstractResource implements EditableEntity {
       endDate: formatDate(this.endDate),
       description: { ...this.description },
       definition: { ...this.definition },
-      externalReferences: this.externalReferences.map(er => er.serialize())
+      externalReferences: this.externalReferences.map(er => er.serialize()),
+      broaderCodeId: this.broaderCodeId
     };
   }
 
