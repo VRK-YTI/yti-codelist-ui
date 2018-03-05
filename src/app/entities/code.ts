@@ -21,6 +21,7 @@ export class Code extends AbstractResource implements EditableEntity {
   definition: Localizable = {};
   externalReferences: ExternalReference[] = [];
   broaderCodeId: string;
+  hierarchyLevel: number;
 
   constructor(data: CodeType) {
     super(data);
@@ -41,6 +42,9 @@ export class Code extends AbstractResource implements EditableEntity {
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
     if (data.broaderCodeId) {
       this.broaderCodeId = data.broaderCodeId;
+    }
+    if (data.hierarchyLevel) {
+      this.hierarchyLevel = data.hierarchyLevel;
     }
   }
 
