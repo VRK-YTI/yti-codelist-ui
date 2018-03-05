@@ -85,7 +85,7 @@ export class CodeSchemeImportModalComponent {
           this.modal.close(false);
         }
       }, error => {
-        const errorModel: ApiResponseType = <ApiResponseType> error.json();
+        const errorModel = <ApiResponseType> error.json();
         this.uploading = false;
         const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
         const errorObject = showDebug ? errorModel : undefined;
