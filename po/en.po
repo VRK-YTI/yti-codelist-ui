@@ -326,10 +326,10 @@ msgid "CODE_LIST_EDITOR"
 msgstr "Code list editor"
 
 msgid "ERR_MSG_USER_401"
-msgstr "Ei käyttöoikeutta"
+msgstr "You are unauthorized to perform this action."
 
 msgid "ERR_MSG_USER_406"
-msgstr "Epäsopivaa dataa"
+msgstr "Erroneous data"
 
 msgid "ERR_MSG_USER_500"
 msgstr "Unexpected error"

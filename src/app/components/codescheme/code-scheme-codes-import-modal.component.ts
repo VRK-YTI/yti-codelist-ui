@@ -4,8 +4,9 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
-import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
+import { ErrorModalService, ErrorOptions } from 'yti-common-ui/components/error-modal.component';
 import { ModalService } from '../../services/modal.service';
+import { ApiResponseType } from '../../services/api-schema';
 
 @Injectable()
 export class CodeSchemeCodesImportModalService {
@@ -73,9 +74,16 @@ export class CodeSchemeCodesImportModalComponent {
       this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
         this.modal.close(true);
       }, error => {
-        console.log(error);
+        const errorModel = <ApiResponseType> error.json();
         this.uploading = false;
-        this.errorModalService.openSubmitError(error);
+        const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
+        const errorObject = showDebug ? errorModel : undefined;
+        const errorOptions: ErrorOptions = <ErrorOptions> {};
+        errorOptions.title = 'Submit error';
+        errorOptions.body = errorModel.meta.message;
+        errorOptions.bodyParams = errorModel.meta.entityIdentifier;
+        errorOptions.err = errorObject;
+        this.errorModalService.openWithOptions(errorOptions);
       });
     }
   }
