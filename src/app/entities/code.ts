@@ -105,7 +105,8 @@ export class Code extends AbstractResource implements EditableEntity {
       description: { ...this.description },
       definition: { ...this.definition },
       externalReferences: this.externalReferences.map(er => er.serialize()),
-      broaderCodeId: this.broaderCodeId
+      broaderCodeId: this.broaderCodeId,
+      hierarchyLevel: this.hierarchyLevel
     };
   }
 
