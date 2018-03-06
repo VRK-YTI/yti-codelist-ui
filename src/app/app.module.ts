@@ -64,6 +64,7 @@ import {
 } from './components/form/search-classification-modal.component';
 import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
+import { CodeListErrorModalService } from './components/common/error-modal.service';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -185,7 +186,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkCreateModalService,
     LinkListModalService,
     ModalService,
-    SearchClassificationModalService
+    SearchClassificationModalService,
+    CodeListErrorModalService
   ],
   bootstrap: [AppComponent]
 })

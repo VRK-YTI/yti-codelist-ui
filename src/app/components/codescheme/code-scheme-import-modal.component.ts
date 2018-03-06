@@ -3,13 +3,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { CodeRegistry } from '../../entities/code-registry';
-import { ErrorModel } from '../../entities/error-model';
 import { Router } from '@angular/router';
-import { ErrorModalService, ErrorOptions } from 'yti-common-ui/components/error-modal.component';
 import { ModalService } from '../../services/modal.service';
-import { ApiResponseType } from '../../services/api-schema';
-import { LanguageService } from '../../services/language.service';
-import { TranslateService } from 'ng2-translate';
+import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Injectable()
 export class CodeSchemeImportModalService {
@@ -18,7 +14,7 @@ export class CodeSchemeImportModalService {
   }
 
   public open(): void {
-    const modalRef = this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
+    this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
   }
 }
 
@@ -39,9 +35,7 @@ export class CodeSchemeImportModalComponent {
               private dataService: DataService,
               private router: Router,
               private modal: NgbActiveModal,
-              private errorModalService: ErrorModalService,
-              private languageService: LanguageService,
-              private translateService: TranslateService) {
+              private errorModalService: CodeListErrorModalService) {
 
     this.editableService.edit();
   }
@@ -85,17 +79,9 @@ export class CodeSchemeImportModalComponent {
           this.modal.close(false);
         }
       }, error => {
-        const errorModel = <ApiResponseType> error.json();
         this.uploading = false;
-        const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
-        const errorObject = showDebug ? errorModel : undefined;
-        const errorOptions: ErrorOptions = <ErrorOptions> {};
-        errorOptions.title = 'Submit error';
-        errorOptions.body = errorModel.meta.message;
-        errorOptions.bodyParams = errorModel.meta.entityIdentifier;
-        errorOptions.err = errorObject;
-        this.errorModalService.openWithOptions(errorOptions);
+        this.errorModalService.openSubmitError(error);
       });
-    }  
+    }
   }
 }
