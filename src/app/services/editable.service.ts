@@ -1,9 +1,9 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { Subscription } from 'rxjs/Subscription';
+import { CodeListErrorModalService } from '../components/common/error-modal.service';
 
 export interface EditingComponent {
   isEditing(): boolean;
@@ -21,7 +21,7 @@ export class EditableService implements OnDestroy {
 
   private loggedInSubscription: Subscription;
 
-  constructor(private errorModalService: ErrorModalService,
+  constructor(private errorModalService: CodeListErrorModalService,
               userService: UserService) {
 
     this.loggedInSubscription = userService.loggedIn$.subscribe(loggedIn => {
@@ -71,7 +71,7 @@ export class EditableService implements OnDestroy {
       },
       error(err: any) {
         that.saving$.next(false);
-        that.errorModalService.openSubmitError();
+        that.errorModalService.openSubmitError(err);
       }
     });
   }
