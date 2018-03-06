@@ -374,7 +374,7 @@ msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "Aineistosta puuttuu kolumni otsikolla CLASSIFICATION."
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
-msgstr "Väärä CODEVALUE arvo CLASSIFICATION sarakkeessa."
+msgstr "Aineistolle annettua luokitusta ei löydy."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
