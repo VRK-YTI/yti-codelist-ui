@@ -74,6 +74,7 @@ export class CodeSchemeCodesImportModalComponent {
       this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
         this.modal.close(true);
       }, error => {
+        this.uploading = false;
         this.codeListErrorModalService.openSubmitError(error);
       });
     }
