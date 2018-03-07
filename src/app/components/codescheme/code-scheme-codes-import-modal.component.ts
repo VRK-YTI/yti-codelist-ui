@@ -4,9 +4,9 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
-import { ErrorModalService, ErrorOptions } from 'yti-common-ui/components/error-modal.component';
 import { ModalService } from '../../services/modal.service';
 import { ApiResponseType } from '../../services/api-schema';
+import { CodeListErrorModalService } from '../../components/common/error-modal.service';
 
 @Injectable()
 export class CodeSchemeCodesImportModalService {
@@ -38,7 +38,7 @@ export class CodeSchemeCodesImportModalComponent {
               private dataService: DataService,
               private router: Router,
               private modal: NgbActiveModal,
-              private errorModalService: ErrorModalService) {
+              private codeListErrorModalService: CodeListErrorModalService) {
 
     this.editableService.edit();
   }
@@ -74,16 +74,7 @@ export class CodeSchemeCodesImportModalComponent {
       this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
         this.modal.close(true);
       }, error => {
-        const errorModel = <ApiResponseType> error.json();
-        this.uploading = false;
-        const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
-        const errorObject = showDebug ? errorModel : undefined;
-        const errorOptions: ErrorOptions = <ErrorOptions> {};
-        errorOptions.title = 'Submit error';
-        errorOptions.body = errorModel.meta.message;
-        errorOptions.bodyParams = errorModel.meta.entityIdentifier;
-        errorOptions.err = errorObject;
-        this.errorModalService.openWithOptions(errorOptions);
+        this.codeListErrorModalService.openSubmitError(error);
       });
     }
   }
