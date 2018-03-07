@@ -49,7 +49,7 @@ export class CodeSchemeImportModalComponent {
   }
 
   canSave() {
-    return this.codeRegistry !== null && this.file !== undefined;
+    return this.codeRegistry != null && this.file != null;
   }
 
   onChange(event: EventTarget) {
@@ -72,7 +72,7 @@ export class CodeSchemeImportModalComponent {
 
     this.uploading = true;
 
-    if (this.file !== undefined && this.codeRegistry !== undefined) {
+    if (this.file != null && this.codeRegistry != null) {
       this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
         if (codeSchemes.length > 0) {
           this.router.navigate(codeSchemes[0].route);
