@@ -40,16 +40,16 @@ export class CodeCreateComponent implements OnInit {
 
   ngOnInit() {
     console.log('CodeCreateComponent onInit');
-    const registryCode = this.route.snapshot.params.codeRegistryCodeValue;
+    const registryCode = this.route.snapshot.params.registryCode;
     console.log('CodeCreateComponent onInit registryCode: ' + registryCode);
-    const schemeId = this.route.snapshot.params.codeSchemeId;
-    console.log('CodeCreateComponent onInit schemeId: ' + schemeId);
+    const schemeCode = this.route.snapshot.params.schemeCode;
+    console.log('CodeCreateComponent onInit schemeCode: ' + schemeCode);
 
-    if (!registryCode || !schemeId) {
-      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeId}'`);
+    if (!registryCode || !schemeCode) {
+      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}'`);
     }
 
-    this.dataService.getCodeScheme(registryCode, schemeId).subscribe(codeScheme => {
+    this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
     });
   }

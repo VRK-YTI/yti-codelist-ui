@@ -52,8 +52,8 @@ export class Code extends AbstractResource implements EditableEntity {
     return this.codeScheme.codeRegistry.codeValue;
   }
 
-  get schemeId() {
-    return this.codeScheme.id;
+  get schemeCode() {
+    return this.codeScheme.codeValue;
   }
 
   get modifiedDisplayValue(): string {
@@ -64,9 +64,9 @@ export class Code extends AbstractResource implements EditableEntity {
     return [
       'code',
       {
-        codeRegistryCodeValue: this.registryCode,
-        codeSchemeId: this.schemeId,
-        codeId: this.id
+        registryCode: this.registryCode,
+        schemeCode: this.schemeCode,
+        codeCode: this.codeValue
       }
     ];
   }

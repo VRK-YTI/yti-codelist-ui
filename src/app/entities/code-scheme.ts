@@ -59,8 +59,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return [
       'codescheme',
       {
-        codeRegistryCodeValue: this.codeRegistry.codeValue,
-        codeSchemeId: this.id
+        registryCode: this.codeRegistry.codeValue,
+        schemeCode: this.codeValue
       }
     ];
   }

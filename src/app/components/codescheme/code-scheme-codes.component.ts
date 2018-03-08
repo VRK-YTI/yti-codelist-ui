@@ -42,8 +42,8 @@ export class CodeSchemeCodesComponent {
     this.router.navigate(
       ['createcode',
         {
-          codeRegistryCodeValue: this.codeScheme.codeRegistry.codeValue,
-          codeSchemeId: this.codeScheme.id
+          registryCode: this.codeScheme.codeRegistry.codeValue,
+          schemeCode: this.codeScheme.codeValue
         }
       ]
     );
