@@ -19,7 +19,7 @@ export class CodeListErrorModalService {
       this.errorModalService.openWithOptions({
         title: 'Submit error',
         body: body.meta.message,
-        bodyParams: body.meta.entityIdentifier,
+        bodyParams: { identifier: body.meta.entityIdentifier },
         err: showDebug ? error : undefined
       });
     } else {
