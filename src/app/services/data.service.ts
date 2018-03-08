@@ -78,8 +78,8 @@ export class DataService {
       .map(res => res.json().results.map((data: OrganizationType) => new Organization(data)));
   }
 
-  getCodeRegistry(codeRegistryCodeValue: string): Observable<CodeRegistry> {
-    return this.http.get(`${codeRegistriesBasePath}/${codeRegistryCodeValue}/`)
+  getCodeRegistry(coderegistryCode: string): Observable<CodeRegistry> {
+    return this.http.get(`${codeRegistriesBasePath}/${coderegistryCode}/`)
       .map(res => new CodeRegistry(res.json() as CodeRegistryType));
   }
 
@@ -146,26 +146,26 @@ export class DataService {
       .map(res => res.json().results.map((data: ExternalReferenceType) => new ExternalReference(data)));
   }
 
-  getCodes(registryCode: string, schemeId: string): Observable<Code[]> {
+  getCodes(registryCode: string, schemeCode: string): Observable<Code[]> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
 
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/`, {params})
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/`, {params})
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
   }
 
-  getCode(registryCode: string, schemeId: string, codeId: string): Observable<Code> {
+  getCode(registryCode: string, schemeCode: string, codeCodeValue: string): Observable<Code> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,organization');
 
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/${codeId}/`, {params})
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${codeCodeValue}/`, {params})
       .map(res => new Code(res.json() as CodeType));
   }
 
-  createCode(code: CodeType, registryCode: string, schemeId: string): Observable<Code> {
-    return this.createCodes([code], registryCode, schemeId).map(createdCodes => {
+  createCode(code: CodeType, registryCode: string, schemeCode: string): Observable<Code> {
+    return this.createCodes([code], registryCode, schemeCode).map(createdCodes => {
       if (createdCodes.length !== 1) {
         throw new Error('Exactly one code needs to be created');
       } else {
@@ -174,9 +174,9 @@ export class DataService {
     });
   }
 
-  createCodes(codeList: CodeType[], registryCode: string, schemeId: string): Observable<Code[]> {
+  createCodes(codeList: CodeType[], registryCode: string, schemeCode: string): Observable<Code[]> {
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/`,
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/`,
       codeList)
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
   }
@@ -184,9 +184,9 @@ export class DataService {
   saveCode(code: CodeType): Observable<ApiResponseType> {
 
     const registryCode = code.codeScheme.codeRegistry.codeValue;
-    const schemeId = code.codeScheme.id;
+    const schemeCode = code.codeScheme.codeValue;
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeId}/${codes}/${code.id}/`, code)
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code.codeValue}/`, code)
       .map(res => res.json() as ApiResponseType);
   }
 
@@ -211,7 +211,7 @@ export class DataService {
 
     const registryCode = codeScheme.codeRegistry.codeValue;
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.id}/`, codeScheme)
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.codeValue}/`, codeScheme)
       .map(res => res.json() as ApiResponseType);
   }
 
@@ -226,14 +226,14 @@ export class DataService {
       .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
   }
 
-  uploadCodes(registryCode: string, codeSchemeId: string, file: File, format: string): Observable<CodeScheme[]> {
+  uploadCodes(registryCode: string, codeschemeCode: string, file: File, format: string): Observable<CodeScheme[]> {
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     const params = new URLSearchParams();
     params.append('format', format);
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeId}/${codes}`, formData, {params})
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeschemeCode}/${codes}`, formData, {params})
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
   }
 

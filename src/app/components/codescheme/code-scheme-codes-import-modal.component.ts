@@ -71,7 +71,7 @@ export class CodeSchemeCodesImportModalComponent {
     if (this.file !== undefined) {
       this.uploading = true;
 
-      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id, this.file, this.format).subscribe(codes => {
+      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue, this.file, this.format).subscribe(codes => {
         this.modal.close(true);
       }, error => {
         this.uploading = false;
