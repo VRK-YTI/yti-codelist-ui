@@ -70,7 +70,7 @@ export class CodeCreateComponent implements OnInit {
       endDate: formatDate(validity.end)
     };
 
-    return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.id)
+    return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
       .do(createdCode => {
         console.log('Saved new Code');
         this.router.navigate(createdCode.route);

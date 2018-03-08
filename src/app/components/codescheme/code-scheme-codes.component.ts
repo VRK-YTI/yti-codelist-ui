@@ -50,7 +50,7 @@ export class CodeSchemeCodesComponent {
   }
 
   refreshCodes() {
-    this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.id).subscribe(codes => {
+    this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
     });
   }
