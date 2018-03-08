@@ -71,12 +71,13 @@ export class CodeSchemeCodesImportModalComponent {
     if (this.file !== undefined) {
       this.uploading = true;
 
-      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue, this.file, this.format).subscribe(codes => {
-        this.modal.close(true);
-      }, error => {
-        this.uploading = false;
-        this.codeListErrorModalService.openSubmitError(error);
-      });
+      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue, this.file, this.format)
+        .subscribe(codes => {
+          this.modal.close(true);
+        }, error => {
+          this.uploading = false;
+          this.codeListErrorModalService.openSubmitError(error);
+        });
     }
   }
 }
