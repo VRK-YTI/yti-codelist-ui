@@ -31,7 +31,7 @@
     "ng2-translate": "^5.0.0",
     "rxjs": "^5.4.2",
     "simple-line-icons": "^2.4.1",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui/#6539104881aa7e664d812514f36a4761f24fa730",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git\\#39ad199bfc4d48c8dd0b33673433b7af28efa4b0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
