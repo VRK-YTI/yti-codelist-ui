@@ -359,7 +359,7 @@ msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Code {{ identifier }} already exists."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Coderegistry already exists."
+msgstr "Code list already exists."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "The data is missing a column with the header CLASSIFICATION."
