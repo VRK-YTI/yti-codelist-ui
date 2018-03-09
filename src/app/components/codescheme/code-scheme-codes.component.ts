@@ -7,6 +7,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { DataService } from '../../services/data.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { contains } from 'yti-common-ui/utils/array';
 
 @Component({
   selector: 'app-code-scheme-codes',
@@ -23,11 +24,6 @@ export class CodeSchemeCodesComponent {
               private dataService: DataService,
               private router: Router,
               private authorizationManager: AuthorizationManager) {
-  }
-
-  viewCode(code: Code) {
-    console.log('View code: ' + code.codeValue);
-    this.router.navigate(code.route);
   }
 
   importCodes() {
@@ -57,5 +53,52 @@ export class CodeSchemeCodesComponent {
 
   canAddCode() {
     return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
+  }
+
+  get topLevelCodes() {
+    return this.codes.filter(code => !code.broaderCodeId);
+  }
+
+  get parentCodes() {
+    const childCodes = this.codes.filter(code => code.broaderCodeId != null);
+    const broaderCodeIds = childCodes.map(code => code.broaderCodeId);
+
+    return this.codes.filter(code => contains(broaderCodeIds, code.id));
+  }
+
+  hasHierarchy() {
+    return this.codes.filter(code => code.broaderCodeId !== undefined).length > 0;
+  }
+
+  get numberOfExpanded() {
+    return this.parentCodes.filter(code => code.expanded).length;
+  }
+
+  get numberOfCollapsed() {
+    return this.parentCodes.filter(code => !code.expanded).length;
+  }
+
+  hasExpanded() {
+    return this.numberOfExpanded > 0;
+  }
+
+  hasCollapsed() {
+    return this.numberOfCollapsed > 0;
+  }
+
+  expandAll() {
+    this.codes.map(code => {
+      if (contains(this.parentCodes, code)) {
+        code.expanded = true;
+      }
+    });
+  }
+
+  collapseAll() {
+    this.codes.map(code => {
+      if (contains(this.parentCodes, code)) {
+        code.expanded = false;
+      }
+    });
   }
 }

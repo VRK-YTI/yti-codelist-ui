@@ -1,8 +1,23 @@
 <div class="codes row">
+  <div *ngIf="hasHierarchy()" class="d-inline-block col-md-12 pull-left">
+    <button *ngIf="hasCollapsed()"
+            type="button"
+            class="btn btn-action ml-3 pull-left"
+            (click)="expandAll()"
+            translate>Expand all</button>
+    <button *ngIf="hasExpanded()"
+            type="button"
+            class="btn btn-action ml-3 pull-left"
+            (click)="collapseAll()"
+            translate>Collapse all</button>
+  </div>
+   
   <div class="md-9">
-    <div class="code" *ngFor="let code of codes" (click)="viewCode(code)">
-      {{code.codeValue}} - {{code.prefLabel | translateValue}}
-    </div>
+    <ul>
+      <li *ngFor="let code of topLevelCodes">
+        <app-hierarchy-code [codes]="codes" [code]="code"></app-hierarchy-code>
+      </li>
+    </ul>
     <div class="emptyCodes" *ngIf="codes.length === 0">
       <span translate>This code list does not have any codes yet.</span>
     </div>

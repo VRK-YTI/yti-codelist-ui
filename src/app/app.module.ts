@@ -65,6 +65,7 @@ import {
 import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
 import { CodeListErrorModalService } from './components/common/error-modal.service';
+import { HierarchyCodeComponent } from './components/code/hierarchy-code.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -149,7 +150,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateRangeInputComponent,
     ClassificationsInputComponent,
     SearchClassificationModalComponent,
-    CodeRegistryInputComponent
+    CodeRegistryInputComponent,
+    HierarchyCodeComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,

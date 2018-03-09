@@ -10,9 +10,6 @@ msgstr ""
 msgid "Add classification"
 msgstr ""
 
-msgid "Coderegistry"
-msgstr ""
-
 msgid "No registry"
 msgstr ""
 
@@ -79,6 +76,9 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
+msgid "Coderegistry"
+msgstr ""
+
 msgid "Classification"
 msgstr ""
 
@@ -98,6 +98,12 @@ msgid "File to be uploaded"
 msgstr ""
 
 msgid "Import"
+msgstr ""
+
+msgid "Expand all"
+msgstr ""
+
+msgid "Collapse all"
 msgstr ""
 
 msgid "This code list does not have any codes yet."
@@ -153,10 +159,10 @@ msgstr ""
 msgid "Create new code list"
 msgstr ""
 
-msgid "Import code list"
+msgid "Registry for the code list"
 msgstr ""
 
-msgid "Registry for the code list"
+msgid "Import code list"
 msgstr ""
 
 msgid "Changenote"

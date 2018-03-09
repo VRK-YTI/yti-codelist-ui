@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-02 13:10+0200\n"
+"PO-Revision-Date: 2018-03-08 17:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -18,9 +18,6 @@ msgstr "Linkin tyyppi"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
-
-msgid "Coderegistry"
-msgstr "Rekisteri"
 
 msgid "No registry"
 msgstr "Ei rekisteriä"
@@ -88,6 +85,9 @@ msgstr "Viimeisin muokkaus"
 msgid "Links"
 msgstr "Linkit"
 
+msgid "Coderegistry"
+msgstr "Rekisteri"
+
 msgid "Classification"
 msgstr "Luokitus"
 
@@ -108,6 +108,12 @@ msgstr "Valitse tuotava tiedosto"
 
 msgid "Import"
 msgstr "Tuo"
+
+msgid "Expand all"
+msgstr "Laajenna kaikki"
+
+msgid "Collapse all"
+msgstr "Supista kaikki"
 
 msgid "This code list does not have any codes yet."
 msgstr "Tällä koodistolla ei ole yhtään koodia."
@@ -168,11 +174,11 @@ msgstr ""
 msgid "Create new code list"
 msgstr "Luo uusi koodisto"
 
-msgid "Import code list"
-msgstr "Tuo koodisto"
-
 msgid "Registry for the code list"
 msgstr "Valitse rekisteri"
+
+msgid "Import code list"
+msgstr "Tuo koodisto"
 
 msgid "Changenote"
 msgstr "Muutostieto"
@@ -347,7 +353,8 @@ msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "Loppupäivä ennen alkupäivää."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr "Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."

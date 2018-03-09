@@ -22,6 +22,7 @@ export class Code extends AbstractResource implements EditableEntity {
   externalReferences: ExternalReference[] = [];
   broaderCodeId: string;
   hierarchyLevel: number;
+  expanded: boolean;
 
   constructor(data: CodeType) {
     super(data);
@@ -46,6 +47,7 @@ export class Code extends AbstractResource implements EditableEntity {
     if (data.hierarchyLevel) {
       this.hierarchyLevel = data.hierarchyLevel;
     }
+    this.expanded = false;
   }
 
   get registryCode() {

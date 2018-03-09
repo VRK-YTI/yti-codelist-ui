@@ -1,6 +1,6 @@
 @import '~yti-common-ui/theme/variables';
 
-.codes {
+:host /deep/ .codes {
 
   color: $primary;
   font-size: large;
@@ -12,6 +12,24 @@
     padding: 10px 40px;
     background-color: $light;
     margin-top: 5px;
+    display: inline-block;
+  }
+
+  ul {
+    padding-left: 15px;
+
+    li {
+      list-style: none;
+      
+      i {
+        cursor: pointer;
+        margin-left: -15px;
+      }
+    }
+
+    li.child-code {
+      padding-left: 15px;
+    }
   }
 }
 
