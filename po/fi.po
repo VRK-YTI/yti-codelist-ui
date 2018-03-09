@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-08 17:21+0200\n"
+"PO-Revision-Date: 2018-03-09 12:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -279,8 +279,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "DATA_MODEL_EDITOR"
-msgstr "Tietomallintaja"
+msgid "ERR_MSG_USER_401"
+msgstr "Ei käyttöoikeutta"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -331,8 +331,8 @@ msgstr "POISTETAANKO LINKKI?"
 msgid "ADMIN"
 msgstr "Ylläpitäjä"
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "DATA_MODEL_EDITOR"
+msgstr "Tietomallintaja"
 
 msgid "TERMINOLOGY_EDITOR"
 msgstr "Sanastotyöntekijä"
@@ -340,8 +340,8 @@ msgstr "Sanastotyöntekijä"
 msgid "CODE_LIST_EDITOR"
 msgstr "Koodistotyöntekijä"
 
-msgid "ERR_MSG_USER_401"
-msgstr "Ei käyttöoikeutta"
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_406"
 msgstr "Epäsopivaa dataa"
@@ -385,6 +385,24 @@ msgstr "Aineistolle annettua luokitusta ei löydy."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
+
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
+
+msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
+msgstr "Virhe luettaessa CSV-tiedostoa. Tarkasta tuotavan tiedoston muoto."
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "Aineistosta löytyi sama kolumni useita kertoja."
+
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr "Aineistossa olevaa BROADER-sarakkeen koodia ei löydy."
+
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
+
+msgid "ERR_MSG_STATUS_NOT_VALID"
+msgstr "Aineistossa oleva STATUS-sarakkeen arvo on väärä. "
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

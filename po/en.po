@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-08 17:21+0200\n"
+"PO-Revision-Date: 2018-03-09 12:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -272,8 +272,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "DATA_MODEL_EDITOR"
-msgstr "Data model editor"
+msgid "ERR_MSG_USER_401"
+msgstr "You are unauthorized to perform this action."
 
 msgid "Front page"
 msgstr ""
@@ -322,8 +322,8 @@ msgstr ""
 msgid "ADMIN"
 msgstr "Admin"
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "DATA_MODEL_EDITOR"
+msgstr "Data model editor"
 
 msgid "TERMINOLOGY_EDITOR"
 msgstr "Terminology editor"
@@ -331,8 +331,8 @@ msgstr "Terminology editor"
 msgid "CODE_LIST_EDITOR"
 msgstr "Code list editor"
 
-msgid "ERR_MSG_USER_401"
-msgstr "You are unauthorized to perform this action."
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_USER_406"
 msgstr "Erroneous data"
@@ -379,6 +379,24 @@ msgstr "Data contains faulty classification."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Existing CODEVALUE differs from input data, change not allowed."
+
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Error parsing Excel file."
+
+msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
+msgstr "Error parsing CSV file."
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "Duplicate header value found, failing."
+
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr "Broader code references a codevalue that does not exist, failing."
+
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgstr " Broader code references codevalue of the code itself, failing."
+
+msgid "ERR_MSG_STATUS_NOT_VALID"
+msgstr "Invalid STATUS value defined in data."
 
 msgid "invalidDate"
 msgstr "Invalid date"

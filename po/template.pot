@@ -264,7 +264,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "DATA_MODEL_EDITOR"
+msgid "ERR_MSG_USER_401"
 msgstr ""
 
 msgid "Front page"
@@ -314,7 +314,7 @@ msgstr ""
 msgid "ADMIN"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "DATA_MODEL_EDITOR"
 msgstr ""
 
 msgid "TERMINOLOGY_EDITOR"
@@ -323,7 +323,7 @@ msgstr ""
 msgid "CODE_LIST_EDITOR"
 msgstr "The data is missing a column with the header STATUS."
 
-msgid "ERR_MSG_USER_401"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_406"
@@ -366,6 +366,24 @@ msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr ""
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
+msgstr ""
+
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr ""
+
+msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
+msgstr ""
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr ""
+
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr ""
+
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgstr ""
+
+msgid "ERR_MSG_STATUS_NOT_VALID"
 msgstr ""
 
 msgid "invalidDate"
