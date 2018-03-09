@@ -9,7 +9,7 @@
   .code {
     cursor: pointer;
     margin-right: 200px;
-    padding: 10px 40px;
+    padding: 10px 40px 10px 10px;
     background-color: $light;
     margin-top: 5px;
     display: inline-block;
@@ -24,6 +24,7 @@
       i {
         cursor: pointer;
         margin-left: -15px;
+        font-size: 14px;
       }
     }
 

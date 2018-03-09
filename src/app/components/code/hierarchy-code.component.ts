@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
   selector: 'app-hierarchy-code',
   styleUrls: ['./hierarchy-code.component.scss'],
   template: `
-    <i [hidden]="!hasChildren() || expanded" class="fa fa-plus-square-o" (click)="expand()"></i>
-    <i [hidden]="!hasChildren() || collapsed" class="fa fa-minus-square-o" (click)="collapse()"></i>
+    <i [hidden]="!hasChildren() || expanded" class="fa fa-plus" (click)="expand()"></i>
+    <i [hidden]="!hasChildren() || collapsed" class="fa fa-minus" (click)="collapse()"></i>
     
     <div class="code" (click)="viewCode(code)">
       <span>{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
