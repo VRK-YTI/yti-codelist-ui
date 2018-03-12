@@ -59,9 +59,9 @@ import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
 import { ClassificationsInputComponent } from './components/form/classifications-input.component';
 import {
-  SearchClassificationModalComponent,
-  SearchClassificationModalService
-} from './components/form/search-classification-modal.component';
+  SearchLinkedCodeModalModalComponent,
+  SearchLinkedCodeModalService  
+} from './components/form/search-linked-code-modal.component';
 import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
 import { CodeListErrorModalService } from './components/common/error-modal.service';
@@ -149,7 +149,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateInputComponent,
     DateRangeInputComponent,
     ClassificationsInputComponent,
-    SearchClassificationModalComponent,
+    SearchLinkedCodeModalModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent
   ],
@@ -160,7 +160,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkEditModalComponent,
     LinkCreateModalComponent,
     LinkListModalComponent,
-    SearchClassificationModalComponent
+    SearchLinkedCodeModalModalComponent
   ],
   imports: [
     BrowserModule,
@@ -188,7 +188,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkCreateModalService,
     LinkListModalService,
     ModalService,
-    SearchClassificationModalService,
+    SearchLinkedCodeModalService,
     CodeListErrorModalService
   ],
   bootstrap: [AppComponent]

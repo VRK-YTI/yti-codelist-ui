@@ -3,10 +3,12 @@ import { Code } from '../../entities/code';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { SearchClassificationModalService } from './search-classification-modal.component';
-import { LanguageService } from '../../services/language.service';
+import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
 import { remove } from 'yti-common-ui/utils/array';
 import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
+import { DataService } from '../../services/data.service';
+import { Observable } from 'rxjs';
+import { TranslateService } from 'ng2-translate';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
   
@@ -55,13 +57,16 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
   @Input() restrict = false;
   control = new FormControl([]);
 
+  classifications$: Observable<Code[]>;
+
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
 
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService,
-              public languageService: LanguageService,
-              private searchClassificationModalService: SearchClassificationModalService) {
+              private translateService: TranslateService,
+              private dataService: DataService,
+              private searchLinkedCodeModalService: SearchLinkedCodeModalService) {
 
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
@@ -69,6 +74,8 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
     if (parentControl) {
       parentControl.valueAccessor = this;
     }
+
+    this.classifications$ = this.dataService.getDataClassificationsAsCodes();
   }
 
   get dataClassifications(): Code[] {
@@ -76,15 +83,20 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
   }
 
   addDataClassification() {
-
+    const titleLabel = this.translateService.instant('Choose classification');
+    const searchlabel = this.translateService.instant('Search classification');
     const restrictIds = this.dataClassifications.map(classification => classification.id);
 
-    this.searchClassificationModalService.open(restrictIds)
+    this.searchLinkedCodeModalService.open(this.classifications, titleLabel, searchlabel, restrictIds)
       .then(classification => addToControl(this.control, classification), ignoreModalClose);
   }
 
   removeDataClassification(classification: Code) {
     removeFromControl(this.control, classification);
+  }
+
+  get classifications() {
+    return this.classifications$;
   }
 
   get editing() {

@@ -1,34 +1,36 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, Renderer, ViewChild, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
 import { Code } from '../../entities/code';
-import { DataService } from '../../services/data.service';
 
 @Injectable()
-export class SearchClassificationModalService {
+export class SearchLinkedCodeModalService {
 
   constructor(private modalService: ModalService) {
   }
 
-  open(restrictClassificationIds: string[]): Promise<Code> {
-    const modalRef = this.modalService.open(SearchClassificationModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchClassificationModalComponent;
-    instance.restricts = restrictClassificationIds;
+  open(codes$: Observable<Code[]>, titleLabel: string, searchLabel: string, restrictCodeIds: string[]): Promise<Code> {
+    const modalRef = this.modalService.open(SearchLinkedCodeModalModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeModalModalComponent;
+    instance.codes$ = codes$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictCodeIds;
     return modalRef.result;
   }
 }
 
 @Component({
-  selector: 'app-search-classification-modal',
-  styleUrls: ['./search-classification-modal.component.scss'],
+  selector: 'app-search-linked-code-modal',
+  styleUrls: ['./search-linked-code-modal.component.scss'],
   template: `
     <div class="modal-header">
       <h4 class="modal-title">
         <a><i class="fa fa-times" (click)="cancel()"></i></a>
-        <span translate>Choose classification</span>
+        <span>{{titleLabel}}</span>
       </h4>
     </div>
     <div class="modal-body full-height">
@@ -37,7 +39,7 @@ export class SearchClassificationModalService {
         <div class="col-12">
 
           <div class="input-group input-group-lg input-group-search">
-            <input #searchInput type="text" class="form-control" placeholder="{{'Search classification' | translate}}"
+            <input #searchInput type="text" class="form-control" [placeholder]="searchLabel"
                    [(ngModel)]="search"/>
           </div>
 
@@ -49,10 +51,10 @@ export class SearchClassificationModalService {
           <div class="content-box">
             <div class="search-results">
               <div class="search-result"
-                   *ngFor="let classification of searchResults$ | async; let last = last"
-                   (click)="select(classification)">
+                   *ngFor="let code of searchResults$ | async; let last = last"
+                   (click)="select(code)">
                 <div class="content" [class.last]="last">
-                  <span class="title" [innerHTML]="classification.prefLabel | translateValue:true"></span>
+                  <span class="title" [innerHTML]="code.prefLabel | translateValue:true"></span>
                 </div>
               </div>
             </div>
@@ -68,11 +70,14 @@ export class SearchClassificationModalService {
     </div>
   `
 })
-export class SearchClassificationModalComponent implements AfterViewInit {
+export class SearchLinkedCodeModalModalComponent implements AfterViewInit, OnInit {
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
   @Input() restricts: string[];
+  @Input() titleLabel: string;
+  @Input() searchLabel: string;
+  @Input() codes$: Observable<Code[]>;
 
   searchResults$: Observable<Code[]>;
 
@@ -80,27 +85,28 @@ export class SearchClassificationModalComponent implements AfterViewInit {
   loading = false;
 
   constructor(public modal: NgbActiveModal,
-              dataService: DataService,
-              languageService: LanguageService,
+              private languageService: LanguageService,
               private renderer: Renderer) {
+  }
 
+  ngOnInit() {
     const initialSearch = this.search$.take(1);
     const debouncedSearch = this.search$.skip(1).debounceTime(500);
 
-    this.searchResults$ = Observable.combineLatest(dataService.getDataClassificationsAsCodes(), initialSearch.concat(debouncedSearch))
+    this.searchResults$ = Observable.combineLatest(this.codes$, initialSearch.concat(debouncedSearch))
       .do(() => this.loading = false)
-      .map(([classifications, search]) => {
-        return classifications.filter(classification => {
-          const label = languageService.translate(classification.prefLabel, true);
+      .map(([codes, search]) => {
+        return codes.filter(code => {
+          const label = this.languageService.translate(code.prefLabel, true);
           const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-          const isNotRestricted = !contains(this.restricts, classification.id);
+          const isNotRestricted = !contains(this.restricts, code.id);
           return searchMatches && isNotRestricted;
         });
       });
   }
 
-  select(classification: Code) {
-    this.modal.close(classification);
+  select(code: Code) {
+    this.modal.close(code);
   }
 
   ngAfterViewInit() {
