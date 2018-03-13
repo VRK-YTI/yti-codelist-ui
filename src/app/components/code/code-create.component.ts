@@ -73,6 +73,7 @@ export class CodeCreateComponent implements OnInit {
     return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
       .do(createdCode => {
         console.log('Saved new Code');
+        console.log('Saved code route: ' + createdCode.route);
         this.router.navigate(createdCode.route);
       });
   }

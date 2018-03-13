@@ -395,6 +395,9 @@ msgstr ""
 msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
 msgstr ""
 
+msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
