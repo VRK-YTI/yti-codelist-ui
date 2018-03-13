@@ -10,6 +10,12 @@ msgstr ""
 msgid "Add classification"
 msgstr ""
 
+msgid "Choose classification"
+msgstr ""
+
+msgid "Search classification"
+msgstr ""
+
 msgid "No registry"
 msgstr ""
 
@@ -29,12 +35,6 @@ msgid "Edit"
 msgstr ""
 
 msgid "Add link"
-msgstr ""
-
-msgid "Search classification"
-msgstr ""
-
-msgid "Choose classification"
 msgstr ""
 
 msgid "Status"
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_401"
+msgid "ERR_MSG_USER_406"
 msgstr ""
 
 msgid "Front page"
@@ -323,10 +323,10 @@ msgstr ""
 msgid "CODE_LIST_EDITOR"
 msgstr "The data is missing a column with the header STATUS."
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_401"
 msgstr ""
 
-msgid "ERR_MSG_USER_406"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_500"
@@ -384,6 +384,12 @@ msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr ""
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
+msgstr ""
+
+msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
+msgstr ""
+
+msgid "ERR_MSG_PATH_CODE_MISMATCH"
 msgstr ""
 
 msgid "invalidDate"

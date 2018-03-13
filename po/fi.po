@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-09 12:35+0200\n"
+"PO-Revision-Date: 2018-03-13 12:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -18,6 +18,12 @@ msgstr "Linkin tyyppi"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
+
+msgid "Choose classification"
+msgstr "Valitse luokitus"
+
+msgid "Search classification"
+msgstr "Hae luokitusta"
 
 msgid "No registry"
 msgstr "Ei rekisteriä"
@@ -39,12 +45,6 @@ msgstr "Muokkaa"
 
 msgid "Add link"
 msgstr "Lisää linkki"
-
-msgid "Search classification"
-msgstr "Hae luokitusta"
-
-msgid "Choose classification"
-msgstr "Valitse luokitus"
 
 msgid "Status"
 msgstr "Tila"
@@ -279,8 +279,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_401"
-msgstr "Ei käyttöoikeutta"
+msgid "ERR_MSG_USER_406"
+msgstr "Epäsopivaa dataa"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -340,11 +340,11 @@ msgstr "Sanastotyöntekijä"
 msgid "CODE_LIST_EDITOR"
 msgstr "Koodistotyöntekijä"
 
+msgid "ERR_MSG_USER_401"
+msgstr "Ei käyttöoikeutta"
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_406"
-msgstr "Epäsopivaa dataa"
 
 msgid "ERR_MSG_USER_500"
 msgstr "Tapahtui odottamaton virhe."
@@ -403,6 +403,12 @@ msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
 msgstr "Aineistossa oleva STATUS-sarakkeen arvo on väärä. "
+
+msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
+msgstr "Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla."
+
+msgid "ERR_MSG_PATH_CODE_MISMATCH"
+msgstr "Aineiston koodiarvo eroaa rajapinnan polusta, muutosta ei voida tehdä."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

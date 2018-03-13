@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-09 12:35+0200\n"
+"PO-Revision-Date: 2018-03-13 12:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -17,6 +17,12 @@ msgid "Link type"
 msgstr ""
 
 msgid "Add classification"
+msgstr ""
+
+msgid "Choose classification"
+msgstr ""
+
+msgid "Search classification"
 msgstr ""
 
 msgid "No registry"
@@ -38,12 +44,6 @@ msgid "Edit"
 msgstr ""
 
 msgid "Add link"
-msgstr ""
-
-msgid "Search classification"
-msgstr ""
-
-msgid "Choose classification"
 msgstr ""
 
 msgid "Status"
@@ -272,8 +272,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_401"
-msgstr "You are unauthorized to perform this action."
+msgid "ERR_MSG_USER_406"
+msgstr "Erroneous data"
 
 msgid "Front page"
 msgstr ""
@@ -331,11 +331,11 @@ msgstr "Terminology editor"
 msgid "CODE_LIST_EDITOR"
 msgstr "Code list editor"
 
+msgid "ERR_MSG_USER_401"
+msgstr "You are unauthorized to perform this action."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_406"
-msgstr "Erroneous data"
 
 msgid "ERR_MSG_USER_500"
 msgstr "Unexpected error"
@@ -393,10 +393,16 @@ msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
 msgstr "Broader code references a codevalue that does not exist, failing."
 
 msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
-msgstr " Broader code references codevalue of the code itself, failing."
+msgstr "Broader code references codevalue of the code itself, failing."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
 msgstr "Invalid STATUS value defined in data."
+
+msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
+msgstr "Duplicate CODEVALUE in import data, failing."
+
+msgid "ERR_MSG_PATH_CODE_MISMATCH"
+msgstr "Input codevalue differs from api path, change not allowed."
 
 msgid "invalidDate"
 msgstr "Invalid date"
