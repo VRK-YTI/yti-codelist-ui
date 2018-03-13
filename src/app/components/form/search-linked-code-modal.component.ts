@@ -13,8 +13,8 @@ export class SearchLinkedCodeModalService {
   }
 
   open(codes$: Observable<Code[]>, titleLabel: string, searchLabel: string, restrictCodeIds: string[]): Promise<Code> {
-    const modalRef = this.modalService.open(SearchLinkedCodeModalModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedCodeModalModalComponent;
+    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
     instance.codes$ = codes$;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
@@ -70,7 +70,7 @@ export class SearchLinkedCodeModalService {
     </div>
   `
 })
-export class SearchLinkedCodeModalModalComponent implements AfterViewInit, OnInit {
+export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
 
   @ViewChild('searchInput') searchInput: ElementRef;
 

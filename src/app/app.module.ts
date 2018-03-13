@@ -59,7 +59,7 @@ import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
 import { ClassificationsInputComponent } from './components/form/classifications-input.component';
 import {
-  SearchLinkedCodeModalModalComponent,
+  SearchLinkedCodeModalComponent,
   SearchLinkedCodeModalService  
 } from './components/form/search-linked-code-modal.component';
 import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
@@ -149,7 +149,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateInputComponent,
     DateRangeInputComponent,
     ClassificationsInputComponent,
-    SearchLinkedCodeModalModalComponent,
+    SearchLinkedCodeModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent
   ],
@@ -160,7 +160,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkEditModalComponent,
     LinkCreateModalComponent,
     LinkListModalComponent,
-    SearchLinkedCodeModalModalComponent
+    SearchLinkedCodeModalComponent
   ],
   imports: [
     BrowserModule,
