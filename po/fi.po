@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-13 12:06+0200\n"
+"PO-Revision-Date: 2018-03-13 12:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -279,8 +279,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_406"
-msgstr "Epäsopivaa dataa"
+msgid "ERR_MSG_USER_500"
+msgstr "Tapahtui odottamaton virhe."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -343,11 +343,11 @@ msgstr "Koodistotyöntekijä"
 msgid "ERR_MSG_USER_401"
 msgstr "Ei käyttöoikeutta"
 
+msgid "ERR_MSG_USER_406"
+msgstr "Epäsopivaa dataa"
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_500"
-msgstr "Tapahtui odottamaton virhe."
 
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "Loppupäivä ennen alkupäivää."
@@ -409,6 +409,9 @@ msgstr "Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla."
 
 msgid "ERR_MSG_PATH_CODE_MISMATCH"
 msgstr "Aineiston koodiarvo eroaa rajapinnan polusta, muutosta ei voida tehdä."
+
+msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
+msgstr "Aineiston tilan muutos ei ole sallittu."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

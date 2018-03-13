@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-13 12:06+0200\n"
+"PO-Revision-Date: 2018-03-13 12:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -272,8 +272,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_406"
-msgstr "Erroneous data"
+msgid "ERR_MSG_USER_500"
+msgstr "Unexpected error"
 
 msgid "Front page"
 msgstr ""
@@ -334,11 +334,11 @@ msgstr "Code list editor"
 msgid "ERR_MSG_USER_401"
 msgstr "You are unauthorized to perform this action."
 
+msgid "ERR_MSG_USER_406"
+msgstr "Erroneous data"
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_500"
-msgstr "Unexpected error"
 
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "The enddate is before the startdate."
@@ -403,6 +403,9 @@ msgstr "Duplicate CODEVALUE in import data, failing."
 
 msgid "ERR_MSG_PATH_CODE_MISMATCH"
 msgstr "Input codevalue differs from api path, change not allowed."
+
+msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
+msgstr "Status change not allowed, failing."
 
 msgid "invalidDate"
 msgstr "Invalid date"

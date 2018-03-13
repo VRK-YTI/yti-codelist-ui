@@ -264,7 +264,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_406"
+msgid "ERR_MSG_USER_500"
 msgstr ""
 
 msgid "Front page"
@@ -326,10 +326,10 @@ msgstr "The data is missing a column with the header STATUS."
 msgid "ERR_MSG_USER_401"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_406"
 msgstr ""
 
-msgid "ERR_MSG_USER_500"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
@@ -390,6 +390,9 @@ msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
 msgstr ""
 
 msgid "ERR_MSG_PATH_CODE_MISMATCH"
+msgstr ""
+
+msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
 msgstr ""
 
 msgid "invalidDate"
