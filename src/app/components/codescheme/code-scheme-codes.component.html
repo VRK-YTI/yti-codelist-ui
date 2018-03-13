@@ -1,18 +1,33 @@
 <div class="codes row">
-  <div *ngIf="hasHierarchy()" class="d-inline-block col-md-12 pull-left">
-    <button *ngIf="hasCollapsed()"
-            type="button"
-            class="btn btn-action ml-3 pull-left"
-            (click)="expandAll()"
-            translate>Expand all</button>
-    <button *ngIf="hasExpanded()"
-            type="button"
-            class="btn btn-action ml-3 pull-left"
-            (click)="collapseAll()"
-            translate>Collapse all</button>
+  <div class="col-md-5">
+    <div *ngIf="hasHierarchy()" class="d-inline-block pull-left">
+      <button *ngIf="hasCollapsed()"
+              type="button"
+              class="btn btn-action ml-3 pull-left"
+              (click)="expandAll()"
+              translate>Expand all</button>
+      <button *ngIf="hasExpanded()"
+              type="button"
+              class="btn btn-action ml-3 pull-left"
+              (click)="collapseAll()"
+              translate>Collapse all</button>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+      <div *ngIf="canAddCode()" class="d-inline-block pull-left">
+        <button type="button"
+                class="btn btn-action ml-3 pull-right"
+                (click)="importCodes()"
+                translate>Import codes</button>
+        <button type="button"
+                class="btn btn-action pull-right"
+                (click)="createCode()"
+                translate>Create code</button>
+      </div>
   </div>
    
-  <div class="md-9">
+  <div class="col-md-12">
     <ul>
       <li *ngFor="let code of topLevelCodes">
         <app-hierarchy-code [codes]="codes" [code]="code"></app-hierarchy-code>
@@ -20,19 +35,6 @@
     </ul>
     <div class="emptyCodes" *ngIf="codes.length === 0">
       <span translate>This code list does not have any codes yet.</span>
-    </div>
-  </div>
-
-  <div class="md-3 pull-right">
-    <div *ngIf="canAddCode()" class="d-inline-block pull-right">
-      <button type="button"
-              class="btn btn-action ml-3 pull-right"
-              (click)="importCodes()"
-              translate>Import codes</button>
-      <button type="button"
-              class="btn btn-action pull-right"
-              (click)="createCode()"
-              translate>Create code</button>
     </div>
   </div>
 </div>
