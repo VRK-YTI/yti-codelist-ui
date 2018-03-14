@@ -12,13 +12,19 @@ export class SearchLinkedCodeModalService {
   constructor(private modalService: ModalService) {
   }
 
-  open(codes$: Observable<Code[]>, titleLabel: string, searchLabel: string, restrictCodeIds: string[]): Promise<Code> {
+  open(codes$: Observable<Code[]>,
+       titleLabel: string,
+       searchLabel: string,
+       restrictCodeIds: string[],
+       useUILanguage: boolean = false): Promise<Code> {
+         
     const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
     instance.codes$ = codes$;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
     instance.restricts = restrictCodeIds;
+    instance.useUILanguage = useUILanguage;
     return modalRef.result;
   }
 }
@@ -53,8 +59,8 @@ export class SearchLinkedCodeModalService {
               <div class="search-result"
                    *ngFor="let code of searchResults$ | async; let last = last"
                    (click)="select(code)">
-                <div class="content" [class.last]="last">
-                  <span class="title" [innerHTML]="code.prefLabel | translateValue:true"></span>
+                <div class="content" [class.last]="last">                  
+                  <span class="title" [innerHTML]="code.getDisplayName(languageService, useUILanguage)"></span>
                 </div>
               </div>
             </div>
@@ -78,6 +84,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
   @Input() titleLabel: string;
   @Input() searchLabel: string;
   @Input() codes$: Observable<Code[]>;
+  @Input() useUILanguage: boolean;
 
   searchResults$: Observable<Code[]>;
 
@@ -85,7 +92,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
   loading = false;
 
   constructor(public modal: NgbActiveModal,
-              private languageService: LanguageService,
+              public languageService: LanguageService,
               private renderer: Renderer) {
   }
 

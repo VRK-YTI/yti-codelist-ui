@@ -75,7 +75,7 @@
         <div class="row">
           <div class="col-12">
             <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
-              <div class="name">{{codeScheme.prefLabel | translateValue:true }}</div>
+              <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization">
                 <span *ngIf="codeScheme.codeRegistry.organizations.length == 0" translate>No organization</span>
