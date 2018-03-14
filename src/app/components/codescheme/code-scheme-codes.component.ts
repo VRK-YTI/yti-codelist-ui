@@ -8,6 +8,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { DataService } from '../../services/data.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { contains } from 'yti-common-ui/utils/array';
+import { CodeSchemeComponent } from './code-scheme.component';
 
 @Component({
   selector: 'app-code-scheme-codes',
@@ -19,7 +20,8 @@ export class CodeSchemeCodesComponent {
   @Input() codes: Code[];
   @Input() codeScheme: CodeScheme;
 
-  constructor(private userService: UserService,
+  constructor(private codeSchemeComponent: CodeSchemeComponent,
+              private userService: UserService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
               private dataService: DataService,
               private router: Router,
@@ -29,7 +31,7 @@ export class CodeSchemeCodesComponent {
   importCodes() {
     this.codeSchemeCodesImportModalService.open(this.codeScheme).then(success => {
       if (success) {
-        this.refreshCodes();
+        this.codeSchemeComponent.refreshCodes();
       }
     }, ignoreModalClose);
   }
@@ -43,12 +45,6 @@ export class CodeSchemeCodesComponent {
         }
       ]
     );
-  }
-
-  refreshCodes() {
-    this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
-      this.codes = codes;
-    });
   }
 
   canAddCode() {

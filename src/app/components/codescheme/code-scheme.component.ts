@@ -52,6 +52,12 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     });
   }
 
+  refreshCodes() {
+    this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
+      this.codes = codes;
+    });
+  }
+
   get loading(): boolean {
     return this.codeScheme == null || this.codes == null;
   }
