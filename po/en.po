@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-13 15:11+0200\n"
+"PO-Revision-Date: 2018-03-14 08:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -115,10 +115,10 @@ msgstr ""
 msgid "Collapse all"
 msgstr ""
 
-msgid "This code list does not have any codes yet."
+msgid "Import codes"
 msgstr ""
 
-msgid "Import codes"
+msgid "This code list does not have any codes yet."
 msgstr ""
 
 msgid "Code list value"
@@ -272,8 +272,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_500"
-msgstr "Unexpected error"
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgstr "The enddate is before the startdate."
 
 msgid "Front page"
 msgstr ""
@@ -337,11 +337,11 @@ msgstr "You are unauthorized to perform this action."
 msgid "ERR_MSG_USER_406"
 msgstr "Erroneous data"
 
+msgid "ERR_MSG_USER_500"
+msgstr "Unexpected error"
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
-msgstr "The enddate is before the startdate."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
 msgstr ""
@@ -409,6 +409,9 @@ msgstr "Status change not allowed, failing."
 
 msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
 msgstr "Invalid value in HIERARCHYLEVEL column."
+
+msgid "ERR_MSG_INVALID_ID"
+msgstr "Invalid ID value defined in data."
 
 msgid "invalidDate"
 msgstr "Invalid date"

@@ -106,10 +106,10 @@ msgstr ""
 msgid "Collapse all"
 msgstr ""
 
-msgid "This code list does not have any codes yet."
+msgid "Import codes"
 msgstr ""
 
-msgid "Import codes"
+msgid "This code list does not have any codes yet."
 msgstr ""
 
 msgid "Code list value"
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_500"
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr ""
 
 msgid "Front page"
@@ -329,10 +329,10 @@ msgstr ""
 msgid "ERR_MSG_USER_406"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_500"
 msgstr ""
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
@@ -396,6 +396,9 @@ msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
 msgstr ""
 
 msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
+msgstr ""
+
+msgid "ERR_MSG_INVALID_ID"
 msgstr ""
 
 msgid "invalidDate"

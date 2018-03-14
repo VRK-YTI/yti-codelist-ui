@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-13 15:10+0200\n"
+"PO-Revision-Date: 2018-03-14 08:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -115,11 +115,11 @@ msgstr "Laajenna kaikki"
 msgid "Collapse all"
 msgstr "Supista kaikki"
 
-msgid "This code list does not have any codes yet."
-msgstr "Tällä koodistolla ei ole yhtään koodia."
-
 msgid "Import codes"
 msgstr "Tuo koodeja"
+
+msgid "This code list does not have any codes yet."
+msgstr "Tällä koodistolla ei ole yhtään koodia."
 
 msgid "Code list value"
 msgstr "Koodiston tunnus"
@@ -279,8 +279,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_500"
-msgstr "Tapahtui odottamaton virhe."
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgstr "Loppupäivä ennen alkupäivää."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -346,11 +346,11 @@ msgstr "Ei käyttöoikeutta"
 msgid "ERR_MSG_USER_406"
 msgstr "Epäsopivaa dataa"
 
+msgid "ERR_MSG_USER_500"
+msgstr "Tapahtui odottamaton virhe."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
-msgstr "Loppupäivä ennen alkupäivää."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
 msgstr ""
@@ -402,7 +402,7 @@ msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
-msgstr "Aineistossa oleva STATUS-sarakkeen arvo on väärä. "
+msgstr "Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu. "
 
 msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
 msgstr "Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla."
@@ -415,6 +415,9 @@ msgstr "Aineiston tilan muutos ei ole sallittu."
 
 msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
 msgstr "HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu."
+
+msgid "ERR_MSG_INVALID_ID"
+msgstr "Aineistossa oleva ID-sarakkeen arvo ei ole sallittu."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
