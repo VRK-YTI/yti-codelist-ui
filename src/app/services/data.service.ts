@@ -89,7 +89,7 @@ export class DataService {
     params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization');
 
     if (searchTerm) {
-      params.append('prefLabel', searchTerm);
+      params.append('searchTerm', searchTerm);
     }
 
     if (classification) {
