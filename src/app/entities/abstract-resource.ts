@@ -20,7 +20,7 @@ export abstract class AbstractResource {
   }
 
   getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
-    const name = localizer.translate(this.prefLabel, useUILanguage);
-    return name ? name : this.codeValue;
+    const displayName = localizer.translate(this.prefLabel, useUILanguage);
+    return displayName ? displayName : this.codeValue;
   }
 }
