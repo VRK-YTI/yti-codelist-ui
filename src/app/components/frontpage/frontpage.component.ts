@@ -51,7 +51,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService,
               private router: Router,
               private userService: UserService,
-              private languageService: LanguageService,
+              public languageService: LanguageService,
               private translateService: TranslateService,
               private authorizationManager: AuthorizationManager,
               locationService: LocationService) {

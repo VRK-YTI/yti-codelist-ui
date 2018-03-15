@@ -9,6 +9,7 @@ import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs/Observable';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code-scheme',
@@ -27,6 +28,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
+              public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: ConfirmationModalService) {
 

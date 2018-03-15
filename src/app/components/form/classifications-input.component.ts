@@ -87,7 +87,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
     const searchlabel = this.translateService.instant('Search classification');
     const restrictIds = this.dataClassifications.map(classification => classification.id);
 
-    this.searchLinkedCodeModalService.open(this.classifications, titleLabel, searchlabel, restrictIds)
+    this.searchLinkedCodeModalService.open(this.classifications, titleLabel, searchlabel, restrictIds, true)
       .then(classification => addToControl(this.control, classification), ignoreModalClose);
   }
 
