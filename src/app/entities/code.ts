@@ -96,6 +96,7 @@ export class Code extends AbstractResource implements EditableEntity {
     return {
       id: this.id,
       uri: this.uri,
+      url: this.url,
       codeValue: this.codeValue,
       modified: formatDateTime(this.modified),
       prefLabel: { ...this.prefLabel },

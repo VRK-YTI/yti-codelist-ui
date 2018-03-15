@@ -14,6 +14,7 @@ export interface BaseResourceType {
 
   id: string;
   uri: string;
+  url: string;
   codeValue: string;
   modified: string;
   prefLabel?: Localizable;
