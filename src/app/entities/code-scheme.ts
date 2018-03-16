@@ -10,6 +10,7 @@ import { Moment } from 'moment';
 import { CodeSchemeType } from '../services/api-schema';
 import { DataClassification } from './data-classification';
 import { contains } from 'yti-common-ui/utils/array';
+import { hasLocalization } from 'yti-common-ui/utils/localization';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -69,6 +70,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return [{
       localizationKey: 'Code list',
       label: this.prefLabel,
+      value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
       route: this.route
     }];
   }

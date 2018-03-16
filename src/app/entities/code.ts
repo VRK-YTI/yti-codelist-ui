@@ -9,6 +9,7 @@ import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { CodeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
+import { hasLocalization } from 'yti-common-ui/utils/localization';
 
 export class Code extends AbstractResource implements EditableEntity {
 
@@ -79,6 +80,7 @@ export class Code extends AbstractResource implements EditableEntity {
       {
         localizationKey: 'Code',
         label: this.prefLabel,
+        value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
         route: this.route
       }
     ];
