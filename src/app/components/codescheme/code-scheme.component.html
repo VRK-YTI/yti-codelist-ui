@@ -5,7 +5,7 @@
 <div *ngIf="!loading" class="content-box">
 
   <app-back-button (back)="back()"></app-back-button>
-  
+
   <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService)}}</h1>
 
   <div class="row">
@@ -15,8 +15,8 @@
       <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
         <div ngbDropdownMenu aria-labelledby="exportDropdown">
-          <a href='{{codeScheme.uri}}codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
-          <a href='{{codeScheme.uri}}codes/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
+          <a href='{{codeScheme.url}}codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
+          <a href='{{codeScheme.url}}codes/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
         </div>
       </div>
 
