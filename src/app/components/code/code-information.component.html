@@ -6,11 +6,11 @@
                             [entity]="code"></app-editable-buttons>
     </div>
   </div>
-
+  
   <div class="row">
     <div class="col-lg-8 col-md-10">
-      <app-localizable-literal [label]="'Code list' | translate"
-                               [value]="code.codeScheme.prefLabel"></app-localizable-literal>
+      <app-literal [label]="'Code list' | translate"
+                   [value]="code.codeScheme.getDisplayName(languageService)"></app-literal>
 
       <app-literal [label]="'Code value' | translate"
                    [value]="code.codeValue"></app-literal>
