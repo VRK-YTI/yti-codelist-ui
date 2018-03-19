@@ -39,7 +39,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   searchTerm$ = new BehaviorSubject('');
   classification$ = new BehaviorSubject<DataClassification|null>(null);
-  status$ = new BehaviorSubject<Status|null>('VALID');
+  status$ = new BehaviorSubject<Status|null>(null);
   organization$ = new BehaviorSubject<Organization|null>(null);
 
   filteredCodeSchemes: CodeScheme[];
