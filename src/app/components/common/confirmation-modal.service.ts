@@ -14,4 +14,12 @@ export class CodeListConfirmationModalService {
   openRemoveLink() {
     return this.confirmationModalService.open('REMOVE LINK?', '');
   }
+
+  openRemoveCode() {
+    return this.confirmationModalService.open('REMOVE CODE?', '');
+  }
+
+  openRemoveCodeScheme() {
+    return this.confirmationModalService.open('REMOVE CODESCHEME?', '');
+  }
 }

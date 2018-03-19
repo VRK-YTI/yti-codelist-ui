@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-19 10:06+0200\n"
+"PO-Revision-Date: 2018-03-19 14:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -84,6 +84,9 @@ msgstr "Viimeisin muokkaus"
 
 msgid "Links"
 msgstr "Linkit"
+
+msgid "Delete"
+msgstr "Poista"
 
 msgid "Coderegistry"
 msgstr "Rekisteri"
@@ -279,8 +282,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
-msgstr "Loppupäivä ennen alkupäivää."
+msgid "ERR_MSG_USER_500"
+msgstr "Tapahtui odottamaton virhe."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -328,6 +331,12 @@ msgstr ""
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
 
+msgid "REMOVE CODE?"
+msgstr "POISTETAANKO KOODI?"
+
+msgid "REMOVE CODESCHEME?"
+msgstr "POISTETAANKO KOODISTO?"
+
 msgid "ADMIN"
 msgstr "Ylläpitäjä"
 
@@ -346,11 +355,11 @@ msgstr "Ei käyttöoikeutta"
 msgid "ERR_MSG_USER_406"
 msgstr "Epäsopivaa dataa"
 
-msgid "ERR_MSG_USER_500"
-msgstr "Tapahtui odottamaton virhe."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgstr "Loppupäivä ennen alkupäivää."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
 msgstr ""

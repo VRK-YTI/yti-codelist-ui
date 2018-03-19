@@ -190,6 +190,19 @@ export class DataService {
       .map(res => res.json() as ApiResponseType);
   }
 
+  deleteCode(code: Code): Observable<boolean> {
+
+    const registryCode = code.codeScheme.codeRegistry.codeValue;
+    const schemeCode = code.codeScheme.codeValue;
+
+    return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code.codeValue}/`)
+      .map(res => {
+        return res.status.valueOf() === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
+  }
+
   createCodeScheme(codeScheme: CodeSchemeType, registryCode: string): Observable<CodeScheme> {
     return this.createCodeSchemes([codeScheme], registryCode).map(createdCodeSchemes => {
       if (createdCodeSchemes.length !== 1) {
@@ -213,6 +226,18 @@ export class DataService {
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.codeValue}/`, codeScheme)
       .map(res => res.json() as ApiResponseType);
+  }
+
+  deleteCodeScheme(codeScheme: CodeScheme): Observable<boolean> {
+
+    const registryCode = codeScheme.codeRegistry.codeValue;
+
+    return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.codeValue}/`)
+      .map(res => {
+        return res.status.valueOf() === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
   }
 
   uploadCodeSchemes(registryCode: string, file: File, format: string): Observable<CodeScheme[]> {

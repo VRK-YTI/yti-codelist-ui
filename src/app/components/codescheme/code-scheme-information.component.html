@@ -4,6 +4,11 @@
     <div class="col-12">
       <app-editable-buttons [form]="form"
                             [entity]="codeScheme"></app-editable-buttons>
+
+      <button *ngIf='this.isSuperUser' type="button"
+              class="btn btn-action pull-right ml-3"
+              (click)="delete()"
+              translate>Delete</button>
     </div>
   </div>
 

@@ -11,6 +11,11 @@ import { Code } from '../../entities/code';
 import { LanguageService } from '../../services/language.service';
 import { requiredList } from 'yti-common-ui/utils/validator';
 import { validDateRange } from '../../utils/date';
+import { UserService } from 'yti-common-ui/services/user.service';
+import { DataService } from '../../services/data.service';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { Router } from '@angular/router';
+import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -39,7 +44,11 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   cancelSubscription: Subscription;
 
-  constructor(private linkEditModalService: LinkEditModalService,
+  constructor(private userService: UserService,
+              private dataService: DataService,
+              private router: Router,
+              private errorModalService: CodeListErrorModalService,
+              private linkEditModalService: LinkEditModalService,
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
               private confirmationModalService: CodeListConfirmationModalService,
@@ -72,7 +81,25 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     return this.editableService.editing;
   }
 
+  get isSuperUser() {
+    return this.userService.user.superuser;
+  }
+
+  delete() {
+    this.confirmationModalService.openRemoveCodeScheme()
+      .then(() => {
+        this.dataService.deleteCodeScheme(this.codeScheme).subscribe(res => {
+          this.router.navigate(['frontpage']);
+        }, error => {
+          this.errorModalService.openSubmitError(error);
+        });
+      }, ignoreModalClose);
+    }
+
   get restricted(): boolean {
+    if (this.isSuperUser) {
+      return false;
+    }
     return this.codeScheme.restricted;
   }
 }

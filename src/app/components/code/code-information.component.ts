@@ -5,6 +5,12 @@ import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
+import { UserService } from 'yti-common-ui/services/user.service';
+import { DataService } from '../../services/data.service';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { Router } from '@angular/router';
+import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({
   selector: 'app-code-information',
@@ -26,7 +32,12 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     status: new FormControl()
   });
 
-  constructor(private editableService: EditableService,
+  constructor(private dataService: DataService,
+              private userService: UserService,
+              private router: Router,
+              private errorModalService: CodeListErrorModalService,
+              private confirmationModalService: CodeListConfirmationModalService,
+              private editableService: EditableService,
               public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
@@ -46,11 +57,29 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     });
   }
 
+  delete() {
+    this.confirmationModalService.openRemoveCode()
+      .then(() => {
+        this.dataService.deleteCode(this.code).subscribe(res => {
+          this.router.navigate(this.code.codeScheme.route);
+        }, error => {
+          this.errorModalService.openSubmitError(error);
+        });
+      }, ignoreModalClose);
+    }
+
   get editing() {
     return this.editableService.editing;
   }
 
+  get isSuperUser() {
+    return this.userService.user.superuser;
+  }
+
   get restricted() {
+    if (this.isSuperUser) {
+      return false;
+    }
     return this.code.restricted;
   }
 

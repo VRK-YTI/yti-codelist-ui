@@ -76,6 +76,9 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
+msgid "Delete"
+msgstr ""
+
 msgid "Coderegistry"
 msgstr ""
 
@@ -264,7 +267,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgid "ERR_MSG_USER_500"
 msgstr ""
 
 msgid "Front page"
@@ -311,6 +314,12 @@ msgstr ""
 msgid "REMOVE LINK?"
 msgstr ""
 
+msgid "REMOVE CODE?"
+msgstr ""
+
+msgid "REMOVE CODESCHEME?"
+msgstr ""
+
 msgid "ADMIN"
 msgstr ""
 
@@ -329,10 +338,10 @@ msgstr ""
 msgid "ERR_MSG_USER_406"
 msgstr ""
 
-msgid "ERR_MSG_USER_500"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
