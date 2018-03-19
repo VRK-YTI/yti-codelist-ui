@@ -197,7 +197,7 @@ export class DataService {
 
     return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code.codeValue}/`)
       .map(res => {
-        return res.status.valueOf() === 200;
+        return res.status === 200;
       }).catch(error => {
         return Observable.of(false);
       });
@@ -234,7 +234,7 @@ export class DataService {
 
     return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.codeValue}/`)
       .map(res => {
-        return res.status.valueOf() === 200;
+        return res.status === 200;
       }).catch(error => {
         return Observable.of(false);
       });
