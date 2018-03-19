@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
     <i [hidden]="!hasChildren() || collapsed" class="fa fa-minus" (click)="collapse()"></i>
     
     <div class="code" (click)="viewCode(code)">
-      <span>{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
+      <span *ngIf="code.hasPrefLabel()" >{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
+      <span *ngIf="!code.hasPrefLabel()" >{{code.codeValue}}</span>
     </div>
 
     <ul *ngIf="expanded && hasChildren()">
