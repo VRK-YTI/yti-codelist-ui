@@ -66,7 +66,10 @@ import { CodeRegistryInputComponent } from './components/form/coderegistry-input
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
 import { CodeListErrorModalService } from './components/common/error-modal.service';
 import { HierarchyCodeComponent } from './components/code/hierarchy-code.component';
-import {TerminologyIntegrationCodeSchemeComponent, TerminologyIntegrationModalService} from './components/terminology-integration/terminology-integration-codescheme.component';
+import {
+  TerminologyIntegrationCodeSchemeComponent,
+  TerminologyIntegrationModalService
+} from './components/terminology-integration/terminology-integration-codescheme.component';
 import {EditableService} from './services/editable.service';
 
 const localizations: { [lang: string]: string } = {
