@@ -2,14 +2,12 @@ import {Component, Injectable} from '@angular/core';
 import {EditableService} from '../../services/editable.service';
 import {Router} from '@angular/router';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {CodeRegistry} from '../../entities/code-registry';
 import {DataService} from '../../services/data.service';
-import {CodeListErrorModalService} from '../common/error-modal.service';
 import {Vocabulary} from '../../entities/Vocabulary';
 import { LanguageService } from '../../services/language.service';
 import {ModalService} from '../../services/modal.service';
 import { OnInit } from '@angular/core';
-import {FilterOptions} from '../../../../../yti-common-ui/components/filter-dropdown.component';
+import {FilterOptions} from 'yti-common-ui/components/filter-dropdown.component';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {TranslateService} from 'ng2-translate';
 
