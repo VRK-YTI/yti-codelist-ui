@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
@@ -34,8 +34,8 @@ export class CodeSchemeCreateComponent {
     validity: new FormControl({ start: null, end: null }, validDateRange),
     dataClassifications: new FormControl([], [requiredList]),
     status: new FormControl('DRAFT' as Status),
-    codeRegistry: new FormControl(null, Validators.required)
-  });
+    codeRegistry: new FormControl(null, Validators.required),
+  }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
               private dataService: DataService,
@@ -76,5 +76,19 @@ export class CodeSchemeCreateComponent {
         console.log('Saved new CodeScheme');
         this.router.navigate(createdCodeScheme.route);
       });
+  }
+
+  codeValueExistsValidator(): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      const registryCode = control.value.codeRegistry ? control.value.codeRegistry.codeValue : '';
+      const schemeCode = control.value.codeValue;
+      const validationError = {
+        codeValueExists: {
+          valid: false
+        }
+      };
+      return this.dataService.codeSchemeCodeValueExists(registryCode, schemeCode)
+        .map(exists => exists ? validationError : null);
+    };
   }
 }

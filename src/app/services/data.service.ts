@@ -56,6 +56,7 @@ const groupManagementRequestBasePath = `/${intakeContext}/${api}/${version}/${gr
 const groupManagementRequestsBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${requests}`;
 const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyContext}`;
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
+const codeSchemeCodeValueBasePath = `/${intakeContext}/${api}/${version}/${registries}/${codeSchemes}`;
 
 @Injectable()
 export class DataService {
@@ -284,5 +285,15 @@ export class DataService {
   getVocabularies(): Observable<Vocabulary[]> {
     return this.http.get(`${terminologyVocabulariesPath}/`, undefined)
       .map(response => response.json().results as Vocabulary[]);
+  }
+
+  codeSchemeCodeValueExists(registryCode: string, schemeCode: string): Observable<boolean> {
+    
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}`)
+      .map(res => {
+        return res.status === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
   }
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-19 14:43+0200\n"
+"PO-Revision-Date: 2018-03-22 11:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -54,6 +54,9 @@ msgstr "Kaikki rekisterit"
 
 msgid "All organizations"
 msgstr "Kaikki organisaatiot"
+
+msgid "All vocabularies"
+msgstr "Kaikki sanastot"
 
 msgid "Choose organization"
 msgstr "Valitse organisaatio"
@@ -185,6 +188,12 @@ msgstr "Tuo koodisto"
 
 msgid "Changenote"
 msgstr "Muutostieto"
+
+msgid "Terminology integration"
+msgstr "Integraatio Sanastoihin"
+
+msgid "Codescheme name from Terminology"
+msgstr "Hae koodiston nimi Sanastosta"
 
 msgid "Export"
 msgstr "Lataa"
@@ -434,14 +443,8 @@ msgstr "Virheellinen päivämäärä"
 msgid "invalidDateRange"
 msgstr "Virheellinen päivämääräväli"
 
-msgid "Codescheme name from Terminology"
-msgstr "Hae koodiston nimi Sanastosta"
-
-msgid "Terminology integration"
-msgstr "Integraatio Sanastoihin"
-
-msgid "All vocabularies"
-msgstr "Kaikki sanastot"
+msgid "codeValueExists"
+msgstr "Koodiston tunnus on jo olemassa tässä rekisterissä."
 
 #~ msgid "Invalid date"
 #~ msgstr "Virheellinen päivämäärä"
