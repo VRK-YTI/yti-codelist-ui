@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators, AsyncValidatorFn, AbstractControl } from '@angular/forms';
+import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
@@ -83,7 +83,7 @@ export class CodeSchemeCreateComponent {
       const registryCode = control.value.codeRegistry ? control.value.codeRegistry.codeValue : '';
       const schemeCode = control.value.codeValue;
       const validationError = {
-        codeValueExists: {
+        codeSchemeCodeValueExists: {
           valid: false
         }
       };

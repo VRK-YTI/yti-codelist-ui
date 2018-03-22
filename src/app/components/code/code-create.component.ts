@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class CodeCreateComponent implements OnInit {
   codeScheme: CodeScheme;
 
   codeForm = new FormGroup({
-    codeValue: new FormControl('', Validators.required),
+    codeValue: new FormControl('', Validators.required, this.codeValueExistsValidator()),
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     shortName: new FormControl(''),
@@ -80,5 +80,19 @@ export class CodeCreateComponent implements OnInit {
 
   get loading(): boolean {
     return this.codeScheme == null;
+  }
+
+  codeValueExistsValidator(): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      const registryCode = this.codeScheme.codeRegistry.codeValue ? this.codeScheme.codeRegistry.codeValue : '';
+      const schemeCode = this.codeScheme.codeValue;
+      const validationError = {
+        codeValueExists: {
+          valid: false
+        }
+      };
+      return this.dataService.codeCodeValueExists(registryCode, schemeCode, control.value)
+        .map(exists => exists ? validationError : null);
+    };
   }
 }

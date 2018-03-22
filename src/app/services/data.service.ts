@@ -56,7 +56,6 @@ const groupManagementRequestBasePath = `/${intakeContext}/${api}/${version}/${gr
 const groupManagementRequestsBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${requests}`;
 const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyContext}`;
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
-const codeSchemeCodeValueBasePath = `/${intakeContext}/${api}/${version}/${registries}/${codeSchemes}`;
 
 @Injectable()
 export class DataService {
@@ -290,6 +289,16 @@ export class DataService {
   codeSchemeCodeValueExists(registryCode: string, schemeCode: string): Observable<boolean> {
     
     return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}`)
+      .map(res => {
+        return res.status === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
+  }
+
+  codeCodeValueExists(registryCode: string, schemeCode: string, code: string): Observable<boolean> {
+    
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code}`)
       .map(res => {
         return res.status === 200;
       }).catch(error => {
