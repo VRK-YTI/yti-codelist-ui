@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ResolveEnd, Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {
   MissingTranslationHandler,
   MissingTranslationHandlerParams,
@@ -60,12 +60,14 @@ import { DateInputComponent } from './components/form/date-input.component';
 import { ClassificationsInputComponent } from './components/form/classifications-input.component';
 import {
   SearchLinkedCodeModalComponent,
-  SearchLinkedCodeModalService  
+  SearchLinkedCodeModalService
 } from './components/form/search-linked-code-modal.component';
 import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
 import { CodeListErrorModalService } from './components/common/error-modal.service';
 import { HierarchyCodeComponent } from './components/code/hierarchy-code.component';
+import {TerminologyIntegrationCodeSchemeComponent, TerminologyIntegrationModalService} from './components/terminology-integration/terminology-integration-codescheme.component';
+import {EditableService} from './services/editable.service';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -151,7 +153,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ClassificationsInputComponent,
     SearchLinkedCodeModalComponent,
     CodeRegistryInputComponent,
-    HierarchyCodeComponent
+    HierarchyCodeComponent,
+    TerminologyIntegrationCodeSchemeComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -160,7 +163,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkEditModalComponent,
     LinkCreateModalComponent,
     LinkListModalComponent,
-    SearchLinkedCodeModalComponent
+    SearchLinkedCodeModalComponent,
+    TerminologyIntegrationCodeSchemeComponent
   ],
   imports: [
     BrowserModule,
@@ -189,7 +193,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkListModalService,
     ModalService,
     SearchLinkedCodeModalService,
-    CodeListErrorModalService
+    CodeListErrorModalService,
+    TerminologyIntegrationModalService,
+    TerminologyIntegrationCodeSchemeComponent,
+    EditableService,
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })

@@ -20,6 +20,22 @@
       <app-localizable-input [label]="'Code list name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
+      <dl *ngIf="editing">
+        <dt>
+          <label translate>Terminology integration</label>
+        </dt>
+        <dd>
+          <div>
+            <button type="button"
+                    class="btn btn-sm btn-action mt-2"
+                    *ngIf="editing"
+                    (click)="openTerminologyModal()" translate>Codescheme name from Terminology</button>
+          </div>
+        </dd>
+      </dl>
+
+
+
       <app-literal *ngIf="codeScheme.codeRegistry"
                    [label]="'Coderegistry' | translate"
                    [value]="codeScheme.codeRegistry.prefLabel | translateValue"></app-literal>

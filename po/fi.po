@@ -434,6 +434,15 @@ msgstr "Virheellinen päivämäärä"
 msgid "invalidDateRange"
 msgstr "Virheellinen päivämääräväli"
 
+msgid "Codescheme name from Terminology"
+msgstr "Hae koodiston nimi Sanastosta"
+
+msgid "Terminology integration"
+msgstr "Integraatio Sanastoihin"
+
+msgid "All vocabularies"
+msgstr "Kaikki sanastot"
+
 #~ msgid "Invalid date"
 #~ msgstr "Virheellinen päivämäärä"
 

@@ -6,5 +6,10 @@
   "/codelist-api/*": {
     "target": "http://localhost:9601",
     "secure": false
+  },
+  "/terminology/*": {
+    "target": "http://localhost:8001",
+    "secure": false
   }
+
 }

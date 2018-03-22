@@ -46,6 +46,9 @@ msgstr ""
 msgid "All organizations"
 msgstr ""
 
+msgid "All vocabularies"
+msgstr ""
+
 msgid "Choose organization"
 msgstr ""
 
@@ -136,6 +139,9 @@ msgstr ""
 msgid "Create code list"
 msgstr ""
 
+msgid "Codescheme name from Terminology"
+msgstr ""
+
 msgid "Add code list"
 msgstr ""
 
@@ -169,6 +175,9 @@ msgid "Import code list"
 msgstr ""
 
 msgid "Changenote"
+msgstr ""
+
+msgid "Terminology integration"
 msgstr ""
 
 msgid "Export"

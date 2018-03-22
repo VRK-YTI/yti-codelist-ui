@@ -421,3 +421,12 @@ msgstr "Invalid date"
 
 msgid "invalidDateRange"
 msgstr "Invalid date range"
+
+msgid "Codescheme name from Terminology"
+msgstr "Get codescheme name from Terminology"
+
+msgid "Terminology integration"
+msgstr "Terminology integration"
+
+msgid "All vocabularies"
+msgstr "All vocabularies"

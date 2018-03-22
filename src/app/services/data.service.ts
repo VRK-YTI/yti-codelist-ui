@@ -21,10 +21,12 @@ import { Organization } from '../entities/organization';
 import { ServiceConfiguration } from '../entities/service-configuration';
 import { UserRequest } from '../entities/user-request';
 import { AuthorizationManager } from './authorization-manager.service';
+import {Vocabulary} from '../entities/Vocabulary';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
 const api = 'api';
+const terminologyContext = 'terminology';
 
 const version = 'v1';
 const registries = 'coderegistries';
@@ -39,6 +41,7 @@ const fakeableUsers = 'fakeableUsers';
 const groupmanagement = 'groupmanagement';
 const requests = 'requests';
 const request = 'request';
+const vocabularies = 'vocabularies';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -51,6 +54,8 @@ const organizationsBasePath = `/${intakeContext}/${api}/${version}/${organizatio
 const fakeableUsersPath = `/${intakeContext}/${api}/${fakeableUsers}`;
 const groupManagementRequestBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${request}`;
 const groupManagementRequestsBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${requests}`;
+const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyContext}`;
+const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
 
 @Injectable()
 export class DataService {
@@ -274,5 +279,10 @@ export class DataService {
 
   sendUserRequest(organizationId: string): Observable<any> {
     return this.http.post(`${groupManagementRequestBasePath}/?organizationId=${organizationId}`, null, undefined);
+  }
+
+  getVocabularies(): Observable<Vocabulary[]> {
+    return this.http.get(`${terminologyVocabulariesPath}/`, undefined)
+      .map(response => response.json().results as Vocabulary[]);
   }
 }

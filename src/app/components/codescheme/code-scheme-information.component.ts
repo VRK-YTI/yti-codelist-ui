@@ -16,6 +16,8 @@ import { DataService } from '../../services/data.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
+import { TerminologyIntegrationModalService} from "../terminology-integration/terminology-integration-codescheme.component";
+
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -53,7 +55,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
               private linkListModalService: LinkListModalService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              public languageService: LanguageService) {
+              public languageService: LanguageService,
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
@@ -101,5 +104,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
       return false;
     }
     return this.codeScheme.restricted;
+  }
+
+  openTerminologyModal() {
+    this.terminologyIntegrationModalService.open();
   }
 }
