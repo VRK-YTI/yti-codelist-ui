@@ -21,7 +21,6 @@ export interface BaseResourceType {
 }
 
 export interface CodeRegistryType extends BaseResourceType {
-  codeSchemes?: { uri: string };
   organizations: OrganizationType[];
 }
 

@@ -5,12 +5,10 @@ import { formatDateTime } from '../utils/date';
 
 export class CodeRegistry extends AbstractResource {
 
-  codeSchemes?: { uri: string };
   organizations: Organization[];
 
   constructor(data: CodeRegistryType) {
     super(data);
-    this.codeSchemes = data.codeSchemes;
     this.organizations = (data.organizations || []).map(o => new Organization(o));
   }
 
@@ -23,7 +21,6 @@ export class CodeRegistry extends AbstractResource {
       codeValue: this.codeValue,
       modified: formatDateTime(this.modified),
       prefLabel: { ...this.prefLabel },
-      codeSchemes: { ...this.codeSchemes },
       organizations: this.organizations.map(o => o.serialize())
     };
   }
