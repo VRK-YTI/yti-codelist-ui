@@ -285,4 +285,24 @@ export class DataService {
     return this.http.get(`${terminologyVocabulariesPath}/`, undefined)
       .map(response => response.json().results as Vocabulary[]);
   }
+
+  codeSchemeCodeValueExists(registryCode: string, schemeCode: string): Observable<boolean> {
+    
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}`)
+      .map(res => {
+        return res.status === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
+  }
+
+  codeCodeValueExists(registryCode: string, schemeCode: string, code: string): Observable<boolean> {
+    
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code}`)
+      .map(res => {
+        return res.status === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
+  }
 }

@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
     <div *ngIf="isVisible()">
       <ul class="errors">
         <li *ngFor="let errorKey of errorKeys">{{errorKey | translate}}</li>
-      </ul>
+      </ul>      
     </div>
   `
 })
@@ -21,6 +21,6 @@ export class ErrorMessagesComponent {
   }
 
   get errorKeys() {
-    return this.control ? Object.keys(this.control.errors) : [];
+    return this.control.errors ? Object.keys(this.control.errors) : [];
   }
 }

@@ -11,7 +11,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
         <div *ngIf="editing" class="form-group">
           <input type="text" 
                  class="form-control"
-                 [ngClass]="{'is-invalid': !valid}"
+                 [ngClass]="{'is-invalid': !valid && !pending}"
                  [formControl]="control" />
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
@@ -41,6 +41,10 @@ export class LiteralInputComponent implements ControlValueAccessor {
 
   get valid() {
     return !this.parentControl || this.parentControl.valid;
+  }
+
+  get pending() {
+    return !this.parentControl || this.parentControl.pending;
   }
 
   get show() {

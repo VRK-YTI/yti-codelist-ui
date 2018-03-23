@@ -139,9 +139,6 @@ msgstr ""
 msgid "Create code list"
 msgstr ""
 
-msgid "Codescheme name from Terminology"
-msgstr ""
-
 msgid "Add code list"
 msgstr ""
 
@@ -178,6 +175,9 @@ msgid "Changenote"
 msgstr ""
 
 msgid "Terminology integration"
+msgstr ""
+
+msgid "Codescheme name from Terminology"
 msgstr ""
 
 msgid "Export"
@@ -423,4 +423,10 @@ msgid "invalidDate"
 msgstr ""
 
 msgid "invalidDateRange"
+msgstr ""
+
+msgid "codeSchemeCodeValueExists"
+msgstr ""
+
+msgid "codeValueExists"
 msgstr ""
