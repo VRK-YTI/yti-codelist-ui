@@ -29,6 +29,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   @Input() codeScheme: CodeScheme;
 
   dataClassifications: Code[];
+  dev: boolean;
 
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -59,6 +60,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
               private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.dev = configuration.dev;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -78,6 +83,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
+  }
+
+  get isDev() {
+    return this.dev;
   }
 
   get editing() {

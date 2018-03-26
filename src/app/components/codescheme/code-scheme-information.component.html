@@ -20,7 +20,7 @@
       <app-localizable-input [label]="'Code list name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
-      <dl *ngIf="editing">
+      <dl *ngIf="isDev && editing">
         <dt>
           <label translate>Terminology integration</label>
         </dt>
@@ -33,8 +33,6 @@
           </div>
         </dd>
       </dl>
-
-
 
       <app-literal *ngIf="codeScheme.codeRegistry"
                    [label]="'Coderegistry' | translate"
