@@ -4,7 +4,7 @@
 
 <div [hidden]="loading" class="content-box">
 
-  <app-back-button (back)="back()"></app-back-button>
+  <app-back-button id="back_button" (back)="back()"></app-back-button>
 
   <div class="row">
     <div class="col-12">
@@ -12,7 +12,7 @@
       <app-content-language></app-content-language>
     </div>
   </div>
-  
+
   <form [formGroup]="codeSchemeForm" #form="ngForm">
 
     <div class="row">
@@ -23,41 +23,52 @@
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-coderegistry-input [label]="'Coderegistry' | translate" 
+        <app-coderegistry-input id="code_registry_input"
+                                [label]="'Coderegistry' | translate"
                                 (loaded)="codeRegistriesLoaded = true"
                                 [formControlName]="'codeRegistry'"></app-coderegistry-input>
 
-        <app-literal-input [label]="'Code list value' | translate"
+        <app-literal-input id="codelist_value_input"
+                           [label]="'Code list value' | translate"
                            [formControlName]="'codeValue'"></app-literal-input>
-                           
+
         <div class="form-group">
           <app-error-messages [control]="codeSchemeForm"></app-error-messages>
         </div>
 
-        <app-localizable-input [label]="'Code list name' | translate"
+        <app-localizable-input id="codelist_name_input"
+                               [label]="'Code list name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <app-classifications-input [label]="'Classification' | translate"
+        <app-classifications-input id="classification_input"
+                                   [label]="'Classification' | translate"
                                    [formControlName]="'dataClassifications'"></app-classifications-input>
 
-        <app-localizable-textarea [label]="'Description' | translate"
+        <app-localizable-textarea id="description_input"
+                                  [label]="'Description' | translate"
                                   [formControlName]="'description'"></app-localizable-textarea>
 
-        <app-localizable-textarea [label]="'Definition' | translate"
+        <app-localizable-textarea id="definition_input"
+                                  [label]="'Definition' | translate"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
-        <app-literal-input [label]="'Source' | translate"
+        <app-literal-input id="source_input"
+                           [label]="'Source' | translate"
                            [formControlName]="'source'"></app-literal-input>
 
-        <app-literal-input [label]="'Legal base' | translate"
+        <app-literal-input id="legal_base_input"
+                           [label]="'Legal base' | translate"
                            [formControlName]="'legalBase'"></app-literal-input>
 
-        <app-literal-input [label]="'Governance policy' | translate"
+        <app-literal-input id="governance_policy_input"
+                           [label]="'Governance policy' | translate"
                            [formControlName]="'governancePolicy'"></app-literal-input>
 
-        <app-status-input [formControlName]="'status'"></app-status-input>
+        <app-status-input id="status_input"
+                          [formControlName]="'status'"></app-status-input>
 
-        <app-date-range-input [label]="'Validity' | translate"
+        <app-date-range-input id="validity_input"
+                              [label]="'Validity' | translate"
                               [formControlName]="'validity'"></app-date-range-input>
       </div>
     </div>

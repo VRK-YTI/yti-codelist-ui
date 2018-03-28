@@ -1,12 +1,12 @@
 <div class="content-box">
-  <app-back-button (back)="back()"></app-back-button>
+  <app-back-button id="import_create_back_button" (back)="back()"></app-back-button>
 
   <h1 translate>Add code list</h1>
   <p translate>Import code list by uploading a CSV- or Excel formatted file. Look up more detailed guide and information about using code list files from service help.</p>
   <p translate>Using the imported file, a new code list is created or an older code list is updated with new meta-information. Upon uploading the file, you get to review and cancel the changes if needed.</p>
-  <button type="button" class="btn btn-action" (click)="importFromFile()" translate>Import code list from a file</button>
+  <button id="import_from_file_button" type="button" class="btn btn-action" (click)="importFromFile()" translate>Import code list from a file</button>
   <br/><br/>
   <p translate>You can also add a new code list by creating it via the user interface of the Koodistot service.</p>
-  <button type="button" class="btn btn-action" (click)="createNewCodeScheme()" translate>Create new code list</button>
+  <button id="create_new_scheme_button" type="button" class="btn btn-action" (click)="createNewCodeScheme()" translate>Create new code list</button>
   <br/><br/>
 </div>

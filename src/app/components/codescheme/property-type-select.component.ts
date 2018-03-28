@@ -19,6 +19,7 @@ import { EditableService } from '../../services/editable.service';
 
             <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
               <button *ngFor="let propertyTypeOption of propertyTypes"
+                      id="{{propertyTypeOption.id + '_propertytype'}}"
                       (click)="select(propertyTypeOption)"
                       class="dropdown-item"
                       [class.active]="isSelected(propertyTypeOption)">

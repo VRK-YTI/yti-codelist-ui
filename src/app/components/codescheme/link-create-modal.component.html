@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title strong">
-    <a><i class="fa fa-times" (click)="close()"></i></a>
+    <a id="close_modal_link"><i class="fa fa-times" (click)="close()"></i></a>
     <span translate>Add new link</span>
   </h4>
 </div>
@@ -12,20 +12,24 @@
 
       <form #form="ngForm">
 
-        <app-localizable-input [label]="'Link title' | translate"
+        <app-localizable-input id="link_title_input"
+                               [label]="'Link title' | translate"
                                [name]="'title'"
                                [(ngModel)]="externalReference.title"></app-localizable-input>
 
-        <app-localizable-textarea [label]="'Description' | translate"
+        <app-localizable-textarea id="link_description_textarea"
+                                  [label]="'Description' | translate"
                                   [name]="'description'"
                                   [(ngModel)]="externalReference.description"></app-localizable-textarea>
 
-        <app-literal-input [label]="'URL' | translate"
+        <app-literal-input id="link_url_input"
+                           [label]="'URL' | translate"
                            [name]="'url'"
                            required
                            [(ngModel)]="externalReference.url"></app-literal-input>
 
-        <app-property-type-select [name]="'propertyType'"
+        <app-property-type-select id="propertytype_select"
+                                  [name]="'propertyType'"
                                   [(ngModel)]="externalReference.propertyType"></app-property-type-select>
 
       </form>
@@ -34,7 +38,7 @@
 </div>
 <div class="modal-footer">
   <div>
-    <button type="button" class="btn btn-action" [disabled]="!form.valid" (click)="add()" translate>Add</button>
-    <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
+    <button id="add_link_button" type="button" class="btn btn-action" [disabled]="!form.valid" (click)="add()" translate>Add</button>
+    <button id="cancel_modal_button" type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
   </div>
 </div>

@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button (back)="back()"></app-back-button>
+  <app-back-button id="scheme_back_button" (back)="back()"></app-back-button>
 
   <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService)}}</h1>
 
@@ -15,8 +15,8 @@
       <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
         <div ngbDropdownMenu aria-labelledby="exportDropdown">
-          <a href='{{codeScheme.url}}codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
-          <a href='{{codeScheme.url}}codes/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
+          <a id="scheme_export_csv_link" href='{{codeScheme.url}}codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
+          <a id="scheme_export_excel_link" href='{{codeScheme.url}}codes/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
   </div>
 
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab>
+    <ngb-tab id="scheme_codes_tabs">
       <ng-template ngbTabTitle>
         <span translate>CODES</span>
       </ng-template>
@@ -57,7 +57,7 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab>
+    <ngb-tab id="scheme_info_tab">
       <ng-template ngbTabTitle>
         <span translate>INFORMATION</span>
       </ng-template>

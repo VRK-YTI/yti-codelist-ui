@@ -5,7 +5,7 @@
 <div *ngIf="!uploading">
   <div class="modal-header">
     <h4 class="modal-title strong">
-      <a><i class="fa fa-times" (click)="close()"></i></a>
+      <a id="close_modal_link"><i class="fa fa-times" (click)="close()"></i></a>
       <span translate>Import codes to code list</span>
     </h4>
   </div>
@@ -23,13 +23,15 @@
               </button>
 
               <div ngbDropdownMenu aria-labelledby="format-dropdown">
-                <button (click)="format = 'CSV'"
+                <button id="csv_format_dropdown_button"
+                        (click)="format = 'CSV'"
                         class="dropdown-item"
                         [class.active]="format === 'CSV'">
                   'CSV'
                 </button>
 
-                <button (click)="format = 'Excel'"
+                <button id="excel_format_dropdown_button"
+                        (click)="format = 'Excel'"
                         class="dropdown-item"
                         [class.active]="format === 'Excel'">
                   'Excel'
@@ -54,9 +56,9 @@
   </div>
   <div class="modal-footer">
     <div>
-      <button [disabled]="!canSave()" type="button" class="btn btn-action" (click)="uploadCodesFile()" translate>Import
+      <button id="upload_codes_file_button" [disabled]="!canSave()" type="button" class="btn btn-action" (click)="uploadCodesFile()" translate>Import
       </button>
-      <button type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
+      <button id="cancel_upload_button" type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
     </div>
   </div>
 </div>
