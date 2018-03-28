@@ -1,17 +1,17 @@
-import { Component, Input } from '@angular/core';
-import { Code } from '../../entities/code';
-import { Router } from '@angular/router';
+import {Component, Input} from '@angular/core';
+import {Code} from '../../entities/code';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-hierarchy-code',
   styleUrls: ['./hierarchy-code.component.scss'],
   template: `
-    <i [hidden]="!hasChildren() || expanded" class="fa fa-plus" (click)="expand()"></i>
-    <i [hidden]="!hasChildren() || collapsed" class="fa fa-minus" (click)="collapse()"></i>
-    
-    <div class="code" (click)="viewCode(code)">
-      <span *ngIf="code.hasPrefLabel()" >{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
-      <span *ngIf="!code.hasPrefLabel()" >{{code.codeValue}}</span>
+    <i id="hierarchy_code_expand" [hidden]="!hasChildren() || expanded" class="fa fa-plus" (click)="expand()"></i>
+    <i id="hierarchy_code_collapse" [hidden]="!hasChildren() || collapsed" class="fa fa-minus" (click)="collapse()"></i>
+
+    <div id="{{code.codeValue + '_view_code'}}" class="code" (click)="viewCode(code)">
+      <span *ngIf="code.hasPrefLabel()">{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
+      <span *ngIf="!code.hasPrefLabel()">{{code.codeValue}}</span>
     </div>
 
     <ul *ngIf="expanded && hasChildren()">
@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
 })
 
 export class HierarchyCodeComponent {
- 
+
   @Input() codes: Code[];
   @Input() code: Code;
 
@@ -43,11 +43,11 @@ export class HierarchyCodeComponent {
   }
 
   expand() {
-    this.code.expanded = true;    
+    this.code.expanded = true;
   }
 
   collapse() {
-    this.code.expanded = false;    
+    this.code.expanded = false;
   }
 
   hasChildren() {

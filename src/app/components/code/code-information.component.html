@@ -5,7 +5,8 @@
       <app-editable-buttons [form]="form"
                             [entity]="code"></app-editable-buttons>
 
-      <button *ngIf='this.isSuperUser' type="button"
+      <button ide="code_info_delete_button"
+              *ngIf='this.isSuperUser' type="button"
               class="btn btn-action pull-right ml-3"
               (click)="delete()"
               translate>Delete</button>
@@ -20,26 +21,32 @@
       <app-literal [label]="'Code value' | translate"
                    [value]="code.codeValue"></app-literal>
 
-      <app-localizable-input [label]="'Code name' | translate"
+      <app-localizable-input id="code_name_input"
+                             [label]="'Code name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
-      <app-status-input [formControlName]="'status'"
+      <app-status-input id="code_status_input"
+                        [formControlName]="'status'"
                         [restrict]="restricted"></app-status-input>
 
-      <app-localizable-textarea [label]="'Description' | translate"
+      <app-localizable-textarea id="code_description_textarea"
+                                [label]="'Description' | translate"
                                 [formControlName]="'description'"></app-localizable-textarea>
 
-      <app-literal-input [label]="'Short name' | translate"
+      <app-literal-input id="code_shortname_input"
+                         [label]="'Short name' | translate"
                          [formControlName]="'shortName'"
                          [restrict]="restricted"></app-literal-input>
 
-      <app-date-range-input [label]="'Validity' | translate"
+      <app-date-range-input id="code_validity_input"
+                            [label]="'Validity' | translate"
                             [formControlName]="'validity'" ></app-date-range-input>
 
       <app-literal [label]="'Last modification' | translate"
                    [value]="code.modifiedDisplayValue"></app-literal>
 
-      <app-external-references-input [label]="'Links' | translate"
+      <app-external-references-input id="code_ext_references_input"
+                                     [label]="'Links' | translate"
                                      [codeSchemeId]="code.codeScheme.id"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
     </div>
