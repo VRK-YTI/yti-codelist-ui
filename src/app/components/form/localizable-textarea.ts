@@ -11,7 +11,8 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
       <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <textarea rows="3" 
+          <textarea id="localizable_textarea"
+                    rows="3"
                     class="form-control"
                     [ngClass]="{'is-invalid': !valid}"
                     [ngModel]="value[contentLanguage]" 

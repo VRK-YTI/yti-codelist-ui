@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
-  
+
   const previous = control.value as T[];
   control.setValue([...previous, itemToAdd]);
 }
 
 function removeFromControl<T>(control: FormControl, itemToRemove: T) {
-  
+
   const previous = control.value as T[];
   control.setValue(previous.filter(item => item !== itemToRemove));
 }
@@ -37,13 +37,15 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
         </div>
         <div *ngIf="editing">
           <div *ngFor="let classification of dataClassifications">
-            <a><i class="fa fa-times" (click)="removeDataClassification(classification)"></i></a>
+            <a id="{{'remove_' + classification.codeValue + '_classification_link'}}">
+              <i class="fa fa-times" (click)="removeDataClassification(classification)"></i></a>
             <span>{{classification.prefLabel | translateValue:true}}</span>
           </div>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
 
-        <button type="button"
+        <button id="add_classification_button"
+                type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
                 (click)="addDataClassification()" translate>Add classification</button>

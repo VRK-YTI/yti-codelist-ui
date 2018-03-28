@@ -16,11 +16,11 @@ import { Observable } from 'rxjs/Observable';
 
           <div class="row">
             <div class="col-md-6">
-              <app-date-input [label]="'Start date' | translate" [formControl]="startControl"></app-date-input>
+              <app-date-input id="start_date_input" [label]="'Start date' | translate" [formControl]="startControl"></app-date-input>
             </div>
             
             <div class="col-md-6">
-              <app-date-input [label]="'End date' | translate" [formControl]="endControl"></app-date-input>
+              <app-date-input id="end_date_input" [label]="'End date' | translate" [formControl]="endControl"></app-date-input>
             </div>
           </div>
           

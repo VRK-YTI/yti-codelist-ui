@@ -11,7 +11,8 @@ import { Localizable } from 'yti-common-ui/types/localization';
       <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <input type="text" 
+          <input id="localizable_text_input"
+                 type="text"
                  class="form-control"
                  [ngClass]="{'is-invalid': !valid}"
                  [ngModel]="value[contentLanguage]" 

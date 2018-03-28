@@ -7,20 +7,23 @@ import { EditableEntity } from '../../entities/editable-entity';
 @Component({
   selector: 'app-editable-buttons',
   template: `
-    <button [hidden]="!editing" 
+    <button id="editable_save_button"
+            [hidden]="!editing"
             type="button"
             [disabled]="!canSave() || operationPending || invalid" 
             class="btn btn-action pull-right ml-3" 
             (click)="save()" translate>Save</button>
     
-    <button [hidden]="!editing" 
+    <button id="editable_cancel_button"
+            [hidden]="!editing"
             type="button" 
             [disabled]="operationPending"
             class="btn btn-link pull-right" 
             (click)="cancel()" 
             translate>Cancel</button>
     
-    <button [hidden]="editing" 
+    <button id="editable_edit_button"
+            [hidden]="editing"
             type="button" 
             class="btn btn-action pull-right ml-3"
             *ngIf="canEdit()"

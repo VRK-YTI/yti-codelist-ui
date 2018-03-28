@@ -9,7 +9,8 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
       <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <input type="text" 
+          <input id="literal_text_input"
+                 type="text"
                  class="form-control"
                  [ngClass]="{'is-invalid': !valid && !pending}"
                  [formControl]="control" />

@@ -15,12 +15,13 @@ import { Moment } from 'moment';
       <dd>
         <div *ngIf="editing">
           <div class="input-group">
-            <input class="form-control"
+            <input id="datepicker_date_input"
+                   class="form-control"
                    placeholder="yyyy-mm-dd"
                    [formControl]="control"
                    ngbDatepicker
                    #date="ngbDatepicker">
-            <button class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
+            <button id="toggle_calendar_button" class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
           </div>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
