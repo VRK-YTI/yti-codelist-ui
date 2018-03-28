@@ -10,7 +10,8 @@ import { contains } from 'yti-common-ui/utils/array';
       <button class="btn btn-language" id="contentLanguageDropdown" ngbDropdownToggle>{{contentLanguage.toUpperCase()}}</button>
       <div ngbDropdownMenu aria-labelledby="contentLanguageDropdown">
         <div *ngFor="let language of languages">
-          <button class="dropdown-item"  
+          <button id="{{language.code + '_content_lang_button'}}"
+                  class="dropdown-item"
                   type="button"
                   [class.active]="language.code === contentLanguage"
                   (click)='contentLanguage = language.code'>{{language.name}}</button>
@@ -42,7 +43,7 @@ export class ContentLanguageComponent implements OnInit, OnDestroy {
 
         if (languageExistsInContentLanguages) {
           this.contentLanguage = language;
-        }        
+        }
       }));
   }
 
