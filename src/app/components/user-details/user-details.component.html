@@ -33,21 +33,20 @@
   <div class="form-group">
 
     <label translate>Send access request</label>
-    
     <div class="input-group">
-      
       <app-dropdown [options]="organizationOptions"
+                    id="dropdown_access_request"
                     [showNullOption]="false"
                     [placement]="'top-left'"
                     [(ngModel)]="selectedOrganization"></app-dropdown>
 
       <div class="input-group-btn">
         <button type="button"
+                id="button_send_request"
                 class="btn btn-action"
                 [disabled]="!selectedOrganization"
                 (click)="sendRequest()" translate>Send</button>
       </div>
     </div>
   </div>
-
 </div>
