@@ -15,17 +15,18 @@
       </div>
     </li>
     <li class="nav-item" *ngIf="!isLoggedIn()">
-      <a class="nav-link" (click)="logIn()" translate>LOG IN</a>
+      <a id="link_log_in" class="nav-link" (click)="logIn()" translate>LOG IN</a>
     </li>
     <li class="nav-item logged-in" *ngIf="isLoggedIn()">
       <span>{{user.name}}</span>
-      <a class="nav-link" (click)="logOut()" translate>LOG OUT</a>
+      <a id="link_log_out" class="nav-link" (click)="logOut()" translate>LOG OUT</a>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
-      <a class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>
+      <a id="dropdown_select_lang" class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>
       <div ngbDropdownMenu>
         <a *ngFor="let availableLanguage of availableLanguages"
            class="dropdown-item"
+           id={{availableLanguage.code}}
            [class.active]="isLanguageSelected(availableLanguage.code)"
            (click)="language = availableLanguage.code">
           <span>{{availableLanguage.name}}</span>
@@ -33,23 +34,25 @@
       </div>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
-      <a class="nav-link btn-menu" ngbDropdownToggle>
+      <a id="dropdown_navigation_menu" class="nav-link btn-menu" ngbDropdownToggle>
         <app-menu></app-menu>
       </a>
       <div ngbDropdownMenu>
-        <a class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
+        <a id="navigation_link_log_out" class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
           <i class="fa fa-sign-out"></i>
           <span translate>LOG OUT</span>
         </a>
-        <a class="dropdown-item" *ngIf="!isLoggedIn()" (click)="logIn()">
+        <a id="navigation_link_log_in" class="dropdown-item" *ngIf="!isLoggedIn()" (click)="logIn()">
           <i class="fa fa-sign-in"></i>
           <span translate>LOG IN</span>
         </a>
         <div class="dropdown-divider" [hidden]="noMenuItemsAvailable"></div>
         <a class="dropdown-item"
+           id="navigation_link_user_details"
            *ngIf="isLoggedIn()"
            [routerLink]="['/userDetails']" translate>User details</a>
         <a class="dropdown-item"
+           id="navigation_link_groupmanagement"
            *ngIf="showGroupManagementUrl()"
            [href]="groupManagementUrl" target="_blank" translate>User right management</a>
       </div>
