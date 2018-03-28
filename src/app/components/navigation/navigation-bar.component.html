@@ -7,22 +7,22 @@
   <ul class="navbar-nav ml-auto">
 
     <li *ngIf="fakeableUsers.length > 0" class="nav-item dropdown" ngbDropdown>
-      <a class="nav-link" ngbDropdownToggle translate>Impersonate user</a>
+      <a id="impersonate_user_link" class="nav-link" ngbDropdownToggle translate>Impersonate user</a>
       <div ngbDropdownMenu>
-        <a class="dropdown-item" *ngFor="let user of fakeableUsers" (click)="fakeUser(user.email)">
+        <a id={{user.email}} class="dropdown-item" *ngFor="let user of fakeableUsers" (click)="fakeUser(user.email)">
           {{user.firstName}} {{user.lastName}}
         </a>
       </div>
     </li>
     <li class="nav-item" *ngIf="!isLoggedIn()">
-      <a id="link_log_in" class="nav-link" (click)="logIn()" translate>LOG IN</a>
+      <a id="log_in_link" class="nav-link" (click)="logIn()" translate>LOG IN</a>
     </li>
     <li class="nav-item logged-in" *ngIf="isLoggedIn()">
       <span>{{user.name}}</span>
-      <a id="link_log_out" class="nav-link" (click)="logOut()" translate>LOG OUT</a>
+      <a id="log_out_link" class="nav-link" (click)="logOut()" translate>LOG OUT</a>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
-      <a id="dropdown_select_lang" class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>
+      <a id="select_lang_dropdown" class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>
       <div ngbDropdownMenu>
         <a *ngFor="let availableLanguage of availableLanguages"
            class="dropdown-item"
@@ -34,15 +34,15 @@
       </div>
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
-      <a id="dropdown_navigation_menu" class="nav-link btn-menu" ngbDropdownToggle>
+      <a id="navigation_menu_dropdown" class="nav-link btn-menu" ngbDropdownToggle>
         <app-menu></app-menu>
       </a>
       <div ngbDropdownMenu>
-        <a id="navigation_link_log_out" class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
+        <a id="navigation_log_out_link" class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
           <i class="fa fa-sign-out"></i>
           <span translate>LOG OUT</span>
         </a>
-        <a id="navigation_link_log_in" class="dropdown-item" *ngIf="!isLoggedIn()" (click)="logIn()">
+        <a id="navigation_log_in_link" class="dropdown-item" *ngIf="!isLoggedIn()" (click)="logIn()">
           <i class="fa fa-sign-in"></i>
           <span translate>LOG IN</span>
         </a>
@@ -52,7 +52,7 @@
            *ngIf="isLoggedIn()"
            [routerLink]="['/userDetails']" translate>User details</a>
         <a class="dropdown-item"
-           id="navigation_link_groupmanagement"
+           id="navigation_groupmanagement_link"
            *ngIf="showGroupManagementUrl()"
            [href]="groupManagementUrl" target="_blank" translate>User right management</a>
       </div>
