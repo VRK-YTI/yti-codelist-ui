@@ -8,7 +8,7 @@
       <div class="input-group input-group-lg input-group-search">
         <input class="form-control"
                #schemeSearch
-               id="search-box"
+               id="search_box_input"
                type="text"
                [(ngModel)]="searchTerm"
                placeholder="{{'Search for code lists' | translate}}"/>
@@ -23,6 +23,7 @@
 
         <div *ngFor="let dataClassification of dataClassifications">
           <div *ngIf="dataClassification.count > 0" class="classification"
+              id="{{dataClassification.entity.id + '_classification_filter_link'}}"
                [class.active]="isClassificationSelected(dataClassification.entity)"
                (click)="toggleClassification(dataClassification.entity)">
             <span class="name">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
@@ -38,19 +39,23 @@
         <div class="col-12">
 
           <app-filter-dropdown class="d-inline-block"
+                               id="register_filter_dropdown"
                                [filterSubject]="register$"
                                [options]="registerOptions"></app-filter-dropdown>
 
           <app-filter-dropdown class="d-inline-block"
+                               id="organization_filter_dropdown"
                                [filterSubject]="organization$"
                                [options]="organizationOptions"></app-filter-dropdown>
 
           <app-filter-dropdown class="d-inline-block"
+                               id="status_filter_dropdown"
                                [filterSubject]="status$"
                                [options]="statusOptions"></app-filter-dropdown>
 
           <div *ngIf="canCreateCodeScheme()" class="pull-right d-inline-block">
-            <button type="button"
+            <button id="import_code_scheme_button"
+                    type="button"
                     class="btn btn-action"
                     (click)="importCodeScheme()"
                     translate>Add code list</button>
@@ -74,7 +79,7 @@
 
         <div class="row">
           <div class="col-12">
-            <div class="code-scheme" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
+            <div class="code-scheme" id="{{codeScheme.id + '_code_scheme_link'}}" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization">
