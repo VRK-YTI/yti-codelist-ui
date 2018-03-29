@@ -11,7 +11,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
       <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <textarea id="id"
+          <textarea id="{{id}}"
                     rows="3"
                     class="form-control"
                     [ngClass]="{'is-invalid': !valid}"
