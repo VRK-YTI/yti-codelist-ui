@@ -11,7 +11,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
       <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <textarea id="localizable_textarea"
+          <textarea id="id"
                     rows="3"
                     class="form-control"
                     [ngClass]="{'is-invalid': !valid}"
@@ -28,6 +28,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() id: string;
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};
