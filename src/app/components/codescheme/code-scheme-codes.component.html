@@ -1,5 +1,5 @@
 <div class="codes row">
-  <div class="col-md-5">
+  <div class="col-md-6">
     <div *ngIf="hasHierarchy()" class="d-inline-block pull-left">
       <button id="expand_all_button"
               *ngIf="hasCollapsed()"
@@ -16,8 +16,8 @@
     </div>
   </div>
 
-  <div class="col-md-5">
-      <div *ngIf="canAddCode()" class="d-inline-block pull-left">
+  <div class="col-md-6">
+      <div *ngIf="canAddCode()" class="d-inline-block pull-right">
         <button id="import_codes_button"
                 type="button"
                 class="btn btn-action ml-3 pull-right"
