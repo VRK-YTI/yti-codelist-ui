@@ -73,6 +73,9 @@ msgstr ""
 msgid "Create code"
 msgstr ""
 
+msgid "URI"
+msgstr ""
+
 msgid "Last modification"
 msgstr ""
 
