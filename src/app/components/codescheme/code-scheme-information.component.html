@@ -5,7 +5,7 @@
       <app-editable-buttons [form]="form"
                             [entity]="codeScheme"></app-editable-buttons>
 
-      <button id="delete_scheme_button"
+      <button id="delete_codelist_button"
               *ngIf='this.isSuperUser' type="button"
               class="btn btn-action pull-right ml-3"
               (click)="delete()"
@@ -73,7 +73,7 @@
                          [formControlName]="'version'"
                          [restrict]="restricted"></app-literal-input>
 
-      <app-literal-input id="scheme_source_input"
+      <app-literal-input id="codelist_source_input"
                          [label]="'Source' | translate"
                          [formControlName]="'source'"
                          [restrict]="restricted"></app-literal-input>
@@ -88,11 +88,11 @@
                          [formControlName]="'governancePolicy'"
                          [restrict]="restricted"></app-literal-input>
 
-      <app-status-input id="scheme_status_input"
+      <app-status-input id="codelist_status_input"
                         [formControlName]="'status'"
                         [restrict]="restricted"></app-status-input>
 
-      <app-date-range-input id="scheme_validity_input"
+      <app-date-range-input id="codelist_validity_input"
                             [label]="'Validity' | translate"
                             [formControlName]="'validity'"></app-date-range-input>
 
@@ -102,7 +102,7 @@
       <app-literal [label]="'Last modification' | translate"
                    [value]="codeScheme.modifiedDisplayValue"></app-literal>
 
-      <app-external-references-input id="scheme_links_input"
+      <app-external-references-input id="codelist_links_input"
                                      [label]="'Links' | translate"
                                      [codeSchemeId]="codeScheme.id"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
