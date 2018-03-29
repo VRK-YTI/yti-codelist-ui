@@ -45,7 +45,7 @@ export class SearchLinkedCodeModalService {
         <div class="col-12">
 
           <div class="input-group input-group-lg input-group-search">
-            <input #searchInput type="text" class="form-control" [placeholder]="searchLabel"
+            <input #searchInput id="search_linked_code_input" type="text" class="form-control" [placeholder]="searchLabel"
                    [(ngModel)]="search"/>
           </div>
 
@@ -56,7 +56,8 @@ export class SearchLinkedCodeModalService {
         <div class="col-12">
           <div class="content-box">
             <div class="search-results">
-              <div class="search-result"
+              <div id="{{code.id + '_code_link'}}"
+                   class="search-result"
                    *ngFor="let code of searchResults$ | async; let last = last"
                    (click)="select(code)">
                 <div class="content" [class.last]="last">                  
@@ -70,7 +71,8 @@ export class SearchLinkedCodeModalService {
     </div>
     <div class="modal-footer">
 
-      <button type="button"
+      <button id="cancel_modal_button"
+              type="button"
               class="btn btn-link cancel"
               (click)="cancel()" translate>Cancel</button>
     </div>
