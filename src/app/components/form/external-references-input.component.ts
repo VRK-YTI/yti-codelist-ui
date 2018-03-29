@@ -21,14 +21,16 @@ import { LanguageService } from '../../services/language.service';
 
           <label>{{propertyExternalReferences.label | translateValue}}</label>
 
-          <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
+          <div *ngFor="let externalReference of propertyExternalReferences.externalReferences" class="row">
 
-            <button id="{{'show_' + externalReference.id + '_ref_button'}}"
-                    type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
-              <span>{{externalReference.getDisplayName(languageService)}}</span>
-            </button>
+            <div class="col-10">
+              <button id="{{'show_' + externalReference.id + '_ref_button'}}"
+                      type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
+                <span>{{externalReference.getDisplayName(languageService)}}</span>
+              </button>
+            </div>
 
-            <div *ngIf="editing && !restrict">
+            <div *ngIf="editing && !restrict" class="col-2">
               <button id="{{'edit_' + externalReference.id +'_ref_button'}}" *ngIf="externalReference.global == false"
                       type="button" class="icon icon-pencil"
                       (click)="editExternalReference(externalReference)"></button>
