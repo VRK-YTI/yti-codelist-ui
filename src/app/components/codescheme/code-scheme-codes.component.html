@@ -34,7 +34,7 @@
   <div class="col-md-12">
     <ul>
       <li *ngFor="let code of topLevelCodes">
-        <app-hierarchy-code id="{{code.id + '_code_scheme_code_listitem'}}" [codes]="codes" [code]="code"></app-hierarchy-code>
+        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code"></app-hierarchy-code>
       </li>
     </ul>
     <div class="emptyCodes" *ngIf="codes.length === 0">

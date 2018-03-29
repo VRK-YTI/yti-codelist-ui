@@ -5,7 +5,7 @@
       <app-editable-buttons [form]="form"
                             [entity]="code"></app-editable-buttons>
 
-      <button ide="code_info_delete_button"
+      <button id="code_info_delete_button"
               *ngIf='this.isSuperUser' type="button"
               class="btn btn-action pull-right ml-3"
               (click)="delete()"

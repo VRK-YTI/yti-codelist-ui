@@ -9,14 +9,14 @@ import {Router} from '@angular/router';
     <i id="hierarchy_code_expand" [hidden]="!hasChildren() || expanded" class="fa fa-plus" (click)="expand()"></i>
     <i id="hierarchy_code_collapse" [hidden]="!hasChildren() || collapsed" class="fa fa-minus" (click)="collapse()"></i>
 
-    <div id="{{code.codeValue + '_view_code'}}" class="code" (click)="viewCode(code)">
+    <div id="{{code.id + '_view_code'}}" class="code" (click)="viewCode(code)">
       <span *ngIf="code.hasPrefLabel()">{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
       <span *ngIf="!code.hasPrefLabel()">{{code.codeValue}}</span>
     </div>
 
     <ul *ngIf="expanded && hasChildren()">
       <li class="child-code" *ngFor="let code of children">
-        <app-hierarchy-code [codes]="codes" [code]="code"></app-hierarchy-code>
+        <app-hierarchy-code id="{{code.id + '_codelist_childcode_listitem'}}" [codes]="codes" [code]="code"></app-hierarchy-code>
       </li>
     </ul>
   `
