@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-22 15:52+0200\n"
+"PO-Revision-Date: 2018-03-29 15:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -188,6 +188,9 @@ msgstr "Tuo koodisto"
 
 msgid "Changenote"
 msgstr "Muutostieto"
+
+msgid "Version"
+msgstr "Versio"
 
 msgid "Terminology integration"
 msgstr "Integraatio Sanastoihin"

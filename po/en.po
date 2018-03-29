@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-22 15:53+0200\n"
+"PO-Revision-Date: 2018-03-29 15:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -180,6 +180,9 @@ msgid "Import code list"
 msgstr ""
 
 msgid "Changenote"
+msgstr ""
+
+msgid "Version"
 msgstr ""
 
 msgid "Terminology integration"

@@ -68,6 +68,10 @@
                                 [label]="'Changenote' | translate"
                                 [formControlName]="'changeNote'"></app-localizable-textarea>
 
+      <app-literal-input id="version_input"
+                         [label]="'Version' | translate"
+                         [formControlName]="'version'"
+                         [restrict]="restricted"></app-literal-input>
 
       <app-literal-input id="scheme_source_input"
                          [label]="'Source' | translate"
