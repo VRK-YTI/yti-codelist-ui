@@ -28,6 +28,7 @@ export class CodeSchemeCreateComponent {
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     definition: new FormControl({}),
+    version: new FormControl(''),
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
