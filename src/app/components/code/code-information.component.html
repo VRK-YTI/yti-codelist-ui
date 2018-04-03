@@ -29,7 +29,7 @@
                         [formControlName]="'status'"
                         [restrict]="restricted"></app-status-input>
 
-      <app-localizable-textarea id="code_description_textarea"
+      <app-localizable-textarea [id]="'code_description_textarea'"
                                 [label]="'Description' | translate"
                                 [formControlName]="'description'"></app-localizable-textarea>
 
