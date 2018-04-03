@@ -9,7 +9,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
       <dt><label>{{label}}</label></dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <input id="literal_text_input"
+          <input [id]="id"
                  type="text"
                  class="form-control"
                  [ngClass]="{'is-invalid': !valid && !pending}"
@@ -25,6 +25,7 @@ export class LiteralInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() id: string;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};
