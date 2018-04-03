@@ -7,10 +7,10 @@ import { contains } from 'yti-common-ui/utils/array';
   selector: 'app-content-language',
   template: `
     <div ngbDropdown class="d-inline-block pull-right" [placement]="placement">
-      <button class="btn btn-language" id="contentLanguageDropdown" ngbDropdownToggle>{{contentLanguage.toUpperCase()}}</button>
-      <div ngbDropdownMenu aria-labelledby="contentLanguageDropdown">
+      <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle>{{contentLanguage.toUpperCase()}}</button>
+      <div ngbDropdownMenu aria-labelledby="content_language_dropdown_button">
         <div *ngFor="let language of languages">
-          <button id="{{language.code + '_content_lang_button'}}"
+          <button id="{{language.code + '_content_lang_dropdown_button'}}"
                   class="dropdown-item"
                   type="button"
                   [class.active]="language.code === contentLanguage"

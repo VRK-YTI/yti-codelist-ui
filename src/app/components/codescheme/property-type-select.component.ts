@@ -13,13 +13,13 @@ import { EditableService } from '../../services/editable.service';
         <div *ngIf="editing" class="form-group">
           <div ngbDropdown class="d-inline-block">
 
-            <button class="btn btn-dropdown" id="propertyType-dropdown" ngbDropdownToggle>
+            <button class="btn btn-dropdown" id="propertytype_dropdown_button" ngbDropdownToggle>
               <span *ngIf="value">{{value.prefLabel | translateValue}}</span>
             </button>
 
-            <div ngbDropdownMenu aria-labelledby="propertyType-dropdown">
+            <div ngbDropdownMenu aria-labelledby="propertytype_dropdown_button">
               <button *ngFor="let propertyTypeOption of propertyTypes"
-                      id="{{propertyTypeOption.id + '_propertytype'}}"
+                      id="{{propertyTypeOption.id + '_propertytype_dropdown_button'}}"
                       (click)="select(propertyTypeOption)"
                       class="dropdown-item"
                       [class.active]="isSelected(propertyTypeOption)">
