@@ -26,7 +26,7 @@
       <div ngbDropdownMenu>
         <a *ngFor="let availableLanguage of availableLanguages"
            class="dropdown-item"
-           id={{availableLanguage.code}}
+           [id]="availableLanguage.code"
            [class.active]="isLanguageSelected(availableLanguage.code)"
            (click)="language = availableLanguage.code">
           <span>{{availableLanguage.name}}</span>
