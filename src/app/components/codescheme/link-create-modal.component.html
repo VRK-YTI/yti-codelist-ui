@@ -12,17 +12,17 @@
 
       <form #form="ngForm">
 
-        <app-localizable-input id="link_title_input"
+        <app-localizable-input [id]="'link_title_input'"
                                [label]="'Link title' | translate"
                                [name]="'title'"
                                [(ngModel)]="externalReference.title"></app-localizable-input>
 
-        <app-localizable-textarea id="link_description_textarea"
+        <app-localizable-textarea [id]="'link_description_textarea'"
                                   [label]="'Description' | translate"
                                   [name]="'description'"
                                   [(ngModel)]="externalReference.description"></app-localizable-textarea>
 
-        <app-literal-input id="link_url_input"
+        <app-literal-input [id]="'link_url_input'"
                            [label]="'URL' | translate"
                            [name]="'url'"
                            required

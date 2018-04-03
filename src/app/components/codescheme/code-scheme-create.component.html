@@ -28,7 +28,7 @@
                                 (loaded)="codeRegistriesLoaded = true"
                                 [formControlName]="'codeRegistry'"></app-coderegistry-input>
 
-        <app-literal-input id="codelist_value_input"
+        <app-literal-input [id]="'codelist_value_input'"
                            [label]="'Code list value' | translate"
                            [formControlName]="'codeValue'"></app-literal-input>
 
@@ -36,35 +36,35 @@
           <app-error-messages [control]="codeSchemeForm"></app-error-messages>
         </div>
 
-        <app-localizable-input id="codelist_name_input"
+        <app-localizable-input [id]="'codelist_name_input'"
                                [label]="'Code list name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <app-classifications-input id="codelist_classification_input"
+        <app-classifications-input [id]="'codelist_classification_input'"
                                    [label]="'Classification' | translate"
                                    [formControlName]="'dataClassifications'"></app-classifications-input>
 
-        <app-localizable-textarea id="codelist_description_textarea"
+        <app-localizable-textarea [id]="'codelist_description_textarea'"
                                   [label]="'Description' | translate"
                                   [formControlName]="'description'"></app-localizable-textarea>
 
-        <app-localizable-textarea id="codelist_definition_textarea"
+        <app-localizable-textarea [id]="'codelist_definition_textarea'"
                                   [label]="'Definition' | translate"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
-        <app-literal-input id="codelist_version_input"
+        <app-literal-input [id]="'codelist_version_input'"
                            [label]="'Version' | translate"
                            [formControlName]="'version'"></app-literal-input>
-               
-        <app-literal-input id="codelist_source_input"
+
+        <app-literal-input [id]="'codelist_source_input'"
                            [label]="'Source' | translate"
                            [formControlName]="'source'"></app-literal-input>
 
-        <app-literal-input id="codelist_legal_base_input"
+        <app-literal-input [id]="'codelist_legal_base_input'"
                            [label]="'Legal base' | translate"
                            [formControlName]="'legalBase'"></app-literal-input>
 
-        <app-literal-input id="codelist_governance_policy_input"
+        <app-literal-input [id]="'codelist_governance_policy_input'"
                            [label]="'Governance policy' | translate"
                            [formControlName]="'governancePolicy'"></app-literal-input>
 

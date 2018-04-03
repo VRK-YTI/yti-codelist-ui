@@ -12,15 +12,15 @@
 
       <form [formGroup]="linkForm" #form="ngForm">
 
-        <app-localizable-input id="link_title_input"
+        <app-localizable-input [id]="'link_title_input'"
                                [label]="'Link title' | translate"
                                [formControlName]="'title'"></app-localizable-input>
 
-        <app-localizable-textarea id="link_description_textarea"
+        <app-localizable-textarea [id]="'link_description_textarea'"
                                   [label]="'Description' | translate"
                                   [formControlName]="'description'"></app-localizable-textarea>
 
-        <app-literal-input id="link_url_input"
+        <app-literal-input [id]="'link_url_input'"
                            [label]="'URL' | translate"
                            [formControlName]="'url'"></app-literal-input>
 

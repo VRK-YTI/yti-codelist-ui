@@ -21,7 +21,7 @@
       <app-literal [label]="'Code value' | translate"
                    [value]="code.codeValue"></app-literal>
 
-      <app-localizable-input id="code_name_input"
+      <app-localizable-input [id]="'code_name_input'"
                              [label]="'Code name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
@@ -29,16 +29,16 @@
                         [formControlName]="'status'"
                         [restrict]="restricted"></app-status-input>
 
-      <app-localizable-textarea id="code_description_textarea"
+      <app-localizable-textarea [id]="'code_description_textarea'"
                                 [label]="'Description' | translate"
                                 [formControlName]="'description'"></app-localizable-textarea>
 
-      <app-literal-input id="code_shortname_input"
+      <app-literal-input [id]="'code_shortname_input'"
                          [label]="'Short name' | translate"
                          [formControlName]="'shortName'"
                          [restrict]="restricted"></app-literal-input>
 
-      <app-date-range-input id="code_validity_input"
+      <app-date-range-input [id]="'code_validity_input'"
                             [label]="'Validity' | translate"
                             [formControlName]="'validity'" ></app-date-range-input>
 
@@ -48,7 +48,7 @@
       <app-literal [label]="'Last modification' | translate"
                    [value]="code.modifiedDisplayValue"></app-literal>
 
-      <app-external-references-input id="code_ext_references_input"
+      <app-external-references-input [id]="'code_ext_references_input'"
                                      [label]="'Links' | translate"
                                      [codeSchemeId]="code.codeScheme.id"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
