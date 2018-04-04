@@ -35,7 +35,7 @@ export class SearchLinkedCodeModalService {
   template: `
     <div class="modal-header">
       <h4 class="modal-title">
-        <a><i class="fa fa-times" (click)="cancel()"></i></a>
+        <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
         <span>{{titleLabel}}</span>
       </h4>
     </div>
