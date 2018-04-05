@@ -14,7 +14,7 @@
         <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
           <div class="form-check">
             <label class="form-check-label">
-              <input id="external_reference_input"
+              <input id="{{externalReference.id + '_external_reference_input'}}"
                      class="form-check-input"
                      type="radio"
                      name="externalReference"
