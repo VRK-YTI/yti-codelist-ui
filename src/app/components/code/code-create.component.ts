@@ -20,7 +20,7 @@ export class CodeCreateComponent implements OnInit {
   codeScheme: CodeScheme;
 
   codeForm = new FormGroup({
-    codeValue: new FormControl('', Validators.required, this.codeValueExistsValidator()),
+    codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid], this.codeValueExistsValidator()),
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     shortName: new FormControl(''),
@@ -80,6 +80,11 @@ export class CodeCreateComponent implements OnInit {
 
   get loading(): boolean {
     return this.codeScheme == null;
+  }
+
+  isCodeValuePatternValid (control: AbstractControl) {
+    const isCodeValueValid = control.value.match('^[a-zA-Z0-9_\-]*$');
+    return !isCodeValueValid ? {'codeValueValidationError': {value: control.value}} : null;
   }
 
   codeValueExistsValidator(): AsyncValidatorFn {

@@ -24,7 +24,7 @@ export class CodeSchemeCreateComponent {
   codeRegistriesLoaded = false;
 
   codeSchemeForm = new FormGroup({
-    codeValue: new FormControl('', Validators.required),
+    codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     definition: new FormControl({}),
@@ -77,6 +77,11 @@ export class CodeSchemeCreateComponent {
         console.log('Saved new CodeScheme');
         this.router.navigate(createdCodeScheme.route);
       });
+  }
+
+  isCodeValuePatternValid (control: AbstractControl) {
+    const isCodeValueValid = control.value.match('^[a-zA-Z0-9_\-]*$');
+    return !isCodeValueValid ? {'codeValueValidationError': {value: control.value}} : null;
   }
 
   codeValueExistsValidator(): AsyncValidatorFn {
