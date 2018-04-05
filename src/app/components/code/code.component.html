@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button id="code_back_button" (back)="back()"></app-back-button>
+  <app-back-button [id]="'code_back_button'" (back)="back()"></app-back-button>
 
   <h1 *ngIf="code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}} - {{code.prefLabel | translateValue}}</h1>
   <h1 *ngIf="!code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}}</h1>

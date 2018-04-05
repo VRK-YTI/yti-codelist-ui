@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button id="codelist_back_button" (back)="back()"></app-back-button>
+  <app-back-button [id]="'codelist_back_button'" (back)="back()"></app-back-button>
 
   <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService)}}</h1>
 

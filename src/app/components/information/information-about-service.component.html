@@ -1,15 +1,18 @@
 <div class="content-box">
   
-  <h1>Koodistot</h1>
+  <h1>Tietoa koodistoista</h1>
   <br/>
   <p>
-    Koodistoeditori on kansallinen koodistopalvelu, josta löytyvät julkisessa hallinnossa yleisesti käytettävät koodistot ja luokitukset. Koodistoeditori on osa kansallista yhteentoimivuusalustaa. Palvelu tarjoaa pääsyn ja ylläpitotoiminnot koodistoihin helposti yhdestä paikasta. Rakenteilla olevasta kansallisesta koodistopalvelusta saat jatkossa kaikki keskeiset Suomessa julkishallinnossa käytettävät koodistot.
+    Koodistot-työkalu on kansallinen yhteiskäyttöinen koodistojen ja luokitusten ylläpito- ja jakelualusta sekä yksi yhteentoimivuusalustan kolmesta työkalusta. Koodistot-työkalun sisältöä voi selata ja ottaa käyttöön tarvittavia koodistoja. Koodistoja käytetään myös tietomallit-työkalun semanttisissa tietomalleissa tietojen arvojoukkoina. Koodiston tai koodin merkityksen voi liittää Sanastot-työkalussa määriteltyyn käsitteeseen.
   </p>
-  <p>Kansallisessa koodistopalvelussa voit:</p>
+  <p>
+    Koodistot-työkalu julkaistiin käyttöön tammikuussa 2018. Kehitystyö jatkuu yhteistyössä käyttäjien kanssa.
+  </p>
+  <p>Koodistot-työkalulla voit:</p>
   <ul>
     <li>hakea koodistoja ja koodeja</li>
     <li>ladata koodiston omaan käyttöön manuaalisesti eri tiedostomuodoissa (JSON, RDF/XML, CSV, Excel)</li>
-    <li>hyödyntää koodistoja suoraan tietojärjestelmissä avoimen REST-rajapinnan kautta (kehittäjä)</li>
+    <li>hyödyntää koodistoja tietojärjestelmissä avoimen REST-rajapinnan kautta (kehittäjä)</li>
     <li>ylläpitää ja muokata olemassa olevia koodistoja, koodeja ja näiden metatietoja (vastuuorganisaation muokkaaja)</li>
     <li>tuoda uuden koodiston palveluun MS Excel tai CSV-muodoissa (vastuuorganisaation muokkaaja)</li>
     <li>luoda koodistosta uuden version tai variantin (vastuuorganisaation muokkaaja)</li>
@@ -17,28 +20,43 @@
 
   <h2>Hyödyt käyttäjille</h2>
   <p>
-    Palvelun asiakkaat saavat laadukkaat ja ajantasaiset koodistot käyttöönsä yhdestä paikasta. Omien Excel-tiedostojen tai koodistopalvelun sijaan, organisaatiot voivat ylläpitää koodistoja yhdessä keskitetyssä palvelussa.
-  </p>
+    Koodistoista asiakkaat saavat laadukkaat ja ajantasaiset koodistot käyttöönsä yhdestä paikasta. Omien Excel-tiedostojen tai koodistopalvelun sijaan, organisaatiot voivat ylläpitää koodistoja koodistot-työkalussa.
   <p>
-    Tietojärjestelmien välinen yhteentoimivuus perustuu suurelta osin koodistoihin, jotka ovat semantiikaltaan ja tekniseltä toteutukseltaan samanlaisia. Koodistopalvelun koodistoja käytetään myös yhteentoimivuusmenetelmässä ja tietomallieditorissa tietojen arvojoukkoina.
-  </p>
-
-  <h2>Miten palvelu toimii?</h2>
-  <p>
-      Palvelusta voi hakea etsi-toiminnon avulla koodistoja tai koodeja. Koodiston voi ladata omaan käyttöön Microsoft Excel - ja CSV-muodoissa. Sovelluskehittäjät voivat käyttää tulevaisuudessa koodistoja avoimen REST-rajapinnan kautta.
-  </p>
-  <p>
-      Koodistojen ylläpidosta ja ajantasaisuudesta vastaavat koodistolle määritellyt vastuutahot. Palveluun liittyneen organisaation ylläpitäjä/muokkaaja voi tuoda omia koodistoja palveluun CSV- tai Excel-muodossa, muokata koodistoja ja niiden metatietoja sekä luoda koodistoista uusia versiota tai variantteja. Tulevaisuudessa koodistoja tuodaan palveluun myös avoimien rajapintojen kautta.
+    Tietojärjestelmien välinen yhteentoimivuus perustuu myös koodistoihin, jotka ovat semantiikaltaan ja tekniseltä toteutukseltaan samanlaisia.
   </p>
 
-  <h2>Nykytilanne</h2>
+  <h2>Miten koodistot-työkalu toimii?</h2>
   <p>
-      Koodistot palvelun kehitys alkoi syyskuussa 2017. Ensimmäinen kehitysversio julkaistiin 23. tammikuuta 2018. Palvelun on tarkoitus valmistua vuoden 2018 loppuun mennessä (versio 1.0).
+    Koodistot-työkalusta voi hakea koodistoja tai koodeja. Koodiston voi ladata omaan käyttöön Microsoft Excel - ja CSV-muodoissa. Sovelluskehittäjät voivat käyttää koodistoja avoimen REST-rajapinnan kautta (mahdollisesti syksyllä 2018).  </p>
+  <p>
+    Koodistojen ylläpidosta ja ajantasaisuudesta vastaavat koodistolle määritellyt vastuutahot (vastuuorganisaatiot tai ryhmät). Palveluun liittyneen organisaation muokkaajan roolilla voi tuoda koodistoja palveluun CSV- tai Excel-muodoissa, muokata koodistoja ja niiden metatietoja sekä luoda koodistoita uuden version tai variantin. Tulevaisuudessa koodistoja tuodaan koodistot-työkaluun myös avoimien rajapintojen kautta.
   </p>
 
   <h2>Miten voin liittyä palvelun käyttäjäksi?</h2>
   <p>
-      Palvelua voi käyttää verkossa osoitteesta <a id="service_link" href="https://koodistot.suomi.fi">https://koodistot.suomi.fi</a>. Tietojen tuonti ja muokkaus edellyttävät organisaatiokohtaisia käyttöoikeuksia. Liittyminen palveluun on mahdollista yhteentoimivuusalustan yhteisen oikeuksienhallintasovelluksen kautta. Tietojen tuonti- ja muokkausoikeudet annetaan aluksi vain pilottikumppaneille. Palvelua kehitetään yhdessä yhteistyöverkoston ja pilottikumppanien kanssa.
+    Koodistot-työkalua voi käyttää verkossa osoitteesta <a id="service_link" href="https://koodistot.suomi.fi" target="_blank">https://koodistot.suomi.fi</a>. Tietojen tuonti ja muokkaus edellyttävät organisaatiokohtaisia käyttöoikeuksia. Liittyminen koodistot-työkalun muokkaajaksi on mahdollista yhteentoimivuusalustan yhteisen oikeuksienhallintasovelluksen kautta.    
   </p>
 
+  <h2>Miten voin liittyä palvelun käyttäjäksi?</h2>
+  <!-- Jatka tästä ja tarkista lopuksi onko kaikki oikein!-->
+  <ul>
+    <li>
+      <a id="interoperability_site_link" href="https://yhteentoimiva.suomi.fi" target="_blank">yhteentoimiva.suomi.fi</a>
+    </li>
+    <li>
+      YTI-hankkeen dokumentaatio Confluencessa 
+      <a id="documentation_link" href="https://confluence.csc.fi/display/VRKYTI/VRK+YTI" target="_blank">
+        https://confluence.csc.fi/display/VRKYTI/VRK+YTI
+      </a>
+    </li>
+    <li>
+      VM:n
+      <a id="documentation_link" href="http://vm.fi/yhteinen-tiedon-hallinta" target="_blank">
+        yhteinen tiedon hallinta (YTI) -hankkeen sivut
+      </a>
+    </li>
+   </ul>
+
+   <h2>Ota yhteyttä</h2>
+   <p>Sähköpostilla osoitteeseen yhteentoimivuus[at]vrk.fi</p>
 </div>
