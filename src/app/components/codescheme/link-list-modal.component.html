@@ -21,7 +21,7 @@
                      (click)="selectedExternalReference = externalReference"
                      [checked]="selectedExternalReference === externalReference"
                      title="{{externalReference.title | translateValue}}">
-              <span id="externalrefname">{{externalReference.getDisplayName(languageService)}}</span>
+              <span>{{externalReference.getDisplayName(languageService)}}</span>
             </label>
           </div>
         </div>
