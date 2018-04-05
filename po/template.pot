@@ -282,7 +282,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_500"
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr ""
 
 msgid "Front page"
@@ -353,10 +353,10 @@ msgstr ""
 msgid "ERR_MSG_USER_406"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_500"
 msgstr ""
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
@@ -425,6 +425,9 @@ msgstr ""
 msgid "ERR_MSG_INVALID_ID"
 msgstr ""
 
+msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
+msgstr ""
+
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr ""
 
@@ -441,4 +444,7 @@ msgid "codeValueExists"
 msgstr ""
 
 msgid "codeValueValidationError"
+msgstr ""
+
+msgid "codeCodeValueValidationError"
 msgstr ""
