@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-29 16:02+0300\n"
+"PO-Revision-Date: 2018-04-05 12:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -139,6 +139,9 @@ msgstr "Koodiston nimi"
 msgid "Definition"
 msgstr "Määritelmä"
 
+msgid "Version"
+msgstr "Versio"
+
 msgid "Source"
 msgstr "Lähde"
 
@@ -191,9 +194,6 @@ msgstr "Tuo koodisto"
 
 msgid "Changenote"
 msgstr "Muutostieto"
-
-msgid "Version"
-msgstr "Versio"
 
 msgid "Terminology integration"
 msgstr "Integraatio Sanastoihin"
@@ -443,6 +443,9 @@ msgstr "HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu."
 msgid "ERR_MSG_INVALID_ID"
 msgstr "Aineistossa oleva ID-sarakkeen arvo ei ole sallittu."
 
+msgid "ERR_MSG_INVALID_CODEVALUE"
+msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
 
@@ -454,6 +457,12 @@ msgstr "Koodiston tunnus on jo käytössä tässä rekisterissä."
 
 msgid "codeValueExists"
 msgstr "Tunnus on jo käytössä."
+
+msgid "codeValueValidationError"
+msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
+
+#~ msgid "codeValue.errors.pattern"
+#~ msgstr "Virhe!"
 
 #~ msgid "Invalid date"
 #~ msgstr "Virheellinen päivämäärä"

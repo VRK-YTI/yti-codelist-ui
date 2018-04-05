@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-03-29 16:02+0300\n"
+"PO-Revision-Date: 2018-04-05 12:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -139,6 +139,9 @@ msgstr ""
 msgid "Definition"
 msgstr ""
 
+msgid "Version"
+msgstr ""
+
 msgid "Source"
 msgstr ""
 
@@ -183,9 +186,6 @@ msgid "Import code list"
 msgstr ""
 
 msgid "Changenote"
-msgstr ""
-
-msgid "Version"
 msgstr ""
 
 msgid "Terminology integration"
@@ -437,6 +437,9 @@ msgstr "Invalid value in HIERARCHYLEVEL column."
 msgid "ERR_MSG_INVALID_ID"
 msgstr "Invalid ID value defined in data."
 
+msgid "ERR_MSG_INVALID_CODEVALUE"
+msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
+
 msgid "invalidDate"
 msgstr "Invalid date"
 
@@ -448,3 +451,6 @@ msgstr "Code list value is already in use in this coderegistry."
 
 msgid "codeValueExists"
 msgstr "Code value is already in use."
+
+msgid "codeValueValidationError"
+msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"

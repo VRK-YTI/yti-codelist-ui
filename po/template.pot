@@ -130,6 +130,9 @@ msgstr ""
 msgid "Definition"
 msgstr ""
 
+msgid "Version"
+msgstr ""
+
 msgid "Source"
 msgstr ""
 
@@ -175,9 +178,6 @@ msgid "Import code list"
 msgstr ""
 
 msgid "Changenote"
-msgstr ""
-
-msgid "Version"
 msgstr ""
 
 msgid "Terminology integration"
@@ -425,6 +425,9 @@ msgstr ""
 msgid "ERR_MSG_INVALID_ID"
 msgstr ""
 
+msgid "ERR_MSG_INVALID_CODEVALUE"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
@@ -435,4 +438,7 @@ msgid "codeSchemeCodeValueExists"
 msgstr ""
 
 msgid "codeValueExists"
+msgstr ""
+
+msgid "codeValueValidationError"
 msgstr ""
