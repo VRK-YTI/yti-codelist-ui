@@ -85,8 +85,8 @@ const localizations: { [lang: string]: string } = {
 };
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/frontpage', pathMatch: 'full'},
-  {path: 'frontpage', component: FrontpageComponent, pathMatch: 'full'},
+  {path: '', component: FrontpageComponent, pathMatch: 'full'},
+  {path: 'frontpage', redirectTo: '/', pathMatch: 'full'},
   {path: 'createcode', component: CodeCreateComponent, pathMatch: 'full'},
   {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
   {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
