@@ -21,7 +21,10 @@ import { Moment } from 'moment';
                    [formControl]="control"
                    ngbDatepicker
                    #date="ngbDatepicker">
-            <button [id]="id + '_toggle_calendar_button'" class="input-group-addon icon-calendar" (click)="date.toggle()" type="button"></button>
+            <button [id]="id + '_toggle_calendar_button'" 
+                    class="input-group-addon icon-calendar" 
+                    (click)="date.toggle()" 
+                    type="button"></button>
           </div>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
