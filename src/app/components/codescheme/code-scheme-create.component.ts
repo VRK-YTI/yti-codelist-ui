@@ -80,7 +80,7 @@ export class CodeSchemeCreateComponent {
   }
 
   isCodeValuePatternValid (control: AbstractControl) {
-    const isCodeValueValid = control.value.match('^[a-zA-Z0-9_\-]*$');
+    const isCodeValueValid = control.value.match(/^[a-zA-Z0-9_\-]*$/);
     return !isCodeValueValid ? {'codeValueValidationError': {value: control.value}} : null;
   }
 
