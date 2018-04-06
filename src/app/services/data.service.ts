@@ -87,7 +87,10 @@ export class DataService {
   }
 
   getCodeRegistry(coderegistryCode: string): Observable<CodeRegistry> {
-    return this.http.get(`${codeRegistriesBasePath}/${coderegistryCode}/`)
+    const params = new URLSearchParams();
+    params.append('expand', 'organization');
+
+    return this.http.get(`${codeRegistriesBasePath}/${coderegistryCode}/`, {params})
       .map(res => new CodeRegistry(res.json() as CodeRegistryType));
   }
 
