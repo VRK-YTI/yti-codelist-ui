@@ -70,7 +70,10 @@ export class DataService {
   }
 
   getCodeRegistries(): Observable<CodeRegistry[]> {
-    return this.http.get(codeRegistriesBasePath)
+    const params = new URLSearchParams();
+    params.append('expand', 'organization');
+
+    return this.http.get(codeRegistriesBasePath, {params})
       .map(res => res.json().results.map((data: CodeRegistryType) => new CodeRegistry(data)));
   }
 
@@ -287,7 +290,7 @@ export class DataService {
   }
 
   codeSchemeCodeValueExists(registryCode: string, schemeCode: string): Observable<boolean> {
-    
+
     return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}`)
       .map(res => {
         return res.status === 200;
@@ -297,7 +300,7 @@ export class DataService {
   }
 
   codeCodeValueExists(registryCode: string, schemeCode: string, code: string): Observable<boolean> {
-    
+
     return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${code}`)
       .map(res => {
         return res.status === 200;
