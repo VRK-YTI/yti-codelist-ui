@@ -1,6 +1,6 @@
 <div class="codes row">
   <div class="col-md-6">
-    <div *ngIf="hasHierarchy()" class="d-inline-block pull-left">
+    <div *ngIf="hasHierarchy()" class="d-inline-block mb-1 pull-left">
       <button id="expand_all_button"
               *ngIf="hasCollapsed()"
               type="button"
@@ -17,7 +17,7 @@
   </div>
 
   <div class="col-md-6">
-      <div *ngIf="canAddCode()" class="d-inline-block pull-right">
+      <div *ngIf="canAddCode()" class="d-inline-block mb-1 pull-right">
         <button id="import_codes_button"
                 type="button"
                 class="btn btn-action ml-3 pull-right"
@@ -37,8 +37,9 @@
         <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code"></app-hierarchy-code>
       </li>
     </ul>
-    <div class="emptyCodes" *ngIf="codes.length === 0">
-      <span translate>This code list does not have any codes yet.</span>
-    </div>
+  </div>
+
+  <div class="emptyCodes" *ngIf="codes.length === 0">
+    <span translate>This code list does not have any codes yet.</span>
   </div>
 </div>

@@ -6,12 +6,14 @@ import {Router} from '@angular/router';
   selector: 'app-hierarchy-code',
   styleUrls: ['./hierarchy-code.component.scss'],
   template: `
-    <i id="hierarchy_code_expand" [hidden]="!hasChildren() || expanded" class="fa fa-plus" (click)="expand()"></i>
-    <i id="hierarchy_code_collapse" [hidden]="!hasChildren() || collapsed" class="fa fa-minus" (click)="collapse()"></i>
+    <i id="hierarchy_code_expand" [hidden]="!hasChildren() || expanded" class="icon fa fa-plus" (click)="expand()"></i>
+    <i id="hierarchy_code_collapse" [hidden]="!hasChildren() || collapsed" class="icon fa fa-minus" (click)="collapse()"></i>
+    <i id="hierarchy_code_aligner" [hidden]="hasChildren()" class="icon fa"></i>
 
     <div id="{{code.id + '_view_code'}}" class="code" (click)="viewCode(code)">
       <span *ngIf="code.hasPrefLabel()">{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
       <span *ngIf="!code.hasPrefLabel()">{{code.codeValue}}</span>
+      <app-status class="pull-right status" [status]="code.status"></app-status>
     </div>
 
     <ul *ngIf="expanded && hasChildren()">

@@ -6,12 +6,18 @@
   font-size: large;
   min-height: 200px;
 
+  .icon {
+    width: 20px;
+  }
+
   .code {
     cursor: pointer;
-    margin-right: 200px;
     padding: 10px 40px 10px 10px;
     background-color: $light;
-    margin-top: 5px;
+    margin-top: 8px;
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
     display: inline-block;
   }
 
@@ -20,7 +26,7 @@
 
     li {
       list-style: none;
-      
+
       i {
         cursor: pointer;
         margin-left: -15px;
