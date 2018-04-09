@@ -68,7 +68,21 @@ export class NavigationBarComponent {
   }
 
   fakeUser(userEmail: string) {
-    this.userService.updateLoggedInUser(userEmail);
+    const oldEmail = this.user.email;
+    if (oldEmail !== userEmail) {
+      this.userService.updateLoggedInUser(userEmail);
+      this.refreshPageOnUserUpdate(userEmail);
+    }
+  }
+
+  refreshPageOnUserUpdate(userEmail: string) {
+    setTimeout(() => {
+      if (this.user.email === userEmail) {
+        window.location.reload();
+      } else {
+        this.refreshPageOnUserUpdate(userEmail);
+      }
+    }, 500);
   }
 
   showGroupManagementUrl() {
