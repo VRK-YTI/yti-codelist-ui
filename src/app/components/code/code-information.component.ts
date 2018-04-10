@@ -26,6 +26,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   codeForm = new FormGroup({
     prefLabel: new FormControl(''),
     description: new FormControl(''),
+    definition: new FormControl(''),
     shortName: new FormControl(''),
     externalReferences: new FormControl(),
     validity: new FormControl(null, validDateRange),

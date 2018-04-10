@@ -23,6 +23,7 @@ export class CodeCreateComponent implements OnInit {
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid], this.codeValueExistsValidator()),
     prefLabel: new FormControl({}),
     description: new FormControl({}),
+    definition: new FormControl({}),
     shortName: new FormControl(''),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status)
