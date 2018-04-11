@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Code } from '../../entities/code';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
@@ -10,19 +9,20 @@ import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { LanguageService } from '../../services/language.service';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-code-scheme',
   templateUrl: './code-scheme.component.html',
   styleUrls: ['./code-scheme.component.scss'],
-  providers: [EditableService]
+  providers: [EditableService],
 })
 export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   codeScheme: CodeScheme;
-  codes: Code[];
+  codes: CodePlain[];
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
@@ -49,13 +49,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.locationService.atCodeSchemePage(codeScheme);
     });
 
-    this.dataService.getCodes(registryCode, schemeCode).subscribe(codes => {
+    this.dataService.getPlainCodes(registryCode, schemeCode).subscribe(codes => {
       this.codes = codes;
     });
   }
 
   refreshCodes() {
-    this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
+    this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
     });
   }
@@ -93,7 +93,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     console.log('Store CodeScheme changes to server!');
 
-    const { validity, ...rest } = formData;
+    const {validity, ...rest} = formData;
     const updatedCodeScheme = this.codeScheme.clone();
 
     Object.assign(updatedCodeScheme, {

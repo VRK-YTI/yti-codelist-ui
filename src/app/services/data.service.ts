@@ -8,7 +8,7 @@ import { Code } from '../entities/code';
 import {
   ApiResponseType,
   CodeRegistryType,
-  CodeSchemeType,
+  CodeSchemeType, CodePlainType,
   CodeType,
   DataClassificationType,
   ExternalReferenceType,
@@ -22,6 +22,7 @@ import { ServiceConfiguration } from '../entities/service-configuration';
 import { UserRequest } from '../entities/user-request';
 import { AuthorizationManager } from './authorization-manager.service';
 import {Vocabulary} from '../entities/Vocabulary';
+import { CodePlain } from '../entities/code-simple';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -155,6 +156,12 @@ export class DataService {
 
     return this.http.get(`${externalReferencesBasePath}/`, {params})
       .map(res => res.json().results.map((data: ExternalReferenceType) => new ExternalReference(data)));
+  }
+
+  getPlainCodes(registryCode: string, schemeCode: string): Observable<CodePlain[]> {
+
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/`)
+      .map(res => res.json().results.map((data: CodePlainType) => new CodePlain(data)));
   }
 
   getCodes(registryCode: string, schemeCode: string): Observable<Code[]> {

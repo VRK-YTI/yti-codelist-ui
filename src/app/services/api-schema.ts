@@ -41,6 +41,13 @@ export interface CodeSchemeType extends BaseResourceType {
   externalReferences?: ExternalReferenceType[];
 }
 
+export interface CodePlainType extends BaseResourceType {
+
+  status: Status;
+  broaderCodeId?: string;
+  hierarchyLevel?: number;
+}
+
 export interface CodeType extends BaseResourceType {
 
   codeScheme: CodeSchemeType;

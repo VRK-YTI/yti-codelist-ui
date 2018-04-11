@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ResolveEnd, Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   MissingTranslationHandler,
   MissingTranslationHandlerParams,
@@ -48,7 +48,7 @@ import {
   CodeSchemeCodesImportModalComponent,
   CodeSchemeCodesImportModalService
 } from './components/codescheme/code-scheme-codes-import-modal.component';
-import { YtiCommonModule, AUTHENTICATED_USER_ENDPOINT, LOCALIZER } from 'yti-common-ui';
+import { AUTHENTICATED_USER_ENDPOINT, LOCALIZER, YtiCommonModule } from 'yti-common-ui';
 import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-create.component';
 import { CodeCreateComponent } from './components/code/code-create.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
@@ -70,7 +70,8 @@ import {
   TerminologyIntegrationCodeSchemeComponent,
   TerminologyIntegrationModalService
 } from './components/terminology-integration/terminology-integration-codescheme.component';
-import {EditableService} from './services/editable.service';
+import { EditableService } from './services/editable.service';
+import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -176,7 +177,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader}),
-    YtiCommonModule
+    YtiCommonModule,
+    LazyForModule
   ],
   providers: [
     {provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint},

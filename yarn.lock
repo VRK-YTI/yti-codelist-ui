@@ -294,6 +294,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-lazy-for@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/angular-lazy-for/-/angular-lazy-for-1.1.5.tgz#e33d6fda6af16cc9e58fd13f7af64bbb1f0c7370"
+
 ansi-escapes@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-2.0.0.tgz#5bae52be424878dd9783e8910e3fc2922e83c81b"
@@ -5852,10 +5856,6 @@ yn@^2.0.0:
 "yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#8f51962ff23da1955f611aa207c84e4f35064dce":
   version "0.0.0"
   resolved "https://github.com/VRK-YTI/yti-common-ui.git/#8f51962ff23da1955f611aa207c84e4f35064dce"
-
-"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#d20881d5c03c0550f5007aaf6aec9d2e2836004c":
-  version "0.0.0"
-  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#d20881d5c03c0550f5007aaf6aec9d2e2836004c"
 
 zone.js@^0.8.14:
   version "0.8.17"

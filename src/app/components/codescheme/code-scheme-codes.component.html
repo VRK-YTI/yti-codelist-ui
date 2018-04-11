@@ -31,10 +31,15 @@
       </div>
   </div>
 
-  <div class="col-md-12">
-    <ul>
-      <li *ngFor="let code of topLevelCodes">
-        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code"></app-hierarchy-code>
+  <div id="codelist_code_list_div" class="col-md-12">
+    <ul *ngIf="topLevelCodes.length <= 500" id="codelist_code_list_regular">
+      <li *lazyFor="let code of topLevelCodes">
+        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme"></app-hierarchy-code>
+      </li>
+    </ul>
+    <ul *ngIf="topLevelCodes.length > 500" class="hugelist" id="codelist_code_list_huge">
+      <li *lazyFor="let code of topLevelCodes, withHeight 65">
+        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme"></app-hierarchy-code>
       </li>
     </ul>
   </div>
