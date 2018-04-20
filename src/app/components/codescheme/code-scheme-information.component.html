@@ -32,10 +32,14 @@
                     type="button"
                     class="btn btn-sm btn-action mt-2"
                     *ngIf="editing"
-                    (click)="openTerminologyModal()" translate>Codescheme name from Terminology</button>
+                    (click)="openTerminologyModal()" translate>Get concept from Controlled Vocabularies</button>
           </div>
         </dd>
       </dl>
+
+      <app-literal [label]="'Vocabularies URI' | translate"
+                   [value]="codeScheme.conceptUriInVocabularies"></app-literal>
+
 
       <app-literal *ngIf="codeScheme.codeRegistry"
                    [label]="'Coderegistry' | translate"

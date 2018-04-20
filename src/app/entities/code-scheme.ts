@@ -27,6 +27,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   definition: Localizable = {};
   dataClassifications: DataClassification[] = [];
   externalReferences: ExternalReference[] = [];
+  conceptUriInVocabularies: string;
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -50,6 +51,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.definition = data.definition || {};
     this.dataClassifications = (data.dataClassifications || []).map(dc => new DataClassification(dc));
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
+    this.conceptUriInVocabularies = data.conceptUriInVocabularies;
   }
 
   get modifiedDisplayValue(): string {
@@ -103,7 +105,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       changeNote: { ...this.changeNote },
       definition: { ...this.definition },
       dataClassifications: this.dataClassifications.map(dc => dc.serialize()),
-      externalReferences: this.externalReferences.map(er => er.serialize())
+      externalReferences: this.externalReferences.map(er => er.serialize()),
+      conceptUriInVocabularies: this.conceptUriInVocabularies
     };
   }
 

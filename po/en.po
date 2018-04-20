@@ -191,8 +191,14 @@ msgstr ""
 msgid "Terminology integration"
 msgstr "Terminology integration"
 
-msgid "Codescheme name from Terminology"
-msgstr "Get codescheme name from Terminology"
+msgid "Get concept from Controlled Vocabularies"
+msgstr "Get concept from Controlled Vocabularies"
+
+msgid "Get concept from Controlled Vocabularies instruction text"
+msgstr "Search for a concept from Controlled Vocabularies and bring it to Reference Data by clicking on the search result. The name and definition of the concept will be copied in their respective fields in case the fields are empty. The URI of the concept is always copied, replacing the possible existing value."
+
+msgid "Search for concept"
+msgstr ""
 
 msgid "Export"
 msgstr ""
@@ -460,6 +466,12 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
+
+msgid "Vocabularies URI"
+msgstr ""
+
+msgid "Search"
+msgstr ""
 
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
 #~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"

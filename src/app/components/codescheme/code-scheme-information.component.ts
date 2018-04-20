@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges, OnInit} from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,6 +17,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme.component';
+import {Concept} from '../../entities/concept';
 
 
 @Component({
@@ -24,7 +25,7 @@ import { TerminologyIntegrationModalService} from '../terminology-integration/te
   templateUrl: './code-scheme-information.component.html',
   styleUrls: ['./code-scheme-information.component.scss']
 })
-export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
+export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() codeScheme: CodeScheme;
 
@@ -43,7 +44,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     externalReferences: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),
     validity: new FormControl(null, validDateRange),
-    status: new FormControl()
+    status: new FormControl(),
+    conceptUriInVocabularies: new FormControl('')
   });
 
   cancelSubscription: Subscription;
@@ -65,6 +67,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     dataService.getServiceConfiguration().subscribe(configuration => {
       this.dev = configuration.dev;
     });
+  }
+
+  ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -117,6 +122,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open();
+    this.terminologyIntegrationModalService.open().then(concept => this.putConcepStuffInPlace(concept), ignoreModalClose);
+  }
+
+  putConcepStuffInPlace(concept: Concept) {
+    this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
   }
 }

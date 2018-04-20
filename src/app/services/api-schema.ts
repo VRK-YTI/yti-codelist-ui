@@ -39,6 +39,7 @@ export interface CodeSchemeType extends BaseResourceType {
   definition?: Localizable;
   dataClassifications: DataClassificationType[];
   externalReferences?: ExternalReferenceType[];
+  conceptUriInVocabularies: string;
 }
 
 export interface CodePlainType extends BaseResourceType {
@@ -60,6 +61,11 @@ export interface CodeType extends BaseResourceType {
   externalReferences?: ExternalReferenceType[];
   broaderCodeId?: string;
   hierarchyLevel?: number;
+}
+
+export interface ConceptType extends BaseResourceType {
+  vocabularyId: string;
+  definition: Localizable;
 }
 
 export interface ExternalReferenceType  {

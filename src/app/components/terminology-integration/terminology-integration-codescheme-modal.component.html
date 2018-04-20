@@ -6,14 +6,52 @@
 </head>
 <body>
 
-  <div class="row mb-4">
-    <div class="col-12">
+  <div class="modal-header">
+    <h4 class="modal-title">
+      <a><i class="fa fa-times" (click)="cancel()"></i></a>
+      <span translate>Get concept from Controlled Vocabularies</span>
+    </h4>
+  </div>
+  <div class="modal-body full-height">
 
+    <p translate>Get concept from Controlled Vocabularies instruction text</p>
+
+    <div class="input-group input-group-search col-sm-12">
+      <input class="col-sm-12" id="concept_input" #searchInput type="text" class="form-control" placeholder="{{'Search for concept' | translate}}"
+             [(ngModel)]="search"/>
+    </div>
+
+    <div class="input-group input-group-lg col-sm-12">
       <app-filter-dropdown id="vocabulary_selection_dropdown"
-                           class="d-inline-block"
+                           class="col-sm-12"
+                           #vocabDropdown
+                           (change)="launchSearchByChangingVocabDropdown($event)"
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
     </div>
+
+    <div class="row full-height" *ngIf="searchResults$">
+      <div class="col-12">
+        <div class="content-box">
+          <div class="search-results">
+            <div class="search-result"
+                 *ngFor="let concept of searchResults$ | async; let last = last"
+                 (click)="select(concept)">
+              <div class="content" [class.last]="last">
+                <span class="title" [innerHTML]="concept.prefLabel | translateValue"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button"
+            class="btn btn-link cancel"
+            (click)="cancel()" translate>Cancel</button>
+
   </div>
 
 </body>

@@ -23,6 +23,7 @@ import { UserRequest } from '../entities/user-request';
 import { AuthorizationManager } from './authorization-manager.service';
 import {Vocabulary} from '../entities/Vocabulary';
 import { CodePlain } from '../entities/code-simple';
+import {Concept} from '../entities/concept';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -43,6 +44,9 @@ const groupmanagement = 'groupmanagement';
 const requests = 'requests';
 const request = 'request';
 const vocabularies = 'vocabularies';
+const concepts = 'concepts';
+const searchterm = 'searchterm';
+const vocabulary = 'vocabulary';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -57,6 +61,7 @@ const groupManagementRequestBasePath = `/${intakeContext}/${api}/${version}/${gr
 const groupManagementRequestsBasePath = `/${intakeContext}/${api}/${version}/${groupmanagement}/${requests}`;
 const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyContext}`;
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
+const terminologyConceptsPath = `${terminologyBasePath}/${concepts}`;
 
 @Injectable()
 export class DataService {
@@ -240,6 +245,8 @@ export class DataService {
 
   saveCodeScheme(codeScheme: CodeSchemeType): Observable<ApiResponseType> {
 
+    console.log('saving codescheme in dataservice');
+    console.log(codeScheme);
     const registryCode = codeScheme.codeRegistry.codeValue;
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeScheme.codeValue}/`, codeScheme)
@@ -297,6 +304,11 @@ export class DataService {
   getVocabularies(): Observable<Vocabulary[]> {
     return this.http.get(`${terminologyVocabulariesPath}/`, undefined)
       .map(response => response.json().results as Vocabulary[]);
+  }
+
+  getConcepts(searchTerm: string, vocab: string | null): Observable<Concept[]> {
+    return this.http.get(`${terminologyConceptsPath}/${searchterm}/${searchTerm}/${vocabulary}/${vocab}` , undefined )
+      .map(response => response.json().results as Concept[]);
   }
 
   codeSchemeCodeValueExists(registryCode: string, schemeCode: string): Observable<boolean> {
