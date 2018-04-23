@@ -81,6 +81,7 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
       .debounceTime(500)
       .distinctUntilChanged()
       .subscribe(() => this.goSearch(this.search$.getValue()));
+
   }
 
   ngOnChanges() {
@@ -119,13 +120,11 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
     this.modal.dismiss('cancel');
   }
 
-  launchSearchByChangingVocabDropdown(event: Event) {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'keyup');
-  }
-
   goSearch(searchTerm: string) {
+    if (!searchTerm) {
+      return;
+    }
     let vocab = '0';
-
     if (this.vocabulary$.getValue() != null) {
       vocab = this.vocabulary$.getValue()!.id;
     }
