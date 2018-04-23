@@ -32,6 +32,20 @@
                            [label]="'Code list value' | translate"
                            [formControlName]="'codeValue'"></app-literal-input>
 
+        <dl *ngIf="isDev">
+          <dt>
+            <label translate>Terminology integration</label>
+          </dt>
+          <dd>
+            <div>
+              <button id="open_terminology_modal_button"
+                      type="button"
+                      class="btn btn-sm btn-action mt-2"
+                      (click)="openTerminologyModal()" translate>Get concept from Controlled Vocabularies</button>
+            </div>
+          </dd>
+        </dl>
+
         <div class="form-group">
           <app-error-messages [control]="codeSchemeForm"></app-error-messages>
         </div>

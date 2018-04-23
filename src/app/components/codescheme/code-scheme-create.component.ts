@@ -12,6 +12,9 @@ import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
 import { requiredList } from 'yti-common-ui/utils/validator';
+import {ignoreModalClose} from "yti-common-ui/utils/modal";
+import {Concept} from "../../entities/concept";
+import {TerminologyIntegrationModalService} from "../terminology-integration/terminology-integration-codescheme.component";
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -22,6 +25,7 @@ import { requiredList } from 'yti-common-ui/utils/validator';
 export class CodeSchemeCreateComponent {
 
   codeRegistriesLoaded = false;
+  dev: boolean;
 
   codeSchemeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
@@ -36,6 +40,7 @@ export class CodeSchemeCreateComponent {
     dataClassifications: new FormControl([], [requiredList]),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required),
+    conceptUriInVocabularies: new FormControl({}),
   }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
@@ -43,11 +48,20 @@ export class CodeSchemeCreateComponent {
               private linkEditModalService: LinkEditModalService,
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
-              private editableService: EditableService) {
+              private editableService: EditableService,
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.dev = configuration.dev;
+    });
+  }
+
+  get isDev() {
+    return this.dev;
   }
 
   get loading(): boolean {
@@ -96,5 +110,13 @@ export class CodeSchemeCreateComponent {
       return this.dataService.codeSchemeCodeValueExists(registryCode, schemeCode)
         .map(exists => exists ? validationError : null);
     };
+  }
+
+  openTerminologyModal() {
+    this.terminologyIntegrationModalService.open().then(concept => this.putConcepStuffInPlace(concept), ignoreModalClose);
+  }
+
+  putConcepStuffInPlace(concept: Concept) {
+    this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
   }
 }
