@@ -40,7 +40,7 @@ export class CodeSchemeCreateComponent {
     dataClassifications: new FormControl([], [requiredList]),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required),
-    conceptUriInVocabularies: new FormControl({}),
+    conceptUriInVocabularies: new FormControl(''),
   }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
