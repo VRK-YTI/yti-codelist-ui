@@ -31,7 +31,7 @@ export class CodeCreateComponent implements OnInit {
     shortName: new FormControl(''),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status),
-    conceptUriInVocabularies: new FormControl({})
+    conceptUriInVocabularies: new FormControl('')
   });
 
   constructor(private dataService: DataService,

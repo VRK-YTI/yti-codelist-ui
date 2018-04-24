@@ -35,7 +35,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     externalReferences: new FormControl(),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
-    conceptUriInVocabularies: new FormControl({})
+    conceptUriInVocabularies: new FormControl('')
   });
 
   constructor(private dataService: DataService,
