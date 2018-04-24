@@ -24,6 +24,7 @@ export class Code extends AbstractResource implements EditableEntity {
   broaderCodeId: string;
   hierarchyLevel: number;
   expanded: boolean;
+  conceptUriInVocabularies: string;
 
   constructor(data: CodeType) {
     super(data);
@@ -49,6 +50,9 @@ export class Code extends AbstractResource implements EditableEntity {
       this.hierarchyLevel = data.hierarchyLevel;
     }
     this.expanded = false;
+    if (data.conceptUriInVocabularies) {
+      this.conceptUriInVocabularies = data.conceptUriInVocabularies;
+    }
   }
 
   get registryCode() {
@@ -111,7 +115,8 @@ export class Code extends AbstractResource implements EditableEntity {
       definition: { ...this.definition },
       externalReferences: this.externalReferences.map(er => er.serialize()),
       broaderCodeId: this.broaderCodeId,
-      hierarchyLevel: this.hierarchyLevel
+      hierarchyLevel: this.hierarchyLevel,
+      conceptUriInVocabularies: this.conceptUriInVocabularies
     };
   }
 

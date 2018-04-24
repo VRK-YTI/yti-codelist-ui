@@ -61,6 +61,7 @@ export interface CodeType extends BaseResourceType {
   externalReferences?: ExternalReferenceType[];
   broaderCodeId?: string;
   hierarchyLevel?: number;
+  conceptUriInVocabularies: string;
 }
 
 export interface ConceptType extends BaseResourceType {

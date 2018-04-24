@@ -12,9 +12,9 @@ import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
 import { requiredList } from 'yti-common-ui/utils/validator';
-import {ignoreModalClose} from "yti-common-ui/utils/modal";
-import {Concept} from "../../entities/concept";
-import {TerminologyIntegrationModalService} from "../terminology-integration/terminology-integration-codescheme.component";
+import {ignoreModalClose} from 'yti-common-ui/utils/modal';
+import {Concept} from '../../entities/concept';
+import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme.component';
 
 @Component({
   selector: 'app-code-scheme-create',

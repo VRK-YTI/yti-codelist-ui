@@ -8,6 +8,9 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
 import { Status } from 'yti-common-ui/entities/status';
 import { Observable } from 'rxjs/Observable';
+import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme.component';
+import {ignoreModalClose} from 'yti-common-ui/utils/modal';
+import {Concept} from '../../entities/concept';
 
 @Component({
   selector: 'app-code-create',
@@ -18,6 +21,7 @@ import { Observable } from 'rxjs/Observable';
 export class CodeCreateComponent implements OnInit {
 
   codeScheme: CodeScheme;
+  dev: boolean;
 
   codeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid], this.codeValueExistsValidator()),
@@ -26,17 +30,23 @@ export class CodeCreateComponent implements OnInit {
     definition: new FormControl({}),
     shortName: new FormControl(''),
     validity: new FormControl({ start: null, end: null }, validDateRange),
-    status: new FormControl('DRAFT' as Status)
+    status: new FormControl('DRAFT' as Status),
+    conceptUriInVocabularies: new FormControl({})
   });
 
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
-              private editableService: EditableService) {
+              private editableService: EditableService,
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.dev = configuration.dev;
+    });
   }
 
   ngOnInit() {
@@ -100,5 +110,17 @@ export class CodeCreateComponent implements OnInit {
       return this.dataService.codeCodeValueExists(registryCode, schemeCode, control.value)
         .map(exists => exists ? validationError : null);
     };
+  }
+
+  openTerminologyModal() {
+    this.terminologyIntegrationModalService.open().then(concept => this.putConcepStuffInPlace(concept), ignoreModalClose);
+  }
+
+  putConcepStuffInPlace(concept: Concept) {
+    this.codeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
+  }
+
+  get isDev() {
+    return this.dev;
   }
 }

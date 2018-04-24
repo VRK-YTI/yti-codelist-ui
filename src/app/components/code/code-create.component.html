@@ -34,6 +34,20 @@
                                [label]="'Code name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
+        <dl *ngIf="isDev">
+          <dt>
+            <label translate>Terminology integration</label>
+          </dt>
+          <dd>
+            <div>
+              <button id="open_terminology_modal_button"
+                      type="button"
+                      class="btn btn-sm btn-action mt-2"
+                      (click)="openTerminologyModal()" translate>Get concept from Controlled Vocabularies</button>
+            </div>
+          </dd>
+        </dl>
+
         <app-status-input id="code_status_input"
                           [formControlName]="'status'"></app-status-input>
 

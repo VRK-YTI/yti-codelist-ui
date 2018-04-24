@@ -11,6 +11,9 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
+import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme.component';
+import {Concept} from '../../entities/concept';
+
 
 @Component({
   selector: 'app-code-information',
@@ -22,6 +25,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   @Input() code: Code;
 
   cancelSubscription: Subscription;
+  dev: boolean;
 
   codeForm = new FormGroup({
     prefLabel: new FormControl(''),
@@ -30,7 +34,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     shortName: new FormControl(''),
     externalReferences: new FormControl(),
     validity: new FormControl(null, validDateRange),
-    status: new FormControl()
+    status: new FormControl(),
+    conceptUriInVocabularies: new FormControl({})
   });
 
   constructor(private dataService: DataService,
@@ -39,9 +44,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
               private errorModalService: CodeListErrorModalService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              public languageService: LanguageService) {
+              public languageService: LanguageService,
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.dev = configuration.dev;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -86,5 +96,17 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
+  }
+
+  openTerminologyModal() {
+    this.terminologyIntegrationModalService.open().then(concept => this.putConcepStuffInPlace(concept), ignoreModalClose);
+  }
+
+  putConcepStuffInPlace(concept: Concept) {
+    this.codeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
+  }
+
+  get isDev() {
+    return this.dev;
   }
 }
