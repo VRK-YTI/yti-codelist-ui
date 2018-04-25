@@ -99,7 +99,7 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
     if (!searchTerm) {
       return;
     }
-    let vocabularyId = '0'; //Kaikki Sanastot (All Vocabularies)
+    let vocabularyId = '0'; // Kaikki Sanastot (All Vocabularies)
     const vocabulary = this.vocabulary$.getValue();
     if (vocabulary) {
       vocabularyId = vocabulary.id;
