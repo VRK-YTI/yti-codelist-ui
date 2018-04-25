@@ -113,10 +113,10 @@ export class CodeCreateComponent implements OnInit {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open().then(concept => this.putConcepStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
-  putConcepStuffInPlace(concept: Concept) {
+  putConceptStuffInPlace(concept: Concept) {
     this.codeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
   }
 
