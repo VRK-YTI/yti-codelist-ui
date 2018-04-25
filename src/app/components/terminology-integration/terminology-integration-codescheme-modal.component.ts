@@ -20,7 +20,7 @@ export class TerminologyIntegrationModalService {
   }
 
   public open(): Promise<Concept> {
-    const modalRef = this.modalService.open(TerminologyIntegrationCodeSchemeComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'sm'});
     return modalRef.result;
   }
 }
@@ -29,9 +29,10 @@ export class TerminologyIntegrationModalService {
 @Component({
   selector: 'app-terminology-integration-codescheme-modal',
   templateUrl: './terminology-integration-codescheme-modal.component.html',
+  styleUrls: ['./terminology-integration-codescheme-modal.component.scss'],
   providers: [EditableService]
 })
-export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChanges, AfterViewInit {
+export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, OnChanges, AfterViewInit {
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);

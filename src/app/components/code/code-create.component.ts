@@ -8,7 +8,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
 import { Status } from 'yti-common-ui/entities/status';
 import { Observable } from 'rxjs/Observable';
-import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme.component';
+import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {Concept} from '../../entities/concept';
 

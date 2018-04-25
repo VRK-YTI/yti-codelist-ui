@@ -3,7 +3,7 @@
 }
 
 .content-box {
-  height: 100%;
+  height: 60%;
   padding: 0;
   margin: 0;
 }
@@ -16,4 +16,9 @@
   .row.full-height {
     height: calc(100% - 54px);
   }
+}
+
+.no-side-padding {
+  padding-left: 0px;
+  padding-right: 0px;
 }

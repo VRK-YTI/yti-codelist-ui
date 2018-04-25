@@ -67,9 +67,9 @@ import { DateRangeInputComponent } from './components/form/date-range-input.comp
 import { CodeListErrorModalService } from './components/common/error-modal.service';
 import { HierarchyCodeComponent } from './components/code/hierarchy-code.component';
 import {
-  TerminologyIntegrationCodeSchemeComponent,
+  TerminologyIntegrationCodeschemeModalComponent,
   TerminologyIntegrationModalService
-} from './components/terminology-integration/terminology-integration-codescheme.component';
+} from './components/terminology-integration/terminology-integration-codescheme-modal.component';
 import { EditableService } from './services/editable.service';
 import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
 
@@ -158,7 +158,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedCodeModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent,
-    TerminologyIntegrationCodeSchemeComponent
+    TerminologyIntegrationCodeschemeModalComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -168,7 +168,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkCreateModalComponent,
     LinkListModalComponent,
     SearchLinkedCodeModalComponent,
-    TerminologyIntegrationCodeSchemeComponent
+    TerminologyIntegrationCodeschemeModalComponent
   ],
   imports: [
     BrowserModule,
@@ -200,7 +200,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedCodeModalService,
     CodeListErrorModalService,
     TerminologyIntegrationModalService,
-    TerminologyIntegrationCodeSchemeComponent,
+    TerminologyIntegrationCodeschemeModalComponent,
     EditableService,
     NgbActiveModal
   ],

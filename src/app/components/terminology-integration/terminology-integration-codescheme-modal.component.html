@@ -15,23 +15,23 @@
   <div class="modal-body full-height">
 
     <p translate>Get concept from Controlled Vocabularies instruction text</p>
-    <div class="input-group input-group-search col-sm-12">
-        <input class="col-sm-12 form-control" id="concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
+    <div class="input-group input-group-search col-sm-12 no-side-padding">
+        <input class="col-sm-12 form-control no-side-padding" id="concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
                [(ngModel)]="search"/>
-      </div>
-      <div class="col-sm-12">
+    </div>
+    <div class="col-sm-12 no-side-padding">
       <app-filter-dropdown id="vocabulary_selection_dropdown"
-                           class="col-sm-12"
+                           class="col-sm-12 no-side-padding"
                            #vocabDropdown
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
     </div>
 
-    <div class="row full-height" *ngIf="searchResults$">
-      <div class="col-12">
+    <div class="row full-height col-sm-12" *ngIf="searchResults$">
+      <div class=" no-side-padding">
         <div class="content-box">
           <div class="search-results">
-            <div class="search-result"
+            <div class="search-result "
                  *ngFor="let concept of searchResults$ | async; let last = last"
                  (click)="select(concept)">
               <div class="content" [class.last]="last">
