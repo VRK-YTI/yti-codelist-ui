@@ -15,13 +15,11 @@
   <div class="modal-body full-height">
 
     <p translate>Get concept from Controlled Vocabularies instruction text</p>
-
     <div class="input-group input-group-search col-sm-12">
-      <input class="col-sm-12" id="concept_input" #searchInput type="text" class="form-control" placeholder="{{'Search for concept' | translate}}"
-             [(ngModel)]="search"/>
-    </div>
-
-    <div class="input-group input-group-lg col-sm-12">
+        <input class="col-sm-12 form-control" id="concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
+               [(ngModel)]="search"/>
+      </div>
+      <div class="col-sm-12">
       <app-filter-dropdown id="vocabulary_selection_dropdown"
                            class="col-sm-12"
                            #vocabDropdown

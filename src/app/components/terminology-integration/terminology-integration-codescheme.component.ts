@@ -33,27 +33,13 @@ export class TerminologyIntegrationModalService {
 })
 export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChanges, AfterViewInit {
 
-  vocabularies: Array<Vocabulary> | null = null;
-  process = false;
-  vocabulariesLoaded = false;
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
 
-  conceptsFromDataService: Array<Concept>;
-
   @ViewChild('searchInput') searchInput: ElementRef;
 
-  @Input() concepts: Array<Concept>;
-  @Input() restricts: string[];
-  @Input() titleLabel: string;
-  @Input() searchLabel: string;
-  concepts$: Observable<Concept[]>;
-  @Input() useUILanguage: boolean;
-
   searchResults$: Observable<Concept[]>;
-
   search$ = new BehaviorSubject('');
-  loading = false;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -66,15 +52,12 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
 
   ngOnInit() {
 
-    const debouncedSearch = this.search$.skip(1).debounceTime(500);
-
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
         value: voc,
         name: () => voc ? this.languageService.translate(voc.prefLabel, true)
           : this.translateService.instant('All vocabularies')
       }));
-      this.vocabularies = vocabularies;
     });
 
     Observable.combineLatest(this.vocabulary$, this.search$)
@@ -88,16 +71,8 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
     this.goSearch(this.search$.getValue());
   }
 
-  get processing(): boolean {
-    return !this.vocabulariesLoaded || this.process;
-  }
-
   close() {
     this.modal.dismiss('cancel');
-  }
-
-  canSave() {
-    return this.vocabularies != null;
   }
 
   select(concept: Concept) {
@@ -129,11 +104,7 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
       vocab = this.vocabulary$.getValue()!.id;
     }
     this.dataService.getConcepts(searchTerm, vocab ).subscribe(concepts => {
-      this.conceptsFromDataService = concepts;
-      const conObs: Observable<Concept[]> = Observable.of(concepts);
-      this.concepts$ = conObs;
-      this.concepts = concepts;
-      this.searchResults$ = conObs;
+      this.searchResults$ = Observable.of(concepts);
     });
   }
 }
