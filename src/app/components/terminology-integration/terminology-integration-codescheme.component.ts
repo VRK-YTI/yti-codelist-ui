@@ -99,11 +99,12 @@ export class TerminologyIntegrationCodeSchemeComponent implements OnInit, OnChan
     if (!searchTerm) {
       return;
     }
-    let vocab = '0';
-    if (this.vocabulary$.getValue() != null) {
-      vocab = this.vocabulary$.getValue()!.id;
+    let vocabularyId = '0'; //Kaikki Sanastot (All Vocabularies)
+    const vocabulary = this.vocabulary$.getValue();
+    if (vocabulary) {
+      vocabularyId = vocabulary.id;
     }
-    this.dataService.getConcepts(searchTerm, vocab ).subscribe(concepts => {
+    this.dataService.getConcepts(searchTerm, vocabularyId ).subscribe(concepts => {
       this.searchResults$ = Observable.of(concepts);
     });
   }
