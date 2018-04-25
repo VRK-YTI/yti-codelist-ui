@@ -471,7 +471,7 @@ msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
 
 msgid "Vocabularies URI"
-msgstr "Sanastojen URI"
+msgstr "Käsitteen URI Sanastot-työkalussa"
 
 msgid "Search"
 msgstr "Hae"

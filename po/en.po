@@ -465,7 +465,7 @@ msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
 
 msgid "Vocabularies URI"
-msgstr ""
+msgstr "The URI of the concept in Controlled Vocabularies tool"
 
 msgid "Search"
 msgstr ""
