@@ -188,9 +188,6 @@ msgstr ""
 msgid "Changenote"
 msgstr ""
 
-msgid "Terminology integration"
-msgstr "Terminology integration"
-
 msgid "Get concept from Controlled Vocabularies"
 msgstr "Get concept from Controlled Vocabularies"
 

@@ -195,9 +195,6 @@ msgstr "Tuo koodisto"
 msgid "Changenote"
 msgstr "Muutostieto"
 
-msgid "Terminology integration"
-msgstr "Integraatio Sanastoihin"
-
 msgid "Get concept from Controlled Vocabularies"
 msgstr "Tuo käsite Sanastoista"
 
