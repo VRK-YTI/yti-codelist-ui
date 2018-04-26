@@ -50,7 +50,7 @@ const vocabulary = 'vocabulary';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
-const configurationIntakeBasePath = `/${intakeContext}/${api}/${version}/${configuration}`;
+const configurationIntakeBasePath = `/${intakeContext}/${api}/${configuration}`;
 const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
 const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
