@@ -16,7 +16,9 @@ import { LanguageService } from '../../services/language.service';
       </dt>
       <dd>
         <div *ngIf="editing" ngbDropdown class="d-inline-block">
-          <app-dropdown [options]="codeRegistryOptions" [formControl]="control"></app-dropdown>
+          <app-dropdown id="codeRegistry_dropdown"
+                        [options]="codeRegistryOptions"
+                        [formControl]="control"></app-dropdown>
           <app-error-messages [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{selection.prefLabel | translateValue:true}}</span>

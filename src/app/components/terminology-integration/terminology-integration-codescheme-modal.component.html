@@ -8,7 +8,7 @@
 
   <div class="modal-header">
     <h4 class="modal-title">
-      <a><i class="fa fa-times" (click)="cancel()"></i></a>
+      <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
       <span translate>Get concept from Controlled Vocabularies</span>
     </h4>
   </div>
@@ -16,7 +16,7 @@
 
     <p translate>Get concept from Controlled Vocabularies instruction text</p>
     <div class="input-group input-group-search col-sm-12 no-side-padding">
-        <input class="col-sm-12 form-control no-side-padding" id="concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
+        <input class="col-sm-12 form-control no-side-padding" id="search_concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
                [(ngModel)]="search"/>
     </div>
     <div class="col-sm-12 no-side-padding">
@@ -31,7 +31,8 @@
       <div class=" no-side-padding">
         <div class="content-box">
           <div class="search-results">
-            <div class="search-result "
+            <div id="{{concept.id + '_concept_link'}}" 
+                 class="search-result"
                  *ngFor="let concept of searchResults$ | async; let last = last"
                  (click)="select(concept)">
               <div class="content" [class.last]="last">
@@ -45,7 +46,8 @@
   </div>
   <div class="modal-footer">
 
-    <button type="button"
+    <button id="cancel_modal_button"
+            type="button"
             class="btn btn-link cancel"
             (click)="cancel()" translate>Cancel</button>
 
