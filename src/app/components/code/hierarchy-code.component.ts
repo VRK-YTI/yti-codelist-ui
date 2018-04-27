@@ -22,7 +22,7 @@ import { CodeScheme } from '../../entities/code-scheme';
     <ul *ngIf="expanded && hasChildren()">
       <li class="child-code" *ngFor="let code of children">
         <app-hierarchy-code id="{{code.id + '_codelist_childcode_listitem'}}" [codes]="codes"
-                            [code]="code"></app-hierarchy-code>
+                            [code]="code" [codeScheme}="codeScheme"></app-hierarchy-code>
       </li>
     </ul>
   `
