@@ -13,7 +13,8 @@ import { Status } from 'yti-common-ui/entities/status';
       <dd>
         <span *ngIf="!editing">{{status | translate}}</span>
 
-        <app-status-dropdown *ngIf="editing"
+        <app-status-dropdown id="status_input_dropdown"
+                             *ngIf="editing"
                              [formControl]="control"
                              [restrict]="restrict"></app-status-dropdown>
 
