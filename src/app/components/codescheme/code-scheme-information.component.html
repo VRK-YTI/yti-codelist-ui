@@ -34,7 +34,7 @@
         </dd>
       </dl>
 
-      <app-literal *ngIf="isDev" [label]="'Vocabularies URI' | translate"
+      <app-literal *ngIf="isDev && codeScheme.conceptUriInVocabularies" [label]="'Vocabularies URI' | translate"
                    [value]="codeScheme.conceptUriInVocabularies"></app-literal>
 
 
