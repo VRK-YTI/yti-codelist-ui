@@ -1,24 +1,41 @@
 .input-group-search {
-  width: 400px;
+  width: 90%;
+}
+
+.general-width {
+  width: 90% !important;;
 }
 
 .content-box {
   height: 60%;
+  width: 90%;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .search-results {
   height: 100%;
+  width: 100%;
 }
 
 .modal-body.full-height {
   .row.full-height {
-    height: calc(100% - 54px);
+    height: calc(100% - 254px);
   }
 }
 
 .no-side-padding {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.small-bottom-padding {
+  padding-bottom: 15px;
+}
+
+.box-sizing-content-box {
+  box-sizing: content-box;
+  width: 100%;
 }

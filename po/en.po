@@ -470,5 +470,11 @@ msgstr "The URI of the concept in Controlled Vocabularies tool"
 msgid "Search"
 msgstr ""
 
+msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr "Cannot reach Controlled Vocabularies tool."
+
+msgid "No search results"
+msgstr "No search results"
+
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
 #~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"

@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {Concept} from '../../entities/concept';
+import {hasLocalization} from 'yti-common-ui/utils/localization';
 
 
 @Component({
@@ -126,6 +127,14 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
+    console.log('this.codeSchemeForm.controls[\'prefLabel\'].value',this.codeSchemeForm.controls['prefLabel'].value);
+    if (!hasLocalization(this.codeSchemeForm.controls['prefLabel'].value)) {
+      this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
+    }
+    console.log('',this.codeSchemeForm.controls['definition'].value);
+    if (!hasLocalization(this.codeSchemeForm.controls['definition'].value)) {
+      this.codeSchemeForm.patchValue({definition: concept.definition});
+    }
+    this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 }

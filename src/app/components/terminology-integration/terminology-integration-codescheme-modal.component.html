@@ -15,33 +15,39 @@
   <div class="modal-body full-height">
 
     <p translate>Get concept from Controlled Vocabularies instruction text</p>
-    <div class="input-group input-group-search col-sm-12 no-side-padding">
+    <div class="input-group input-group-search col-sm-12 no-side-padding small-bottom-padding general-width">
         <input class="col-sm-12 form-control no-side-padding" id="search_concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
                [(ngModel)]="search"/>
     </div>
-    <div class="col-sm-12 no-side-padding">
+    <div class="col-sm-12 no-side-padding small-bottom-padding general-width">
       <app-filter-dropdown id="vocabulary_selection_dropdown"
                            class="col-sm-12 no-side-padding"
                            #vocabDropdown
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
     </div>
-
-    <div class="row full-height col-sm-12" *ngIf="searchResults$">
-      <div class=" no-side-padding">
+    <div class="row full-height col-sm-12 box-sizing-content-box" *ngIf="searchResults$ && nrOfSearchResults > 0">
+      <div class="no-side-padding">
         <div class="content-box">
           <div class="search-results">
-            <div id="{{concept.id + '_concept_link'}}" 
+            <div id="{{concept.id + '_concept_link'}}"
                  class="search-result"
                  *ngFor="let concept of searchResults$ | async; let last = last"
                  (click)="select(concept)">
               <div class="content" [class.last]="last">
                 <span class="title" [innerHTML]="concept.prefLabel | translateValue"></span>
+                <span class="body" [innerHTML]="concept.definition | translateValue"></span>
+                <div class="origin">
+                  <span class="pull-left">{{concept.vocabularyPrefLabel | translateValue}}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div *ngIf="searchResults$ && nrOfSearchResults < 1">
+      <p translate>No search results</p>
     </div>
   </div>
   <div class="modal-footer">

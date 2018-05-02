@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {Concept} from '../../entities/concept';
+import {hasLocalization} from 'yti-common-ui/utils/localization';
 
 @Component({
   selector: 'app-code-create',
@@ -117,7 +118,13 @@ export class CodeCreateComponent implements OnInit {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
+    if (!hasLocalization(this.codeForm.controls['prefLabel'].value)) {
+      this.codeForm.patchValue({prefLabel: concept.prefLabel});
+    }
+    if (!hasLocalization(this.codeForm.controls['definition'].value)) {
+      this.codeForm.patchValue({definition: concept.definition});
+    }
+    this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
   get isDev() {

@@ -15,6 +15,7 @@ import { requiredList } from 'yti-common-ui/utils/validator';
 import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {Concept} from '../../entities/concept';
 import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
+import {hasLocalization} from 'yti-common-ui/utils/localization';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -117,6 +118,12 @@ export class CodeSchemeCreateComponent {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
+    if (!hasLocalization(this.codeSchemeForm.controls['prefLabel'].value)) {
+      this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
+    }
+    if (!hasLocalization(this.codeSchemeForm.controls['definition'].value)) {
+      this.codeSchemeForm.patchValue({definition: concept.definition});
+    }
+    this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 }

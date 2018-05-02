@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {Concept} from '../../entities/concept';
+import {hasLocalization} from 'yti-common-ui/utils/localization';
 
 
 @Component({
@@ -103,7 +104,13 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeForm.patchValue({prefLabel: concept.prefLabel, conceptUriInVocabularies: concept.uri, definition: concept.definition});
+    if (!hasLocalization(this.codeForm.controls['prefLabel'].value)) {
+      this.codeForm.patchValue({prefLabel: concept.prefLabel});
+    }
+    if (!hasLocalization(this.codeForm.controls['definition'].value)) {
+      this.codeForm.patchValue({definition: concept.definition});
+    }
+    this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
   get isDev() {

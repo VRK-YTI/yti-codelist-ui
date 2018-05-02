@@ -1,4 +1,11 @@
-import {Component, ElementRef, Injectable, Input, ViewChild, Renderer, OnChanges, AfterViewInit} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Injectable,
+  ViewChild,
+  Renderer,
+  OnChanges
+} from '@angular/core';
 import {EditableService} from '../../services/editable.service';
 import {Router} from '@angular/router';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +19,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {TranslateService} from 'ng2-translate';
 import {Observable} from 'rxjs/Rx';
 import {Concept} from '../../entities/concept';
+import {CodeListErrorModalService} from '../common/error-modal.service';
 
 @Injectable()
 export class TerminologyIntegrationModalService {
@@ -32,10 +40,11 @@ export class TerminologyIntegrationModalService {
   styleUrls: ['./terminology-integration-codescheme-modal.component.scss'],
   providers: [EditableService]
 })
-export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, OnChanges, AfterViewInit {
+export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, OnChanges {
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
+  nrOfSearchResults: number = -1;
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
@@ -48,10 +57,15 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
               private modal: NgbActiveModal,
               private languageService: LanguageService,
               private translateService: TranslateService,
-              private renderer: Renderer) {
+              private renderer: Renderer,
+              private codeListErrorModalService: CodeListErrorModalService) {
   }
 
   ngOnInit() {
+    Observable.combineLatest(this.vocabulary$, this.search$)
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(() => this.goSearch(this.search$.getValue()));
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
@@ -59,13 +73,12 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
         name: () => voc ? this.languageService.translate(voc.prefLabel, true)
           : this.translateService.instant('All vocabularies')
       }));
+      this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    }, error => {
+      this.vocabularyOptions = [
+        { value: null, name: () => this.translateService.instant('All vocabularies')}];
+      this.codeListErrorModalService.openSubmitError(error);
     });
-
-    Observable.combineLatest(this.vocabulary$, this.search$)
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .subscribe(() => this.goSearch(this.search$.getValue()));
-
   }
 
   ngOnChanges() {
@@ -78,10 +91,6 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
 
   select(concept: Concept) {
     this.modal.close(concept);
-  }
-
-  ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
   }
 
   get search() {
@@ -98,6 +107,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
 
   goSearch(searchTerm: string) {
     if (!searchTerm) {
+      this.nrOfSearchResults = 0;
       return;
     }
     let vocabularyId = '0'; // Kaikki Sanastot (All Vocabularies)
@@ -107,6 +117,10 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
     }
     this.dataService.getConcepts(searchTerm, vocabularyId ).subscribe(concepts => {
       this.searchResults$ = Observable.of(concepts);
+      this.nrOfSearchResults = concepts.length || 0;
+    }, error => {
+      this.nrOfSearchResults = 0;
+      this.codeListErrorModalService.openSubmitError(error);
     });
   }
 }

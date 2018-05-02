@@ -46,9 +46,6 @@ msgstr ""
 msgid "All organizations"
 msgstr ""
 
-msgid "Add concept"
-msgstr ""
-
 msgid "All vocabularies"
 msgstr ""
 
@@ -77,6 +74,12 @@ msgid "Validity"
 msgstr ""
 
 msgid "Create code"
+msgstr ""
+
+msgid "Get concept from Controlled Vocabularies"
+msgstr ""
+
+msgid "Vocabularies URI"
 msgstr ""
 
 msgid "URI"
@@ -180,13 +183,7 @@ msgstr ""
 msgid "Import code list"
 msgstr ""
 
-msgid "Vocabularies URI"
-msgstr ""
-
 msgid "Changenote"
-msgstr ""
-
-msgid "Get concept from Controlled Vocabularies"
 msgstr ""
 
 msgid "Export"
@@ -264,10 +261,13 @@ msgstr ""
 msgid "User right management"
 msgstr ""
 
+msgid "Search for concept"
+msgstr ""
+
 msgid "Get concept from Controlled Vocabularies instruction text"
 msgstr ""
 
-msgid "Search"
+msgid "Ei hakutuloksia"
 msgstr ""
 
 msgid "Name"
@@ -440,6 +440,9 @@ msgstr ""
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr ""
 
+msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
@@ -457,8 +460,3 @@ msgstr ""
 
 msgid "codeCodeValueValidationError"
 msgstr ""
-
-msgid "Search for concept"
-msgstr ""
-
-

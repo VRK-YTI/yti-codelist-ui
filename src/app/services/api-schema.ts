@@ -67,6 +67,7 @@ export interface CodeType extends BaseResourceType {
 export interface ConceptType extends BaseResourceType {
   vocabularyId: string;
   definition: Localizable;
+  vocabularyPrefLabel: Localizable;
 }
 
 export interface ExternalReferenceType  {

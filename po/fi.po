@@ -476,6 +476,12 @@ msgstr "Käsitteen URI Sanastot-työkalussa"
 msgid "Search"
 msgstr "Hae"
 
+msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr "Ei yhteyttä Sanastoihin."
+
+msgid "No search results"
+msgstr "Ei hakutuloksia"
+
 #, fuzzy
 #~| msgid "ERR_MSG_INVALID_CODEVALUE"
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
