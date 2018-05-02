@@ -32,6 +32,10 @@
                            [label]="'Code list value' | translate"
                            [formControlName]="'codeValue'"></app-literal-input>
 
+        <div class="form-group">
+            <app-error-messages id="code_list_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
+        </div>
+
         <dl *ngIf="isDev">
           <dd>
             <div>
@@ -42,10 +46,6 @@
             </div>
           </dd>
         </dl>
-
-        <div class="form-group">
-          <app-error-messages [control]="codeSchemeForm"></app-error-messages>
-        </div>
 
         <app-localizable-input [id]="'codelist_name_input'"
                                [label]="'Code list name' | translate"

@@ -14,7 +14,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
                  class="form-control"
                  [ngClass]="{'is-invalid': !valid && !pending}"
                  [formControl]="control" />
-          <app-error-messages [control]="parentControl"></app-error-messages>
+          <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
         <div class="text-content-wrap" *ngIf="!editing">{{control.value}}</div>
       </dd>

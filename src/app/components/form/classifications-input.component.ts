@@ -44,7 +44,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
             </a>
             <span>{{classification.prefLabel | translateValue:true}}</span>
           </div>
-          <app-error-messages [control]="parentControl"></app-error-messages>
+          <app-error-messages id="classification_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
         <button id="add_classification_button"

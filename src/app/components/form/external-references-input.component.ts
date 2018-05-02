@@ -44,7 +44,7 @@ import { LanguageService } from '../../services/language.service';
           <button id="add_link_button" class="btn btn-action" (click)="addLink()" translate>Add link</button>
         </div>
 
-        <app-error-messages [control]="parentControl"></app-error-messages>
+        <app-error-messages id="external_references_error_messages" [control]="parentControl"></app-error-messages>
       </dd>
     </dl>
   `

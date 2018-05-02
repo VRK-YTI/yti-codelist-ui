@@ -27,7 +27,7 @@ import { EditableService } from '../../services/editable.service';
               </button>
             </div>
           </div>
-          <app-error-messages [control]="parentControl"></app-error-messages>
+          <app-error-messages id="propertytype_error_messages" [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{value | translateValue}}</span>
       </dd>

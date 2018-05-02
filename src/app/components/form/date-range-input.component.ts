@@ -24,7 +24,7 @@ import { Observable } from 'rxjs/Observable';
             </div>
           </div>
           
-          <app-error-messages [control]="parentControl"></app-error-messages>
+          <app-error-messages id="date_range_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
         <span *ngIf="!editing">{{displayName}}</span>
