@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-04-05 17:20+0300\n"
+"PO-Revision-Date: 2018-05-02 19:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -73,6 +73,9 @@ msgstr "Koodin nimi"
 msgid "Description"
 msgstr "Kuvaus"
 
+msgid "Definition"
+msgstr "Määritelmä"
+
 msgid "Short name"
 msgstr "Lyhyt nimi"
 
@@ -81,6 +84,12 @@ msgstr "Voimassaolo"
 
 msgid "Create code"
 msgstr "Luo koodi"
+
+msgid "Get concept from Controlled Vocabularies"
+msgstr "Tuo käsite Sanastoista"
+
+msgid "Vocabularies URI"
+msgstr "Käsitteen URI Sanastot-työkalussa"
 
 msgid "URI"
 msgstr "URI"
@@ -135,9 +144,6 @@ msgstr "Koodiston tunnus"
 
 msgid "Code list name"
 msgstr "Koodiston nimi"
-
-msgid "Definition"
-msgstr "Määritelmä"
 
 msgid "Version"
 msgstr "Versio"
@@ -195,15 +201,6 @@ msgstr "Tuo koodisto"
 msgid "Changenote"
 msgstr "Muutostieto"
 
-msgid "Get concept from Controlled Vocabularies"
-msgstr "Tuo käsite Sanastoista"
-
-msgid "Get concept from Controlled Vocabularies instruction text"
-msgstr "Hae käsitettä Sanastoista ja tuo se Koodistoon klikkaamalla hakutulosta. Käsitteen nimi ja määritelmä kopioidaan Koodistot-palveluun, mikäli kyseiset tiedot ovat siellä tyhjiä. Käsitteen URI kopioidaan aina, myös mahdollisen aiemman URIn tilalle."
-
-msgid "Search for concept"
-msgstr "Hae käsitettä"
-
 msgid "Export"
 msgstr "Lataa"
 
@@ -249,6 +246,9 @@ msgstr "Ok"
 msgid "Search for code lists"
 msgstr "Hae koodistoa"
 
+msgid "code list"
+msgstr "koodisto"
+
 msgid "code lists"
 msgstr "koodistoa"
 
@@ -258,8 +258,8 @@ msgstr "organisaatiota"
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
-msgid "1 code list"
-msgstr "1 koodisto"
+msgid "{{'code list' | translate}}"
+msgstr ""
 
 msgid "No organization"
 msgstr "Ei organisaatiota"
@@ -278,6 +278,19 @@ msgstr "Käyttäjätiedot"
 
 msgid "User right management"
 msgstr "Oikeuksienhallinta"
+
+msgid "Search for concept"
+msgstr "Hae käsitettä"
+
+msgid "Get concept from Controlled Vocabularies instruction text"
+msgstr ""
+"Hae käsitettä Sanastoista ja tuo se Koodistoon klikkaamalla hakutulosta. "
+"Käsitteen nimi ja määritelmä kopioidaan Koodistot-palveluun, mikäli kyseiset "
+"tiedot ovat siellä tyhjiä. Käsitteen URI kopioidaan aina, myös mahdollisen "
+"aiemman URIn tilalle."
+
+msgid "No search results"
+msgstr "Ei hakutuloksia"
 
 msgid "Name"
 msgstr "Nimi"
@@ -452,6 +465,9 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
+msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr "Ei yhteyttä Sanastoihin."
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
 
@@ -470,17 +486,14 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
 
-msgid "Vocabularies URI"
-msgstr "Käsitteen URI Sanastot-työkalussa"
+#~ msgid "1 code list"
+#~ msgstr "<b>1</b> koodistoa"
 
-msgid "Search"
-msgstr "Hae"
+#~ msgid "<b>1</b> code list"
+#~ msgstr "<b>1</b> koodisto"
 
-msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
-msgstr "Ei yhteyttä Sanastoihin."
-
-msgid "No search results"
-msgstr "Ei hakutuloksia"
+#~ msgid "Search"
+#~ msgstr "Hae"
 
 #, fuzzy
 #~| msgid "ERR_MSG_INVALID_CODEVALUE"

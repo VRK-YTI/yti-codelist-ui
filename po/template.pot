@@ -231,6 +231,9 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
+msgid "code list"
+msgstr ""
+
 msgid "code lists"
 msgstr ""
 
@@ -240,7 +243,7 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "1 code list"
+msgid "{{'code list' | translate}}"
 msgstr ""
 
 msgid "No organization"
@@ -267,7 +270,7 @@ msgstr ""
 msgid "Get concept from Controlled Vocabularies instruction text"
 msgstr ""
 
-msgid "Ei hakutuloksia"
+msgid "No search results"
 msgstr ""
 
 msgid "Name"

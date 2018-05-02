@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-04-05 17:20+0300\n"
+"PO-Revision-Date: 2018-05-02 19:33+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -73,6 +73,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Definition"
+msgstr ""
+
 msgid "Short name"
 msgstr ""
 
@@ -81,6 +84,12 @@ msgstr ""
 
 msgid "Create code"
 msgstr ""
+
+msgid "Get concept from Controlled Vocabularies"
+msgstr "Get concept from Controlled Vocabularies"
+
+msgid "Vocabularies URI"
+msgstr "The URI of the concept in Controlled Vocabularies tool"
 
 msgid "URI"
 msgstr ""
@@ -136,9 +145,6 @@ msgstr ""
 msgid "Code list name"
 msgstr ""
 
-msgid "Definition"
-msgstr ""
-
 msgid "Version"
 msgstr ""
 
@@ -188,15 +194,6 @@ msgstr ""
 msgid "Changenote"
 msgstr ""
 
-msgid "Get concept from Controlled Vocabularies"
-msgstr "Get concept from Controlled Vocabularies"
-
-msgid "Get concept from Controlled Vocabularies instruction text"
-msgstr "Search for a concept from Controlled Vocabularies and bring it to Reference Data by clicking on the search result. The name and definition of the concept will be copied in their respective fields in case the fields are empty. The URI of the concept is always copied, replacing the possible existing value."
-
-msgid "Search for concept"
-msgstr ""
-
 msgid "Export"
 msgstr ""
 
@@ -242,6 +239,9 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
+msgid "code list"
+msgstr ""
+
 msgid "code lists"
 msgstr ""
 
@@ -251,7 +251,7 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "1 code list"
+msgid "{{'code list' | translate}}"
 msgstr ""
 
 msgid "No organization"
@@ -271,6 +271,20 @@ msgstr ""
 
 msgid "User right management"
 msgstr ""
+
+msgid "Search for concept"
+msgstr ""
+
+msgid "Get concept from Controlled Vocabularies instruction text"
+msgstr ""
+"Search for a concept from Controlled Vocabularies and bring it to Reference "
+"Data by clicking on the search result. The name and definition of the "
+"concept will be copied in their respective fields in case the fields are "
+"empty. The URI of the concept is always copied, replacing the possible "
+"existing value."
+
+msgid "No search results"
+msgstr "No search results"
 
 msgid "Name"
 msgstr ""
@@ -446,6 +460,9 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
+msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr "Cannot reach Controlled Vocabularies tool."
+
 msgid "invalidDate"
 msgstr "Invalid date"
 
@@ -463,18 +480,6 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
-
-msgid "Vocabularies URI"
-msgstr "The URI of the concept in Controlled Vocabularies tool"
-
-msgid "Search"
-msgstr ""
-
-msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
-msgstr "Cannot reach Controlled Vocabularies tool."
-
-msgid "No search results"
-msgstr "No search results"
 
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
 #~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
