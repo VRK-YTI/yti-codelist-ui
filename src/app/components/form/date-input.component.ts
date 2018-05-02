@@ -26,7 +26,7 @@ import { Moment } from 'moment';
                     (click)="date.toggle()" 
                     type="button"></button>
           </div>
-          <app-error-messages [control]="parentControl"></app-error-messages>
+          <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{displayName}}</span>
       </dd>

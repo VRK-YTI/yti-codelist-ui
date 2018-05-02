@@ -17,7 +17,7 @@ import { Localizable } from 'yti-common-ui/types/localization';
                  [ngClass]="{'is-invalid': !valid}"
                  [ngModel]="value[contentLanguage]" 
                  (ngModelChange)="onChange($event)" />
-          <app-error-messages [control]="parentControl"></app-error-messages>
+          <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
         <div class="text-content-wrap" *ngIf="!editing">{{value | translateValue}}</div>
       </dd>

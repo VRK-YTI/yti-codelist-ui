@@ -18,7 +18,7 @@ import { Status } from 'yti-common-ui/entities/status';
                              [formControl]="control"
                              [restrict]="restrict"></app-status-dropdown>
 
-        <app-error-messages [control]="parentControl"></app-error-messages>
+        <app-error-messages id="status_input_error_messages" [control]="parentControl"></app-error-messages>
       </dd>
     </dl>
   `
