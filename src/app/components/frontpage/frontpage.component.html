@@ -73,7 +73,7 @@
           <div class="col-12">
             <span *ngIf="filteredCodeSchemes.length == 0" translate>Search did not find any code lists.</span>
             <span *ngIf="filteredCodeSchemes.length == 1" translate>1 code list</span>
-            <span *ngIf="filteredCodeSchemes.length > 1">{{filteredCodeSchemes.length}} {{'code lists' | translate}}</span>
+            <span *ngIf="filteredCodeSchemes.length > 1"><b>{{filteredCodeSchemes.length}}</b> {{'code lists' | translate}}</span>
           </div>
         </div>
 
