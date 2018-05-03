@@ -28,7 +28,7 @@ export class TerminologyIntegrationModalService {
   }
 
   public open(): Promise<Concept> {
-    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'lg'});
     return modalRef.result;
   }
 }

@@ -8,7 +8,8 @@
 
 .content-box {
   height: 100%;
-  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
   padding: 0;
   margin: 0;
   overflow-y: auto;
@@ -17,7 +18,7 @@
 
 .search-results {
   height: 100%;
-  width: 100%;
+  min-width: 100%;
 }
 
 .modal-body.full-height {
@@ -29,6 +30,13 @@
 .no-side-padding {
   padding-left: 0px;
   padding-right: 0px;
+  min-width: 100%;
+}
+
+.concept-search-box {
+  padding-left: 0px;
+  padding-right: 0px;
+  min-width: 90%;
 }
 
 .small-bottom-padding {
