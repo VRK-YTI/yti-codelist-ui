@@ -9,25 +9,30 @@
   <div class="modal-header">
     <h4 class="modal-title">
       <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
-      <span translate>Get concept from Controlled Vocabularies</span>
+      <div class="side-padding-15">
+        <span translate>Get concept from Controlled Vocabularies</span>
+      </div>
     </h4>
   </div>
   <div class="modal-body full-height">
 
-    <p translate>Get concept from Controlled Vocabularies instruction text</p>
-    <div class="input-group input-group-search col-sm-12 concept-search-box small-bottom-padding general-width">
+    <div class="side-padding-15">
+      <p translate>Get concept from Controlled Vocabularies instruction text</p>
+    </div>
+
+    <div class="input-group input-group-search col-sm-12 concept-search-box general-width">
         <input class="col-sm-12 form-control concept-search-box" id="search_concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
                [(ngModel)]="search"/>
     </div>
-    <div class="col-sm-12 no-side-padding small-bottom-padding general-width">
+    <div class="col-sm-12 side-padding-15 general-width">
       <app-filter-dropdown id="vocabulary_selection_dropdown"
-                           class="col-sm-12 no-side-padding"
+                           class="col-sm-12 side-padding-15"
                            #vocabDropdown
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
     </div>
     <div class="row full-height col-sm-12 box-sizing-content-box" *ngIf="searchResults$ && nrOfSearchResults > 0">
-      <div class="no-side-padding">
+      <div class="side-padding-15">
         <div class="content-box">
           <div class="search-results">
             <div id="{{concept.id + '_concept_link'}}"
@@ -46,16 +51,18 @@
         </div>
       </div>
     </div>
-    <div *ngIf="searchResults$ && nrOfSearchResults < 1">
+    <div *ngIf="searchResults$ && nrOfSearchResults < 1" class="side-padding-15">
       <p translate>No search results</p>
     </div>
   </div>
   <div class="modal-footer">
 
-    <button id="cancel_modal_button"
-            type="button"
-            class="btn btn-link cancel"
-            (click)="cancel()" translate>Cancel</button>
+    <div class="side-padding-15">
+      <button id="cancel_modal_button"
+              type="button"
+              class="btn btn-link cancel"
+              (click)="cancel()" translate>Cancel</button>
+    </div>
 
   </div>
 
