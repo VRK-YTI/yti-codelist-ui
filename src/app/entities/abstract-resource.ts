@@ -10,7 +10,6 @@ export abstract class AbstractResource {
   uri: string;
   url: string;
   codeValue: string;
-  modified: Moment;
   prefLabel: Localizable;
 
   constructor(data: BaseResourceType) {
@@ -18,7 +17,6 @@ export abstract class AbstractResource {
     this.uri = data.uri;
     this.url = data.url;
     this.codeValue = data.codeValue;
-    this.modified = parseDateTime(data.modified);
     this.prefLabel = data.prefLabel || {};
   }
 

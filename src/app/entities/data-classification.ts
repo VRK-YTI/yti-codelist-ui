@@ -18,7 +18,6 @@ export class DataClassification {
     this.id = data.id;
     this.uri = data.uri;
     this.status = data.status;
-    this.modified = data.modified ? parseDateTime(data.modified) : null;
     this.codeValue = data.codeValue;
     this.prefLabel = data.prefLabel || {};
     this.codeScheme = data.codeScheme;
@@ -30,7 +29,6 @@ export class DataClassification {
       id: this.id,
       uri: this.uri,
       status: this.status,
-      modified: formatDateTime(this.modified),
       codeValue: this.codeValue,
       prefLabel: { ...this.prefLabel },
       codeScheme: this.codeScheme,

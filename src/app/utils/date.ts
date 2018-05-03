@@ -43,7 +43,7 @@ export function formatDisplayDate(date: Moment|null): string {
 }
 
 export function formatDisplayDateTime(dateTime: Moment|null): string {
-  return dateTime ? dateTime.format(displayDateTimeFormat) : '';
+  return dateTime ? dateTime.format(displayDateTimeFormat) : '-';
 }
 
 export function toPickerDate(date: Moment|null): NgbDate|null {

@@ -2,7 +2,7 @@ import { Localizable } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
-import { formatDate, formatDateTime, formatDisplayDateTime, parseDate } from '../utils/date';
+import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { ExternalReference } from './external-reference';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
@@ -25,10 +25,14 @@ export class Code extends AbstractResource implements EditableEntity {
   hierarchyLevel: number;
   expanded: boolean;
   conceptUriInVocabularies: string;
+  modified: Moment|null = null;
 
   constructor(data: CodeType) {
     super(data);
 
+    if (data.modified) {
+      this.modified = parseDateTime(data.modified);
+    }
     this.codeScheme = new CodeScheme(data.codeScheme);
     this.shortName = data.shortName;
     if (data.status) {

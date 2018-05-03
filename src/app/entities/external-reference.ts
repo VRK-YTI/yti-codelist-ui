@@ -2,7 +2,7 @@ import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { PropertyType } from './property-type';
 import { ExternalReferenceType } from '../services/api-schema';
 import { requireDefined } from 'yti-common-ui/utils/object';
-import { index, groupBy } from 'yti-common-ui/utils/array';
+import { groupBy, index } from 'yti-common-ui/utils/array';
 
 export const CCBy40LicenseLinkId = '9a25f7fc-e4be-11e7-82ab-479f4f288376';
 export const CC0LicenseLinkId = '9553aad0-e4be-11e7-81e9-1faf2d228a02';
@@ -53,9 +53,9 @@ export class ExternalReference {
       id: this.id,
       uri: this.uri,
       url: this.url,
-      title: { ...this.title },
+      title: {...this.title},
       global: this.global,
-      description: { ...this.description },
+      description: {...this.description},
       propertyType: this.propertyType ? this.propertyType.serialize() : undefined
     };
   }
@@ -77,5 +77,5 @@ export function groupByType(extReferences: ExternalReference[]): PropertyTypeExt
   const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
 
   return Array.from(groupBy(extReferences, er => mapNormalizedType(requireDefined(er.propertyType))))
-    .map(([propertyType, externalReferences]) => ({ label: propertyType.prefLabel, externalReferences }));
+    .map(([propertyType, externalReferences]) => ({label: propertyType.prefLabel, externalReferences}));
 }

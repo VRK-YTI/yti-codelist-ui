@@ -31,7 +31,6 @@ export class CodePlain extends AbstractResource {
       uri: this.uri,
       url: this.url,
       codeValue: this.codeValue,
-      modified: formatDateTime(this.modified),
       prefLabel: {...this.prefLabel},
       status: this.status,
       broaderCodeId: this.broaderCodeId,

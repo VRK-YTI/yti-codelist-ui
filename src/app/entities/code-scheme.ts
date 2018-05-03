@@ -2,7 +2,7 @@ import { AbstractResource } from './abstract-resource';
 import { Localizable } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { CodeRegistry } from './code-registry';
-import { formatDate, formatDateTime, formatDisplayDateTime, parseDate } from '../utils/date';
+import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
@@ -28,10 +28,14 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   dataClassifications: DataClassification[] = [];
   externalReferences: ExternalReference[] = [];
   conceptUriInVocabularies: string;
+  modified: Moment|null = null;
 
   constructor(data: CodeSchemeType) {
     super(data);
 
+    if (data.modified) {
+      this.modified = parseDateTime(data.modified);
+    }
     this.version = data.version;
     this.source = data.source;
     if (data.status) {

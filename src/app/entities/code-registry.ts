@@ -1,7 +1,6 @@
 import { AbstractResource } from './abstract-resource';
 import { Organization } from './organization';
 import { CodeRegistryType } from '../services/api-schema';
-import { formatDateTime } from '../utils/date';
 
 export class CodeRegistry extends AbstractResource {
 
@@ -19,7 +18,6 @@ export class CodeRegistry extends AbstractResource {
       uri: this.uri,
       url: this.url,
       codeValue: this.codeValue,
-      modified: formatDateTime(this.modified),
       prefLabel: { ...this.prefLabel },
       organizations: this.organizations.map(o => o.serialize())
     };

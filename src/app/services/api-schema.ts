@@ -16,7 +16,6 @@ export interface BaseResourceType {
   uri: string;
   url: string;
   codeValue: string;
-  modified: string;
   prefLabel?: Localizable;
 }
 
@@ -26,6 +25,7 @@ export interface CodeRegistryType extends BaseResourceType {
 
 export interface CodeSchemeType extends BaseResourceType {
 
+  modified?: string;
   version: string;
   source: string;
   status: Status;
@@ -51,6 +51,7 @@ export interface CodePlainType extends BaseResourceType {
 
 export interface CodeType extends BaseResourceType {
 
+  modified?: string;
   codeScheme: CodeSchemeType;
   shortName: string;
   status: Status;
@@ -65,6 +66,8 @@ export interface CodeType extends BaseResourceType {
 }
 
 export interface ConceptType extends BaseResourceType {
+
+  modified?: string;
   vocabularyId: string;
   definition: Localizable;
   vocabularyPrefLabel: Localizable;
@@ -72,6 +75,7 @@ export interface ConceptType extends BaseResourceType {
 
 export interface ExternalReferenceType  {
 
+  modified?: string;
   id: string;
   uri: string;
   url: string;
@@ -99,7 +103,6 @@ export interface DataClassificationType  {
   id: string;
   uri: string;
   status: string;
-  modified?: string;
   codeValue: string;
   prefLabel: Localizable;
   codeScheme: { uri: string };
