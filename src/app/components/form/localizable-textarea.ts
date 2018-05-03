@@ -19,7 +19,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
                     (ngModelChange)="onChange($event)"></textarea>
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
-        <div class="text-content-wrap" *ngIf="!editing">{{value | translateValue}}</div>
+        <div  [innerHTML]="value | translateValue" class="text-content-wrap" *ngIf="!editing"></div>
       </dd>
     </dl>
   `
