@@ -19,7 +19,6 @@ import { Option } from 'yti-common-ui/components/dropdown.component';
 import { Subscription } from 'rxjs';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 
-
 @Component({
   selector: 'app-frontpage',
   templateUrl: './frontpage.component.html',
@@ -46,6 +45,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   searchInProgress = true;
 
+  defaultStatus: string;
+
   private subscriptionToClean: Subscription[] = [];
 
   constructor(private dataService: DataService,
@@ -57,13 +58,16 @@ export class FrontpageComponent implements OnInit, OnDestroy {
               locationService: LocationService) {
 
     locationService.atFrontPage();
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.defaultStatus = configuration.defaultStatus ? configuration.defaultStatus : 'All statuses';
+    });
   }
 
   ngOnInit() {
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistries = codeRegistries;
     });
-
 
     this.dataService.getCodeRegistries().subscribe(registers => {
       this.registerOptions = [null, ...registers].map(register => ({
@@ -86,7 +90,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
       value: status,
-      name: () => this.translateService.instant(status ? status : 'All statuses')
+      name: () => this.translateService.instant(status ? status : this.defaultStatus)
     }));
 
     const initialSearchTerm = this.searchTerm$.take(1);
