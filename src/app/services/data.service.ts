@@ -100,10 +100,15 @@ export class DataService {
       .map(res => new CodeRegistry(res.json() as CodeRegistryType));
   }
 
-  searchCodeSchemes(searchTerm: string, classification: string | null, organization: string | null): Observable<CodeScheme[]> {
+  searchCodeSchemes(searchTerm: string, classification: string | null, organization: string | null,
+                    sortMode: string | null): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization');
+
+    if (sortMode) {
+      params.append('sortMode', sortMode);
+    }
 
     if (searchTerm) {
       params.append('searchTerm', searchTerm);
@@ -287,7 +292,7 @@ export class DataService {
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
   }
 
-  getServiceConfiguration() {
+  getServiceConfiguration(): Observable<ServiceConfiguration> {
     return this.http.get(`${configurationIntakeBasePath}`)
       .map(res => res.json() as ServiceConfiguration);
   }

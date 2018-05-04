@@ -18,6 +18,7 @@ import { anyMatching } from 'yti-common-ui/utils/array';
 import { Option } from 'yti-common-ui/components/dropdown.component';
 import { Subscription } from 'rxjs';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { ServiceConfiguration } from '../../entities/service-configuration';
 
 @Component({
   selector: 'app-frontpage',
@@ -25,7 +26,6 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
   styleUrls: ['./frontpage.component.scss'],
 })
 export class FrontpageComponent implements OnInit, OnDestroy {
-
 
   codeRegistries: CodeRegistry[];
 
@@ -45,6 +45,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   searchInProgress = true;
 
+  configuration: ServiceConfiguration;
+
   private subscriptionToClean: Subscription[] = [];
 
   constructor(private dataService: DataService,
@@ -56,15 +58,19 @@ export class FrontpageComponent implements OnInit, OnDestroy {
               locationService: LocationService) {
 
     locationService.atFrontPage();
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      if (configuration.defaultStatus) {
-        this.status$.next(configuration.defaultStatus as Status);
-      }
-    });
   }
 
   ngOnInit() {
+    this.dataService.getServiceConfiguration().subscribe(configuration => {
+      this.configuration = configuration;
+      if (configuration.defaultStatus) {
+        this.status$.next(configuration.defaultStatus as Status);
+      }
+      this.initialize();
+    });
+  }
+
+  initialize() {
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistries = codeRegistries;
     });
@@ -73,7 +79,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       this.registerOptions = [null, ...registers].map(register => ({
         value: register,
         name: () => register ? this.languageService.translate(register.prefLabel, true)
-                             : this.translateService.instant('All registries')
+          : this.translateService.instant('All registries')
       }));
     });
 
@@ -82,7 +88,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         this.organizationOptions = [null, ...organizations].map(organization => ({
           value: organization,
           name: () => organization ? this.languageService.translate(organization.prefLabel, true)
-                                   : this.translateService.instant('All organizations')
+            : this.translateService.instant('All organizations')
         }));
         this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c =>
           c.value ? c.value.prefLabel : {}));
@@ -118,8 +124,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
         const classificationCode = classification ? classification.codeValue : null;
         const organizationId = organization ? organization.id : null;
+        const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
 
-        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId)
+        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registerMatches(register, codeScheme))
@@ -132,8 +139,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .subscribe(([classifications, searchTerm, status, register, organization]) => {
 
         const organizationId = organization ? organization.id : null;
+        const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
 
-        this.dataService.searchCodeSchemes(searchTerm, null, organizationId)
+        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registerMatches(register, codeScheme))

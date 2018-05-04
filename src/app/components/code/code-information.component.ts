@@ -50,7 +50,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
-    dataService.getServiceConfiguration().subscribe(configuration => {
+    this.dataService.getServiceConfiguration().subscribe(configuration => {
       this.dev = configuration.dev;
     });
   }
