@@ -8,7 +8,6 @@ export class DataClassification {
   id: string;
   uri: string;
   status: string;
-  modified: Moment|null;
   codeValue: string;
   prefLabel: Localizable;
   codeScheme: { uri: string };
