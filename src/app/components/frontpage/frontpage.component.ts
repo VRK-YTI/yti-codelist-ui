@@ -45,8 +45,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   searchInProgress = true;
 
-  defaultStatus: string;
-
   private subscriptionToClean: Subscription[] = [];
 
   constructor(private dataService: DataService,
@@ -60,7 +58,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     locationService.atFrontPage();
 
     dataService.getServiceConfiguration().subscribe(configuration => {
-      this.defaultStatus = configuration.defaultStatus ? configuration.defaultStatus : 'All statuses';
+      if (configuration.defaultStatus) {
+        this.status$.next(configuration.defaultStatus as Status);
+      }
     });
   }
 
@@ -90,7 +90,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
       value: status,
-      name: () => this.translateService.instant(status ? status : this.defaultStatus)
+      name: () => this.translateService.instant(status ? status : 'All statuses')
     }));
 
     const initialSearchTerm = this.searchTerm$.take(1);
