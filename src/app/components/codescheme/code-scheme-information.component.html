@@ -33,10 +33,24 @@
           </div>
         </dd>
       </dl>
-
-      <app-literal *ngIf="isDev && codeScheme.conceptUriInVocabularies" [label]="'Vocabularies URI' | translate"
-                   [value]="codeScheme.conceptUriInVocabularies"></app-literal>
-
+      
+      <div *ngIf="isDev && !editing && codeScheme.conceptUriInVocabularies">
+        <app-literal  [label]="'Vocabularies URI' | translate"
+                      [value]="codeScheme.conceptUriInVocabularies"></app-literal>
+      </div>
+      <div *ngIf="isDev && editing && codeScheme.conceptUriInVocabularies">
+        <dl>
+          <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
+          <dd>
+            <a>
+              <i id="{{'remove_concept_uri_in_vocabularies_link'}}"
+                 class="fa fa-times"
+                 (click)="removeConceptUriInVocabularies()"></i>
+            </a>
+            {{codeScheme.conceptUriInVocabularies}}
+          </dd>
+        </dl>
+      </div>
 
       <app-literal *ngIf="codeScheme.codeRegistry"
                    [label]="'Coderegistry' | translate"

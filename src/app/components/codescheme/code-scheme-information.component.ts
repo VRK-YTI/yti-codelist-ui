@@ -122,6 +122,11 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     return this.codeScheme.restricted;
   }
 
+  removeConceptUriInVocabularies() {
+    this.codeScheme.conceptUriInVocabularies = '';
+    this.codeSchemeForm.controls['conceptUriInVocabularies'].setValue('');
+  }
+
   openTerminologyModal() {
     this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
@@ -135,6 +140,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     if (!hasLocalization(this.codeSchemeForm.controls['definition'].value)) {
       this.codeSchemeForm.patchValue({definition: concept.definition});
     }
+    this.codeScheme.conceptUriInVocabularies = concept.uri;
     this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 }
