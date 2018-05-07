@@ -103,6 +103,11 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
+  removeConceptUriInVocabularies() {
+    this.code.conceptUriInVocabularies = '';
+    this.codeForm.controls['conceptUriInVocabularies'].setValue('');
+  }
+
   putConceptStuffInPlace(concept: Concept) {
     if (!hasLocalization(this.codeForm.controls['prefLabel'].value)) {
       this.codeForm.patchValue({prefLabel: concept.prefLabel});
@@ -110,6 +115,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     if (!hasLocalization(this.codeForm.controls['definition'].value)) {
       this.codeForm.patchValue({definition: concept.definition});
     }
+    this.code.conceptUriInVocabularies = concept.uri;
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
