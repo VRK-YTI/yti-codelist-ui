@@ -117,6 +117,10 @@ export class CodeCreateComponent implements OnInit {
     this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
+  removeConceptUriInVocabularies() {
+    this.codeForm.controls['conceptUriInVocabularies'].setValue('');
+  }
+
   putConceptStuffInPlace(concept: Concept) {
     if (!hasLocalization(this.codeForm.controls['prefLabel'].value)) {
       this.codeForm.patchValue({prefLabel: concept.prefLabel});

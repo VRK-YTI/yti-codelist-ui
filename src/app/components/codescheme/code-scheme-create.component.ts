@@ -117,6 +117,10 @@ export class CodeSchemeCreateComponent {
     this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
+  removeConceptUriInVocabularies() {
+    this.codeSchemeForm.controls['conceptUriInVocabularies'].setValue('');
+  }
+
   putConceptStuffInPlace(concept: Concept) {
     if (!hasLocalization(this.codeSchemeForm.controls['prefLabel'].value)) {
       this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
