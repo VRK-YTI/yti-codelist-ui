@@ -312,7 +312,8 @@ export class DataService {
   }
 
   getConcepts(searchTerm: string, vocab: string | null): Observable<Concept[]> {
-    return this.http.get(`${terminologyConceptsPath}/${searchterm}/${searchTerm}/${vocabulary}/${vocab}` , undefined )
+    let encodedSearchTerm = encodeURIComponent(searchTerm);
+    return this.http.get(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab}` , undefined )
       .map(response => response.json().results as Concept[]);
   }
 
