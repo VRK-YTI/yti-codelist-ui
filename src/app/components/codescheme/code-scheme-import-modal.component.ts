@@ -74,8 +74,11 @@ export class CodeSchemeImportModalComponent {
 
     if (this.file != null && this.codeRegistry != null) {
       this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
-        if (codeSchemes.length > 0) {
+        if (codeSchemes.length === 1) {
           this.router.navigate(codeSchemes[0].route);
+          this.modal.close(false);
+        } else if (codeSchemes.length > 1) {
+          this.router.navigate(['frontpage']);
           this.modal.close(false);
         }
       }, error => {
