@@ -77,9 +77,8 @@ export interface ExternalReferenceType  {
 
   modified?: string;
   id: string;
-  uri: string;
   url: string;
-  referenceUrl: string;
+  href: string;
   global: boolean;
   title?: Localizable;
   description?: Localizable;
@@ -92,7 +91,6 @@ export interface PropertyTypeType  {
   prefLabel: Localizable;
   definition: Localizable;
   localName: string;
-  uri: string;
   url: string;
   propertyUri: string;
   context: string;

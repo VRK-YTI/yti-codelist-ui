@@ -10,9 +10,8 @@ export const CC0LicenseLinkId = '9553aad0-e4be-11e7-81e9-1faf2d228a02';
 export class ExternalReference {
 
   id = '';
-  uri = '';
   url = '';
-  referenceUrl = '';
+  href = '';
   title: Localizable = {};
   global = false;
   description: Localizable = {};
@@ -24,9 +23,8 @@ export class ExternalReference {
       this.title = data.title || {};
       this.description = data.description || {};
       this.global = data.global;
-      this.uri = data.uri;
       this.url = data.url;
-      this.referenceUrl = data.referenceUrl;
+      this.href = data.href;
 
       if (data.propertyType) {
         this.propertyType = new PropertyType(data.propertyType);
@@ -53,9 +51,8 @@ export class ExternalReference {
   serialize(): ExternalReferenceType {
     return {
       id: this.id,
-      uri: this.uri,
       url: this.url,
-      referenceUrl: this.referenceUrl,
+      href: this.href,
       title: {...this.title},
       global: this.global,
       description: {...this.description},
