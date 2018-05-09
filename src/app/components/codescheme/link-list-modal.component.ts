@@ -55,7 +55,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   select() {
-    console.log('Selected value: ' + this.selectedExternalReference.url);
+    console.log('Selected value: ' + this.selectedExternalReference.referenceurl);
     this.modal.close(this.selectedExternalReference);
   }
 

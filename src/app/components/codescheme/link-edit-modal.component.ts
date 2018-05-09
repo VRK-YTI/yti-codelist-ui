@@ -14,7 +14,7 @@ export class LinkEditModalService {
   public open(externalReference: ExternalReference): void {
     const modalRef = this.modalService.open(LinkEditModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as LinkEditModalComponent;
-    console.log('Url: ' + externalReference.url);
+    console.log('Url: ' + externalReference.referenceurl);
     instance.link = externalReference;
   }
 }

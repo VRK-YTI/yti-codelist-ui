@@ -12,6 +12,7 @@ export class ExternalReference {
   id = '';
   uri = '';
   url = '';
+  referenceurl = '';
   title: Localizable = {};
   global = false;
   description: Localizable = {};
@@ -25,6 +26,7 @@ export class ExternalReference {
       this.global = data.global;
       this.uri = data.uri;
       this.url = data.url;
+      this.referenceurl = data.referenceurl;
 
       if (data.propertyType) {
         this.propertyType = new PropertyType(data.propertyType);
@@ -53,6 +55,7 @@ export class ExternalReference {
       id: this.id,
       uri: this.uri,
       url: this.url,
+      referenceurl: this.referenceurl,
       title: {...this.title},
       global: this.global,
       description: {...this.description},
