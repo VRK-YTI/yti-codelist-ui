@@ -11,7 +11,7 @@
       <app-content-language class="pull-right"></app-content-language>
 
       <div *ngIf="externalReference.image" class="mb-4">
-        <a id="external_ref_image_link" [href]="externalReference.referenceurl" target="_blank">
+        <a id="external_ref_image_link" [href]="externalReference.referenceUrl" target="_blank">
             <img class="link-image" [src]="externalReference.image" title="{{externalReference.title | translateValue}}" />
         </a>
       </div>
@@ -24,7 +24,7 @@
 
       <dt><label translate>URL</label></dt>
       <dd>
-        <div class="text-content-wrap"><a id="external_ref_url_link" [href]="externalReference.referenceurl" target="_blank">{{externalReference.referenceurl}}</a></div>
+        <div class="text-content-wrap"><a id="external_ref_url_link" [href]="externalReference.referenceUrl" target="_blank">{{externalReference.referenceUrl}}</a></div>
       </dd>
 
       <app-localizable-literal *ngIf="externalReference.propertyType != null"

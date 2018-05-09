@@ -79,7 +79,7 @@ export interface ExternalReferenceType  {
   id: string;
   uri: string;
   url: string;
-  referenceurl: string;
+  referenceUrl: string;
   global: boolean;
   title?: Localizable;
   description?: Localizable;
@@ -93,6 +93,7 @@ export interface PropertyTypeType  {
   definition: Localizable;
   localName: string;
   uri: string;
+  url: string;
   propertyUri: string;
   context: string;
   externaluri: string;
