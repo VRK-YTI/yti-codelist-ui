@@ -8,6 +8,7 @@ export class PropertyType {
   definition: Localizable = {};
   localName: string;
   uri: string;
+  url: string;
   propertyUri: string;
   context: string;
   externaluri: string;
@@ -19,6 +20,7 @@ export class PropertyType {
     this.prefLabel = data.prefLabel || {};
     this.definition = data.definition || {};
     this.uri = data.uri;
+    this.url = data.url;
     this.propertyUri = data.propertyUri;
     this.context = data.context;
     this.localName = data.localName;
@@ -32,6 +34,7 @@ export class PropertyType {
       definition: { ...this.definition },
       localName: this.localName,
       uri: this.uri,
+      url: this.url,
       propertyUri: this.propertyUri,
       context: this.context,
       externaluri: this.externaluri,
