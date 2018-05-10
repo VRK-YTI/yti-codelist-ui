@@ -34,7 +34,7 @@ export class ExternalReference {
 
   getDisplayName(localizer: Localizer): string {
     const title = localizer.translate(this.title);
-    return title ? title : this.url;
+    return title ? title : this.href;
   }
 
   get image(): any {
