@@ -11,10 +11,9 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
-import {Concept} from '../../entities/concept';
-import {hasLocalization} from 'yti-common-ui/utils/localization';
-
+import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
+import { Concept } from '../../entities/concept';
+import { hasLocalization } from 'yti-common-ui/utils/localization';
 
 @Component({
   selector: 'app-code-information',
@@ -60,25 +59,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   reset() {
-    const { externalReferences, startDate, endDate, ...rest } = this.code;
+    const {externalReferences, startDate, endDate, ...rest} = this.code;
 
     this.codeForm.reset({
       ...rest,
-      validity: { start: startDate, end: endDate },
+      validity: {start: startDate, end: endDate},
       externalReferences: externalReferences.map(link => link.clone())
     });
   }
-
-  delete() {
-    this.confirmationModalService.openRemoveCode()
-      .then(() => {
-        this.dataService.deleteCode(this.code).subscribe(res => {
-          this.router.navigate(this.code.codeScheme.route);
-        }, error => {
-          this.errorModalService.openSubmitError(error);
-        });
-      }, ignoreModalClose);
-    }
 
   get editing() {
     return this.editableService.editing;

@@ -12,15 +12,23 @@
     <div class="col-12">
       <app-status class="pull-left" [status]="codeScheme.status"></app-status>
 
-      <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
-        <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
-        <div ngbDropdownMenu aria-labelledby="exportDropdown">
-          <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
-          <a id="codelist_export_excel_link" href='{{codeScheme.url}}/codes/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
-        </div>
-      </div>
+      <div class="pull-right">
+        <button id="delete_codelist_button"
+                *ngIf='this.isSuperUser' type="button"
+                class="btn btn-action pull-right ml-3"
+                (click)="delete()"
+                translate>Delete</button>
 
-      <app-content-language class="pull-right"></app-content-language>
+        <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
+          <div ngbDropdownMenu aria-labelledby="exportDropdown">
+            <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
+            <a id="codelist_export_excel_link" href='{{codeScheme.url}}/codes/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
+          </div>
+        </div>
+
+        <app-content-language></app-content-language>
+      </div>
     </div>
   </div>
 

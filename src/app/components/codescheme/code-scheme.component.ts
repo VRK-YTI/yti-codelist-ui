@@ -5,11 +5,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
+import { UserService } from 'yti-common-ui/services/user.service';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({
   selector: 'app-code-scheme',
@@ -24,13 +26,15 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   codeScheme: CodeScheme;
   codes: CodePlain[];
 
-  constructor(private dataService: DataService,
+  constructor(private userService: UserService,
+              private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
               public languageService: LanguageService,
               private editableService: EditableService,
-              private confirmationModalService: ConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private errorModalService: CodeListErrorModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -83,6 +87,29 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   isEditing(): boolean {
     return this.editableService.editing;
+  }
+
+
+  get isSuperUser() {
+    return this.userService.user.superuser;
+  }
+
+  delete() {
+    this.confirmationModalService.openRemoveCodeScheme()
+      .then(() => {
+        this.dataService.deleteCodeScheme(this.codeScheme).subscribe(res => {
+          this.router.navigate(['frontpage']);
+        }, error => {
+          this.errorModalService.openSubmitError(error);
+        });
+      }, ignoreModalClose);
+  }
+
+  get restricted(): boolean {
+    if (this.isSuperUser) {
+      return false;
+    }
+    return this.codeScheme.restricted;
   }
 
   cancelEditing(): void {

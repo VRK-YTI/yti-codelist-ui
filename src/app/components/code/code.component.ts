@@ -5,10 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { CodeScheme } from '../../entities/code-scheme';
+import { UserService } from 'yti-common-ui/services/user.service';
+import { CodeListErrorModalService } from '../common/error-modal.service';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
   selector: 'app-code',
@@ -23,12 +25,14 @@ export class CodeComponent implements OnInit, EditingComponent {
   code: Code;
   codeScheme: CodeScheme;
 
-  constructor(private dataService: DataService,
+  constructor(private userService: UserService,
+              private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
               private editableService: EditableService,
-              private confirmationModalService: ConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private errorModalService: CodeListErrorModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -78,6 +82,28 @@ export class CodeComponent implements OnInit, EditingComponent {
     return this.editableService.editing;
   }
 
+  get isSuperUser() {
+    return this.userService.user.superuser;
+  }
+
+  get restricted() {
+    if (this.isSuperUser) {
+      return false;
+    }
+    return this.code.restricted;
+  }
+
+  delete() {
+    this.confirmationModalService.openRemoveCode()
+      .then(() => {
+        this.dataService.deleteCode(this.code).subscribe(res => {
+          this.router.navigate(this.code.codeScheme.route);
+        }, error => {
+          this.errorModalService.openSubmitError(error);
+        });
+      }, ignoreModalClose);
+  }
+
   cancelEditing(): void {
     this.editableService.cancel();
   }
@@ -86,7 +112,7 @@ export class CodeComponent implements OnInit, EditingComponent {
 
     console.log('Store Code changes to server!');
 
-    const { validity, ...rest } = formData;
+    const {validity, ...rest} = formData;
     const updatedCode = this.code.clone();
 
     Object.assign(updatedCode, {

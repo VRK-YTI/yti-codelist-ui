@@ -104,17 +104,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     return this.userService.user.superuser;
   }
 
-  delete() {
-    this.confirmationModalService.openRemoveCodeScheme()
-      .then(() => {
-        this.dataService.deleteCodeScheme(this.codeScheme).subscribe(res => {
-          this.router.navigate(['frontpage']);
-        }, error => {
-          this.errorModalService.openSubmitError(error);
-        });
-      }, ignoreModalClose);
-    }
-
   get restricted(): boolean {
     if (this.isSuperUser) {
       return false;
