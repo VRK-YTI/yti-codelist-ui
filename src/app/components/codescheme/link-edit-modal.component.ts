@@ -14,7 +14,7 @@ export class LinkEditModalService {
   public open(externalReference: ExternalReference): void {
     const modalRef = this.modalService.open(LinkEditModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as LinkEditModalComponent;
-    console.log('Url: ' + externalReference.href);
+    console.log('Href: ' + externalReference.href);
     instance.link = externalReference;
   }
 }
@@ -31,7 +31,7 @@ export class LinkEditModalComponent implements OnInit {
   linkForm = new FormGroup({
     title: new FormControl({}),
     description: new FormControl({}),
-    url: new FormControl('', Validators.required),
+    href: new FormControl('', Validators.required),
     propertyType: new FormControl()
   });
 
