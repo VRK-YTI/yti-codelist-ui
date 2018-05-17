@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-02 19:32+0300\n"
+"PO-Revision-Date: 2018-05-17 13:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -70,6 +70,9 @@ msgstr "Tunnus"
 msgid "Code name"
 msgstr "Koodin nimi"
 
+msgid "Vocabularies URI"
+msgstr "Käsitteen URI Sanastot-työkalussa"
+
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -87,9 +90,6 @@ msgstr "Luo koodi"
 
 msgid "Get concept from Controlled Vocabularies"
 msgstr "Tuo käsite Sanastoista"
-
-msgid "Vocabularies URI"
-msgstr "Käsitteen URI Sanastot-työkalussa"
 
 msgid "URI"
 msgstr "URI"
@@ -258,9 +258,6 @@ msgstr "organisaatiota"
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
-msgid "{{'code list' | translate}}"
-msgstr ""
-
 msgid "No organization"
 msgstr "Ei organisaatiota"
 
@@ -313,8 +310,9 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
-msgstr "Loppupäivä ennen alkupäivää."
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -389,12 +387,11 @@ msgstr "Epäsopivaa dataa"
 msgid "ERR_MSG_USER_500"
 msgstr "Tapahtui odottamaton virhe."
 
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgstr "Loppupäivä ennen alkupäivää."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr ""
-"Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
@@ -404,6 +401,9 @@ msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "Aineistosta puuttuu sarake otsikolla STATUS."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
@@ -467,6 +467,10 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
 msgstr "Ei yhteyttä Sanastoihin."
+
+msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta PROPERTYTYPE riviltä {{ identifier }}."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

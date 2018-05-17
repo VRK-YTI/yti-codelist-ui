@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-02 19:33+0300\n"
+"PO-Revision-Date: 2018-05-17 13:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -70,6 +70,9 @@ msgstr ""
 msgid "Code name"
 msgstr ""
 
+msgid "Vocabularies URI"
+msgstr "The URI of the concept in Controlled Vocabularies tool"
+
 msgid "Description"
 msgstr ""
 
@@ -87,9 +90,6 @@ msgstr ""
 
 msgid "Get concept from Controlled Vocabularies"
 msgstr "Get concept from Controlled Vocabularies"
-
-msgid "Vocabularies URI"
-msgstr "The URI of the concept in Controlled Vocabularies tool"
 
 msgid "URI"
 msgstr ""
@@ -251,9 +251,6 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "{{'code list' | translate}}"
-msgstr ""
-
 msgid "No organization"
 msgstr ""
 
@@ -307,8 +304,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
-msgstr "The enddate is before the startdate."
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in the column "
+"CODEVALUE."
 
 msgid "Front page"
 msgstr ""
@@ -381,13 +380,11 @@ msgstr "Erroneous data"
 msgid "ERR_MSG_USER_500"
 msgstr "Unexpected error"
 
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgstr "The enddate is before the startdate."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr ""
-"Row number {{ identifier }} in the data is missing a value in the column "
-"CODEVALUE."
 
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
@@ -399,6 +396,9 @@ msgstr "The data is missing a column with the header CODEVALUE."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "The data is missing a column with the header STATUS."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "The data is missing a column with the header PROPERTYTYPE."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Erroneous start date on row {{ identifier }}."
@@ -462,6 +462,11 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
 msgstr "Cannot reach Controlled Vocabularies tool."
+
+msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
+msgstr ""
+"Row number {{ identifier}} in the data is missing the value in the column "
+"PROPERTYTYPE."
 
 msgid "invalidDate"
 msgstr "Invalid date"

@@ -61,6 +61,9 @@ msgstr ""
 msgid "Code name"
 msgstr ""
 
+msgid "Vocabularies URI"
+msgstr ""
+
 msgid "Description"
 msgstr ""
 
@@ -77,9 +80,6 @@ msgid "Create code"
 msgstr ""
 
 msgid "Get concept from Controlled Vocabularies"
-msgstr ""
-
-msgid "Vocabularies URI"
 msgstr ""
 
 msgid "URI"
@@ -243,9 +243,6 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "{{'code list' | translate}}"
-msgstr ""
-
 msgid "No organization"
 msgstr ""
 
@@ -294,7 +291,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
 msgstr ""
 
 msgid "Front page"
@@ -368,10 +365,10 @@ msgstr ""
 msgid "ERR_MSG_USER_500"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
@@ -381,6 +378,9 @@ msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
+msgstr ""
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
@@ -444,6 +444,9 @@ msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr ""
 
 msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr ""
+
+msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
 msgstr ""
 
 msgid "invalidDate"
