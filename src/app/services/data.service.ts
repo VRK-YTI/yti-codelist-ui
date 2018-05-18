@@ -101,11 +101,15 @@ export class DataService {
   }
 
   searchCodeSchemes(searchTerm: string, classification: string | null, organization: string | null,
-                    sortMode: string | null, searchCodes: boolean | false): Observable<CodeScheme[]> {
+                    sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization');
     params.append('searchCodes', searchCodes.toString());
+
+    if (language) {
+      params.append('language', language);
+    }
 
     if (sortMode) {
       params.append('sortMode', sortMode);
@@ -313,7 +317,7 @@ export class DataService {
   }
 
   getConcepts(searchTerm: string, vocab: string | null): Observable<Concept[]> {
-    let encodedSearchTerm = encodeURIComponent(searchTerm);
+    const encodedSearchTerm = encodeURIComponent(searchTerm);
     return this.http.get(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab}` , undefined )
       .map(response => response.json().results as Concept[]);
   }

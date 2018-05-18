@@ -120,15 +120,16 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         anyMatching(cs.dataClassifications, rc => rc.id === classification.id)).length;
     }
 
-    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$, this.searchCodes$)
+    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$,
+      this.searchCodes$, this.languageService.language$)
       .do(() => this.searchInProgress = true)
-      .flatMap(([searchTerm, classification, status, register, organization, searchCodes]) => {
+      .flatMap(([searchTerm, classification, status, register, organization, searchCodes, language]) => {
 
         const classificationCode = classification ? classification.codeValue : null;
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
 
-        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode, searchCodes)
+        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode, searchCodes, language)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registerMatches(register, codeScheme))
@@ -142,8 +143,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
+        const language = this.languageService.language$.getValue();
 
-        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes)
+        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, language)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registerMatches(register, codeScheme))
