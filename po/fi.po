@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-17 13:02+0300\n"
+"PO-Revision-Date: 2018-05-18 21:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -254,6 +254,9 @@ msgstr "koodistoa"
 
 msgid "organizations"
 msgstr "organisaatiota"
+
+msgid "Extend search to codes"
+msgstr "Kohdista haku myös koodeihin"
 
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."

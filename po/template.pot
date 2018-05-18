@@ -240,6 +240,9 @@ msgstr ""
 msgid "organizations"
 msgstr ""
 
+msgid "Extend search to codes"
+msgstr ""
+
 msgid "Search did not find any code lists."
 msgstr ""
 

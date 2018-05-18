@@ -44,6 +44,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   filteredCodeSchemes: CodeScheme[];
 
   searchInProgress = true;
+  searchCodesValue = false;
+  searchCodes$ = new BehaviorSubject(this.searchCodesValue);
 
   configuration: ServiceConfiguration;
 
@@ -118,15 +120,15 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         anyMatching(cs.dataClassifications, rc => rc.id === classification.id)).length;
     }
 
-    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$)
+    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$, this.searchCodes$)
       .do(() => this.searchInProgress = true)
-      .flatMap(([searchTerm, classification, status, register, organization]) => {
+      .flatMap(([searchTerm, classification, status, register, organization, searchCodes]) => {
 
         const classificationCode = classification ? classification.codeValue : null;
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
 
-        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode)
+        return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode, searchCodes)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registerMatches(register, codeScheme))
@@ -135,13 +137,13 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .do(() => this.searchInProgress = false)
       .subscribe(results => this.filteredCodeSchemes = results);
 
-    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$)
-      .subscribe(([classifications, searchTerm, status, register, organization]) => {
+    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$, this.searchCodes$)
+      .subscribe(([classifications, searchTerm, status, register, organization, searchCodes]) => {
 
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
 
-        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode)
+        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registerMatches(register, codeScheme))
@@ -161,6 +163,11 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   toggleClassification(classification: DataClassification) {
     this.classification$.next(this.isClassificationSelected(classification) ? null : classification);
+  }
+
+  toggleSearchCodes() {
+    this.searchCodesValue = !this.searchCodesValue;
+    this.searchCodes$.next(this.searchCodesValue);
   }
 
   get searchTerm(): string {

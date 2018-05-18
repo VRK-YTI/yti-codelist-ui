@@ -4,15 +4,16 @@
 
 <div *ngIf="!loading">
   <div class="row mb-5">
-    <div class="col-md-4">
-      <div class="input-group input-group-lg input-group-search">
-        <input class="form-control"
-               #schemeSearch
-               id="search_box_input"
-               type="text"
-               [(ngModel)]="searchTerm"
-               placeholder="{{'Search for code lists' | translate}}"/>
-      </div>
+    <div class="input-group input-group-lg input-group-search col-md-4">
+      <input class="form-control"
+             #schemeSearch
+             id="search_box_input"
+             type="text"
+             [(ngModel)]="searchTerm"
+             placeholder="{{'Search for code lists' | translate}}"/>
+    </div>
+    <div class="col-md-4 mt-2">
+      <label translate><input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">Extend search to codes</label>
     </div>
   </div>
 

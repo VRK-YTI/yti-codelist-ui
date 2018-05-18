@@ -101,10 +101,11 @@ export class DataService {
   }
 
   searchCodeSchemes(searchTerm: string, classification: string | null, organization: string | null,
-                    sortMode: string | null): Observable<CodeScheme[]> {
+                    sortMode: string | null, searchCodes: boolean | false): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization');
+    params.append('searchCodes', searchCodes.toString());
 
     if (sortMode) {
       params.append('sortMode', sortMode);
