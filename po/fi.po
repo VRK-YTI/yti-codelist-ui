@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-18 21:50+0300\n"
+"PO-Revision-Date: 2018-05-23 12:26+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -127,6 +127,9 @@ msgstr "Valitse tuotava tiedosto"
 msgid "Import"
 msgstr "Tuo"
 
+msgid "Search for code"
+msgstr "Hae koodia"
+
 msgid "Expand all"
 msgstr "Laajenna kaikki"
 
@@ -138,6 +141,9 @@ msgstr "Tuo koodeja"
 
 msgid "This code list does not have any codes yet."
 msgstr "Tällä koodistolla ei ole yhtään koodia."
+
+msgid "Search did not find any codes."
+msgstr "Haulla ei löytynyt yhtään koodia."
 
 msgid "Code list value"
 msgstr "Koodiston tunnus"

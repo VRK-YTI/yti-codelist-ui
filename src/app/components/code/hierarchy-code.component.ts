@@ -21,8 +21,11 @@ import { CodeScheme } from '../../entities/code-scheme';
 
     <ul *ngIf="expanded && hasChildren()">
       <li class="child-code" *ngFor="let code of children">
-        <app-hierarchy-code id="{{code.id + '_codelist_childcode_listitem'}}" [codes]="codes"
-                            [code]="code" [codeScheme]="codeScheme"></app-hierarchy-code>
+        <app-hierarchy-code id="{{code.id + '_codelist_childcode_listitem'}}"
+                            [codes]="codes"
+                            [code]="code" 
+                            [codeScheme]="codeScheme" 
+                            [ignoreHierarchy]="ignoreHierarchy"></app-hierarchy-code>
       </li>
     </ul>
   `
@@ -33,6 +36,7 @@ export class HierarchyCodeComponent {
   @Input() codes: Code[];
   @Input() code: Code;
   @Input() codeScheme: CodeScheme;
+  @Input() ignoreHierarchy: boolean;
 
   constructor(private router: Router) {
   }
@@ -58,7 +62,7 @@ export class HierarchyCodeComponent {
   }
 
   hasChildren() {
-    return this.children.length > 0;
+    return this.children.length > 0 && !this.ignoreHierarchy;
   }
 
   viewCode(code: CodePlain) {

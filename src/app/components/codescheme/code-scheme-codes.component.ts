@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeSchemeComponent } from './code-scheme.component';
+import { localizableMatches } from 'yti-common-ui/utils/localization';
 
 @Component({
   selector: 'app-code-scheme-codes',
@@ -19,6 +20,8 @@ export class CodeSchemeCodesComponent {
 
   @Input() codes: Code[];
   @Input() codeScheme: CodeScheme;
+
+  searchTerm = '';
 
   constructor(private codeSchemeComponent: CodeSchemeComponent,
               private userService: UserService,
@@ -49,6 +52,14 @@ export class CodeSchemeCodesComponent {
 
   canAddCode() {
     return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
+  }
+
+  get listedCodes() {
+    return this.searchTerm ? this.filteredCodes : this.topLevelCodes;
+  }
+
+  get filteredCodes() {
+    return this.codes.filter(code => code.codeValue.includes(this.searchTerm) || localizableMatches(code.prefLabel, this.searchTerm));
   }
 
   get topLevelCodes() {
@@ -96,5 +107,21 @@ export class CodeSchemeCodesComponent {
         code.expanded = false;
       }
     });
+  }
+
+  showExpandAll() {
+    return this.hasCollapsed() && !this.searchTerm;
+  }
+
+  showCollapseAll() {
+    return this.hasExpanded() && !this.searchTerm;
+  }
+  
+  get emptySearch() {
+    return this.searchTerm && this.listedCodes.length === 0;
+  }
+
+  ignoreHierarchy() {
+    return this.searchTerm ? true : false;
   }
 }
