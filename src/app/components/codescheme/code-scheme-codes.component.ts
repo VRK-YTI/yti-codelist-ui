@@ -59,7 +59,8 @@ export class CodeSchemeCodesComponent {
   }
 
   get filteredCodes() {
-    return this.codes.filter(code => code.codeValue.includes(this.searchTerm) || localizableMatches(code.prefLabel, this.searchTerm));
+    return this.codes.filter(code =>
+      code.codeValue.toLowerCase().includes(this.searchTerm.toLowerCase()) || localizableMatches(code.prefLabel, this.searchTerm));
   }
 
   get topLevelCodes() {
