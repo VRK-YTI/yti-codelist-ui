@@ -20,7 +20,7 @@ import { CodeScheme } from '../../entities/code-scheme';
     </div>
 
     <ul *ngIf="expanded && hasChildren()">
-      <li class="child-code" *ngFor="let code of children">
+      <li class="child-code" *ngFor="let code of children; trackBy: codeIdentity">
         <app-hierarchy-code id="{{code.id + '_codelist_childcode_listitem'}}"
                             [codes]="codes"
                             [code]="code" 
@@ -75,5 +75,9 @@ export class HierarchyCodeComponent {
         codeCode: code.codeValue
       }
     ]);
+  }
+
+  codeIdentity(index: number, item: Code) {
+    return item.id;
   }
 }

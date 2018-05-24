@@ -128,4 +128,8 @@ export class CodeSchemeCodesComponent {
   searchTermHasValue() {
     return this.searchTerm ? true : false;
   }
+
+  codeIdentity(index: number, item: Code) {
+    return item.id;
+  }
 }
