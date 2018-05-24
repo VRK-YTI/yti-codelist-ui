@@ -1,5 +1,4 @@
-<div class="row">
-
+<div class="row" *ngIf="codes.length > 0">
   <div class="col-md-4">
     <div class="input-group input-group-lg input-group-search">
       <input class="form-control"
@@ -8,6 +7,14 @@
              [(ngModel)]="searchTerm"
              placeholder="{{'Search for code' | translate}}"/>
     </div>
+  </div>
+</div>
+
+<div class="row mb-4" *ngIf="codes.length > 0">
+  <div class="col-12 search-text">
+    <span *ngIf="emptySearch" translate>Search did not find any codes.</span>
+    <span *ngIf="numberOfCodes == 1"><b>1</b> {{'code' | translate}}</span>
+    <span *ngIf="numberOfCodes > 1"><b>{{numberOfCodes}}</b> {{'codes' | translate}}</span>
   </div>
 </div>
 
@@ -47,21 +54,17 @@
   <div id="codelist_code_list_div" class="col-md-12">
     <ul *ngIf="listedCodes.length <= 500" id="codelist_code_list_regular">
       <li *ngFor="let code of listedCodes">
-        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="ignoreHierarchy()"></app-hierarchy-code>
+        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>
       </li>
     </ul>
     <ul *ngIf="listedCodes.length > 500" class="hugelist" id="codelist_code_list_huge">
       <li *lazyFor="let code of listedCodes, withHeight 65">
-        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="ignoreHierarchy()"></app-hierarchy-code>
+        <app-hierarchy-code id="{{code.id + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>
       </li>
     </ul>
   </div>
 
   <div class="emptyCodes" *ngIf="codes.length === 0">
     <span translate>This code list does not have any codes yet.</span>
-  </div>
-
-  <div class="emptyCodes" *ngIf="emptySearch">
-    <span translate>Search did not find any codes.</span>
   </div>
 </div>

@@ -121,6 +121,15 @@ msgstr ""
 msgid "Search for code"
 msgstr ""
 
+msgid "code"
+msgstr ""
+
+msgid "codes"
+msgstr ""
+
+msgid "Search did not find any codes."
+msgstr ""
+
 msgid "Expand all"
 msgstr ""
 
@@ -131,9 +140,6 @@ msgid "Import codes"
 msgstr ""
 
 msgid "This code list does not have any codes yet."
-msgstr ""
-
-msgid "Search did not find any codes."
 msgstr ""
 
 msgid "Code list value"

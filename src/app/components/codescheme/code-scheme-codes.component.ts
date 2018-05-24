@@ -73,6 +73,10 @@ export class CodeSchemeCodesComponent {
     return this.codes.filter(code => contains(broaderCodeIds, code.id));
   }
 
+  get numberOfCodes() {
+    return this.searchTermHasValue ? this.filteredCodes.length : this.codes.length;
+  }
+
   hasHierarchy() {
     return this.codes.filter(code => code.broaderCodeId !== undefined).length > 0;
   }
@@ -121,7 +125,7 @@ export class CodeSchemeCodesComponent {
     return this.searchTerm && this.listedCodes.length === 0;
   }
 
-  ignoreHierarchy() {
+  searchTermHasValue() {
     return this.searchTerm ? true : false;
   }
 }
