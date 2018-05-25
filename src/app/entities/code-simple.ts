@@ -1,5 +1,4 @@
 import { AbstractResource } from './abstract-resource';
-import { formatDateTime, formatDisplayDateTime } from '../utils/date';
 import { Status } from 'yti-common-ui/entities/status';
 import { CodePlainType } from '../services/api-schema';
 

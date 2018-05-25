@@ -40,6 +40,7 @@ export interface CodeSchemeType extends BaseResourceType {
   dataClassifications: DataClassificationType[];
   externalReferences?: ExternalReferenceType[];
   conceptUriInVocabularies: string;
+  defaultCode?: CodePlainType;
 }
 
 export interface CodePlainType extends BaseResourceType {

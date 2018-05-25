@@ -105,6 +105,10 @@
                             [label]="'Validity' | translate"
                             [formControlName]="'validity'"></app-date-range-input>
 
+      <app-literal *ngIf="codeScheme.defaultCode != null"
+                   [label]="'Default code' | translate"
+                   [value]="codeScheme.defaultCode.codeValue"></app-literal>
+
       <app-literal [label]="'URI' | translate"
                    [value]="codeScheme.uri"></app-literal>
 

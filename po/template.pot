@@ -198,6 +198,9 @@ msgstr ""
 msgid "Changenote"
 msgstr ""
 
+msgid "Default code"
+msgstr ""
+
 msgid "Export"
 msgstr ""
 
