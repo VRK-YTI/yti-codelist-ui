@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-25 15:02+0300\n"
+"PO-Revision-Date: 2018-05-29 11:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -24,6 +24,15 @@ msgstr "Valitse luokitus"
 
 msgid "Search classification"
 msgstr "Hae luokitusta"
+
+msgid "Add code"
+msgstr "Lisää koodi"
+
+msgid "Choose code"
+msgstr "Valitse koodi"
+
+msgid "Search code"
+msgstr "Hae koodia"
 
 msgid "No registry"
 msgstr "Ei rekisteriä"
@@ -134,7 +143,7 @@ msgid "code"
 msgstr "koodi"
 
 msgid "codes"
-msgstr "koodia"
+msgstr "Koodit"
 
 msgid "Search did not find any codes."
 msgstr "Haulla ei löytynyt yhtään koodia."
@@ -328,9 +337,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr ""
-"Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -408,11 +416,12 @@ msgstr "Tapahtui odottamaton virhe."
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "Loppupäivä ennen alkupäivää."
 
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
-msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
@@ -489,6 +498,9 @@ msgstr "Ei yhteyttä Sanastoihin."
 msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
 msgstr ""
 "Aineistossa puuttuu arvo sarakkeesta PROPERTYTYPE riviltä {{ identifier }}."
+
+msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
+msgstr "Laajennukseen liitettyä koodie ei ole olemassa."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

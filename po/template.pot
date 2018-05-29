@@ -16,6 +16,15 @@ msgstr ""
 msgid "Search classification"
 msgstr ""
 
+msgid "Add code"
+msgstr ""
+
+msgid "Choose code"
+msgstr ""
+
+msgid "Search code"
+msgstr ""
+
 msgid "No registry"
 msgstr ""
 
@@ -309,7 +318,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
 
 msgid "Front page"
@@ -386,10 +395,10 @@ msgstr ""
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
@@ -465,6 +474,9 @@ msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
 msgstr ""
 
 msgid "invalidDate"

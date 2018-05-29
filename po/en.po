@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-25 14:55+0300\n"
+"PO-Revision-Date: 2018-05-29 11:08+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -23,6 +23,15 @@ msgid "Choose classification"
 msgstr ""
 
 msgid "Search classification"
+msgstr ""
+
+msgid "Add code"
+msgstr ""
+
+msgid "Choose code"
+msgstr ""
+
+msgid "Search code"
 msgstr ""
 
 msgid "No registry"
@@ -322,10 +331,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
-"Row number {{ identifier }} in the data is missing a value in the column "
-"CODEVALUE."
+"Row number {{ identifier}} in the data is missing the value in the column "
+"STATUS."
 
 msgid "Front page"
 msgstr ""
@@ -401,13 +410,13 @@ msgstr "Unexpected error"
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "The enddate is before the startdate."
 
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in the column "
+"CODEVALUE."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
-msgstr ""
-"Row number {{ identifier}} in the data is missing the value in the column "
-"STATUS."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
@@ -485,6 +494,9 @@ msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
 msgstr ""
 "Row number {{ identifier}} in the data is missing the value in the column "
 "PROPERTYTYPE."
+
+msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
+msgstr "Code linked to extension does not exist."
 
 msgid "invalidDate"
 msgstr "Invalid date"
