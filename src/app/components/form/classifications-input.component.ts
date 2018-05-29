@@ -1,14 +1,14 @@
-import { Component, Input, Self, Optional } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { Code } from '../../entities/code';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
-import { remove } from 'yti-common-ui/utils/array';
 import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
+import { CodePlain } from '../../entities/code-simple';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
 
@@ -31,15 +31,15 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
       </dt>
       <dd>
         <div *ngIf="!editing">
-          <div *ngFor="let dataClassification of dataClassifications">  
+          <div *ngFor="let dataClassification of dataClassifications">
             <span>{{dataClassification.prefLabel | translateValue:true}}</span>
           </div>
         </div>
         <div *ngIf="editing">
           <div *ngFor="let classification of dataClassifications">
             <a>
-              <i id="{{'remove_' + classification.id + '_classification_link'}}" 
-                 class="fa fa-times" 
+              <i id="{{'remove_' + classification.id + '_classification_link'}}"
+                 class="fa fa-times"
                  (click)="removeDataClassification(classification)"></i>
             </a>
             <span>{{classification.prefLabel | translateValue:true}}</span>
@@ -51,7 +51,8 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="addDataClassification()" translate>Add classification</button>
+                (click)="addDataClassification()" translate>Add classification
+        </button>
       </dd>
     </dl>
   `
@@ -83,8 +84,8 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
     this.classifications$ = this.dataService.getDataClassificationsAsCodes();
   }
 
-  get dataClassifications(): Code[] {
-    return (this.control.value as Code[]).sort(comparingPrimitive<Code>(classification => classification.codeValue));
+  get dataClassifications(): CodePlain[] {
+    return (this.control.value as CodePlain[]).sort(comparingPrimitive<Code>(classification => classification.codeValue));
   }
 
   addDataClassification() {
@@ -96,7 +97,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
       .then(classification => addToControl(this.control, classification), ignoreModalClose);
   }
 
-  removeDataClassification(classification: Code) {
+  removeDataClassification(classification: CodePlain) {
     removeFromControl(this.control, classification);
   }
 

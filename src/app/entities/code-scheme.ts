@@ -8,7 +8,6 @@ import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { CodeSchemeType } from '../services/api-schema';
-import { DataClassification } from './data-classification';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
@@ -26,7 +25,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   description: Localizable = {};
   changeNote: Localizable = {};
   definition: Localizable = {};
-  dataClassifications: DataClassification[] = [];
+  dataClassifications: CodePlain[] = [];
   externalReferences: ExternalReference[] = [];
   conceptUriInVocabularies: string;
   modified: Moment|null = null;
@@ -55,7 +54,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.description = data.description || {};
     this.changeNote = data.changeNote || {};
     this.definition = data.definition || {};
-    this.dataClassifications = (data.dataClassifications || []).map(dc => new DataClassification(dc));
+    this.dataClassifications = (data.dataClassifications || []).map(dc => new CodePlain(dc));
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
     this.conceptUriInVocabularies = data.conceptUriInVocabularies;
     if (data.defaultCode) {

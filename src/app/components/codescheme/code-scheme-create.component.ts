@@ -16,6 +16,7 @@ import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {Concept} from '../../entities/concept';
 import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {hasLocalization} from 'yti-common-ui/utils/localization';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -39,6 +40,7 @@ export class CodeSchemeCreateComponent {
     governancePolicy: new FormControl(''),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     dataClassifications: new FormControl([], [requiredList]),
+    defaultCode: new FormControl(null),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required),
     conceptUriInVocabularies: new FormControl(''),
@@ -77,14 +79,15 @@ export class CodeSchemeCreateComponent {
 
     console.log('Saving new CodeScheme');
 
-    const { validity, codeRegistry, dataClassifications, ...rest } = formData;
+    const { validity, codeRegistry, defaultCode, dataClassifications, ...rest } = formData;
 
-    const codeScheme: CodeSchemeType = {
+    const codeScheme: CodeSchemeType = <CodeSchemeType> {
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
       codeRegistry: codeRegistry.serialize(),
-      dataClassifications: dataClassifications.map((dc: Code) => dc.serialize())
+      defaultCode: defaultCode.serialize(),
+      dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize())
     };
 
     return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
