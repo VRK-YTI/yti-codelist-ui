@@ -19,6 +19,7 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {Concept} from '../../entities/concept';
 import {hasLocalization} from 'yti-common-ui/utils/localization';
+import { CodePlain } from '../../entities/code-simple';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   @Input() codeScheme: CodeScheme;
 
   dataClassifications: Code[];
+  defaultCode: CodePlain;
   dev: boolean;
 
   codeSchemeForm = new FormGroup({
@@ -44,6 +46,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),
+    defaultCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
     conceptUriInVocabularies: new FormControl('')
@@ -78,12 +81,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   private reset() {
-    const { externalReferences, dataClassifications, startDate, endDate, ...rest } = this.codeScheme;
+    const { externalReferences, dataClassifications, defaultCode, startDate, endDate, ...rest } = this.codeScheme;
 
     this.codeSchemeForm.reset({
       ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
       dataClassifications: dataClassifications.map(classification => classification.clone()),
+      defaultCode: defaultCode,
       validity: { start: startDate, end: endDate }
     });
   }

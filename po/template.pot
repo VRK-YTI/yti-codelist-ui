@@ -16,15 +16,6 @@ msgstr ""
 msgid "Search classification"
 msgstr ""
 
-msgid "Add code"
-msgstr ""
-
-msgid "Choose code"
-msgstr ""
-
-msgid "Search code"
-msgstr ""
-
 msgid "No registry"
 msgstr ""
 
@@ -32,6 +23,15 @@ msgid "Start date"
 msgstr ""
 
 msgid "End date"
+msgstr ""
+
+msgid "Select default code"
+msgstr ""
+
+msgid "Choose code"
+msgstr ""
+
+msgid "Search code"
 msgstr ""
 
 msgid "Save"
@@ -204,10 +204,10 @@ msgstr ""
 msgid "Import code list"
 msgstr ""
 
-msgid "Changenote"
+msgid "Default code"
 msgstr ""
 
-msgid "Default code"
+msgid "Changenote"
 msgstr ""
 
 msgid "Export"

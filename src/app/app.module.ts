@@ -72,6 +72,7 @@ import {
 } from './components/terminology-integration/terminology-integration-codescheme-modal.component';
 import { EditableService } from './services/editable.service';
 import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
+import { DefaultCodeInputComponent } from './components/form/defaultcode-input.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -155,6 +156,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateInputComponent,
     DateRangeInputComponent,
     ClassificationsInputComponent,
+    DefaultCodeInputComponent,
     SearchLinkedCodeModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent,

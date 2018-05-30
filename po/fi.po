@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-30 12:31+0300\n"
+"PO-Revision-Date: 2018-05-30 15:55+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -25,15 +25,6 @@ msgstr "Valitse luokitus"
 msgid "Search classification"
 msgstr "Hae luokitusta"
 
-msgid "Add code"
-msgstr "Lisää koodi"
-
-msgid "Choose code"
-msgstr "Valitse koodi"
-
-msgid "Search code"
-msgstr "Hae koodia"
-
 msgid "No registry"
 msgstr "Ei rekisteriä"
 
@@ -42,6 +33,15 @@ msgstr "Alkupäivä"
 
 msgid "End date"
 msgstr "Loppupäivä"
+
+msgid "Select default code"
+msgstr "Valitse vakio koodi"
+
+msgid "Choose code"
+msgstr "Valitse koodi"
+
+msgid "Search code"
+msgstr "Hae koodia"
 
 msgid "Save"
 msgstr "Tallenna"
@@ -219,11 +219,11 @@ msgstr "Valitse rekisteri"
 msgid "Import code list"
 msgstr "Tuo koodisto"
 
-msgid "Changenote"
-msgstr "Muutostieto"
-
 msgid "Default code"
 msgstr "Vakio koodi"
+
+msgid "Changenote"
+msgstr "Muutostieto"
 
 msgid "Export"
 msgstr "Lataa"
@@ -500,7 +500,7 @@ msgstr ""
 "Aineistossa puuttuu arvo sarakkeesta PROPERTYTYPE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
-msgstr "Laajennukseen liitettyä koodia ei ole olemassa."
+msgstr "Laajennukseen liitettyä koodie ei ole olemassa."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
@@ -519,6 +519,9 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
+
+#~ msgid "Add code"
+#~ msgstr "Lisää koodi"
 
 #~ msgid "1 code list"
 #~ msgstr "<b>1</b> koodistoa"

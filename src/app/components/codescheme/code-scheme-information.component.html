@@ -54,6 +54,11 @@
                                  [label]="'Classification' | translate"
                                  [formControlName]="'dataClassifications'"></app-classifications-input>
 
+      <app-defaultcode-input id="default_code_input"
+                             [label]="'Default code' | translate"
+                             [codeScheme]="this.codeScheme"
+                             [formControlName]="'defaultCode'"></app-defaultcode-input>
+
       <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
         <dt>
           <label translate>Organization</label>
@@ -104,10 +109,6 @@
       <app-date-range-input id="codelist_validity_input"
                             [label]="'Validity' | translate"
                             [formControlName]="'validity'"></app-date-range-input>
-
-      <app-literal *ngIf="codeScheme.defaultCode != null"
-                   [label]="'Default code' | translate"
-                   [value]="codeScheme.defaultCode.codeValue"></app-literal>
 
       <app-literal [label]="'URI' | translate"
                    [value]="codeScheme.uri"></app-literal>
