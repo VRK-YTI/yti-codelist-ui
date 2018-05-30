@@ -86,7 +86,7 @@ export class CodeSchemeCreateComponent {
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
       codeRegistry: codeRegistry.serialize(),
-      defaultCode: defaultCode.serialize(),
+      defaultCode: defaultCode ? defaultCode.serialize() : undefined,
       dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize())
     };
 

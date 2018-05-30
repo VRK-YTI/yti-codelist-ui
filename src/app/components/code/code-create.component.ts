@@ -76,7 +76,7 @@ export class CodeCreateComponent implements OnInit {
 
     const { validity, ...rest } = formData;
 
-    const code: CodeType = {
+    const code: CodeType = <CodeType> {
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end)
