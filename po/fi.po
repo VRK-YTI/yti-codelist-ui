@@ -500,7 +500,7 @@ msgstr ""
 "Aineistossa puuttuu arvo sarakkeesta PROPERTYTYPE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
-msgstr "Laajennukseen liitettyä koodie ei ole olemassa."
+msgstr "Laajennukseen liitettyä koodia ei ole olemassa."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
