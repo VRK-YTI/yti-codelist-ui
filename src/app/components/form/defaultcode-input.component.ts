@@ -29,7 +29,7 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && defaultCode">
-          <span>{{defaultCode.prefLabel | translateValue:true}}</span>
+          <span>{{defaultCode.codeValue}} - {{defaultCode.prefLabel | translateValue:true}}</span>
         </div>
         <div *ngIf="editing && defaultCode">
           <a>
@@ -37,7 +37,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeDefaultCode(defaultCode)"></i>
           </a>
-          <span>{{defaultCode.prefLabel | translateValue:true}}</span>
+          <span>{{defaultCode.codeValue}} - {{defaultCode.prefLabel | translateValue:true}}</span>
           <app-error-messages id="defaultcode_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
