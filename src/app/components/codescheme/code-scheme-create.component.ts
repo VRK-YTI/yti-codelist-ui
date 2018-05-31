@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { LinkListModalService } from './link-list-modal.component';
 import { LinkShowModalService } from './link-show-modal.component';
 import { LinkEditModalService } from './link-edit-modal.component';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
@@ -17,6 +17,8 @@ import {Concept} from '../../entities/concept';
 import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {hasLocalization} from 'yti-common-ui/utils/localization';
 import { CodePlain } from '../../entities/code-simple';
+import {CodeScheme} from '../../entities/code-scheme';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -24,10 +26,13 @@ import { CodePlain } from '../../entities/code-simple';
   styleUrls: ['./code-scheme-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeSchemeCreateComponent {
+export class CodeSchemeCreateComponent implements OnInit {
 
   codeRegistriesLoaded = false;
   dev: boolean;
+  uuidOfOriginalCodeSchemeIfCloning: string;
+  pageTitle = 'Create code list';
+  cloning = false;
 
   codeSchemeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
@@ -52,7 +57,9 @@ export class CodeSchemeCreateComponent {
               private linkShowModalService: LinkShowModalService,
               private linkListModalService: LinkListModalService,
               private editableService: EditableService,
-              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService,
+              private activatedRoute: ActivatedRoute,
+              private location: Location) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -60,6 +67,46 @@ export class CodeSchemeCreateComponent {
 
     dataService.getServiceConfiguration().subscribe(configuration => {
       this.dev = configuration.dev;
+    });
+  }
+
+  ngOnInit() {
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.uuidOfOriginalCodeSchemeIfCloning = params['originalCodeSchemeId'];
+      if (this.uuidOfOriginalCodeSchemeIfCloning) {
+        this.cloning = true;
+        this.dataService.getCodeSchemeWithUuid(this.uuidOfOriginalCodeSchemeIfCloning).subscribe(next => {
+          const originalCodeScheme: CodeScheme = next;
+          this.codeSchemeForm.patchValue({prefLabel: originalCodeScheme.prefLabel});
+          this.codeSchemeForm.patchValue({codeValue: originalCodeScheme.codeValue});
+          this.codeSchemeForm.patchValue({description: originalCodeScheme.description});
+          this.codeSchemeForm.patchValue({definition: originalCodeScheme.definition});
+          this.codeSchemeForm.patchValue({version: originalCodeScheme.version});
+          this.codeSchemeForm.patchValue({source: originalCodeScheme.source});
+          this.codeSchemeForm.patchValue({legalBase: originalCodeScheme.legalBase});
+          this.codeSchemeForm.patchValue({governancePolicy: originalCodeScheme.governancePolicy});
+          this.codeSchemeForm.patchValue({validity: {start: originalCodeScheme.startDate, end: originalCodeScheme.endDate} });
+          this.codeSchemeForm.patchValue({status: originalCodeScheme.status});
+          this.codeSchemeForm.patchValue({conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies});
+          this.dataService.getDataClassificationsAsCodes().subscribe(next2 => {
+            const allDataClassifications = next2;
+            const dataClassificationsToCopy: CodePlain[] = [];
+            originalCodeScheme.dataClassifications.forEach(function (originalClassification) {
+              allDataClassifications.forEach(function(potentialClassification) {
+                const uriToCompare = potentialClassification.codeScheme.uri + '/' + potentialClassification.codeValue;
+                if (uriToCompare === originalClassification.uri) {
+                  dataClassificationsToCopy.push(potentialClassification);
+                }
+              });
+            });
+            if (dataClassificationsToCopy.length > 0) {
+              this.codeSchemeForm.patchValue({dataClassifications: dataClassificationsToCopy});
+            }
+          });
+        });
+        this.pageTitle = 'copyTheCodescheme';
+      }
     });
   }
 
@@ -72,7 +119,7 @@ export class CodeSchemeCreateComponent {
   }
 
   back() {
-    this.router.navigate(['importandcreatecodescheme']);
+    this.location.back();
   }
 
   save(formData: any): Observable<any> {
@@ -90,11 +137,28 @@ export class CodeSchemeCreateComponent {
       dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize())
     };
 
-    return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
-      .do(createdCodeScheme => {
-        console.log('Saved new CodeScheme');
-        this.router.navigate(createdCodeScheme.route);
-      });
+    if (this.cloning) {
+      console.log('Cloning CodeScheme');
+      return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning)
+        .do(createdCodeScheme => {
+          console.log('Saved cloned CodeScheme');
+          this.router.navigate([
+            'codescheme',
+            {
+              registryCode: codeRegistry.codeValue,
+              schemeCode: codeScheme.codeValue
+            }
+          ]);
+        });
+    } else {
+      console.log('Saving new CodeScheme');
+      return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
+        .do(createdCodeScheme => {
+          console.log('Saved new CodeScheme');
+          this.router.navigate(createdCodeScheme.route);
+        });
+    }
+
   }
 
   isCodeValuePatternValid (control: AbstractControl) {

@@ -210,6 +210,9 @@ msgstr ""
 msgid "Changenote"
 msgstr ""
 
+msgid "copyTheCodescheme"
+msgstr ""
+
 msgid "Export"
 msgstr ""
 

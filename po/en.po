@@ -518,3 +518,6 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
 
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
 #~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
+
+msgid "copyTheCodescheme"
+msgstr "Copy the Codescheme"

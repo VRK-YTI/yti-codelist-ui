@@ -13,6 +13,13 @@
       <app-status class="pull-left" [status]="codeScheme.status"></app-status>
 
       <div class="pull-right">
+
+        <button id="clone_codelist_button"
+                *ngIf="isDev && this.isSuperUser && codeScheme.status == 'VALID'" type="button"
+                class="btn btn-action pull-right ml-3"
+                (click)="copyTheCodescheme()"
+                translate>copyTheCodescheme</button>
+
         <button id="delete_codelist_button"
                 *ngIf='this.isSuperUser' type="button"
                 class="btn btn-action pull-right ml-3"

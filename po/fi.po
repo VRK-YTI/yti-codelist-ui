@@ -520,6 +520,9 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
 
+msgid "copyTheCodescheme"
+msgstr "Kopioi Koodisto"
+
 #~ msgid "Add code"
 #~ msgstr "Lisää koodi"
 

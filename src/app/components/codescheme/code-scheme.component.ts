@@ -25,6 +25,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   codeScheme: CodeScheme;
   codes: CodePlain[];
+  dev: boolean;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -37,6 +38,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private errorModalService: CodeListErrorModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.dev = configuration.dev;
+    });
   }
 
   ngOnInit() {
@@ -130,5 +135,14 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     });
 
     return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).do(() => this.ngOnInit());
+  }
+
+  copyTheCodescheme() {
+    console.log('Copy codescheme clicked!');
+    this.router.navigate(['createcodescheme'], { queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
+  }
+
+  get isDev() {
+    return this.dev;
   }
 }
