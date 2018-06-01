@@ -27,7 +27,7 @@ export class CodeSchemeImportModalComponent {
 
   codeRegistry: CodeRegistry | null = null;
   file?: File;
-  format = 'CSV';
+  format = 'Excel';
   uploading = false;
   codeRegistriesLoaded = false;
 
