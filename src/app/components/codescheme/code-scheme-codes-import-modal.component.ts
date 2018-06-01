@@ -31,7 +31,7 @@ export class CodeSchemeCodesImportModalComponent {
 
   @Input() codeScheme: CodeScheme;
   file?: File;
-  format = 'CSV';
+  format = 'Excel';
   uploading = false;
 
   constructor(private editableService: EditableService,
