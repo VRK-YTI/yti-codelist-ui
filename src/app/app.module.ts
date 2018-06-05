@@ -27,6 +27,7 @@ import { CodeInformationComponent } from './components/code/code-information.com
 import { LocalizableInputComponent } from './components/form/localizable-input';
 import { LocalizableTextareaComponent } from './components/form/localizable-textarea';
 import { LiteralInputComponent } from './components/form/literal-input';
+import { LinkComponent } from './components/form/link';
 import { LiteralComponent } from './components/form/literal';
 import { LocalizableLiteralComponent } from './components/form/localizable-literal';
 import { EditableButtonsComponent } from './components/form/editable-buttons.component';
@@ -140,6 +141,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LocalizableTextareaComponent,
     LiteralInputComponent,
     LiteralComponent,
+    LinkComponent,
     LocalizableLiteralComponent,
     EditableButtonsComponent,
     ErrorMessagesComponent,
