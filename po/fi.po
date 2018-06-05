@@ -35,7 +35,7 @@ msgid "End date"
 msgstr "Loppupäivä"
 
 msgid "Select default code"
-msgstr "Valitse vakio koodi"
+msgstr "Valitse vakiokoodi"
 
 msgid "Choose code"
 msgstr "Valitse koodi"
@@ -521,7 +521,7 @@ msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
 
 msgid "copyTheCodescheme"
-msgstr "Kopioi Koodisto"
+msgstr "Kopioi koodisto"
 
 #~ msgid "Add code"
 #~ msgstr "Lisää koodi"
