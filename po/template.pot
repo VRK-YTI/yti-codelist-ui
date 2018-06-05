@@ -216,10 +216,10 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-msgid "Export CSV"
+msgid "Export Excel"
 msgstr ""
 
-msgid "Export Excel"
+msgid "Export CSV"
 msgstr ""
 
 msgid "CODES"
