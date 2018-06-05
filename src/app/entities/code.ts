@@ -26,6 +26,7 @@ export class Code extends AbstractResource implements EditableEntity {
   expanded: boolean;
   conceptUriInVocabularies: string;
   modified: Moment|null = null;
+  order: string;
 
   constructor(data: CodeType) {
     super(data);
@@ -56,6 +57,9 @@ export class Code extends AbstractResource implements EditableEntity {
     this.expanded = false;
     if (data.conceptUriInVocabularies) {
       this.conceptUriInVocabularies = data.conceptUriInVocabularies;
+    }
+    if (data.order) {
+      this.order = data.order;
     }
   }
 

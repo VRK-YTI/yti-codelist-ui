@@ -64,6 +64,7 @@ export interface CodeType extends BaseResourceType {
   broaderCodeId?: string;
   hierarchyLevel?: number;
   conceptUriInVocabularies: string;
+  order?: string;
 }
 
 export interface ConceptType extends BaseResourceType {
