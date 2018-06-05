@@ -31,8 +31,8 @@
         </dd>
       </dl>
 
-      <app-literal *ngIf="isDev && !editing &&  code.conceptUriInVocabularies" [label]="'Vocabularies URI' | translate"
-                   [value]="code.conceptUriInVocabularies"></app-literal>
+      <app-link *ngIf="isDev && !editing &&  code.conceptUriInVocabularies" [label]="'Vocabularies URI' | translate"
+                [value]="code.conceptUriInVocabularies"></app-link>
       <div *ngIf="isDev && editing && code.conceptUriInVocabularies">
         <dl>
           <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
@@ -42,7 +42,7 @@
                  class="fa fa-times"
                  (click)="removeConceptUriInVocabularies()"></i>
             </a>
-            <a href="{{code.conceptUriInVocabularies}}">{{code.conceptUriInVocabularies}}</a>
+            {{code.conceptUriInVocabularies}}
           </dd>
         </dl>
       </div>

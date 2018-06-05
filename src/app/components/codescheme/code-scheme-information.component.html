@@ -29,8 +29,8 @@
       </dl>
 
       <div *ngIf="isDev && !editing && codeScheme.conceptUriInVocabularies">
-        <app-literal  [label]="'Vocabularies URI' | translate"
-                      [value]="codeScheme.conceptUriInVocabularies"></app-literal>
+        <app-link [label]="'Vocabularies URI' | translate"
+                  [value]="codeScheme.conceptUriInVocabularies"></app-link>
       </div>
       <div *ngIf="isDev && editing && codeScheme.conceptUriInVocabularies">
         <dl>
@@ -41,7 +41,7 @@
                  class="fa fa-times"
                  (click)="removeConceptUriInVocabularies()"></i>
             </a>
-            <a href={{codeScheme.conceptUriInVocabularies}}>{{codeScheme.conceptUriInVocabularies}}</a>
+            {{codeScheme.conceptUriInVocabularies}}
           </dd>
         </dl>
       </div>
