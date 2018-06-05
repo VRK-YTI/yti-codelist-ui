@@ -13,6 +13,13 @@ export class AuthorizationManager {
     return this.userService.user;
   }
 
+  canDelete(editableEntity: EditableEntity): boolean {
+    if (this.user.superuser) {
+      return true;
+    }
+    return this.user.isInOrganization(editableEntity.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
+  }
+
   canEdit(editableEntity: EditableEntity): boolean {
     if (this.user.superuser) {
       return true;

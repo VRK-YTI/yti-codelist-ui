@@ -21,7 +21,7 @@
                 translate>copyTheCodescheme</button>
 
         <button id="delete_codelist_button"
-                *ngIf='this.isSuperUser' type="button"
+                *ngIf='this.canDelete' type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="delete()"
                 translate>Delete</button>

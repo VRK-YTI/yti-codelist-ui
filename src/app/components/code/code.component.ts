@@ -11,6 +11,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-code',
@@ -32,7 +33,8 @@ export class CodeComponent implements OnInit, EditingComponent {
               private locationService: LocationService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
-              private errorModalService: CodeListErrorModalService) {
+              private errorModalService: CodeListErrorModalService,
+              private authorizationManager: AuthorizationManager) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -80,6 +82,11 @@ export class CodeComponent implements OnInit, EditingComponent {
 
   isEditing(): boolean {
     return this.editableService.editing;
+  }
+
+  get canDelete() {
+    return this.userService.user.superuser || (this.authorizationManager.canDelete(this.codeScheme) &&
+      (this.codeScheme.status === 'DRAFT' || this.codeScheme.status === 'SUGGESTED' || this.codeScheme.status === 'SUBMITTED'));
   }
 
   get isSuperUser() {
