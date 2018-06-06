@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <dl>
       <dt><label>{{label}}</label></dt>
-      <dd><a href="{{value}}">{{value}}</a></dd>
+      <dd><a target="_blank" href="{{value}}">{{value}}</a></dd>
     </dl>
   `
 })
