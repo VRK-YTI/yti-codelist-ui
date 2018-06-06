@@ -38,7 +38,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
         <div *ngIf="editing">
           <div *ngFor="let classification of dataClassifications">
             <a>
-              <i id="{{'remove_' + classification.id + '_classification_link'}}"
+              <i id="{{'remove_' + classification.codeValue + '_classification_link'}}"
                  class="fa fa-times"
                  (click)="removeDataClassification(classification)"></i>
             </a>
