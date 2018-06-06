@@ -33,7 +33,7 @@ function removeFromControl<T>(control: FormControl) {
         </div>
         <div *ngIf="editing && defaultCode">
           <a>
-            <i id="{{'remove_' + defaultCode.id + '_defaultcode_link'}}"
+            <i id="{{'remove_defaultcode_link'}}"
                class="fa fa-times"
                (click)="removeDefaultCode(defaultCode)"></i>
           </a>
