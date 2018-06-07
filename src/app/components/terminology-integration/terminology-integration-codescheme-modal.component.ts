@@ -27,8 +27,10 @@ export class TerminologyIntegrationModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(): Promise<Concept> {
+  public open(showSimpleCancelLinkText: boolean): Promise<Concept> {
     const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'lg'});
+    const instance = modalRef.componentInstance as TerminologyIntegrationCodeschemeModalComponent;
+    instance.showSimpleCancelLinkText = showSimpleCancelLinkText;
     return modalRef.result;
   }
 }
@@ -45,6 +47,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
   nrOfSearchResults: number = -1;
+  showSimpleCancelLinkText = true;
 
   @ViewChild('searchInput') searchInput: ElementRef;
 

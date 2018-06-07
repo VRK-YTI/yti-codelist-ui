@@ -64,6 +64,8 @@ export class CodeCreateComponent implements OnInit {
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
     });
+
+    this.openTerminologyModal();
   }
 
   back() {
@@ -114,7 +116,7 @@ export class CodeCreateComponent implements OnInit {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(false).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {
@@ -122,12 +124,8 @@ export class CodeCreateComponent implements OnInit {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    if (!hasLocalization(this.codeForm.controls['prefLabel'].value)) {
-      this.codeForm.patchValue({prefLabel: concept.prefLabel});
-    }
-    if (!hasLocalization(this.codeForm.controls['definition'].value)) {
-      this.codeForm.patchValue({definition: concept.definition});
-    }
+    this.codeForm.patchValue({prefLabel: concept.prefLabel});
+    this.codeForm.patchValue({definition: concept.definition});
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 

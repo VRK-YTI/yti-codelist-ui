@@ -22,4 +22,8 @@ export class CodeListConfirmationModalService {
   openRemoveCodeScheme() {
     return this.confirmationModalService.open('REMOVE CODESCHEME?', '');
   }
+
+  openOverWriteExistingValuesFromVocabularies() {
+    return this.confirmationModalService.open('NEW VALUES FROM VOCABULARIES?', '');
+  }
 }

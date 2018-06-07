@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-07 13:05+0300\n"
+"PO-Revision-Date: 2018-06-07 17:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -313,6 +313,9 @@ msgstr ""
 msgid "No search results"
 msgstr "No search results"
 
+msgid "Create without concept integration"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -334,8 +337,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr "Row number {{ identifier }} in the data is missing a value in the column CODEVALUE."
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgstr ""
+"Row number {{ identifier }} in the data is missing the value in the column "
+"STATUS."
 
 msgid "Front page"
 msgstr ""
@@ -381,9 +386,6 @@ msgstr ""
 msgid "Create code list"
 msgstr ""
 
-msgid "copyTheCodeScheme"
-msgstr "Copy the code list"
-
 msgid "REMOVE LINK?"
 msgstr ""
 
@@ -417,11 +419,13 @@ msgstr "Unexpected error"
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "The enddate is before the startdate."
 
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in the column "
+"CODEVALUE."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
-msgstr "Row number {{ identifier }} in the data is missing the value in the column STATUS."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
@@ -508,7 +512,11 @@ msgstr "Code order has non-sequential values."
 
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
 msgstr ""
-"Code linked to extension does not belong to parent code list or to any related code lists."
+"Code linked to extension does not belong to parent code list or to any "
+"related code lists."
+
+msgid "NEW VALUES FROM VOCABULARIES?"
+msgstr "Do you want to replace the existing values with new ones?"
 
 msgid "invalidDate"
 msgstr "Invalid date"
@@ -527,6 +535,9 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
+
+#~ msgid "copyTheCodeScheme"
+#~ msgstr "Copy the code list"
 
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
 #~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
