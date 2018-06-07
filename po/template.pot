@@ -482,6 +482,9 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
 msgstr ""
 
+msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
