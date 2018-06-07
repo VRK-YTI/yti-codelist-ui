@@ -9,7 +9,6 @@ import { Organization } from '../../entities/organization';
 import { Status, allStatuses } from 'yti-common-ui/entities/status';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from 'ng2-translate';
@@ -53,7 +52,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService,
               private router: Router,
-              private userService: UserService,
               public languageService: LanguageService,
               private translateService: TranslateService,
               private authorizationManager: AuthorizationManager,
