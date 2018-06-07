@@ -516,7 +516,7 @@ msgstr "Koodin order-sarakkeen kentät ovat puutteelliset."
 
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
 msgstr ""
-"Laajennukseen liitettyä koodi ei kuulu tähän koodistoon tai "
+"Laajennukseen liitetty koodi ei kuulu tähän koodistoon tai "
 "laajennusjärjestelmään liitettyihin koodistoihin."
 
 msgid "NEW VALUES FROM VOCABULARIES?"
