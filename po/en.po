@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-05-29 11:08+0300\n"
+"PO-Revision-Date: 2018-06-07 13:05+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -25,15 +25,6 @@ msgstr ""
 msgid "Search classification"
 msgstr ""
 
-msgid "Add code"
-msgstr ""
-
-msgid "Choose code"
-msgstr ""
-
-msgid "Search code"
-msgstr ""
-
 msgid "No registry"
 msgstr ""
 
@@ -41,6 +32,15 @@ msgid "Start date"
 msgstr ""
 
 msgid "End date"
+msgstr ""
+
+msgid "Select default code"
+msgstr ""
+
+msgid "Choose code"
+msgstr ""
+
+msgid "Search code"
 msgstr ""
 
 msgid "Save"
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Governance policy"
 msgstr ""
 
-msgid "Create code list"
+msgid "{{pageTitle}}"
 msgstr ""
 
 msgid "Add code list"
@@ -212,19 +212,22 @@ msgstr ""
 msgid "Import code list"
 msgstr ""
 
+msgid "Default code"
+msgstr ""
+
 msgid "Changenote"
 msgstr ""
 
-msgid "Default code"
-msgstr ""
+msgid "copyTheCodescheme"
+msgstr "Copy the Codescheme"
 
 msgid "Export"
 msgstr ""
 
-msgid "Export CSV"
+msgid "Export Excel"
 msgstr ""
 
-msgid "Export Excel"
+msgid "Export CSV"
 msgstr ""
 
 msgid "CODES"
@@ -331,10 +334,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
-msgstr ""
-"Row number {{ identifier}} in the data is missing the value in the column "
-"STATUS."
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr "Row number {{ identifier }} in the data is missing a value in the column CODEVALUE."
 
 msgid "Front page"
 msgstr ""
@@ -377,6 +378,12 @@ msgid ""
 "be lost."
 msgstr ""
 
+msgid "Create code list"
+msgstr ""
+
+msgid "copyTheCodeScheme"
+msgstr "Copy the code list"
+
 msgid "REMOVE LINK?"
 msgstr ""
 
@@ -410,13 +417,11 @@ msgstr "Unexpected error"
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "The enddate is before the startdate."
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr ""
-"Row number {{ identifier }} in the data is missing a value in the column "
-"CODEVALUE."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgstr "Row number {{ identifier }} in the data is missing the value in the column STATUS."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
@@ -501,6 +506,10 @@ msgstr "Code linked to extension does not exist."
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
 msgstr "Code order has non-sequential values."
 
+msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
+msgstr ""
+"Code linked to extension does not belong to parent code list or to any related code lists."
+
 msgid "invalidDate"
 msgstr "Invalid date"
 
@@ -521,6 +530,3 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
 
 #~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
 #~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
-
-msgid "copyTheCodescheme"
-msgstr "Copy the Codescheme"

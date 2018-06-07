@@ -169,7 +169,7 @@ msgstr ""
 msgid "Governance policy"
 msgstr ""
 
-msgid "Create code list"
+msgid "{{pageTitle}}"
 msgstr ""
 
 msgid "Add code list"
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
 msgstr ""
 
 msgid "Front page"
@@ -365,6 +365,9 @@ msgid ""
 "be lost."
 msgstr ""
 
+msgid "Create code list"
+msgstr ""
+
 msgid "REMOVE LINK?"
 msgstr ""
 
@@ -398,10 +401,10 @@ msgstr ""
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
@@ -482,7 +485,12 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
 msgstr ""
 
+
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
+
 msgstr ""
 
 msgid "invalidDate"

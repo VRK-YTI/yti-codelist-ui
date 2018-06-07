@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-05 12:15+0300\n"
+"PO-Revision-Date: 2018-06-07 13:08+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -178,8 +178,8 @@ msgstr "Lakiperuste"
 msgid "Governance policy"
 msgstr "Sitovuustaso"
 
-msgid "Create code list"
-msgstr "Luo koodisto"
+msgid "{{pageTitle}}"
+msgstr ""
 
 msgid "Add code list"
 msgstr "Lisää koodisto"
@@ -225,14 +225,17 @@ msgstr "Vakiokoodi"
 msgid "Changenote"
 msgstr "Muutostieto"
 
+msgid "copyTheCodescheme"
+msgstr "Kopioi koodisto"
+
 msgid "Export"
 msgstr "Lataa"
 
-msgid "Export CSV"
-msgstr "Lataa CSV"
-
 msgid "Export Excel"
 msgstr "Lataa Excel"
+
+msgid "Export CSV"
+msgstr "Lataa CSV"
 
 msgid "CODES"
 msgstr "KOODIT"
@@ -337,8 +340,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
-msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr "Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -383,6 +386,14 @@ msgstr ""
 "Oletko varma, että haluat jatkaa? Jatkaessasi tallentamattomat muutokset "
 "katoavat."
 
+msgid "Create code list"
+msgstr "Luo koodisto"
+
+#, fuzzy
+#| msgid "copyTheCodescheme"
+msgid "copyTheCodeScheme"
+msgstr "Kopioi koodisto"
+
 msgid "REMOVE LINK?"
 msgstr "POISTETAANKO LINKKI?"
 
@@ -416,12 +427,11 @@ msgstr "Tapahtui odottamaton virhe."
 msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
 msgstr "Loppupäivä ennen alkupäivää."
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
-msgstr ""
-"Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
@@ -505,6 +515,11 @@ msgstr "Laajennukseen liitettyä koodia ei ole olemassa."
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
 msgstr "Koodin order-sarakkeen kentät ovat puutteelliset."
 
+msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
+msgstr ""
+"Laajennukseen liitettyä koodi ei kuulu tähän koodistoon tai "
+"laajennusjärjestelmään liitettyihin koodistoihin."
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
 
@@ -522,9 +537,6 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
-
-msgid "copyTheCodescheme"
-msgstr "Kopioi koodisto"
 
 #~ msgid "Add code"
 #~ msgstr "Lisää koodi"
