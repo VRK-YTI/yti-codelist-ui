@@ -121,16 +121,16 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(true).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    if (!hasLocalization(this.codeSchemeForm.controls['prefLabel'].value)) {
-      this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
-    }
-    if (!hasLocalization(this.codeSchemeForm.controls['definition'].value)) {
-      this.codeSchemeForm.patchValue({definition: concept.definition});
-    }
+
+    this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
+      .then(() => {
+        this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
+        this.codeSchemeForm.patchValue({definition: concept.definition});
+      }, ignoreModalClose);
     this.codeScheme.conceptUriInVocabularies = concept.uri;
     this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }

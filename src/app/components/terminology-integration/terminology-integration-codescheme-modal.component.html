@@ -58,10 +58,14 @@
   <div class="modal-footer">
 
     <div class="side-padding-15">
-      <button id="cancel_modal_button"
+      <button *ngIf="showSimpleCancelLinkText" id="cancel_modal_button"
               type="button"
               class="btn btn-link cancel"
               (click)="cancel()" translate>Cancel</button>
+      <button *ngIf="!showSimpleCancelLinkText" id="cancel_modal_button_for_creation"
+              type="button"
+              class="btn btn-link cancel"
+              (click)="cancel()" translate>Create without concept integration</button>
     </div>
 
   </div>

@@ -108,6 +108,8 @@ export class CodeSchemeCreateComponent implements OnInit {
         this.pageTitle = 'copyTheCodescheme';
       }
     });
+
+    this.openTerminologyModal();
   }
 
   get isDev() {
@@ -181,7 +183,7 @@ export class CodeSchemeCreateComponent implements OnInit {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(false).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {
@@ -189,12 +191,8 @@ export class CodeSchemeCreateComponent implements OnInit {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    if (!hasLocalization(this.codeSchemeForm.controls['prefLabel'].value)) {
-      this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
-    }
-    if (!hasLocalization(this.codeSchemeForm.controls['definition'].value)) {
-      this.codeSchemeForm.patchValue({definition: concept.definition});
-    }
+    this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
+    this.codeSchemeForm.patchValue({definition: concept.definition});
     this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 }

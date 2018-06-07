@@ -88,7 +88,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open().then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(true).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {
@@ -97,12 +97,11 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    if (!hasLocalization(this.codeForm.controls['prefLabel'].value)) {
-      this.codeForm.patchValue({prefLabel: concept.prefLabel});
-    }
-    if (!hasLocalization(this.codeForm.controls['definition'].value)) {
-      this.codeForm.patchValue({definition: concept.definition});
-    }
+    this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
+      .then(() => {
+        this.codeForm.patchValue({prefLabel: concept.prefLabel});
+        this.codeForm.patchValue({definition: concept.definition});
+      }, ignoreModalClose);
     this.code.conceptUriInVocabularies = concept.uri;
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
