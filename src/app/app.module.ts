@@ -74,6 +74,8 @@ import {
 import { EditableService } from './services/editable.service';
 import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
 import { DefaultCodeInputComponent } from './components/form/defaultcode-input.component';
+import { ClipboardComponent } from './components/form/clipboard';
+import { ClipboardModule } from 'ngx-clipboard/dist';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -128,6 +130,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeComponent,
     CodeComponent,
     CodeCreateComponent,
+    ClipboardComponent,
     StatusComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
@@ -182,7 +185,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     NgbModule.forRoot(),
     TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader}),
     YtiCommonModule,
-    LazyForModule
+    LazyForModule,
+    ClipboardModule
   ],
   providers: [
     {provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint},
