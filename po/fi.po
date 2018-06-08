@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-07 19:17+0300\n"
+"PO-Revision-Date: 2018-06-08 11:44+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -343,8 +343,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
-msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -432,14 +432,14 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
+msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "Aineistosta puuttuu sarake otsikolla STATUS."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
-msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
@@ -524,6 +524,12 @@ msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
 
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Laajennusten maksimi hierarkinen taso ylittyi."
+
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
+msgstr "Laajennusjärjestelmään liitettyä koodistoa ei ole olemassa."
+
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
+msgstr "Laajennusjärjestelmään liitettyä tyypitystä ei ole olemassa."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

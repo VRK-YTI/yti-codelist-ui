@@ -324,7 +324,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr ""
 
 msgid "Front page"
@@ -410,13 +410,13 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
@@ -498,6 +498,12 @@ msgid "NEW VALUES FROM VOCABULARIES?"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr ""
 
 msgid "invalidDate"
