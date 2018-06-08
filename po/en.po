@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-08 12:48+0300\n"
+"PO-Revision-Date: 2018-06-08 12:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -527,11 +527,6 @@ msgstr "Code list linked to ExtensionScheme not found."
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to ExtensionScheme not found."
 
-#, fuzzy
-#| msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
-msgid "ERR_MSG_USER_DUPLICATE_CODEVALUE"
-msgstr "Duplicate CODEVALUE in import data, failing."
-
 msgid "invalidDate"
 msgstr "Invalid date"
 
@@ -549,6 +544,11 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
+
+#, fuzzy
+#~| msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
+#~ msgid "ERR_MSG_USER_DUPLICATE_CODEVALUE"
+#~ msgstr "Duplicate CODEVALUE in import data, failing."
 
 #~ msgid "copyTheCodeScheme"
 #~ msgstr "Copy the code list"
