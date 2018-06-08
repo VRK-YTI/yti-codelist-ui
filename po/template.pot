@@ -506,6 +506,9 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr ""
 
+msgid "ERR_MSG_USER_DUPLICATE_CODEVALUE"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
