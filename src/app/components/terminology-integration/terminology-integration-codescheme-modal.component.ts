@@ -10,7 +10,7 @@ import {EditableService} from '../../services/editable.service';
 import {Router} from '@angular/router';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {DataService} from '../../services/data.service';
-import {Vocabulary} from '../../entities/Vocabulary';
+import {Vocabulary} from '../../entities/vocabulary';
 import { LanguageService } from '../../services/language.service';
 import {ModalService} from '../../services/modal.service';
 import { OnInit } from '@angular/core';

@@ -21,7 +21,7 @@ import { Organization } from '../entities/organization';
 import { ServiceConfiguration } from '../entities/service-configuration';
 import { UserRequest } from '../entities/user-request';
 import { AuthorizationManager } from './authorization-manager.service';
-import {Vocabulary} from '../entities/Vocabulary';
+import {Vocabulary} from '../entities/vocabulary';
 import { CodePlain } from '../entities/code-simple';
 import {Concept} from '../entities/concept';
 
