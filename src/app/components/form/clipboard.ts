@@ -12,8 +12,8 @@ const clippyImage = require('../../../assets/clippy.svg');
         <span *ngIf="!showAsLink">{{value}}</span>
         <img [src]="this.clippyImage"
              class="svg-icon"
-             ngxClipboard [cbContent]="value"
-             title="{{'Copy value to clipboard' | translate:translateParams}}">
+             ngbTooltip="{{'Copy value to clipboard' | translate:translateParams}}"
+             ngxClipboard [cbContent]="value">
       </dd>
     </dl>
   `
