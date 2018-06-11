@@ -67,7 +67,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
     Observable.combineLatest(this.vocabulary$, this.search$)
       .debounceTime(500)
       .distinctUntilChanged()
-      .subscribe(() => this.goSearch(this.search$.getValue()));
+      .subscribe(() => this.goSearch(this.vocabulary$.getValue(), this.search$.getValue()));
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
@@ -103,12 +103,11 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
     this.modal.dismiss('cancel');
   }
 
-  goSearch(searchTerm: string) {
+  goSearch(vocabulary: Vocabulary|null, searchTerm: string) {
     if (!searchTerm) {
       this.nrOfSearchResults = 0;
       return;
     }
-    const vocabulary = this.vocabulary$.getValue();
     this.dataService.getConcepts(searchTerm, vocabulary ? vocabulary.id : null ).subscribe(concepts => {
       this.searchResults = concepts;
       this.nrOfSearchResults = concepts.length || 0;
