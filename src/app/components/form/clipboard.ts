@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+const clippyImage = require('../../../assets/clippy.svg');
 
 @Component({
   selector: 'app-clipboard',
@@ -8,14 +10,26 @@ import { Component, Input } from '@angular/core';
       <dd>
         {{value}}
         <button class="btn" type="button" ngxClipboard [cbContent]="value">
-          <img src="../../../assets/clippy.svg" class="svg-icon" alt="Copy to clipboard">
+          <img [src]="this.clippyImage"
+               class="svg-icon"
+               title="{{'Copy value to clipboard' | translate:translateParams}}">
         </button>
       </dd>
     </dl>
   `
 })
-export class ClipboardComponent {
+export class ClipboardComponent implements OnInit {
 
   @Input() label: string;
   @Input() value: string;
+
+  translateParams?: {};
+  clippyImage = clippyImage;
+
+  ngOnInit() {
+
+    this.translateParams = {
+      value: this.value
+    };
+  }
 }

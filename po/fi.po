@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-08 12:56+0300\n"
+"PO-Revision-Date: 2018-06-11 11:28+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -530,6 +530,9 @@ msgstr "Laajennusjärjestelmään liitettyä koodistoa ei ole olemassa."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "Laajennusjärjestelmään liitettyä tyypitystä ei ole olemassa."
+
+msgid "Copy value to clipboard"
+msgstr "Kopioi {{value}} leikepöydälle"
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

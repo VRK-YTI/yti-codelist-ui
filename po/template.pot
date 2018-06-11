@@ -16,6 +16,9 @@ msgstr ""
 msgid "Search classification"
 msgstr ""
 
+msgid "Copy value to clipboard"
+msgstr ""
+
 msgid "No registry"
 msgstr ""
 
