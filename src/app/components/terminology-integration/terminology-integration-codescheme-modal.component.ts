@@ -50,7 +50,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
-  searchResults$: Observable<Concept[]>;
+  searchResults: Concept[];
   search$ = new BehaviorSubject('');
 
   constructor(private editableService: EditableService,
@@ -114,7 +114,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
       vocabularyId = vocabulary.id;
     }
     this.dataService.getConcepts(searchTerm, vocabularyId ).subscribe(concepts => {
-      this.searchResults$ = Observable.of(concepts);
+      this.searchResults = concepts;
       this.nrOfSearchResults = concepts.length || 0;
     }, error => {
       this.nrOfSearchResults = 0;

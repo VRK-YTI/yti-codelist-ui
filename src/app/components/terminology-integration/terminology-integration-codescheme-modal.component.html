@@ -31,13 +31,13 @@
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
     </div>
-    <div class="row full-height col-sm-12 box-sizing-content-box" *ngIf="searchResults$ && nrOfSearchResults > 0">
+    <div class="row full-height col-sm-12 box-sizing-content-box" *ngIf="searchResults && nrOfSearchResults > 0">
       <div class="side-padding-15">
         <div class="content-box">
           <div class="search-results">
             <div id="{{concept.id + '_concept_link'}}"
                  class="search-result"
-                 *ngFor="let concept of searchResults$ | async; let last = last"
+                 *ngFor="let concept of searchResults; let last = last"
                  (click)="select(concept)">
               <div class="content" [class.last]="last">
                 <span class="title" [innerHTML]="concept.prefLabel | translateValue"></span>
@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="searchResults$ && nrOfSearchResults < 1" class="side-padding-15">
+    <div *ngIf="searchResults && nrOfSearchResults < 1" class="side-padding-15">
       <p translate>No search results</p>
     </div>
   </div>
