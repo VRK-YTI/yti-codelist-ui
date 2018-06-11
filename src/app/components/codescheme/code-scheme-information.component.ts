@@ -96,8 +96,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     this.cancelSubscription.unsubscribe();
   }
 
-  get isDev() {
-    return this.env !== 'dev';
+  get hideUnfinishedFeature() {
+    return this.env === 'dev';
   }
 
   get editing() {
@@ -133,5 +133,19 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
       }, ignoreModalClose);
     this.codeScheme.conceptUriInVocabularies = concept.uri;
     this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
+  }
+
+  getCodeSchemeUri() {
+    if (this.env !== 'prod') {
+      return this.codeScheme.uri + '?env=' + this.env;
+    }
+    return this.codeScheme.uri;
+  }
+
+  getConceptUri() {
+    if (this.env !== 'prod') {
+      return this.codeScheme.conceptUriInVocabularies + '?env=' + this.env;
+    }
+    return this.codeScheme.conceptUriInVocabularies;
   }
 }

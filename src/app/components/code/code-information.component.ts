@@ -106,7 +106,21 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
-  get isDev() {
+  get hideUnfinishedFeature() {
     return this.env !== 'dev';
+  }
+
+  getCodeUri() {
+    if (this.env !== 'prod') {
+      return this.code.uri + '?env=' + this.env;
+    }
+    return this.code.uri;
+  }
+
+  getConceptUri() {
+    if (this.env !== 'prod') {
+      return this.code.conceptUriInVocabularies + '?env=' + this.env;
+    }
+    return this.code.conceptUriInVocabularies;
   }
 }

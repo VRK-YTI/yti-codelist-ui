@@ -116,7 +116,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     });
   }
 
-  get isDev() {
+  get hideUnfinishedFeature() {
     return this.env !== 'dev';
   }
 
