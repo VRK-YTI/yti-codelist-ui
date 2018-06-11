@@ -3,8 +3,7 @@ import {
   ElementRef,
   Injectable,
   ViewChild,
-  Renderer,
-  OnChanges
+  Renderer
 } from '@angular/core';
 import {EditableService} from '../../services/editable.service';
 import {Router} from '@angular/router';
@@ -42,7 +41,7 @@ export class TerminologyIntegrationModalService {
   styleUrls: ['./terminology-integration-codescheme-modal.component.scss'],
   providers: [EditableService]
 })
-export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, OnChanges {
+export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
@@ -82,10 +81,6 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, O
         { value: null, name: () => this.translateService.instant('All vocabularies')}];
       this.codeListErrorModalService.openSubmitError(error);
     });
-  }
-
-  ngOnChanges() {
-    this.goSearch(this.search$.getValue());
   }
 
   close() {
