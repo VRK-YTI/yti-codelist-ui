@@ -32,8 +32,10 @@
         </dd>
       </dl>
 
-      <app-link *ngIf="isDev && !editing &&  code.conceptUriInVocabularies" [label]="'Vocabularies URI' | translate"
-                [value]="code.conceptUriInVocabularies"></app-link>
+      <app-clipboard *ngIf="isDev && !editing &&  code.conceptUriInVocabularies"
+                     [label]="'Vocabularies URI' | translate"
+                     [showAsLink]="true"
+                     [value]="code.conceptUriInVocabularies"></app-clipboard>
       <div *ngIf="isDev && editing && code.conceptUriInVocabularies">
         <dl>
           <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
@@ -70,7 +72,8 @@
                             [formControlName]="'validity'"></app-date-range-input>
 
       <app-clipboard [label]="'URI' | translate"
-                     [value]="code.uri"></app-clipboard>
+                     [value]="code.uri"
+                     [showAsLink]="false"></app-clipboard>
 
       <app-literal [label]="'Last modification' | translate"
                    [value]="code.modifiedDisplayValue"></app-literal>

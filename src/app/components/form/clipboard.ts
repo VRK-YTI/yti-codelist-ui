@@ -8,7 +8,8 @@ const clippyImage = require('../../../assets/clippy.svg');
     <dl>
       <dt><label>{{label}}</label></dt>
       <dd>
-        {{value}}
+        <a *ngIf="showAsLink" target="_blank" href="{{value}}">{{value}}</a>
+        <span *ngIf="!showAsLink">{{value}}</span>
         <button class="btn" type="button" ngxClipboard [cbContent]="value">
           <img [src]="this.clippyImage"
                class="svg-icon"
@@ -22,6 +23,7 @@ export class ClipboardComponent {
 
   @Input() label: string;
   @Input() value: string;
+  @Input() showAsLink = false;
 
   clippyImage = clippyImage;
 
