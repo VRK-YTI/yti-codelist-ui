@@ -29,7 +29,7 @@ import { Location } from '@angular/common';
 export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   codeRegistriesLoaded = false;
-  dev: boolean;
+  env: string;
   uuidOfOriginalCodeSchemeIfCloning: string;
   pageTitle = 'Create code list';
   cloning = false;
@@ -66,7 +66,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     this.editableService.edit();
 
     dataService.getServiceConfiguration().subscribe(configuration => {
-      this.dev = configuration.dev;
+      this.env = configuration.env;
     });
   }
 
@@ -117,7 +117,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   get isDev() {
-    return this.dev;
+    return this.env !== 'dev';
   }
 
   get loading(): boolean {

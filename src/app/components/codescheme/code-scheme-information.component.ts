@@ -33,7 +33,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   dataClassifications: Code[];
   defaultCode: CodePlain;
-  dev: boolean;
+  env: string;
 
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -69,7 +69,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
     dataService.getServiceConfiguration().subscribe(configuration => {
-      this.dev = configuration.dev;
+      this.env = configuration.env;
     });
   }
 
@@ -97,7 +97,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   get isDev() {
-    return this.dev;
+    return this.env !== 'dev';
   }
 
   get editing() {

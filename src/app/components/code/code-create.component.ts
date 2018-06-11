@@ -22,7 +22,7 @@ import {hasLocalization} from 'yti-common-ui/utils/localization';
 export class CodeCreateComponent implements OnInit, AfterViewInit {
 
   codeScheme: CodeScheme;
-  dev: boolean;
+  env: string;
 
   codeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid], this.codeValueExistsValidator()),
@@ -46,7 +46,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.editableService.edit();
 
     dataService.getServiceConfiguration().subscribe(configuration => {
-      this.dev = configuration.dev;
+      this.env = configuration.env;
     });
   }
 
@@ -134,6 +134,6 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
   }
 
   get isDev() {
-    return this.dev;
+    return this.env !== 'dev';
   }
 }

@@ -25,7 +25,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   @Input() code: Code;
 
   cancelSubscription: Subscription;
-  dev: boolean;
+  env: string;
 
   codeForm = new FormGroup({
     prefLabel: new FormControl(''),
@@ -50,7 +50,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
     this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.dev = configuration.dev;
+      this.env = configuration.env;
     });
   }
 
@@ -107,6 +107,6 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get isDev() {
-    return this.dev;
+    return this.env !== 'dev';
   }
 }
