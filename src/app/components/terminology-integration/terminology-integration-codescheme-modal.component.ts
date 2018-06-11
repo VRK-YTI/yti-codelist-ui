@@ -108,12 +108,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
       this.nrOfSearchResults = 0;
       return;
     }
-    let vocabularyId = '0'; // Kaikki Sanastot (All Vocabularies)
     const vocabulary = this.vocabulary$.getValue();
-    if (vocabulary) {
-      vocabularyId = vocabulary.id;
-    }
-    this.dataService.getConcepts(searchTerm, vocabularyId ).subscribe(concepts => {
+    this.dataService.getConcepts(searchTerm, vocabulary ? vocabulary.id : null ).subscribe(concepts => {
       this.searchResults = concepts;
       this.nrOfSearchResults = concepts.length || 0;
     }, error => {
