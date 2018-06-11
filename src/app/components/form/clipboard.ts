@@ -18,17 +18,15 @@ const clippyImage = require('../../../assets/clippy.svg');
     </dl>
   `
 })
-export class ClipboardComponent implements OnInit {
+export class ClipboardComponent {
 
   @Input() label: string;
   @Input() value: string;
 
-  translateParams?: {};
   clippyImage = clippyImage;
 
-  ngOnInit() {
-
-    this.translateParams = {
+  get translateParams() {
+    return {
       value: this.value
     };
   }
