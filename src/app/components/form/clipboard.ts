@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgbPopover, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 const clippyImage = require('../../../assets/clippy.svg');
 
@@ -12,13 +13,20 @@ const clippyImage = require('../../../assets/clippy.svg');
         <span *ngIf="!showAsLink">{{value}}</span>
         <img [src]="this.clippyImage"
              class="svg-icon"
+             #t="ngbTooltip"
              ngbTooltip="{{'Copy value to clipboard' | translate:translateParams}}"
-             ngxClipboard [cbContent]="value">
+             #p="ngbPopover"
+             ngbPopover="{{'Copied to clipboard' | translate}}"
+             ngxClipboard [cbContent]="value"
+             (click)="clickToolTip()">
       </dd>
     </dl>
   `
 })
 export class ClipboardComponent {
+
+  @ViewChild('t') public tooltip: NgbTooltip;
+  @ViewChild('p') public popover: NgbPopover;
 
   @Input() label: string;
   @Input() value: string;
@@ -30,5 +38,12 @@ export class ClipboardComponent {
     return {
       value: this.value
     };
+  }
+
+  clickToolTip() {
+    this.tooltip.close();
+    setTimeout(() => {
+      this.popover.close();
+    }, 1500);
   }
 }

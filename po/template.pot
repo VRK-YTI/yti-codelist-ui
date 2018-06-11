@@ -19,6 +19,9 @@ msgstr ""
 msgid "Copy value to clipboard"
 msgstr ""
 
+msgid "Copied to clipboard"
+msgstr ""
+
 msgid "No registry"
 msgstr ""
 
