@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { LinkListModalService } from './link-list-modal.component';
@@ -26,7 +26,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./code-scheme-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeSchemeCreateComponent implements OnInit {
+export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   codeRegistriesLoaded = false;
   dev: boolean;
@@ -108,8 +108,12 @@ export class CodeSchemeCreateComponent implements OnInit {
         this.pageTitle = 'copyTheCodescheme';
       }
     });
+  }
 
-    this.openTerminologyModal();
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.openTerminologyModal();
+    });
   }
 
   get isDev() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
@@ -19,7 +19,7 @@ import {hasLocalization} from 'yti-common-ui/utils/localization';
   styleUrls: ['./code-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeCreateComponent implements OnInit {
+export class CodeCreateComponent implements OnInit, AfterViewInit {
 
   codeScheme: CodeScheme;
   dev: boolean;
@@ -64,8 +64,12 @@ export class CodeCreateComponent implements OnInit {
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
     });
+  }
 
-    this.openTerminologyModal();
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.openTerminologyModal();
+    });
   }
 
   back() {
