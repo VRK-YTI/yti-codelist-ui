@@ -65,9 +65,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    Observable.combineLatest(this.vocabulary$, this.search$)
-      .debounceTime(500)
-      .distinctUntilChanged()
+    Observable.combineLatest(this.vocabulary$, this.debounceSearch(this.search$))
       .subscribe(([vocabulary, search]) => {
         if (!search) {
           this.nrOfSearchResults = 0;
