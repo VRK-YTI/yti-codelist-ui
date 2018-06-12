@@ -57,8 +57,12 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
 
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistryOptions = [
-        { value: null, name: () => this.translateService.instant('No registry') },
-        ...codeRegistries.map(reg => ({ value: reg, name: () => this.languageService.translate(reg.prefLabel, true)}))
+        { value: null, name: () => this.translateService.instant('No registry'), idName: () => 'all_selected' },
+        ...codeRegistries.map(reg => ({ 
+            value: reg,
+            idName: () => reg.codeValue,
+            name: () => this.languageService.translate(reg.prefLabel, true)
+        }))
       ];
 
       this.loaded.emit();
