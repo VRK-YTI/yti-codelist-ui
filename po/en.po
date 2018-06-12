@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-11 17:34+0300\n"
+"PO-Revision-Date: 2018-06-12 21:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -497,7 +497,7 @@ msgid "ERR_MSG_INVALID_ID"
 msgstr "Invalid ID value defined in data."
 
 msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
-msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
+msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
 
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
@@ -549,7 +549,7 @@ msgid "codeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
-msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-."
+msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
 
 #, fuzzy
 #~| msgid "ERR_MSG_DUPLICATE_CODE_VALUE"

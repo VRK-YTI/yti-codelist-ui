@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-11 17:34+0300\n"
+"PO-Revision-Date: 2018-06-12 21:40+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -502,7 +502,7 @@ msgid "ERR_MSG_INVALID_ID"
 msgstr "Aineistossa oleva ID-sarakkeen arvo ei ole sallittu."
 
 msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
-msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
+msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
@@ -553,7 +553,7 @@ msgid "codeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
-msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-."
+msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 #, fuzzy
 #~| msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
