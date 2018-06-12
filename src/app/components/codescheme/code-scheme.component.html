@@ -15,7 +15,7 @@
       <div class="pull-right">
 
         <button id="clone_codelist_button"
-                *ngIf="hideUnfinishedFeature && this.isSuperUser && codeScheme.status == 'VALID'" type="button"
+                *ngIf="showUnfinishedFeature && this.isSuperUser && codeScheme.status == 'VALID'" type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="copyTheCodescheme()"
                 translate>copyTheCodescheme</button>
