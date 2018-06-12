@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgbPopover, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+
+const clippyImage = require('../../../assets/clippy.svg');
 
 @Component({
   selector: 'app-clipboard',
@@ -6,16 +9,41 @@ import { Component, Input } from '@angular/core';
     <dl>
       <dt><label>{{label}}</label></dt>
       <dd>
-        {{value}}
-        <button class="btn" type="button" ngxClipboard [cbContent]="value">
-          <img src="../../../assets/clippy.svg" class="svg-icon" alt="Copy to clipboard">
-        </button>
+        <a *ngIf="showAsLink" target="_blank" href="{{value}}">{{value}}</a>
+        <span *ngIf="!showAsLink">{{value}}</span>
+        <img [src]="this.clippyImage"
+             class="svg-icon"
+             #t="ngbTooltip"
+             ngbTooltip="{{'Copy value to clipboard' | translate:translateParams}}"
+             #p="ngbPopover"
+             ngbPopover="{{'Copied to clipboard' | translate}}"
+             ngxClipboard [cbContent]="value"
+             (click)="clickToolTip()">
       </dd>
     </dl>
   `
 })
 export class ClipboardComponent {
 
+  @ViewChild('t') public tooltip: NgbTooltip;
+  @ViewChild('p') public popover: NgbPopover;
+
   @Input() label: string;
   @Input() value: string;
+  @Input() showAsLink = false;
+
+  clippyImage = clippyImage;
+
+  get translateParams() {
+    return {
+      value: this.value
+    };
+  }
+
+  clickToolTip() {
+    this.tooltip.close();
+    setTimeout(() => {
+      this.popover.close();
+    }, 1500);
+  }
 }

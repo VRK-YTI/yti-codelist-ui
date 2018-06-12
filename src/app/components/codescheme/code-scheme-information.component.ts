@@ -33,7 +33,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   dataClassifications: Code[];
   defaultCode: CodePlain;
-  dev: boolean;
+  env: string;
 
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -69,7 +69,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
     dataService.getServiceConfiguration().subscribe(configuration => {
-      this.dev = configuration.dev;
+      this.env = configuration.env;
     });
   }
 
@@ -96,8 +96,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     this.cancelSubscription.unsubscribe();
   }
 
-  get isDev() {
-    return this.dev;
+  get hideUnfinishedFeature() {
+    return this.env === 'dev';
   }
 
   get editing() {
@@ -133,5 +133,19 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
       }, ignoreModalClose);
     this.codeScheme.conceptUriInVocabularies = concept.uri;
     this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
+  }
+
+  getCodeSchemeUri() {
+    if (this.env !== 'prod') {
+      return this.codeScheme.uri + '?env=' + this.env;
+    }
+    return this.codeScheme.uri;
+  }
+
+  getConceptUri() {
+    if (this.env !== 'prod') {
+      return this.codeScheme.conceptUriInVocabularies + '?env=' + this.env;
+    }
+    return this.codeScheme.conceptUriInVocabularies;
   }
 }

@@ -26,7 +26,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   codeScheme: CodeScheme;
   codes: CodePlain[];
-  dev: boolean;
+  env: string;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -42,7 +42,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     editableService.onSave = (formValue: any) => this.save(formValue);
 
     dataService.getServiceConfiguration().subscribe(configuration => {
-      this.dev = configuration.dev;
+      this.env = configuration.env;
     });
   }
 
@@ -148,7 +148,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.router.navigate(['createcodescheme'], { queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
   }
 
-  get isDev() {
-    return this.dev;
+  get hideUnfinishedFeature() {
+    return this.env !== 'dev';
   }
 }

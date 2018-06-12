@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-08 12:56+0300\n"
+"PO-Revision-Date: 2018-06-11 17:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -24,6 +24,12 @@ msgstr "Valitse luokitus"
 
 msgid "Search classification"
 msgstr "Hae luokitusta"
+
+msgid "Copy value to clipboard"
+msgstr "Kopioi {{value}} leikepöydälle"
+
+msgid "Copied to clipboard"
+msgstr "Kopioitu leikepöydälle"
 
 msgid "No registry"
 msgstr "Ei rekisteriä"
