@@ -106,8 +106,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
-  get hideUnfinishedFeature() {
-    return this.env !== 'dev';
+  get showUnfinishedFeature() {
+    return this.env === 'dev';
   }
 
   getCodeUri() {

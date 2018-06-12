@@ -36,7 +36,7 @@
             <app-error-messages id="code_list_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
         </div>
 
-        <dl *ngIf="hideUnfinishedFeature">
+        <dl *ngIf="showUnfinishedFeature">
           <dd>
             <div>
               <button id="open_terminology_modal_button"
@@ -46,7 +46,7 @@
             </div>
           </dd>
         </dl>
-        <div *ngIf="hideUnfinishedFeature && codeSchemeForm.controls['conceptUriInVocabularies'].value?.toString().length > 0">
+        <div *ngIf="showUnfinishedFeature && codeSchemeForm.controls['conceptUriInVocabularies'].value?.toString().length > 0">
           <dl>
             <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
             <dd>

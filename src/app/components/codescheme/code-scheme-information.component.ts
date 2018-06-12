@@ -96,7 +96,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     this.cancelSubscription.unsubscribe();
   }
 
-  get hideUnfinishedFeature() {
+  get showUnfinishedFeature() {
     return this.env === 'dev';
   }
 

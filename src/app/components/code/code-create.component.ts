@@ -133,7 +133,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
-  get hideUnfinishedFeature() {
-    return this.env !== 'dev';
+  get showUnfinishedFeature() {
+    return this.env === 'dev';
   }
 }

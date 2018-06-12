@@ -148,7 +148,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.router.navigate(['createcodescheme'], { queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
   }
 
-  get hideUnfinishedFeature() {
-    return this.env !== 'dev';
+  get showUnfinishedFeature() {
+    return this.env === 'dev';
   }
 }
