@@ -47,6 +47,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
   nrOfSearchResults: number = -1;
   showSimpleCancelLinkText = true;
+  loading = true;
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
@@ -67,7 +68,20 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
     Observable.combineLatest(this.vocabulary$, this.search$)
       .debounceTime(500)
       .distinctUntilChanged()
-      .subscribe(() => this.goSearch(this.vocabulary$.getValue(), this.search$.getValue()));
+      .subscribe(([vocabulary, search]) => {
+        if (!search) {
+          this.nrOfSearchResults = 0;
+          return;
+        }
+        this.loading = true;
+        this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null).subscribe(concepts => {
+            this.loading = false;
+            this.searchResults = concepts;
+            this.nrOfSearchResults = concepts.length;
+          },
+          err => this.codeListErrorModalService.openSubmitError(err));
+      });
+
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
@@ -103,17 +117,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
     this.modal.dismiss('cancel');
   }
 
-  goSearch(vocabulary: Vocabulary|null, searchTerm: string) {
-    if (!searchTerm) {
-      this.nrOfSearchResults = 0;
-      return;
-    }
-    this.dataService.getConcepts(searchTerm, vocabulary ? vocabulary.id : null ).subscribe(concepts => {
-      this.searchResults = concepts;
-      this.nrOfSearchResults = concepts.length || 0;
-    }, error => {
-      this.nrOfSearchResults = 0;
-      this.codeListErrorModalService.openSubmitError(error);
-    });
+  debounceSearch(search$: Observable<string>): Observable<string> {
+    const initialSearch = search$.take(1);
+    const debouncedSearch = search$.skip(1).debounceTime(500);
+    return initialSearch.concat(debouncedSearch);
   }
 }
