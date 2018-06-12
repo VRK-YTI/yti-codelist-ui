@@ -20,6 +20,12 @@ import {Observable} from 'rxjs/Rx';
 import {Concept} from '../../entities/concept';
 import {CodeListErrorModalService} from '../common/error-modal.service';
 
+function debounceSearch(search$: Observable<string>): Observable<string> {
+  const initialSearch = search$.take(1);
+  const debouncedSearch = search$.skip(1).debounceTime(500);
+  return initialSearch.concat(debouncedSearch);
+}
+
 @Injectable()
 export class TerminologyIntegrationModalService {
 
@@ -65,7 +71,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    Observable.combineLatest(this.vocabulary$, this.debounceSearch(this.search$))
+    Observable.combineLatest(this.vocabulary$, debounceSearch(this.search$))
       .subscribe(([vocabulary, search]) => {
         if (!search) {
           this.nrOfSearchResults = 0;
@@ -113,11 +119,5 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
 
   cancel() {
     this.modal.dismiss('cancel');
-  }
-
-  debounceSearch(search$: Observable<string>): Observable<string> {
-    const initialSearch = search$.take(1);
-    const debouncedSearch = search$.skip(1).debounceTime(500);
-    return initialSearch.concat(debouncedSearch);
   }
 }
