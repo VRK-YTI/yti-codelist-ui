@@ -56,6 +56,9 @@
         <p translate>No search results</p>
       </div>
     </div>
+    <div *ngIf="loading">
+      <app-ajax-loading-indicator></app-ajax-loading-indicator>
+    </div>
   </div>
   <div class="modal-footer">
 
