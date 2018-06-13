@@ -49,14 +49,14 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
-  nrOfSearchResults: number = -1;
   showSimpleCancelLinkText = true;
-  loading = true;
+  loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
   searchResults: Concept[];
   search$ = new BehaviorSubject('');
+  debouncedSearch$ = debounceSearch(this.search$);
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
@@ -67,21 +67,23 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    Observable.combineLatest(this.vocabulary$, debounceSearch(this.search$))
+    Observable.combineLatest(this.vocabulary$, this.debouncedSearch$)
       .subscribe(([vocabulary, search]) => {
-        if (!search) {
-          this.nrOfSearchResults = 0;
-          return;
-        }
-        this.loading = true;
-        this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null).subscribe(concepts => {
-            this.loading = false;
-            this.searchResults = concepts;
-            this.nrOfSearchResults = concepts.length;
-          },
-          err => this.codeListErrorModalService.openSubmitError(err));
-      });
 
+        if (!search) {
+          this.searchResults = [];
+        } else {
+          this.loading = true;
+          this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null).subscribe(concepts => {
+              this.loading = false;
+              this.searchResults = concepts;
+            },
+            err => {
+              this.loading = false;
+              this.codeListErrorModalService.openSubmitError(err);
+            });
+        }
+      });
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
@@ -97,6 +99,10 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
         { value: null, name: () => this.translateService.instant('All vocabularies')}];
       this.codeListErrorModalService.openSubmitError(error);
     });
+  }
+
+  hasSearchResults() {
+    return this.searchResults.length > 0;
   }
 
   close() {
