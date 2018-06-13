@@ -5,8 +5,6 @@ import {
   ViewChild,
   Renderer
 } from '@angular/core';
-import {EditableService} from '../../services/editable.service';
-import {Router} from '@angular/router';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {DataService} from '../../services/data.service';
 import {Vocabulary} from '../../entities/vocabulary';
@@ -45,8 +43,7 @@ export class TerminologyIntegrationModalService {
 @Component({
   selector: 'app-terminology-integration-codescheme-modal',
   templateUrl: './terminology-integration-codescheme-modal.component.html',
-  styleUrls: ['./terminology-integration-codescheme-modal.component.scss'],
-  providers: [EditableService]
+  styleUrls: ['./terminology-integration-codescheme-modal.component.scss']
 })
 export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
 
@@ -61,9 +58,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
   searchResults: Concept[];
   search$ = new BehaviorSubject('');
 
-  constructor(private editableService: EditableService,
-              private dataService: DataService,
-              private router: Router,
+  constructor(private dataService: DataService,
               private modal: NgbActiveModal,
               private languageService: LanguageService,
               private translateService: TranslateService,
