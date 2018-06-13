@@ -9,11 +9,8 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { Router } from '@angular/router';
-import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 
 @Component({
   selector: 'app-code-information',
@@ -40,8 +37,6 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   constructor(private dataService: DataService,
               private userService: UserService,
-              private router: Router,
-              private errorModalService: CodeListErrorModalService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
               public languageService: LanguageService,
