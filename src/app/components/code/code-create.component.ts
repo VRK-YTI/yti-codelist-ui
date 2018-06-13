@@ -100,7 +100,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
   }
 
   isCodeValuePatternValid (control: AbstractControl) {
-    const isCodeValueValid = control.value.match(/^[a-zA-Z0-9_\-\.]*$/);
+    const isCodeValueValid = control.value.match(/^[a-zA-Z0-9_\-\.\+\*\&\#]*$/);
     return !isCodeValueValid ? {'codeCodeValueValidationError': {value: control.value}} : null;
   }
 
