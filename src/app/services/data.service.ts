@@ -198,8 +198,10 @@ export class DataService {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,organization');
+    const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
 
-    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${codeCodeValue}/`, {params})
+    return this.http.get(`${codeRegistriesBasePath}/${registryCode}/${codeSchemes}/${schemeCode}/${codes}/${encodedCodeCodeValue}/`,
+      {params})
       .map(res => new Code(res.json() as CodeType));
   }
 
