@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Code } from '../../entities/code';
 import { Router } from '@angular/router';
 import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';
@@ -13,7 +12,7 @@ import { CodeScheme } from '../../entities/code-scheme';
        (click)="collapse()"></i>
     <i id="hierarchy_code_aligner" [hidden]="hasChildren()" class="icon fa"></i>
 
-    <div id="{{code.id + '_view_code'}}" class="code" (click)="viewCode(code)">
+    <div id="{{getIdIdentifier(code) + '_view_code'}}" class="code" (click)="viewCode(code)">
       <app-status class="pull-right status" [status]="code.status"></app-status>
       <span *ngIf="code.hasPrefLabel()" class="codetitle">{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
       <span *ngIf="!code.hasPrefLabel()" class="codetitle">{{code.codeValue}}</span>
@@ -21,7 +20,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 
     <ul *ngIf="expanded && hasChildren()">
       <li class="child-code" *ngFor="let code of children; trackBy: codeIdentity">
-        <app-hierarchy-code id="{{code.id + '_codelist_childcode_listitem'}}"
+        <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_childcode_listitem'}}"
                             [codes]="codes"
                             [code]="code" 
                             [codeScheme]="codeScheme" 
@@ -33,8 +32,8 @@ import { CodeScheme } from '../../entities/code-scheme';
 
 export class HierarchyCodeComponent {
 
-  @Input() codes: Code[];
-  @Input() code: Code;
+  @Input() codes: CodePlain[];
+  @Input() code: CodePlain;
   @Input() codeScheme: CodeScheme;
   @Input() ignoreHierarchy: boolean;
 
@@ -77,7 +76,11 @@ export class HierarchyCodeComponent {
     ]);
   }
 
-  codeIdentity(index: number, item: Code) {
+  codeIdentity(index: number, item: CodePlain) {
     return item.id;
+  }
+
+  getIdIdentifier(code: CodePlain) {
+    return `${this.codeScheme.codeRegistry.codeValue}_${this.codeScheme.codeValue}_${code.codeValue}`;
   }
 }

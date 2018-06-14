@@ -1,15 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { Code } from '../../entities/code';
 import { Router } from '@angular/router';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { DataService } from '../../services/data.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeSchemeComponent } from './code-scheme.component';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-code-scheme-codes',
@@ -18,15 +16,13 @@ import { localizableMatches } from 'yti-common-ui/utils/localization';
 })
 export class CodeSchemeCodesComponent {
 
-  @Input() codes: Code[];
+  @Input() codes: CodePlain[];
   @Input() codeScheme: CodeScheme;
 
   searchTerm = '';
 
   constructor(private codeSchemeComponent: CodeSchemeComponent,
-              private userService: UserService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
-              private dataService: DataService,
               private router: Router,
               private authorizationManager: AuthorizationManager) {
   }
@@ -130,7 +126,11 @@ export class CodeSchemeCodesComponent {
     return this.searchTerm ? true : false;
   }
 
-  codeIdentity(index: number, item: Code) {
+  codeIdentity(index: number, item: CodePlain) {
     return item.id;
+  }
+
+  getIdIdentifier(code: CodePlain) {
+    return `${this.codeScheme.codeRegistry.codeValue}_${this.codeScheme.codeValue}_${code.codeValue}`;
   }
 }
