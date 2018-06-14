@@ -34,7 +34,7 @@
       <div *ngIf="!loading && hasSearchResults()" class="search-results">
         <div class="search-result"
              *ngFor="let concept of searchResults; let last = last"
-             [id]="concept.id + '_concept_link'"
+             [id]="getIdIdentifierFromLabels(concept) + '_concept_link'"
              (click)="select(concept)">
           <div class="content" [class.last]="last">
             <span class="title">{{concept.prefLabel | translateValue}}</span>

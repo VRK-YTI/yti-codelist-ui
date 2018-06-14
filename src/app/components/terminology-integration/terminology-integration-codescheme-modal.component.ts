@@ -17,7 +17,7 @@ import { TranslateService } from 'ng2-translate';
 import { Observable } from 'rxjs/Rx';
 import { Concept } from '../../entities/concept';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import { labelNameToResourceIdName } from 'yti-common-ui/utils/resource';
+import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.take(1);
@@ -89,7 +89,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         value: voc,
         name: () => voc ? this.languageService.translate(voc.prefLabel, true)
           : this.translateService.instant('All vocabularies'),
-        idName: () => voc ? labelNameToResourceIdName(this.languageService.translate(voc.prefLabel, true))
+        idIdentifier: () => voc ? labelNameToResourceIdIdentifier(this.languageService.translate(voc.prefLabel, true))
           : 'all_selected'
       }));
 
@@ -126,5 +126,10 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+
+  getIdIdentifierFromLabels(concept: Concept) {
+    return labelNameToResourceIdIdentifier(this.languageService.translate(concept.vocabularyPrefLabel)) + '_' 
+      + labelNameToResourceIdIdentifier(this.languageService.translate(concept.prefLabel));
   }
 }

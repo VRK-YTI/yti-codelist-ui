@@ -24,7 +24,7 @@
 
         <div *ngFor="let dataClassification of dataClassifications">
           <div *ngIf="dataClassification.count > 0" class="classification"
-              id="{{dataClassification.entity.id + '_classification_filter_link'}}"
+              id="{{dataClassification.entity.codeValue + '_classification_filter_link'}}"
                [class.active]="isClassificationSelected(dataClassification.entity)"
                (click)="toggleClassification(dataClassification.entity)">
             <span class="name">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
@@ -80,7 +80,7 @@
 
         <div class="row">
           <div class="col-12">
-            <div class="code-scheme" id="{{codeScheme.id + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
+            <div class="code-scheme" id="{{codeScheme.idIdentifier + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
               <app-status class="pull-right" [status]="codeScheme.status"></app-status>
               <div class="organization">

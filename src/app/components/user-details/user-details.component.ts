@@ -12,7 +12,7 @@ import { DataService } from '../../services/data.service';
 import { Organization } from '../../entities/organization';
 import { combineSets, hasAny } from 'yti-common-ui/utils/set';
 import { Observable } from 'rxjs/Observable';
-import { labelNameToResourceIdName } from 'yti-common-ui/utils/resource';
+import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 
 interface UserOrganizationRoles {
   organization?: Organization;
@@ -115,7 +115,7 @@ export class UserDetailsComponent implements OnDestroy  {
         value: org,
         name: () => org ? this.languageService.translate(org.prefLabel, true)
                         : this.translateService.instant('Choose organization'),
-        idName: () => org ? labelNameToResourceIdName(this.languageService.translate(org.prefLabel, true)) : 'all_selected'
+        idIdentifier: () => org ? labelNameToResourceIdIdentifier(this.languageService.translate(org.prefLabel, true)) : 'all_selected'
       };
     });
   }

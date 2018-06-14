@@ -89,6 +89,10 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return contains(restrictedStatuses, this.status);
   }
 
+  get idIdentifier(): string {
+    return `${this.codeRegistry.codeValue}_${this.codeValue}`;
+  }
+
   getOwningOrganizationIds(): string[] {
     return this.codeRegistry.organizations.map(org => org.id);
   }

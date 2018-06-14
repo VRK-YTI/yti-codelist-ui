@@ -18,7 +18,7 @@ import { Option } from 'yti-common-ui/components/dropdown.component';
 import { Subscription } from 'rxjs';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ServiceConfiguration } from '../../entities/service-configuration';
-import { labelNameToResourceIdName } from 'yti-common-ui/utils/resource';
+import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 
 @Component({
   selector: 'app-frontpage',
@@ -78,10 +78,10 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
     this.dataService.getCodeRegistries().subscribe(registers => {
       this.registerOptions = [null, ...registers].map(register => ({
-        value: register,
-        idName: () => register ? register.codeValue : 'all_selected',
+        value: register,        
         name: () => register ? this.languageService.translate(register.prefLabel, true)
-          : this.translateService.instant('All registries')
+          : this.translateService.instant('All registries'),
+        idIdentifier: () => register ? register.codeValue : 'all_selected'
       }));
     });
 
@@ -91,7 +91,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
           value: organization,          
           name: () => organization ? this.languageService.translate(organization.prefLabel, true)
             : this.translateService.instant('All organizations'),
-          idName: () => organization ? labelNameToResourceIdName(this.languageService.translate(organization.prefLabel, true))
+          idIdentifier: () => organization ? labelNameToResourceIdIdentifier(this.languageService.translate(organization.prefLabel, true))
             : 'all_selected'
         }));
         this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c =>
@@ -101,7 +101,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     this.statusOptions = [null, ...allStatuses].map(status => ({
       value: status,      
       name: () => this.translateService.instant(status ? status : 'All statuses'),
-      idName: () => status ? status : 'all_selected'
+      idIdentifier: () => status ? status : 'all_selected'
     }));
 
     const initialSearchTerm = this.searchTerm$.take(1);

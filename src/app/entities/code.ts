@@ -102,6 +102,10 @@ export class Code extends AbstractResource implements EditableEntity {
     return contains(restrictedStatuses, this.status);
   }
 
+  get idIdentifier(): string {
+    return `${this.codeScheme.codeRegistry.codeValue}_${this.codeScheme.codeValue}_${this.codeValue}`;
+  }
+
   getOwningOrganizationIds(): string[] {
     return this.codeScheme.codeRegistry.organizations.map(org => org.id);
   }
