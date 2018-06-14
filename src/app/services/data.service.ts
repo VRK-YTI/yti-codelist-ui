@@ -200,7 +200,8 @@ export class DataService {
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,organization');
     const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
 
-    return this.http.get(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`,
+    return this.http.get(
+      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`,
       {params})
       .map(res => new Code(res.json() as CodeType));
   }
@@ -228,7 +229,8 @@ export class DataService {
     const schemeCodeValue = code.codeScheme.codeValue;
     const encodedCodeCodeValue = encodeURIComponent(code.codeValue);
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`, code)
+    return this.http.post(
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`, code)
       .map(res => res.json() as ApiResponseType);
   }
 
@@ -238,7 +240,8 @@ export class DataService {
     const schemeCodeValue = code.codeScheme.codeValue;
     const encodedCodeCodeValue = encodeURIComponent(code.codeValue);
 
-    return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`)
+    return this.http.delete(
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`)
       .map(res => {
         return res.status === 200;
       }).catch(error => {
@@ -311,7 +314,8 @@ export class DataService {
     const params = new URLSearchParams();
     params.append('format', format);
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}`, formData, {params})
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}`,
+      formData, {params})
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
   }
 
@@ -353,7 +357,8 @@ export class DataService {
   codeCodeValueExists(registryCodeValue: string, schemeCodeValue: string, codeCodeValue: string): Observable<boolean> {
 
     const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
-    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}`)
+    return this.http.head(
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}`)
       .map(res => {
         return res.status === 200;
       }).catch(error => {
