@@ -1,68 +1,71 @@
 <div class="modal-header">
   <h4 class="modal-title">
     <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
-    <div class="side-padding-15">
+    <div>
       <span translate>Get concept from Controlled Vocabularies</span>
     </div>
   </h4>
 </div>
+
 <div class="modal-body full-height">
 
-  <div class="side-padding-15">
-    <p translate>Get concept from Controlled Vocabularies instruction text</p>
-  </div>
+  <div class="modal-sections">
 
-  <div class="input-group input-group-search col-sm-12 concept-search-box general-width">
-    <input class="col-sm-12 form-control concept-search-box" id="search_concept_input" #searchInput type="text" placeholder="{{'Search for concept' | translate}}"
-           [(ngModel)]="search"/>
-  </div>
-  <div class="col-sm-12 side-padding-15 general-width">
-    <app-filter-dropdown id="vocabulary_selection_dropdown"
-                         class="col-sm-12 side-padding-15"
-                         #vocabDropdown
-                         [filterSubject]="vocabulary$"
-                         [options]="vocabularyOptions"></app-filter-dropdown>
-  </div>
-  <div *ngIf="!loading">
-    <div class="row full-height col-sm-12 box-sizing-content-box" *ngIf="hasSearchResults()">
-      <div class="side-padding-15">
-        <div class="content-box">
-          <div class="search-results">
-            <div id="{{concept.id + '_concept_link'}}"
-                 class="search-result"
-                 *ngFor="let concept of searchResults; let last = last"
-                 (click)="select(concept)">
-              <div class="content" [class.last]="last">
-                <span class="title" [innerHTML]="concept.prefLabel | translateValue"></span>
-                <span class="body" [innerHTML]="concept.definition | translateValue"></span>
-                <div class="origin">
-                  <span class="pull-left">{{concept.vocabularyPrefLabel | translateValue}}</span>
-                </div>
-              </div>
+    <div class="pb-2">
+      <p translate>Get concept from Controlled Vocabularies instruction text</p>
+
+      <div class="input-group input-group-lg input-group-search">
+        <input class="form-control"
+               id="search_concept_input"
+               #searchInput
+               type="text"
+               placeholder="{{'Search for concept' | translate}}"
+               [(ngModel)]="search"/>
+      </div>
+    </div>
+
+    <div class="pb-2">
+      <app-filter-dropdown id="vocabulary_selection_dropdown"
+                           [filterSubject]="vocabulary$"
+                           [options]="vocabularyOptions"></app-filter-dropdown>
+    </div>
+
+    <div class="content-box scrolling-full-height">
+      <div *ngIf="!loading && hasSearchResults()" class="search-results">
+        <div class="search-result"
+             *ngFor="let concept of searchResults; let last = last"
+             [id]="concept.id + '_concept_link'"
+             (click)="select(concept)">
+          <div class="content" [class.last]="last">
+            <span class="title">{{concept.prefLabel | translateValue}}</span>
+            <span class="body">{{concept.definition | translateValue}}</span>
+            <div class="origin">
+              <span class="pull-left">{{concept.vocabularyPrefLabel | translateValue}}</span>
             </div>
           </div>
         </div>
       </div>
+
+      <div *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults()">
+        <p translate>No search results</p>
+      </div>
+
+      <div *ngIf="loading">
+        <app-ajax-loading-indicator></app-ajax-loading-indicator>
+      </div>
     </div>
-    <div *ngIf="(debouncedSearch$ | async) && !hasSearchResults()" class="side-padding-15">
-      <p translate>No search results</p>
-    </div>
-  </div>
-  <div *ngIf="loading">
-    <app-ajax-loading-indicator></app-ajax-loading-indicator>
+
   </div>
 </div>
+
 <div class="modal-footer">
+  <button *ngIf="showSimpleCancelLinkText" id="cancel_modal_button"
+          type="button"
+          class="btn btn-link cancel"
+          (click)="cancel()" translate>Cancel</button>
 
-  <div class="side-padding-15">
-    <button *ngIf="showSimpleCancelLinkText" id="cancel_modal_button"
-            type="button"
-            class="btn btn-link cancel"
-            (click)="cancel()" translate>Cancel</button>
-    <button *ngIf="!showSimpleCancelLinkText" id="cancel_modal_button_for_creation"
-            type="button"
-            class="btn btn-link cancel"
-            (click)="cancel()" translate>Create without concept integration</button>
-  </div>
-
+  <button *ngIf="!showSimpleCancelLinkText" id="cancel_modal_button_for_creation"
+          type="button"
+          class="btn btn-link cancel"
+          (click)="cancel()" translate>Create without concept integration</button>
 </div>

@@ -3,20 +3,20 @@ import {
   ElementRef,
   Injectable,
   ViewChild,
-  Renderer
+  Input, AfterViewInit
 } from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {DataService} from '../../services/data.service';
-import {Vocabulary} from '../../entities/vocabulary';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../../services/data.service';
+import { Vocabulary } from '../../entities/vocabulary';
 import { LanguageService } from '../../services/language.service';
-import {ModalService} from '../../services/modal.service';
+import { ModalService} from '../../services/modal.service';
 import { OnInit } from '@angular/core';
-import {FilterOptions} from 'yti-common-ui/components/filter-dropdown.component';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {TranslateService} from 'ng2-translate';
-import {Observable} from 'rxjs/Rx';
-import {Concept} from '../../entities/concept';
-import {CodeListErrorModalService} from '../common/error-modal.service';
+import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { TranslateService } from 'ng2-translate';
+import { Observable } from 'rxjs/Rx';
+import { Concept } from '../../entities/concept';
+import { CodeListErrorModalService } from '../common/error-modal.service';
 import { labelNameToResourceIdName } from 'yti-common-ui/utils/resource';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
@@ -39,17 +39,17 @@ export class TerminologyIntegrationModalService {
   }
 }
 
-
 @Component({
   selector: 'app-terminology-integration-codescheme-modal',
   templateUrl: './terminology-integration-codescheme-modal.component.html',
   styleUrls: ['./terminology-integration-codescheme-modal.component.scss']
 })
-export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
+export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, AfterViewInit {
+
+  @Input() showSimpleCancelLinkText = true;
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
-  showSimpleCancelLinkText = true;
   loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -62,7 +62,6 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
               private modal: NgbActiveModal,
               private languageService: LanguageService,
               private translateService: TranslateService,
-              private renderer: Renderer,
               private codeListErrorModalService: CodeListErrorModalService) {
   }
 
@@ -93,12 +92,16 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit {
         idName: () => voc ? labelNameToResourceIdName(this.languageService.translate(voc.prefLabel, true))
           : 'all_selected'
       }));
-      this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+
     }, error => {
       this.vocabularyOptions = [
         { value: null, name: () => this.translateService.instant('All vocabularies')}];
       this.codeListErrorModalService.openSubmitError(error);
     });
+  }
+
+  ngAfterViewInit() {
+    this.searchInput.nativeElement.focus();
   }
 
   hasSearchResults() {
