@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-12 21:39+0300\n"
+"PO-Revision-Date: 2018-06-15 11:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -516,6 +516,9 @@ msgstr "Code linked to extension does not exist."
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
 msgstr "Code order has non-sequential values."
 
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr "Code order has duplicate values."
+
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
 msgstr ""
 "Code linked to extension does not belong to parent code list or to any "
@@ -550,11 +553,6 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
-
-#, fuzzy
-#~| msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
-#~ msgid "ERR_MSG_USER_DUPLICATE_CODEVALUE"
-#~ msgstr "Duplicate CODEVALUE in import data, failing."
 
 #~ msgid "copyTheCodeScheme"
 #~ msgstr "Copy the code list"

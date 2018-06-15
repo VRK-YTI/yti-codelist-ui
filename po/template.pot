@@ -497,6 +497,9 @@ msgstr ""
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
 msgstr ""
 
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr ""
+
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
 msgstr ""
 
