@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-15 11:46+0300\n"
+"PO-Revision-Date: 2018-06-15 12:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -343,8 +343,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
-msgstr "The data is missing a column with the header PROPERTYTYPE."
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgstr "Erroneous start date on row {{ identifier }}."
 
 msgid "Front page"
 msgstr ""
@@ -439,11 +439,11 @@ msgstr "The data is missing a column with the header CODEVALUE."
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "The data is missing a column with the header STATUS."
 
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "The data is missing a column with the header PROPERTYTYPE."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
-msgstr "Erroneous start date on row {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr "Erroneous end date on row {{ identifier }}."
@@ -515,6 +515,9 @@ msgstr "Code linked to extension does not exist."
 
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
 msgstr "Code order has non-sequential values."
+
+msgid "ERR_MSG_CODE_ORDER_ALREADY_IN_USE"
+msgstr "Code order already in use in this code list."
 
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr "Code order has duplicate values."

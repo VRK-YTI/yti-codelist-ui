@@ -330,7 +330,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr ""
 
 msgid "Front page"
@@ -422,10 +422,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
@@ -495,6 +495,9 @@ msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
 msgstr ""
 
 msgid "ERR_MSG_CODE_ORDER_NOT_SEQUENTIAL"
+msgstr ""
+
+msgid "ERR_MSG_CODE_ORDER_ALREADY_IN_USE"
 msgstr ""
 
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
