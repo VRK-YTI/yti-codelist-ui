@@ -3,6 +3,7 @@ import { PropertyType } from './property-type';
 import { ExternalReferenceType } from '../services/api-schema';
 import { requireDefined } from 'yti-common-ui/utils/object';
 import { groupBy, index } from 'yti-common-ui/utils/array';
+import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 
 export const CCBy40LicenseLinkId = '9a25f7fc-e4be-11e7-82ab-479f4f288376';
 export const CC0LicenseLinkId = '9553aad0-e4be-11e7-81e9-1faf2d228a02';
@@ -35,6 +36,12 @@ export class ExternalReference {
   getDisplayName(localizer: Localizer): string {
     const title = localizer.translate(this.title);
     return title ? title : this.href;
+  }
+
+  getIdIdentifier(localizer: Localizer): string {
+    const title = localizer.translate(this.title);
+    return title ? `${labelNameToResourceIdIdentifier(title)}_${labelNameToResourceIdIdentifier(this.href)}`
+                 : `${labelNameToResourceIdIdentifier(this.href)}`;
   }
 
   get image(): any {

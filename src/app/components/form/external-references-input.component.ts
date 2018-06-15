@@ -24,17 +24,21 @@ import { LanguageService } from '../../services/language.service';
           <div *ngFor="let externalReference of propertyExternalReferences.externalReferences" class="row">
 
             <div class="col-10">
-              <button id="{{'show_' + externalReference.id + '_ref_button'}}"
+              <button id="{{'show_' + externalReference.getIdIdentifier(languageService) + '_ref_button'}}"
                       type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
                 <span>{{externalReference.getDisplayName(languageService)}}</span>
               </button>
             </div>
 
             <div *ngIf="editing && !restrict" class="col-2">
-              <button id="{{'edit_' + externalReference.id +'_ref_button'}}" *ngIf="externalReference.global == false"
-                      type="button" class="icon icon-pencil"
+              <button id="{{'edit_' + externalReference.getIdIdentifier(languageService) + '_ref_button'}}"
+                      *ngIf="externalReference.global == false"
+                      type="button"
+                      class="icon icon-pencil"
                       (click)="editExternalReference(externalReference)"></button>
-              <button id="{{'remove_' + externalReference.id + '_ref_button'}}" type="button" class="icon icon-trash"
+              <button id="{{'remove_' + externalReference.getIdIdentifier(languageService) + '_ref_button'}}" 
+                      type="button"
+                      class="icon icon-trash"
                       (click)="removeExternalReference(externalReference)"></button>
             </div>
           </div>
