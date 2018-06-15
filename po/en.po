@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-15 12:02+0300\n"
+"PO-Revision-Date: 2018-06-15 14:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -343,8 +343,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
-msgstr "Erroneous start date on row {{ identifier }}."
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "The data is missing a column with the header PROPERTYTYPE."
 
 msgid "Front page"
 msgstr ""
@@ -414,6 +414,9 @@ msgstr "Code list editor"
 msgid "ERR_MSG_USER_401"
 msgstr "You are unauthorized to perform this action."
 
+msgid "ERR_MSG_USER_404"
+msgstr "Resource not found."
+
 msgid "ERR_MSG_USER_406"
 msgstr "Erroneous data"
 
@@ -439,11 +442,11 @@ msgstr "The data is missing a column with the header CODEVALUE."
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "The data is missing a column with the header STATUS."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
-msgstr "The data is missing a column with the header PROPERTYTYPE."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgstr "Erroneous start date on row {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr "Erroneous end date on row {{ identifier }}."
