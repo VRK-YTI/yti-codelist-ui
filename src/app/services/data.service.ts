@@ -13,7 +13,9 @@ import {
   DataClassificationType,
   ExternalReferenceType,
   OrganizationType,
-  PropertyTypeType
+  PropertyTypeType,
+  VocabularyType,
+  ConceptType
 } from './api-schema';
 import { PropertyType } from '../entities/property-type';
 import { ExternalReference } from '../entities/external-reference';
@@ -335,13 +337,13 @@ export class DataService {
 
   getVocabularies(): Observable<Vocabulary[]> {
     return this.http.get(`${terminologyVocabulariesPath}/`, undefined)
-      .map(response => response.json().results as Vocabulary[]);
+      .map(response => response.json().results.map((data: VocabularyType) => new Vocabulary(data)));
   }
 
   getConcepts(searchTerm: string, vocab: string | null): Observable<Concept[]> {
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-    return this.http.get(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab || '0'}` , undefined )
-      .map(response => response.json().results as Concept[]);
+    return this.http.get(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab || '0'}`, undefined)
+      .map(response => response.json().results.map((data: ConceptType) => new Concept(data)));
   }
 
   codeSchemeCodeValueExists(registryCodeValue: string, schemeCodeValue: string): Observable<boolean> {

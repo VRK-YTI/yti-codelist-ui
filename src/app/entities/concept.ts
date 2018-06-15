@@ -1,24 +1,28 @@
-import { Localizable } from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { ConceptType } from '../services/api-schema';
-import { AbstractResource } from './abstract-resource';
-import { formatDateTime, parseDateTime } from '../utils/date';
-import { Moment } from 'moment';
+import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 
-export class Concept extends AbstractResource {
+export class Concept {
 
-  vocabularyId: string;
+  id: string;
+  uri: string;  
+  vocabularyId: string;  
   definition: Localizable;
+  prefLabel: Localizable;
   vocabularyPrefLabel: Localizable;
-  modified: Moment|null = null;
 
   constructor(data: ConceptType) {
-    super(data);
-    if (data.modified) {
-      this.modified = parseDateTime(data.modified);
-    }
-    this.vocabularyId = data.vocabularyId;
+    
+    this.vocabularyId = data.vocabularyId;    
     this.definition = data.definition;
+    this.prefLabel = data.prefLabel;
     this.vocabularyPrefLabel = data.vocabularyPrefLabel;
+  }
+
+  getIdIdentifier(localizer: Localizer): string {
+    const vocabularyPrefLabel = localizer.translate(this.vocabularyPrefLabel);
+    const prefLabel = localizer.translate(this.prefLabel);
+    return `${labelNameToResourceIdIdentifier(vocabularyPrefLabel)}_${labelNameToResourceIdIdentifier(prefLabel)}`;    
   }
 
   serialize(): ConceptType {
@@ -28,10 +32,7 @@ export class Concept extends AbstractResource {
       prefLabel: this.prefLabel,
       vocabularyPrefLabel: this.vocabularyPrefLabel,
       definition: this.definition,
-      uri: this.uri,
-      url: this.url,
-      codeValue: this.codeValue,
-      modified: formatDateTime(this.modified)
+      uri: this.uri
     };
   }
 }

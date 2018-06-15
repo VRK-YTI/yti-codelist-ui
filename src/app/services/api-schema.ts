@@ -67,13 +67,22 @@ export interface CodeType extends BaseResourceType {
   order?: string;
 }
 
-export interface ConceptType extends BaseResourceType {
+export interface ConceptType {
 
-  modified?: string;
-  vocabularyId: string;
+  id: string;
+  prefLabel: Localizable;
   definition: Localizable;
   vocabularyPrefLabel: Localizable;
+  vocabularyId: string;
+  uri: string;
 }
+
+export interface VocabularyType {
+
+  id: string;
+  prefLabel: Localizable;
+}
+
 
 export interface ExternalReferenceType  {
 
