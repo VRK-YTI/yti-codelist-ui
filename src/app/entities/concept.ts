@@ -5,15 +5,17 @@ import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 export class Concept {
 
   id: string;
-  uri: string;  
-  vocabularyId: string;  
+  uri: string;
+  vocabularyId: string;
   definition: Localizable;
   prefLabel: Localizable;
   vocabularyPrefLabel: Localizable;
 
   constructor(data: ConceptType) {
-    
-    this.vocabularyId = data.vocabularyId;    
+
+    this.uri = data.uri;
+    this.id = data.id;
+    this.vocabularyId = data.vocabularyId;
     this.definition = data.definition;
     this.prefLabel = data.prefLabel;
     this.vocabularyPrefLabel = data.vocabularyPrefLabel;
@@ -22,7 +24,7 @@ export class Concept {
   getIdIdentifier(localizer: Localizer): string {
     const vocabularyPrefLabel = localizer.translate(this.vocabularyPrefLabel);
     const prefLabel = localizer.translate(this.prefLabel);
-    return `${labelNameToResourceIdIdentifier(vocabularyPrefLabel)}_${labelNameToResourceIdIdentifier(prefLabel)}`;    
+    return `${labelNameToResourceIdIdentifier(vocabularyPrefLabel)}_${labelNameToResourceIdIdentifier(prefLabel)}`;
   }
 
   serialize(): ConceptType {
