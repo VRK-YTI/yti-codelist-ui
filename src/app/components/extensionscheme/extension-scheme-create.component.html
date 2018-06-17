@@ -1,0 +1,53 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div [hidden]="loading" class="content-box">
+
+  <app-back-button [id]="'extensionscheme_create_back_button'" (back)="back()"></app-back-button>
+
+  <div class="row">
+    <div class="col-12">
+      <h1 class="pull-left" translate>Create extensionscheme</h1>
+      <app-content-language></app-content-language>
+    </div>
+  </div>
+
+  <form [formGroup]="extensionSchemeForm" #form="ngForm">
+
+    <div class="row">
+      <div class="col-12">
+        <app-editable-buttons [form]="form"></app-editable-buttons>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10">
+        <app-literal-input [id]="'extensionscheme_codevalue_input'"
+                           [label]="'Extensionscheme value' | translate"
+                           [formControlName]="'codeValue'"></app-literal-input>
+
+        <div class="form-group">
+            <app-error-messages id="extensionscheme_form_error_messages" [control]="extensionSchemeForm"></app-error-messages>
+        </div>
+
+        <app-localizable-input [id]="'extensionscheme_name_input'"
+                               [label]="'Extensionscheme name' | translate"
+                               [formControlName]="'prefLabel'"></app-localizable-input>
+
+        <app-status-input id="extensionscheme_status_input"
+                          [formControlName]="'status'"></app-status-input>
+
+        <app-property-type-select id="propertytype_select"
+                                  [label]="'Extensionscheme type' | translate"
+                                  [context]="'ExtensionScheme'"
+                                  [formControlName]="'propertyType'"></app-property-type-select>
+
+        <app-date-range-input id="extensionscheme_validity_input"
+                              [label]="'Validity' | translate"
+                              [formControlName]="'validity'"></app-date-range-input>
+      </div>
+    </div>
+
+  </form>
+</div>

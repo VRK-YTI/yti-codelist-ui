@@ -8,25 +8,25 @@ import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../../components/common/error-modal.service';
 
 @Injectable()
-export class CodeSchemeCodesImportModalService {
+export class ExtensionSchemesImportModalService {
 
   constructor(private modalService: ModalService) {
   }
 
   public open(codeScheme: CodeScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(CodeSchemeCodesImportModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as CodeSchemeCodesImportModalComponent;
+    const modalRef = this.modalService.open(ExtensionSchemesImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as ExtensionSchemesImportModalComponent;
     instance.codeScheme = codeScheme;
     return modalRef.result;
   }
 }
 
 @Component({
-  selector: 'app-code-scheme-codes-import-modal',
-  templateUrl: './code-scheme-codes-import-modal.component.html',
+  selector: 'app-extension-scheme-import-modal',
+  templateUrl: './extension-scheme-import-modal.component.html',
   providers: [EditableService]
 })
-export class CodeSchemeCodesImportModalComponent {
+export class ExtensionSchemesImportModalComponent {
 
   @Input() codeScheme: CodeScheme;
   file?: File;
@@ -62,15 +62,19 @@ export class CodeSchemeCodesImportModalComponent {
     console.log(this.file);
   }
 
-  uploadCodesFile() {
+  uploadExtensionSchemesFile() {
     if (!this.file) {
       throw new Error('File must be set');
     }
-    console.log('uploadCodesFile');
+    console.log('uploadExtensionSchemesFile');
     if (this.file !== undefined) {
       this.uploading = true;
 
-      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue, this.file, this.format)
+      this.dataService.uploadExtensionSchemes(
+        this.codeScheme.codeRegistry.codeValue,
+        this.codeScheme.codeValue,
+        this.file,
+        this.format)
         .subscribe(codes => {
           this.modal.close(true);
         }, error => {

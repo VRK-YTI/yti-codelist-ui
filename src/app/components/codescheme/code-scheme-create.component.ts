@@ -15,7 +15,6 @@ import { requiredList } from 'yti-common-ui/utils/validator';
 import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {Concept} from '../../entities/concept';
 import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
-import {hasLocalization} from 'yti-common-ui/utils/localization';
 import { CodePlain } from '../../entities/code-simple';
 import {CodeScheme} from '../../entities/code-scheme';
 import { Location } from '@angular/common';
@@ -39,6 +38,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     prefLabel: new FormControl({}),
     description: new FormControl({}),
     definition: new FormControl({}),
+    changeNote: new FormControl({}),
     version: new FormControl(''),
     source: new FormControl(''),
     legalBase: new FormControl(''),
@@ -82,6 +82,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({codeValue: originalCodeScheme.codeValue});
           this.codeSchemeForm.patchValue({description: originalCodeScheme.description});
           this.codeSchemeForm.patchValue({definition: originalCodeScheme.definition});
+          this.codeSchemeForm.patchValue({changeNote: originalCodeScheme.changeNote});
           this.codeSchemeForm.patchValue({version: originalCodeScheme.version});
           this.codeSchemeForm.patchValue({source: originalCodeScheme.source});
           this.codeSchemeForm.patchValue({legalBase: originalCodeScheme.legalBase});

@@ -1,0 +1,57 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading" class="content-box">
+
+  <app-back-button [id]="'code_back_button'" (back)="back()"></app-back-button>
+
+  <h1 *ngIf="code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}} - {{code.prefLabel | translateValue}}</h1>
+  <h1 *ngIf="!code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}}</h1>
+
+  <div class="row">
+    <div class="col-12">
+      <app-status class="pull-left" [status]="code.status"></app-status>
+
+      <div class="pull-right">
+        <button id="code_info_delete_button"
+                *ngIf='this.canDelete' type="button"
+                class="btn btn-action pull-right ml-3"
+                (click)="delete()"
+                translate>Delete</button>
+
+        <app-content-language></app-content-language>
+      </div>
+    </div>
+  </div>
+
+  <div class="row metabar">
+    <div class="col-12">
+      <div class="metaitem">
+        <span translate>Coderegistry</span><span>: {{extensionScheme.codeScheme.codeRegistry.prefLabel | translateValue}}</span>
+      </div>
+      <div class="metaitem" *ngIf="codeScheme.codeRegistry.organizations.length > 0">
+        <span translate>Organization</span><span>: </span>
+        <span *ngFor="let organization of codeScheme.codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="extension.extensionValue">
+    <div class="col-12">
+      <p class="description text-content-wrap">{{extension.extensionValue}}</p>
+    </div>
+  </div>
+
+  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
+    <ngb-tab id="extension_info_tab">
+      <ng-template ngbTabTitle>
+        <span translate>INFORMATION</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-extension-information [extension]="extension"></app-extension-information>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

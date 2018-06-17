@@ -32,7 +32,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   @Input() codeScheme: CodeScheme;
 
   dataClassifications: Code[];
-  defaultCode: CodePlain;
   env: string;
 
   codeSchemeForm = new FormGroup({

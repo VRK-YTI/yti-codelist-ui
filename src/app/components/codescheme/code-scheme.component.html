@@ -26,6 +26,12 @@
                 (click)="delete()"
                 translate>Delete</button>
 
+        <button id="create_extensionscheme_button"
+                *ngIf="showUnfinishedFeature && this.isSuperUser" type="button"
+                class="btn btn-action pull-right ml-3"
+                (click)="createExtensionScheme()"
+                translate>Create extension scheme</button>
+
         <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
           <div ngbDropdownMenu aria-labelledby="exportDropdown">
@@ -79,6 +85,16 @@
 
       <ng-template ngbTabContent>
         <app-code-scheme-information [codeScheme]="codeScheme"></app-code-scheme-information>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab *ngIf="showUnfinishedFeature && codeScheme.extensionSchemes && codeScheme.extensionSchemes.length > 0" id="codelist_extensionschemes_tab">
+      <ng-template ngbTabTitle>
+        <span translate>EXTENSIONSCHEMES</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-code-scheme-extensionschemes [codeScheme]="codeScheme" [extensionSchemes]="extensionSchemes"></app-code-scheme-extensionschemes>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

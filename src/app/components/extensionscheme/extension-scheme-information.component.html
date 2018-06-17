@@ -1,0 +1,41 @@
+<form [formGroup]="extensionSchemeForm" #form="ngForm">
+
+  <div class="row">
+    <div class="col-12">
+      <app-editable-buttons [form]="form"
+                            [entity]="extensionScheme"></app-editable-buttons>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 col-md-10">
+      <app-literal [label]="'Code value' | translate"
+                   [value]="extensionScheme.codeValue"></app-literal>
+
+      <app-localizable-input [id]="'extensionscheme_name_input'"
+                             [label]="'Code list name' | translate"
+                             [formControlName]="'prefLabel'"></app-localizable-input>
+
+      <app-literal *ngIf="extensionScheme.codeScheme"
+                   [label]="'Codescheme' | translate"
+                   [value]="extensionScheme.parentCodeScheme.prefLabel | translateValue"></app-literal>
+
+      <app-property-type-select id="propertytype_select"
+                                [label]="'Extensionscheme type' | translate"
+                                [context]="'ExtensionScheme'"
+                                [formControlName]="'propertyType'"></app-property-type-select>
+
+      <app-status-input id="extensionscheme_status_input"
+                        [formControlName]="'status'"
+                        [restrict]="restricted"></app-status-input>
+
+      <app-date-range-input id="extensionscheme_validity_input"
+                            [label]="'Validity' | translate"
+                            [formControlName]="'validity'"></app-date-range-input>
+
+      <app-literal [label]="'Last modification' | translate"
+                   [value]="extensionScheme.modifiedDisplayValue"></app-literal>
+    </div>
+  </div>
+
+</form>

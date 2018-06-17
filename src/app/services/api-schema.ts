@@ -1,5 +1,7 @@
 import { Localizable } from 'yti-common-ui/types/localization';
 import { Status } from 'yti-common-ui/entities/status';
+import { formatDateTime } from '../utils/date';
+import { PropertyType } from '../entities/property-type';
 
 export interface ApiResponseType {
 
@@ -39,6 +41,7 @@ export interface CodeSchemeType extends BaseResourceType {
   definition?: Localizable;
   dataClassifications: CodePlainType[];
   externalReferences?: ExternalReferenceType[];
+  extensionSchemes?: ExtensionSchemeSimpleType[];
   conceptUriInVocabularies: string;
   defaultCode?: CodePlainType;
 }
@@ -127,3 +130,47 @@ export interface OrganizationType {
   description: Localizable;
   url: string;
 }
+
+export interface ExtensionSchemeType {
+
+  id: string;
+  url: string;
+  codeValue: string;
+  propertyType: PropertyTypeType;
+  prefLabel?: Localizable;
+  modified?: string;
+  status: Status;
+  startDate?: string;
+  endDate?: string;
+  parentCodeScheme: CodeSchemeType;
+  codeSchemes?: CodeSchemeType[];
+  description?: Localizable;
+}
+
+export interface ExtensionSchemeSimpleType {
+
+  id: string;
+  url: string;
+  codeValue: string;
+  propertyType: PropertyTypeType;
+  prefLabel?: Localizable;
+  modified?: string;
+  status: Status;
+  startDate?: string;
+  endDate?: string;
+  description?: Localizable;
+}
+
+export interface ExtensionType {
+
+  id: string;
+  url: string;
+  extensionValue: string;
+  order?: string;
+  modified?: string;
+  extensionScheme: ExtensionSchemeType;
+  extension?: ExtensionType;
+  code: CodeType;
+}
+
+

@@ -56,10 +56,10 @@
                                  [label]="'Classification' | translate"
                                  [formControlName]="'dataClassifications'"></app-classifications-input>
 
-      <app-defaultcode-input id="default_code_input"
-                             [label]="'Default code' | translate"
-                             [codeScheme]="this.codeScheme"
-                             [formControlName]="'defaultCode'"></app-defaultcode-input>
+      <app-code-input id="default_code_input"
+                      [label]="'Default code' | translate"
+                      [codeScheme]="this.codeScheme"
+                      [formControlName]="'defaultCode'"></app-code-input>
 
       <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
         <dt>

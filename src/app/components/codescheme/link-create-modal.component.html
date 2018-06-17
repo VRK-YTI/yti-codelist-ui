@@ -30,6 +30,8 @@
 
         <app-property-type-select id="propertytype_select"
                                   [name]="'propertyType'"
+                                  [title]="'Link type' | translate"
+                                  [context]="'ExternalReference'"
                                   [(ngModel)]="externalReference.propertyType"></app-property-type-select>
 
       </form>

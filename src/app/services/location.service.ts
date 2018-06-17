@@ -3,6 +3,8 @@ import { Subject } from 'rxjs/Subject';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
 import { Location } from 'yti-common-ui/types/location';
+import { ExtensionScheme } from '../entities/extension-scheme';
+import { Extension } from '../entities/extension';
 
 const frontPage = { localizationKey: 'Front page', route: [''] };
 
@@ -31,6 +33,14 @@ export class LocationService {
 
   atCodeSchemePage(codeScheme: CodeScheme): void {
     this.changeLocation(codeScheme.location);
+  }
+
+  atExtensionSchemePage(extensionScheme: ExtensionScheme): void {
+    this.changeLocation(extensionScheme.location);
+  }
+
+  atExtensionPage(extension: Extension): void {
+    this.changeLocation(extension.location);
   }
 
   atCodePage(code: Code): void {

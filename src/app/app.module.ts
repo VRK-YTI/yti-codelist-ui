@@ -73,9 +73,25 @@ import {
 } from './components/terminology-integration/terminology-integration-codescheme-modal.component';
 import { EditableService } from './services/editable.service';
 import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
-import { DefaultCodeInputComponent } from './components/form/defaultcode-input.component';
+import { CodeInputComponent } from './components/form/code-input.component';
 import { ClipboardComponent } from './components/form/clipboard';
 import { ClipboardModule } from 'ngx-clipboard/dist';
+import { CodeSchemeExtensionSchemesComponent } from './components/codescheme/code-scheme-extensionschemes.component';
+import { ExtensionSchemeCreateComponent } from './components/extensionscheme/extension-scheme-create.component';
+import { ExtensionSchemeComponent } from './components/extensionscheme/extension-scheme.component';
+import { ExtensionSchemeInformationComponent } from './components/extensionscheme/extension-scheme-information.component';
+import { ExtensionSchemeExtensionsComponent } from './components/extensionscheme/extension-scheme-extensions.component';
+import { ExtensionInformationComponent } from './components/extension/extension-information.compotent';
+import { ExtensionCreateComponent } from './components/extension/extension-create.component';
+import { ExtensionSchemeListitemComponent } from './components/extensionscheme/extension-scheme-listitem.component';
+import {
+  ExtensionSchemeExtensionsImportModalService,
+  ExtensionsImportModalComponent
+} from './components/extension/extension-import-modal.component';
+import {
+  ExtensionSchemesImportModalComponent,
+  ExtensionSchemesImportModalService
+} from './components/extensionscheme/extension-scheme-import-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -94,9 +110,12 @@ const appRoutes: Routes = [
   {path: 'frontpage', redirectTo: '/', pathMatch: 'full'},
   {path: 'createcode', component: CodeCreateComponent, pathMatch: 'full'},
   {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
+  {path: 'createextensionscheme', component: ExtensionSchemeCreateComponent, pathMatch: 'full'},
+  {path: 'createextension', component: ExtensionCreateComponent, pathMatch: 'full'},
   {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'extensionscheme', component: ExtensionSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
   {path: 'userDetails', component: UserDetailsComponent},
   {path: 'information', component: InformationAboutServiceComponent}
@@ -134,12 +153,22 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     StatusComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
+    ExtensionSchemeComponent,
+    CodeSchemeExtensionSchemesComponent,
+    ExtensionSchemeInformationComponent,
+    ExtensionSchemeExtensionsComponent,
+    ExtensionInformationComponent,
+    ExtensionCreateComponent,
+    ExtensionSchemeListitemComponent,
     CodeSchemeInformationComponent,
     CodeSchemeImportAndCreateComponent,
     CodeInformationComponent,
     CodeSchemeCodesImportModalComponent,
     CodeSchemeImportModalComponent,
     CodeSchemeCreateComponent,
+    ExtensionSchemeCreateComponent,
+    ExtensionsImportModalComponent,
+    ExtensionSchemesImportModalComponent,
     LocalizableInputComponent,
     LocalizableTextareaComponent,
     LiteralInputComponent,
@@ -161,7 +190,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateInputComponent,
     DateRangeInputComponent,
     ClassificationsInputComponent,
-    DefaultCodeInputComponent,
+    CodeInputComponent,
     SearchLinkedCodeModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent,
@@ -199,6 +228,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     AuthorizationManager,
     CodeSchemeImportModalService,
     CodeSchemeCodesImportModalService,
+    ExtensionSchemeExtensionsImportModalService,
+    ExtensionSchemesImportModalService,
     CodeListConfirmationModalService,
     LinkShowModalService,
     LinkEditModalService,

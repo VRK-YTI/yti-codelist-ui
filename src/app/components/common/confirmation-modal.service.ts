@@ -23,6 +23,10 @@ export class CodeListConfirmationModalService {
     return this.confirmationModalService.open('REMOVE CODESCHEME?', '');
   }
 
+  openRemoveExtensionScheme() {
+    return this.confirmationModalService.open('REMOVE EXTENSIONSCHEME?', '');
+  }
+
   openOverWriteExistingValuesFromVocabularies() {
     return this.confirmationModalService.open('NEW VALUES FROM VOCABULARIES?', '');
   }

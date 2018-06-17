@@ -1,0 +1,30 @@
+<div class="codes row">
+  <div class="col-md-12">
+    <div *ngIf="canAddExtension()" class="d-inline-block mb-1 pull-right">
+      <button id="import_extensions_button"
+              type="button"
+              class="btn btn-action ml-3 pull-right"
+              (click)="importExtensions()"
+              translate>Import extensions</button>
+      <button id="create_extension_button"
+              type="button"
+              class="btn btn-action pull-right"
+              (click)="createExtension()"
+              translate>Create extension</button>
+    </div>
+  </div>
+
+  <div id="codelist_code_list_div" class="col-md-12">
+    <ul id="codelist_code_list_regular">
+      <li *ngFor="let extension of extensions; trackBy: extensionIdentity">
+        <span>{{extension.code.prefLabel | translate}}</span>
+        <!--<app-extension [extension]="extension"></app-extension>-->
+        <!--<app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>-->
+      </li>
+    </ul>
+  </div>
+
+  <div class="emptyCodes" *ngIf="extensions.length === 0">
+    <span translate>This extensionscheme does not have any extensions yet.</span>
+  </div>
+</div>

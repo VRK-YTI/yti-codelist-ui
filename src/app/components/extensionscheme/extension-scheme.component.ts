@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
@@ -8,26 +7,25 @@ import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs/Observable';
 import { LanguageService } from '../../services/language.service';
-import { CodePlain } from '../../entities/code-simple';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 
 @Component({
-  selector: 'app-code-scheme',
-  templateUrl: './code-scheme.component.html',
-  styleUrls: ['./code-scheme.component.scss'],
+  selector: 'app-extension-scheme',
+  templateUrl: './extension-scheme.component.html',
+  styleUrls: ['./extension-scheme.component.scss'],
   providers: [EditableService],
 })
-export class CodeSchemeComponent implements OnInit, EditingComponent {
+export class ExtensionSchemeComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
-  codeScheme: CodeScheme;
-  codes: CodePlain[];
-  extensionSchemes: ExtensionScheme[];
+  extensionScheme: ExtensionScheme;
+  extensions: Extension[];
   env: string;
 
   constructor(private userService: UserService,
@@ -52,39 +50,34 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
+    const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
 
-    if (!registryCodeValue || !schemeCodeValue) {
-      throw new Error(`Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}'`);
+    if (!registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+      throw new Error(
+        `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}`);
     }
 
-    this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
-      this.codeScheme = codeScheme;
-      this.locationService.atCodeSchemePage(codeScheme);
+    this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
+      this.extensionScheme = extensionScheme;
+      this.locationService.atExtensionSchemePage(extensionScheme);
     });
 
-    this.dataService.getPlainCodes(registryCodeValue, schemeCodeValue).subscribe(codes => {
-      this.codes = codes;
-    });
-
-    this.dataService.getExtensionSchemes(registryCodeValue, schemeCodeValue).subscribe(extensionSchemes => {
-      this.extensionSchemes = extensionSchemes;
+    this.dataService.getExtensions(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {
+      this.extensions = extensions;
     });
   }
 
-  refreshCodes() {
-    this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
-      this.codes = codes;
-    });
-  }
-
-  refreshExtensionSchemes() {
-    this.dataService.getExtensionSchemes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(extensionSchemes => {
-      this.extensionSchemes = extensionSchemes;
+  refreshExtensions() {
+    this.dataService.getExtensions(
+      this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
+      this.extensionScheme.parentCodeScheme.codeValue,
+      this.extensionScheme.codeValue).subscribe(extensions => {
+      this.extensions = extensions;
     });
   }
 
   get loading(): boolean {
-    return this.codeScheme == null || this.codes == null || this.extensionSchemes == null;
+    return this.extensionScheme == null || this.extensions == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -109,18 +102,17 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canDelete() {
-    return this.userService.user.superuser || (this.authorizationManager.canDelete(this.codeScheme) &&
-      (this.codeScheme.status === 'DRAFT' || this.codeScheme.status === 'SUGGESTED' || this.codeScheme.status === 'SUBMITTED'));
-  }
-
-  get isSuperUser() {
-    return this.userService.user.superuser;
+    return this.userService.user.superuser ||
+      (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&
+      (this.extensionScheme.parentCodeScheme.status === 'DRAFT' ||
+       this.extensionScheme.parentCodeScheme.status === 'SUGGESTED' ||
+       this.extensionScheme.parentCodeScheme.status === 'SUBMITTED'));
   }
 
   delete() {
-    this.confirmationModalService.openRemoveCodeScheme()
+    this.confirmationModalService.openRemoveExtensionScheme()
       .then(() => {
-        this.dataService.deleteCodeScheme(this.codeScheme).subscribe(res => {
+        this.dataService.deleteExtensionScheme(this.extensionScheme).subscribe(res => {
           this.router.navigate(['frontpage']);
         }, error => {
           this.errorModalService.openSubmitError(error);
@@ -128,11 +120,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       }, ignoreModalClose);
   }
 
-  get restricted(): boolean {
-    if (this.isSuperUser) {
-      return false;
-    }
-    return this.codeScheme.restricted;
+  get isSuperUser() {
+    return this.userService.user.superuser;
   }
 
   cancelEditing(): void {
@@ -141,35 +130,18 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   save(formData: any): Observable<any> {
 
-    console.log('Store CodeScheme changes to server!');
+    console.log('Store ExtensionScheme changes to server!');
 
     const {validity, ...rest} = formData;
-    const updatedCodeScheme = this.codeScheme.clone();
+    const updateExtensionScheme = this.extensionScheme.clone();
 
-    Object.assign(updatedCodeScheme, {
+    Object.assign(updateExtensionScheme, {
       ...rest,
       startDate: validity.start,
       endDate: validity.end
     });
 
-    return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).do(() => this.ngOnInit());
-  }
-
-  createExtensionScheme() {
-    console.log('Create ExtensionScheme clicked!');
-    this.router.navigate(
-      ['createextensionscheme',
-        {
-          registryCode: this.codeScheme.codeRegistry.codeValue,
-          schemeCode: this.codeScheme.codeValue
-        }
-      ]
-    );
-  }
-
-  copyTheCodescheme() {
-    console.log('Copy codescheme clicked!');
-    this.router.navigate(['createcodescheme'], { queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
+    return this.dataService.saveExtensionScheme(updateExtensionScheme.serialize()).do(() => this.ngOnInit());
   }
 
   get showUnfinishedFeature() {

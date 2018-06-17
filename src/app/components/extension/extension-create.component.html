@@ -1,0 +1,40 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading" class="content-box">
+
+  <app-back-button [id]="'extension_create_back_button'" (back)="back()"></app-back-button>
+
+  <div class="row">
+    <div class="col-12">
+      <h1 class="pull-left" translate>Create extension</h1>
+      <app-content-language></app-content-language>
+    </div>
+  </div>
+
+  <form [formGroup]="extensionForm" #form="ngForm">
+
+    <div class="row">
+      <div class="col-12">
+        <app-editable-buttons [form]="form"></app-editable-buttons>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10">
+        <app-localizable-literal [label]="'Extensionscheme' | translate"
+                                 [value]="extensionScheme.prefLabel"></app-localizable-literal>
+
+        <app-literal-input [id]="'extension_extensionvalue_input'"
+                           [label]="'Extension value' | translate"
+                           [formControlName]="'extensionValue'"></app-literal-input>
+
+        <app-code-input id="extension_code_input"
+                        [label]="'Code' | translate"
+                        [codeScheme]="this.extensionScheme.parentCodeScheme"
+                        [formControlName]="'code'"></app-code-input>
+      </div>
+    </div>
+  </form>
+</div>

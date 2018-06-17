@@ -1,0 +1,68 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading" class="content-box">
+
+  <app-back-button [id]="'extensionscheme_back_button'" (back)="back()"></app-back-button>
+
+  <h1 class="text-content-wrap">{{extensionScheme.getDisplayName(languageService)}}</h1>
+
+  <div class="row">
+    <div class="col-12">
+      <app-status class="pull-left" [status]="extensionScheme.status"></app-status>
+
+      <div class="pull-right">
+
+        <button id="delete_extensionscheme_button"
+                *ngIf='this.canDelete' type="button"
+                class="btn btn-action pull-right ml-3"
+                (click)="delete()"
+                translate>Delete</button>
+
+        <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
+          <div ngbDropdownMenu aria-labelledby="exportDropdown">
+            <a id="codelist_export_excel_link" href='{{extensionScheme.url}}/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
+            <a id="codelist_export_csv_link" href='{{extensionScheme.url}}/codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
+          </div>
+        </div>
+
+        <app-content-language></app-content-language>
+      </div>
+    </div>
+  </div>
+
+  <div class="row metabar">
+    <div class="col-12">
+      <div class="metaitem">
+        <span translate>Coderegistry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.prefLabel | translateValue}}</span>
+      </div>
+      <div class="metaitem">
+        <span translate>Codescheme</span><span>: {{extensionScheme.parentCodeScheme.prefLabel | translateValue}}</span>
+      </div>
+    </div>
+  </div>
+
+  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
+    <ngb-tab id="extensionscheme_extensions_tabs">
+      <ng-template ngbTabTitle>
+        <span translate>EXTENSIONS</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-extension-scheme-extensions [extensions]="extensions" [extensionScheme]="extensionScheme"></app-extension-scheme-extensions>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab id="extensionscheme_info_tab">
+      <ng-template ngbTabTitle>
+        <span translate>INFORMATION</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-extension-scheme-information [extensionScheme]="extensionScheme"></app-extension-scheme-information>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

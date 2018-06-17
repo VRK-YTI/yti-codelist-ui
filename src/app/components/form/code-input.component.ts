@@ -21,37 +21,37 @@ function removeFromControl<T>(control: FormControl) {
 }
 
 @Component({
-  selector: 'app-defaultcode-input',
+  selector: 'app-code-input',
   template: `
-    <dl *ngIf="editing || defaultCode">
+    <dl *ngIf="editing || code">
       <dt>
         <label>{{label}}</label>
       </dt>
       <dd>
-        <div *ngIf="!editing && defaultCode">
-          <span>{{defaultCode.codeValue}} - {{defaultCode.prefLabel | translateValue:true}}</span>
+        <div *ngIf="!editing && code">
+          <span>{{code.codeValue}} - {{code.prefLabel | translateValue:true}}</span>
         </div>
-        <div *ngIf="editing && defaultCode">
+        <div *ngIf="editing && code">
           <a>
-            <i id="{{'remove_defaultcode_link'}}"
+            <i id="{{'remove_code_link'}}"
                class="fa fa-times"
-               (click)="removeDefaultCode(defaultCode)"></i>
+               (click)="removeCode(code)"></i>
           </a>
-          <span>{{defaultCode.codeValue}} - {{defaultCode.prefLabel | translateValue:true}}</span>
-          <app-error-messages id="defaultcode_error_messages" [control]="parentControl"></app-error-messages>
+          <span>{{code.codeValue}} - {{code.prefLabel | translateValue:true}}</span>
+          <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
-        <button id="add_defaultcode_button"
+        <button id="add_code_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="addDefaultCode()" translate>Select default code
+                (click)="selectCode()" translate>Select code
         </button>
       </dd>
     </dl>
   `
 })
-export class DefaultCodeInputComponent implements ControlValueAccessor {
+export class CodeInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() codeScheme: CodeScheme;
@@ -73,11 +73,11 @@ export class DefaultCodeInputComponent implements ControlValueAccessor {
     }
   }
 
-  get defaultCode() {
+  get code() {
     return this.control.value as CodePlain;
   }
 
-  addDefaultCode() {
+  selectCode() {
     const titleLabel = this.translateService.instant('Choose code');
     const searchlabel = this.translateService.instant('Search code');
     const codes = this.dataService.getCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue);
@@ -86,7 +86,7 @@ export class DefaultCodeInputComponent implements ControlValueAccessor {
       .then(code => addToControl(this.control, code), ignoreModalClose);
   }
 
-  removeDefaultCode() {
+  removeCode() {
     removeFromControl(this.control);
   }
 

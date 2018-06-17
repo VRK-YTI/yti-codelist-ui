@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <form [formGroup]="codeSchemeForm" #form="ngForm">
+  <form [formGroup]="extensionSchemeForm" #form="ngForm">
 
     <div class="row">
       <div class="col-12">
@@ -33,7 +33,7 @@
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
-            <app-error-messages id="code_list_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
+            <app-error-messages id="code_list_form_error_messages" [control]="extensionSchemeForm"></app-error-messages>
         </div>
 
         <dl *ngIf="showUnfinishedFeature">
@@ -46,7 +46,7 @@
             </div>
           </dd>
         </dl>
-        <div *ngIf="showUnfinishedFeature && codeSchemeForm.controls['conceptUriInVocabularies'].value?.toString().length > 0">
+        <div *ngIf="showUnfinishedFeature && extensionSchemeForm.controls['conceptUriInVocabularies'].value?.toString().length > 0">
           <dl>
             <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
             <dd>
@@ -55,7 +55,7 @@
                    class="fa fa-times"
                    (click)="removeConceptUriInVocabularies()"></i>
               </a>
-              {{codeSchemeForm.controls['conceptUriInVocabularies'].value}}
+              {{extensionSchemeForm.controls['conceptUriInVocabularies'].value}}
             </dd>
           </dl>
         </div>
@@ -75,6 +75,10 @@
         <app-localizable-textarea [id]="'codelist_definition_textarea'"
                                   [label]="'Definition' | translate"
                                   [formControlName]="'definition'"></app-localizable-textarea>
+
+        <app-localizable-textarea [id]="'codelist_changenote_textarea'"
+                                  [label]="'Changenote' | translate"
+                                  [formControlName]="'changenote'"></app-localizable-textarea>
 
         <app-literal-input [id]="'codelist_version_input'"
                            [label]="'Version' | translate"

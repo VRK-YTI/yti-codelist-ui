@@ -3,32 +3,32 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
-import { CodeScheme } from '../../entities/code-scheme';
 import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../../components/common/error-modal.service';
+import { ExtensionScheme } from '../../entities/extension-scheme';
 
 @Injectable()
-export class CodeSchemeCodesImportModalService {
+export class ExtensionSchemeExtensionsImportModalService {
 
   constructor(private modalService: ModalService) {
   }
 
-  public open(codeScheme: CodeScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(CodeSchemeCodesImportModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as CodeSchemeCodesImportModalComponent;
-    instance.codeScheme = codeScheme;
+  public open(extensionScheme: ExtensionScheme): Promise<boolean> {
+    const modalRef = this.modalService.open(ExtensionsImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as ExtensionsImportModalComponent;
+    instance.extensionScheme = extensionScheme;
     return modalRef.result;
   }
 }
 
 @Component({
-  selector: 'app-code-scheme-codes-import-modal',
-  templateUrl: './code-scheme-codes-import-modal.component.html',
+  selector: 'app-extension-import-modal',
+  templateUrl: './extension-import-modal.component.html',
   providers: [EditableService]
 })
-export class CodeSchemeCodesImportModalComponent {
+export class ExtensionsImportModalComponent {
 
-  @Input() codeScheme: CodeScheme;
+  @Input() extensionScheme: ExtensionScheme;
   file?: File;
   format = 'Excel';
   uploading = false;
@@ -62,15 +62,20 @@ export class CodeSchemeCodesImportModalComponent {
     console.log(this.file);
   }
 
-  uploadCodesFile() {
+  uploadExtensionsFile() {
     if (!this.file) {
       throw new Error('File must be set');
     }
-    console.log('uploadCodesFile');
+    console.log('uploadExtensionSchemesFile');
     if (this.file !== undefined) {
       this.uploading = true;
 
-      this.dataService.uploadCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue, this.file, this.format)
+      this.dataService.uploadExtensions(
+        this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
+        this.extensionScheme.parentCodeScheme.codeValue,
+        this.extensionScheme.codeValue,
+        this.file,
+        this.format)
         .subscribe(codes => {
           this.modal.close(true);
         }, error => {

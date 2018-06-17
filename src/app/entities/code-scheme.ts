@@ -11,6 +11,8 @@ import { CodeSchemeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
+import { ExtensionScheme } from './extension-scheme';
+import { ExtensionSchemeSimple } from './extension-scheme-simple';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -30,6 +32,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   conceptUriInVocabularies: string;
   modified: Moment|null = null;
   defaultCode: CodePlain|null = null;
+  extensionSchemes: ExtensionSchemeSimple[] = [];
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -56,6 +59,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.definition = data.definition || {};
     this.dataClassifications = (data.dataClassifications || []).map(dc => new CodePlain(dc));
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
+    this.extensionSchemes = (data.extensionSchemes || []).map(es => new ExtensionSchemeSimple(es));
     this.conceptUriInVocabularies = data.conceptUriInVocabularies;
     if (data.defaultCode) {
       this.defaultCode = new CodePlain(data.defaultCode);
@@ -118,6 +122,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       definition: { ...this.definition },
       dataClassifications: this.dataClassifications.map(dc => dc.serialize()),
       externalReferences: this.externalReferences.map(er => er.serialize()),
+      extensionSchemes: this.extensionSchemes.map(es => es.serialize()),
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       defaultCode: this.defaultCode ? this.defaultCode.serialize() : undefined
     };
