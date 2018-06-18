@@ -7,7 +7,6 @@ import { Extension } from '../../entities/extension';
   styleUrls: ['./extension-listitem.component.scss'],
   template: `
     <div id="{{getIdIdentifier(extension) + '_view_extension'}}" class="extension" (click)="viewExtension(extension)">
-      <app-status class="pull-right status" [status]="extensionScheme.status"></app-status>
       <span *ngIf="extension.code.hasPrefLabel()" class="extensiontitle">{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue}}</span>
       <span *ngIf="!extension.code.hasPrefLabel()" class="extensiontitle">{{extension.code.codeValue}}</span>
     </div>
@@ -26,8 +25,8 @@ export class ExtensionListitemComponent {
     this.router.navigate([
       'extension',
       {
-        registryCode: this.extension.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-        schemeCode: this.extension.extensionScheme.parentCodeScheme.codeValue,
+        registryCode: extension.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
+        schemeCode: extension.extensionScheme.parentCodeScheme.codeValue,
         extensionSchemeCode: extension.extensionScheme.codeValue,
         extensionId: extension.id
       }
