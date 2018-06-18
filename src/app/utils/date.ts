@@ -27,8 +27,7 @@ export function parseDateTime(dateTime: string): Moment {
 }
 
 export function formatDateTime(dateTime: Moment|null): string {
-  // return dateTime ? dateTime.format(dateTimeFormat) : '';
-  return dateTime ? dateTime.format() : '';
+  return dateTime ? dateTime.format(dateTimeFormat) : '';
 }
 
 export function parseDate(dateStr: string): Moment {
