@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-15 14:39+0300\n"
+"PO-Revision-Date: 2018-06-18 09:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -12,9 +12,6 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Link type"
-msgstr ""
 
 msgid "Add classification"
 msgstr ""
@@ -31,6 +28,15 @@ msgstr "Copy {{value}} to clipboard"
 msgid "Copied to clipboard"
 msgstr ""
 
+msgid "Select code"
+msgstr ""
+
+msgid "Choose code"
+msgstr ""
+
+msgid "Search code"
+msgstr ""
+
 msgid "No registry"
 msgstr ""
 
@@ -38,15 +44,6 @@ msgid "Start date"
 msgstr ""
 
 msgid "End date"
-msgstr ""
-
-msgid "Select default code"
-msgstr ""
-
-msgid "Choose code"
-msgstr ""
-
-msgid "Search code"
 msgstr ""
 
 msgid "Save"
@@ -172,6 +169,9 @@ msgstr ""
 msgid "Code list name"
 msgstr ""
 
+msgid "Changenote"
+msgstr ""
+
 msgid "Version"
 msgstr ""
 
@@ -185,6 +185,15 @@ msgid "Governance policy"
 msgstr ""
 
 msgid "{{pageTitle}}"
+msgstr ""
+
+msgid "Import extensionschemes"
+msgstr ""
+
+msgid "Create extensionscheme"
+msgstr ""
+
+msgid "This code list does not have any extensionschemes yet."
 msgstr ""
 
 msgid "Add code list"
@@ -221,11 +230,11 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "Changenote"
-msgstr ""
-
 msgid "copyTheCodescheme"
 msgstr "Copy the code list"
+
+msgid "Create extension scheme"
+msgstr ""
 
 msgid "Export"
 msgstr ""
@@ -239,10 +248,16 @@ msgstr ""
 msgid "CODES"
 msgstr ""
 
+msgid "EXTENSIONSCHEMES"
+msgstr ""
+
 msgid "Link title"
 msgstr ""
 
 msgid "URL"
+msgstr ""
+
+msgid "Link type"
 msgstr ""
 
 msgid "Add new link"
@@ -267,6 +282,44 @@ msgid "Show link"
 msgstr ""
 
 msgid "Ok"
+msgstr ""
+
+msgid "Extensionscheme"
+msgstr ""
+
+msgid "Extension value"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Create extension"
+msgstr ""
+
+msgid "Import extensions"
+msgstr ""
+
+msgid "Extensionscheme value"
+msgstr ""
+
+msgid "Extensionscheme name"
+msgstr ""
+
+msgid "Extensionscheme type"
+msgstr ""
+
+msgid "This extensionscheme does not have any extensions yet."
+msgstr ""
+
+msgid "Import extensionscheme"
+msgstr ""
+
+#, fuzzy
+#| msgid "copyTheCodescheme"
+msgid "Codescheme"
+msgstr "Copy the code list"
+
+msgid "EXTENSIONS"
 msgstr ""
 
 msgid "Search for code lists"
@@ -368,9 +421,6 @@ msgid "required"
 msgstr ""
 
 msgid "All statuses"
-msgstr ""
-
-msgid "Code"
 msgstr ""
 
 msgid "Submit error"

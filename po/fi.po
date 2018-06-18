@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-15 14:39+0300\n"
+"PO-Revision-Date: 2018-06-18 09:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -12,9 +12,6 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Link type"
-msgstr "Linkin tyyppi"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
@@ -31,6 +28,15 @@ msgstr "Kopioi {{value}} leikepöydälle"
 msgid "Copied to clipboard"
 msgstr "Kopioitu leikepöydälle"
 
+msgid "Select code"
+msgstr "Valitse kook"
+
+msgid "Choose code"
+msgstr "Valitse koodi"
+
+msgid "Search code"
+msgstr "Hae koodia"
+
 msgid "No registry"
 msgstr "Ei rekisteriä"
 
@@ -39,15 +45,6 @@ msgstr "Alkupäivä"
 
 msgid "End date"
 msgstr "Loppupäivä"
-
-msgid "Select default code"
-msgstr "Valitse vakiokoodi"
-
-msgid "Choose code"
-msgstr "Valitse koodi"
-
-msgid "Search code"
-msgstr "Hae koodia"
 
 msgid "Save"
 msgstr "Tallenna"
@@ -172,6 +169,9 @@ msgstr "Koodiston tunnus"
 msgid "Code list name"
 msgstr "Koodiston nimi"
 
+msgid "Changenote"
+msgstr "Muutostieto"
+
 msgid "Version"
 msgstr "Versio"
 
@@ -186,6 +186,15 @@ msgstr "Sitovuustaso"
 
 msgid "{{pageTitle}}"
 msgstr ""
+
+msgid "Import extensionschemes"
+msgstr "Tuo laajennusjärjestelmiä"
+
+msgid "Create extensionscheme"
+msgstr "Luo laajennusjärjestelmä"
+
+msgid "This code list does not have any extensionschemes yet."
+msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
 
 msgid "Add code list"
 msgstr "Lisää koodisto"
@@ -228,11 +237,11 @@ msgstr "Tuo koodisto"
 msgid "Default code"
 msgstr "Vakiokoodi"
 
-msgid "Changenote"
-msgstr "Muutostieto"
-
 msgid "copyTheCodescheme"
 msgstr "Kopioi koodisto"
+
+msgid "Create extension scheme"
+msgstr "Luo laajennusjärjestelmä"
 
 msgid "Export"
 msgstr "Lataa"
@@ -246,11 +255,17 @@ msgstr "Lataa CSV"
 msgid "CODES"
 msgstr "KOODIT"
 
+msgid "EXTENSIONSCHEMES"
+msgstr ""
+
 msgid "Link title"
 msgstr "Linkin nimi"
 
 msgid "URL"
 msgstr "URL"
+
+msgid "Link type"
+msgstr "Linkin tyyppi"
 
 msgid "Add new link"
 msgstr "Lisää uusi linkki"
@@ -275,6 +290,44 @@ msgstr "Näytä linkki"
 
 msgid "Ok"
 msgstr "Ok"
+
+msgid "Extensionscheme"
+msgstr ""
+
+msgid "Extension value"
+msgstr ""
+
+msgid "Code"
+msgstr "Koodi"
+
+msgid "Create extension"
+msgstr ""
+
+msgid "Import extensions"
+msgstr "Tuo laajennuksia"
+
+msgid "Extensionscheme value"
+msgstr "Laajennusjärjestelmän koodiarvo"
+
+msgid "Extensionscheme name"
+msgstr "Laajennusjärjestelmän nimi"
+
+msgid "Extensionscheme type"
+msgstr ""
+
+msgid "This extensionscheme does not have any extensions yet."
+msgstr "Tällä laajennusjärjestelmällä ei ole yhtään laajennusta."
+
+msgid "Import extensionscheme"
+msgstr "Tuo laajennusjärjestelmä"
+
+#, fuzzy
+#| msgid "Code scheme"
+msgid "Codescheme"
+msgstr "Koodisto"
+
+msgid "EXTENSIONS"
+msgstr ""
 
 msgid "Search for code lists"
 msgstr "Hae koodistoa"
@@ -375,9 +428,6 @@ msgstr "vaadittu"
 
 msgid "All statuses"
 msgstr "Kaikki tilat"
-
-msgid "Code"
-msgstr "Koodi"
 
 msgid "Submit error"
 msgstr "Toiminnossa tapahtui virhe"
@@ -600,21 +650,6 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 #~ msgid "Group management service"
 #~ msgstr "Ryhmienhallintapalvelu"
-
-#~ msgid "Code scheme"
-#~ msgstr "Koodisto"
-
-#~ msgid "Codescheme value"
-#~ msgstr "Koodiston tunnus"
-
-#~ msgid "Codescheme name"
-#~ msgstr "Koodiston nimi"
-
-#~ msgid "Create codescheme"
-#~ msgstr "Luo koodisto"
-
-#~ msgid "Import codescheme"
-#~ msgstr "Tuo koodisto"
 
 #~ msgid "code schemes"
 #~ msgstr "koodistoa"
