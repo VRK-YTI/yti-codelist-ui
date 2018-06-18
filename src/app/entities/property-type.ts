@@ -25,6 +25,10 @@ export class PropertyType {
     this.type = data.type;
   }
 
+  get idIdentifier(): string {
+    return `${this.context}_${this.localName}`;
+  }
+
   serialize(): PropertyTypeType {
     return {
       id: this.id,
