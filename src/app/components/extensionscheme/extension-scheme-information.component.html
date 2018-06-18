@@ -16,7 +16,7 @@
                              [label]="'Code list name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
-      <app-literal *ngIf="extensionScheme.codeScheme"
+      <app-literal *ngIf="extensionScheme.parentCodeScheme"
                    [label]="'Codescheme' | translate"
                    [value]="extensionScheme.parentCodeScheme.prefLabel | translateValue"></app-literal>
 

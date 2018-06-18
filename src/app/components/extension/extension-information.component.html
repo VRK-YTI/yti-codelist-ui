@@ -3,27 +3,26 @@
   <div class="row">
     <div class="col-12">
       <app-editable-buttons [form]="form"
-                            [entity]="code"></app-editable-buttons>
+                            [entity]="extension.code"></app-editable-buttons>
     </div>
   </div>
 
   <div class="row">
     <div class="col-lg-8 col-md-10">
-      <app-literal [label]="'Code list' | translate"
-                   [value]="code.codeScheme.getDisplayName(languageService)"></app-literal>
+      <app-literal [label]="'Extension' | translate"
+                   [value]="extension.code.getDisplayName(languageService)"></app-literal>
 
       <app-localizable-input [id]="'extension_extensionvalue_input'"
                              [label]="'Extension value' | translate"
                              [formControlName]="'extensionValue'"></app-localizable-input>
 
       <app-code-input id="extension_code_input"
-                      [label]="'Code' | translate"
-                      [codeScheme]="this.codeScheme"
+                      [label]="'Extension' | translate"
+                      [codeScheme]="extension.extensionScheme.parentCodeScheme"
                       [formControlName]="'Code'"></app-code-input>
 
       <app-literal [label]="'Last modification' | translate"
-                   [value]="code.modifiedDisplayValue"></app-literal>
-
+                   [value]="extension.modifiedDisplayValue"></app-literal>
     </div>
   </div>
 
