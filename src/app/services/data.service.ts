@@ -484,7 +484,7 @@ export class DataService {
       .map(res => res.json() as ApiResponseType);
   }
 
-  createExtension(extension: ExtensionType, registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Code> {
+  createExtension(extension: ExtensionType, registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Extension> {
     return this.createExtensions([extension], registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).map(createdExtensions => {
       if (createdExtensions.length !== 1) {
         throw new Error('Exactly one extension needs to be created');
@@ -494,7 +494,7 @@ export class DataService {
     });
   }
 
-  createExtensions(extensionList: ExtensionType[], registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Code[]> {
+  createExtensions(extensionList: ExtensionType[], registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Extension[]> {
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/${extensionSchemeCodeValue}/${extensions}/`,
       extensionList)
