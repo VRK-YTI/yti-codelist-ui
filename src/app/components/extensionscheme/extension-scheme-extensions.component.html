@@ -14,17 +14,15 @@
     </div>
   </div>
 
-  <div id="codelist_code_list_div" class="col-md-12">
-    <ul id="codelist_code_list_regular">
+  <div id="extensionscheme_extensions_div" class="col-md-12">
+    <ul id="extensionscheme_extensions_regular">
       <li *ngFor="let extension of extensions; trackBy: extensionIdentity">
-        <span>{{extension.code.prefLabel | translate}}</span>
-        <!--<app-extension [extension]="extension"></app-extension>-->
-        <!--<app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>-->
+        <app-extension-listitem [extension]="extension"></app-extension-listitem>
       </li>
     </ul>
   </div>
 
-  <div class="emptyCodes" *ngIf="extensions.length === 0">
+  <div class="emptyExtensions" *ngIf="extensions.length === 0">
     <span translate>This extensionscheme does not have any extensions yet.</span>
   </div>
 </div>

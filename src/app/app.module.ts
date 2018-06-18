@@ -92,6 +92,8 @@ import {
   ExtensionSchemesImportModalComponent,
   ExtensionSchemesImportModalService
 } from './components/extensionscheme/extension-scheme-import-modal.component';
+import { ExtensionListitemComponent } from './components/extension/extension-listitem.component';
+import { ExtensionComponent } from './components/extension/extension.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -116,6 +118,7 @@ const appRoutes: Routes = [
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'extensionscheme', component: ExtensionSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
   {path: 'userDetails', component: UserDetailsComponent},
   {path: 'information', component: InformationAboutServiceComponent}
@@ -154,12 +157,14 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
     ExtensionSchemeComponent,
+    ExtensionComponent,
     CodeSchemeExtensionSchemesComponent,
     ExtensionSchemeInformationComponent,
     ExtensionSchemeExtensionsComponent,
     ExtensionInformationComponent,
     ExtensionCreateComponent,
     ExtensionSchemeListitemComponent,
+    ExtensionListitemComponent,
     CodeSchemeInformationComponent,
     CodeSchemeImportAndCreateComponent,
     CodeInformationComponent,
