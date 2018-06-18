@@ -381,7 +381,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr ""
 
 msgid "Front page"
@@ -434,6 +434,9 @@ msgstr ""
 msgid "REMOVE CODESCHEME?"
 msgstr ""
 
+msgid "REMOVE EXTENSIONSCHEME?"
+msgstr ""
+
 msgid "ADMIN"
 msgstr ""
 
@@ -470,10 +473,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
