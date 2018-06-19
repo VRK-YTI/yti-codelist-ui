@@ -30,10 +30,11 @@ export class TerminologyIntegrationModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(showSimpleCancelLinkText: boolean): Promise<Concept> {
+  public open(updatingExistingEntity: boolean, targetEntityKind: string): Promise<Concept> {
     const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'lg'});
     const instance = modalRef.componentInstance as TerminologyIntegrationCodeschemeModalComponent;
-    instance.showSimpleCancelLinkText = showSimpleCancelLinkText;
+    instance.updatingExistingEntity = updatingExistingEntity;
+    instance.targetEntityKind = targetEntityKind;
     return modalRef.result;
   }
 }
@@ -45,7 +46,8 @@ export class TerminologyIntegrationModalService {
 })
 export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, AfterViewInit {
 
-  @Input() showSimpleCancelLinkText = true;
+  @Input() updatingExistingEntity = true;
+  @Input() targetEntityKind: string; // code or codescheme
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
@@ -56,6 +58,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   searchResults: Concept[];
   search$ = new BehaviorSubject('');
   debouncedSearch$ = debounceSearch(this.search$);
+  cancelText: string;
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
@@ -91,13 +94,21 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
           : 'all_selected'
       })
-    );
+      );
 
     }, error => {
       this.vocabularyOptions = [
         { value: null, name: () => this.translateService.instant('All vocabularies')}];
       this.codeListErrorModalService.openSubmitError(error);
     });
+
+    if (this.targetEntityKind === 'code' && !this.updatingExistingEntity) {
+      this.cancelText = 'cancelTextForCodeCreation';
+    } else if (this.targetEntityKind === 'codescheme' && !this.updatingExistingEntity) {
+      this.cancelText = 'cancelTextForCodeSchemeCreation';
+    } else {
+      this.cancelText = 'Cancel';
+    }
   }
 
   ngAfterViewInit() {

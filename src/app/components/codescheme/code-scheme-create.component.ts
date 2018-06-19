@@ -190,7 +190,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open(false).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(false, 'codescheme').
+    then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {

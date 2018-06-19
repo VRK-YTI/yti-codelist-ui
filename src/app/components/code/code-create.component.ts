@@ -121,7 +121,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open(false).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(false, 'code').
+    then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {

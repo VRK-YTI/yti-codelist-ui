@@ -83,7 +83,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open(true).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(true, 'code').
+    then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {

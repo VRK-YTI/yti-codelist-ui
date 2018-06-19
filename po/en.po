@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-18 10:23+0300\n"
+"PO-Revision-Date: 2018-06-19 09:55+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -299,6 +299,9 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
+msgid "Extension"
+msgstr ""
+
 msgid "Extensionscheme value"
 msgstr ""
 
@@ -372,9 +375,6 @@ msgstr ""
 msgid "No search results"
 msgstr "No search results"
 
-msgid "Create without concept integration"
-msgstr ""
-
 msgid "Name"
 msgstr ""
 
@@ -396,8 +396,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
-msgstr "The data is missing a column with the header STATUS."
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "The data is missing a column with the header PROPERTYTYPE."
 
 msgid "Front page"
 msgstr ""
@@ -492,11 +492,11 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
 
+msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
+msgstr "The data is missing a column with the header STATUS."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
-msgstr "The data is missing a column with the header PROPERTYTYPE."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Erroneous start date on row {{ identifier }}."
@@ -594,6 +594,12 @@ msgstr "Code list linked to ExtensionScheme not found."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to ExtensionScheme not found."
+
+msgid "cancelTextForCodeCreation"
+msgstr "Create code without concept"
+
+msgid "cancelTextForCodeSchemeCreation"
+msgstr "Create codescheme without concept"
 
 msgid "invalidDate"
 msgstr "Invalid date"

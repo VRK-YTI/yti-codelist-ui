@@ -120,7 +120,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open(true).then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(true, 'codescheme')
+      .then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   putConceptStuffInPlace(concept: Concept) {
