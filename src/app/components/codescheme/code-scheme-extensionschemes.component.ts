@@ -23,7 +23,7 @@ export class CodeSchemeExtensionSchemesComponent {
               private authorizationManager: AuthorizationManager) {
   }
 
-  importExtensions() {
+  importExtensionSchemes() {
     this.extensionSchemesImportModalService.open(this.codeScheme).then(success => {
       if (success) {
         this.codeSchemeComponent.refreshExtensionSchemes();

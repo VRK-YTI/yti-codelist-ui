@@ -204,6 +204,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
     CodeSchemeCodesImportModalComponent,
+    ExtensionSchemesImportModalComponent,
+    ExtensionsImportModalComponent,
     LinkShowModalComponent,
     LinkEditModalComponent,
     LinkCreateModalComponent,
