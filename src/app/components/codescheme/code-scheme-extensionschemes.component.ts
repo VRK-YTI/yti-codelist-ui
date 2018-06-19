@@ -44,6 +44,6 @@ export class CodeSchemeExtensionSchemesComponent {
   }
 
   canAddExtensionScheme() {
-    return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
+    return this.authorizationManager.canEdit(this.codeScheme);
   }
 }
