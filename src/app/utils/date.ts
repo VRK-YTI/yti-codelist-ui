@@ -18,7 +18,7 @@ function assertValid(moment: Moment): Moment {
 }
 
 const dateFormat = 'YYYY-MM-DD';
-const dateTimeFormat = 'YYYY-MM-DDTHH:mm:ss.SSSX';
+const dateTimeFormat = 'YYYY-MM-DDTHH:mm:ss.SSSZZ';
 const displayDateFormat = 'DD.MM.YYYY';
 const displayDateTimeFormat = 'DD.MM.YYYY HH:mm';
 
