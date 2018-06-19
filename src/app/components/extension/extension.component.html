@@ -4,17 +4,15 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'code_back_button'" (back)="back()"></app-back-button>
+  <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
 
-  <h1 *ngIf="code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}} - {{code.prefLabel | translateValue}}</h1>
-  <h1 *ngIf="!code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}}</h1>
+  <h1 *ngIf="extension.code.hasPrefLabel()" class="text-content-wrap">{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue}}</h1>
+  <h1 *ngIf="!extension.code.hasPrefLabel()" class="text-content-wrap">{{extension.code.codeValue}}</h1>
 
   <div class="row">
     <div class="col-12">
-      <app-status class="pull-left" [status]="code.status"></app-status>
-
       <div class="pull-right">
-        <button id="code_info_delete_button"
+        <button id="extension_delete_button"
                 *ngIf='this.canDelete' type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="delete()"
@@ -28,11 +26,11 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Coderegistry</span><span>: {{extensionScheme.codeScheme.codeRegistry.prefLabel | translateValue}}</span>
+        <span translate>Coderegistry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.prefLabel | translateValue}}</span>
       </div>
-      <div class="metaitem" *ngIf="codeScheme.codeRegistry.organizations.length > 0">
+      <div class="metaitem" *ngIf="extensionScheme.parentCodeScheme.codeRegistry.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of codeScheme.codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+        <span *ngFor="let organization of extensionScheme.parentCodeScheme.codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
       </div>
     </div>
   </div>

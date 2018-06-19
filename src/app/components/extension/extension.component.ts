@@ -78,7 +78,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   back() {
-    this.router.navigate(this.extensionScheme.parentCodeScheme.route);
+    this.router.navigate(this.extensionScheme.route);
   }
 
   isEditing(): boolean {
@@ -123,13 +123,11 @@ export class ExtensionComponent implements OnInit, EditingComponent {
 
     console.log('Store Code changes to server!');
 
-    const {validity, ...rest} = formData;
+    const {...rest} = formData;
     const updatedCode = this.extension.clone();
 
     Object.assign(updatedCode, {
       ...rest,
-      startDate: validity.start,
-      endDate: validity.end
     });
 
     return this.dataService.saveExtension(updatedCode.serialize()).do(() => this.ngOnInit());

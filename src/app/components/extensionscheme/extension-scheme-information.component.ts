@@ -12,7 +12,6 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LocationService } from '../../services/location.service';
 
-
 @Component({
   selector: 'app-extension-scheme-information',
   templateUrl: './extension-scheme-information.component.html',

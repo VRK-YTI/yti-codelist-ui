@@ -94,7 +94,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   }
 
   back() {
-    this.router.navigate(['frontpage']);
+    this.router.navigate(this.extensionScheme.parentCodeScheme.route);
   }
 
   isEditing(): boolean {

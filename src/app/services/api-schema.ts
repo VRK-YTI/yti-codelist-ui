@@ -170,7 +170,7 @@ export interface ExtensionType {
   modified?: string;
   extensionScheme: ExtensionSchemeType;
   extension?: ExtensionType;
-  code: CodeType;
+  code: CodePlainType;
 }
 
 

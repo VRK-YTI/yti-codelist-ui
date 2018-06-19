@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-12">
       <app-editable-buttons [form]="form"
-                            [entity]="extension.code"></app-editable-buttons>
+                            [entity]="extension"></app-editable-buttons>
     </div>
   </div>
 
@@ -19,7 +19,7 @@
       <app-code-input id="extension_code_input"
                       [label]="'Extension' | translate"
                       [codeScheme]="extension.extensionScheme.parentCodeScheme"
-                      [formControlName]="'Code'"></app-code-input>
+                      [formControlName]="'code'"></app-code-input>
 
       <app-literal [label]="'Last modification' | translate"
                    [value]="extension.modifiedDisplayValue"></app-literal>

@@ -58,6 +58,7 @@ const vocabulary = 'vocabulary';
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
 const extensionsBasePath = `/${apiContext}/${api}/${version}/${extensions}`;
+const extensionsIntakeBasePath = `/${apiContext}/${api}/${version}/${extensions}`;
 const configurationIntakeBasePath = `/${intakeContext}/${api}/${configuration}`;
 const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
@@ -374,7 +375,7 @@ export class DataService {
   getExtension(extensionId: string): Observable<Extension> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code');
+    params.append('expand', 'extensionScheme,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code');
 
     return this.http.get(
       `${extensionsBasePath}/${extensionId}`,
@@ -385,7 +386,7 @@ export class DataService {
   getExtensions(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Extension[]> {
 
     const params = new URLSearchParams();
-    params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,extensionScheme');
+    params.append('expand', 'extensionScheme,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code');
 
     return this.http.get(
       `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/${extensionSchemeCodeValue}/${extensions}/`,
@@ -473,14 +474,13 @@ export class DataService {
       .map(res => res.json().results.map((data: ExtensionType) => new Extension(data)));
   }
 
-
   saveExtension(extensionToSave: ExtensionType): Observable<ApiResponseType> {
 
     console.log('Saving Extension in dataservice');
     console.log(extensionToSave);
 
     return this.http.post(
-      `${extensionsBasePath}/${extensionToSave.id}`, extensionToSave)
+      `${extensionsIntakeBasePath}/${extensionToSave.id}`, extensionToSave)
       .map(res => res.json() as ApiResponseType);
   }
 

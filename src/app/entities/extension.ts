@@ -6,7 +6,7 @@ import { Moment } from 'moment';
 import { ExtensionType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { ExtensionScheme } from './extension-scheme';
-import { Code } from './code';
+import { CodePlain } from './code-simple';
 
 export class Extension implements EditableEntity {
 
@@ -17,7 +17,7 @@ export class Extension implements EditableEntity {
   modified: Moment|null = null;
   extensionScheme: ExtensionScheme;
   extension?: Extension;
-  code: Code;
+  code: CodePlain;
 
   constructor(data: ExtensionType) {
     this.id = data.id;
@@ -32,7 +32,7 @@ export class Extension implements EditableEntity {
       this.extension = new Extension(data.extension);
     }
     if (data.code) {
-      this.code = new Code(data.code);
+      this.code = new CodePlain(data.code);
     }
   }
 
