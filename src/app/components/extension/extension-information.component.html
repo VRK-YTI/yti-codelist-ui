@@ -12,9 +12,9 @@
       <app-literal [label]="'Extension' | translate"
                    [value]="extension.code.getDisplayName(languageService)"></app-literal>
 
-      <app-localizable-input [id]="'extension_extensionvalue_input'"
-                             [label]="'Extension value' | translate"
-                             [formControlName]="'extensionValue'"></app-localizable-input>
+      <app-literal-input [id]="'extension_extensionvalue_input'"
+                         [label]="'Extension value' | translate"
+                         [formControlName]="'extensionValue'"></app-literal-input>
 
       <app-code-input id="extension_code_input"
                       [label]="'Extension' | translate"
