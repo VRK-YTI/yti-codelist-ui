@@ -53,7 +53,9 @@ export class Extension implements EditableEntity {
   }
 
   get location(): Location[] {
-    return [{
+    return [
+    ...this.extensionScheme.location,
+    {
       localizationKey: 'Extension',
       label: this.code.prefLabel,
       value: !hasLocalization(this.code.prefLabel) ? this.code.codeValue : '',
