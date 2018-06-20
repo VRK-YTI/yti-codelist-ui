@@ -16,7 +16,7 @@
                              [label]="'Code list name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
-      <dl *ngIf="showUnfinishedFeature && editing">
+      <dl *ngIf="editing">
         <dd>
           <div>
             <button id="open_terminology_modal_button"
@@ -29,12 +29,12 @@
         </dd>
       </dl>
 
-      <div *ngIf="showUnfinishedFeature && !editing && codeScheme.conceptUriInVocabularies">
+      <div *ngIf="!editing && codeScheme.conceptUriInVocabularies">
         <app-clipboard [label]="'Vocabularies URI' | translate"
                        [showAsLink]="true"
                        [value]="getConceptUri()"></app-clipboard>
       </div>
-      <div *ngIf="showUnfinishedFeature && editing && codeScheme.conceptUriInVocabularies">
+      <div *ngIf="editing && codeScheme.conceptUriInVocabularies">
         <dl>
           <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
           <dd>

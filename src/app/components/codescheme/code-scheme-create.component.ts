@@ -112,11 +112,11 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      if (this.env !== 'prod') {
+    if (!this.cloning) {
+      setTimeout(() => {
         this.openTerminologyModal();
-      }
-    }, 1000);
+      });
+    }
   }
 
   get showUnfinishedFeature() {

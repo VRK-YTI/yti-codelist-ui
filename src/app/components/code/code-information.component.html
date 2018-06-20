@@ -19,7 +19,7 @@
                              [label]="'Code name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
-      <dl *ngIf="showUnfinishedFeature && editing">
+      <dl *ngIf="editing">
         <dd>
           <div>
             <button id="open_terminology_modal_button"
@@ -32,11 +32,11 @@
         </dd>
       </dl>
 
-      <app-clipboard *ngIf="showUnfinishedFeature && !editing &&  code.conceptUriInVocabularies"
+      <app-clipboard *ngIf="!editing &&  code.conceptUriInVocabularies"
                      [label]="'Vocabularies URI' | translate"
                      [showAsLink]="true"
                      [value]="getConceptUri()"></app-clipboard>
-      <div *ngIf="showUnfinishedFeature && editing && code.conceptUriInVocabularies">
+      <div *ngIf="editing && code.conceptUriInVocabularies">
         <dl>
           <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
           <dd>

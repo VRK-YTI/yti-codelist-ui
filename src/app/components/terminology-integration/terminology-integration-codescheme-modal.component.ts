@@ -59,6 +59,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   search$ = new BehaviorSubject('');
   debouncedSearch$ = debounceSearch(this.search$);
   cancelText: string;
+  terminologyIntegrationModalPageTitle: string;
+  terminologyIntegrationModalInstructionText: string;
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
@@ -104,10 +106,16 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
     if (this.targetEntityKind === 'code' && !this.updatingExistingEntity) {
       this.cancelText = 'cancelTextForCodeCreation';
+      this.terminologyIntegrationModalPageTitle = 'terminologyIntegrationModalPageTitleWhenCreatingCode';
+      this.terminologyIntegrationModalInstructionText = 'terminologyIntegrationModalInstructionTextWhenCreatingCode';
     } else if (this.targetEntityKind === 'codescheme' && !this.updatingExistingEntity) {
       this.cancelText = 'cancelTextForCodeSchemeCreation';
+      this.terminologyIntegrationModalPageTitle = 'terminologyIntegrationModalPageTitleWhenCreatingCodeScheme';
+      this.terminologyIntegrationModalInstructionText = 'terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme';
     } else {
       this.cancelText = 'Cancel';
+      this.terminologyIntegrationModalPageTitle = 'Get concept from Controlled Vocabularies';
+      this.terminologyIntegrationModalInstructionText = 'Get concept from Controlled Vocabularies instruction text';
     }
   }
 

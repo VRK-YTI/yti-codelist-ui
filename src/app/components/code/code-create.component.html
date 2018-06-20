@@ -34,7 +34,7 @@
                                [label]="'Code name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <dl *ngIf="showUnfinishedFeature">
+        <dl>
           <dd>
             <div>
               <button id="open_terminology_modal_button"
@@ -44,7 +44,7 @@
             </div>
           </dd>
         </dl>
-        <div *ngIf="showUnfinishedFeature && codeForm.controls['conceptUriInVocabularies'].value.toString().length > 0">
+        <div *ngIf="codeForm.controls['conceptUriInVocabularies'].value.toString().length > 0">
           <dl>
             <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
             <dd>

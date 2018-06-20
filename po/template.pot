@@ -7,6 +7,9 @@ msgstr ""
 msgid "value: "
 msgstr ""
 
+msgid "Create extension scheme"
+msgstr ""
+
 msgid "Add classification"
 msgstr ""
 
@@ -228,9 +231,6 @@ msgstr ""
 msgid "copyTheCodescheme"
 msgstr ""
 
-msgid "Create extension scheme"
-msgstr ""
-
 msgid "Export"
 msgstr ""
 
@@ -357,7 +357,10 @@ msgstr ""
 msgid "Search for concept"
 msgstr ""
 
-msgid "Get concept from Controlled Vocabularies instruction text"
+msgid "{{terminologyIntegrationModalPageTitle}}"
+msgstr ""
+
+msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
 msgid "No search results"
@@ -384,7 +387,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
 msgid "Front page"
@@ -479,7 +482,7 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
@@ -488,7 +491,7 @@ msgstr ""
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
@@ -579,6 +582,21 @@ msgid "cancelTextForCodeCreation"
 msgstr ""
 
 msgid "cancelTextForCodeSchemeCreation"
+msgstr ""
+
+msgid "terminologyIntegrationModalPageTitleWhenCreatingCode"
+msgstr ""
+
+msgid "terminologyIntegrationModalPageTitleWhenCreatingCodeScheme"
+msgstr ""
+
+msgid "Get concept from Controlled Vocabularies instruction text"
+msgstr ""
+
+msgid "terminologyIntegrationModalInstructionTextWhenCreatingCode"
+msgstr ""
+
+msgid "terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme"
 msgstr ""
 
 msgid "invalidDate"
