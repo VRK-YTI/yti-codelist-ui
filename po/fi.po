@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-19 12:34+0300\n"
+"PO-Revision-Date: 2018-06-20 14:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -243,9 +243,6 @@ msgstr "Vakiokoodi"
 msgid "copyTheCodescheme"
 msgstr "Kopioi koodisto"
 
-msgid "Create extension scheme"
-msgstr "Luo laajennusjärjestelmä"
-
 msgid "Export"
 msgstr "Lataa"
 
@@ -374,10 +371,9 @@ msgstr "Hae käsitettä"
 
 msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""
-"Hae käsitettä Sanastoista ja tuo se Koodistoon klikkaamalla hakutulosta. "
-"Käsitteen nimi ja määritelmä kopioidaan Koodistot-palveluun, mikäli kyseiset "
-"tiedot ovat siellä tyhjiä. Käsitteen URI kopioidaan aina, myös mahdollisen "
-"aiemman URIn tilalle."
+
+msgid "{{terminologyIntegrationModalInstructionText}}"
+msgstr ""
 
 msgid "No search results"
 msgstr "Ei hakutuloksia"
@@ -403,8 +399,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
-msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Koodisto on jo olemassa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -501,8 +497,8 @@ msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr "Aineistosta puuttuu sarake otsikolla STATUS."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
@@ -513,8 +509,8 @@ msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Koodisto on jo olemassa."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
@@ -600,6 +596,11 @@ msgstr "Laajennusjärjestelmään liitettyä koodistoa ei ole olemassa."
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "Laajennusjärjestelmään liitettyä tyypitystä ei ole olemassa."
 
+msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
+msgstr ""
+"Laajennusjärjestelmään on liitetty sama koodi useammin kuin kerran, käytä "
+"UUID:tä viitteenä."
+
 msgid "cancelTextForCodeCreation"
 msgstr "Luo koodi ilman käsitettä"
 
@@ -650,51 +651,3 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
-
-#, fuzzy
-#~| msgid "Cancel"
-#~ msgid "{{cancelText}}"
-#~ msgstr "Peruuta"
-
-#~ msgid "Create without concept integration"
-#~ msgstr "Luo ilman käsiteintegraatiota"
-
-#, fuzzy
-#~| msgid "copyTheCodescheme"
-#~ msgid "copyTheCodeScheme"
-#~ msgstr "Kopioi koodisto"
-
-#~ msgid "Add code"
-#~ msgstr "Lisää koodi"
-
-#~ msgid "1 code list"
-#~ msgstr "<b>1</b> koodistoa"
-
-#~ msgid "<b>1</b> code list"
-#~ msgstr "<b>1</b> koodisto"
-
-#~ msgid "Search"
-#~ msgstr "Hae"
-
-#, fuzzy
-#~| msgid "ERR_MSG_INVALID_CODEVALUE"
-#~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
-#~ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
-
-#~ msgid "codeValue.errors.pattern"
-#~ msgstr "Virhe!"
-
-#~ msgid "Invalid date"
-#~ msgstr "Virheellinen päivämäärä"
-
-#~ msgid "No classification"
-#~ msgstr "Ei luokitusta"
-
-#~ msgid "Create"
-#~ msgstr "Luo"
-
-#~ msgid "Group management service"
-#~ msgstr "Ryhmienhallintapalvelu"
-
-#~ msgid "code schemes"
-#~ msgstr "koodistoa"

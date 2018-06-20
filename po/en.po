@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-19 12:30+0300\n"
+"PO-Revision-Date: 2018-06-20 14:54+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -12,6 +12,9 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "value: "
+msgstr ""
 
 msgid "Add classification"
 msgstr ""
@@ -233,9 +236,6 @@ msgstr ""
 msgid "copyTheCodescheme"
 msgstr "Copy the code list"
 
-msgid "Create extension scheme"
-msgstr ""
-
 msgid "Export"
 msgstr ""
 
@@ -317,8 +317,6 @@ msgstr ""
 msgid "Import extensionscheme"
 msgstr ""
 
-#, fuzzy
-#| msgid "copyTheCodescheme"
 msgid "Codescheme"
 msgstr "Copy the code list"
 
@@ -367,8 +365,8 @@ msgstr ""
 msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""
 
-msgid "{{terminologyIntegrationModalPageTitleWhenCreatingCode}}"
-msgstr "Create code name by importing it from Controlled Vocabularies-tool"
+msgid "{{terminologyIntegrationModalInstructionText}}"
+msgstr ""
 
 msgid "No search results"
 msgstr "No search results"
@@ -394,8 +392,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Code {{ identifier }} already exists."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Code list already exists."
 
 msgid "Front page"
 msgstr ""
@@ -502,11 +500,11 @@ msgstr "Erroneous start date on row {{ identifier }}."
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr "Erroneous end date on row {{ identifier }}."
 
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgstr "Code {{ identifier }} already exists."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Code list already exists."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "The data is missing a column with the header CLASSIFICATION."
@@ -593,6 +591,11 @@ msgstr "Code list linked to ExtensionScheme not found."
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to ExtensionScheme not found."
 
+msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
+msgstr ""
+"Extensions have duplicate codes defined, please use UUID when referencing to "
+"them."
+
 msgid "cancelTextForCodeCreation"
 msgstr "Create code without concept"
 
@@ -647,9 +650,3 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
-
-#~ msgid "copyTheCodeScheme"
-#~ msgstr "Copy the code list"
-
-#~ msgid "ERR_MSG_INVALID_CODESCHEME_CODEVALUE"
-#~ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"

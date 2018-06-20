@@ -7,9 +7,6 @@ msgstr ""
 msgid "value: "
 msgstr ""
 
-msgid "Create extension scheme"
-msgstr ""
-
 msgid "Add classification"
 msgstr ""
 
@@ -387,7 +384,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
 msgid "Front page"
@@ -491,10 +488,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
@@ -576,6 +573,9 @@ msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
 
 msgid "cancelTextForCodeCreation"
