@@ -7,6 +7,7 @@ import { ExtensionType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { ExtensionScheme } from './extension-scheme';
 import { CodePlain } from './code-simple';
+import { ExtensionSimple } from './extension-simple';
 
 export class Extension implements EditableEntity {
 
@@ -16,7 +17,7 @@ export class Extension implements EditableEntity {
   order?: string;
   modified: Moment|null = null;
   extensionScheme: ExtensionScheme;
-  extension?: Extension;
+  extension?: ExtensionSimple;
   code: CodePlain;
 
   constructor(data: ExtensionType) {
@@ -29,7 +30,7 @@ export class Extension implements EditableEntity {
     }
     this.extensionScheme = new ExtensionScheme(data.extensionScheme);
     if (data.extension) {
-      this.extension = new Extension(data.extension);
+      this.extension = new ExtensionSimple(data.extension);
     }
     if (data.code) {
       this.code = new CodePlain(data.code);

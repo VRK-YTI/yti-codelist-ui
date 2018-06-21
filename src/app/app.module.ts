@@ -94,6 +94,11 @@ import {
 } from './components/extensionscheme/extension-scheme-import-modal.component';
 import { ExtensionListitemComponent } from './components/extension/extension-listitem.component';
 import { ExtensionComponent } from './components/extension/extension.component';
+import {
+  SearchLinkedExtensionModalComponent,
+  SearchLinkedExtensionModalService
+} from './components/form/search-linked-extension-modal.component';
+import { ExtensionInputComponent } from './components/form/extension-input-component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -196,7 +201,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateRangeInputComponent,
     ClassificationsInputComponent,
     CodeInputComponent,
+    ExtensionInputComponent,
     SearchLinkedCodeModalComponent,
+    SearchLinkedExtensionModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent,
     TerminologyIntegrationCodeschemeModalComponent
@@ -211,6 +218,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkCreateModalComponent,
     LinkListModalComponent,
     SearchLinkedCodeModalComponent,
+    SearchLinkedExtensionModalComponent,
     TerminologyIntegrationCodeschemeModalComponent
   ],
   imports: [
@@ -244,6 +252,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkListModalService,
     ModalService,
     SearchLinkedCodeModalService,
+    SearchLinkedExtensionModalService,
     CodeListErrorModalService,
     TerminologyIntegrationModalService,
     TerminologyIntegrationCodeschemeModalComponent,

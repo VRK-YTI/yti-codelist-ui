@@ -113,7 +113,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
     this.confirmationModalService.openRemoveExtensionScheme()
       .then(() => {
         this.dataService.deleteExtensionScheme(this.extensionScheme).subscribe(res => {
-          this.router.navigate(['frontpage']);
+          this.router.navigate(this.extensionScheme.parentCodeScheme.route);
         }, error => {
           this.errorModalService.openSubmitError(error);
         });

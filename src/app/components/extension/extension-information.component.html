@@ -17,9 +17,15 @@
                          [formControlName]="'extensionValue'"></app-literal-input>
 
       <app-code-input id="extension_code_input"
-                      [label]="'Extension' | translate"
+                      [label]="'Code' | translate"
                       [codeScheme]="extension.extensionScheme.parentCodeScheme"
                       [formControlName]="'code'"></app-code-input>
+
+      <app-extension-input id="extension_extension_input"
+                           [label]="'Extension' | translate"
+                           [extensionScheme]="extension.extensionScheme"
+                           [currentExtension]="extension"
+                           [formControlName]="'extension'"></app-extension-input>
 
       <app-literal [label]="'Last modification' | translate"
                    [value]="extension.modifiedDisplayValue"></app-literal>

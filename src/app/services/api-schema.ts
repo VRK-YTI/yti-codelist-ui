@@ -1,7 +1,5 @@
 import { Localizable } from 'yti-common-ui/types/localization';
 import { Status } from 'yti-common-ui/entities/status';
-import { formatDateTime } from '../utils/date';
-import { PropertyType } from '../entities/property-type';
 
 export interface ApiResponseType {
 
@@ -169,8 +167,16 @@ export interface ExtensionType {
   order?: string;
   modified?: string;
   extensionScheme: ExtensionSchemeType;
-  extension?: ExtensionType;
+  extension?: ExtensionSimpleType;
   code: CodePlainType;
 }
 
+export interface ExtensionSimpleType {
 
+  id: string;
+  url: string;
+  extensionValue: string;
+  order?: string;
+  modified?: string;
+  code: CodePlainType;
+}
