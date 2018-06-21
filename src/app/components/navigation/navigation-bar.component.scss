@@ -16,9 +16,13 @@
   }
 }
 
+.navbar-brand {
+  max-height: 80px;
+}
+
 .logocontainer {
-  height: 125px;
-  max-height: 125px;
+  padding-top: 15px;
+  height: 80px;
   vertical-align: middle;
   display: inline-block;
   float: none;
@@ -34,10 +38,8 @@
 
 .apptitle {
   height: 55px;
-  max-height: 55px;
   text-align: left;
   vertical-align: middle;
   display: inline-block;
   float: none;
-  //padding-bottom: 30px;
 }
