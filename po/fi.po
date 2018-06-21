@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-20 14:57+0300\n"
+"PO-Revision-Date: 2018-06-21 17:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -57,6 +57,15 @@ msgstr "Peruuta"
 
 msgid "Edit"
 msgstr "Muokkaa"
+
+msgid "Select extension"
+msgstr "Valitse laajennus"
+
+msgid "Choose extension"
+msgstr "Valitse laajennus"
+
+msgid "Search extension"
+msgstr "Etsi laajennusta"
 
 msgid "Add link"
 msgstr "Lisää linkki"
@@ -350,6 +359,9 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "No organization"
 msgstr "Ei organisaatiota"
+
+msgid "Reference Data"
+msgstr "Koodistot"
 
 msgid "Impersonate user"
 msgstr "Esiinny käyttäjänä"
