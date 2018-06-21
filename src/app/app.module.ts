@@ -99,6 +99,7 @@ import {
   SearchLinkedExtensionModalService
 } from './components/form/search-linked-extension-modal.component';
 import { ExtensionInputComponent } from './components/form/extension-input-component';
+import { LogoComponent } from './components/navigation/logo.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -206,7 +207,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedExtensionModalComponent,
     CodeRegistryInputComponent,
     HierarchyCodeComponent,
-    TerminologyIntegrationCodeschemeModalComponent
+    TerminologyIntegrationCodeschemeModalComponent,
+    LogoComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
