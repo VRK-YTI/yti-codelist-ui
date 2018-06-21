@@ -9,6 +9,12 @@
 
   <div class="row">
     <div class="col-lg-8 col-md-10">
+      <app-literal [label]="'Code list' | translate"
+                   [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"></app-literal>
+
+      <app-literal [label]="'Extensionscheme' | translate"
+                   [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
+
       <app-literal [label]="'Extension' | translate"
                    [value]="extension.code.getDisplayName(languageService)"></app-literal>
 

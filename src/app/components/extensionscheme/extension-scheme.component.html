@@ -36,10 +36,10 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Coderegistry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.prefLabel | translateValue}}</span>
+        <span translate>Coderegistry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span translate>Codescheme</span><span>: {{extensionScheme.parentCodeScheme.prefLabel | translateValue}}</span>
+        <span translate>Codescheme</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
     </div>
   </div>

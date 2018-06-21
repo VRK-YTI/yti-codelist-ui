@@ -9,16 +9,16 @@
 
   <div class="row">
     <div class="col-lg-8 col-md-10">
+      <app-literal *ngIf="extensionScheme.parentCodeScheme"
+                   [label]="'Codescheme' | translate"
+                   [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"></app-literal>
+
       <app-literal [label]="'Code value' | translate"
                    [value]="extensionScheme.codeValue"></app-literal>
 
       <app-localizable-input [id]="'extensionscheme_name_input'"
                              [label]="'Extensionscheme name' | translate"
                              [formControlName]="'prefLabel'"></app-localizable-input>
-
-      <app-literal *ngIf="extensionScheme.parentCodeScheme"
-                   [label]="'Codescheme' | translate"
-                   [value]="extensionScheme.parentCodeScheme.prefLabel | translateValue"></app-literal>
 
       <app-property-type-select id="propertytype_select"
                                 [label]="'Extensionscheme type' | translate"
