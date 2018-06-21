@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -7,15 +7,19 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Extension } from '../../entities/extension';
+import { ExtensionScheme } from '../../entities/extension-scheme';
+import { LocationService } from '../../services/location.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-extension-information',
   templateUrl: './extension-information.component.html',
   styleUrls: ['./extension-information.component.scss']
 })
-export class ExtensionInformationComponent implements OnChanges, OnDestroy {
+export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() extension: Extension;
+  extensionScheme: ExtensionScheme;
 
   cancelSubscription: Subscription;
 
@@ -26,13 +30,37 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy {
     status: new FormControl()
   });
 
-  constructor(private dataService: DataService,
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private locationService: LocationService,
+              private dataService: DataService,
               private userService: UserService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
               public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+  }
+
+  ngOnInit() {
+
+    const registryCodeValue = this.route.snapshot.params.registryCode;
+    const schemeCodeValue = this.route.snapshot.params.schemeCode;
+    const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
+    const extensionId = this.route.snapshot.params.extensionId;
+
+    if (!extensionId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+      throw new Error(`Illegal route, extensionId: '${extensionId}', registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
+    }
+
+    this.dataService.getExtension(extensionId).subscribe(extension => {
+      this.extension = extension;
+      this.locationService.atExtensionPage(extension);
+    });
+
+    this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
+      this.extensionScheme = extensionScheme;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -35,12 +35,6 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="extension.extensionValue">
-    <div class="col-12">
-      <p class="description text-content-wrap">{{extension.extensionValue}}</p>
-    </div>
-  </div>
-
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
     <ngb-tab id="extension_info_tab">
       <ng-template ngbTabTitle>
