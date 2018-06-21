@@ -453,7 +453,7 @@ export class DataService {
   deleteExtension(extension: Extension): Observable<boolean> {
 
     return this.http.delete(
-      `${extensionsBasePath}/${extension.id}`)
+      `${extensionsIntakeBasePath}/${extension.id}`)
       .map(res => {
         return res.status === 200;
       }).catch(error => {
