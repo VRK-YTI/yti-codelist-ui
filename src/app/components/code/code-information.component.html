@@ -32,7 +32,7 @@
         </dd>
       </dl>
 
-      <app-clipboard *ngIf="!editing && code.conceptUriInVocabularies !== null"
+      <app-clipboard *ngIf="!editing && code.conceptUriInVocabularies != null"
                      [label]="'Vocabularies URI' | translate"
                      [showAsLink]="true"
                      [value]="getConceptUri()"></app-clipboard>
