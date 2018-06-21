@@ -18,9 +18,6 @@ import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import {Concept} from '../../entities/concept';
-import {hasLocalization} from 'yti-common-ui/utils/localization';
-import { CodePlain } from '../../entities/code-simple';
-
 
 @Component({
   selector: 'app-code-scheme-information',
