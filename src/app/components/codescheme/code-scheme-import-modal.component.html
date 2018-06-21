@@ -16,6 +16,7 @@
         <app-coderegistry-input id="codelist_registry_input"
                                 [label]="'Registry for the code list' | translate"
                                 (loaded)="codeRegistriesLoaded = true"
+                                required
                                 [(ngModel)]="codeRegistry"></app-coderegistry-input>
       </div>
     </div>
