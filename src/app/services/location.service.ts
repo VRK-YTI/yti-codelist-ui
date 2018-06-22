@@ -14,9 +14,7 @@ export class LocationService {
   location = new Subject<Location[]>();
 
   private changeLocation(location: Location[]): void {
-    if (location.length > 0) {
-      location.unshift(frontPage);
-    }
+    location.unshift(frontPage);
     this.location.next(location);
   }
 
@@ -35,16 +33,16 @@ export class LocationService {
     this.changeLocation(codeScheme.location);
   }
 
+  atCodePage(code: Code): void {
+    this.changeLocation(code.location);
+  }
+
   atExtensionSchemePage(extensionScheme: ExtensionScheme): void {
     this.changeLocation(extensionScheme.location);
   }
 
   atExtensionPage(extension: Extension): void {
     this.changeLocation(extension.location);
-  }
-
-  atCodePage(code: Code): void {
-    this.changeLocation(code.location);
   }
 
   atInformationAboutService(): void {
