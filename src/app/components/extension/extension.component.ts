@@ -12,6 +12,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { Extension } from '../../entities/extension';
 import { ExtensionScheme } from '../../entities/extension-scheme';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-extension',
@@ -34,7 +35,8 @@ export class ExtensionComponent implements OnInit, EditingComponent {
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
               private errorModalService: CodeListErrorModalService,
-              private authorizationManager: AuthorizationManager) {
+              private authorizationManager: AuthorizationManager,
+              private languageService: LanguageService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
