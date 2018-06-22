@@ -81,7 +81,7 @@ import { ExtensionSchemeCreateComponent } from './components/extensionscheme/ext
 import { ExtensionSchemeComponent } from './components/extensionscheme/extension-scheme.component';
 import { ExtensionSchemeInformationComponent } from './components/extensionscheme/extension-scheme-information.component';
 import { ExtensionSchemeExtensionsComponent } from './components/extensionscheme/extension-scheme-extensions.component';
-import { ExtensionInformationComponent } from './components/extension/extension-information.compotent';
+import { ExtensionInformationComponent } from './components/extension/extension-information.component';
 import { ExtensionCreateComponent } from './components/extension/extension-create.component';
 import { ExtensionSchemeListitemComponent } from './components/extensionscheme/extension-scheme-listitem.component';
 import {

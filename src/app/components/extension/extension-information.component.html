@@ -1,41 +1,47 @@
-<form [formGroup]="extensionForm" #form="ngForm">
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
 
-  <div class="row">
-    <div class="col-12">
-      <app-editable-buttons [form]="form"
-                            [entity]="extension"></app-editable-buttons>
+<div *ngIf="!loading">
+  <form [formGroup]="extensionForm" #form="ngForm">
+
+    <div class="row">
+      <div class="col-12">
+        <app-editable-buttons [form]="form"
+                              [entity]="extension"></app-editable-buttons>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-lg-8 col-md-10">
-      <app-literal [label]="'Code list' | translate"
-                   [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"></app-literal>
+    <div class="row">
+      <div class="col-lg-8 col-md-10">
+        <app-literal [label]="'Code list' | translate"
+                     [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"></app-literal>
 
-      <app-literal [label]="'Extensionscheme' | translate"
-                   [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
+        <app-literal [label]="'Extensionscheme' | translate"
+                     [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
 
-      <app-literal [label]="'Extension' | translate"
-                   [value]="extension.code.getDisplayName(languageService)"></app-literal>
+        <app-literal [label]="'Extension' | translate"
+                     [value]="extension.code.getDisplayName(languageService)"></app-literal>
 
-      <app-literal-input [id]="'extension_extensionvalue_input'"
-                         [label]="'Extension value' | translate"
-                         [formControlName]="'extensionValue'"></app-literal-input>
+        <app-literal-input [id]="'extension_extensionvalue_input'"
+                           [label]="'Extension value' | translate"
+                           [formControlName]="'extensionValue'"></app-literal-input>
 
-      <app-code-input id="extension_code_input"
-                      [label]="'Code' | translate"
-                      [codeScheme]="extension.extensionScheme.parentCodeScheme"
-                      [formControlName]="'code'"></app-code-input>
+        <app-code-input id="extension_code_input"
+                        [label]="'Code' | translate"
+                        [codeScheme]="extension.extensionScheme.parentCodeScheme"
+                        [formControlName]="'code'"></app-code-input>
 
-      <app-extension-input id="extension_extension_input"
-                           [label]="'Extension' | translate"
-                           [extensionScheme]="extension.extensionScheme"
-                           [currentExtension]="extension"
-                           [formControlName]="'extension'"></app-extension-input>
+        <app-extension-input id="extension_extension_input"
+                             [label]="'Extension' | translate"
+                             [extensionScheme]="extension.extensionScheme"
+                             [currentExtension]="extension"
+                             [formControlName]="'extension'"></app-extension-input>
 
-      <app-literal [label]="'Last modification' | translate"
-                   [value]="extension.modifiedDisplayValue"></app-literal>
+        <app-literal [label]="'Last modification' | translate"
+                     [value]="extension.modifiedDisplayValue"></app-literal>
+      </div>
     </div>
-  </div>
 
-</form>
+  </form>
+</div>

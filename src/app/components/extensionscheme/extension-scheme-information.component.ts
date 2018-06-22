@@ -21,8 +21,6 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
 
   @Input() extensionScheme: ExtensionScheme;
 
-  env: string;
-
   extensionSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
     propertyType: new FormControl(null),
@@ -93,5 +91,9 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
       return false;
     }
     return this.extensionScheme.restricted;
+  }
+
+  get loading(): boolean {
+    return this.extensionScheme == null;
   }
 }

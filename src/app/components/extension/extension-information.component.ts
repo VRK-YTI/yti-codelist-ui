@@ -93,4 +93,8 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
   }
+
+  get loading(): boolean {
+    return this.extensionScheme == null || this.extension == null;
+  }
 }
