@@ -24,7 +24,7 @@ import {Concept} from '../../entities/concept';
   templateUrl: './code-scheme-information.component.html',
   styleUrls: ['./code-scheme-information.component.scss']
 })
-export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
+export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeScheme: CodeScheme;
 
@@ -67,9 +67,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     dataService.getServiceConfiguration().subscribe(configuration => {
       this.env = configuration.env;
     });
-  }
-
-  ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
