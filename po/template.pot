@@ -294,13 +294,13 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
+msgid "Extension"
+msgstr ""
+
 msgid "Create extension"
 msgstr ""
 
 msgid "Import extensions"
-msgstr ""
-
-msgid "Extension"
 msgstr ""
 
 msgid "Extensionscheme value"
@@ -313,9 +313,6 @@ msgid "Extensionscheme type"
 msgstr ""
 
 msgid "This extensionscheme does not have any extensions yet."
-msgstr ""
-
-msgid "Import extensionscheme"
 msgstr ""
 
 msgid "Codescheme"

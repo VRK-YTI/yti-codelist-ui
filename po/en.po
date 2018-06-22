@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-21 17:16+0300\n"
+"PO-Revision-Date: 2018-06-22 13:27+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -302,13 +302,13 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
+msgid "Extension"
+msgstr ""
+
 msgid "Create extension"
 msgstr ""
 
 msgid "Import extensions"
-msgstr ""
-
-msgid "Extension"
 msgstr ""
 
 msgid "Extensionscheme value"
@@ -321,9 +321,6 @@ msgid "Extensionscheme type"
 msgstr ""
 
 msgid "This extensionscheme does not have any extensions yet."
-msgstr ""
-
-msgid "Import extensionscheme"
 msgstr ""
 
 msgid "Codescheme"
