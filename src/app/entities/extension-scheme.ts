@@ -29,6 +29,9 @@ export class ExtensionScheme implements EditableEntity {
     this.codeValue = data.codeValue;
     this.url = data.url;
     this.prefLabel = data.prefLabel || {};
+    if (data.status) {
+      this.status = data.status;
+    }
     this.propertyType = new PropertyType(data.propertyType);
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
