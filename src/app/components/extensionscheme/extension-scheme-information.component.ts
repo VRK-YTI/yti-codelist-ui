@@ -43,10 +43,6 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
               public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -55,7 +51,7 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
       const schemeCodeValue = this.route.snapshot.params.schemeCode;
       const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
 
-      if (!registryCodeValue || !schemeCodeValue || !schemeCodeValue) {
+      if (!registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
         throw new Error(
           `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}`);
       }
@@ -82,10 +78,6 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
 
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
-  }
-
-  get showUnfinishedFeature() {
-    return this.env === 'dev';
   }
 
   get editing() {

@@ -26,7 +26,10 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Coderegistry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.prefLabel | translateValue}}</span>
+        <span translate>Coderegistry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+      </div>
+      <div class="metaitem">
+        <span translate>Code list</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem" *ngIf="extensionScheme.parentCodeScheme.codeRegistry.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
