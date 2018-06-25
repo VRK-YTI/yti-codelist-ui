@@ -65,7 +65,7 @@ export class ExtensionScheme implements EditableEntity {
     return [
       ...this.parentCodeScheme.location,
       {
-      localizationKey: 'Extensionscheme',
+      localizationKey: 'Extension scheme',
       label: this.prefLabel,
       value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
       route: this.route

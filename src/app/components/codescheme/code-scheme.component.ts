@@ -14,6 +14,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
+import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
 
 @Component({
   selector: 'app-code-scheme',
@@ -38,6 +39,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
+              private extensionSchemesImportModalService: ExtensionSchemesImportModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager) {
 
@@ -155,8 +157,16 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).do(() => this.ngOnInit());
   }
 
+  importExtensionSchemes() {
+    this.extensionSchemesImportModalService.open(this.codeScheme).then(success => {
+      if (success) {
+        this.refreshExtensionSchemes();
+      }
+    }, ignoreModalClose);
+  }
+
   createExtensionScheme() {
-    console.log('Create ExtensionScheme clicked!');
+    console.log('Create extensionScheme clicked!');
     this.router.navigate(
       ['createextensionscheme',
         {

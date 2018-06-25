@@ -8,12 +8,13 @@
               type="button"
               class="btn btn-action ml-3 pull-right"
               (click)="importExtensionSchemes()"
-              translate>Import extensionschemes</button>
+              translate>Import extension schemes</button>
+
       <button id="create_extensionscheme_button"
               type="button"
               class="btn btn-action pull-right"
               (click)="createExtensionScheme()"
-              translate>Create extensionscheme</button>
+              translate>Create extension scheme</button>
     </div>
   </div>
 
@@ -28,6 +29,6 @@
   </div>
 
   <div class="emptyExtensionSchemes" *ngIf="extensionSchemes.length === 0">
-    <span translate>This code list does not have any extensionschemes yet.</span>
+    <span translate>This code list does not have any extension schemes yet.</span>
   </div>
 </div>

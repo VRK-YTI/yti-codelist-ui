@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-25 11:34+0300\n"
+"PO-Revision-Date: 2018-06-25 13:15+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -12,6 +12,9 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Reference Data"
+msgstr "Koodistot"
 
 msgid "value"
 msgstr "arvo"
@@ -199,13 +202,13 @@ msgstr "Sitovuustaso"
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Import extensionschemes"
+msgid "Import extension schemes"
 msgstr "Tuo laajennusjärjestelmiä"
 
-msgid "Create extensionscheme"
+msgid "Create extension scheme"
 msgstr "Luo laajennusjärjestelmä"
 
-msgid "This code list does not have any extensionschemes yet."
+msgid "This code list does not have any extension schemes yet."
 msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
 
 msgid "Add code list"
@@ -261,13 +264,13 @@ msgstr "Lataa Excel"
 msgid "Export CSV"
 msgstr "Lataa CSV"
 
-msgid "Extensionschemes"
+msgid "Extension schemes"
 msgstr "Laajennusjärjestelmät"
 
 msgid "CODES"
 msgstr "KOODIT"
 
-msgid "EXTENSIONSCHEMES"
+msgid "EXTENSION SCHEMES"
 msgstr "LAAJENNUSJÄRJESTELMÄT"
 
 msgid "Link title"
@@ -303,7 +306,7 @@ msgstr "Näytä linkki"
 msgid "Ok"
 msgstr "Ok"
 
-msgid "Extensionscheme"
+msgid "Extension scheme"
 msgstr "Laajennusjärjestelmä"
 
 msgid "Extension value"
@@ -329,6 +332,9 @@ msgstr "Laajennusjärjestelmän nimi"
 
 msgid "Extensionscheme type"
 msgstr "Laajennusjärjestelmän tyyppi"
+
+msgid "Create extensionscheme"
+msgstr "Luo laajennusjärjestelmä"
 
 msgid "This extensionscheme does not have any extensions yet."
 msgstr "Tällä laajennusjärjestelmällä ei ole yhtään laajennusta."
@@ -359,9 +365,6 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "No organization"
 msgstr "Ei organisaatiota"
-
-msgid "Reference Data"
-msgstr "Koodistot"
 
 msgid "Impersonate user"
 msgstr "Esiinny käyttäjänä"
@@ -463,11 +466,14 @@ msgstr "POISTETAANKO LINKKI?"
 msgid "REMOVE CODE?"
 msgstr "POISTETAANKO KOODI?"
 
-msgid "REMOVE CODESCHEME?"
+msgid "REMOVE CODE LIST?"
 msgstr "POISTETAANKO KOODISTO?"
 
-msgid "REMOVE EXTENSIONSCHEME?"
+msgid "REMOVE EXTENSION SCHEME?"
 msgstr "POISTETAANKO LAAJENNUSJÄRJESTELMÄ?"
+
+msgid "REMOVE EXTENSION?"
+msgstr "POISTETAANKO LAAJENNUS?"
 
 msgid "ADMIN"
 msgstr "Ylläpitäjä"
@@ -669,6 +675,9 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
+
+#~ msgid "REMOVE CODESCHEME?"
+#~ msgstr "POISTETAANKO KOODISTO?"
 
 #~ msgid "copyTheCodescheme"
 #~ msgstr "Kopioi koodisto"

@@ -20,11 +20,11 @@ export class CodeListConfirmationModalService {
   }
 
   openRemoveCodeScheme() {
-    return this.confirmationModalService.open('REMOVE CODESCHEME?', '');
+    return this.confirmationModalService.open('REMOVE CODES LIST?', '');
   }
 
   openRemoveExtensionScheme() {
-    return this.confirmationModalService.open('REMOVE EXTENSIONSCHEME?', '');
+    return this.confirmationModalService.open('REMOVE EXTENSION SCHEME?', '');
   }
 
   openOverWriteExistingValuesFromVocabularies() {

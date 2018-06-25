@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-25 11:34+0300\n"
+"PO-Revision-Date: 2018-06-25 13:15+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -12,6 +12,9 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Reference Data"
+msgstr ""
 
 msgid "value"
 msgstr ""
@@ -199,13 +202,13 @@ msgstr ""
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Import extensionschemes"
+msgid "Import extension schemes"
 msgstr ""
 
-msgid "Create extensionscheme"
+msgid "Create extension scheme"
 msgstr ""
 
-msgid "This code list does not have any extensionschemes yet."
+msgid "This code list does not have any extension schemes yet."
 msgstr ""
 
 msgid "Add code list"
@@ -254,13 +257,13 @@ msgstr ""
 msgid "Export CSV"
 msgstr ""
 
-msgid "Extensionschemes"
+msgid "Extension schemes"
 msgstr ""
 
 msgid "CODES"
 msgstr ""
 
-msgid "EXTENSIONSCHEMES"
+msgid "EXTENSION SCHEMES"
 msgstr ""
 
 msgid "Link title"
@@ -296,7 +299,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-msgid "Extensionscheme"
+msgid "Extension scheme"
 msgstr ""
 
 msgid "Extension value"
@@ -321,6 +324,9 @@ msgid "Extensionscheme name"
 msgstr ""
 
 msgid "Extensionscheme type"
+msgstr ""
+
+msgid "Create extensionscheme"
 msgstr ""
 
 msgid "This extensionscheme does not have any extensions yet."
@@ -351,9 +357,6 @@ msgid "Search did not find any code lists."
 msgstr ""
 
 msgid "No organization"
-msgstr ""
-
-msgid "Reference Data"
 msgstr ""
 
 msgid "Impersonate user"
@@ -454,10 +457,13 @@ msgstr ""
 msgid "REMOVE CODE?"
 msgstr ""
 
-msgid "REMOVE CODESCHEME?"
+msgid "REMOVE CODE LIST?"
 msgstr ""
 
-msgid "REMOVE EXTENSIONSCHEME?"
+msgid "REMOVE EXTENSION SCHEME?"
+msgstr ""
+
+msgid "REMOVE EXTENSION?"
 msgstr ""
 
 msgid "ADMIN"

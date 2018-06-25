@@ -24,23 +24,11 @@ export class CodeSchemeExtensionSchemesComponent {
   }
 
   importExtensionSchemes() {
-    this.extensionSchemesImportModalService.open(this.codeScheme).then(success => {
-      if (success) {
-        this.codeSchemeComponent.refreshExtensionSchemes();
-      }
-    }, ignoreModalClose);
+    this.codeSchemeComponent.importExtensionSchemes();
   }
 
   createExtensionScheme() {
-    console.log('Create extensionScheme clicked!');
-    this.router.navigate(
-      ['createextensionscheme',
-        {
-          registryCode: this.codeScheme.codeRegistry.codeValue,
-          schemeCode: this.codeScheme.codeValue
-        }
-      ]
-    );
+    this.codeSchemeComponent.createExtensionScheme();
   }
 
   canAddExtensionScheme() {
