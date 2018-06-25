@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <app-literal-input [id]="'extensionscheme_codevalue_input'"
-                           [label]="'Extensionscheme value' | translate"
+                           [label]="'Extension scheme value' | translate"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
@@ -32,14 +32,14 @@
         </div>
 
         <app-localizable-input [id]="'extensionscheme_name_input'"
-                               [label]="'Extensionscheme name' | translate"
+                               [label]="'Extension scheme name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-status-input id="extensionscheme_status_input"
                           [formControlName]="'status'"></app-status-input>
 
         <app-property-type-select id="propertytype_select"
-                                  [label]="'Extensionscheme type' | translate"
+                                  [label]="'Extension scheme type' | translate"
                                   [context]="'ExtensionScheme'"
                                   [formControlName]="'propertyType'"></app-property-type-select>
 

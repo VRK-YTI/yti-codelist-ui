@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-25 13:15+0300\n"
+"PO-Revision-Date: 2018-06-25 14:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -317,19 +317,21 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
-msgid "Extensionscheme value"
+#, fuzzy
+#| msgid "extensionSchemeCodeValueExists"
+msgid "Extension scheme value"
+msgstr "Extensionscheme value is already in use in this code list."
+
+msgid "Extension scheme name"
 msgstr ""
 
-msgid "Extensionscheme name"
-msgstr ""
-
-msgid "Extensionscheme type"
+msgid "Extension scheme type"
 msgstr ""
 
 msgid "Create extensionscheme"
 msgstr ""
 
-msgid "This extensionscheme does not have any extensions yet."
+msgid "This extension scheme does not have any extensions yet."
 msgstr ""
 
 msgid "Codescheme"
@@ -674,6 +676,3 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
-
-#~ msgid "copyTheCodescheme"
-#~ msgstr "Copy the code list"
