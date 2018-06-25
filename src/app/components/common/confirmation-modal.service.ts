@@ -27,6 +27,10 @@ export class CodeListConfirmationModalService {
     return this.confirmationModalService.open('REMOVE EXTENSION SCHEME?', '');
   }
 
+  openRemoveExtension() {
+    return this.confirmationModalService.open('REMOVE EXTENSION?', '');
+  }
+
   openOverWriteExistingValuesFromVocabularies() {
     return this.confirmationModalService.open('NEW VALUES FROM VOCABULARIES?', '');
   }

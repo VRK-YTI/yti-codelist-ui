@@ -107,7 +107,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   delete() {
-    this.confirmationModalService.openRemoveCode()
+    this.confirmationModalService.openRemoveExtension()
       .then(() => {
         this.dataService.deleteExtension(this.extension).subscribe(res => {
           this.router.navigate(this.extension.extensionScheme.route);
