@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LanguageService } from '../../services/language.service';
@@ -24,7 +24,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   cancelSubscription: Subscription;
 
   extensionForm = new FormGroup({
-    extensionValue: new FormControl('', [Validators.required]),
+    extensionValue: new FormControl('', Validators.required),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });

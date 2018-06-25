@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class ExtensionCreateComponent implements OnInit {
   extensionScheme: ExtensionScheme;
 
   extensionForm = new FormGroup({
-    extensionValue: new FormControl('', [Validators.required]),
+    extensionValue: new FormControl('', Validators.required),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });

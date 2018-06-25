@@ -21,7 +21,7 @@ function removeFromControl<T>(control: FormControl) {
 @Component({
   selector: 'app-code-input',
   template: `
-    <dl *ngIf="editing || code">
+    <dl>
       <dt>
         <label>{{label}}</label>
       </dt>
@@ -36,8 +36,9 @@ function removeFromControl<T>(control: FormControl) {
                (click)="removeCode(code)"></i>
           </a>
           <span>{{code.codeValue}} - {{code.prefLabel | translateValue:true}}</span>
-          <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>
         </div>
+
+        <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>
 
         <button id="add_code_button"
                 type="button"
