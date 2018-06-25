@@ -24,7 +24,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   cancelSubscription: Subscription;
 
   extensionForm = new FormGroup({
-    extensionValue: new FormControl(null, [Validators.required, this.isExtensionValueValid]),
+    extensionValue: new FormControl('', [Validators.required]),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });
@@ -99,11 +99,5 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   canSave() {
     return this.extensionForm.valid;
-  }
-
-  isExtensionValueValid (control: AbstractControl) {
-    const extensionStringValue = control.value;
-    const valid = extensionStringValue != null && extensionStringValue.length > 0;
-    return !valid ? {'extensionValueValidationError': {value: extensionStringValue}} : null;
   }
 }
