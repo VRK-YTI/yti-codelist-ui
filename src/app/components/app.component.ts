@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
       <app-breadcrumb [location]="location"></app-breadcrumb>
       <router-outlet></router-outlet>
     </div>
-    <app-footer [title]="'Koodistot'" 
+    <app-footer [title]="'Reference Data' | translate" 
                 (informationClick)="navigateToInformation()"></app-footer>
   `
 })
