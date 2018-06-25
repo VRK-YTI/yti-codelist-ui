@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
@@ -21,7 +21,7 @@ function removeFromControl<T>(control: FormControl) {
 @Component({
   selector: 'app-code-input',
   template: `
-    <dl>
+    <dl *ngIf="editing || code">
       <dt>
         <label>{{label}}</label>
       </dt>
@@ -40,10 +40,10 @@ function removeFromControl<T>(control: FormControl) {
 
         <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>
 
-        <button id="add_code_button"
+        <button *ngIf="editing"
+                id="add_code_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
-                *ngIf="editing"
                 (click)="selectCode()" translate>Select code
         </button>
       </dd>
