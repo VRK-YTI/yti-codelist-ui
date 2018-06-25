@@ -20,7 +20,7 @@ export class ExtensionCreateComponent implements OnInit {
   extensionScheme: ExtensionScheme;
 
   extensionForm = new FormGroup({
-    extensionValue: new FormControl([Validators.required, this.isExtensionValueValid]),
+    extensionValue: new FormControl(null, [Validators.required, this.isExtensionValueValid]),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });
@@ -89,8 +89,8 @@ export class ExtensionCreateComponent implements OnInit {
   }
 
   isExtensionValueValid (control: AbstractControl) {
-    const extensionValue = control.value;
-    const valid = extensionValue != null && extensionValue.length > 0;
-    return !valid ? {'extensionValueValidationError': {value: extensionValue}} : null;
+    const extensionStringValue = control.value;
+    const valid = extensionStringValue != null && extensionStringValue.length > 0;
+    return !valid ? {'extensionValueValidationError': {value: extensionStringValue}} : null;
   }
 }
