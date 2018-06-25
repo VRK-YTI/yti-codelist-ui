@@ -39,23 +39,27 @@
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-literal [label]="'Extensionscheme' | translate"
-                     [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
+        <div class="form-group">
+          <app-literal [label]="'Extensionscheme' | translate"
+                       [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
 
-        <app-literal-input [id]="'extension_extensionvalue_input'"
-                           [label]="'Extension value' | translate"
-                           [formControlName]="'extensionValue'"></app-literal-input>
+          <app-error-messages id="extension_form_error_messages" [control]="extensionForm"></app-error-messages>
 
-        <app-code-input id="extension_code_input"
-                        [label]="'Code' | translate"
-                        [codeScheme]="extensionScheme.parentCodeScheme"
-                        [formControlName]="'code'"></app-code-input>
+          <app-literal-input [id]="'extension_extensionvalue_input'"
+                             [label]="'Extension value' | translate"
+                             [formControlName]="'extensionValue'"></app-literal-input>
 
-        <app-extension-input id="extension_extension_input"
-                             [label]="'Extension' | translate"
-                             [extensionScheme]="extensionScheme"
-                             [currentExtension]="extension"
-                             [formControlName]="'extension'"></app-extension-input>
+          <app-code-input id="extension_code_input"
+                          [label]="'Code' | translate"
+                          [codeScheme]="extensionScheme.parentCodeScheme"
+                          [formControlName]="'code'"></app-code-input>
+
+          <app-extension-input id="extension_extension_input"
+                               [label]="'Extension' | translate"
+                               [extensionScheme]="extensionScheme"
+                               [currentExtension]="extension"
+                               [formControlName]="'extension'"></app-extension-input>
+        </div>
       </div>
     </div>
   </form>

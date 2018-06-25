@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-extension-create',
@@ -20,7 +21,7 @@ export class ExtensionCreateComponent implements OnInit {
 
   extensionForm = new FormGroup({
     extensionValue: new FormControl(),
-    code: new FormControl(null),
+    code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });
 
@@ -28,7 +29,8 @@ export class ExtensionCreateComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private editableService: EditableService,
-              private languageService: LanguageService) {
+              private languageService: LanguageService,
+              private locationService: LocationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -48,6 +50,7 @@ export class ExtensionCreateComponent implements OnInit {
 
     this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
       this.extensionScheme = extensionScheme;
+      this.locationService.atExtensionCreatePage(this.extensionScheme);
     });
   }
 
@@ -59,7 +62,7 @@ export class ExtensionCreateComponent implements OnInit {
 
     console.log('Saving new Extension');
 
-    const { validity, code, ...rest } = formData;
+    const { code, ...rest } = formData;
 
     const extension: ExtensionType = <ExtensionType> {
       ...rest,
@@ -79,5 +82,9 @@ export class ExtensionCreateComponent implements OnInit {
 
   get loading(): boolean {
     return this.extensionScheme == null;
+  }
+
+  canSave() {
+    return this.extensionForm.valid;
   }
 }

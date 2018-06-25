@@ -18,7 +18,7 @@
                 *ngIf="this.isSuperUser && codeScheme.status == 'VALID'" type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="copyTheCodescheme()"
-                translate>copyTheCodescheme</button>
+                translate>Copy the code list</button>
 
         <button id="delete_codelist_button"
                 *ngIf='this.canDelete' type="button"
@@ -34,6 +34,21 @@
           </div>
         </div>
 
+        <div *ngIf="showUnfinishedFeature" ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Extensionschemes</button>
+          <div ngbDropdownMenu aria-labelledby="extensionSchemeDropdown">
+            <button id="create_extensionscheme_button"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createExtensionScheme()"
+                    translate>Create extensionscheme</button>
+            <button id="import_extensionschemes_button"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="importExtensionSchemes()"
+                    translate>Import extensionschemes</button>
+          </div>
+        </div>
         <app-content-language></app-content-language>
       </div>
     </div>
@@ -82,7 +97,7 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="showUnfinishedFeature" id="codelist_extensionschemes_tab">
+    <ngb-tab *ngIf="showUnfinishedFeature && codeScheme.extensionSchemes.length > 0" id="codelist_extensionschemes_tab">
       <ng-template ngbTabTitle>
         <span translate>EXTENSIONSCHEMES</span>
       </ng-template>

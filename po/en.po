@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-22 13:27+0300\n"
+"PO-Revision-Date: 2018-06-25 11:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "value: "
+msgid "value"
 msgstr ""
 
 msgid "Add classification"
@@ -242,8 +242,8 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "copyTheCodescheme"
-msgstr "Copy the code list"
+msgid "Copy the code list"
+msgstr ""
 
 msgid "Export"
 msgstr ""
@@ -252,6 +252,9 @@ msgid "Export Excel"
 msgstr ""
 
 msgid "Export CSV"
+msgstr ""
+
+msgid "Extensionschemes"
 msgstr ""
 
 msgid "CODES"
@@ -654,8 +657,14 @@ msgstr "Code list value is already in use in this coderegistry."
 msgid "codeValueExists"
 msgstr "Code value is already in use."
 
+msgid "extensionSchemeCodeValueExists"
+msgstr "Extensionscheme value is already in use in this code list."
+
 msgid "codeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
+
+#~ msgid "copyTheCodescheme"
+#~ msgstr "Copy the code list"

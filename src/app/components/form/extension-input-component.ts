@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
@@ -35,7 +35,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeExtension(extension)"></i>
           </a>
-          <span>{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue:true}} - {{'value: ' | translate}} - {{extension.extensionValue}}</span>
+          <span>{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue:true}} - {{'value' | translate}}: - {{extension.extensionValue}}</span>
           <app-error-messages id="extension_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
@@ -84,7 +84,7 @@ export class ExtensionInputComponent implements ControlValueAccessor {
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue);
 
-    this.searchLinkedExtensionModalService.open(extensions, titleLabel, searchlabel, [this.currentExtension.id], true)
+    this.searchLinkedExtensionModalService.open(extensions, titleLabel, searchlabel, [this.currentExtension ? this.currentExtension.id : ''], true)
       .then(code => addToControl(this.control, code), ignoreModalClose);
   }
 

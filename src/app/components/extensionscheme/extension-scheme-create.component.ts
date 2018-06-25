@@ -9,7 +9,7 @@ import { ExtensionSchemeType } from '../../services/api-schema';
 import { Observable } from 'rxjs/Observable';
 import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
-import { PropertyType } from '../../entities/property-type';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-extension-scheme-create',
@@ -35,7 +35,8 @@ export class ExtensionSchemeCreateComponent implements OnInit {
               private dataService: DataService,
               private editableService: EditableService,
               private activatedRoute: ActivatedRoute,
-              private location: Location) {
+              private location: Location,
+              private locationService: LocationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -58,6 +59,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
+      this.locationService.atExtensionSchemeCreatePage(this.codeScheme);
     });
   }
 

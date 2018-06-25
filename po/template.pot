@@ -4,7 +4,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "value: "
+msgid "value"
 msgstr ""
 
 msgid "Add classification"
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "copyTheCodescheme"
+msgid "Copy the code list"
 msgstr ""
 
 msgid "Export"
@@ -244,6 +244,9 @@ msgid "Export Excel"
 msgstr ""
 
 msgid "Export CSV"
+msgstr ""
+
+msgid "Extensionschemes"
 msgstr ""
 
 msgid "CODES"
@@ -618,6 +621,9 @@ msgid "codeSchemeCodeValueExists"
 msgstr ""
 
 msgid "codeValueExists"
+msgstr ""
+
+msgid "extensionSchemeCodeValueExists"
 msgstr ""
 
 msgid "codeValueValidationError"

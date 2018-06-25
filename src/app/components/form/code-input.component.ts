@@ -1,11 +1,9 @@
 import { Component, Input, OnInit, Optional, Self } from '@angular/core';
-import { Code } from '../../entities/code';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
 import { DataService } from '../../services/data.service';
-import { Observable } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
 import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';

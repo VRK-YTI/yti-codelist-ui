@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-22 13:27+0300\n"
+"PO-Revision-Date: 2018-06-25 11:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -13,8 +13,8 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "value: "
-msgstr "arvo: "
+msgid "value"
+msgstr "arvo"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
@@ -249,7 +249,7 @@ msgstr "Tuo koodisto"
 msgid "Default code"
 msgstr "Vakiokoodi"
 
-msgid "copyTheCodescheme"
+msgid "Copy the code list"
 msgstr "Kopioi koodisto"
 
 msgid "Export"
@@ -260,6 +260,9 @@ msgstr "Lataa Excel"
 
 msgid "Export CSV"
 msgstr "Lataa CSV"
+
+msgid "Extensionschemes"
+msgstr "Laajennusjärjestelmät"
 
 msgid "CODES"
 msgstr "KOODIT"
@@ -655,11 +658,20 @@ msgstr "Koodiston tunnus on jo käytössä tässä rekisterissä."
 msgid "codeValueExists"
 msgstr "Tunnus on jo käytössä."
 
+msgid "extensionSchemeCodeValueExists"
+msgstr "Laajennusjärjestelmän tunnus on jo käytössä tässä koodistossa."
+
 msgid "codeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
+
+#~ msgid "copyTheCodescheme"
+#~ msgstr "Kopioi koodisto"
+
+#~ msgid "value: "
+#~ msgstr "arvo: "
 
 #~ msgid "Import extensionscheme"
 #~ msgstr "Tuo laajennusjärjestelmä"

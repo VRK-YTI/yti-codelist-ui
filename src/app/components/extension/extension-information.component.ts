@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LanguageService } from '../../services/language.service';
@@ -25,9 +25,8 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   extensionForm = new FormGroup({
     extensionValue: new FormControl(),
-    code: new FormControl(null),
-    extension: new FormControl(null),
-    status: new FormControl()
+    code: new FormControl(null, Validators.required),
+    extension: new FormControl(null)
   });
 
   constructor(private route: ActivatedRoute,
@@ -96,5 +95,9 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   get loading(): boolean {
     return this.extensionScheme == null || this.extension == null;
+  }
+
+  canSave() {
+    return this.extensionForm.valid;
   }
 }
