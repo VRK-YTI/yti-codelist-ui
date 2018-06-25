@@ -20,7 +20,7 @@ export class CodeListConfirmationModalService {
   }
 
   openRemoveCodeScheme() {
-    return this.confirmationModalService.open('REMOVE CODES LIST?', '');
+    return this.confirmationModalService.open('REMOVE CODE LIST?', '');
   }
 
   openRemoveExtensionScheme() {
