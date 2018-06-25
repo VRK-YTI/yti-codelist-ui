@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-25 14:35+0300\n"
+"PO-Revision-Date: 2018-06-25 15:01+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -324,8 +324,6 @@ msgstr "Luo laajennus"
 msgid "Import extensions"
 msgstr "Tuo laajennuksia"
 
-#, fuzzy
-#| msgid "Extensionscheme value"
 msgid "Extension scheme value"
 msgstr "Laajennusjärjestelmän tunnus"
 

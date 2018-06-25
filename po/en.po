@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-25 14:35+0300\n"
+"PO-Revision-Date: 2018-06-25 15:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -83,7 +83,7 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
-msgstr "All vocabularies"
+msgstr ""
 
 msgid "Choose organization"
 msgstr ""
@@ -98,7 +98,7 @@ msgid "Code name"
 msgstr ""
 
 msgid "Vocabularies URI"
-msgstr "The URI of the concept in Controlled Vocabularies tool"
+msgstr ""
 
 msgid "Description"
 msgstr ""
@@ -116,7 +116,7 @@ msgid "Create code"
 msgstr ""
 
 msgid "Get concept from Controlled Vocabularies"
-msgstr "Get concept from Controlled Vocabularies"
+msgstr ""
 
 msgid "URI"
 msgstr ""
@@ -317,10 +317,8 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
-#, fuzzy
-#| msgid "extensionSchemeCodeValueExists"
 msgid "Extension scheme value"
-msgstr "Extensionscheme value is already in use in this code list."
+msgstr ""
 
 msgid "Extension scheme name"
 msgstr ""
@@ -333,9 +331,6 @@ msgstr ""
 
 msgid "This extension scheme does not have any extensions yet."
 msgstr ""
-
-msgid "Codescheme"
-msgstr "Copy the code list"
 
 msgid "EXTENSIONS"
 msgstr ""
@@ -386,7 +381,7 @@ msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
 msgid "No search results"
-msgstr "No search results"
+msgstr ""
 
 msgid "Name"
 msgstr ""
@@ -603,7 +598,7 @@ msgstr ""
 "related code lists."
 
 msgid "NEW VALUES FROM VOCABULARIES?"
-msgstr "Do you want to replace the existing values with new ones?"
+msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for extensions."
