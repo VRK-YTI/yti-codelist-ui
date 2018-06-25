@@ -597,7 +597,7 @@ msgstr ""
 "Code linked to extension does not belong to parent code list or to any "
 "related code lists."
 
-msgid "NEW VALUES FROM VOCABULARIES?"
+msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"

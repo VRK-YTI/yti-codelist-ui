@@ -32,6 +32,6 @@ export class CodeListConfirmationModalService {
   }
 
   openOverWriteExistingValuesFromVocabularies() {
-    return this.confirmationModalService.open('NEW VALUES FROM VOCABULARIES?', '');
+    return this.confirmationModalService.open('Do you want to replace the existing values with new ones?', '');
   }
 }

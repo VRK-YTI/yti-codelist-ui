@@ -584,7 +584,7 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
 msgstr ""
 
-msgid "NEW VALUES FROM VOCABULARIES?"
+msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
