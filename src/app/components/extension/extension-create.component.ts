@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class ExtensionCreateComponent implements OnInit {
   extensionScheme: ExtensionScheme;
 
   extensionForm = new FormGroup({
-    extensionValue: new FormControl(),
+    extensionValue: new FormControl([Validators.required, this.isExtensionValueValid]),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });
@@ -86,5 +86,11 @@ export class ExtensionCreateComponent implements OnInit {
 
   canSave() {
     return this.extensionForm.valid;
+  }
+
+  isExtensionValueValid (control: AbstractControl) {
+    const extensionValue = control.value;
+    const valid = extensionValue != null && extensionValue.length > 0;
+    return !valid ? {'extensionValueValidationError': {value: extensionValue}} : null;
   }
 }

@@ -399,7 +399,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr ""
 
 msgid "Front page"
@@ -509,10 +509,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
@@ -590,6 +590,12 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
+msgid "ERR_MSG_USER_EXTENSIONVALUE_NOT_SET"
+msgstr ""
+
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgstr ""
+
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
 msgstr ""
 
@@ -639,4 +645,7 @@ msgid "codeValueValidationError"
 msgstr ""
 
 msgid "codeCodeValueValidationError"
+msgstr ""
+
+msgid "extensionValueValidationError"
 msgstr ""
