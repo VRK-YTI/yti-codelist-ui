@@ -16,7 +16,7 @@ export class SearchLinkedExtensionModalService {
   open(extensions$: Observable<Extension[]>,
        titleLabel: string,
        searchLabel: string,
-       restrictCodeIds: string[],
+       restrictExtensionIds: string[],
        useUILanguage: boolean = false): Promise<Code> {
 
     const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
@@ -24,7 +24,7 @@ export class SearchLinkedExtensionModalService {
     instance.extensions$ = extensions$;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
-    instance.restricts = restrictCodeIds;
+    instance.restricts = restrictExtensionIds;
     instance.useUILanguage = useUILanguage;
     return modalRef.result;
   }
@@ -107,7 +107,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
       .do(() => this.loading = false)
       .map(([extensions, search]) => {
         return extensions.filter(extension => {
-          const label = this.languageService.translate(extension.code.prefLabel, true);
+          const label = extension.getDisplayName(this.languageService);
           const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
           const isNotRestricted = !contains(this.restricts, extension.id);
           return searchMatches && isNotRestricted;

@@ -53,7 +53,7 @@ export class ExtensionSchemeExtensionsComponent {
   }
 
   getIdIdentifier(extension: Extension) {
-    return `${this.extensionScheme.parentCodeScheme.codeRegistry.codeValue}_${this.extensionScheme.parentCodeScheme.codeValue}_\
-    ${this.extensionScheme.codeValue}_${extension.id}`;
+    return `${this.extensionScheme.parentCodeScheme.codeRegistry.codeValue}_${this.extensionScheme.parentCodeScheme.codeValue}_` +
+    `${this.extensionScheme.codeValue}_${extension.id}`;
   }
 }

@@ -27,7 +27,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     prefLabel: new FormControl({}),
     extensionValue: new FormControl('', Validators.required),
     code: new FormControl(null, Validators.required),
-    extension: new FormControl(null)
+    relatedExtension: new FormControl(null)
   });
 
   constructor(private route: ActivatedRoute,
@@ -69,9 +69,10 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   reset() {
-    const {...rest} = this.extension;
+    const { extension, ...rest } = this.extension;
 
     this.extensionForm.reset({
+      relatedExtension: extension,
       ...rest
     });
   }

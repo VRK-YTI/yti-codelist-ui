@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Extension } from '../../entities/extension';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-extension-listitem',
@@ -9,12 +10,7 @@ import { Extension } from '../../entities/extension';
     <div id="{{getIdIdentifier(extension) + '_view_extension'}}"
          class="extension"
          (click)="viewExtension(extension)">
-      <span *ngIf="extension.code.hasPrefLabel()"
-            class="extensiontitle">
-        {{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue}} - {{'value' | translate}}: {{extension.extensionValue}}
-      </span>
-      <span *ngIf="!extension.code.hasPrefLabel()"
-            class="extensiontitle">{{extension.code.codeValue}} - {{'value' | translate}}: {{extension.extensionValue}}</span>
+      <span class="extensiontitle">{{extension.getDisplayName(languageService)}}</span>
     </div>
   `
 })
@@ -23,7 +19,8 @@ export class ExtensionListitemComponent {
 
   @Input() extension: Extension;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private languageService: LanguageService) {
   }
 
   viewExtension(extension: Extension) {

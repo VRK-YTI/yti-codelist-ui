@@ -7,6 +7,7 @@ import { DataService } from '../../services/data.service';
 import { TranslateService } from 'ng2-translate';
 import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';
+import { LanguageService } from '../../services/language.service';
 
 function addToControl<T>(control: FormControl, item: T) {
 
@@ -27,7 +28,7 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && code">
-          <span>{{code.codeValue}} - {{code.prefLabel | translateValue:true}}</span>
+          <span>{{code.getDisplayName(languageService)}}</span>
         </div>
         <div *ngIf="editing && code">
           <a>
@@ -35,7 +36,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeCode(code)"></i>
           </a>
-          <span>{{code.codeValue}} - {{code.prefLabel | translateValue:true}}</span>
+          <span>{{code.getDisplayName(languageService)}}</span>
         </div>
 
         <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>
@@ -63,7 +64,8 @@ export class CodeInputComponent implements ControlValueAccessor {
               private editableService: EditableService,
               private translateService: TranslateService,
               private dataService: DataService,
-              private searchLinkedCodeModalService: SearchLinkedCodeModalService) {
+              private searchLinkedCodeModalService: SearchLinkedCodeModalService,
+              private languageService: LanguageService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 

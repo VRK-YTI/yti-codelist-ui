@@ -6,8 +6,7 @@
 
   <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
 
-  <h1 *ngIf="extension.code.hasPrefLabel()" class="text-content-wrap">{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue}}</h1>
-  <h1 *ngIf="!extension.code.hasPrefLabel()" class="text-content-wrap">{{extension.code.codeValue}}</h1>
+  <h1 class="text-content-wrap">{{extension.getDisplayName(languageService)}}</h1>
 
   <div class="row">
     <div class="col-12">

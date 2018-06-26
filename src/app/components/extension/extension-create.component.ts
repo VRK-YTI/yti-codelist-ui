@@ -23,7 +23,7 @@ export class ExtensionCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     extensionValue: new FormControl('', Validators.required),
     code: new FormControl(null, Validators.required),
-    extension: new FormControl(null)
+    relatedExtension: new FormControl(null)
   });
 
   constructor(private dataService: DataService,
@@ -63,11 +63,12 @@ export class ExtensionCreateComponent implements OnInit {
 
     console.log('Saving new Extension');
 
-    const { code, ...rest } = formData;
+    const { code, relatedExtension, ...rest } = formData;
 
     const extension: ExtensionType = <ExtensionType> {
       ...rest,
-      code: code
+      code: code,
+      relatedExtension: relatedExtension
     };
 
     return this.dataService.createExtension(extension,

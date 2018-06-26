@@ -7,6 +7,7 @@ import { DataService } from '../../services/data.service';
 import { TranslateService } from 'ng2-translate';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { Extension } from '../../entities/extension';
+import { LanguageService } from '../../services/language.service';
 
 function addToControl<T>(control: FormControl, item: T) {
 
@@ -27,7 +28,7 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && extension">
-          <span>{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue:true}}</span>
+          <span>{{extension.getDisplayName(languageService)}}</span>
         </div>
         <div *ngIf="editing && extension">
           <a>
@@ -35,8 +36,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeExtension(extension)"></i>
           </a>
-          <span>{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue:true}} - \
-            {{'value' | translate}}: - {{extension.extensionValue}}</span>
+          <span>{{extension.getDisplayName(languageService)}}</span>
           <app-error-messages id="extension_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
@@ -64,7 +64,8 @@ export class ExtensionInputComponent implements ControlValueAccessor {
               private editableService: EditableService,
               private translateService: TranslateService,
               private dataService: DataService,
-              private searchLinkedExtensionModalService: SearchLinkedExtensionModalService) {
+              private searchLinkedExtensionModalService: SearchLinkedExtensionModalService,
+              private languageService: LanguageService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 

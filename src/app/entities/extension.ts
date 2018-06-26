@@ -60,8 +60,8 @@ export class Extension implements EditableEntity {
     ...this.extensionScheme.location,
     {
       localizationKey: 'Extension',
-      label: this.code.prefLabel,
-      value: !hasLocalization(this.code.prefLabel) ? this.code.codeValue : '',
+      label: this.prefLabel,
+      value: !hasLocalization(this.prefLabel) ? this.code.codeValue : '',
       route: this.route
     }];
   }
@@ -85,8 +85,13 @@ export class Extension implements EditableEntity {
   }
 
   getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
-    const displayName = localizer.translate(this.code.prefLabel, useUILanguage);
-    return displayName ? displayName : this.code.codeValue;
+    if (this.prefLabel) {
+      return localizer.translate(this.prefLabel, useUILanguage) + ' - ' + this.extensionValue;
+    }
+    if (this.code && this.code.prefLabel) {
+      return localizer.translate(this.code.prefLabel, useUILanguage) + ' - ' + this.extensionValue;
+    }
+    return this.code.codeValue + ' - ' + this.extensionValue;
   }
 
   hasPrefLabel() {
