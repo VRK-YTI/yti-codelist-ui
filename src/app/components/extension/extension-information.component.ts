@@ -50,7 +50,8 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     const extensionId = this.route.snapshot.params.extensionId;
 
     if (!extensionId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
-      throw new Error(`Illegal route, extensionId: '${extensionId}', registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
+      throw new Error(`Illegal route, extensionId: '${extensionId}', registry: '${registryCodeValue}', \
+      scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
     }
 
     this.dataService.getExtension(extensionId).subscribe(extension => {

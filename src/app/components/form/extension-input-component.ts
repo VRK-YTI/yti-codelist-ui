@@ -35,7 +35,8 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeExtension(extension)"></i>
           </a>
-          <span>{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue:true}} - {{'value' | translate}}: - {{extension.extensionValue}}</span>
+          <span>{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue:true}} - \
+            {{'value' | translate}}: - {{extension.extensionValue}}</span>
           <app-error-messages id="extension_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
