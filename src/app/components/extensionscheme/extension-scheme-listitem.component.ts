@@ -39,7 +39,8 @@ export class ExtensionSchemeListitemComponent {
   }
 
   getIdIdentifier(extensionScheme: ExtensionScheme) {
-    return `${this.extensionScheme.parentCodeScheme.codeRegistry.codeValue}_${this.extensionScheme.parentCodeScheme.codeValue}\
-    _${extensionScheme.codeValue}`;
+    return `${this.extensionScheme.parentCodeScheme.codeRegistry.codeValue}_` +
+      `${this.extensionScheme.parentCodeScheme.codeValue}` +
+      `${extensionScheme.codeValue}`;
   }
 }

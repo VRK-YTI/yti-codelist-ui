@@ -10,8 +10,9 @@ import { Extension } from '../../entities/extension';
          class="extension"
          (click)="viewExtension(extension)">
       <span *ngIf="extension.code.hasPrefLabel()"
-            class="extensiontitle">{{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue}} - \
-        {{'value' | translate}}: {{extension.extensionValue}}</span>
+            class="extensiontitle">
+        {{extension.code.codeValue}} - {{extension.code.prefLabel | translateValue}} - {{'value' | translate}}: {{extension.extensionValue}}
+      </span>
       <span *ngIf="!extension.code.hasPrefLabel()"
             class="extensiontitle">{{extension.code.codeValue}} - {{'value' | translate}}: {{extension.extensionValue}}</span>
     </div>
