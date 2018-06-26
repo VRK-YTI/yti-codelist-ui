@@ -13,7 +13,10 @@
              placeholder="{{'Search for code lists' | translate}}"/>
     </div>
     <div class="col-md-4 mt-2">
-      <label translate><input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">Extend search to codes</label>
+      <div class="checkbox">
+        <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
+        <label for="search_code_details_checkbox" translate>Extend search to codes</label>
+      </div>
     </div>
   </div>
 
