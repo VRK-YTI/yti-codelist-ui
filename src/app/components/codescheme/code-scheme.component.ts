@@ -115,11 +115,11 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       (this.codeScheme.status === 'DRAFT' || this.codeScheme.status === 'SUGGESTED' || this.codeScheme.status === 'SUBMITTED'));
   }
 
-  get canAddExtensionScheme() {
+  get canAddExtensionScheme(): boolean {
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 
-  get isSuperUser() {
+  get isSuperUser(): boolean {
     return this.userService.user.superuser;
   }
 
