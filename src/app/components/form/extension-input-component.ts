@@ -84,7 +84,12 @@ export class ExtensionInputComponent implements ControlValueAccessor {
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue);
 
-    this.searchLinkedExtensionModalService.open(extensions, titleLabel, searchlabel, [this.currentExtension ? this.currentExtension.id : ''], true)
+    this.searchLinkedExtensionModalService.open(
+      extensions,
+      titleLabel,
+      searchlabel,
+      [this.currentExtension ? this.currentExtension.id : ''],
+      true)
       .then(code => addToControl(this.control, code), ignoreModalClose);
   }
 
