@@ -20,7 +20,7 @@ export class ExtensionListitemComponent {
   @Input() extension: Extension;
 
   constructor(private router: Router,
-              private languageService: LanguageService) {
+              public languageService: LanguageService) {
   }
 
   viewExtension(extension: Extension) {

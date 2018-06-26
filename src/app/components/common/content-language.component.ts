@@ -32,7 +32,7 @@ export class ContentLanguageComponent implements OnInit, OnDestroy {
 
   private subscriptionToClean: Subscription[] = [];
 
-  constructor(private languageService: LanguageService) {
+  constructor(public languageService: LanguageService) {
   }
 
   ngOnInit() {

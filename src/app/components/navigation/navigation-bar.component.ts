@@ -21,7 +21,7 @@ export class NavigationBarComponent {
 
   groupManagementUrl: string;
 
-  constructor(private languageService: LanguageService,
+  constructor(public languageService: LanguageService,
               private userService: UserService,
               private loginModal: LoginModalService,
               private dataService: DataService) {

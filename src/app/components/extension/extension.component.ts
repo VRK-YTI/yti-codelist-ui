@@ -36,7 +36,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
               private confirmationModalService: CodeListConfirmationModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
-              private languageService: LanguageService) {
+              public languageService: LanguageService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }

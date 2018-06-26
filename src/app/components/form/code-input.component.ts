@@ -65,7 +65,7 @@ export class CodeInputComponent implements ControlValueAccessor {
               private translateService: TranslateService,
               private dataService: DataService,
               private searchLinkedCodeModalService: SearchLinkedCodeModalService,
-              private languageService: LanguageService) {
+              public languageService: LanguageService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
