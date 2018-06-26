@@ -2,7 +2,10 @@
   <app-back-button [id]="'import_create_back_button'" (back)="back()"></app-back-button>
 
   <h1 translate>Add code list</h1>
-  <p translate>Import code list by uploading a CSV- or Excel formatted file. Look up more detailed guide and information about using code list files from service help.</p>
+  <p>
+    <span translate>Import code list by uploading a CSV- or Excel formatted file. Look up more detailed guide and information about using code list files from</span>
+    <a id="user_support_link" href="https://confluence.csc.fi/pages/viewpage.action?pageId=75672855" target="_blank" translate>LINK_TXT_FROM_SERVICE_HELP</a>.
+  </p>
   <p translate>Using the imported file, a new code list is created or an older code list is updated with new meta-information. Upon uploading the file, you get to review and cancel the changes if needed.</p>
   <button id="import_from_file_button" type="button" class="btn btn-action" (click)="importFromFile()" translate>Import code list from a file</button>
   <br/><br/>
