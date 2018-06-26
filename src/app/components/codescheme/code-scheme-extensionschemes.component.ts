@@ -31,7 +31,7 @@ export class CodeSchemeExtensionSchemesComponent {
     this.codeSchemeComponent.createExtensionScheme();
   }
 
-  canAddExtensionScheme() {
+  get canAddExtensionScheme() {
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 }

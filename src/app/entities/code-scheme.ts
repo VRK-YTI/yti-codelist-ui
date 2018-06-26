@@ -11,7 +11,6 @@ import { CodeSchemeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
-import { ExtensionScheme } from './extension-scheme';
 import { ExtensionSchemeSimple } from './extension-scheme-simple';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {

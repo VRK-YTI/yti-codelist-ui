@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div *ngIf="showUnfinishedFeature" ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
+        <div *ngIf="showUnfinishedFeature && this.canAddExtensionScheme" ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Extension schemes</button>
           <div ngbDropdownMenu aria-labelledby="extensionSchemeDropdown">
             <button id="create_extensionscheme_button"

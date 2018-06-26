@@ -294,6 +294,9 @@ msgstr ""
 msgid "Extension scheme"
 msgstr ""
 
+msgid "Extension name"
+msgstr ""
+
 msgid "Extension value"
 msgstr ""
 

@@ -164,6 +164,7 @@ export interface ExtensionType {
   id: string;
   url: string;
   extensionValue: string;
+  prefLabel?: Localizable;
   order?: string;
   modified?: string;
   extensionScheme: ExtensionSchemeType;

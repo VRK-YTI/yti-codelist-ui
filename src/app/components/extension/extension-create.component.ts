@@ -20,6 +20,7 @@ export class ExtensionCreateComponent implements OnInit {
   extensionScheme: ExtensionScheme;
 
   extensionForm = new FormGroup({
+    prefLabel: new FormControl({}),
     extensionValue: new FormControl('', Validators.required),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
