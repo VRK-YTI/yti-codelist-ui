@@ -177,6 +177,7 @@ export interface ExtensionSimpleType {
   id: string;
   url: string;
   extensionValue: string;
+  prefLabel?: Localizable;
   order?: string;
   modified?: string;
   code: CodePlainType;

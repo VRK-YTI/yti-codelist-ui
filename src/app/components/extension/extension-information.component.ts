@@ -69,10 +69,9 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   reset() {
-    const { extension, ...rest } = this.currentExtension;
+    const { ...rest } = this.currentExtension;
 
     this.extensionForm.reset({
-      extension: extension,
       ...rest
     });
   }

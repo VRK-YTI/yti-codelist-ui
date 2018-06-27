@@ -126,15 +126,15 @@ export class ExtensionComponent implements OnInit, EditingComponent {
 
   save(formData: any): Observable<any> {
 
-    console.log('Store Code changes to server!');
+    console.log('Store Extension changes to server!');
 
     const {...rest} = formData;
-    const updatedCode = this.extension.clone();
+    const updatedExtension = this.extension.clone();
 
-    Object.assign(updatedCode, {
+    Object.assign(updatedExtension, {
       ...rest,
     });
 
-    return this.dataService.saveExtension(updatedCode.serialize()).do(() => this.ngOnInit());
+    return this.dataService.saveExtension(updatedExtension.serialize()).do(() => this.ngOnInit());
   }
 }
