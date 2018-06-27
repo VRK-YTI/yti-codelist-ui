@@ -86,7 +86,6 @@ export class Extension implements EditableEntity {
   }
 
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
-    console.log('Extension getDisplayName called!');
     const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
@@ -97,10 +96,8 @@ export class Extension implements EditableEntity {
     const valueLabel = translater.instant('value');
 
     if (extensionTitle) {
-      console.log('Returning: ' + `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`);
       return `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
     } else {
-      console.log('Returning: ' + `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`);
       return `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
     }
   }
