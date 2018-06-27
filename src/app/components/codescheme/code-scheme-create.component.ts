@@ -1,9 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
-import { LinkListModalService } from './link-list-modal.component';
-import { LinkShowModalService } from './link-show-modal.component';
-import { LinkEditModalService } from './link-edit-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
@@ -18,6 +15,7 @@ import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
+import { ExternalReference } from '../../entities/external-reference';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -43,6 +41,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
+    externalReferences: new FormControl([]),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     dataClassifications: new FormControl([], [requiredList]),
     defaultCode: new FormControl(null),
@@ -53,9 +52,6 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router,
               private dataService: DataService,
-              private linkEditModalService: LinkEditModalService,
-              private linkShowModalService: LinkShowModalService,
-              private linkListModalService: LinkListModalService,
               private editableService: EditableService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private activatedRoute: ActivatedRoute,
@@ -139,7 +135,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     console.log('Saving new CodeScheme');
 
-    const { validity, codeRegistry, defaultCode, dataClassifications, ...rest } = formData;
+    const { validity, codeRegistry, defaultCode, dataClassifications, externalReferences, ...rest } = formData;
 
     const codeScheme: CodeSchemeType = <CodeSchemeType> {
       ...rest,
@@ -147,7 +143,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       endDate: formatDate(validity.end),
       codeRegistry: codeRegistry.serialize(),
       defaultCode: defaultCode ? defaultCode.serialize() : undefined,
-      dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize())
+      dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize()),
+      externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
     };
 
     if (this.cloning) {
