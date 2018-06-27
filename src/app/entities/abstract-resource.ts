@@ -25,6 +25,12 @@ export abstract class AbstractResource {
     return displayName ? displayName : this.codeValue;
   }
 
+
+  getLongDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
+    const displayName = localizer.translate(this.prefLabel, useUILanguage);
+    return displayName ? this.codeValue + ' - ' + displayName : this.codeValue;
+  }
+
   hasPrefLabel() {
     return hasLocalization(this.prefLabel);
   }
