@@ -18,7 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input() extension: Extension;
+  @Input() currentExtension: Extension;
   extensionScheme: ExtensionScheme;
 
   cancelSubscription: Subscription;
@@ -27,7 +27,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     prefLabel: new FormControl({}),
     extensionValue: new FormControl('', Validators.required),
     code: new FormControl(null, Validators.required),
-    relatedExtension: new FormControl(null)
+    extension: new FormControl(null)
   });
 
   constructor(private route: ActivatedRoute,
@@ -55,7 +55,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     }
 
     this.dataService.getExtension(extensionId).subscribe(extension => {
-      this.extension = extension;
+      this.currentExtension = extension;
       this.locationService.atExtensionPage(extension);
     });
 
@@ -69,10 +69,10 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   reset() {
-    const { extension, ...rest } = this.extension;
+    const { extension, ...rest } = this.currentExtension;
 
     this.extensionForm.reset({
-      relatedExtension: extension,
+      extension: extension,
       ...rest
     });
   }
@@ -89,7 +89,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     if (this.isSuperUser) {
       return false;
     }
-    return this.extension.extensionScheme.restricted;
+    return this.currentExtension.extensionScheme.restricted;
   }
 
   ngOnDestroy() {
@@ -97,7 +97,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   get loading(): boolean {
-    return this.extensionScheme == null || this.extension == null;
+    return this.extensionScheme == null || this.currentExtension == null;
   }
 
   canSave() {
