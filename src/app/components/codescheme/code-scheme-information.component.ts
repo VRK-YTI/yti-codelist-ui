@@ -137,9 +137,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getConceptUri() {
-    if (this.env !== 'prod') {
-      return this.codeScheme.conceptUriInVocabularies + '?env=' + this.env;
+    const conceptUri = this.codeScheme.conceptUriInVocabularies;
+    if (conceptUri != null && conceptUri.length > 0) {
+      if (this.env !== 'prod') {
+        return conceptUri + '?env=' + this.env;
+      }
+      return conceptUri;
     }
-    return this.codeScheme.conceptUriInVocabularies;
+    return null;
   }
 }

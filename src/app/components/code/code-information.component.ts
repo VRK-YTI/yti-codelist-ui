@@ -114,9 +114,13 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getConceptUri() {
-    if (this.env !== 'prod') {
-      return this.code.conceptUriInVocabularies + '?env=' + this.env;
+    const conceptUri = this.code.conceptUriInVocabularies;
+    if (conceptUri != null && conceptUri.length > 0) {
+      if (this.env !== 'prod') {
+        return conceptUri + '?env=' + this.env;
+      }
+      return conceptUri;
     }
-    return this.code.conceptUriInVocabularies;
+    return null;
   }
 }
