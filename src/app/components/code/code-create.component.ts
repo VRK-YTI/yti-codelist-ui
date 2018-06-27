@@ -8,10 +8,11 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
 import { Status } from 'yti-common-ui/entities/status';
 import { Observable } from 'rxjs/Observable';
-import {TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
-import {ignoreModalClose} from 'yti-common-ui/utils/modal';
-import {Concept} from '../../entities/concept';
+import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { Concept } from '../../entities/concept';
 import { LocationService } from '../../services/location.service';
+import { ExternalReference } from '../../entities/external-reference';
 
 @Component({
   selector: 'app-code-create',
@@ -30,6 +31,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     description: new FormControl({}),
     definition: new FormControl({}),
     shortName: new FormControl(''),
+    externalReferences: new FormControl([]),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status),
     conceptUriInVocabularies: new FormControl('')
@@ -82,12 +84,13 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
 
     console.log('Saving new Code');
 
-    const { validity, ...rest } = formData;
+    const { validity, externalReferences, ...rest } = formData;
 
     const code: CodeType = <CodeType> {
       ...rest,
       startDate: formatDate(validity.start),
-      endDate: formatDate(validity.end)
+      endDate: formatDate(validity.end),
+      externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
     };
 
     return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)

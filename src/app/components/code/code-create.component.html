@@ -76,6 +76,11 @@
         <app-date-range-input id="code_validity_input"
                               [label]="'Validity' | translate"
                               [formControlName]="'validity'"></app-date-range-input>
+
+        <app-external-references-input [id]="'code_ext_references_input'"
+                                       [label]="'Links' | translate"
+                                       [codeSchemeId]="codeScheme.id"
+                                       [formControlName]="'externalReferences'"></app-external-references-input>
       </div>
     </div>
   </form>
