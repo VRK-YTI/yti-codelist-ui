@@ -8,6 +8,7 @@ import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { ExtensionScheme } from './extension-scheme';
 import { CodePlain } from './code-simple';
 import { ExtensionSimple } from './extension-simple';
+import { TranslateService } from 'ng2-translate';
 
 export class Extension implements EditableEntity {
 
@@ -84,14 +85,24 @@ export class Extension implements EditableEntity {
     };
   }
 
-  getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
-    if (this.prefLabel) {
-      return localizer.translate(this.prefLabel, useUILanguage) + ' - ' + this.extensionValue;
+  getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
+    console.log('Extension getDisplayName called!');
+    const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
+    let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
+    if (!codeTitle) {
+      codeTitle = this.code ? this.code.codeValue : null;
     }
-    if (this.code && this.code.prefLabel) {
-      return localizer.translate(this.code.prefLabel, useUILanguage) + ' - ' + this.extensionValue;
+    const extensionValue = this.extensionValue;
+    const codeLabel = translater.instant('code');
+    const valueLabel = translater.instant('value');
+
+    if (extensionTitle) {
+      console.log('Returning: ' + `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`);
+      return `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
+    } else {
+      console.log('Returning: ' + `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`);
+      return `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
     }
-    return this.code.codeValue + ' - ' + this.extensionValue;
   }
 
   hasPrefLabel() {

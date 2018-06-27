@@ -13,6 +13,7 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { Extension } from '../../entities/extension';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LanguageService } from '../../services/language.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-extension',
@@ -36,7 +37,8 @@ export class ExtensionComponent implements OnInit, EditingComponent {
               private confirmationModalService: CodeListConfirmationModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
-              public languageService: LanguageService) {
+              public languageService: LanguageService,
+              public translateService: TranslateService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }

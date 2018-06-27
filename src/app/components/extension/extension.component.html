@@ -6,7 +6,7 @@
 
   <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
 
-  <h1 class="text-content-wrap">{{extension.getDisplayName(languageService)}}</h1>
+  <h1 class="text-content-wrap">{{extension.getDisplayName(languageService, translateService)}}</h1>
 
   <div class="row">
     <div class="col-12">

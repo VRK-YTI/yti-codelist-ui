@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-26 16:35+0300\n"
+"PO-Revision-Date: 2018-06-27 10:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -15,9 +15,6 @@ msgstr ""
 
 msgid "Reference Data"
 msgstr "Koodistot"
-
-msgid "value"
-msgstr "arvo"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
@@ -447,6 +444,9 @@ msgstr "vaadittu"
 msgid "All statuses"
 msgstr "Kaikki tilat"
 
+msgid "value"
+msgstr "arvo"
+
 msgid "Submit error"
 msgstr "Toiminnossa tapahtui virhe"
 
@@ -611,9 +611,6 @@ msgstr ""
 "Laajennukseen liitetty koodi ei kuulu tähän koodistoon tai "
 "laajennusjärjestelmään liitettyihin koodistoihin."
 
-msgid "Do you want to replace the existing values with new ones?"
-msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
-
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Laajennusten maksimi hierarkinen taso ylittyi."
 
@@ -634,6 +631,9 @@ msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
 "Laajennusjärjestelmään on liitetty sama koodi useammin kuin kerran, käytä "
 "UUID:tä viitteenä."
+
+msgid "Do you want to replace the existing values with new ones?"
+msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
 
 msgid "cancelTextForCodeCreation"
 msgstr "Luo koodi ilman käsitettä"

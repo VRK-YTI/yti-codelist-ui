@@ -4,8 +4,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
-import { Code } from '../../entities/code';
 import { Extension } from '../../entities/extension';
+import { TranslateService } from 'ng2-translate';
 
 @Injectable()
 export class SearchLinkedExtensionModalService {
@@ -17,7 +17,7 @@ export class SearchLinkedExtensionModalService {
        titleLabel: string,
        searchLabel: string,
        restrictExtensionIds: string[],
-       useUILanguage: boolean = false): Promise<Code> {
+       useUILanguage: boolean = false): Promise<Extension> {
 
     const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as SearchLinkedExtensionModalComponent;
@@ -46,7 +46,9 @@ export class SearchLinkedExtensionModalService {
         <div class="col-12">
 
           <div class="input-group input-group-lg input-group-search">
-            <input #searchInput id="search_linked_extension_input" type="text" class="form-control" [placeholder]="searchLabel"
+            <input #searchInput id="search_linked_extension_input"
+                   type="text" class="form-control"
+                   [placeholder]="searchLabel"
                    [(ngModel)]="search"/>
           </div>
 
@@ -62,7 +64,9 @@ export class SearchLinkedExtensionModalService {
                    *ngFor="let extension of searchResults$ | async; let last = last"
                    (click)="select(extension)">
                 <div class="content" [class.last]="last">                  
-                  <span class="title" [innerHTML]="extension.getDisplayName(languageService, useUILanguage)"></span>
+                  <span class="title"
+                        [innerHTML]="extension.getDisplayName(languageService, translateService, useUILanguage)">
+                  </span>
                 </div>
               </div>
             </div>
@@ -96,6 +100,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
+              public translateService: TranslateService,
               private renderer: Renderer) {
   }
 
@@ -107,7 +112,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
       .do(() => this.loading = false)
       .map(([extensions, search]) => {
         return extensions.filter(extension => {
-          const label = extension.getDisplayName(this.languageService);
+          const label = extension.getDisplayName(this.languageService, this.translateService);
           const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
           const isNotRestricted = !contains(this.restricts, extension.id);
           return searchMatches && isNotRestricted;
