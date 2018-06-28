@@ -137,18 +137,17 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     const { validity, codeRegistry, defaultCode, dataClassifications, externalReferences, ...rest } = formData;
 
-    const codeScheme: CodeSchemeType = <CodeSchemeType> {
-      ...rest,
-      startDate: formatDate(validity.start),
-      endDate: formatDate(validity.end),
-      codeRegistry: codeRegistry.serialize(),
-      defaultCode: defaultCode ? defaultCode.serialize() : undefined,
-      dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize()),
-      externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
-    };
-
     if (this.cloning) {
       console.log('Cloning CodeScheme');
+      const codeScheme: CodeSchemeType = <CodeSchemeType> {
+        ...rest,
+        startDate: formatDate(validity.start),
+        endDate: formatDate(validity.end),
+        codeRegistry: codeRegistry.serialize(),
+        defaultCode: defaultCode ? defaultCode.serialize() : undefined,
+        dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize())
+      };
+
       return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning)
         .do(createdCodeScheme => {
           console.log('Saved cloned CodeScheme');
@@ -162,6 +161,16 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
         });
     } else {
       console.log('Saving new CodeScheme');
+      const codeScheme: CodeSchemeType = <CodeSchemeType> {
+        ...rest,
+        startDate: formatDate(validity.start),
+        endDate: formatDate(validity.end),
+        codeRegistry: codeRegistry.serialize(),
+        defaultCode: defaultCode ? defaultCode.serialize() : undefined,
+        dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize()),
+        externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
+      };
+
       return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
         .do(createdCodeScheme => {
           console.log('Saved new CodeScheme');
