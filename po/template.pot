@@ -100,6 +100,9 @@ msgstr ""
 msgid "Validity"
 msgstr ""
 
+msgid "Links"
+msgstr ""
+
 msgid "Create code"
 msgstr ""
 
@@ -110,9 +113,6 @@ msgid "URI"
 msgstr ""
 
 msgid "Last modification"
-msgstr ""
-
-msgid "Links"
 msgstr ""
 
 msgid "Delete"
@@ -401,7 +401,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
 msgid "Front page"
@@ -514,10 +514,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr ""
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
@@ -620,9 +620,6 @@ msgid "terminologyIntegrationModalPageTitleWhenCreatingCode"
 msgstr ""
 
 msgid "terminologyIntegrationModalPageTitleWhenCreatingCodeScheme"
-msgstr ""
-
-msgid "Get concept from Controlled Vocabularies instruction text"
 msgstr ""
 
 msgid "terminologyIntegrationModalInstructionTextWhenCreatingCode"

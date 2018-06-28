@@ -104,18 +104,24 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
       this.codeListErrorModalService.openSubmitError(error);
     });
 
-    if (this.targetEntityKind === 'code' && !this.updatingExistingEntity) {
-      this.cancelText = 'cancelTextForCodeCreation';
-      this.terminologyIntegrationModalPageTitle = 'terminologyIntegrationModalPageTitleWhenCreatingCode';
+    if (this.targetEntityKind === 'code') {
+      if (!this.updatingExistingEntity) {
+        this.cancelText = 'cancelTextForCodeCreation';
+        this.terminologyIntegrationModalPageTitle = 'terminologyIntegrationModalPageTitleWhenCreatingCode';
+      } else {
+        this.cancelText = 'Cancel';
+        this.terminologyIntegrationModalPageTitle = 'Get concept from Controlled Vocabularies';
+      }
       this.terminologyIntegrationModalInstructionText = 'terminologyIntegrationModalInstructionTextWhenCreatingCode';
-    } else if (this.targetEntityKind === 'codescheme' && !this.updatingExistingEntity) {
-      this.cancelText = 'cancelTextForCodeSchemeCreation';
-      this.terminologyIntegrationModalPageTitle = 'terminologyIntegrationModalPageTitleWhenCreatingCodeScheme';
+    } else if (this.targetEntityKind === 'codescheme') {
+      if (!this.updatingExistingEntity) {
+        this.cancelText = 'cancelTextForCodeSchemeCreation';
+        this.terminologyIntegrationModalPageTitle = 'terminologyIntegrationModalPageTitleWhenCreatingCodeScheme';
+      } else {
+        this.cancelText = 'Cancel';
+        this.terminologyIntegrationModalPageTitle = 'Get concept from Controlled Vocabularies';
+      }
       this.terminologyIntegrationModalInstructionText = 'terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme';
-    } else {
-      this.cancelText = 'Cancel';
-      this.terminologyIntegrationModalPageTitle = 'Get concept from Controlled Vocabularies';
-      this.terminologyIntegrationModalInstructionText = 'Get concept from Controlled Vocabularies instruction text';
     }
   }
 

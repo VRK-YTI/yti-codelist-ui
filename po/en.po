@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-27 10:53+0300\n"
+"PO-Revision-Date: 2018-06-28 17:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -109,6 +109,9 @@ msgstr ""
 msgid "Validity"
 msgstr ""
 
+msgid "Links"
+msgstr ""
+
 msgid "Create code"
 msgstr ""
 
@@ -119,9 +122,6 @@ msgid "URI"
 msgstr ""
 
 msgid "Last modification"
-msgstr ""
-
-msgid "Links"
 msgstr ""
 
 msgid "Delete"
@@ -410,8 +410,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "The data is missing a column with the header CLASSIFICATION."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Code list already exists."
 
 msgid "Front page"
 msgstr ""
@@ -527,11 +527,11 @@ msgstr "Erroneous end date on row {{ identifier }}."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Code {{ identifier }} already exists."
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Code list already exists."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr "The data is missing a column with the header CLASSIFICATION."
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr "Data contains faulty classification."
@@ -643,14 +643,6 @@ msgstr "Create code name by importing it from Controlled Vocabularies-tool"
 msgid "terminologyIntegrationModalPageTitleWhenCreatingCodeScheme"
 msgstr ""
 "Create code list name by importing it from Controlled Vocabularies-tool"
-
-msgid "Get concept from Controlled Vocabularies instruction text"
-msgstr ""
-"Search for a concept from Controlled Vocabularies and bring it to Reference "
-"Data by clicking on the search result. The name and definition of the "
-"concept will be copied in their respective fields in case the fields are "
-"empty. The URI of the concept is always copied, replacing the possible "
-"existing value."
 
 msgid "terminologyIntegrationModalInstructionTextWhenCreatingCode"
 msgstr ""

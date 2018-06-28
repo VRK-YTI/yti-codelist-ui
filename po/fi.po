@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-27 10:53+0300\n"
+"PO-Revision-Date: 2018-06-28 17:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -109,6 +109,9 @@ msgstr "Lyhyt nimi"
 msgid "Validity"
 msgstr "Voimassaolo"
 
+msgid "Links"
+msgstr "Linkit"
+
 msgid "Create code"
 msgstr "Luo koodi"
 
@@ -120,9 +123,6 @@ msgstr "URI"
 
 msgid "Last modification"
 msgstr "Viimeisin muokkaus"
-
-msgid "Links"
-msgstr "Linkit"
 
 msgid "Delete"
 msgstr "Poista"
@@ -417,8 +417,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Koodisto on jo olemassa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -533,11 +533,11 @@ msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Koodisto on jo olemassa."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr "Aineistolle annettua luokitusta ei löydy."
@@ -647,13 +647,6 @@ msgstr "Luo koodin nimi tuomalla käsite Sanastot-työkalusta"
 msgid "terminologyIntegrationModalPageTitleWhenCreatingCodeScheme"
 msgstr "Luo koodiston nimi tuomalla käsite Sanastot-työkalusta"
 
-msgid "Get concept from Controlled Vocabularies instruction text"
-msgstr ""
-"Hae käsitettä Sanastoista ja tuo se Koodistoon klikkaamalla hakutulosta. "
-"Käsitteen nimi ja määritelmä kopioidaan Koodistot-palveluun, mikäli kyseiset "
-"tiedot ovat siellä tyhjiä. Käsitteen URI kopioidaan aina, myös mahdollisen "
-"aiemman URIn tilalle."
-
 msgid "terminologyIntegrationModalInstructionTextWhenCreatingCode"
 msgstr ""
 "Hae koodin nimeä vastaavaa käsitettä Sanastot-työkalusta. Tuo käsite koodin "
@@ -691,6 +684,3 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
-
-#~ msgid "service help"
-#~ msgstr "palvelun ohjeista"
