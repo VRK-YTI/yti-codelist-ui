@@ -8,7 +8,10 @@ import { Localizable } from 'yti-common-ui/types/localization';
   selector: 'app-localizable-input',
   template: `
     <dl *ngIf="show">
-      <dt><label>{{label}}</label></dt>
+      <dt>
+        <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+      </dt>
       <dd>
         <div *ngIf="editing" class="form-group">
           <input [id]="id"
@@ -28,6 +31,7 @@ export class LocalizableInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() required = false;
   @Input() id: string;
   value: Localizable = {};
 

@@ -6,7 +6,10 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
   selector: 'app-literal-input',
   template: `
     <dl *ngIf="show">
-      <dt><label>{{label}}</label></dt>
+      <dt>
+        <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+      </dt>
       <dd>
         <div *ngIf="editing" class="form-group">
           <input [id]="id"
@@ -23,9 +26,10 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 })
 export class LiteralInputComponent implements ControlValueAccessor {
 
-  @Input() label: string;
+  @Input() label: string; 
   @Input() restrict = false;
   @Input() id: string;
+  @Input() required = false;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};

@@ -25,6 +25,7 @@ function removeFromControl<T>(control: FormControl) {
     <dl *ngIf="editing || code">
       <dt>
         <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="!editing && code">
@@ -32,7 +33,7 @@ function removeFromControl<T>(control: FormControl) {
         </div>
         <div *ngIf="editing && code">
           <a>
-            <i id="{{'remove_code_link'}}"
+            <i id="remove_code_link"
                class="fa fa-times"
                (click)="removeCode(code)"></i>
           </a>
@@ -55,6 +56,7 @@ export class CodeInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() codeScheme: CodeScheme;
+  @Input() required = false;
   control = new FormControl(null);
 
   private propagateChange: (fn: any) => void = () => {};

@@ -13,6 +13,7 @@ import { LanguageService } from '../../services/language.service';
     <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="editing" ngbDropdown class="d-inline-block">
@@ -23,12 +24,13 @@ import { LanguageService } from '../../services/language.service';
         </div>
         <span *ngIf="!editing">{{selection.prefLabel | translateValue:true}}</span>
       </dd>
-    </dl>
+    </dl>  
   `
 })
 export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit {
 
   @Input() label: string;
+  @Input() required = false;
   @Output() loaded = new EventEmitter();
 
   control = new FormControl();

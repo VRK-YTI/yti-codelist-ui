@@ -8,7 +8,10 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   selector: 'app-localizable-textarea',
   template: `
     <dl *ngIf="show">
-      <dt><label>{{label}}</label></dt>
+      <dt>
+        <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+      </dt>
       <dd>
         <div *ngIf="editing" class="form-group">
           <textarea [id]="id"
@@ -28,6 +31,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() required = false;
   @Input() id: string;
   value: Localizable = {};
 

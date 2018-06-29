@@ -28,6 +28,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
     <dl *ngIf="editing || dataClassifications.length > 0">
       <dt>
         <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="!editing">
@@ -38,7 +39,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
         <div *ngIf="editing">
           <div *ngFor="let classification of dataClassifications">
             <a>
-              <i id="{{'remove_' + classification.codeValue + '_classification_link'}}"
+              <i [id]="'remove_' + classification.codeValue + '_classification_link'"
                  class="fa fa-times"
                  (click)="removeDataClassification(classification)"></i>
             </a>
@@ -61,6 +62,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() required = false;
   control = new FormControl([]);
 
   classifications$: Observable<Code[]>;

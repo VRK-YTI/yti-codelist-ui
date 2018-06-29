@@ -25,6 +25,7 @@ function removeFromControl<T>(control: FormControl) {
     <dl *ngIf="editing || extension">
       <dt>
         <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="!editing && extension">
@@ -32,7 +33,7 @@ function removeFromControl<T>(control: FormControl) {
         </div>
         <div *ngIf="editing && extension">
           <a>
-            <i id="{{'remove_extension_link'}}"
+            <i id="remove_extension_link"
                class="fa fa-times"
                (click)="removeExtension(extension)"></i>
           </a>
@@ -55,6 +56,7 @@ export class ExtensionInputComponent implements ControlValueAccessor {
   @Input() label: string;
   @Input() extensionScheme: ExtensionScheme;
   @Input() currentExtension: Extension;
+  @Input() required = false;
   control = new FormControl(null);
 
   private propagateChange: (fn: any) => void = () => {};

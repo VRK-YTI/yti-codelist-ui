@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
     <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="editing">
@@ -36,6 +37,7 @@ export class DateRangeInputComponent {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() required = false;
 
   startControl = new FormControl(null, validDate);
   endControl = new FormControl(null, validDate);

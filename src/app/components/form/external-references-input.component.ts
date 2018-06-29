@@ -15,7 +15,10 @@ import { LanguageService } from '../../services/language.service';
   styleUrls: ['./external-references-input.component.scss'],
   template: `
     <dl *ngIf="editing || externalReferences.length > 0">
-      <dt><label>{{label}}</label></dt>
+      <dt>
+        <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+      </dt>
       <dd>
         <div *ngFor="let propertyExternalReferences of externalReferencesByType">
 
@@ -58,6 +61,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
   @Input() label: string;
   @Input() codeSchemeId: string;
   @Input() restrict = false;
+  @Input() required = false;
   control = new FormControl([]);
 
   private propagateChange: (fn: any) => void = () => {};

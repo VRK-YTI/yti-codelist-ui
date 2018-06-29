@@ -11,6 +11,7 @@ import { Moment } from 'moment';
     <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="editing">
@@ -39,6 +40,7 @@ export class DateInputComponent {
 
   @Input() label: string;
   @Input() restrict = false;
+  @Input() required = false;
   @Input() id: string;
   control = new FormControl();
 
