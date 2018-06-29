@@ -44,6 +44,7 @@
       <dl>
         <dt>
           <label for="fileupload_input" translate>File to be uploaded</label>
+          <app-required-symbol></app-required-symbol>
         </dt>
         <dd>
           <input name="file" id="fileupload_input" type="file" (change)="onChange($event)"/>

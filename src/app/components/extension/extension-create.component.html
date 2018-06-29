@@ -51,11 +51,13 @@
 
           <app-literal-input [id]="'extension_extensionvalue_input'"
                              [label]="'Extension value' | translate"
+                             [required]="true"
                              [formControlName]="'extensionValue'"></app-literal-input>
 
           <app-code-input id="extension_code_input"
                           [label]="'Code' | translate"
                           [codeScheme]="extensionScheme.parentCodeScheme"
+                          [required]="true"
                           [formControlName]="'code'"></app-code-input>
 
           <app-extension-input id="extension_extension_input"

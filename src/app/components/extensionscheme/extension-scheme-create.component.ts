@@ -34,7 +34,6 @@ export class ExtensionSchemeCreateComponent implements OnInit {
               private router: Router,
               private dataService: DataService,
               private editableService: EditableService,
-              private activatedRoute: ActivatedRoute,
               private location: Location,
               private locationService: LocationService) {
 

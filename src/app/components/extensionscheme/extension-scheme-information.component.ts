@@ -2,13 +2,11 @@ import { Component, Input, OnChanges, OnDestroy, SimpleChanges, OnInit} from '@a
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
-import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CodeListErrorModalService } from '../common/error-modal.service';
+import { ActivatedRoute } from '@angular/router';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LocationService } from '../../services/location.service';
 
@@ -33,10 +31,7 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
   constructor(private userService: UserService,
               private dataService: DataService,
               private route: ActivatedRoute,
-              private router: Router,
               private locationService: LocationService,
-              private errorModalService: CodeListErrorModalService,
-              private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
               public languageService: LanguageService) {
 

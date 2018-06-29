@@ -2,7 +2,6 @@ import { Component, Injectable, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
-import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../../components/common/error-modal.service';
@@ -35,7 +34,6 @@ export class ExtensionSchemesImportModalComponent {
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
-              private router: Router,
               private modal: NgbActiveModal,
               private codeListErrorModalService: CodeListErrorModalService) {
 
