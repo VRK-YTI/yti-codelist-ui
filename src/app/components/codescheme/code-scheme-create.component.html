@@ -26,10 +26,12 @@
         <app-coderegistry-input id="code_registry_input"
                                 [label]="'Coderegistry' | translate"
                                 (loaded)="codeRegistriesLoaded = true"
+                                [required]="true"
                                 [formControlName]="'codeRegistry'"></app-coderegistry-input>
 
         <app-literal-input [id]="'codelist_value_input'"
                            [label]="'Code list value' | translate"
+                           [required]="true"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
@@ -66,6 +68,7 @@
 
         <app-classifications-input [id]="'codelist_classification_input'"
                                    [label]="'Classification' | translate"
+                                   [required]="true"
                                    [formControlName]="'dataClassifications'"></app-classifications-input>
 
         <app-localizable-textarea [id]="'codelist_description_textarea'"

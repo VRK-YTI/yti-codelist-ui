@@ -25,7 +25,8 @@
         <app-literal-input [id]="'link_url_input'"
                            [label]="'URL' | translate"
                            [name]="'href'"
-                           required
+                           [required]="true"
+                           required                           
                            [(ngModel)]="externalReference.href"></app-literal-input>
 
         <app-property-type-select id="propertytype_select"
