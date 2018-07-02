@@ -8,11 +8,27 @@
 
   <h1 class="text-content-wrap" translate>Registries</h1>
 
+
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="canAddRegistry()" class="d-inline-block mb-1 ml-3 pull-right">
+        <button id="create_code_button"
+                type="button"
+                class="btn btn-action pull-right"
+                (click)="createRegistry()"
+                translate>Create registry
+        </button>
+      </div>
+      <app-content-language></app-content-language>
+    </div>
+  </div>
+
   <div class="codeRegistries row">
     <div id="code_registry_div" class="col-md-12">
       <ul id="code_registry_regular">
         <li *ngFor="let codeRegistry of codeRegistries; trackBy: codeRegistryIdentity">
-          <app-code-registry-listitem id="{{codeRegistry.idIdentifier + '_codelist_code_registry_listitem'}}" [codeRegistry]="codeRegistry"></app-code-registry-listitem>
+          <app-code-registry-listitem id="{{codeRegistry.idIdentifier + '_codelist_code_registry_listitem'}}"
+                                      [codeRegistry]="codeRegistry"></app-code-registry-listitem>
         </li>
       </ul>
     </div>

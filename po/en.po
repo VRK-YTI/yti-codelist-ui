@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-02 15:58+0300\n"
+"PO-Revision-Date: 2018-07-02 21:21+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -386,10 +386,19 @@ msgstr ""
 msgid "User right management"
 msgstr ""
 
+msgid "Create registry"
+msgstr ""
+
 msgid "No registries found."
 msgstr ""
 
 msgid "This code registry does not have any code lists yet."
+msgstr ""
+
+msgid "Registry value"
+msgstr ""
+
+msgid "Registry name"
 msgstr ""
 
 msgid "Code registry name"
@@ -479,6 +488,9 @@ msgid "Create code list"
 msgstr ""
 
 msgid "REMOVE LINK?"
+msgstr ""
+
+msgid "REMOVE REGISTRY?"
 msgstr ""
 
 msgid "REMOVE CODE?"
@@ -680,6 +692,9 @@ msgstr "Invalid date"
 
 msgid "invalidDateRange"
 msgstr "Invalid date range"
+
+msgid "registryCodeValueExists"
+msgstr "Register code value is already in use."
 
 msgid "codeSchemeCodeValueExists"
 msgstr "Code list value is already in use in this registry."

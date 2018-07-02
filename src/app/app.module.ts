@@ -110,6 +110,7 @@ import {
   SearchLinkedOrganizationModalService
 } from './components/form/search-linked-organization-modal.component';
 import { OrganizationsInputComponent } from './components/form/organizations-input.component';
+import { RegistryCreateComponent } from './components/registry/registry-create.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -130,6 +131,7 @@ const appRoutes: Routes = [
   {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
   {path: 'createextensionscheme', component: ExtensionSchemeCreateComponent, pathMatch: 'full'},
   {path: 'createextension', component: ExtensionCreateComponent, pathMatch: 'full'},
+  {path: 'createregistry', component: RegistryCreateComponent, pathMatch: 'full'},
   {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
@@ -183,6 +185,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ExtensionCreateComponent,
     ExtensionSchemeListitemComponent,
     RegistriesComponent,
+    RegistryCreateComponent,
     RegistryComponent,
     RegistryInformationComponent,
     RegistryListitemComponent,

@@ -22,13 +22,13 @@
                                [label]="'Code registry name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <app-organizations-input id="data_organizations_input"
-                                   [label]="'Organization' | translate"
-                                   [formControlName]="'organizations'"></app-organizations-input>
-
         <app-localizable-textarea [id]="'registry_definition_textarea'"
                                   [label]="'Definition' | translate"
                                   [formControlName]="'definition'"></app-localizable-textarea>
+
+        <app-organizations-input id="data_organizations_input"
+                                 [label]="'Organization' | translate"
+                                 [formControlName]="'organizations'"></app-organizations-input>
 
         <app-clipboard [label]="'URI' | translate"
                        [value]="getRegistryUri()"

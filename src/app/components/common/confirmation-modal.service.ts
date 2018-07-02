@@ -16,7 +16,7 @@ export class CodeListConfirmationModalService {
   }
 
   openRemoveCodeRegistry() {
-    return this.confirmationModalService.open('REMOVE CODE REGISTRY?', '');
+    return this.confirmationModalService.open('REMOVE REGISTRY?', '');
   }
 
   openRemoveCode() {

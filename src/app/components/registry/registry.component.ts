@@ -49,7 +49,7 @@ export class RegistryComponent implements OnInit, EditingComponent {
 
     this.dataService.getCodeRegistry(registryCodeValue).subscribe(codeRegistry => {
       this.codeRegistry = codeRegistry;
-      this.locationService.atCodeRegistryPage(codeRegistry);
+      this.locationService.atRegistryPage(codeRegistry);
     });
 
     this.dataService.getCodeSchemesForCodeRegistry(registryCodeValue).subscribe(codeSchemes => {

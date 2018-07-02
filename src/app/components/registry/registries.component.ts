@@ -5,6 +5,7 @@ import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
+import { UserService } from 'yti-common-ui/services/user.service';
 
 @Component({
   selector: 'app-code-registries',
@@ -19,7 +20,8 @@ export class RegistriesComponent implements OnInit {
   constructor(public languageService: LanguageService,
               private router: Router,
               private dataService: DataService,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -32,6 +34,13 @@ export class RegistriesComponent implements OnInit {
   get loading(): boolean {
     return this.codeRegistries == null;
   }
+
+  canAddRegistry() {
+    return this.userService.user.superuser;
+  }
+
+  createRegistry() {
+    this.router.navigate(['createregistry']);  }
 
   back() {
     this.router.navigate(['registries']);

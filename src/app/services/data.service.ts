@@ -109,6 +109,23 @@ export class DataService {
       .map(res => new CodeRegistry(res.json() as CodeRegistryType));
   }
 
+  createRegistry(codeRegistryToSave: CodeRegistryType): Observable<CodeRegistry> {
+    return this.createRegistries([codeRegistryToSave]).map(createdRegistries => {
+      if (createdRegistries.length !== 1) {
+        throw new Error('Exactly one registry needs to be created');
+      } else {
+        return createdRegistries[0];
+      }
+    });
+  }
+
+  createRegistries(registryList: CodeRegistryType[]): Observable<CodeRegistry[]> {
+
+    return this.http.post(`${codeRegistriesIntakeBasePath}/`,
+      registryList)
+      .map(res => res.json().results.map((data: CodeRegistryType) => new CodeRegistry(data)));
+  }
+
   saveCodeRegistry(codeRegistryToSave: CodeRegistryType): Observable<ApiResponseType> {
 
     console.log('saving registry in dataservice');
@@ -549,6 +566,16 @@ export class DataService {
     `${extensionSchemes}/${extensionSchemeCodeValue}/${extensions}/`,
       extensionList)
       .map(res => res.json().results.map((data: ExtensionType) => new Extension(data)));
+  }
+
+  registryCodeValueExists(registryCodeValue: string): Observable<boolean> {
+
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}`)
+      .map(res => {
+        return res.status === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
   }
 
   codeSchemeCodeValueExists(registryCodeValue: string, schemeCodeValue: string): Observable<boolean> {

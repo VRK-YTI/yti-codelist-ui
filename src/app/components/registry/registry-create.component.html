@@ -1,0 +1,47 @@
+<div class="content-box">
+
+  <app-back-button [id]="'registry_create_back_button'" (back)="back()"></app-back-button>
+
+  <div class="row">
+    <div class="col-12">
+      <h1 class="pull-left" translate>Create registry</h1>
+      <app-content-language></app-content-language>
+    </div>
+  </div>
+
+  <form [formGroup]="codeRegistryForm" #form="ngForm">
+
+    <div class="row">
+      <div class="col-12">
+        <app-editable-buttons [form]="form"></app-editable-buttons>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10">
+        <app-literal-input [id]="'codelist_value_input'"
+                           [label]="'Registry value' | translate"
+                           [required]="true"
+                           [formControlName]="'codeValue'"></app-literal-input>
+
+        <div class="form-group">
+          <app-error-messages id="registry_form_error_messages" [control]="codeRegistryForm"></app-error-messages>
+        </div>
+
+        <app-localizable-input [id]="'codelist_name_input'"
+                               [label]="'Registry name' | translate"
+                               [formControlName]="'prefLabel'"></app-localizable-input>
+
+        <app-localizable-textarea [id]="'codelist_definition_textarea'"
+                                  [label]="'Definition' | translate"
+                                  [formControlName]="'definition'"></app-localizable-textarea>
+
+        <app-organizations-input id="data_organizations_input"
+                                 [label]="'Organization' | translate"
+                                 [formControlName]="'organizations'"></app-organizations-input>
+
+      </div>
+    </div>
+
+  </form>
+</div>

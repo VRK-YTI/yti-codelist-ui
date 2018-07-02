@@ -15,6 +15,7 @@ const createCodeSchemePage = { localizationKey: 'Create code list', route: ['cre
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
 const createExtensionSchemePage = { localizationKey: 'Create extensionscheme', route: ['createextensionscheme'] };
 const createExtensionPage = { localizationKey: 'Create extension', route: ['createextension'] };
+const createRegistryPage = { localizationKey: 'Create registry', route: ['createregistry'] };
 
 @Injectable()
 export class LocationService {
@@ -44,8 +45,12 @@ export class LocationService {
     }]);
   }
 
-  atCodeRegistryPage(codeRegistry: CodeRegistry): void {
+  atRegistryPage(codeRegistry: CodeRegistry): void {
     this.changeLocation(codeRegistry.location);
+  }
+
+  atRegistryCreatePage(): void {
+    this.changeLocation([createRegistryPage]);
   }
 
   atCodeSchemePage(codeScheme: CodeScheme): void {

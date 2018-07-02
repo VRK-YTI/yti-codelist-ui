@@ -377,10 +377,19 @@ msgstr ""
 msgid "User right management"
 msgstr ""
 
+msgid "Create registry"
+msgstr ""
+
 msgid "No registries found."
 msgstr ""
 
 msgid "This code registry does not have any code lists yet."
+msgstr ""
+
+msgid "Registry value"
+msgstr ""
+
+msgid "Registry name"
 msgstr ""
 
 msgid "Code registry name"
@@ -470,6 +479,9 @@ msgid "Create code list"
 msgstr ""
 
 msgid "REMOVE LINK?"
+msgstr ""
+
+msgid "REMOVE REGISTRY?"
 msgstr ""
 
 msgid "REMOVE CODE?"
@@ -647,6 +659,9 @@ msgid "invalidDate"
 msgstr ""
 
 msgid "invalidDateRange"
+msgstr ""
+
+msgid "registryCodeValueExists"
 msgstr ""
 
 msgid "codeSchemeCodeValueExists"
