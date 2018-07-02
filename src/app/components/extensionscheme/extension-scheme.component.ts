@@ -124,6 +124,10 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
     return this.userService.user.superuser;
   }
 
+  navigateToRoute(route: any[]) {
+    this.router.navigate(route);
+  }
+
   cancelEditing(): void {
     this.editableService.cancel();
   }

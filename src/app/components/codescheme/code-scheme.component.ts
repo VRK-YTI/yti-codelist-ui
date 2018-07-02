@@ -161,6 +161,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).do(() => this.ngOnInit());
   }
 
+  navigateToRoute(route: any[]) {
+    this.router.navigate(route);
+  }
+
   importExtensionSchemes() {
     this.extensionSchemesImportModalService.open(this.codeScheme).then(success => {
       if (success) {

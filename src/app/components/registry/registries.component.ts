@@ -4,6 +4,7 @@ import { LanguageService } from '../../services/language.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-code-registries',
@@ -15,12 +16,14 @@ export class RegistriesComponent implements OnInit {
 
   codeRegistries: CodeRegistry[];
 
-  constructor(private router: Router,
+  constructor(public languageService: LanguageService,
+              private router: Router,
               private dataService: DataService,
-              public languageService: LanguageService) {
+              private locationService: LocationService) {
   }
 
   ngOnInit() {
+    this.locationService.atCodeRegistriesPage();
     this.dataService.getCodeRegistries().subscribe(codeRegistries => {
       this.codeRegistries = codeRegistries;
     });

@@ -80,12 +80,15 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   }
 
   get location(): Location[] {
-    return [{
-      localizationKey: 'Code list',
-      label: this.prefLabel,
-      value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
-      route: this.route
-    }];
+    return [
+      ...this.codeRegistry.location,
+      {
+        localizationKey: 'Code list',
+        label: this.prefLabel,
+        value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
+        route: this.route
+      }
+    ];
   }
 
   get restricted() {

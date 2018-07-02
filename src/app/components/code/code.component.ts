@@ -12,6 +12,7 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code',
@@ -26,7 +27,8 @@ export class CodeComponent implements OnInit, EditingComponent {
   code: Code;
   codeScheme: CodeScheme;
 
-  constructor(private userService: UserService,
+  constructor(public languageService: LanguageService,
+              private userService: UserService,
               private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
@@ -82,6 +84,10 @@ export class CodeComponent implements OnInit, EditingComponent {
 
   isEditing(): boolean {
     return this.editableService.editing;
+  }
+
+  navigateToRoute(route: any[]) {
+    this.router.navigate(route);
   }
 
   get canDelete() {

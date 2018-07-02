@@ -90,6 +90,10 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     return this.editableService.editing;
   }
 
+  navigateToRoute(route: any[]) {
+    this.router.navigate(route);
+  }
+
   get canDelete() {
     return this.userService.user.superuser ||
       (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&

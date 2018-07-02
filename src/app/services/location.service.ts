@@ -37,6 +37,13 @@ export class LocationService {
     }]);
   }
 
+  atCodeRegistriesPage(): void {
+    this.changeLocation([{
+      localizationKey: 'Registries',
+      route: ['registries']
+    }]);
+  }
+
   atCodeRegistryPage(codeRegistry: CodeRegistry): void {
     this.changeLocation(codeRegistry.location);
   }

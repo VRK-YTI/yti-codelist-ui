@@ -57,7 +57,7 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Registry</span><span>: {{codeScheme.codeRegistry.prefLabel | translateValue}}</span>
+        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.dataClassifications.length > 0">
         <span translate>Classification</span><span>: </span>
