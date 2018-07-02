@@ -13,12 +13,12 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-md-12">
-        <app-coderegistry-input id="codelist_registry_input"
+        <app-registry-input id="codelist_registry_input"
                                 [label]="'Registry for the code list' | translate"
                                 (loaded)="codeRegistriesLoaded = true"
                                 [required]="true"
                                 required
-                                [(ngModel)]="codeRegistry"></app-coderegistry-input>
+                                [(ngModel)]="codeRegistry"></app-registry-input>
       </div>
     </div>
 

@@ -109,6 +109,37 @@ export class DataService {
       .map(res => new CodeRegistry(res.json() as CodeRegistryType));
   }
 
+  saveCodeRegistry(codeRegistryToSave: CodeRegistryType): Observable<ApiResponseType> {
+
+    console.log('saving registry in dataservice');
+    console.log(codeRegistryToSave);
+    const registryCode = codeRegistryToSave.codeValue;
+
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/`, codeRegistryToSave)
+      .map(res => res.json() as ApiResponseType);
+  }
+
+  deleteCodeRegistry(theCodeRegistry: CodeRegistry): Observable<boolean> {
+
+    const registryCode = theCodeRegistry.codeValue;
+
+    return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}`)
+      .map(res => {
+        return res.status === 200;
+      }).catch(error => {
+        return Observable.of(false);
+      });
+  }
+
+  getCodeSchemesForCodeRegistry(registryCodeValue: string): Observable<CodeScheme[]> {
+
+    const params = new URLSearchParams();
+    params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme');
+
+    return this.http.get(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/`, {params})
+      .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+  }
+
   searchCodeSchemes(searchTerm: string, classification: string | null, organization: string | null,
                     sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
 

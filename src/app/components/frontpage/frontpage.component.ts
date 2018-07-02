@@ -78,7 +78,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
     this.dataService.getCodeRegistries().subscribe(registers => {
       this.registerOptions = [null, ...registers].map(register => ({
-        value: register,        
+        value: register,
         name: () => register ? this.languageService.translate(register.prefLabel, true)
           : this.translateService.instant('All registries'),
         idIdentifier: () => register ? register.codeValue : 'all_selected'
@@ -88,7 +88,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     this.subscriptionToClean.push(Observable.combineLatest(this.dataService.getOrganizations(), this.languageService.language$)
       .subscribe(([organizations]) => {
         this.organizationOptions = [null, ...organizations].map(organization => ({
-          value: organization,          
+          value: organization,
           name: () => organization ? this.languageService.translate(organization.prefLabel, true)
             : this.translateService.instant('All organizations'),
           idIdentifier: () => organization ? labelNameToResourceIdIdentifier(this.languageService.translate(organization.prefLabel, true))
@@ -99,7 +99,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       }));
 
     this.statusOptions = [null, ...allStatuses].map(status => ({
-      value: status,      
+      value: status,
       name: () => this.translateService.instant(status ? status : 'All statuses'),
       idIdentifier: () => status ? status : 'all_selected'
     }));
@@ -192,7 +192,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   }
 
   viewCodeScheme(codeScheme: CodeScheme) {
-    console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from coderegistry: ' + codeScheme.codeRegistry.codeValue);
+    console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from registry: ' + codeScheme.codeRegistry.codeValue);
     this.router.navigate(codeScheme.route);
   }
 

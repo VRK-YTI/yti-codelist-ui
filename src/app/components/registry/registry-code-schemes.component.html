@@ -1,0 +1,28 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading">
+  <div class="codeSchemes row">
+    <div id="registry_codelist_list_div" class="col-md-12">
+      <ul id="registry_codelist_list_regular">
+        <li *ngFor="let codeScheme of codeSchemes; trackBy: codeSchemeIdentity">
+          <div class="col-12">
+            <div class="codeScheme" id="{{codeScheme.idIdentifier + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of codeSchemes">
+              <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
+              <app-status class="pull-right" [status]="codeScheme.status"></app-status>
+              <div class="organization">
+                <span *ngIf="codeScheme.codeRegistry.organizations.length == 0" translate>No organization</span>
+                <span *ngIf="codeScheme.codeRegistry.organizations.length == 1">{{codeScheme.codeRegistry.organizations[0].prefLabel | translateValue:true}}</span>
+                <span *ngIf="codeScheme.codeRegistry.organizations.length > 1">{{codeScheme.codeRegistry.organizations.length}} {{'organizations' | translate}}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="emptyCodeSchemes" *ngIf="codeSchemes.length === 0">
+    <span translate>This code registry does not have any code lists yet.</span>
+  </div>
+</div>

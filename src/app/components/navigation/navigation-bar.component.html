@@ -55,6 +55,10 @@
            *ngIf="isLoggedIn()"
            [routerLink]="['/userDetails']" translate>User details</a>
         <a class="dropdown-item"
+           id="navigation_link_registries"
+           *ngIf="isLoggedIn()"
+           [routerLink]="['/registries']" translate>Registries</a>
+        <a class="dropdown-item"
            id="navigation_groupmanagement_link"
            *ngIf="showGroupManagementUrl()"
            [href]="groupManagementUrl" target="_blank" translate>User right management</a>

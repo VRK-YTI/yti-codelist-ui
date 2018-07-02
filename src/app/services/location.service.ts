@@ -5,6 +5,7 @@ import { Code } from '../entities/code';
 import { Location } from 'yti-common-ui/types/location';
 import { ExtensionScheme } from '../entities/extension-scheme';
 import { Extension } from '../entities/extension';
+import { CodeRegistry } from '../entities/code-registry';
 
 const frontPage = { localizationKey: 'Front page', route: [''] };
 const informationAboutServicePage = { localizationKey: 'Information about the service', route: ['information'] };
@@ -34,6 +35,10 @@ export class LocationService {
       localizationKey: 'User details',
       route: ['userDetails']
     }]);
+  }
+
+  atCodeRegistryPage(codeRegistry: CodeRegistry): void {
+    this.changeLocation(codeRegistry.location);
   }
 
   atCodeSchemePage(codeScheme: CodeScheme): void {

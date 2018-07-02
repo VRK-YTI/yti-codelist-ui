@@ -1,0 +1,64 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading" class="content-box">
+
+  <app-back-button [id]="'codelist_back_button'" (back)="back()"></app-back-button>
+
+  <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="pull-right">
+
+        <button id="delete_registry_button"
+                *ngIf='this.canDelete' type="button"
+                class="btn btn-action pull-right ml-3"
+                (click)="delete()"
+                translate>Delete</button>
+        <app-content-language></app-content-language>
+      </div>
+    </div>
+  </div>
+
+  <div class="row metabar">
+    <div class="col-12">
+      <div class="metaitem">
+        <span translate>Registry</span><span>: {{codeRegistry.prefLabel | translateValue}}</span>
+      </div>
+      <div class="metaitem" *ngIf="codeRegistry.organizations.length > 0">
+        <span translate>Organization</span><span>: </span>
+        <span *ngFor="let organization of codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="codeRegistry.description | translateValue">
+    <div class="col-12">
+      <p class="description text-content-wrap">{{codeRegistry.description | translateValue}}</p>
+    </div>
+  </div>
+
+  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
+    <ngb-tab id="registry_codeschemes_tabs">
+      <ng-template ngbTabTitle>
+        <span translate>CODESCHEMES</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-code-registry-code-schemes [codeRegistry]="codeRegistry"></app-code-registry-code-schemes>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab id="registry_info_tab">
+      <ng-template ngbTabTitle>
+        <span translate>INFORMATION</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-code-registry-information [codeRegistry]="codeRegistry"></app-code-registry-information>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

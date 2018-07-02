@@ -1,0 +1,43 @@
+@import '~yti-common-ui/theme/variables';
+
+:host /deep/ .codeRegistries {
+
+  color: $primary;
+  font-size: large;
+  min-height: 200px;
+
+  .icon {
+    width: 20px;
+  }
+
+  .codeRegistry {
+    cursor: pointer;
+    padding: 10px 40px 10px 10px;
+    background-color: $light;
+    margin-top: 8px;
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+  }
+
+  ul {
+    padding-left: 15px;
+
+    li {
+      list-style: none;
+
+      i {
+        cursor: pointer;
+        margin-left: -15px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.emptyRegistries {
+  margin-right: 200px;
+  padding: 10px 40px;
+  margin-top: 5px;
+}

@@ -1,0 +1,42 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading">
+
+  <form [formGroup]="codeRegistryForm" #form="ngForm">
+
+    <div class="row">
+      <div class="col-12">
+        <app-editable-buttons [form]="form"
+                              [entity]="codeRegistry"></app-editable-buttons>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-10">
+        <app-literal [label]="'Code value' | translate"
+                     [value]="codeRegistry.codeValue"></app-literal>
+
+        <app-localizable-input [id]="'registry_name_input'"
+                               [label]="'Code registry name' | translate"
+                               [formControlName]="'prefLabel'"></app-localizable-input>
+
+        <app-organizations-input id="data_organizations_input"
+                                   [label]="'Organization' | translate"
+                                   [formControlName]="'organizations'"></app-organizations-input>
+
+        <app-localizable-textarea [id]="'registry_definition_textarea'"
+                                  [label]="'Definition' | translate"
+                                  [formControlName]="'definition'"></app-localizable-textarea>
+
+        <app-clipboard [label]="'URI' | translate"
+                       [value]="getRegistryUri()"
+                       [showAsLink]="false"></app-clipboard>
+
+        <app-literal [label]="'Last modification' | translate"
+                     [value]="codeRegistry.modifiedDisplayValue"></app-literal>
+      </div>
+    </div>
+  </form>
+</div>

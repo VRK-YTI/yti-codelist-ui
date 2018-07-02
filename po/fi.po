@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-29 10:21+0300\n"
+"PO-Revision-Date: 2018-07-02 16:04+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -70,6 +70,15 @@ msgstr "Etsi laajennusta"
 msgid "Add link"
 msgstr "Lisää linkki"
 
+msgid "Add organization"
+msgstr "Valitse organisaatio"
+
+msgid "Choose organization"
+msgstr "Valitse organisaatio"
+
+msgid "Search organization"
+msgstr "Etsi organisaatio"
+
 msgid "Status"
 msgstr "Tila"
 
@@ -81,9 +90,6 @@ msgstr "Kaikki organisaatiot"
 
 msgid "All vocabularies"
 msgstr "Kaikki sanastot"
-
-msgid "Choose organization"
-msgstr "Valitse organisaatio"
 
 msgid "Code list"
 msgstr "Koodisto"
@@ -127,7 +133,7 @@ msgstr "Viimeisin muokkaus"
 msgid "Delete"
 msgstr "Poista"
 
-msgid "Coderegistry"
+msgid "Registry"
 msgstr "Rekisteri"
 
 msgid "Classification"
@@ -381,8 +387,23 @@ msgstr "KIRJAUDU ULOS"
 msgid "User details"
 msgstr "Käyttäjätiedot"
 
+msgid "Registries"
+msgstr "Rekisterit"
+
 msgid "User right management"
 msgstr "Oikeuksienhallinta"
+
+msgid "No registries found."
+msgstr "Rekistereitä ei ole."
+
+msgid "This code registry does not have any code lists yet."
+msgstr "Tällä rekisterillä ei ole yhtään koodistoa."
+
+msgid "Code registry name"
+msgstr "Rekisterin nimi"
+
+msgid "CODESCHEMES"
+msgstr "KOODISTOT"
 
 msgid "Search for concept"
 msgstr "Hae käsitettä"

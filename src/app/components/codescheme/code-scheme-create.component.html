@@ -23,11 +23,11 @@
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-coderegistry-input id="code_registry_input"
-                                [label]="'Coderegistry' | translate"
+        <app-registry-input id="code_registry_input"
+                                [label]="'Registry' | translate"
                                 (loaded)="codeRegistriesLoaded = true"
                                 [required]="true"
-                                [formControlName]="'codeRegistry'"></app-coderegistry-input>
+                                [formControlName]="'codeRegistry'"></app-registry-input>
 
         <app-literal-input [id]="'codelist_value_input'"
                            [label]="'Code list value' | translate"
@@ -111,7 +111,7 @@
         <app-external-references-input id="codelist_links_input"
                                        [label]="'Links' | translate"
                                        [formControlName]="'externalReferences'"
-                                       [hidden]="cloning"></app-external-references-input>                              
+                                       [hidden]="cloning"></app-external-references-input>
       </div>
     </div>
 

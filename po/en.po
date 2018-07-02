@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-06-29 10:21+0300\n"
+"PO-Revision-Date: 2018-07-02 15:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -70,6 +70,15 @@ msgstr ""
 msgid "Add link"
 msgstr ""
 
+msgid "Add organization"
+msgstr ""
+
+msgid "Choose organization"
+msgstr ""
+
+msgid "Search organization"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
@@ -80,9 +89,6 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
-msgstr ""
-
-msgid "Choose organization"
 msgstr ""
 
 msgid "Code list"
@@ -127,7 +133,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-msgid "Coderegistry"
+msgid "Registry"
 msgstr ""
 
 msgid "Classification"
@@ -374,7 +380,22 @@ msgstr ""
 msgid "User details"
 msgstr ""
 
+msgid "Registries"
+msgstr ""
+
 msgid "User right management"
+msgstr ""
+
+msgid "No registries found."
+msgstr ""
+
+msgid "This code registry does not have any code lists yet."
+msgstr ""
+
+msgid "Code registry name"
+msgstr ""
+
+msgid "CODESCHEMES"
 msgstr ""
 
 msgid "Search for concept"
@@ -661,7 +682,7 @@ msgid "invalidDateRange"
 msgstr "Invalid date range"
 
 msgid "codeSchemeCodeValueExists"
-msgstr "Code list value is already in use in this coderegistry."
+msgstr "Code list value is already in use in this registry."
 
 msgid "codeValueExists"
 msgstr "Code value is already in use."

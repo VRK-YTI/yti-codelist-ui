@@ -61,6 +61,15 @@ msgstr ""
 msgid "Add link"
 msgstr ""
 
+msgid "Add organization"
+msgstr ""
+
+msgid "Choose organization"
+msgstr ""
+
+msgid "Search organization"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
@@ -71,9 +80,6 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
-msgstr ""
-
-msgid "Choose organization"
 msgstr ""
 
 msgid "Code list"
@@ -118,7 +124,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-msgid "Coderegistry"
+msgid "Registry"
 msgstr ""
 
 msgid "Classification"
@@ -365,7 +371,22 @@ msgstr ""
 msgid "User details"
 msgstr ""
 
+msgid "Registries"
+msgstr ""
+
 msgid "User right management"
+msgstr ""
+
+msgid "No registries found."
+msgstr ""
+
+msgid "This code registry does not have any code lists yet."
+msgstr ""
+
+msgid "Code registry name"
+msgstr ""
+
+msgid "CODESCHEMES"
 msgstr ""
 
 msgid "Search for concept"

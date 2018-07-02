@@ -1,4 +1,4 @@
-import { Localizable } from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { OrganizationType } from '../services/api-schema';
 
 export class Organization {
@@ -15,12 +15,20 @@ export class Organization {
     this.url = data.url;
   }
 
+  getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
+    return localizer.translate(this.prefLabel, useUILanguage);
+  }
+
   serialize(): OrganizationType {
     return {
       id: this.id,
       url: this.url,
-      prefLabel: { ...this.prefLabel },
-      description: { ...this.description }
+      prefLabel: {...this.prefLabel},
+      description: {...this.description}
     };
+  }
+
+  clone(): Organization {
+    return new Organization(this.serialize());
   }
 }

@@ -8,7 +8,7 @@ import { TranslateService } from 'ng2-translate';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-coderegistry-input',
+  selector: 'app-registry-input',
   template: `
     <dl *ngIf="show">
       <dt>
@@ -20,14 +20,14 @@ import { LanguageService } from '../../services/language.service';
           <app-dropdown id="codeRegistry_dropdown"
                         [options]="codeRegistryOptions"
                         [formControl]="control"></app-dropdown>
-          <app-error-messages id="codeRegistry_error_messages" [control]="parentControl"></app-error-messages>
+          <app-error-messages id="registry_error_messages" [control]="parentControl"></app-error-messages>
         </div>
         <span *ngIf="!editing">{{selection.prefLabel | translateValue:true}}</span>
       </dd>
     </dl>  
   `
 })
-export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit {
+export class RegistryInputComponent implements ControlValueAccessor, OnInit {
 
   @Input() label: string;
   @Input() required = false;
@@ -60,8 +60,8 @@ export class CodeRegistryInputComponent implements ControlValueAccessor, OnInit 
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistryOptions = [
         { value: null, name: () => this.translateService.instant('No registry'), idIdentifier: () => 'all_selected' },
-        ...codeRegistries.map(reg => ({ 
-            value: reg,            
+        ...codeRegistries.map(reg => ({
+            value: reg,
             name: () => this.languageService.translate(reg.prefLabel, true),
             idIdentifier: () => reg.codeValue
         }))

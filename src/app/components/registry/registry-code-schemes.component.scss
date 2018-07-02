@@ -1,0 +1,56 @@
+@import '~yti-common-ui/theme/variables';
+
+:host /deep/ .codeSchemes {
+
+  color: $primary;
+  font-size: large;
+  min-height: 200px;
+
+  .icon {
+    width: 20px;
+  }
+
+  .codeScheme {
+    display: inline-block;
+    width: 100%;
+    padding: 5px 10px 5px 5px;
+    cursor: pointer;
+    border-left: $active-indicator-width solid $white;
+
+    &:hover {
+      border-left: $active-indicator-width solid $primary;
+    }
+
+    .name {
+      color: $primary;
+      font-weight: 600;
+      float: left;
+    }
+
+    .organization {
+      float: right;
+      clear: right;
+      color: $dark;
+    }
+  }
+
+  ul {
+    padding-left: 15px;
+
+    li {
+      list-style: none;
+
+      i {
+        cursor: pointer;
+        margin-left: -15px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.emptyCodeSchemes {
+  margin-right: 200px;
+  padding: 10px 40px;
+  margin-top: 5px;
+}

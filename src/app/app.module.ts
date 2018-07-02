@@ -63,7 +63,7 @@ import {
   SearchLinkedCodeModalComponent,
   SearchLinkedCodeModalService
 } from './components/form/search-linked-code-modal.component';
-import { CodeRegistryInputComponent } from './components/form/coderegistry-input.component';
+import { RegistryInputComponent } from './components/form/coderegistry-input.component';
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
 import { CodeListErrorModalService } from './components/common/error-modal.service';
 import { HierarchyCodeComponent } from './components/code/hierarchy-code.component';
@@ -100,6 +100,16 @@ import {
 } from './components/form/search-linked-extension-modal.component';
 import { ExtensionInputComponent } from './components/form/extension-input-component';
 import { LogoComponent } from './components/navigation/logo.component';
+import { RegistryListitemComponent } from './components/registry/registry-listitem';
+import { RegistriesComponent } from './components/registry/registries.component';
+import { RegistryComponent } from './components/registry/registry.component';
+import { RegistryInformationComponent } from './components/registry/registry-information.component';
+import { RegistryCodeSchemesComponent } from './components/registry/registry-code-schemes.component';
+import {
+  SearchLinkedOrganizationModalComponent,
+  SearchLinkedOrganizationModalService
+} from './components/form/search-linked-organization-modal.component';
+import { OrganizationsInputComponent } from './components/form/organizations-input.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -127,7 +137,9 @@ const appRoutes: Routes = [
   {path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
   {path: 'userDetails', component: UserDetailsComponent},
-  {path: 'information', component: InformationAboutServiceComponent}
+  {path: 'information', component: InformationAboutServiceComponent},
+  {path: 'registries', component: RegistriesComponent, pathMatch: 'full'},
+  {path: 'registry', component: RegistryComponent, pathMatch: 'full'},
 ];
 
 export function resolveAuthenticatedUserEndpoint() {
@@ -170,6 +182,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ExtensionInformationComponent,
     ExtensionCreateComponent,
     ExtensionSchemeListitemComponent,
+    RegistriesComponent,
+    RegistryComponent,
+    RegistryInformationComponent,
+    RegistryListitemComponent,
+    RegistryCodeSchemesComponent,
     ExtensionListitemComponent,
     CodeSchemeInformationComponent,
     CodeSchemeImportAndCreateComponent,
@@ -201,11 +218,13 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateInputComponent,
     DateRangeInputComponent,
     ClassificationsInputComponent,
+    OrganizationsInputComponent,
     CodeInputComponent,
     ExtensionInputComponent,
+    SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
     SearchLinkedExtensionModalComponent,
-    CodeRegistryInputComponent,
+    RegistryInputComponent,
     HierarchyCodeComponent,
     TerminologyIntegrationCodeschemeModalComponent,
     LogoComponent
@@ -219,6 +238,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkEditModalComponent,
     LinkCreateModalComponent,
     LinkListModalComponent,
+    SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
     SearchLinkedExtensionModalComponent,
     TerminologyIntegrationCodeschemeModalComponent
@@ -253,6 +273,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkCreateModalService,
     LinkListModalService,
     ModalService,
+    SearchLinkedOrganizationModalService,
     SearchLinkedCodeModalService,
     SearchLinkedExtensionModalService,
     CodeListErrorModalService,
