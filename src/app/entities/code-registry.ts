@@ -63,6 +63,10 @@ export class CodeRegistry extends AbstractResource implements EditableEntity {
     return this.organizations.map(org => org.id);
   }
 
+  allowOrganizationEdit(): boolean {
+    return false;
+  }
+
   clone(): CodeRegistry {
     return new CodeRegistry(this.serialize());
   }

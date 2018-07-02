@@ -110,6 +110,10 @@ export class Code extends AbstractResource implements EditableEntity {
     return this.codeScheme.codeRegistry.organizations.map(org => org.id);
   }
 
+  allowOrganizationEdit(): boolean {
+    return true;
+  }
+
   serialize(): CodeType {
     return {
       id: this.id,

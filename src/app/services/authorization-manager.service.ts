@@ -24,7 +24,10 @@ export class AuthorizationManager {
     if (this.user.superuser) {
       return true;
     }
-    return this.user.isInOrganization(editableEntity.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
+    if (editableEntity.allowOrganizationEdit()) {
+      return this.user.isInOrganization(editableEntity.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
+    }
+    return false;
   }
 
   filterAllowedRegistriesForUser(codeRegistries: CodeRegistry[]): CodeRegistry[] {

@@ -71,6 +71,10 @@ export class Extension implements EditableEntity {
     return this.extensionScheme.parentCodeScheme.codeRegistry.organizations.map(org => org.id);
   }
 
+  allowOrganizationEdit(): boolean {
+    return true;
+  }
+
   serialize(): ExtensionType {
     return {
       id: this.id,

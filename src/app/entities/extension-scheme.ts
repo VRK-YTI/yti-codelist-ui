@@ -76,6 +76,10 @@ export class ExtensionScheme implements EditableEntity {
     return this.parentCodeScheme.codeRegistry.organizations.map(org => org.id);
   }
 
+  allowOrganizationEdit(): boolean {
+    return true;
+  }
+
   get restricted() {
     return contains(restrictedStatuses, this.status);
   }
