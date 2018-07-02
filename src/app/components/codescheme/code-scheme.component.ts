@@ -15,6 +15,7 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
+import { CodeRegistry } from '../../entities/code-registry';
 
 @Component({
   selector: 'app-code-scheme',
@@ -29,6 +30,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   codeScheme: CodeScheme;
   codes: CodePlain[];
   extensionSchemes: ExtensionScheme[];
+  codeRegistries: CodeRegistry[];
   env: string;
 
   constructor(private userService: UserService,
@@ -44,10 +46,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private authorizationManager: AuthorizationManager) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -58,6 +56,14 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     if (!registryCodeValue || !schemeCodeValue) {
       throw new Error(`Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}'`);
     }
+
+    this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
+      this.codeRegistries = codeRegistries;
+    });
+
+    this.dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
@@ -86,7 +92,11 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get loading(): boolean {
-    return this.codeScheme == null || this.codes == null || this.extensionSchemes == null;
+    return this.codeScheme == null ||
+      this.codes == null ||
+      this.extensionSchemes == null ||
+      this.codeRegistries == null ||
+      this.env == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -117,6 +127,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   get canAddExtensionScheme(): boolean {
     return this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  get canCopyCodeScheme(): boolean {
+    return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
   }
 
   get isSuperUser(): boolean {
@@ -187,7 +201,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   copyTheCodescheme() {
     console.log('Copy codescheme clicked!');
-    this.router.navigate(['createcodescheme'], { queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
+    this.router.navigate(['createcodescheme'], {queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
   }
 
   get showUnfinishedFeature() {
