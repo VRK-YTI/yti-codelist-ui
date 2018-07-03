@@ -94,7 +94,11 @@ export class RegistryComponent implements OnInit, EditingComponent {
     this.confirmationModalService.openRemoveCodeRegistry()
       .then(() => {
         this.dataService.deleteCodeRegistry(this.codeRegistry).subscribe(res => {
-          this.router.navigate(['frontpage']);
+          if (res.meta.code === 200) {
+            this.router.navigate(['frontpage']);
+          } else {
+            this.errorModalService.openSubmitError(res);
+          }
         }, error => {
           this.errorModalService.openSubmitError(error);
         });

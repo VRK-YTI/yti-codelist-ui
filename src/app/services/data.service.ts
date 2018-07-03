@@ -136,16 +136,12 @@ export class DataService {
       .map(res => res.json() as ApiResponseType);
   }
 
-  deleteCodeRegistry(theCodeRegistry: CodeRegistry): Observable<boolean> {
+  deleteCodeRegistry(theCodeRegistry: CodeRegistry): Observable<ApiResponseType> {
 
     const registryCode = theCodeRegistry.codeValue;
 
     return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}`)
-      .map(res => {
-        return res.status === 200;
-      }).catch(error => {
-        return Observable.of(false);
-      });
+      .map(res => res.json() as ApiResponseType);
   }
 
   getCodeSchemesForCodeRegistry(registryCodeValue: string): Observable<CodeScheme[]> {
