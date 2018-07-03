@@ -718,6 +718,3 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
-
-#~ msgid "Code registry value"
-#~ msgstr "Rekisterin tunnus"
