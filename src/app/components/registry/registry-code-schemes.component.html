@@ -1,7 +1,7 @@
 <div class="codeSchemes row">
   <div id="registry_codelist_list_div" class="col-md-12">
     <ul id="registry_codelist_list_regular">
-      <li *ngFor="let codeScheme of codeSchemes; trackBy: codeSchemeIdentity">
+      <li *ngFor="let codeScheme of codeSchemes">
         <div class="col-12">
           <div class="codeScheme" id="{{codeScheme.idIdentifier + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)">
             <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
