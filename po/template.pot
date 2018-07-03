@@ -383,7 +383,7 @@ msgstr ""
 msgid "No registries found."
 msgstr ""
 
-msgid "This code registry does not have any code lists yet."
+msgid "This registry does not have any code lists yet."
 msgstr ""
 
 msgid "Registry value"

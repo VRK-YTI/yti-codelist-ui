@@ -10,25 +10,15 @@ import { LanguageService } from '../../services/language.service';
   templateUrl: './registry-code-schemes.component.html',
   styleUrls: ['./registry-code-schemes.component.scss']
 })
-export class RegistryCodeSchemesComponent implements OnInit {
+export class RegistryCodeSchemesComponent {
 
   @Input() codeRegistry: CodeRegistry;
-  codeSchemes: CodeScheme[];
+  @Input() codeSchemes: CodeScheme[];
 
   constructor(private dataService: DataService,
               private router: Router,
               public languageService: LanguageService) {
-  }
-
-  ngOnInit() {
-    const codeRegistryCodeValue = this.codeRegistry.codeValue;
-    this.dataService.getCodeSchemesForCodeRegistry(codeRegistryCodeValue).subscribe(codeSchemes => {
-      this.codeSchemes = codeSchemes;
-    });
-  }
-
-  get loading(): boolean {
-    return this.codeSchemes == null;
+    console.log('RegistryCodeSchemesComponent constructor');
   }
 
   viewCodeScheme(codeScheme: CodeScheme) {

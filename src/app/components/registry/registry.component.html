@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'codelist_back_button'" (back)="back()"></app-back-button>
+  <app-back-button [id]="'registry_back_button'" (back)="back()"></app-back-button>
 
   <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>
 
@@ -50,7 +50,7 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-registry-code-schemes [codeRegistry]="codeRegistry"></app-code-registry-code-schemes>
+        <app-code-registry-code-schemes [codeRegistry]="codeRegistry" [codeSchemes]="codeSchemes"></app-code-registry-code-schemes>
       </ng-template>
     </ngb-tab>
 
