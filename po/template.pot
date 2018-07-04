@@ -395,7 +395,7 @@ msgstr ""
 msgid "Code registry name"
 msgstr ""
 
-msgid "CODES LISTS"
+msgid "CODE LISTS"
 msgstr ""
 
 msgid "Search for concept"
