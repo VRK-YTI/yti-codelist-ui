@@ -30,11 +30,11 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   codeRegistries: CodeRegistry[];
 
   statusOptions: FilterOptions<Status>;
-  registerOptions: FilterOptions<CodeRegistry>;
+  registryOptions: FilterOptions<CodeRegistry>;
   organizationOptions: FilterOptions<Organization>;
 
   dataClassifications: { entity: DataClassification, count: number }[];
-  register$ = new BehaviorSubject<CodeRegistry|null>(null);
+  registry$ = new BehaviorSubject<CodeRegistry|null>(null);
 
   searchTerm$ = new BehaviorSubject('');
   classification$ = new BehaviorSubject<DataClassification|null>(null);
@@ -76,12 +76,12 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       this.codeRegistries = codeRegistries;
     });
 
-    this.dataService.getCodeRegistries().subscribe(registers => {
-      this.registerOptions = [null, ...registers].map(register => ({
-        value: register,
-        name: () => register ? this.languageService.translate(register.prefLabel, true)
+    this.dataService.getCodeRegistries().subscribe(registries => {
+      this.registryOptions = [null, ...registries].map(registry => ({
+        value: registry,
+        name: () => registry ? this.languageService.translate(registry.prefLabel, true)
           : this.translateService.instant('All registries'),
-        idIdentifier: () => register ? register.codeValue : 'all_selected'
+        idIdentifier: () => registry ? registry.codeValue : 'all_selected'
       }));
     });
 
@@ -114,8 +114,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       return !status || codeScheme.status === status;
     }
 
-    function registerMatches(register: CodeRegistry|null, codeScheme: CodeScheme) {
-      return !register || codeScheme.codeRegistry.codeValue === register.codeValue;
+    function registryMatches(registry: CodeRegistry|null, codeScheme: CodeScheme) {
+      return !registry || codeScheme.codeRegistry.codeValue === registry.codeValue;
     }
 
     function calculateCount(classification: DataClassification, codeSchemes: CodeScheme[]) {
@@ -123,10 +123,10 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         anyMatching(cs.dataClassifications, rc => rc.id === classification.id)).length;
     }
 
-    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.register$, this.organization$,
+    Observable.combineLatest(searchTerm$, this.classification$, this.status$, this.registry$, this.organization$,
       this.searchCodes$, this.languageService.language$)
       .do(() => this.searchInProgress = true)
-      .flatMap(([searchTerm, classification, status, register, organization, searchCodes, language]) => {
+      .flatMap(([searchTerm, classification, status, registry, organization, searchCodes, language]) => {
 
         const classificationCode = classification ? classification.codeValue : null;
         const organizationId = organization ? organization.id : null;
@@ -135,14 +135,14 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode, searchCodes, language)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
-            registerMatches(register, codeScheme))
+            registryMatches(registry, codeScheme))
           );
       })
       .do(() => this.searchInProgress = false)
       .subscribe(results => this.filteredCodeSchemes = results);
 
-    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.register$, this.organization$, this.searchCodes$)
-      .subscribe(([classifications, searchTerm, status, register, organization, searchCodes]) => {
+    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.registry$, this.organization$, this.searchCodes$)
+      .subscribe(([classifications, searchTerm, status, registry, organization, searchCodes]) => {
 
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
@@ -151,7 +151,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, language)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
-            registerMatches(register, codeScheme))
+            registryMatches(registry, codeScheme))
           )
           .subscribe(codeSchemes => {
             this.dataClassifications = classifications.map(classification => ({
