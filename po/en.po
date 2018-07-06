@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-04 14:42+0300\n"
+"PO-Revision-Date: 2018-07-06 10:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -333,9 +333,6 @@ msgid "Extension scheme name"
 msgstr ""
 
 msgid "Extension scheme type"
-msgstr ""
-
-msgid "Create extensionscheme"
 msgstr ""
 
 msgid "This extension scheme does not have any extensions yet."

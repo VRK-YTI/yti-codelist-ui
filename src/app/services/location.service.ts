@@ -13,7 +13,7 @@ const codeSchemeImportAndCreatePage = { localizationKey: 'Add code list', route:
 const copyCodeSchemePage = { localizationKey: 'Copy the code list', route: ['createcodescheme'] };
 const createCodeSchemePage = { localizationKey: 'Create code list', route: ['createcodescheme'] };
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
-const createExtensionSchemePage = { localizationKey: 'Create extensionscheme', route: ['createextensionscheme'] };
+const createExtensionSchemePage = { localizationKey: 'Create extension scheme', route: ['createextensionscheme'] };
 const createExtensionPage = { localizationKey: 'Create extension', route: ['createextension'] };
 const createRegistryPage = { localizationKey: 'Create registry', route: ['createregistry'] };
 

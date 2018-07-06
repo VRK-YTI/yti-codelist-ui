@@ -326,9 +326,6 @@ msgstr ""
 msgid "Extension scheme type"
 msgstr ""
 
-msgid "Create extensionscheme"
-msgstr ""
-
 msgid "This extension scheme does not have any extensions yet."
 msgstr ""
 
