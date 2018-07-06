@@ -92,7 +92,10 @@ export class CodeComponent implements OnInit, EditingComponent {
 
   get canDelete() {
     return this.userService.user.superuser || (this.authorizationManager.canDelete(this.codeScheme) &&
-      (this.codeScheme.status === 'DRAFT' || this.codeScheme.status === 'SUGGESTED' || this.codeScheme.status === 'SUBMITTED'));
+      (this.codeScheme.status === 'UNFINISHED' ||
+        this.codeScheme.status === 'DRAFT' ||
+        this.codeScheme.status === 'SUGGESTED' ||
+        this.codeScheme.status === 'SUBMITTED'));
   }
 
   get isSuperUser() {

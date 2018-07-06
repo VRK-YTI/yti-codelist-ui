@@ -148,6 +148,10 @@ export class DataService {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme');
+    const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
+    if (userOrganizations.length > 0) {
+      params.append('userOrganizations', userOrganizations.join(','));
+    }
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/`, {params})
       .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
@@ -159,6 +163,10 @@ export class DataService {
     const params = new URLSearchParams();
     params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme');
     params.append('searchCodes', searchCodes.toString());
+    const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
+    if (userOrganizations.length > 0) {
+      params.append('userOrganizations', userOrganizations.join(','));
+    }
 
     if (language) {
       params.append('language', language);

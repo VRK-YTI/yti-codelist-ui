@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-06 10:10+0300\n"
+"PO-Revision-Date: 2018-07-06 15:28+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -464,6 +464,9 @@ msgstr "Virheellinen"
 
 msgid "DRAFT"
 msgstr "Luonnos"
+
+msgid "UNFINISHED"
+msgstr "Keskeneräinen"
 
 msgid "required"
 msgstr "vaadittu"
