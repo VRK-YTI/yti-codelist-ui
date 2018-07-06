@@ -217,7 +217,10 @@ export class DataService {
   }
 
   getCodeSchemeWithUuid(codeSchemeUuid: string): Observable<CodeScheme> {
-    return this.http.get(`${codeSchemesBasePath}/${codeSchemeUuid}`)
+    const params = new URLSearchParams();
+    params.append('expand', 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extensionScheme');
+
+    return this.http.get(`${codeSchemesBasePath}/${codeSchemeUuid}`, {params})
       .map(res => new CodeScheme(res.json() as CodeSchemeType));
   }
 

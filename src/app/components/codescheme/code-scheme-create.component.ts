@@ -61,13 +61,13 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
+
+    this.dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.uuidOfOriginalCodeSchemeIfCloning = params['originalCodeSchemeId'];
@@ -124,7 +124,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   get loading(): boolean {
-    return !this.codeRegistriesLoaded;
+    return !this.codeRegistriesLoaded || !this.env;
   }
 
   back() {
