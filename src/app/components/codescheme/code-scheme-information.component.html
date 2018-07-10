@@ -117,14 +117,14 @@
                      [value]="getCodeSchemeUri()"
                      [showAsLink]="false"></app-clipboard>
 
-      <app-literal [label]="'thisCodeschemeIsAVariantFromTheFollowingMother' | translate"
+      <app-literal *ngIf="codeScheme.motherOfThisVariant" [label]="'thisCodeschemeIsAVariantFromTheFollowingMother' | translate"
                    [value]="codeScheme.motherOfThisVariant.prefLabel | translateValue"></app-literal>
 
-      <app-clipboard [label]="'theUriOfTheMotherCodeScheme' | translate"
+      <app-clipboard *ngIf="codeScheme.motherOfThisVariant" [label]="'theUriOfTheMotherCodeScheme' | translate"
                      [value]="getCodeSchemeMotherUri()"
                      [showAsLink]="false"></app-clipboard>
 
-      <app-literal [label]="'otherVariantsFromTheSameMOtherAre' | translate"
+      <app-literal *ngIf="codeScheme.otherVariantsFromTheSameMother" [label]="'otherVariantsFromTheSameMOtherAre' | translate"
                    [value]=""></app-literal>
 
       <app-clipboard *ngFor="let variant of codeScheme.otherVariantsFromTheSameMother" [label]="variant.prefLabel | translateValue"
