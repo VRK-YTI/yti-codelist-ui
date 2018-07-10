@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-06 15:28+0300\n"
+"PO-Revision-Date: 2018-07-10 16:31+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -257,6 +257,15 @@ msgstr "Tuo koodisto"
 
 msgid "Default code"
 msgstr "Vakiokoodi"
+
+msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
+msgstr "Tämä koodisto on variantti seuraavasta koodistosta"
+
+msgid "theUriOfTheMotherCodeScheme"
+msgstr "Varioidun koodiston URI "
+
+msgid "otherVariantsFromTheSameMOtherAre"
+msgstr "Muut variantit samasta koodistosta ovat"
 
 msgid "Copy the code list"
 msgstr "Kopioi koodisto"

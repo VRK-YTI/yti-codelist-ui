@@ -7,11 +7,12 @@ import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { CodeSchemeType } from '../services/api-schema';
+import {CodeSchemeType} from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
 import { ExtensionSchemeSimple } from './extension-scheme-simple';
+import {Variant} from './variant';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -32,6 +33,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   modified: Moment|null = null;
   defaultCode: CodePlain|null = null;
   extensionSchemes: ExtensionSchemeSimple[] = [];
+  motherOfThisVariant: Variant|null = null;
+  otherVariantsFromTheSameMother: Variant[]|null = null;
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -62,6 +65,13 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.conceptUriInVocabularies = data.conceptUriInVocabularies;
     if (data.defaultCode) {
       this.defaultCode = new CodePlain(data.defaultCode);
+    }
+    if (data.motherOfThisVariant) {
+      console.log('IN CONSTRINCTO', data.motherOfThisVariant);
+      this.motherOfThisVariant = new Variant(data.motherOfThisVariant);
+    }
+    if (data.otherVariantsFromTheSameMother) {
+      this.otherVariantsFromTheSameMother = (data.otherVariantsFromTheSameMother || []).map(variant => new Variant(variant));
     }
   }
 

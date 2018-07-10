@@ -242,6 +242,15 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
+msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
+msgstr ""
+
+msgid "theUriOfTheMotherCodeScheme"
+msgstr ""
+
+msgid "otherVariantsFromTheSameMOtherAre"
+msgstr ""
+
 msgid "Copy the code list"
 msgstr ""
 

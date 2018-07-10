@@ -117,6 +117,20 @@
                      [value]="getCodeSchemeUri()"
                      [showAsLink]="false"></app-clipboard>
 
+      <app-literal [label]="'thisCodeschemeIsAVariantFromTheFollowingMother' | translate"
+                   [value]="codeScheme.motherOfThisVariant.prefLabel | translateValue"></app-literal>
+
+      <app-clipboard [label]="'theUriOfTheMotherCodeScheme' | translate"
+                     [value]="getCodeSchemeMotherUri()"
+                     [showAsLink]="false"></app-clipboard>
+
+      <app-literal [label]="'otherVariantsFromTheSameMOtherAre' | translate"
+                   [value]=""></app-literal>
+
+      <app-clipboard *ngFor="let variant of codeScheme.otherVariantsFromTheSameMother" [label]="variant.prefLabel | translateValue"
+                     [value]="variant.uri"
+                     [showAsLink]="false"></app-clipboard>
+
       <app-literal [label]="'Last modification' | translate"
                    [value]="codeScheme.modifiedDisplayValue"></app-literal>
 
