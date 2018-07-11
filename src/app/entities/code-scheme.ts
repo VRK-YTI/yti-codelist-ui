@@ -67,7 +67,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       this.defaultCode = new CodePlain(data.defaultCode);
     }
     if (data.motherOfThisVariant) {
-      console.log('IN CONSTRINCTO', data.motherOfThisVariant);
       this.motherOfThisVariant = new Variant(data.motherOfThisVariant);
     }
     if (data.otherVariantsFromTheSameMother) {
