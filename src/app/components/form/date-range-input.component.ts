@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
     <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -17,11 +18,17 @@ import { Observable } from 'rxjs/Observable';
 
           <div class="row">
             <div class="col-md-6">
-              <app-date-input [id]="'start_date_input'" [label]="'Start date' | translate" [formControl]="startControl"></app-date-input>
+              <app-date-input [id]="'start_date_input'"
+                              [label]="'Valid from' | translate"
+                              [infoText]="startDateInfoText"
+                              [formControl]="startControl"></app-date-input>
             </div>
             
             <div class="col-md-6">
-              <app-date-input [id]="'end_date_input'" [label]="'End date' | translate" [formControl]="endControl"></app-date-input>
+              <app-date-input [id]="'end_date_input'"
+                              [label]="'Valid to' | translate"
+                              [infoText]="endDateInfoText"
+                              [formControl]="endControl"></app-date-input>
             </div>
           </div>
           
@@ -36,6 +43,7 @@ import { Observable } from 'rxjs/Observable';
 export class DateRangeInputComponent {
 
   @Input() label: string;
+  @Input() infoText: string;
   @Input() restrict = false;
   @Input() required = false;
 
@@ -99,6 +107,14 @@ export class DateRangeInputComponent {
       start: this.startControl.value,
       end: this.endControl.value
     };
+  }
+
+  get startDateInfoText() {
+    return this.infoText ? this.infoText + '_START_DATE' : '';
+  }
+
+  get endDateInfoText() {
+    return this.infoText ? this.infoText + '_END_DATE' : '';
   }
 
   writeValue(obj: DateRange): void {

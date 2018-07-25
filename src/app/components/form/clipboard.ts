@@ -7,7 +7,10 @@ const clippyImage = require('../../../assets/clippy.svg');
   selector: 'app-clipboard',
   template: `
     <dl>
-      <dt><label>{{label}}</label></dt>
+      <dt>
+        <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
+      </dt>
       <dd>
         <a *ngIf="showAsLink" target="_blank" href="{{value}}">{{value}}</a>
         <span *ngIf="!showAsLink">{{value}}</span>
@@ -31,6 +34,7 @@ export class ClipboardComponent {
   @Input() label: string;
   @Input() value: string;
   @Input() showAsLink = false;
+  @Input() infoText: string;
 
   clippyImage = clippyImage;
 

@@ -10,6 +10,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
     <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -33,6 +34,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
   @Input() restrict = false;
   @Input() required = false;
   @Input() id: string;
+  @Input() infoText: string;
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};

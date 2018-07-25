@@ -34,10 +34,10 @@ msgstr ""
 msgid "No registry"
 msgstr ""
 
-msgid "Start date"
+msgid "Valid from"
 msgstr ""
 
-msgid "End date"
+msgid "Valid to"
 msgstr ""
 
 msgid "Save"
@@ -172,13 +172,13 @@ msgstr ""
 msgid "This code list does not have any codes yet."
 msgstr ""
 
-msgid "Code list value"
+msgid "Code list ID"
 msgstr ""
 
 msgid "Code list name"
 msgstr ""
 
-msgid "Changenote"
+msgid "Change note"
 msgstr ""
 
 msgid "Version"
@@ -435,6 +435,69 @@ msgid "Send access request"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_VERSION"
+msgstr ""
+
+msgid "INFO_TEXT_CODE_REGISTRY"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_CODE_VALUE"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_NAME"
+msgstr ""
+
+msgid "INFO_TEXT_VOCABULARIES_URI"
+msgstr ""
+
+msgid "INFO_TEXT_DEFAULT_CODE"
+msgstr ""
+
+msgid "INFO_TEXT_ORGANIZATION"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_DESCRIPTION"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_DEFINITION"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_CHANGE_NOTE"
+msgstr ""
+
+msgid "INFO_TEXT_CLASSIFICATION"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_SOURCE"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_LEGAL_BASE"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_GOVERNANCE_POLICY"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_STATUS"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_VALIDITY"
+msgstr ""
+
+msgid "INFO_TEXT_URI"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgstr ""
+
+msgid "INFO_TEXT_EXTERNAL_REFERENCES"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_VALIDITY_END_DATE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"

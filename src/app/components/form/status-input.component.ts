@@ -9,6 +9,7 @@ import { Status } from 'yti-common-ui/entities/status';
     <dl *ngIf="show">
       <dt>
         <label translate>Status</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -28,6 +29,7 @@ export class StatusInputComponent implements ControlValueAccessor {
 
   @Input() restrict = false;
   @Input() required = false;
+  @Input() infoText: string;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};

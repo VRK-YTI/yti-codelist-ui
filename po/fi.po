@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-10 16:31+0300\n"
+"PO-Revision-Date: 2018-07-25 10:43+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -43,11 +43,11 @@ msgstr "Hae koodia"
 msgid "No registry"
 msgstr "Ei rekisteriä"
 
-msgid "Start date"
-msgstr "Alkupäivä"
+msgid "Valid from"
+msgstr "Alkamispäivä"
 
-msgid "End date"
-msgstr "Loppupäivä"
+msgid "Valid to"
+msgstr "Päättymispäivä"
 
 msgid "Save"
 msgstr "Tallenna"
@@ -122,7 +122,7 @@ msgid "Create code"
 msgstr "Luo koodi"
 
 msgid "Get concept from Controlled Vocabularies"
-msgstr "Tuo käsite Sanastoista"
+msgstr "Tuo käsite sanastosta"
 
 msgid "URI"
 msgstr "URI"
@@ -181,13 +181,13 @@ msgstr "Tuo koodeja"
 msgid "This code list does not have any codes yet."
 msgstr "Tällä koodistolla ei ole yhtään koodia."
 
-msgid "Code list value"
-msgstr "Koodiston tunnus"
+msgid "Code list ID"
+msgstr "Tunnus"
 
 msgid "Code list name"
 msgstr "Koodiston nimi"
 
-msgid "Changenote"
+msgid "Change note"
 msgstr "Muutostieto"
 
 msgid "Version"
@@ -452,6 +452,104 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 
 msgid "Send"
 msgstr "Lähetä"
+
+msgid "INFO_TEXT_CODELIST_VERSION"
+msgstr "Koodiston versionumero esim. 1 tai v1"
+
+msgid "INFO_TEXT_CODE_REGISTRY"
+msgstr ""
+"Rekisteri, johon koodisto kuuluu. Jokainen koodisto kuuluu aina johonkin "
+"koodistorekisteriin."
+
+msgid "INFO_TEXT_CODELIST_CODE_VALUE"
+msgstr ""
+"Organisaation käyttämä koodiston tekninen tunnus tai pysyvä tunniste. "
+"Tunnuksen tulee olla yksilöivä rekisterin sisällä."
+
+msgid "INFO_TEXT_CODELIST_NAME"
+msgstr "Koodiston nimi, joka näkyy otsikossa ja  hakutuloksissa"
+
+msgid "INFO_TEXT_VOCABULARIES_URI"
+msgstr "Käsitteen pysyvä verkko-osoite Sanastot-työkalussa"
+
+msgid "INFO_TEXT_DEFAULT_CODE"
+msgstr ""
+"Koodiston koodi, joka on valittu vakiokoodiksi. Vakiokoodin määrittelyä "
+"käytetään erityistapauksissa."
+
+msgid "INFO_TEXT_ORGANIZATION"
+msgstr "Koodistosta vastaava ja ylläpitävä organisaatio tai organisaatiot"
+
+msgid "INFO_TEXT_CODELIST_DESCRIPTION"
+msgstr "Sanallinen kuvaus koodiston sisällöstä ja käyttötarkoituksesta yms."
+
+msgid "INFO_TEXT_CODELIST_DEFINITION"
+msgstr ""
+"Koodiston tietosisältöön liittyvän käsitteen määritelmä Sanastot-työkalun "
+"sanastosta tai itse annettu määritelmä."
+
+msgid "INFO_TEXT_CODELIST_CHANGE_NOTE"
+msgstr ""
+"Koodiston muutostieto esim. muutokset edelliseen versioon nähden tai "
+"muutokset kuvattuna pidemmältä ajanjaksolta. Koodiston hyödyntäjän kannalta "
+"tärkeät muutokset."
+
+msgid "INFO_TEXT_CLASSIFICATION"
+msgstr ""
+"Tieto siitä, mihin julkisten palvelujen luokituksen palveluluokkaan koodisto "
+"liittyy. Koodisto voi kuulua useaan palveluluokkaan. Yhteentoimivuusalustan "
+"työkaluissa jokainen resurssi (koodisto, tietomalli tai sanasto) "
+"luokitellaan Julkisten palvelujen luokituksella. Luokitusta käytetään "
+"etusivun haussa rajaamaan hakutuloksia."
+
+msgid "INFO_TEXT_CODELIST_SOURCE"
+msgstr ""
+"Koodiston lähde esim. kansainvälinen rekisteri ja sen luokitus tai koodisto, "
+"johon tämä koodisto perustuu. Tietolähde, josta tämä tieto saadaan tähän "
+"rekisteriin."
+
+msgid "INFO_TEXT_CODELIST_LEGAL_BASE"
+msgstr ""
+"Koodistoa tai luokitusta säätelee jokin laki, säädös, sopimus, päätös tai "
+"muu peruste. Käytä säädöksissä virallista nimeä ja anna säädösnumero ja "
+"pykälä. Esim. Valtioneuvoston asetus väestötietojärjestelmästä "
+"25.2.2010/128, 27 § tai Laki holhoustoimesta 442/1999, 68 §."
+
+msgid "INFO_TEXT_CODELIST_GOVERNANCE_POLICY"
+msgstr ""
+"Koodiston käytön sitovuus ja hallinnan taso esim. kansainvälinen suositus, "
+"kansallinen suositus (JHS), tilastoluokitus tai kuntia velvoittava. Tai "
+"esim. säädetty asetuksella koko julkishallinnolla käytettäväksi 4.3.2017 "
+"lähtien."
+
+msgid "INFO_TEXT_CODELIST_STATUS"
+msgstr ""
+"Koodiston hallintaan ja elinkaareen liittyvä tila. Mahdollisia arvoja ovat: "
+"Keskeneräinen, Luonnos, Odottaa hyväksyntää, Voimassa oleva, Korvattu, "
+"Poistettu käytöstä, Virheellinen ja Ehdotus."
+
+msgid "INFO_TEXT_CODELIST_VALIDITY"
+msgstr "Ajanjakso, jona koodisto on voimassa"
+
+msgid "INFO_TEXT_URI"
+msgstr ""
+"Koodiston pysyvä tunniste ja verkko-osoite. Muodostuu ohjelmallisesti "
+"seuraavasti http://uri.suomi.fi/codelist/[rekisteri]/[koodiston tunnus]"
+
+msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgstr "Viimeisin muokkauksen ajanhetki"
+
+msgid "INFO_TEXT_EXTERNAL_REFERENCES"
+msgstr ""
+"Voit lisätä valintojen mukaan linkkejä ja valita niistä lisenssin lisäksi "
+"eimerkiksi Liittyvä standardi, Käyttökohde, Lisenssi, Käyttöedellytys, "
+"Linkki, Lähde"
+
+msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
+msgstr "Voimassaolon alkamispäivämäärä"
+
+msgid "INFO_TEXT_CODELIST_VALIDITY_END_DATE"
+msgstr "Voimassaolon päättymispäivämäärä"
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
@@ -727,3 +825,12 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
+
+#~ msgid "Code list value"
+#~ msgstr "Koodiston tunnus"
+
+#~ msgid "Start date"
+#~ msgstr "Alkupäivä"
+
+#~ msgid "End date"
+#~ msgstr "Loppupäivä"

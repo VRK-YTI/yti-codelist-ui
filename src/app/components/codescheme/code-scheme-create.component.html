@@ -30,8 +30,9 @@
                                 [formControlName]="'codeRegistry'"></app-registry-input>
 
         <app-literal-input [id]="'codelist_value_input'"
-                           [label]="'Code list value' | translate"
+                           [label]="'Code list ID' | translate"
                            [required]="true"
+                           [infoText]="'INFO_TEXT_CODELIST_CODE_VALUE'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
@@ -50,10 +51,13 @@
         </dl>
         <div *ngIf="codeSchemeForm.controls['conceptUriInVocabularies'].value?.toString().length > 0">
           <dl>
-            <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
+            <dt>
+              <label>{{'Vocabularies URI' | translate}}</label>
+              <app-information-symbol [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-information-symbol>
+            </dt>
             <dd>
               <a>
-                <i id="{{'remove_concept_uri_in_vocabularies_link'}}"
+                <i [id]="'remove_concept_uri_in_vocabularies_link'"
                    class="fa fa-times"
                    (click)="removeConceptUriInVocabularies()"></i>
               </a>
@@ -64,6 +68,7 @@
 
         <app-localizable-input [id]="'codelist_name_input'"
                                [label]="'Code list name' | translate"
+                               [infoText]="'INFO_TEXT_CODELIST_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-classifications-input [id]="'codelist_classification_input'"
@@ -73,43 +78,53 @@
 
         <app-localizable-textarea [id]="'codelist_description_textarea'"
                                   [label]="'Description' | translate"
+                                  [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
                                   [formControlName]="'description'"></app-localizable-textarea>
 
         <app-localizable-textarea [id]="'codelist_definition_textarea'"
                                   [label]="'Definition' | translate"
+                                  [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
         <app-localizable-textarea [id]="'codelist_changenote_textarea'"
-                                  [label]="'Changenote' | translate"
+                                  [label]="'Change note' | translate"
+                                  [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
                                   [formControlName]="'changeNote'"></app-localizable-textarea>
 
         <app-literal-input [id]="'codelist_version_input'"
                            [label]="'Version' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_VERSION'"
                            [formControlName]="'version'"></app-literal-input>
 
         <app-literal-input [id]="'codelist_source_input'"
                            [label]="'Source' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_SOURCE'"
                            [formControlName]="'source'"></app-literal-input>
 
         <app-literal-input [id]="'codelist_legal_base_input'"
                            [label]="'Legal base' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_LEGAL_BASE'"
                            [formControlName]="'legalBase'"></app-literal-input>
 
         <app-literal-input [id]="'codelist_governance_policy_input'"
                            [label]="'Governance policy' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_GOVERNANCE_POLICY'"
                            [formControlName]="'governancePolicy'"></app-literal-input>
 
         <ng-container *ngIf="!cloning">
           <app-status-input id="codelist_status_input"
+                            [infoText]="'INFO_TEXT_CODELIST_STATUS'"
                             [formControlName]="'status'"></app-status-input>
         </ng-container>
 
         <app-date-range-input id="codelist_validity_input"
                               [label]="'Validity' | translate"
+                              [infoText]="'INFO_TEXT_CODELIST_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
         <app-external-references-input id="codelist_links_input"
                                        [label]="'Links' | translate"
+                                       [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
                                        [formControlName]="'externalReferences'"
                                        [hidden]="cloning"></app-external-references-input>
       </div>

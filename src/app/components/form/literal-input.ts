@@ -8,6 +8,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
     <dl *ngIf="show">
       <dt>
         <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -30,6 +31,7 @@ export class LiteralInputComponent implements ControlValueAccessor {
   @Input() restrict = false;
   @Input() id: string;
   @Input() required = false;
+  @Input() infoText: string;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};

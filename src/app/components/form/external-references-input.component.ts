@@ -17,6 +17,7 @@ import { LanguageService } from '../../services/language.service';
     <dl *ngIf="editing || externalReferences.length > 0">
       <dt>
         <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -60,6 +61,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() codeSchemeId: string;
+  @Input() infoText: string;
   @Input() restrict = false;
   @Input() required = false;
   control = new FormControl([]);
