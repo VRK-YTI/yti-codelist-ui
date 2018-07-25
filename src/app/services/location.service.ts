@@ -10,7 +10,7 @@ import { CodeRegistry } from '../entities/code-registry';
 const frontPage = { localizationKey: 'Front page', route: [''] };
 const informationAboutServicePage = { localizationKey: 'Information about the service', route: ['information'] };
 const codeSchemeImportAndCreatePage = { localizationKey: 'Add code list', route: ['importandcreatecodescheme'] };
-const copyCodeSchemePage = { localizationKey: 'Copy the code list', route: ['createcodescheme'] };
+const createNewVersionOfCodeSchemePage = { localizationKey: 'createNewVersion', route: ['createcodescheme'] };
 const createCodeSchemePage = { localizationKey: 'Create code list', route: ['createcodescheme'] };
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
 const createExtensionSchemePage = { localizationKey: 'Create extension scheme', route: ['createextensionscheme'] };
@@ -77,8 +77,8 @@ export class LocationService {
     this.changeLocation([createCodeSchemePage]);
   }
 
-  atCodeSchemeCopyPage(codeScheme: CodeScheme): void {
-    this.changeLocation([...codeScheme.location, copyCodeSchemePage]);
+  atCreateNewVersionOfCodeSchemePage(codeScheme: CodeScheme): void {
+    this.changeLocation([...codeScheme.location, createNewVersionOfCodeSchemePage]);
   }
 
   atCodeCreatePage(codeScheme: CodeScheme): void {

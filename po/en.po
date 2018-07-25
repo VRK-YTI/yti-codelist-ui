@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-25 12:08+0300\n"
+"PO-Revision-Date: 2018-07-25 14:43+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -251,17 +251,11 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
-msgstr "This codelist is a variant of the following code list"
+msgid "attachVariantToCodeScheme"
+msgstr "Attach a variant to the code list"
 
-msgid "theUriOfTheMotherCodeScheme"
-msgstr "The URI of the varied code list"
-
-msgid "otherVariantsFromTheSameMOtherAre"
-msgstr "Other variants of the same code list are"
-
-msgid "Copy the code list"
-msgstr ""
+msgid "createNewVersion"
+msgstr "Create a new version"
 
 msgid "Export"
 msgstr ""
@@ -280,6 +274,12 @@ msgstr ""
 
 msgid "EXTENSION SCHEMES"
 msgstr ""
+
+msgid "versionHistory"
+msgstr "All versions"
+
+msgid "variants"
+msgstr "Variants"
 
 msgid "Link title"
 msgstr ""
@@ -312,6 +312,18 @@ msgid "Show link"
 msgstr ""
 
 msgid "Ok"
+msgstr ""
+
+msgid "Search for codescheme"
+msgstr ""
+
+msgid "{{variantModalPageTitle}}"
+msgstr ""
+
+msgid "{{variantModalInstructionText}}"
+msgstr "Search and attach a code list as a variant to this code list"
+
+msgid "No search results"
 msgstr ""
 
 msgid "Extension scheme"
@@ -417,12 +429,9 @@ msgid "Search for concept"
 msgstr ""
 
 msgid "{{terminologyIntegrationModalPageTitle}}"
-msgstr ""
+msgstr "Search the variant"
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
-msgstr ""
-
-msgid "No search results"
 msgstr ""
 
 msgid "Name"
@@ -812,3 +821,9 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Extension value cannot be empty."
+
+#~ msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
+#~ msgstr "This codelist is a variant of the following code list"
+
+#~ msgid "otherVariantsFromTheSameMOtherAre"
+#~ msgstr "Other variants of the same code list are"

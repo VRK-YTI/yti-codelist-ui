@@ -12,7 +12,7 @@ import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
 import { ExtensionSchemeSimple } from './extension-scheme-simple';
-import {Variant} from './variant';
+import {CodeSchemeListItem} from './code-scheme-list-item';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -33,8 +33,13 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   modified: Moment|null = null;
   defaultCode: CodePlain|null = null;
   extensionSchemes: ExtensionSchemeSimple[] = [];
-  motherOfThisVariant: Variant|null = null;
-  otherVariantsFromTheSameMother: Variant[]|null = null;
+  motherOfThisVariant: CodeSchemeListItem|null = null;
+  variantsOfThisCodeScheme: CodeSchemeListItem[]|null = [];
+  variantCodeschemeId: string|null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
+  nextCodeschemeId: string|null = null;
+  prevCodeschemeId: string|null = null;
+  lastCodeschemeId: string|null = null;
+  allVersions: CodeSchemeListItem[] = [];
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -67,10 +72,25 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       this.defaultCode = new CodePlain(data.defaultCode);
     }
     if (data.motherOfThisVariant) {
-      this.motherOfThisVariant = new Variant(data.motherOfThisVariant);
+      this.motherOfThisVariant = new CodeSchemeListItem(data.motherOfThisVariant);
     }
-    if (data.otherVariantsFromTheSameMother) {
-      this.otherVariantsFromTheSameMother = (data.otherVariantsFromTheSameMother || []).map(variant => new Variant(variant));
+    if (data.variantsOfThisCodeScheme) {
+      this.variantsOfThisCodeScheme = (data.variantsOfThisCodeScheme || []).map(variant => new CodeSchemeListItem(variant));
+    }
+    if (data.allVersions) {
+      this.allVersions = data.allVersions;
+    }
+    if (data.variantCodeschemeId) {
+      this.variantCodeschemeId = data.variantCodeschemeId;
+    }
+    if (data.nextCodeschemeId) {
+      this.nextCodeschemeId = data.nextCodeschemeId;
+    }
+    if (data.prevCodeschemeId) {
+      this.prevCodeschemeId = data.prevCodeschemeId;
+    }
+    if (data.lastCodeschemeId) {
+      this.lastCodeschemeId = data.lastCodeschemeId;
     }
   }
 
@@ -139,7 +159,11 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       externalReferences: this.externalReferences.map(er => er.serialize()),
       extensionSchemes: this.extensionSchemes.map(es => es.serialize()),
       conceptUriInVocabularies: this.conceptUriInVocabularies,
-      defaultCode: this.defaultCode ? this.defaultCode.serialize() : undefined
+      defaultCode: this.defaultCode ? this.defaultCode.serialize() : undefined,
+      variantCodeschemeId: this.variantCodeschemeId,
+      nextCodeschemeId: this.nextCodeschemeId,
+      prevCodeschemeId: this.prevCodeschemeId,
+      lastCodeschemeId: this.lastCodeschemeId
     };
   }
 

@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
+    <div>
+      <span translate>{{variantModalPageTitle}}</span>
+    </div>
+  </h4>
+</div>
+
+<div class="modal-body full-height">
+
+  <div class="modal-sections">
+
+    <div class="pb-2">
+      <p translate>{{variantModalInstructionText}}</p>
+
+      <div class="input-group input-group-lg input-group-search">
+        <input class="form-control"
+               id="search_variant_input"
+               #searchInput
+               type="text"
+               placeholder="{{'Search for code lists' | translate}}"
+               [(ngModel)]="search"/>
+      </div>
+    </div>
+
+    <div class="content-box scrolling-full-height">
+      <div *ngIf="!loading && hasSearchResults()" class="search-results">
+        <div class="search-result"
+             *ngFor="let codeScheme of searchResults; let last = last"
+             [id]="codeScheme.idIdentifier + '_variant_link'"
+             (click)="select(codeScheme)">
+          <div class="content" [class.last]="last">
+            <span class="title">{{codeScheme.prefLabel | translateValue}}</span>
+            <span class="body">{{codeScheme.definition | translateValue}}</span>
+            <div class="origin">
+              <span class="pull-left">{{codeScheme.prefLabel | translateValue}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults()">
+        <p translate>No search results</p>
+      </div>
+
+      <div *ngIf="loading">
+        <app-ajax-loading-indicator></app-ajax-loading-indicator>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button id="cancel_modal_button"
+          type="button"
+          class="btn btn-link cancel"
+          (click)="cancel()">{{cancelText | translate}}</button>
+</div>

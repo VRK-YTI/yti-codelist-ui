@@ -111,6 +111,12 @@ import {
 } from './components/form/search-linked-organization-modal.component';
 import { OrganizationsInputComponent } from './components/form/organizations-input.component';
 import { RegistryCreateComponent } from './components/registry/registry-create.component';
+import { CodeSchemeVersionsComponent } from './components/codescheme/code-scheme-versions.component';
+import { CodeSchemeVariantsComponent } from './components/codescheme/code-scheme-variants.component';
+import {
+  CodeschemeVariantModalComponent,
+  CodeschemeVariantModalService
+} from './components/codeschemevariant/codescheme-variant.modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -230,7 +236,10 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     RegistryInputComponent,
     HierarchyCodeComponent,
     TerminologyIntegrationCodeschemeModalComponent,
-    LogoComponent
+    LogoComponent,
+    CodeSchemeVersionsComponent,
+    CodeSchemeVariantsComponent,
+    CodeschemeVariantModalComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -244,7 +253,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
     SearchLinkedExtensionModalComponent,
-    TerminologyIntegrationCodeschemeModalComponent
+    TerminologyIntegrationCodeschemeModalComponent,
+    CodeschemeVariantModalComponent
   ],
   imports: [
     BrowserModule,
@@ -282,6 +292,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeListErrorModalService,
     TerminologyIntegrationModalService,
     TerminologyIntegrationCodeschemeModalComponent,
+    CodeschemeVariantModalService,
     EditableService,
     NgbActiveModal
   ],

@@ -102,9 +102,9 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               this.codeSchemeForm.patchValue({dataClassifications: dataClassificationsToCopy});
             }
           });
-          this.locationService.atCodeSchemeCopyPage(originalCodeScheme);
+          this.locationService.atCreateNewVersionOfCodeSchemePage(originalCodeScheme);
         });
-        this.pageTitle = 'Copy the code list';
+        this.pageTitle = 'createNewVersion';
       } else {
         this.locationService.atCodeSchemeCreatePage();
       }

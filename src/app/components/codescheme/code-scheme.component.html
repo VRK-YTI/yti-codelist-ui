@@ -15,10 +15,10 @@
       <div class="pull-right">
 
         <button id="clone_codelist_button"
-                *ngIf="this.canCopyCodeScheme && codeScheme.status == 'VALID'" type="button"
+                *ngIf="this.canCreateANewVersionFromCodeScheme && !codeScheme.nextCodeschemeId && codeScheme.status == 'VALID'" type="button"
                 class="btn btn-action pull-right ml-3"
-                (click)="copyTheCodescheme()"
-                translate>Copy the code list</button>
+                (click)="createANewVersionFromThisCodeScheme()"
+                translate>createNewVersion</button>
 
         <button id="delete_codelist_button"
                 *ngIf='this.canDelete' type="button"
@@ -106,5 +106,26 @@
         <app-code-scheme-extensionschemes [codeScheme]="codeScheme" [extensionSchemes]="extensionSchemes"></app-code-scheme-extensionschemes>
       </ng-template>
     </ngb-tab>
+
+    <ngb-tab *ngIf="showUnfinishedFeature && codeScheme.allVersions.length > 0" id="codelist_versionhistory_tab">
+      <ng-template ngbTabTitle>
+        <span translate>versionHistory</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-code-scheme-versions [codeScheme]="codeScheme"></app-code-scheme-versions>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab *ngIf="showUnfinishedFeature" id="codelist_variants_tab">
+      <ng-template ngbTabTitle>
+        <span translate>variants</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-code-scheme-variants [codeScheme]="codeScheme"></app-code-scheme-variants>
+      </ng-template>
+    </ngb-tab>
+
   </ngb-tabset>
 </div>

@@ -45,8 +45,13 @@ export interface CodeSchemeType extends BaseResourceType {
   extensionSchemes?: ExtensionSchemeSimpleType[];
   conceptUriInVocabularies: string;
   defaultCode?: CodePlainType;
-  motherOfThisVariant?: VariantType;
-  otherVariantsFromTheSameMother?: VariantType[];
+  motherOfThisVariant?: CodeSchemeListItemType;
+  variantsOfThisCodeScheme?: CodeSchemeListItemType[];
+  allVersions?: CodeSchemeListItemType[];
+  variantCodeschemeId: string|null;
+  nextCodeschemeId: string|null;
+  prevCodeschemeId: string|null;
+  lastCodeschemeId: string|null;
 }
 
 export interface CodePlainType extends BaseResourceType {
@@ -188,7 +193,7 @@ export interface ExtensionSimpleType {
   code: CodePlainType;
 }
 
-export interface VariantType {
+export interface CodeSchemeListItemType {
   prefLabel: Localizable;
   uri: string;
 }

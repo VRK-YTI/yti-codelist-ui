@@ -1,0 +1,3 @@
+<app-clipboard *ngFor="let version of codeScheme.allVersions" [label]="version.prefLabel | translateValue"
+               [value]="version.uri"
+               [showAsLink]="false"></app-clipboard>

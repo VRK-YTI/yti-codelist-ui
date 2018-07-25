@@ -242,16 +242,10 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
+msgid "attachVariantToCodeScheme"
 msgstr ""
 
-msgid "theUriOfTheMotherCodeScheme"
-msgstr ""
-
-msgid "otherVariantsFromTheSameMOtherAre"
-msgstr ""
-
-msgid "Copy the code list"
+msgid "createNewVersion"
 msgstr ""
 
 msgid "Export"
@@ -270,6 +264,12 @@ msgid "CODES"
 msgstr ""
 
 msgid "EXTENSION SCHEMES"
+msgstr ""
+
+msgid "versionHistory"
+msgstr ""
+
+msgid "variants"
 msgstr ""
 
 msgid "Link title"
@@ -303,6 +303,18 @@ msgid "Show link"
 msgstr ""
 
 msgid "Ok"
+msgstr ""
+
+msgid "Search for codescheme"
+msgstr ""
+
+msgid "{{variantModalPageTitle}}"
+msgstr ""
+
+msgid "{{variantModalInstructionText}}"
+msgstr ""
+
+msgid "No search results"
 msgstr ""
 
 msgid "Extension scheme"
@@ -411,9 +423,6 @@ msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
-msgstr ""
-
-msgid "No search results"
 msgstr ""
 
 msgid "Name"

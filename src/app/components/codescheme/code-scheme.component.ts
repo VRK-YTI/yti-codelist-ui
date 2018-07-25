@@ -132,7 +132,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 
-  get canCopyCodeScheme(): boolean {
+  get canCreateANewVersionFromCodeScheme(): boolean {
     return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
   }
 
@@ -202,7 +202,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     );
   }
 
-  copyTheCodescheme() {
+  createANewVersionFromThisCodeScheme() {
     console.log('Copy codescheme clicked!');
     this.router.navigate(['createcodescheme'], {queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
   }

@@ -1,0 +1,15 @@
+<dl>
+  <dd>
+    <div>
+      <button id="open_variants_modal_button"
+              type="button"
+              class="btn btn-sm btn-action mt-2"
+              (click)="openVariantSearchModal()" translate>attachVariantToCodeScheme
+      </button>
+    </div>
+  </dd>
+</dl>
+
+<app-clipboard *ngFor="let variant of codeScheme.variantsOfThisCodeScheme" [label]="variant.prefLabel | translateValue"
+               [value]="variant.uri"
+               [showAsLink]="false"></app-clipboard>

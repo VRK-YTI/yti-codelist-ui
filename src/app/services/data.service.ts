@@ -621,4 +621,16 @@ export class DataService {
         return Observable.of(false);
       });
   }
+
+  attachAVariantToCodeScheme(theCodeRegistry: CodeRegistry, variantCodeSchemeId: string, mother: CodeScheme): Observable<CodeScheme> {
+
+    const registryCodeValue = theCodeRegistry.codeValue;
+
+    const resultCodeScheme: Observable<CodeScheme> =
+      this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/attachvariant/${variantCodeSchemeId}`,
+        mother)
+        .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+    return resultCodeScheme;
+  }
+
 }

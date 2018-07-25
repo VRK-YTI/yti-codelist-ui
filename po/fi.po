@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-25 10:43+0300\n"
+"PO-Revision-Date: 2018-07-25 14:41+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -258,17 +258,11 @@ msgstr "Tuo koodisto"
 msgid "Default code"
 msgstr "Vakiokoodi"
 
-msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
-msgstr "Tämä koodisto on variantti seuraavasta koodistosta"
+msgid "attachVariantToCodeScheme"
+msgstr "Liitä koodistoon variantti"
 
-msgid "theUriOfTheMotherCodeScheme"
-msgstr "Varioidun koodiston URI "
-
-msgid "otherVariantsFromTheSameMOtherAre"
-msgstr "Muut variantit samasta koodistosta ovat"
-
-msgid "Copy the code list"
-msgstr "Kopioi koodisto"
+msgid "createNewVersion"
+msgstr "Luo uusi versio"
 
 msgid "Export"
 msgstr "Lataa"
@@ -287,6 +281,12 @@ msgstr "KOODIT"
 
 msgid "EXTENSION SCHEMES"
 msgstr "LAAJENNUSJÄRJESTELMÄT"
+
+msgid "versionHistory"
+msgstr "Kaikki versiot"
+
+msgid "variants"
+msgstr "Variantit"
 
 msgid "Link title"
 msgstr "Linkin nimi"
@@ -320,6 +320,20 @@ msgstr "Näytä linkki"
 
 msgid "Ok"
 msgstr "Ok"
+
+#, fuzzy
+#| msgid "Search for code"
+msgid "Search for codescheme"
+msgstr "Hae koodia"
+
+msgid "{{variantModalPageTitle}}"
+msgstr "Etsi varianttia"
+
+msgid "{{variantModalInstructionText}}"
+msgstr "Etsi ja kiinnitä koodisto tämän koodiston variantiksi"
+
+msgid "No search results"
+msgstr "Ei hakutuloksia"
 
 msgid "Extension scheme"
 msgstr "Laajennusjärjestelmä"
@@ -428,9 +442,6 @@ msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
-
-msgid "No search results"
-msgstr "Ei hakutuloksia"
 
 msgid "Name"
 msgstr "Nimi"
@@ -825,6 +836,15 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
+
+#~ msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
+#~ msgstr "Tämä koodisto on variantti seuraavasta koodistosta"
+
+#~ msgid "otherVariantsFromTheSameMOtherAre"
+#~ msgstr "Muut variantit samasta koodistosta ovat"
+
+#~ msgid "Copy the code list"
+#~ msgstr "Kopioi koodisto"
 
 #~ msgid "Code list value"
 #~ msgstr "Koodiston tunnus"
