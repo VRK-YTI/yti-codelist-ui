@@ -201,6 +201,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   }
 
   canCreateCodeScheme() {
-    return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
+    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
 }

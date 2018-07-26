@@ -73,6 +73,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       this.uuidOfOriginalCodeSchemeIfCloning = params['originalCodeSchemeId'];
       if (this.uuidOfOriginalCodeSchemeIfCloning) {
         this.cloning = true;
+        this.codeRegistriesLoaded = true; // when cloning, no registries are needed, need to fake loading is ready
         this.dataService.getCodeSchemeWithUuid(this.uuidOfOriginalCodeSchemeIfCloning).subscribe(next => {
           const originalCodeScheme: CodeScheme = next;
           this.codeSchemeForm.patchValue({prefLabel: originalCodeScheme.prefLabel});
@@ -87,6 +88,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({validity: {start: originalCodeScheme.startDate, end: originalCodeScheme.endDate} });
           this.codeSchemeForm.patchValue({status: originalCodeScheme.status});
           this.codeSchemeForm.patchValue({conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies});
+          this.codeSchemeForm.patchValue({codeRegistry: originalCodeScheme.codeRegistry}); // when cloning, enforce same registry
           this.dataService.getDataClassificationsAsCodes().subscribe(next2 => {
             const allDataClassifications = next2;
             const dataClassificationsToCopy: CodePlain[] = [];

@@ -133,7 +133,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canCreateANewVersionFromCodeScheme(): boolean {
-    return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
+    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
 
   get isSuperUser(): boolean {

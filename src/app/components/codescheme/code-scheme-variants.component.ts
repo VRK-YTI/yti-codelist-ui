@@ -4,6 +4,8 @@ import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {CodeschemeVariantModalService} from '../codeschemevariant/codescheme-variant.modal.component';
 import {DataService} from '../../services/data.service';
 import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
+import {AuthorizationManager} from '../../services/authorization-manager.service';
+import {CodeRegistry} from '../../entities/code-registry';
 
 @Component({
   selector: 'app-code-scheme-variants',
@@ -13,10 +15,13 @@ import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
 export class CodeSchemeVariantsComponent {
 
   @Input() codeScheme: CodeScheme;
+  @Input() codeRegistries: CodeRegistry[];
+
   chosenCodeScheme: CodeScheme;
 
   constructor(private codeschemeVariantModalService: CodeschemeVariantModalService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private authorizationManager: AuthorizationManager) {
 
   }
   openVariantSearchModal() {
@@ -35,5 +40,10 @@ export class CodeSchemeVariantsComponent {
           );
         }
       });
+  }
+
+  canAttachAVariant(): boolean {
+    console.log(this.codeRegistries);
+    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
 }

@@ -23,11 +23,14 @@
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-registry-input id="code_registry_input"
-                                [label]="'Registry' | translate"
-                                (loaded)="codeRegistriesLoaded = true"
-                                [required]="true"
-                                [formControlName]="'codeRegistry'"></app-registry-input>
+        <ng-container *ngIf="!cloning">
+          <app-registry-input id="code_registry_input"
+                              [label]="'Registry' | translate"
+                              (loaded)="codeRegistriesLoaded = true"
+                              [required]="true"
+                              [formControlName]="'codeRegistry'"></app-registry-input>
+        </ng-container>
+
 
         <app-literal-input [id]="'codelist_value_input'"
                            [label]="'Code list ID' | translate"
