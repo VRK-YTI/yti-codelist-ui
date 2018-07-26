@@ -43,7 +43,6 @@ export class CodeSchemeVariantsComponent {
   }
 
   canAttachAVariant(): boolean {
-    console.log(this.codeRegistries);
     return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
 }
