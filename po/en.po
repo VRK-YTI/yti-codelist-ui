@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-25 14:43+0300\n"
+"PO-Revision-Date: 2018-07-26 13:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -94,8 +94,8 @@ msgstr ""
 msgid "Code list"
 msgstr ""
 
-msgid "Code value"
-msgstr ""
+msgid "LABEL_TEXT_CODE_VALUE"
+msgstr "Code value"
 
 msgid "Code name"
 msgstr ""
@@ -314,7 +314,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-msgid "Search for codescheme"
+msgid "Search for code lists"
 msgstr ""
 
 msgid "{{variantModalPageTitle}}"
@@ -359,13 +359,13 @@ msgstr ""
 msgid "This extension scheme does not have any extensions yet."
 msgstr ""
 
+msgid "Code value"
+msgstr ""
+
 msgid "Codescheme"
 msgstr ""
 
 msgid "EXTENSIONS"
-msgstr ""
-
-msgid "Search for code lists"
 msgstr ""
 
 msgid "code list"
@@ -455,8 +455,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODELIST_VERSION"
-msgstr "The version number"
+msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgstr "Last edit time"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -494,12 +494,8 @@ msgstr ""
 "as described for a longer period of time. Changes that are important to the "
 "code list user."
 
-msgid "INFO_TEXT_CLASSIFICATION"
-msgstr ""
-"Classification of the code lists. In the Interoperability Platform tools, "
-"each resource (code list or classification, data model, or vocabulary) is "
-"classified by the Classification of Public Services. It is used for example "
-"to filter the search results."
+msgid "INFO_TEXT_CODELIST_VERSION"
+msgstr "The version number"
 
 msgid "INFO_TEXT_CODELIST_SOURCE"
 msgstr "A related resource from which the described resource is derived."
@@ -525,8 +521,12 @@ msgstr "The period in which the code is valid"
 msgid "INFO_TEXT_URI"
 msgstr "Permanent web address of the code list."
 
-msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
-msgstr "Last edit time"
+msgid "INFO_TEXT_CLASSIFICATION"
+msgstr ""
+"Classification of the code lists. In the Interoperability Platform tools, "
+"each resource (code list or classification, data model, or vocabulary) is "
+"classified by the Classification of Public Services. It is used for example "
+"to filter the search results."
 
 msgid "INFO_TEXT_EXTERNAL_REFERENCES"
 msgstr "Links"
@@ -536,6 +536,52 @@ msgstr ""
 "Validity start date. The date on which the resource is effective or valid."
 
 msgid "INFO_TEXT_CODELIST_VALIDITY_END_DATE"
+msgstr ""
+"Validity end date. The date on which the resource is no longer effective or "
+"valid."
+
+msgid "INFO_TEXT_CODE_CODELIST_NAME"
+msgstr "Name of the Code list that this code belongs"
+
+msgid "INFO_TEXT_CODE_VALUE"
+msgstr "Code value that is code"
+
+msgid "INFO_TEXT_CODE_NAME"
+msgstr "Code label"
+
+msgid "INFO_TEXT_CODE_STATUS"
+msgstr ""
+"Adminstrative and life cycle status. Possible values are Unfinished, Draft, "
+"Submitted, Valid, Superseded, Retired, Invalid, Suggested."
+
+msgid "INFO_TEXT_CODE_DESCRIPTION"
+msgstr "Describtion of the content"
+
+msgid "INFO_TEXT_CODE_DEFINITION"
+msgstr ""
+"Definition of the term related to the information content of the encoding "
+"Vocabulary tool vocabulary concept or self-defined code definition."
+
+msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgstr "Short name or abbreviation of the code"
+
+msgid "INFO_TEXT_CODE_VALIDITY"
+msgstr "The period in which the code is valid"
+
+msgid "INFO_TEXT_CODE_URI"
+msgstr "Permanent web address of the code"
+
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgstr "Last edit time"
+
+msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
+msgstr "Links"
+
+msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
+msgstr ""
+"Validity start date. The date on which the resource is effective or valid."
+
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 "Validity end date. The date on which the resource is no longer effective or "
 "valid."

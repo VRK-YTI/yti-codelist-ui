@@ -24,15 +24,18 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <app-localizable-literal [label]="'Code list' | translate"
-                                 [value]="codeScheme.prefLabel"></app-localizable-literal>
+                                 [value]="codeScheme.prefLabel"
+                                 [infoText]="'INFO_TEXT_CODE_CODELIST_NAME'"></app-localizable-literal>
 
         <app-literal-input [id]="'code_value_input'"
-                           [label]="'Code value' | translate"
+                           [label]="'LABEL_TEXT_CODE_VALUE' | translate"
                            [required]="true"
+                           [infoText]="'INFO_TEXT_CODE_VALUE'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <app-localizable-input [id]="'code_name_input'"
                                [label]="'Code name' | translate"
+                               [infoText]="'INFO_TEXT_CODE_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <dl>
@@ -47,10 +50,13 @@
         </dl>
         <div *ngIf="codeForm.controls['conceptUriInVocabularies'].value.toString().length > 0">
           <dl>
-            <dt><label>{{'Vocabularies URI' | translate}}</label></dt>
+            <dt>
+              <label>{{'Vocabularies URI' | translate}}</label>
+              <app-information-symbol [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-information-symbol>
+            </dt>
             <dd>
               <a>
-                <i id="{{'remove_concept_uri_in_vocabularies_link'}}"
+                <i [id]="'remove_concept_uri_in_vocabularies_link'"
                    class="fa fa-times"
                    (click)="removeConceptUriInVocabularies()"></i>
               </a>
@@ -60,27 +66,33 @@
         </div>
 
         <app-status-input id="code_status_input"
-                          [formControlName]="'status'"></app-status-input>
+                          [formControlName]="'status'"
+                          [infoText]="'INFO_TEXT_CODE_STATUS'"></app-status-input>
 
         <app-localizable-textarea [id]="'code_description_textarea'"
                                   [label]="'Description' | translate"
+                                  [infoText]="'INFO_TEXT_CODE_DESCRIPTION'"
                                   [formControlName]="'description'"></app-localizable-textarea>
 
         <app-localizable-textarea [id]="'code_definition_textarea'"
                                   [label]="'Definition' | translate"
+                                  [infoText]="'INFO_TEXT_CODE_DEFINITION'"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
         <app-literal-input [id]="'code_shortname_input'"
                            [label]="'Short name' | translate"
+                           [infoText]="'INFO_TEXT_CODE_SHORT_NAME'"
                            [formControlName]="'shortName'"></app-literal-input>
 
         <app-date-range-input id="code_validity_input"
                               [label]="'Validity' | translate"
+                              [infoText]="'INFO_TEXT_CODE_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
         <app-external-references-input [id]="'code_ext_references_input'"
                                        [label]="'Links' | translate"
                                        [codeSchemeId]="codeScheme.id"
+                                       [infoText]="'INFO_TEXT_CODE_EXTERNAL_REFERENCES'"
                                        [formControlName]="'externalReferences'"></app-external-references-input>
       </div>
     </div>
