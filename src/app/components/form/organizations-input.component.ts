@@ -28,6 +28,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
     <dl *ngIf="editing || selectableOrganizations.length > 0">
       <dt>
         <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -63,6 +64,7 @@ export class OrganizationsInputComponent implements ControlValueAccessor {
   @Input() label: string;
   @Input() restrict = false;
   @Input() required = false;
+  @Input() infoText: string;
   control = new FormControl([]);
 
   organizations$: Observable<Organization[]>;

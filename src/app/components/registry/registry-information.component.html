@@ -16,26 +16,32 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <app-literal [label]="'Code value' | translate"
-                     [value]="codeRegistry.codeValue"></app-literal>
+                     [value]="codeRegistry.codeValue"
+                     [infoText]="'INFO_TEXT_REGISTRY_VALUE'"></app-literal>
 
         <app-localizable-input [id]="'registry_name_input'"
                                [label]="'Code registry name' | translate"
+                               [infoText]="'INFO_TEXT_REGISTRY_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-localizable-textarea [id]="'registry_definition_textarea'"
                                   [label]="'Definition' | translate"
+                                  [infoText]="'INFO_TEXT_REGISTRY_DEFINITION'"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
         <app-organizations-input id="registry_organizations_input"
                                  [label]="'Organization' | translate"
+                                 [infoText]="'INFO_TEXT_REGISTRY_ORGANIZATION'"
                                  [formControlName]="'organizations'"></app-organizations-input>
 
         <app-clipboard [label]="'URI' | translate"
                        [value]="getRegistryUri()"
-                       [showAsLink]="false"></app-clipboard>
+                       [showAsLink]="false"
+                       [infoText]="'INFO_TEXT_REGISTRY_URI'"></app-clipboard>
 
         <app-literal [label]="'Last modification' | translate"
-                     [value]="codeRegistry.modifiedDisplayValue"></app-literal>
+                     [value]="codeRegistry.modifiedDisplayValue"
+                     [infoText]="'INFO_TEXT_REGISTRY_LAST_MODIFICATION'"></app-literal>
       </div>
     </div>
   </form>

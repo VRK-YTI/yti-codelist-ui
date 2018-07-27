@@ -22,6 +22,7 @@
         <app-literal-input [id]="'registry_value_input'"
                            [label]="'Registry value' | translate"
                            [required]="true"
+                           [infoText]="'INFO_TEXT_REGISTRY_VALUE'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
@@ -30,14 +31,17 @@
 
         <app-localizable-input [id]="'registry_name_input'"
                                [label]="'Registry name' | translate"
+                               [infoText]="'INFO_TEXT_REGISTRY_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-localizable-textarea [id]="'registry_definition_textarea'"
                                   [label]="'Definition' | translate"
+                                  [infoText]="'INFO_TEXT_REGISTRY_DEFINITION'"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
         <app-organizations-input id="registry_organizations_input"
                                  [label]="'Organization' | translate"
+                                 [infoText]="'INFO_TEXT_REGISTRY_ORGANIZATION'"
                                  [formControlName]="'organizations'"></app-organizations-input>
 
       </div>
