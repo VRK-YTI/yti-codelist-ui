@@ -14,21 +14,25 @@
 
         <app-localizable-input [id]="'link_title_input'"
                                [label]="'Link title' | translate"
+                               [infoText]="'INFO_TEXT_LINK_TITLE'"
                                [formControlName]="'title'"></app-localizable-input>
 
         <app-localizable-textarea [id]="'link_description_textarea'"
                                   [label]="'Description' | translate"
+                                  [infoText]="'INFO_TEXT_LINK_DESCRIPTION'"
                                   [formControlName]="'description'"></app-localizable-textarea>
 
         <app-literal-input [id]="'link_url_input'"
                            [label]="'URL' | translate"
                            [required]="true"
                            required
+                           [infoText]="'INFO_TEXT_LINK_URL'"
                            [formControlName]="'href'"></app-literal-input>
 
         <app-property-type-select id="propertytype_select"
                                   [label]="'Link type' | translate"
                                   [context]="'ExternalReference'"
+                                  [infoText]="'INFO_TEXT_LINK_TYPE'"
                                   [formControlName]="'propertyType'"></app-property-type-select>
 
       </form>

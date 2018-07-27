@@ -446,7 +446,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -497,13 +497,13 @@ msgstr ""
 msgid "INFO_TEXT_URI"
 msgstr ""
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_EXTERNAL_REFERENCES"
 msgstr ""
 
-msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
+msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODELIST_VALIDITY_END_DATE"
@@ -546,6 +546,18 @@ msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgstr ""
+
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr ""
+
+msgid "INFO_TEXT_LINK_DESCRIPTION"
+msgstr ""
+
+msgid "INFO_TEXT_LINK_URL"
+msgstr ""
+
+msgid "INFO_TEXT_LINK_TYPE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"

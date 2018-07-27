@@ -8,7 +8,10 @@ import { EditableService } from '../../services/editable.service';
   selector: 'app-property-type-select',
   template: `
     <dl>
-      <dt><label>{{label}}</label></dt>
+      <dt>
+        <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
+      </dt>
       <dd>
         <div *ngIf="editing" class="form-group">
           <div ngbDropdown class="d-inline-block">
@@ -19,7 +22,7 @@ import { EditableService } from '../../services/editable.service';
 
             <div *ngIf="propertyTypes" ngbDropdownMenu aria-labelledby="propertytype_dropdown_button">
               <button *ngFor="let propertyTypeOption of propertyTypes"
-                      id="{{propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'}}"
+                      [id]="propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'"
                       (click)="select(propertyTypeOption)"
                       class="dropdown-item"
                       [class.active]="isSelected(propertyTypeOption)">
@@ -38,6 +41,7 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit
 
   @Input() context: string;
   @Input() label: string;
+  @Input() infoText: string;
 
   value: PropertyType;
   propertyTypes: PropertyType[];

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-26 13:56+0300\n"
+"PO-Revision-Date: 2018-07-27 11:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -455,8 +455,9 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
-msgstr "Last edit time"
+msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
+msgstr ""
+"Validity start date. The date on which the resource is effective or valid."
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -521,19 +522,18 @@ msgstr "The period in which the code is valid"
 msgid "INFO_TEXT_URI"
 msgstr "Permanent web address of the code list."
 
+msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgstr "Last edit time"
+
+msgid "INFO_TEXT_EXTERNAL_REFERENCES"
+msgstr "Links"
+
 msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 "Classification of the code lists. In the Interoperability Platform tools, "
 "each resource (code list or classification, data model, or vocabulary) is "
 "classified by the Classification of Public Services. It is used for example "
 "to filter the search results."
-
-msgid "INFO_TEXT_EXTERNAL_REFERENCES"
-msgstr "Links"
-
-msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
-msgstr ""
-"Validity start date. The date on which the resource is effective or valid."
 
 msgid "INFO_TEXT_CODELIST_VALIDITY_END_DATE"
 msgstr ""
@@ -585,6 +585,18 @@ msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 "Validity end date. The date on which the resource is no longer effective or "
 "valid."
+
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr "Info text coming soon..."
+
+msgid "INFO_TEXT_LINK_DESCRIPTION"
+msgstr "Info text coming soon..."
+
+msgid "INFO_TEXT_LINK_URL"
+msgstr "Info text coming soon..."
+
+msgid "INFO_TEXT_LINK_TYPE"
+msgstr "Info text coming soon..."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Code {{ identifier }} already exists."
