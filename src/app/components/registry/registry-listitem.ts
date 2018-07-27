@@ -6,7 +6,7 @@ import { CodeRegistry } from '../../entities/code-registry';
   selector: 'app-code-registry-listitem',
   styleUrls: ['./registry-listitem.scss'],
   template: `
-    <div id="{{getIdIdentifier(codeRegistry) + '_view_code_registry'}}"
+    <div [id]="getIdIdentifier(codeRegistry) + '_view_code_registry'"
          class="codeRegistry"
          (click)="viewCodeRegistry(codeRegistry)">
       <span *ngIf="codeRegistry.hasPrefLabel()"
