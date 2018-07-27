@@ -57,7 +57,7 @@ export class SearchLinkedOrganizationModalService {
         <div class="col-12">
           <div class="content-box">
             <div class="search-results">
-              <div id="{{organization.idIdentifier + '_organization_link'}}"
+              <div [id]="organization.getIdIdentifier(languageService) + '_organization_link'"
                    class="search-result"
                    *ngFor="let organization of searchResults$ | async; let last = last"
                    (click)="select(organization)">

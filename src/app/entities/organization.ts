@@ -1,5 +1,6 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { OrganizationType } from '../services/api-schema';
+import { labelNameToResourceIdIdentifier } from '../../../node_modules/yti-common-ui/utils/resource';
 
 export class Organization {
 
@@ -17,6 +18,11 @@ export class Organization {
 
   getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
     return localizer.translate(this.prefLabel, useUILanguage);
+  }
+
+  getIdIdentifier(localizer: Localizer): string {
+    const prefLabel = localizer.translate(this.prefLabel);
+    return `${labelNameToResourceIdIdentifier(prefLabel)}`;
   }
 
   serialize(): OrganizationType {
