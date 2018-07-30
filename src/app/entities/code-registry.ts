@@ -10,6 +10,8 @@ import { Localizable } from 'yti-common-ui/types/localization';
 
 export class CodeRegistry extends AbstractResource implements EditableEntity {
 
+  // TODO: Change definition to description (YTI-981 & YTI-982).
+
   organizations: Organization[];
   modified: Moment|null = null;
   definition: Localizable;

@@ -34,9 +34,10 @@
                                [infoText]="'INFO_TEXT_REGISTRY_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <app-localizable-textarea [id]="'registry_definition_textarea'"
-                                  [label]="'Definition' | translate"
-                                  [infoText]="'INFO_TEXT_REGISTRY_DEFINITION'"
+        <!-- TODO: Change formControlName "definition" to "description" (YTI-981 & YTI-982). -->
+        <app-localizable-textarea [id]="'registry_description_textarea'"
+                                  [label]="'Description' | translate"
+                                  [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
                                   [formControlName]="'definition'"></app-localizable-textarea>
 
         <app-organizations-input id="registry_organizations_input"

@@ -18,6 +18,8 @@ import { Organization } from '../../entities/organization';
 })
 export class RegistryCreateComponent implements OnInit {
 
+  // TODO: Change definition to description (YTI-981 & YTI-982).
+
   codeRegistryForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),

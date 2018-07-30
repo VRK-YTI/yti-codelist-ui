@@ -19,6 +19,8 @@ export class RegistryInformationComponent implements OnChanges, OnDestroy {
   @Input() codeRegistry: CodeRegistry;
   env: string;
 
+  // TODO: Change definition to description (YTI-981 & YTI-982).
+
   codeRegistryForm = new FormGroup({
     prefLabel: new FormControl({}),
     definition: new FormControl({}),
