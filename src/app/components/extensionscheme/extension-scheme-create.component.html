@@ -26,6 +26,7 @@
         <app-literal-input [id]="'extensionscheme_codevalue_input'"
                            [label]="'Extension scheme value' | translate"
                            [required]="true"
+                           [infoText]="'INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
@@ -34,18 +35,22 @@
 
         <app-localizable-input [id]="'extensionscheme_name_input'"
                                [label]="'Extension scheme name' | translate"
+                               [infoText]="'INFO_TEXT_EXTENSION_SCHEME_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-status-input id="extensionscheme_status_input"
+                          [infoText]="'INFO_TEXT_EXTENSION_SCHEME_STATUS'"
                           [formControlName]="'status'"></app-status-input>
 
         <app-property-type-select id="propertytype_select"
                                   [label]="'Extension scheme type' | translate"
                                   [context]="'ExtensionScheme'"
+                                  [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"
                                   [formControlName]="'propertyType'"></app-property-type-select>
 
         <app-date-range-input id="extensionscheme_validity_input"
                               [label]="'Validity' | translate"
+                              [infoText]="'INFO_TEXT_EXTENSION_SCHEME_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
       </div>
     </div>
