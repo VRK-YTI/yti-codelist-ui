@@ -413,6 +413,9 @@ msgstr ""
 msgid "Registry name"
 msgstr ""
 
+msgid "Registry ID"
+msgstr ""
+
 msgid "Code registry name"
 msgstr ""
 
