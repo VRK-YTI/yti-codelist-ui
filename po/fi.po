@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-30 17:29+0300\n"
+"PO-Revision-Date: 2018-07-31 09:21+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -261,6 +261,9 @@ msgstr "Vakiokoodi"
 msgid "attachVariantToCodeScheme"
 msgstr "Liitä koodistoon variantti"
 
+msgid "Name"
+msgstr "Nimi"
+
 msgid "createNewVersion"
 msgstr "Luo uusi versio"
 
@@ -440,9 +443,6 @@ msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
-
-msgid "Name"
-msgstr "Nimi"
 
 msgid "Email"
 msgstr "Sähköposti"
@@ -941,6 +941,15 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
+
+#~ msgid "Voimassa"
+#~ msgstr "Voimassa"
+
+#~ msgid "Nimi"
+#~ msgstr "Nimi"
+
+#~ msgid "Tila"
+#~ msgstr "Tila"
 
 #, fuzzy
 #~| msgid "Search for code"

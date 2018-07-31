@@ -1,7 +1,7 @@
 import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, NgControl } from '@angular/forms';
-import { DateRange, formatDisplayDate, validDate } from '../../utils/date';
+import { DateRange, formatDisplayDate, validDate , formatDisplayDateRange} from '../../utils/date';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -85,16 +85,7 @@ export class DateRangeInputComponent {
   }
 
   get displayName() {
-
-    const value = this.value;
-
-    if (!value) {
-      return '';
-    } else {
-      const start = formatDisplayDate(value.start);
-      const end = formatDisplayDate(value.end);
-      return (start || end) ? start + ' - ' + end : '';
-    }
+    return this.value ? formatDisplayDateRange(this.value.start, this.value.end) : '';
   }
 
   get value(): DateRange|undefined {

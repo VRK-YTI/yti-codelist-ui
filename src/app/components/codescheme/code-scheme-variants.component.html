@@ -10,6 +10,19 @@
   </dd>
 </dl>
 
-<app-clipboard *ngFor="let variant of codeScheme.variantsOfThisCodeScheme" [label]="variant.prefLabel | translateValue"
-               [value]="variant.uri"
-               [showAsLink]="false"></app-clipboard>
+<table *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0" class="table table-sm">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col" translate>Validity</th>
+    <th scope="col" translate>Name</th>
+    <th scope="col" translate>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let variant of codeScheme.variantsOfThisCodeScheme">
+    <td scope="row">{{variant.validityDateRange}}</td>
+    <td><a href="{{variant.uri}}" target="_blank">{{variant.prefLabel | translateValue:true }}</a></td>
+    <td>{{variant.status | translate }}</td>
+  </tr>
+  </tbody>
+</table>

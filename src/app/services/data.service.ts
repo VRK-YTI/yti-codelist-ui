@@ -338,9 +338,6 @@ export class DataService {
   }
 
   saveCodeScheme(codeSchemeToSave: CodeSchemeType): Observable<ApiResponseType> {
-
-    console.log('saving codescheme in dataservice');
-    console.log(codeSchemeToSave);
     const registryCode = codeSchemeToSave.codeRegistry.codeValue;
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeToSave.codeValue}/`, codeSchemeToSave)

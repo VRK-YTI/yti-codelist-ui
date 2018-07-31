@@ -24,6 +24,7 @@ export class CodeSchemeVariantsComponent {
               private authorizationManager: AuthorizationManager) {
 
   }
+
   openVariantSearchModal() {
     this.codeschemeVariantModalService.open()
       .then(codeScheme => this.putChosenVariantStuffInPlace(codeScheme), ignoreModalClose);
@@ -35,8 +36,11 @@ export class CodeSchemeVariantsComponent {
     return this.dataService.attachAVariantToCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
       .subscribe(resultCodeScheme => {
         if (this.codeScheme.variantsOfThisCodeScheme) {
+          const theStart = this.chosenCodeScheme.startDate ? this.chosenCodeScheme.startDate.toISOString() : undefined;
+          const theEnd = this.chosenCodeScheme.endDate ? this.chosenCodeScheme.endDate.toISOString() : undefined;
           this.codeScheme.variantsOfThisCodeScheme.push(
-            new CodeSchemeListItem( { prefLabel: this.chosenCodeScheme.prefLabel, uri: this.chosenCodeScheme.uri } )
+            new CodeSchemeListItem( { prefLabel: this.chosenCodeScheme.prefLabel, uri: this.chosenCodeScheme.uri, startDate: theStart,
+              endDate: theEnd, status: this.chosenCodeScheme.status} )
           );
         }
       });
@@ -45,4 +49,5 @@ export class CodeSchemeVariantsComponent {
   canAttachAVariant(): boolean {
     return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
+
 }

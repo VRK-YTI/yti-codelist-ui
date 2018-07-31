@@ -1,3 +1,16 @@
-<app-clipboard *ngFor="let version of codeScheme.allVersions" [label]="version.prefLabel | translateValue"
-               [value]="version.uri"
-               [showAsLink]="false"></app-clipboard>
+<table *ngIf="codeScheme.allVersions.length > 0" class="table table-sm">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col" translate>Validity</th>
+    <th scope="col" translate>Name</th>
+    <th scope="col" translate>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let version of codeScheme.allVersions">
+    <td scope="row">{{version.validityDateRange}}</td>
+    <td><a href="{{version.uri}}" target="_blank">{{version.prefLabel | translateValue:true }}</a></td>
+    <td>{{version.status | translate }}</td>
+  </tr>
+  </tbody>
+</table>

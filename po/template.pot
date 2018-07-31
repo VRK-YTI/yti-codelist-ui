@@ -245,6 +245,9 @@ msgstr ""
 msgid "attachVariantToCodeScheme"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
 msgid "createNewVersion"
 msgstr ""
 
@@ -423,9 +426,6 @@ msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
-msgstr ""
-
-msgid "Name"
 msgstr ""
 
 msgid "Email"

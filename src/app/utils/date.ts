@@ -80,3 +80,9 @@ export function validDateRange(control: FormControl) {
     }
   };
 }
+
+export function formatDisplayDateRange(start: Moment|null, end: Moment|null) {
+  const formattedStart = formatDisplayDate(start);
+  const formattedEnd = formatDisplayDate(end);
+  return (formattedStart || formattedEnd) ? formattedStart + ' - ' + formattedEnd : '';
+}

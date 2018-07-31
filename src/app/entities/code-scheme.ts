@@ -78,7 +78,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       this.variantsOfThisCodeScheme = (data.variantsOfThisCodeScheme || []).map(variant => new CodeSchemeListItem(variant));
     }
     if (data.allVersions) {
-      this.allVersions = data.allVersions;
+      this.allVersions = (data.allVersions || []).map(version => new CodeSchemeListItem(version));
     }
     if (data.variantCodeschemeId) {
       this.variantCodeschemeId = data.variantCodeschemeId;
