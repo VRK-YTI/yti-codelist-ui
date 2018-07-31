@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-31 11:02+0300\n"
+"PO-Revision-Date: 2018-07-31 15:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -350,8 +350,8 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
-msgid "Extension scheme value"
-msgstr ""
+msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgstr "Extension scheme ID"
 
 msgid "Extension scheme name"
 msgstr ""
@@ -362,8 +362,8 @@ msgstr ""
 msgid "This extension scheme does not have any extensions yet."
 msgstr ""
 
-msgid "Code value"
-msgstr ""
+msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
+msgstr "Extension scheme ID"
 
 msgid "Codescheme"
 msgstr ""
@@ -416,13 +416,10 @@ msgstr ""
 msgid "This registry does not have any code lists yet."
 msgstr ""
 
-msgid "Registry value"
+msgid "Registry ID"
 msgstr ""
 
 msgid "Registry name"
-msgstr ""
-
-msgid "Registry ID"
 msgstr ""
 
 msgid "Code registry name"
@@ -458,10 +455,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_DEFINITION"
-msgstr ""
-"Definition of the term related to the information content of the encoding "
-"Vocabulary tool vocabulary concept or self-defined code definition."
+msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgstr "Short name or abbreviation of the code"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -558,15 +553,17 @@ msgstr ""
 msgid "INFO_TEXT_CODE_DESCRIPTION"
 msgstr "Describtion of the content"
 
+msgid "INFO_TEXT_CODE_DEFINITION"
+msgstr ""
+"Definition of the term related to the information content of the encoding "
+"Vocabulary tool vocabulary concept or self-defined code definition."
+
 msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 "Classification of the code lists. In the Interoperability Platform tools, "
 "each resource (code list or classification, data model, or vocabulary) is "
 "classified by the Classification of Public Services. It is used for example "
 "to filter the search results."
-
-msgid "INFO_TEXT_CODE_SHORT_NAME"
-msgstr "Short name or abbreviation of the code"
 
 msgid "INFO_TEXT_CODE_VALIDITY"
 msgstr "The period in which the code is valid"
@@ -622,16 +619,16 @@ msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Time registry information was last chaged."
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
-msgstr "Info text coming soon..."
+msgstr "Code list that this extension scheme is linked"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
-msgstr "Info text coming soon..."
+msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
+msgstr "Extension scheme identifier"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
-msgstr "Info text coming soon..."
+msgstr "Extension scheme name"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_TYPE"
-msgstr "Info text coming soon..."
+msgstr "E. g. Calculation hierarchy and Definition hierarchy"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_STATUS"
 msgstr ""
@@ -652,6 +649,9 @@ msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
 msgstr ""
 "Validity end date. The date on which the resource is no longer effective or "
 "valid."
+
+msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgstr "The technical code or permanent identifier of the extension scheme"
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Code {{ identifier }} already exists."
@@ -934,6 +934,9 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Extension value cannot be empty."
+
+#~ msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
+#~ msgstr "The technical code or permanent identifier of the extension scheme"
 
 #~ msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
 #~ msgstr "This codelist is a variant of the following code list"

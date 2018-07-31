@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-07-31 09:40+0300\n"
+"PO-Revision-Date: 2018-07-31 15:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -357,7 +357,7 @@ msgstr "Luo laajennus"
 msgid "Import extensions"
 msgstr "Tuo laajennuksia"
 
-msgid "Extension scheme value"
+msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus"
 
 msgid "Extension scheme name"
@@ -369,7 +369,7 @@ msgstr "Laajennusjärjestelmän tyyppi"
 msgid "This extension scheme does not have any extensions yet."
 msgstr "Tällä laajennusjärjestelmällä ei ole yhtään laajennusta."
 
-msgid "Code value"
+msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
 msgstr "Tunnus"
 
 msgid "Codescheme"
@@ -423,14 +423,11 @@ msgstr "Rekistereitä ei ole."
 msgid "This registry does not have any code lists yet."
 msgstr "Tällä rekisterillä ei ole yhtään koodistoa."
 
-msgid "Registry value"
-msgstr "Rekisterin tunnus"
+msgid "Registry ID"
+msgstr "Tunnus"
 
 msgid "Registry name"
 msgstr "Rekisterin nimi"
-
-msgid "Registry ID"
-msgstr "Tunnus"
 
 msgid "Code registry name"
 msgstr "Rekisterin nimi"
@@ -465,10 +462,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_CODE_DEFINITION"
-msgstr ""
-"Koodin merkitykseen liittyvän käsitteen määritelmä Sanastot-työkalun "
-"sanastosta tai itse annettu määritelmä."
+msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgstr "Koodin lyhyt nimi tai lyhenne"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -578,6 +573,11 @@ msgstr ""
 msgid "INFO_TEXT_CODE_DESCRIPTION"
 msgstr "Sanallinen kuvaus koodin sisällöstä yms."
 
+msgid "INFO_TEXT_CODE_DEFINITION"
+msgstr ""
+"Koodin merkitykseen liittyvän käsitteen määritelmä Sanastot-työkalun "
+"sanastosta tai itse annettu määritelmä."
+
 msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 "Tieto siitä, mihin julkisten palvelujen luokituksen palveluluokkaan koodisto "
@@ -585,9 +585,6 @@ msgstr ""
 "työkaluissa jokainen resurssi (koodisto, tietomalli tai sanasto) "
 "luokitellaan Julkisten palvelujen luokituksella. Luokitusta käytetään "
 "etusivun haussa rajaamaan hakutuloksia."
-
-msgid "INFO_TEXT_CODE_SHORT_NAME"
-msgstr "Koodin lyhyt nimi tai lyhenne"
 
 msgid "INFO_TEXT_CODE_VALIDITY"
 msgstr "Ajanjakso, jona koodi on voimassa"
@@ -641,16 +638,18 @@ msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
-msgstr "Infoteksti tulossa..."
+msgstr "Koodisto, johon tämä laajennusjärjestelmä on liitetty"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
-msgstr "Infoteksti tulossa..."
+msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
+msgstr "Laajennusjärjestelmän tunnus"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
-msgstr "Infoteksti tulossa..."
+msgstr "Laajennusjärjestelmän nimi"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_TYPE"
-msgstr "Infoteksti tulossa..."
+msgstr ""
+"Esimerkkejä laajennusjärjestelmistä ovat laskentahierarkia ja "
+"määrityshierarkia."
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_STATUS"
 msgstr ""
@@ -669,6 +668,9 @@ msgstr "Voimassaolon alkamispäivämäärä"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
 msgstr "Voimassaolon päättymispäivämäärä"
+
+msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
@@ -944,6 +946,21 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
+
+#~ msgid "Extension scheme ID"
+#~ msgstr "Tunnus"
+
+#~ msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
+#~ msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
+
+#~ msgid "Extension scheme value"
+#~ msgstr "Laajennusjärjestelmän tunnus"
+
+#~ msgid "Code value"
+#~ msgstr "Tunnus"
+
+#~ msgid "Registry value"
+#~ msgstr "Rekisterin tunnus"
 
 #~ msgid "Voimassa"
 #~ msgstr "Voimassa"
