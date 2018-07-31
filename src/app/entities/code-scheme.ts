@@ -34,7 +34,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   defaultCode: CodePlain|null = null;
   extensionSchemes: ExtensionSchemeSimple[] = [];
   motherOfThisVariant: CodeSchemeListItem|null = null;
-  variantsOfThisCodeScheme: CodeSchemeListItem[]|null = [];
+  variantsOfThisCodeScheme: CodeSchemeListItem[] = [];
   variantCodeschemeId: string|null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
   nextCodeschemeId: string|null = null;
   prevCodeschemeId: string|null = null;
