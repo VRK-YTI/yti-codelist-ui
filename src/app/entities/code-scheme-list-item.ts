@@ -18,7 +18,7 @@ export class CodeSchemeListItem {
         try {
           this.startDate = parseDate(data.startDate);
         } catch (e) {
-          console.log('Rrror in parsing startDate but this can be ignored when cloning.'); // TODO FIX THIS HACK!
+          console.log('Error in parsing startDate but this can be ignored when cloning.'); // TODO FIX THIS HACK!
         }
 
       }
@@ -26,7 +26,7 @@ export class CodeSchemeListItem {
         try {
           this.endDate = parseDate(data.endDate);
         } catch (e) {
-          console.log('Rrror in parsing startDate but this can be ignored when cloning.'); // TODO FIX THIS HACK!
+          console.log('Error in parsing startDate but this can be ignored when cloning.'); // TODO FIX THIS HACK!
         }
 
       }
