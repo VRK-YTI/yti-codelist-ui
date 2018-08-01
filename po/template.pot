@@ -341,7 +341,7 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
-msgid "Extension scheme value"
+msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
 msgid "Extension scheme name"
@@ -353,7 +353,7 @@ msgstr ""
 msgid "This extension scheme does not have any extensions yet."
 msgstr ""
 
-msgid "Code value"
+msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
 msgstr ""
 
 msgid "Codescheme"
@@ -407,13 +407,10 @@ msgstr ""
 msgid "This registry does not have any code lists yet."
 msgstr ""
 
-msgid "Registry value"
+msgid "Registry ID"
 msgstr ""
 
 msgid "Registry name"
-msgstr ""
-
-msgid "Registry ID"
 msgstr ""
 
 msgid "Code registry name"
@@ -449,7 +446,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_DEFINITION"
+msgid "INFO_TEXT_CODE_SHORT_NAME"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -527,10 +524,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_DESCRIPTION"
 msgstr ""
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_CODE_DEFINITION"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_VALIDITY"
@@ -584,7 +581,7 @@ msgstr ""
 msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
 msgstr ""
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
+msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
 msgstr ""
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
@@ -606,6 +603,9 @@ msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_START_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
+msgstr ""
+
+msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
