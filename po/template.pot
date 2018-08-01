@@ -248,6 +248,12 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "Detach a variant"
+msgstr ""
+
+msgid "Detach"
+msgstr ""
+
 msgid "createNewVersion"
 msgstr ""
 

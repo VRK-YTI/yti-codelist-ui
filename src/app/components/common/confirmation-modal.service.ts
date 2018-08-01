@@ -38,4 +38,8 @@ export class CodeListConfirmationModalService {
   openOverWriteExistingValuesFromVocabularies() {
     return this.confirmationModalService.open('Do you want to replace the existing values with new ones?', '');
   }
+
+  openDetachVariant() {
+    return this.confirmationModalService.open('DETACH VARIANT?', '');
+  }
 }

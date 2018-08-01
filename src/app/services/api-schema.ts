@@ -194,6 +194,7 @@ export interface ExtensionSimpleType {
 }
 
 export interface CodeSchemeListItemType {
+  id: string;
   prefLabel: Localizable;
   uri: string;
   startDate?: string;

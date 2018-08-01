@@ -4,6 +4,7 @@ import {Moment} from 'moment';
 import {parseDate, formatDisplayDateRange} from '../utils/date';
 
 export class CodeSchemeListItem {
+  id: string;
   prefLabel: Localizable;
   uri: string;
   startDate: Moment|null = null;
@@ -12,6 +13,7 @@ export class CodeSchemeListItem {
 
   constructor(data: CodeSchemeListItemType|null) {
     if (data) {
+      this.id = data.id;
       this.prefLabel = data.prefLabel;
       this.uri = data.uri;
       if (data.startDate) {

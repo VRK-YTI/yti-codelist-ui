@@ -16,6 +16,8 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
 import { CodeRegistry } from '../../entities/code-registry';
+import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
+import {comparingLocalizable} from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-code-scheme',
@@ -67,6 +69,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
+      this.codeScheme.variantsOfThisCodeScheme.sort( comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
+        item.prefLabel ? item.prefLabel : {}));
       this.locationService.atCodeSchemePage(codeScheme);
     });
 

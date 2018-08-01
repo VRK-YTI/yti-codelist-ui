@@ -630,4 +630,13 @@ export class DataService {
     return resultCodeScheme;
   }
 
+  detachAVariantFromCodeScheme(theCodeRegistry: CodeRegistry, idOfVariantToDetach: string, mother: CodeScheme): Observable<CodeScheme>   {
+    const registryCodeValue = theCodeRegistry.codeValue;
+
+    const resultCodeScheme: Observable<CodeScheme> =
+      this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/detachvariant/${idOfVariantToDetach}`,
+        mother)
+        .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+    return resultCodeScheme;
+  }
 }

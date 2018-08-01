@@ -8,7 +8,7 @@ export interface DateRange {
   end: Moment|null;
 }
 
-function assertValid(moment: Moment): Moment {
+export function assertValid(moment: Moment): Moment {
   if (moment.isValid()) {
     return moment;
   } else {

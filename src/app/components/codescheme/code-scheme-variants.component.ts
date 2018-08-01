@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CodeScheme} from '../../entities/code-scheme';
 import {ignoreModalClose} from 'yti-common-ui/utils/modal';
 import {CodeschemeVariantModalService} from '../codeschemevariant/codescheme-variant.modal.component';
@@ -6,6 +6,7 @@ import {DataService} from '../../services/data.service';
 import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
 import {AuthorizationManager} from '../../services/authorization-manager.service';
 import {CodeRegistry} from '../../entities/code-registry';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
   selector: 'app-code-scheme-variants',
@@ -16,13 +17,14 @@ export class CodeSchemeVariantsComponent {
 
   @Input() codeScheme: CodeScheme;
   @Input() codeRegistries: CodeRegistry[];
+  @Output() detachVariantRequest = new EventEmitter<CodeSchemeListItem>();
 
   chosenCodeScheme: CodeScheme;
 
   constructor(private codeschemeVariantModalService: CodeschemeVariantModalService,
               private dataService: DataService,
-              private authorizationManager: AuthorizationManager) {
-
+              private authorizationManager: AuthorizationManager,
+              private confirmationModalService: CodeListConfirmationModalService) {
   }
 
   openVariantSearchModal() {
@@ -39,11 +41,22 @@ export class CodeSchemeVariantsComponent {
           const theStart = this.chosenCodeScheme.startDate ? this.chosenCodeScheme.startDate.toISOString() : undefined;
           const theEnd = this.chosenCodeScheme.endDate ? this.chosenCodeScheme.endDate.toISOString() : undefined;
           this.codeScheme.variantsOfThisCodeScheme.push(
-            new CodeSchemeListItem( { prefLabel: this.chosenCodeScheme.prefLabel, uri: this.chosenCodeScheme.uri, startDate: theStart,
+            new CodeSchemeListItem( { id: this.chosenCodeScheme.id, prefLabel: this.chosenCodeScheme.prefLabel,
+              uri: this.chosenCodeScheme.uri, startDate: theStart,
               endDate: theEnd, status: this.chosenCodeScheme.status} )
           );
         }
       });
+  }
+
+  detachAVariant(chosenVariantCodeScheme: CodeSchemeListItem) {
+    this.confirmationModalService.openDetachVariant()
+      .then(() => {
+        return this.dataService.detachAVariantFromCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
+          .subscribe(resultCodeScheme => {
+              this.detachVariantRequest.emit(chosenVariantCodeScheme);
+          });
+      }, ignoreModalClose);
   }
 
   canAttachAVariant(): boolean {
