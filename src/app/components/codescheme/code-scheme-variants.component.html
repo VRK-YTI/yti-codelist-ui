@@ -1,22 +1,10 @@
-<dl *ngIf="canAttachAVariant()">
-  <dd>
-    <div>
-      <button id="open_variants_modal_button"
-              type="button"
-              class="btn btn-sm btn-action mt-2"
-              (click)="openVariantSearchModal()" translate>attachVariantToCodeScheme
-      </button>
-    </div>
-  </dd>
-</dl>
-
 <table *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0" class="table table-sm">
   <thead class="thead-light">
   <tr>
     <th scope="col" translate>Validity</th>
     <th scope="col" translate>Name</th>
     <th scope="col" translate>Status</th>
-    <th scope="col" translate>Detach a variant</th>
+    <th scope="col" translate>&nbsp;</th>
   </tr>
   </thead>
   <tbody>
@@ -24,19 +12,13 @@
     <td scope="row">{{variant.validityDateRange}}</td>
     <td><a href="{{variant.uri}}" target="_blank">{{variant.prefLabel | translateValue:true }}</a></td>
     <td><app-status class="pull-left" [status]="variant.status"></app-status></td>
+
     <td>
-      <dl *ngIf="canAttachAVariant()">
-        <dd>
-          <div>
-            <button id="detach_a_variant_button"
-                    type="button"
-                    class="btn btn-sm btn-action mt-2"
-                    (click)="detachAVariant(variant)"
-                    translate>Detach
-            </button>
-          </div>
-        </dd>
-      </dl>
+      <a>
+        <i [id]="'detach_variant_' + variant.id + '_link'"
+           class="fa fa-times"
+           (click)="detachAVariant(variant)"></i>
+      </a>
     </td>
   </tr>
   </tbody>

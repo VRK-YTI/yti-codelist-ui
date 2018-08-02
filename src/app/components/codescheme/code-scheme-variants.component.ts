@@ -1,10 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CodeScheme} from '../../entities/code-scheme';
 import {ignoreModalClose} from 'yti-common-ui/utils/modal';
-import {CodeschemeVariantModalService} from '../codeschemevariant/codescheme-variant.modal.component';
 import {DataService} from '../../services/data.service';
 import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
-import {AuthorizationManager} from '../../services/authorization-manager.service';
 import {CodeRegistry} from '../../entities/code-registry';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
@@ -19,37 +17,8 @@ export class CodeSchemeVariantsComponent {
   @Input() codeRegistries: CodeRegistry[];
   @Output() detachVariantRequest = new EventEmitter<CodeSchemeListItem>();
 
-  chosenCodeScheme: CodeScheme;
-
-  constructor(private codeschemeVariantModalService: CodeschemeVariantModalService,
-              private dataService: DataService,
-              private authorizationManager: AuthorizationManager,
+  constructor(private dataService: DataService,
               private confirmationModalService: CodeListConfirmationModalService) {
-  }
-
-  openVariantSearchModal() {
-    this.codeschemeVariantModalService.open()
-      .then(codeScheme => this.putChosenVariantStuffInPlace(codeScheme), ignoreModalClose);
-  }
-
-  putChosenVariantStuffInPlace(chosenVariantCodeScheme: CodeScheme) {
-    this.chosenCodeScheme = chosenVariantCodeScheme;
-
-    if (this.codeScheme.variantsOfThisCodeScheme.filter(variant => (variant.id === this.chosenCodeScheme.id)).length > 0) {
-      return; // stop user from attaching the same variant twice (would not mess DB but would mess the UI)
-    }
-    return this.dataService.attachAVariantToCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
-      .subscribe(resultCodeScheme => {
-        if (this.codeScheme.variantsOfThisCodeScheme) {
-          const theStart = this.chosenCodeScheme.startDate ? this.chosenCodeScheme.startDate.toISOString() : undefined;
-          const theEnd = this.chosenCodeScheme.endDate ? this.chosenCodeScheme.endDate.toISOString() : undefined;
-          this.codeScheme.variantsOfThisCodeScheme.push(
-            new CodeSchemeListItem( { id: this.chosenCodeScheme.id, prefLabel: this.chosenCodeScheme.prefLabel,
-              uri: this.chosenCodeScheme.uri, startDate: theStart,
-              endDate: theEnd, status: this.chosenCodeScheme.status} )
-          );
-        }
-      });
   }
 
   detachAVariant(chosenVariantCodeScheme: CodeSchemeListItem) {
@@ -61,9 +30,4 @@ export class CodeSchemeVariantsComponent {
           });
       }, ignoreModalClose);
   }
-
-  canAttachAVariant(): boolean {
-    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
-  }
-
 }

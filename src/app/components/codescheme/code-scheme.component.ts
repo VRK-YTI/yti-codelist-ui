@@ -18,6 +18,7 @@ import { ExtensionSchemesImportModalService } from '../extensionscheme/extension
 import { CodeRegistry } from '../../entities/code-registry';
 import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
 import {comparingLocalizable} from 'yti-common-ui/utils/comparator';
+import {CodeschemeVariantModalService} from '../codeschemevariant/codescheme-variant.modal.component';
 
 @Component({
   selector: 'app-code-scheme',
@@ -34,6 +35,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   extensionSchemes: ExtensionScheme[];
   codeRegistries: CodeRegistry[];
   env: string;
+  chosenVariant: CodeScheme;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -45,7 +47,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private confirmationModalService: CodeListConfirmationModalService,
               private extensionSchemesImportModalService: ExtensionSchemesImportModalService,
               private errorModalService: CodeListErrorModalService,
-              private authorizationManager: AuthorizationManager) {
+              private authorizationManager: AuthorizationManager,
+              private codeschemeVariantModalService: CodeschemeVariantModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -226,5 +229,34 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
         item.prefLabel ? item.prefLabel : {}));
       this.locationService.atCodeSchemePage(codeScheme);
     });
+  }
+
+  canAttachAVariant(): boolean {
+    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
+  }
+
+  openVariantSearchModal() {
+    this.codeschemeVariantModalService.open()
+      .then(codeScheme => this.putChosenVariantStuffInPlace(codeScheme), ignoreModalClose);
+  }
+
+  putChosenVariantStuffInPlace(chosenVariantCodeScheme: CodeScheme) {
+    this.chosenVariant = chosenVariantCodeScheme;
+
+    if (this.codeScheme.variantsOfThisCodeScheme.filter(variant => (variant.id === this.chosenVariant.id)).length > 0) {
+      return; // stop user from attaching the same variant twice (would not mess DB but would mess the UI)
+    }
+    return this.dataService.attachAVariantToCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
+      .subscribe(resultCodeScheme => {
+        if (this.codeScheme.variantsOfThisCodeScheme) {
+          const theStart = this.chosenVariant.startDate ? this.chosenVariant.startDate.toISOString() : undefined;
+          const theEnd = this.chosenVariant.endDate ? this.chosenVariant.endDate.toISOString() : undefined;
+          this.codeScheme.variantsOfThisCodeScheme.push(
+            new CodeSchemeListItem( { id: this.chosenVariant.id, prefLabel: this.chosenVariant.prefLabel,
+              uri: this.chosenVariant.uri, startDate: theStart,
+              endDate: theEnd, status: this.chosenVariant.status} )
+          );
+        }
+      });
   }
 }

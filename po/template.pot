@@ -242,16 +242,10 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "attachVariantToCodeScheme"
-msgstr ""
-
 msgid "Name"
 msgstr ""
 
-msgid "Detach a variant"
-msgstr ""
-
-msgid "Detach"
+msgid "attachVariantToCodeScheme"
 msgstr ""
 
 msgid "createNewVersion"
@@ -317,10 +311,10 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "{{variantModalPageTitle}}"
+msgid "variantModalPageTitle"
 msgstr ""
 
-msgid "{{variantModalInstructionText}}"
+msgid "variantModalInstructionText"
 msgstr ""
 
 msgid "No search results"

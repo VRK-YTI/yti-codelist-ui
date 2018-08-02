@@ -251,17 +251,11 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "attachVariantToCodeScheme"
-msgstr "Attach a variant to the code list"
-
 msgid "Name"
 msgstr ""
 
-msgid "Detach a variant"
-msgstr ""
-
-msgid "Detach"
-msgstr ""
+msgid "attachVariantToCodeScheme"
+msgstr "Attach a variant to the code list"
 
 msgid "createNewVersion"
 msgstr "Create a new version"
@@ -326,11 +320,11 @@ msgstr ""
 msgid "Search for code lists"
 msgstr ""
 
-msgid "{{variantModalPageTitle}}"
-msgstr ""
+msgid "variantModalPageTitle"
+msgstr "Attach a variant to the code list"
 
-msgid "{{variantModalInstructionText}}"
-msgstr "Search and attach a code list as a variant to this code list"
+msgid "variantModalInstructionText"
+msgstr "Search for the code list from Refence Data"
 
 msgid "No search results"
 msgstr ""
@@ -659,8 +653,8 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "The technical code or permanent identifier of the extension scheme"
 
-msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
-msgstr "Erroneous end date on row {{ identifier }}."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgstr "Code {{ identifier }} already exists."
 
 msgid "Front page"
 msgstr ""
@@ -728,7 +722,7 @@ msgid "REMOVE EXTENSION?"
 msgstr ""
 
 msgid "DETACH VARIANT?"
-msgstr "Detach variant from codescheme?"
+msgstr "Remove the link between variant and this code list?"
 
 msgid "ADMIN"
 msgstr "Admin"
@@ -779,11 +773,11 @@ msgstr "The data is missing a column with the header PROPERTYTYPE."
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Erroneous start date on row {{ identifier }}."
 
+msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
+msgstr "Erroneous end date on row {{ identifier }}."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Code {{ identifier }} already exists."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Code list already exists."
