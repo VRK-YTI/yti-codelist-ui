@@ -5,6 +5,7 @@ import {DataService} from '../../services/data.service';
 import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
 import {CodeRegistry} from '../../entities/code-registry';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import {AuthorizationManager} from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-code-scheme-variants',
@@ -18,7 +19,8 @@ export class CodeSchemeVariantsComponent {
   @Output() detachVariantRequest = new EventEmitter<CodeSchemeListItem>();
 
   constructor(private dataService: DataService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private authorizationManager: AuthorizationManager) {
   }
 
   detachAVariant(chosenVariantCodeScheme: CodeSchemeListItem) {
@@ -29,5 +31,9 @@ export class CodeSchemeVariantsComponent {
               this.detachVariantRequest.emit(chosenVariantCodeScheme);
           });
       }, ignoreModalClose);
+  }
+
+  canAttachOrDetachAVariant(): boolean {
+    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
 }

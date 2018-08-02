@@ -231,7 +231,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     });
   }
 
-  canAttachAVariant(): boolean {
+  canAttachOrDetachAVariant(): boolean {
     return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
   }
 

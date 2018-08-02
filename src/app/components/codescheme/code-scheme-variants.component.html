@@ -13,12 +13,15 @@
     <td><a href="{{variant.uri}}" target="_blank">{{variant.prefLabel | translateValue:true }}</a></td>
     <td><app-status class="pull-left" [status]="variant.status"></app-status></td>
 
-    <td>
+    <td *ngIf="canAttachOrDetachAVariant()">
       <a>
         <i [id]="'detach_variant_' + variant.id + '_link'"
            class="fa fa-times"
            (click)="detachAVariant(variant)"></i>
       </a>
+    </td>
+    <td *ngIf="!canAttachOrDetachAVariant()">
+      &nbsp;
     </td>
   </tr>
   </tbody>
