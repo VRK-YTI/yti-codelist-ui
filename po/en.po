@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-01 15:28+0300\n"
+"PO-Revision-Date: 2018-08-02 09:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -659,8 +659,8 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "The technical code or permanent identifier of the extension scheme"
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Code {{ identifier }} already exists."
+msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
+msgstr "Erroneous end date on row {{ identifier }}."
 
 msgid "Front page"
 msgstr ""
@@ -727,6 +727,9 @@ msgstr ""
 msgid "REMOVE EXTENSION?"
 msgstr ""
 
+msgid "DETACH VARIANT?"
+msgstr "Detach variant from codescheme?"
+
 msgid "ADMIN"
 msgstr "Admin"
 
@@ -776,11 +779,11 @@ msgstr "The data is missing a column with the header PROPERTYTYPE."
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Erroneous start date on row {{ identifier }}."
 
-msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
-msgstr "Erroneous end date on row {{ identifier }}."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgstr "Code {{ identifier }} already exists."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Code list already exists."

@@ -123,7 +123,7 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-scheme-variants (detachVariantRequest)="ngOnInit()" [codeScheme]="codeScheme" [codeRegistries]="codeRegistries"></app-code-scheme-variants>
+        <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()" [codeScheme]="codeScheme" [codeRegistries]="codeRegistries"></app-code-scheme-variants>
       </ng-template>
     </ngb-tab>
 

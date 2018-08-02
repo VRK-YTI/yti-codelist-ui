@@ -214,4 +214,17 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   get showUnfinishedFeature() {
     return this.env === 'dev';
   }
+
+  reloadCodeScheme() {
+
+    const registryCodeValue = this.route.snapshot.params.registryCode;
+    const schemeCodeValue = this.route.snapshot.params.schemeCode;
+
+    this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+      this.codeScheme.variantsOfThisCodeScheme.sort( comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
+        item.prefLabel ? item.prefLabel : {}));
+      this.locationService.atCodeSchemePage(codeScheme);
+    });
+  }
 }

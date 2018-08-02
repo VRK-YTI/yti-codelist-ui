@@ -35,6 +35,9 @@ export class CodeSchemeVariantsComponent {
   putChosenVariantStuffInPlace(chosenVariantCodeScheme: CodeScheme) {
     this.chosenCodeScheme = chosenVariantCodeScheme;
 
+    if (this.codeScheme.variantsOfThisCodeScheme.filter(variant => (variant.id === this.chosenCodeScheme.id)).length > 0) {
+      return; // stop user from attaching the same variant twice (would not mess DB but would mess the UI)
+    }
     return this.dataService.attachAVariantToCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
       .subscribe(resultCodeScheme => {
         if (this.codeScheme.variantsOfThisCodeScheme) {

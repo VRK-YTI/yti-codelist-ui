@@ -614,7 +614,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr ""
 
 msgid "Front page"
@@ -682,6 +682,9 @@ msgstr ""
 msgid "REMOVE EXTENSION?"
 msgstr ""
 
+msgid "DETACH VARIANT?"
+msgstr ""
+
 msgid "ADMIN"
 msgstr ""
 
@@ -727,10 +730,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
