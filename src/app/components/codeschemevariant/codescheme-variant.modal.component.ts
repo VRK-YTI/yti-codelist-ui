@@ -52,8 +52,6 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
   search$ = new BehaviorSubject('');
   debouncedSearch$ = debounceSearch(this.search$);
   cancelText: string;
-  variantModalPageTitle: string;
-  variantModalInstructionText: string;
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
