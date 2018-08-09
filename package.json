@@ -33,7 +33,7 @@
     "ngx-clipboard": "8.1.4",
     "rxjs": "^5.4.2",
     "simple-line-icons": "^2.4.1",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#0010d2d7c08175605e4578ca070bb0abae9520c3",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#84f97524bf9e94ba96c9be0024df1f17cd68b727",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
