@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-03 07:51+0300\n"
+"PO-Revision-Date: 2018-08-13 11:31+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -326,6 +326,9 @@ msgstr "Ok"
 
 msgid "Search for code lists"
 msgstr "Hae koodistoa"
+
+msgid "variantModalPageTitle"
+msgstr "Liitä koodistoon variantti"
 
 msgid "variantModalInstructionText"
 msgstr "Hae liitettävä koodisto Koodistoista"
@@ -669,8 +672,8 @@ msgstr "Voimassaolon päättymispäivämäärä"
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Koodi {{ identifier }} on jo olemassa."
+msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
+msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -690,7 +693,7 @@ msgstr "Virheellinen"
 msgid "DRAFT"
 msgstr "Luonnos"
 
-msgid "UNFINISHED"
+msgid "INCOMPLETE"
 msgstr "Keskeneräinen"
 
 msgid "required"
@@ -788,11 +791,11 @@ msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
 
-msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
-msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgstr "Koodi {{ identifier }} on jo olemassa."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Koodisto on jo olemassa."
@@ -920,9 +923,6 @@ msgstr ""
 "kopioidaan Sanastot-työkalusta koodiston nimeksi ja määritelmäksi. Myös "
 "käsitteen URI kopioidaan Koodistot-työkaluun."
 
-msgid "variantModalPageTitle"
-msgstr "Liitä koodistoon variantti"
-
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
 
@@ -949,6 +949,9 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
+
+#~ msgid "UNFINISHED"
+#~ msgstr "Keskeneräinen"
 
 #~ msgid "Detach a variant"
 #~ msgstr "Irrota variantti koodistosta"

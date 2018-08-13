@@ -104,7 +104,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   get canDelete() {
     return this.userService.user.superuser ||
       (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&
-        (this.extensionScheme.parentCodeScheme.status === 'UNFINISHED' ||
+        (this.extensionScheme.parentCodeScheme.status === 'INCOMPLETE' ||
           this.extensionScheme.parentCodeScheme.status === 'DRAFT' ||
           this.extensionScheme.parentCodeScheme.status === 'SUGGESTED' ||
           this.extensionScheme.parentCodeScheme.status === 'SUBMITTED'));

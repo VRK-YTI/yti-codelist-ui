@@ -629,7 +629,7 @@ msgstr ""
 msgid "DRAFT"
 msgstr ""
 
-msgid "UNFINISHED"
+msgid "INCOMPLETE"
 msgstr ""
 
 msgid "required"
