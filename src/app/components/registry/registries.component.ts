@@ -43,6 +43,6 @@ export class RegistriesComponent implements OnInit {
     this.router.navigate(['createregistry']);  }
 
   back() {
-    this.router.navigate(['registries']);
+    this.router.navigate(['frontpage']);
   }
 }
