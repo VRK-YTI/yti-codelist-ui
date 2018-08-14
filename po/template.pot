@@ -608,7 +608,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr ""
 
 msgid "Front page"
@@ -727,10 +727,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
@@ -824,6 +824,9 @@ msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"
