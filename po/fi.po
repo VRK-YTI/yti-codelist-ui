@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-13 11:31+0300\n"
+"PO-Revision-Date: 2018-08-14 09:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -672,8 +672,9 @@ msgstr "Voimassaolon päättymispäivämäärä"
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
 
-msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
-msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -788,11 +789,20 @@ msgstr "Aineistosta puuttuu sarake otsikolla STATUS."
 msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
-msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_CODE"
+msgstr "Aineistossa puuttuu arvo sarakkeesta CODE riviltä {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
 
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
+
+msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
+msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
@@ -874,10 +884,6 @@ msgstr "Laajennusten maksimi hierarkinen taso ylittyi."
 
 msgid "ERR_MSG_USER_EXTENSIONVALUE_NOT_SET"
 msgstr "Laajennukseen arvoa ei ole määritetty, tai se on tyhjä."
-
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
-msgstr ""
-"Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
 msgstr "Laajennusjärjestelmään liitettyä koodistoa ei ole olemassa."
