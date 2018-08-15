@@ -395,6 +395,12 @@ msgstr ""
 msgid "Registries"
 msgstr ""
 
+msgid "Suomi.fi Controlled Vocabularies"
+msgstr ""
+
+msgid "Suomi.fi Data Vocabularies"
+msgstr ""
+
 msgid "User right management"
 msgstr ""
 

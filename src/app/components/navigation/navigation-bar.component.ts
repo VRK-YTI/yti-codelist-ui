@@ -20,6 +20,8 @@ export class NavigationBarComponent {
   fakeableUsers: { email: string, firstName: string, lastName: string }[] = [];
 
   groupManagementUrl: string;
+  terminologyUrl: string;
+  dataModelUrl: string;
 
   constructor(public languageService: LanguageService,
               private userService: UserService,
@@ -32,6 +34,8 @@ export class NavigationBarComponent {
 
     dataService.getServiceConfiguration().subscribe(configuration => {
       this.groupManagementUrl = configuration.groupManagementConfig.url;
+      this.terminologyUrl = configuration.terminologyConfig.url;
+      this.dataModelUrl = configuration.dataModelConfig.url;
     });
   }
 

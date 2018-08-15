@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-14 12:12+0300\n"
+"PO-Revision-Date: 2018-08-15 15:06+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -410,6 +410,12 @@ msgstr "Käyttäjätiedot"
 
 msgid "Registries"
 msgstr "Rekisterit"
+
+msgid "Suomi.fi Controlled Vocabularies"
+msgstr "Suomi.fi-sanastot"
+
+msgid "Suomi.fi Data Vocabularies"
+msgstr "Suomi.fi-tietomallit"
 
 msgid "User right management"
 msgstr "Oikeuksienhallinta"

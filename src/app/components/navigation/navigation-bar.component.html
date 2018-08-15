@@ -58,6 +58,15 @@
            id="navigation_link_registries"
            *ngIf="isLoggedIn()"
            [routerLink]="['/registries']" translate>Registries</a>
+        <a id="navigation_interoperability_platform_link"
+           class="dropdown-item"
+           href="https://yhteentoimiva.suomi.fi/" target="_blank">yhteentoimiva.suomi.fi</a>
+        <a id="navigation_controlled_vocabularies_link"
+           class="dropdown-item"
+           [href]="terminologyUrl" target="_blank" translate>Suomi.fi Controlled Vocabularies</a>
+        <a id="navigation_data_vocabularies_link"
+           class="dropdown-item"
+           [href]="dataModelUrl" target="_blank" translate>Suomi.fi Data Vocabularies</a>
         <a class="dropdown-item"
            id="navigation_groupmanagement_link"
            *ngIf="showGroupManagementUrl()"
