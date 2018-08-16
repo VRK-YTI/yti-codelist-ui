@@ -1,7 +1,7 @@
 import {Localizable} from 'yti-common-ui/types/localization';
 import {CodeSchemeListItemType} from '../services/api-schema';
 import {Moment} from 'moment';
-import {parseDate, formatDisplayDateRange} from '../utils/date';
+import {parseDate, formatDisplayDateRange, formatDate} from '../utils/date';
 
 export class CodeSchemeListItem {
   id: string;
@@ -38,5 +38,16 @@ export class CodeSchemeListItem {
 
   get validityDateRange() {
     return formatDisplayDateRange(this.startDate, this.endDate);
+  }
+
+  serialize(): CodeSchemeListItemType {
+    return {
+      id: this.id,
+      prefLabel: this.prefLabel,
+      uri: this.uri,
+      startDate: formatDate(this.startDate),
+      endDate: formatDate(this.endDate),
+      status: this.status
+    };
   }
 }

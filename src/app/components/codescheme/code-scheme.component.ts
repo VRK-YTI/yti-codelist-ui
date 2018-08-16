@@ -181,7 +181,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       startDate: validity.start,
       endDate: validity.end
     });
-
     return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).do(() => this.ngOnInit());
   }
 
@@ -242,15 +241,15 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   putChosenVariantStuffInPlace(chosenVariantCodeScheme: CodeScheme) {
     this.chosenVariant = chosenVariantCodeScheme;
-
     if (this.codeScheme.variantsOfThisCodeScheme.filter(variant => (variant.id === this.chosenVariant.id)).length > 0) {
       return; // stop user from attaching the same variant twice (would not mess DB but would mess the UI)
     }
-    return this.dataService.attachAVariantToCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
+    return this.dataService.attachAVariantToCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id,
+      this.codeScheme.serialize())
       .subscribe(resultCodeScheme => {
         if (this.codeScheme.variantsOfThisCodeScheme) {
-          const theStart = this.chosenVariant.startDate ? this.chosenVariant.startDate.toISOString() : undefined;
-          const theEnd = this.chosenVariant.endDate ? this.chosenVariant.endDate.toISOString() : undefined;
+          const theStart = this.chosenVariant.startDate ? this.chosenVariant.startDate.toISOString(true) : undefined;
+          const theEnd = this.chosenVariant.endDate ? this.chosenVariant.endDate.toISOString(true) : undefined;
           this.codeScheme.variantsOfThisCodeScheme.push(
             new CodeSchemeListItem( { id: this.chosenVariant.id, prefLabel: this.chosenVariant.prefLabel,
               uri: this.chosenVariant.uri, startDate: theStart,

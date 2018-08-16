@@ -163,7 +163,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       variantCodeschemeId: this.variantCodeschemeId,
       nextCodeschemeId: this.nextCodeschemeId,
       prevCodeschemeId: this.prevCodeschemeId,
-      lastCodeschemeId: this.lastCodeschemeId
+      lastCodeschemeId: this.lastCodeschemeId,
+      allVersions: this.allVersions.map(li => li.serialize())
     };
   }
 

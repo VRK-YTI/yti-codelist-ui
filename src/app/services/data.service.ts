@@ -619,24 +619,20 @@ export class DataService {
       });
   }
 
-  attachAVariantToCodeScheme(theCodeRegistry: CodeRegistry, variantCodeSchemeId: string, mother: CodeScheme): Observable<CodeScheme> {
+  attachAVariantToCodeScheme(theCodeRegistry: CodeRegistry, variantCodeSchemeId: string, mother: CodeSchemeType): Observable<CodeScheme> {
 
     const registryCodeValue = theCodeRegistry.codeValue;
 
-    const resultCodeScheme: Observable<CodeScheme> =
-      this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/attachvariant/${variantCodeSchemeId}`,
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/attachvariant/${variantCodeSchemeId}`,
         mother)
         .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
-    return resultCodeScheme;
   }
 
-  detachAVariantFromCodeScheme(theCodeRegistry: CodeRegistry, idOfVariantToDetach: string, mother: CodeScheme): Observable<CodeScheme>   {
+  detachAVariantFromCodeScheme(theCodeRegistry: CodeRegistry, idOfVariantToDetach: string, mother: CodeSchemeType): Observable<CodeScheme> {
     const registryCodeValue = theCodeRegistry.codeValue;
 
-    const resultCodeScheme: Observable<CodeScheme> =
-      this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/detachvariant/${idOfVariantToDetach}`,
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/detachvariant/${idOfVariantToDetach}`,
         mother)
         .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
-    return resultCodeScheme;
   }
 }

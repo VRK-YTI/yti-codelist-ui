@@ -26,7 +26,8 @@ export class CodeSchemeVariantsComponent {
   detachAVariant(chosenVariantCodeScheme: CodeSchemeListItem) {
     this.confirmationModalService.openDetachVariant()
       .then(() => {
-        return this.dataService.detachAVariantFromCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id, this.codeScheme)
+        return this.dataService.detachAVariantFromCodeScheme(this.codeScheme.codeRegistry, chosenVariantCodeScheme.id,
+          this.codeScheme.serialize())
           .subscribe(resultCodeScheme => {
               this.detachVariantRequest.emit(chosenVariantCodeScheme);
           });
