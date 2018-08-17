@@ -16,6 +16,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -56,6 +57,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private activatedRoute: ActivatedRoute,
               private location: Location,
+              private languageService: LanguageService,
               private locationService: LocationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
@@ -89,7 +91,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({status: originalCodeScheme.status});
           this.codeSchemeForm.patchValue({conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies});
           this.codeSchemeForm.patchValue({codeRegistry: originalCodeScheme.codeRegistry}); // when cloning, enforce same registry
-          this.dataService.getDataClassificationsAsCodes().subscribe(next2 => {
+          this.dataService.getDataClassificationsAsCodes(this.languageService.language).subscribe(next2 => {
             const allDataClassifications = next2;
             const dataClassificationsToCopy: CodePlain[] = [];
             originalCodeScheme.dataClassifications.forEach(function (originalClassification) {

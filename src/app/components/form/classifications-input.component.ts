@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
 import { CodePlain } from '../../entities/code-simple';
+import { LanguageService } from '../../services/language.service';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
 
@@ -75,6 +76,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
               private editableService: EditableService,
               private translateService: TranslateService,
               private dataService: DataService,
+              private languageService: LanguageService,
               private searchLinkedCodeModalService: SearchLinkedCodeModalService) {
 
 
@@ -84,7 +86,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
       parentControl.valueAccessor = this;
     }
 
-    this.classifications$ = this.dataService.getDataClassificationsAsCodes();
+    this.classifications$ = this.dataService.getDataClassificationsAsCodes(languageService.language);
   }
 
   get dataClassifications(): CodePlain[] {

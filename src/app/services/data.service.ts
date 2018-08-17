@@ -201,15 +201,22 @@ export class DataService {
       .map(res => res.json().results.map((data: PropertyTypeType) => new PropertyType(data)));
   }
 
-  getDataClassifications(): Observable<DataClassification[]> {
-    return this.http.get(`${dataClassificationsBasePath}/`)
+  getDataClassifications(language: string): Observable<DataClassification[]> {
+    const params = new URLSearchParams();
+    params.append('language', language);
+
+    return this.http.get(`${dataClassificationsBasePath}/`, {params})
       .map(res => res.json().results.map((data: DataClassificationType) => new DataClassification(data)));
   }
 
-  getDataClassificationsAsCodes(): Observable<Code[]> {
+  getDataClassificationsAsCodes(language: string): Observable<Code[]> {
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
     params.append('hierarchyLevel', '1');
+
+    if (language) {
+      params.append('language', language);
+    }
 
     return this.http.get(`${codeRegistriesBasePath}/jupo/${codeSchemes}/serviceclassification/${codes}/`, {params})
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));
@@ -248,10 +255,14 @@ export class DataService {
       .map(res => res.json().results.map((data: CodePlainType) => new CodePlain(data)));
   }
 
-  getCodes(registryCodeValue: string, schemeCodeValue: string): Observable<Code[]> {
+  getCodes(registryCodeValue: string, schemeCodeValue: string, language: string): Observable<Code[]> {
 
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
+
+    if (language) {
+      params.append('language', language);
+    }
 
     return this.http.get(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/`, {params})
       .map(res => res.json().results.map((data: CodeType) => new Code(data)));

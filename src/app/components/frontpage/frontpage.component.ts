@@ -108,7 +108,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     const debouncedSearchTerm = this.searchTerm$.skip(1).debounceTime(500);
     const searchTerm$ = initialSearchTerm.concat(debouncedSearchTerm);
 
-    const dataClassifications$ = this.dataService.getDataClassifications();
+    const dataClassifications$ = this.dataService.getDataClassifications(this.languageService.language);
 
     function statusMatches(status: Status|null, codeScheme: CodeScheme) {
       return !status || codeScheme.status === status;
