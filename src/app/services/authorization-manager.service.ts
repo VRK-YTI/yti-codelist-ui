@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { EditableEntity } from '../entities/editable-entity';
 import { CodeRegistry } from '../entities/code-registry';
+import {CodeScheme} from '../entities/code-scheme';
 
 @Injectable()
 export class AuthorizationManager {
@@ -18,6 +19,15 @@ export class AuthorizationManager {
       return true;
     }
     return this.user.isInOrganization(editableEntity.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
+  }
+
+  canDeleteCodeScheme(codeScheme: CodeScheme): boolean {
+    return (this.user.superuser ||
+       this.user.isInOrganization(codeScheme.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR'])) &&
+       (codeScheme.status === 'INCOMPLETE' ||
+        codeScheme.status === 'DRAFT' ||
+        codeScheme.status === 'SUGGESTED' ||
+        codeScheme.status === 'SUBMITTED');
   }
 
   canEdit(editableEntity: EditableEntity): boolean {

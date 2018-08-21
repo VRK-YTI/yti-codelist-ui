@@ -127,12 +127,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.editableService.editing;
   }
 
-  get canDelete() {
-    return (this.userService.user.superuser || (this.authorizationManager.canDelete(this.codeScheme))) &&
-      (this.codeScheme.status === 'INCOMPLETE' ||
-        this.codeScheme.status === 'DRAFT' ||
-        this.codeScheme.status === 'SUGGESTED' ||
-        this.codeScheme.status === 'SUBMITTED');
+  canDeleteCodeScheme() {
+    return this.authorizationManager.canDeleteCodeScheme(this.codeScheme);
   }
 
   get canAddExtensionScheme(): boolean {

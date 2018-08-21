@@ -27,7 +27,7 @@
                 translate>createNewVersion</button>
 
         <button id="delete_codelist_button"
-                *ngIf='canDelete' type="button"
+                *ngIf='canDeleteCodeScheme()' type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="delete()"
                 translate>Delete</button>
