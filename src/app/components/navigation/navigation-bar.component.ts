@@ -3,6 +3,7 @@ import { Language, LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { LoginModalService } from 'yti-common-ui/components/login-modal.component';
 import { DataService } from '../../services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -12,9 +13,9 @@ import { DataService } from '../../services/data.service';
 export class NavigationBarComponent {
 
   availableLanguages = [
-    { code: 'fi' as Language, name: 'Suomeksi (FI)' },
+    {code: 'fi' as Language, name: 'Suomeksi (FI)'},
     // { code: 'sv' as Language, name: 'På svenska (SV)' },
-    { code: 'en' as Language, name: 'In English (EN)' }
+    {code: 'en' as Language, name: 'In English (EN)'}
   ];
 
   fakeableUsers: { email: string, firstName: string, lastName: string }[] = [];
@@ -26,7 +27,9 @@ export class NavigationBarComponent {
   constructor(public languageService: LanguageService,
               private userService: UserService,
               private loginModal: LoginModalService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private route: ActivatedRoute,
+              private router: Router) {
 
     dataService.getFakeableUsers().subscribe(users => {
       this.fakeableUsers = users;
@@ -61,6 +64,10 @@ export class NavigationBarComponent {
 
   set language(language: Language) {
     this.languageService.language = language;
+    if (this.languageService.language !== language) {
+      // window.location.reload();
+      this.router.navigate([this.route.root]);
+    }
   }
 
   get language(): Language {
