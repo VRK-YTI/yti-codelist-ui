@@ -15,13 +15,13 @@
       <div class="pull-right">
 
         <button id="attach_variant_button"
-                *ngIf="canAttachOrDetachAVariant()" type="button"
+                *ngIf="showUnfinishedFeature && canAttachOrDetachAVariant()" type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="openVariantSearchModal()"
                 translate>attachVariantToCodeScheme</button>
 
         <button id="clone_codelist_button"
-                *ngIf="this.canCreateANewVersionFromCodeScheme && !codeScheme.nextCodeschemeId && codeScheme.status == 'VALID'" type="button"
+                *ngIf="showUnfinishedFeature && this.canCreateANewVersionFromCodeScheme && !codeScheme.nextCodeschemeId && codeScheme.status == 'VALID'" type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="createANewVersionFromThisCodeScheme()"
                 translate>createNewVersion</button>
