@@ -65,7 +65,6 @@ export class NavigationBarComponent {
   set language(language: Language) {
     this.languageService.language = language;
     if (this.languageService.language !== language) {
-      // window.location.reload();
       this.router.navigate([this.route.root]);
     }
   }
