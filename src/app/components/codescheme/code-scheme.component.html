@@ -21,7 +21,7 @@
                 translate>attachVariantToCodeScheme</button>
 
         <button id="clone_codelist_button"
-                *ngIf="showUnfinishedFeature && this.canCreateANewVersionFromCodeScheme && !codeScheme.nextCodeschemeId && codeScheme.status == 'VALID'" type="button"
+                *ngIf="showUnfinishedFeature && canCreateANewVersionFromCodeScheme" type="button"
                 class="btn btn-action pull-right ml-3"
                 (click)="createANewVersionFromThisCodeScheme()"
                 translate>createNewVersion</button>

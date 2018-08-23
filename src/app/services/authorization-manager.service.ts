@@ -22,12 +22,9 @@ export class AuthorizationManager {
   }
 
   canDeleteCodeScheme(codeScheme: CodeScheme): boolean {
-    return (this.user.superuser ||
-      ((this.user.isInOrganization(codeScheme.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR'])) &&
-      (codeScheme.status === 'INCOMPLETE' ||
-        codeScheme.status === 'DRAFT' ||
-        codeScheme.status === 'SUGGESTED' ||
-        codeScheme.status === 'SUBMITTED')));
+    const userHasRight = this.user.isInOrganization(codeScheme.getOwningOrganizationIds(), ['ADMIN', 'CODE_LIST_EDITOR']);
+    const isInDeletableState = codeScheme.isInDeletableState();
+    return this.user.superuser || (userHasRight && isInDeletableState);
   }
 
   canEdit(editableEntity: EditableEntity): boolean {

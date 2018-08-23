@@ -136,6 +136,10 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return true;
   }
 
+  isInDeletableState() {
+    return contains(['INCOMPLETE', 'DRAFT', 'SUGGESTED', 'SUBMITTED'], this.status);
+  }
+
   serialize(): CodeSchemeType {
     return {
       id: this.id,
