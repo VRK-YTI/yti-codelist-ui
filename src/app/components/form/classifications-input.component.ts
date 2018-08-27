@@ -4,7 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
-import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { TranslateService } from 'ng2-translate';
@@ -76,7 +76,7 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
               private editableService: EditableService,
               private translateService: TranslateService,
               private dataService: DataService,
-              private languageService: LanguageService,
+              public languageService: LanguageService,
               private searchLinkedCodeModalService: SearchLinkedCodeModalService) {
 
 
@@ -86,11 +86,14 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
       parentControl.valueAccessor = this;
     }
 
-    this.classifications$ = this.dataService.getDataClassificationsAsCodes(languageService.language);
+    Observable.combineLatest(this.languageService.language$).subscribe(([language]) => {
+      this.classifications$ = this.dataService.getDataClassificationsAsCodes(language);
+    });
   }
 
   get dataClassifications(): CodePlain[] {
-    return (this.control.value as CodePlain[]).sort(comparingPrimitive<Code>(classification => classification.codeValue));
+    return (this.control.value as CodePlain[]).sort(comparingLocalizable<CodePlain>(
+      this.languageService, (classification: CodePlain) => classification.prefLabel));
   }
 
   addDataClassification() {

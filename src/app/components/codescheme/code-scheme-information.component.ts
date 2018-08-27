@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -16,8 +16,9 @@ import { DataService } from '../../services/data.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Router } from '@angular/router';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import { TerminologyIntegrationModalService} from '../terminology-integration/terminology-integration-codescheme-modal.component';
-import {Concept} from '../../entities/concept';
+import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
+import { Concept } from '../../entities/concept';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -74,14 +75,16 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
-    const { externalReferences, dataClassifications, defaultCode, startDate, endDate, ...rest } = this.codeScheme;
+    const {externalReferences, dataClassifications, defaultCode, startDate, endDate, ...rest} = this.codeScheme;
+
+    dataClassifications.sort(comparingLocalizable<Code>(this.languageService, classification => classification.prefLabel));
 
     this.codeSchemeForm.reset({
       ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
       dataClassifications: dataClassifications.map(classification => classification.clone()),
       defaultCode: defaultCode,
-      validity: { start: startDate, end: endDate }
+      validity: {start: startDate, end: endDate}
     });
   }
 
@@ -149,7 +152,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   getCodeSchemeMotherPrefLabel() {
     if (this.codeScheme.motherOfThisVariant != null) {
-        return this.codeScheme.motherOfThisVariant.prefLabel;
+      return this.codeScheme.motherOfThisVariant.prefLabel;
     } else {
       return null;
     }
