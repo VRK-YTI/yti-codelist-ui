@@ -7,15 +7,18 @@ import { DataClassification } from '../entities/data-classification';
 import { Code } from '../entities/code';
 import {
   ApiResponseType,
+  CodePlainType,
   CodeRegistryType,
-  CodeSchemeType, CodePlainType,
+  CodeSchemeType,
   CodeType,
+  ConceptType,
   DataClassificationType,
+  ExtensionSchemeType,
+  ExtensionType,
   ExternalReferenceType,
   OrganizationType,
   PropertyTypeType,
-  VocabularyType,
-  ConceptType, ExtensionSchemeType, ExtensionType
+  VocabularyType
 } from './api-schema';
 import { PropertyType } from '../entities/property-type';
 import { ExternalReference } from '../entities/external-reference';
@@ -23,9 +26,9 @@ import { Organization } from '../entities/organization';
 import { ServiceConfiguration } from '../entities/service-configuration';
 import { UserRequest } from '../entities/user-request';
 import { AuthorizationManager } from './authorization-manager.service';
-import {Vocabulary} from '../entities/vocabulary';
+import { Vocabulary } from '../entities/vocabulary';
 import { CodePlain } from '../entities/code-simple';
-import {Concept} from '../entities/concept';
+import { Concept } from '../entities/concept';
 import { ExtensionScheme } from '../entities/extension-scheme';
 import { Extension } from '../entities/extension';
 
@@ -202,6 +205,7 @@ export class DataService {
   }
 
   getDataClassifications(language: string): Observable<DataClassification[]> {
+
     const params = new URLSearchParams();
     params.append('language', language);
 
@@ -210,6 +214,7 @@ export class DataService {
   }
 
   getDataClassificationsAsCodes(language: string): Observable<Code[]> {
+
     const params = new URLSearchParams();
     params.append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
     params.append('hierarchyLevel', '1');
@@ -336,8 +341,8 @@ export class DataService {
   cloneCodeScheme(codeSchemeToClone: CodeSchemeType, registryCodeValue: string, originalCodeSchemeUuid: string): Observable<CodeScheme> {
     const clonedCodeScheme: Observable<CodeScheme> =
       this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/clone/codescheme/${originalCodeSchemeUuid}`,
-      codeSchemeToClone)
-      .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+        codeSchemeToClone)
+        .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
     return clonedCodeScheme;
   }
 
@@ -578,7 +583,7 @@ export class DataService {
                    extensionSchemeCodeValue: string): Observable<Extension[]> {
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/` +
-    `${extensionSchemes}/${extensionSchemeCodeValue}/${extensions}/`,
+      `${extensionSchemes}/${extensionSchemeCodeValue}/${extensions}/`,
       extensionList)
       .map(res => res.json().results.map((data: ExtensionType) => new Extension(data)));
   }
@@ -635,15 +640,15 @@ export class DataService {
     const registryCodeValue = theCodeRegistry.codeValue;
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/attachvariant/${variantCodeSchemeId}`,
-        mother)
-        .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+      mother)
+      .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
   }
 
   detachAVariantFromCodeScheme(theCodeRegistry: CodeRegistry, idOfVariantToDetach: string, mother: CodeSchemeType): Observable<CodeScheme> {
     const registryCodeValue = theCodeRegistry.codeValue;
 
     return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/detachvariant/${idOfVariantToDetach}`,
-        mother)
-        .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
+      mother)
+      .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
   }
 }

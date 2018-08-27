@@ -127,7 +127,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       this.searchCodes$, this.languageService.language$)
       .do(() => this.searchInProgress = true)
       .flatMap(([searchTerm, classification, status, registry, organization, searchCodes, language]) => {
-
         const classificationCode = classification ? classification.codeValue : null;
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
@@ -141,12 +140,12 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .do(() => this.searchInProgress = false)
       .subscribe(results => this.filteredCodeSchemes = results);
 
-    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.registry$, this.organization$, this.searchCodes$)
-      .subscribe(([classifications, searchTerm, status, registry, organization, searchCodes]) => {
-
+    Observable.combineLatest(dataClassifications$, searchTerm$, this.status$, this.registry$, this.organization$,
+      this.searchCodes$, this.languageService.language$)
+      .subscribe(([classifications, searchTerm, status, registry, organization, searchCodes, language]) => {
+        classifications.sort(comparingLocalizable<DataClassification>(this.languageService, classification => classification.prefLabel));
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
-        const language = this.languageService.language$.getValue();
 
         this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, language)
           .map(codeSchemes => codeSchemes.filter(codeScheme =>
@@ -154,7 +153,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
             registryMatches(registry, codeScheme))
           )
           .subscribe(codeSchemes => {
-            this.dataClassifications = classifications.map(classification => ({
+            this.dataClassifications = classifications.map((classification: DataClassification) => ({
               entity: classification,
               count: calculateCount(classification, codeSchemes)
             }));

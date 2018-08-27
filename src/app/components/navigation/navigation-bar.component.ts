@@ -3,7 +3,6 @@ import { Language, LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { LoginModalService } from 'yti-common-ui/components/login-modal.component';
 import { DataService } from '../../services/data.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -27,9 +26,7 @@ export class NavigationBarComponent {
   constructor(public languageService: LanguageService,
               private userService: UserService,
               private loginModal: LoginModalService,
-              private dataService: DataService,
-              private route: ActivatedRoute,
-              private router: Router) {
+              private dataService: DataService) {
 
     dataService.getFakeableUsers().subscribe(users => {
       this.fakeableUsers = users;
@@ -64,9 +61,6 @@ export class NavigationBarComponent {
 
   set language(language: Language) {
     this.languageService.language = language;
-    if (this.languageService.language !== language) {
-      this.router.navigate([this.route.root]);
-    }
   }
 
   get language(): Language {
