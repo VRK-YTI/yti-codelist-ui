@@ -113,6 +113,8 @@ import { OrganizationsInputComponent } from './components/form/organizations-inp
 import { RegistryCreateComponent } from './components/registry/registry-create.component';
 import { CodeSchemeVersionsComponent } from './components/codescheme/code-scheme-versions.component';
 import { CodeSchemeVariantsComponent } from './components/codescheme/code-scheme-variants.component';
+import { CodeSchemeVariantMothersComponent } from './components/codescheme/code-scheme-variant-mothers.component';
+
 import {
   CodeschemeVariantModalComponent,
   CodeschemeVariantModalService
@@ -239,6 +241,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LogoComponent,
     CodeSchemeVersionsComponent,
     CodeSchemeVariantsComponent,
+    CodeSchemeVariantMothersComponent,
     CodeschemeVariantModalComponent
   ],
   entryComponents: [ // needed for modal components

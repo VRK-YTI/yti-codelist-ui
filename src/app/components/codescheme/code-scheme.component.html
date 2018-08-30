@@ -123,13 +123,16 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="showUnfinishedFeature && codeScheme.variantsOfThisCodeScheme.length > 0" id="codelist_variants_tab">
+    <ngb-tab *ngIf="showUnfinishedFeature && (codeScheme.variantsOfThisCodeScheme.length > 0 || codeScheme.variantMothersOfThisCodeScheme.length > 0)" id="codelist_variants_tab">
       <ng-template ngbTabTitle>
         <span translate>variants</span>
       </ng-template>
 
       <ng-template ngbTabContent>
+        <dt><label *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0">Koodiston variantit</label></dt>
         <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()" [codeScheme]="codeScheme" [codeRegistries]="codeRegistries"></app-code-scheme-variants>
+        <dt><label *ngIf="codeScheme.variantMothersOfThisCodeScheme.length > 0">Varianttina muissa koodistoissa</label></dt>
+        <app-code-scheme-variant-mothers [codeScheme]="codeScheme"></app-code-scheme-variant-mothers>
       </ng-template>
     </ngb-tab>
 

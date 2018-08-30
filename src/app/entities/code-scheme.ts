@@ -35,8 +35,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   extensionSchemes: ExtensionSchemeSimple[] = [];
   motherOfThisVariant: CodeSchemeListItem|null = null;
   variantsOfThisCodeScheme: CodeSchemeListItem[] = [];
-  variantCodeschemeId: string|null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
-  nextCodeschemeId: string|null = null;
+  variantMothersOfThisCodeScheme: CodeSchemeListItem[] = [];
+  nextCodeschemeId: string|null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
   prevCodeschemeId: string|null = null;
   lastCodeschemeId: string|null = null;
   allVersions: CodeSchemeListItem[] = [];
@@ -77,11 +77,11 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     if (data.variantsOfThisCodeScheme) {
       this.variantsOfThisCodeScheme = (data.variantsOfThisCodeScheme || []).map(variant => new CodeSchemeListItem(variant));
     }
+    if (data.variantMothersOfThisCodeScheme) {
+      this.variantMothersOfThisCodeScheme = (data.variantMothersOfThisCodeScheme || []).map(variant => new CodeSchemeListItem(variant));
+    }
     if (data.allVersions) {
       this.allVersions = (data.allVersions || []).map(version => new CodeSchemeListItem(version));
-    }
-    if (data.variantCodeschemeId) {
-      this.variantCodeschemeId = data.variantCodeschemeId;
     }
     if (data.nextCodeschemeId) {
       this.nextCodeschemeId = data.nextCodeschemeId;
@@ -164,7 +164,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       extensionSchemes: this.extensionSchemes.map(es => es.serialize()),
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       defaultCode: this.defaultCode ? this.defaultCode.serialize() : undefined,
-      variantCodeschemeId: this.variantCodeschemeId,
+      variantsOfThisCodeScheme: this.variantsOfThisCodeScheme.map(v => v.serialize()),
+      variantMothersOfThisCodeScheme: this.variantMothersOfThisCodeScheme.map(vm => vm.serialize()),
       nextCodeschemeId: this.nextCodeschemeId,
       prevCodeschemeId: this.prevCodeschemeId,
       lastCodeschemeId: this.lastCodeschemeId,

@@ -1,0 +1,16 @@
+<table *ngIf="codeScheme.variantMothersOfThisCodeScheme.length > 0" class="table table-sm">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col" translate>Validity</th>
+    <th scope="col" translate>Name</th>
+    <th scope="col" translate>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let variant of codeScheme.variantMothersOfThisCodeScheme">
+    <td scope="row">{{variant.validityDateRange}}</td>
+    <td><a href="{{variant.uri}}" target="_blank">{{variant.prefLabel | translateValue:true }}</a></td>
+    <td><app-status class="pull-left" [status]="variant.status"></app-status></td>
+  </tr>
+  </tbody>
+</table>

@@ -47,8 +47,8 @@ export interface CodeSchemeType extends BaseResourceType {
   defaultCode?: CodePlainType;
   motherOfThisVariant?: CodeSchemeListItemType;
   variantsOfThisCodeScheme?: CodeSchemeListItemType[];
+  variantMothersOfThisCodeScheme?: CodeSchemeListItemType[];
   allVersions?: CodeSchemeListItemType[];
-  variantCodeschemeId: string|null;
   nextCodeschemeId: string|null;
   prevCodeschemeId: string|null;
   lastCodeschemeId: string|null;
