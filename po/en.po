@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-15 15:15+0300\n"
+"PO-Revision-Date: 2018-08-31 14:44+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -38,6 +38,15 @@ msgid "Choose code"
 msgstr ""
 
 msgid "Search code"
+msgstr ""
+
+msgid "Add code list"
+msgstr ""
+
+msgid "Choose code list"
+msgstr ""
+
+msgid "Search code list"
 msgstr ""
 
 msgid "No registry"
@@ -79,6 +88,9 @@ msgstr ""
 msgid "Search organization"
 msgstr ""
 
+msgid "Code list"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
@@ -89,9 +101,6 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
-msgstr ""
-
-msgid "Code list"
 msgstr ""
 
 msgid "LABEL_TEXT_CODE_VALUE"
@@ -212,9 +221,6 @@ msgid "Create extension scheme"
 msgstr ""
 
 msgid "This code list does not have any extension schemes yet."
-msgstr ""
-
-msgid "Add code list"
 msgstr ""
 
 msgid ""
@@ -659,8 +665,10 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "The technical code or permanent identifier of the extension scheme"
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
-msgstr "Erroneous start date on row {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in the column "
+"ORDER."
 
 msgid "Front page"
 msgstr ""
@@ -767,6 +775,15 @@ msgstr ""
 "Row number {{ identifier }} in the data is missing the value in the column "
 "STATUS."
 
+msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
+msgstr "The data is missing a column with the header EXTENSIONVALUE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
+msgstr "The data is missing a column with the header ORDER."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
+msgstr "The data is missing a column with the header CODE."
+
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
 
@@ -781,18 +798,16 @@ msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
 "CODE."
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
-msgstr ""
-"Row number {{ identifier }} in the data is missing a value in the column "
-"ORDER."
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
 "EXTENSIONVALUE."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgstr "Erroneous start date on row {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr "Erroneous end date on row {{ identifier }}."

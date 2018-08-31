@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-15 15:06+0300\n"
+"PO-Revision-Date: 2018-08-31 14:44+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -39,6 +39,15 @@ msgstr "Valitse koodi"
 
 msgid "Search code"
 msgstr "Hae koodia"
+
+msgid "Add code list"
+msgstr "Lisää koodisto"
+
+msgid "Choose code list"
+msgstr "Valitse koodisto"
+
+msgid "Search code list"
+msgstr "Hae koodistoa"
 
 msgid "No registry"
 msgstr "Ei rekisteriä"
@@ -79,6 +88,9 @@ msgstr "Valitse organisaatio"
 msgid "Search organization"
 msgstr "Etsi organisaatio"
 
+msgid "Code list"
+msgstr "Koodisto"
+
 msgid "Status"
 msgstr "Tila"
 
@@ -90,9 +102,6 @@ msgstr "Kaikki organisaatiot"
 
 msgid "All vocabularies"
 msgstr "Kaikki sanastot"
-
-msgid "Code list"
-msgstr "Koodisto"
 
 msgid "LABEL_TEXT_CODE_VALUE"
 msgstr " Koodin arvo"
@@ -213,9 +222,6 @@ msgstr "Luo laajennusjärjestelmä"
 
 msgid "This code list does not have any extension schemes yet."
 msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
-
-msgid "Add code list"
-msgstr "Lisää koodisto"
 
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
@@ -412,10 +418,10 @@ msgid "Registries"
 msgstr "Rekisterit"
 
 msgid "Suomi.fi Controlled Vocabularies"
-msgstr "Suomi.fi-sanastot"
+msgstr ""
 
 msgid "Suomi.fi Data Vocabularies"
-msgstr "Suomi.fi-tietomallit"
+msgstr ""
 
 msgid "User right management"
 msgstr "Oikeuksienhallinta"
@@ -678,8 +684,8 @@ msgstr "Voimassaolon päättymispäivämäärä"
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
-msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -785,6 +791,15 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
 
+msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
+msgstr "Aineistosta puuttuu sarake otsikolla EXTENSIONVALUE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
+msgstr "Aineistosta puuttuu sarake otsikolla ORDER."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
+msgstr "Aineistosta puuttuu sarake otsikolla CODE."
+
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
 
@@ -797,15 +812,15 @@ msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr "Aineistossa puuttuu arvo sarakkeesta CODE riviltä {{ identifier }}."
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
-msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 "Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."

@@ -52,7 +52,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="addCodeScheme()" translate>Add codelist
+                (click)="addCodeScheme()" translate>Add code list
         </button>
       </dd>
     </dl>
@@ -89,8 +89,8 @@ export class CodeSchemeInputComponent implements ControlValueAccessor {
   }
 
   addCodeScheme() {
-    const titleLabel = this.translateService.instant('Choose codelist');
-    const searchlabel = this.translateService.instant('Search codelist');
+    const titleLabel = this.translateService.instant('Choose code list');
+    const searchlabel = this.translateService.instant('Search code list');
     const restrictIds = this.codeSchemes.map(codeScheme => codeScheme.id);
 
     this.searchLinkedCodeSchemeModalService.open(titleLabel, searchlabel, restrictIds, true)

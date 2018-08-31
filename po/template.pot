@@ -31,6 +31,15 @@ msgstr ""
 msgid "Search code"
 msgstr ""
 
+msgid "Add code list"
+msgstr ""
+
+msgid "Choose code list"
+msgstr ""
+
+msgid "Search code list"
+msgstr ""
+
 msgid "No registry"
 msgstr ""
 
@@ -70,6 +79,9 @@ msgstr ""
 msgid "Search organization"
 msgstr ""
 
+msgid "Code list"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
@@ -80,9 +92,6 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
-msgstr ""
-
-msgid "Code list"
 msgstr ""
 
 msgid "LABEL_TEXT_CODE_VALUE"
@@ -203,9 +212,6 @@ msgid "Create extension scheme"
 msgstr ""
 
 msgid "This code list does not have any extension schemes yet."
-msgstr ""
-
-msgid "Add code list"
 msgstr ""
 
 msgid ""
@@ -614,7 +620,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
 
 msgid "Front page"
@@ -718,6 +724,15 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
 
+msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
+msgstr ""
+
+msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
+msgstr ""
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
+msgstr ""
+
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr ""
 
@@ -730,13 +745,13 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
