@@ -25,7 +25,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   extensionForm = new FormGroup({
     prefLabel: new FormControl({}),
-    extensionValue: new FormControl('', Validators.required),
+    extensionValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });
@@ -51,7 +51,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
     if (!extensionId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
       throw new Error(`Illegal route, extensionId: '${extensionId}', registry: '${registryCodeValue}', ` +
-      `scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
+        `scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
     }
 
     this.dataService.getExtension(extensionId).subscribe(extension => {
@@ -101,5 +101,9 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   canSave() {
     return this.extensionForm.valid;
+  }
+
+  get requireExtensionValue(): boolean {
+    return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
   }
 }

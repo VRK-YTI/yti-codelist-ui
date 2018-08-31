@@ -21,7 +21,7 @@ export class ExtensionCreateComponent implements OnInit {
 
   extensionForm = new FormGroup({
     prefLabel: new FormControl({}),
-    extensionValue: new FormControl('', Validators.required),
+    extensionValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null)
   });
@@ -88,5 +88,9 @@ export class ExtensionCreateComponent implements OnInit {
 
   canSave() {
     return this.extensionForm.valid;
+  }
+
+  get requireExtensionValue(): boolean {
+    return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
   }
 }
