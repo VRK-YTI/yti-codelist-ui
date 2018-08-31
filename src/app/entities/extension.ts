@@ -16,7 +16,7 @@ export class Extension implements EditableEntity {
   url: string;
   extensionValue: string;
   order?: string;
-  modified: Moment|null = null;
+  modified: Moment | null = null;
   extensionScheme: ExtensionScheme;
   extension?: ExtensionSimple;
   code: CodePlain;
@@ -58,13 +58,13 @@ export class Extension implements EditableEntity {
 
   get location(): Location[] {
     return [
-    ...this.extensionScheme.location,
-    {
-      localizationKey: 'Extension',
-      label: this.prefLabel,
-      value: !hasLocalization(this.prefLabel) ? this.code.codeValue : '',
-      route: this.route
-    }];
+      ...this.extensionScheme.location,
+      {
+        localizationKey: 'Extension',
+        label: this.prefLabel,
+        value: !hasLocalization(this.prefLabel) ? this.code.codeValue : '',
+        route: this.route
+      }];
   }
 
   getOwningOrganizationIds(): string[] {
@@ -91,18 +91,18 @@ export class Extension implements EditableEntity {
 
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
     const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
+
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
+
     const extensionValue = this.extensionValue;
-    const codeLabel = translater.instant('code');
-    const valueLabel = translater.instant('value');
 
     if (extensionTitle) {
-      return `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
+      return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
     } else {
-      return `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
+      return `${extensionValue} - ${codeTitle}`;
     }
   }
 
