@@ -1,4 +1,4 @@
- import { Localizable, Localizer } from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
@@ -8,7 +8,8 @@ import { ExtensionSchemeType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodeScheme } from './code-scheme';
 import { PropertyType } from './property-type';
-import { contains } from 'yti-common-ui/utils/array';
+import { contains, groupBy, index } from 'yti-common-ui/utils/array';
+import { requireDefined } from 'yti-common-ui/utils/object';
 
 export class ExtensionScheme implements EditableEntity {
 
@@ -16,13 +17,13 @@ export class ExtensionScheme implements EditableEntity {
   url: string;
   codeValue: string;
   status: Status = 'DRAFT';
-  startDate: Moment|null = null;
-  endDate: Moment|null = null;
+  startDate: Moment | null = null;
+  endDate: Moment | null = null;
   parentCodeScheme: CodeScheme;
   propertyType: PropertyType;
   codeSchemes: CodeScheme[] = [];
   prefLabel: Localizable;
-  modified: Moment|null = null;
+  modified: Moment | null = null;
 
   constructor(data: ExtensionSchemeType) {
     this.id = data.id;
@@ -65,11 +66,11 @@ export class ExtensionScheme implements EditableEntity {
     return [
       ...this.parentCodeScheme.location,
       {
-      localizationKey: 'Extension scheme',
-      label: this.prefLabel,
-      value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
-      route: this.route
-    }];
+        localizationKey: 'Extension scheme',
+        label: this.prefLabel,
+        value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
+        route: this.route
+      }];
   }
 
   getOwningOrganizationIds(): string[] {
@@ -113,4 +114,19 @@ export class ExtensionScheme implements EditableEntity {
   clone(): ExtensionScheme {
     return new ExtensionScheme(this.serialize());
   }
+}
+
+export interface PropertyTypeExtensionSchemes {
+  label: Localizable;
+  extensionSchemes: ExtensionScheme[];
+}
+
+export function groupByType(extSchemes: ExtensionScheme[]): PropertyTypeExtensionSchemes[] {
+
+  const propertyTypes: PropertyType[] = extSchemes.map(es => requireDefined(es.propertyType));
+  const propertyTypesByName = index(propertyTypes, pt => pt.localName);
+  const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
+
+  return Array.from(groupBy(extSchemes, es => mapNormalizedType(requireDefined(es.propertyType))))
+    .map(([propertyType, extensionSchemes]) => ({ label: propertyType.prefLabel, extensionSchemes }));
 }

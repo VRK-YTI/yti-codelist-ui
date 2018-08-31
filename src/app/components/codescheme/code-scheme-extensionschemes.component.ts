@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeSchemeComponent } from './code-scheme.component';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { ExtensionScheme, groupByType, PropertyTypeExtensionSchemes } from '../../entities/extension-scheme';
 import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
+import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-code-scheme-extensionschemes',
@@ -13,6 +13,7 @@ import { ExtensionSchemesImportModalService } from '../extensionscheme/extension
   styleUrls: ['./code-scheme-extensionschemes.component.scss']
 })
 export class CodeSchemeExtensionSchemesComponent {
+  @ViewChild('secondaryTabSet') secondaryTabSet: NgbTabset;
 
   @Input() extensionSchemes: ExtensionScheme[];
   @Input() codeScheme: CodeScheme;
@@ -33,5 +34,9 @@ export class CodeSchemeExtensionSchemesComponent {
 
   get canAddExtensionScheme(): boolean {
     return this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  get extensionSchemesByType(): PropertyTypeExtensionSchemes[] {
+    return groupByType(this.extensionSchemes);
   }
 }

@@ -1,34 +1,26 @@
 <div class="extensionSchemes row">
-  <div class="col-md-6">
-  </div>
 
-  <div class="col-md-6">
-    <div *ngIf="this.canAddExtensionScheme" class="d-inline-block mb-1 pull-right">
-      <button id="import_extensionschemes_button"
-              type="button"
-              class="btn btn-action ml-3 pull-right"
-              (click)="importExtensionSchemes()"
-              translate>Import extension schemes</button>
+  <ngb-tabset #secondaryTabSet="ngbTabset" class="col-md-12">
 
-      <button id="create_extensionscheme_button"
-              type="button"
-              class="btn btn-action pull-right"
-              (click)="createExtensionScheme()"
-              translate>Create extension scheme</button>
-    </div>
-  </div>
+    <ngb-tab *ngFor="let propertyExtensionSchemes of extensionSchemesByType"
+             id="codelist_extensionscheme_{{ propertyExtensionSchemes.label | translateValue }}_tab">
+      <ng-template ngbTabTitle>
+        <span>{{propertyExtensionSchemes.label | translateValue}}</span>
+      </ng-template>
 
-  <div id="codelist_extensionscheme_list_div" class="col-md-12">
-    <ul id="codelist_extensionscheme_regular">
-      <li *ngFor="let extensionScheme of extensionSchemes">
-        <div id="{{extensionScheme.codeValue}}_codelist_extensionscheme_listitem">
-          <app-extensionscheme-listitem [extensionScheme]="extensionScheme"></app-extensionscheme-listitem>
+      <ng-template ngbTabContent>
+        <div id="codelist_extensionscheme_list_div" class="col-md-12">
+          <ul id="codelist_extensionscheme_regular">
+            <li *ngFor="let extensionScheme of propertyExtensionSchemes.extensionSchemes">
+              <div id="{{extensionScheme.codeValue}}_codelist_extensionscheme_listitem">
+                <app-extensionscheme-listitem [extensionScheme]="extensionScheme"></app-extensionscheme-listitem>
+              </div>
+            </li>
+          </ul>
         </div>
-      </li>
-    </ul>
-  </div>
+      </ng-template>
+    </ngb-tab>
 
-  <div class="emptyExtensionSchemes" *ngIf="extensionSchemes.length === 0">
-    <span translate>This code list does not have any extension schemes yet.</span>
-  </div>
+  </ngb-tabset>
+
 </div>
