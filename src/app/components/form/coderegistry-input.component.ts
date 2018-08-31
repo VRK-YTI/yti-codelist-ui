@@ -23,7 +23,7 @@ import { LanguageService } from '../../services/language.service';
                         [formControl]="control"></app-dropdown>
           <app-error-messages id="registry_error_messages" [control]="parentControl"></app-error-messages>
         </div>
-        <span *ngIf="!editing">{{selection.prefLabel | translateValue:true}}</span>
+        <span *ngIf="!editing">{{selection.prefLabel | translateValue:false}}</span>
       </dd>
     </dl>  
   `

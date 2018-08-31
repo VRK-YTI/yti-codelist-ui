@@ -59,7 +59,7 @@ export class SearchLinkedCodeModalService {
     </div>
     <div class="modal-body full-height">
 
-      <div *ngIf="codeSchemes.length > 1" class="row mb-2">
+      <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
         <div class="col-12">
           <div ngbDropdown class="d-inline-block">
             <dl>
@@ -68,7 +68,7 @@ export class SearchLinkedCodeModalService {
               </dt>
               <dd>
                 <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
-                  <span>{{selectedCodeScheme.getLongDisplayName(languageService)}}</span>
+                  <span>{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
                 </button>
                 <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
                   <div *ngFor="let codeScheme of codeSchemes">
@@ -76,7 +76,7 @@ export class SearchLinkedCodeModalService {
                             (click)="selectCodeScheme(codeScheme)"
                             class="dropdown-item"
                             [class.active]="selectedCodeScheme === codeScheme">
-                            {{codeScheme.getLongDisplayName(languageService)}}
+                            {{codeScheme.getLongDisplayName(languageService, false)}}
                     </button>
                   </div>
                 </div>
@@ -150,6 +150,8 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
     if (!this.codes$) {
       this.selectedCodeScheme = this.codeSchemes[0];
       this.updateCodes();
+    } else {
+      this.filterCodes();
     }
   }
 
@@ -178,14 +180,9 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
     this.updateCodes();
   }
 
-  updateCodes() {
+  filterCodes() {
     const initialSearch = this.search$.take(1);
     const debouncedSearch = this.search$.skip(1).debounceTime(500);
-
-    this.codes$ = this.dataService.getCodes(
-      this.selectedCodeScheme.codeRegistry.codeValue,
-      this.selectedCodeScheme.codeValue,
-      this.languageService.language);
 
     this.searchResults$ = Observable.combineLatest(this.codes$, initialSearch.concat(debouncedSearch))
       .do(() => this.loading = false)
@@ -197,5 +194,13 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
           return searchMatches && isNotRestricted;
         });
       });
+  }
+
+  updateCodes() {
+    this.codes$ = this.dataService.getCodes(
+      this.selectedCodeScheme.codeRegistry.codeValue,
+      this.selectedCodeScheme.codeValue,
+      this.languageService.language);
+    this.filterCodes();
   }
 }

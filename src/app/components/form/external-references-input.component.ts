@@ -30,7 +30,7 @@ import { LanguageService } from '../../services/language.service';
             <div class="col-10">
               <button [id]="'show_' + externalReference.getIdIdentifier(languageService) + '_ref_button'"
                       type="button" class="btn btn-link link" (click)="showExternalReference(externalReference)">
-                <span>{{externalReference.getDisplayName(languageService)}}</span>
+                <span>{{externalReference.getDisplayName(languageService, false)}}</span>
               </button>
             </div>
 

@@ -103,10 +103,12 @@ export class Extension implements EditableEntity {
 
     const extensionValue = this.extensionValue;
 
-    if (extensionTitle) {
+    if (extensionTitle && extensionValue) {
       return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
-    } else {
+    } else if (extensionValue) {
       return `${extensionValue} - ${codeTitle}`;
+    } else {
+      return codeTitle ? codeTitle : '';
     }
   }
 

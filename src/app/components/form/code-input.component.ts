@@ -30,7 +30,7 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && code">
-          <span>{{code.getLongDisplayName(languageService)}}</span>
+          <span>{{code.getLongDisplayName(languageService, false)}}</span>
         </div>
         <div *ngIf="editing && code">
           <a>
@@ -38,7 +38,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeCode(code)"></i>
           </a>
-          <span>{{code.getLongDisplayName(languageService)}}</span>
+          <span>{{code.getLongDisplayName(languageService, false)}}</span>
         </div>
 
         <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>

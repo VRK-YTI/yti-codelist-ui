@@ -33,7 +33,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
       <dd>
         <div *ngIf="!editing">
           <div *ngFor="let codeScheme of codeSchemes">
-            <span>{{codeScheme.getLongDisplayName(languageService)}}</span>
+            <span>{{codeScheme.getLongDisplayName(languageService, false)}}</span>
           </div>
         </div>
         <div *ngIf="editing">
@@ -43,7 +43,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                  class="fa fa-times"
                  (click)="removeCodeScheme(codeScheme)"></i>
             </a>
-            <span>{{codeScheme.getLongDisplayName(languageService)}}</span>
+            <span>{{codeScheme.getLongDisplayName(languageService, false)}}</span>
           </div>
           <app-error-messages id="codeschemes_error_messages" [control]="parentControl"></app-error-messages>
         </div>
