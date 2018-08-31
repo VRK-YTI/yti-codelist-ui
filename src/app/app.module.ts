@@ -119,6 +119,11 @@ import {
   CodeschemeVariantModalComponent,
   CodeschemeVariantModalService
 } from './components/codeschemevariant/codescheme-variant.modal.component';
+import { CodeSchemeInputComponent } from './components/form/code-scheme-input.component';
+import {
+  SearchLinkedCodeSchemeModalComponent,
+  SearchLinkedCodeSchemeModalService
+} from './components/form/search-linked-code-scheme-modal.component';
 
 const localizations: { [lang: string]: string } = {
   fi: Object.assign({},
@@ -231,9 +236,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ClassificationsInputComponent,
     OrganizationsInputComponent,
     CodeInputComponent,
+    CodeSchemeInputComponent,
     ExtensionInputComponent,
     SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
+    SearchLinkedCodeSchemeModalComponent,
     SearchLinkedExtensionModalComponent,
     RegistryInputComponent,
     HierarchyCodeComponent,
@@ -255,6 +262,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkListModalComponent,
     SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
+    SearchLinkedCodeSchemeModalComponent,
     SearchLinkedExtensionModalComponent,
     TerminologyIntegrationCodeschemeModalComponent,
     CodeschemeVariantModalComponent
@@ -291,6 +299,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ModalService,
     SearchLinkedOrganizationModalService,
     SearchLinkedCodeModalService,
+    SearchLinkedCodeSchemeModalService,
     SearchLinkedExtensionModalService,
     CodeListErrorModalService,
     TerminologyIntegrationModalService,

@@ -8,6 +8,7 @@ import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
 import { LocationService } from '../../services/location.service';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-extension-create',
@@ -92,5 +93,9 @@ export class ExtensionCreateComponent implements OnInit {
 
   get requireExtensionValue(): boolean {
     return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
+  }
+
+  get allCodeSchemes(): CodeScheme[] {
+    return [ this.extensionScheme.parentCodeScheme, ...this.extensionScheme.codeSchemes ];
   }
 }

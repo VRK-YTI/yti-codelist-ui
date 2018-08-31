@@ -20,7 +20,7 @@ export class ExtensionScheme implements EditableEntity {
   endDate: Moment|null = null;
   parentCodeScheme: CodeScheme;
   propertyType: PropertyType;
-  codeSchemes: CodeScheme[];
+  codeSchemes: CodeScheme[] = [];
   prefLabel: Localizable;
   modified: Moment|null = null;
 
@@ -85,6 +85,7 @@ export class ExtensionScheme implements EditableEntity {
   }
 
   serialize(): ExtensionSchemeType {
+    console.log('codeSchemes: ' + this.codeSchemes);
     return {
       id: this.id,
       url: this.url,

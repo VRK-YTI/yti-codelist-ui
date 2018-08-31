@@ -32,7 +32,7 @@
 
         <app-code-input id="extension_code_input"
                         [label]="'Code' | translate"
-                        [codeScheme]="currentExtension.extensionScheme.parentCodeScheme"
+                        [codeSchemes]="this.allCodeSchemes"
                         [required]="true"
                         [formControlName]="'code'"></app-code-input>
 

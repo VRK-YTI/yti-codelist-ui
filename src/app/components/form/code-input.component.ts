@@ -56,7 +56,7 @@ function removeFromControl<T>(control: FormControl) {
 export class CodeInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
-  @Input() codeScheme: CodeScheme;
+  @Input() codeSchemes: CodeScheme[];
   @Input() required = false;
   @Input() infoText: string;
   control = new FormControl(null);
@@ -85,12 +85,8 @@ export class CodeInputComponent implements ControlValueAccessor {
   selectCode() {
     const titleLabel = this.translateService.instant('Choose code');
     const searchlabel = this.translateService.instant('Search code');
-    const codes = this.dataService.getCodes(
-      this.codeScheme.codeRegistry.codeValue,
-      this.codeScheme.codeValue,
-      this.languageService.language);
 
-    this.searchLinkedCodeModalService.open(codes, titleLabel, searchlabel, [], true)
+    this.searchLinkedCodeModalService.openWithCodeSchemes(this.codeSchemes, titleLabel, searchlabel, [], true)
       .then(code => addToControl(this.control, code), ignoreModalClose);
   }
 

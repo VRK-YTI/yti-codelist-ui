@@ -10,6 +10,7 @@ import { Extension } from '../../entities/extension';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LocationService } from '../../services/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-extension-information',
@@ -105,5 +106,9 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   get requireExtensionValue(): boolean {
     return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
+  }
+
+  get allCodeSchemes(): CodeScheme[] {
+    return [ this.extensionScheme.parentCodeScheme, ...this.extensionScheme.codeSchemes ];
   }
 }

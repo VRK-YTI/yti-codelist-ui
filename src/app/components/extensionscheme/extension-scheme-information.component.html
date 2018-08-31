@@ -34,6 +34,10 @@
                                   [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"
                                   [formControlName]="'propertyType'"></app-property-type-select>
 
+        <app-code-scheme-input id="extension_code_scheme_input"
+                               [label]="'Code list' | translate"
+                               [formControlName]="'codeSchemes'"></app-code-scheme-input>
+
         <app-status-input id="extensionscheme_status_input"
                           [formControlName]="'status'"
                           [restrict]="restricted"

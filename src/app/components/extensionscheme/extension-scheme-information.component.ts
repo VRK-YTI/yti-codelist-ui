@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { EditableService } from '../../services/editable.service';
@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LocationService } from '../../services/location.service';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-extension-scheme-information',
@@ -19,9 +20,12 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
 
   @Input() extensionScheme: ExtensionScheme;
 
+  codeSchemes: CodeScheme[];
+
   extensionSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
     propertyType: new FormControl(null),
+    codeSchemes: new FormControl([]),
     validity: new FormControl(null, validDateRange),
     status: new FormControl()
   });

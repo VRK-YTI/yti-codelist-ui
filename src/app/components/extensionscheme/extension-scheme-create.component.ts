@@ -21,12 +21,14 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
   codeScheme: CodeScheme;
   env: string;
+  codeSchemes: CodeScheme[];
 
   extensionSchemeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
     validity: new FormControl({start: null, end: null}, validDateRange),
     propertyType: new FormControl(null),
+    codeSchemes: new FormControl([]),
     status: new FormControl('DRAFT' as Status),
   }, null, this.codeValueExistsValidator());
 

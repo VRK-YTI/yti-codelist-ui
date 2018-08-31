@@ -160,7 +160,7 @@ export class DataService {
       .map(res => res.json().results.map((data: CodeSchemeType) => new CodeScheme(data)));
   }
 
-  searchCodeSchemes(searchTerm: string, classification: string | null, organization: string | null,
+  searchCodeSchemes(searchTerm: string | null, classification: string | null, organization: string | null,
                     sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     const params = new URLSearchParams();

@@ -1,10 +1,12 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, Renderer, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
 import { Code } from '../../entities/code';
+import { CodeScheme } from '../../entities/code-scheme';
+import { DataService } from '../../services/data.service';
 
 @Injectable()
 export class SearchLinkedCodeModalService {
@@ -12,15 +14,31 @@ export class SearchLinkedCodeModalService {
   constructor(private modalService: ModalService) {
   }
 
-  open(codes$: Observable<Code[]>,
-       titleLabel: string,
-       searchLabel: string,
-       restrictCodeIds: string[],
-       useUILanguage: boolean = false): Promise<Code> {
-         
+  openWithCodes(codes$: Observable<Code[]>,
+                titleLabel: string,
+                searchLabel: string,
+                restrictCodeIds: string[],
+                useUILanguage: boolean = false): Promise<Code> {
+
     const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
     instance.codes$ = codes$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictCodeIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
+  }
+
+  openWithCodeSchemes(codeSchemes: CodeScheme[],
+                      titleLabel: string,
+                      searchLabel: string,
+                      restrictCodeIds: string[],
+                      useUILanguage: boolean = false): Promise<Code> {
+
+    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
+    instance.codeSchemes = codeSchemes;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
     instance.restricts = restrictCodeIds;
@@ -41,14 +59,40 @@ export class SearchLinkedCodeModalService {
     </div>
     <div class="modal-body full-height">
 
+      <div *ngIf="codeSchemes.length > 1" class="row mb-2">
+        <div class="col-12">
+          <div ngbDropdown class="d-inline-block">
+            <dl>
+              <dt>
+                <label for="code_scheme_dropdown_button" translate>Code list</label>
+              </dt>
+              <dd>
+                <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
+                  <span>{{selectedCodeScheme.getLongDisplayName(languageService)}}</span>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
+                  <div *ngFor="let codeScheme of codeSchemes">
+                    <button id="codescheme_{{codeScheme.id}}_dropdown_button"
+                            (click)="selectCodeScheme(codeScheme)"
+                            class="dropdown-item"
+                            [class.active]="selectedCodeScheme === codeScheme">
+                            {{codeScheme.getLongDisplayName(languageService)}}
+                    </button>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
       <div class="row mb-2">
         <div class="col-12">
-
           <div class="input-group input-group-lg input-group-search">
-            <input #searchInput id="search_linked_code_input" type="text" class="form-control" [placeholder]="searchLabel"
+            <input #searchInput id="search_linked_code_input" type="text" class="form-control"
+                   [placeholder]="searchLabel"
                    [(ngModel)]="search"/>
           </div>
-
         </div>
       </div>
 
@@ -60,7 +104,7 @@ export class SearchLinkedCodeModalService {
                    class="search-result"
                    *ngFor="let code of searchResults$ | async; let last = last"
                    (click)="select(code)">
-                <div class="content" [class.last]="last">                  
+                <div class="content" [class.last]="last">
                   <span class="title" [innerHTML]="code.getDisplayName(languageService, useUILanguage)"></span>
                 </div>
               </div>
@@ -74,7 +118,8 @@ export class SearchLinkedCodeModalService {
       <button id="cancel_modal_button"
               type="button"
               class="btn btn-link cancel"
-              (click)="cancel()" translate>Cancel</button>
+              (click)="cancel()" translate>Cancel
+      </button>
     </div>
   `
 })
@@ -86,32 +131,26 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
   @Input() titleLabel: string;
   @Input() searchLabel: string;
   @Input() codes$: Observable<Code[]>;
+  @Input() codeSchemes: CodeScheme[];
   @Input() useUILanguage: boolean;
 
   searchResults$: Observable<Code[]>;
+  selectedCodeScheme: CodeScheme;
 
   search$ = new BehaviorSubject('');
   loading = false;
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
+              private dataService: DataService,
               private renderer: Renderer) {
   }
 
   ngOnInit() {
-    const initialSearch = this.search$.take(1);
-    const debouncedSearch = this.search$.skip(1).debounceTime(500);
-
-    this.searchResults$ = Observable.combineLatest(this.codes$, initialSearch.concat(debouncedSearch))
-      .do(() => this.loading = false)
-      .map(([codes, search]) => {
-        return codes.filter(code => {
-          const label = this.languageService.translate(code.prefLabel, true);
-          const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-          const isNotRestricted = !contains(this.restricts, code.id);
-          return searchMatches && isNotRestricted;
-        });
-      });
+    if (!this.codes$) {
+      this.selectedCodeScheme = this.codeSchemes[0];
+      this.updateCodes();
+    }
   }
 
   select(code: Code) {
@@ -132,5 +171,31 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+
+  selectCodeScheme(codeScheme: CodeScheme) {
+    this.selectedCodeScheme = codeScheme;
+    this.updateCodes();
+  }
+
+  updateCodes() {
+    const initialSearch = this.search$.take(1);
+    const debouncedSearch = this.search$.skip(1).debounceTime(500);
+
+    this.codes$ = this.dataService.getCodes(
+      this.selectedCodeScheme.codeRegistry.codeValue,
+      this.selectedCodeScheme.codeValue,
+      this.languageService.language);
+
+    this.searchResults$ = Observable.combineLatest(this.codes$, initialSearch.concat(debouncedSearch))
+      .do(() => this.loading = false)
+      .map(([codes, search]) => {
+        return codes.filter(code => {
+          const label = this.languageService.translate(code.prefLabel, true);
+          const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+          const isNotRestricted = !contains(this.restricts, code.id);
+          return searchMatches && isNotRestricted;
+        });
+      });
   }
 }

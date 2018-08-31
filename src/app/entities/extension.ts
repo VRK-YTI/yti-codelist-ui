@@ -6,9 +6,9 @@ import { Moment } from 'moment';
 import { ExtensionType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { ExtensionScheme } from './extension-scheme';
-import { CodePlain } from './code-simple';
 import { ExtensionSimple } from './extension-simple';
 import { TranslateService } from 'ng2-translate';
+import { Code } from './code';
 
 export class Extension implements EditableEntity {
 
@@ -19,7 +19,7 @@ export class Extension implements EditableEntity {
   modified: Moment | null = null;
   extensionScheme: ExtensionScheme;
   extension?: ExtensionSimple;
-  code: CodePlain;
+  code: Code;
   prefLabel: Localizable;
 
   constructor(data: ExtensionType) {
@@ -36,7 +36,7 @@ export class Extension implements EditableEntity {
       this.extension = new ExtensionSimple(data.extension);
     }
     if (data.code) {
-      this.code = new CodePlain(data.code);
+      this.code = new Code(data.code);
     }
   }
 
@@ -95,6 +95,10 @@ export class Extension implements EditableEntity {
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
+    }
+    if (this.code.codeScheme.id !== this.extensionScheme.parentCodeScheme.id) {
+      const codeSchemeTitle = localizer.translate(this.code.codeScheme.prefLabel, useUILanguage);
+      codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
     const extensionValue = this.extensionValue;

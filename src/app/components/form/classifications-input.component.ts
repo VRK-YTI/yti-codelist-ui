@@ -79,7 +79,6 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
               public languageService: LanguageService,
               private searchLinkedCodeModalService: SearchLinkedCodeModalService) {
 
-
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
     if (parentControl) {
@@ -101,8 +100,8 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
     const searchlabel = this.translateService.instant('Search classification');
     const restrictIds = this.dataClassifications.map(classification => classification.id);
 
-    this.searchLinkedCodeModalService.open(this.classifications, titleLabel, searchlabel, restrictIds, true)
-      .then(classification => addToControl(this.control, classification), ignoreModalClose);
+    this.searchLinkedCodeModalService.openWithCodes(this.classifications, titleLabel, searchlabel, restrictIds, true)
+      .then((classification: Code) => addToControl(this.control, classification), ignoreModalClose);
   }
 
   removeDataClassification(classification: CodePlain) {

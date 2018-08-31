@@ -179,7 +179,7 @@ export interface ExtensionType {
   modified?: string;
   extensionScheme: ExtensionSchemeType;
   extension?: ExtensionSimpleType;
-  code: CodePlainType;
+  code: CodeType;
 }
 
 export interface ExtensionSimpleType {

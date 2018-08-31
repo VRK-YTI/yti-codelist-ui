@@ -16,8 +16,8 @@ export class Code extends AbstractResource implements EditableEntity {
   codeScheme: CodeScheme;
   shortName: string;
   status: Status = 'DRAFT';
-  startDate: Moment|null = null;
-  endDate: Moment|null = null;
+  startDate: Moment | null = null;
+  endDate: Moment | null = null;
   description: Localizable = {};
   definition: Localizable = {};
   externalReferences: ExternalReference[] = [];
@@ -25,7 +25,7 @@ export class Code extends AbstractResource implements EditableEntity {
   hierarchyLevel: number;
   expanded: boolean;
   conceptUriInVocabularies: string;
-  modified: Moment|null = null;
+  modified: Moment | null = null;
   order: string;
 
   constructor(data: CodeType) {
