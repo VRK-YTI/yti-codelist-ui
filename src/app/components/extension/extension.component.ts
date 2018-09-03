@@ -5,7 +5,7 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
@@ -13,7 +13,8 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { Extension } from '../../entities/extension';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LanguageService } from '../../services/language.service';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-extension',
@@ -142,6 +143,6 @@ export class ExtensionComponent implements OnInit, EditingComponent {
       endDate: validity.end
     });
 
-    return this.dataService.saveExtension(updatedExtension.serialize()).do(() => this.ngOnInit());
+    return this.dataService.saveExtension(updatedExtension.serialize()).pipe(tap(() => this.ngOnInit()));
   }
 }

@@ -2,12 +2,18 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "baseUrl": "./",
-    "module": "es2015",
-    "types": []
+    "types": ["webpack-env"],
+    "baseUrl": ""
   },
+  "include": [
+    "main.ts",
+    "polyfills.ts",
+    "../node_modules/yti-common-ui/**/*.ts"
+  ],
   "exclude": [
     "test.ts",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "../node_modules/yti-common-ui/**/*.spec.ts",
+    "../node_modules/yti-common-ui/node_modules"
   ]
 }

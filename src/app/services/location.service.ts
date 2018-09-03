@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
 import { Location } from 'yti-common-ui/types/location';

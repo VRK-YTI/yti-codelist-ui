@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
 import { Extension } from '../../entities/extension';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
+import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
 @Injectable()
 export class SearchLinkedExtensionModalService {
@@ -106,19 +107,22 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
   }
 
   ngOnInit() {
-    const initialSearch = this.search$.take(1);
-    const debouncedSearch = this.search$.skip(1).debounceTime(500);
 
-    this.searchResults$ = Observable.combineLatest(this.extensions$, initialSearch.concat(debouncedSearch))
-      .do(() => this.loading = false)
-      .map(([extensions, search]) => {
-        return extensions.filter(extension => {
-          const label = extension.getDisplayName(this.languageService, this.translateService);
-          const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-          const isNotRestricted = !contains(this.restricts, extension.id);
-          return searchMatches && isNotRestricted;
-        });
-      });
+    const initialSearch = this.search$.pipe(take(1));
+    const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
+
+    this.searchResults$ = combineLatest(this.extensions$, concat(initialSearch, debouncedSearch))
+      .pipe(
+        tap(() => this.loading = false),
+        map(([extensions, search]) => {
+          return extensions.filter(extension => {
+            const label = extension.getDisplayName(this.languageService, this.translateService);
+            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const isNotRestricted = !contains(this.restricts, extension.id);
+            return searchMatches && isNotRestricted;
+          });
+        })
+      );
   }
 
   select(extension: Extension) {

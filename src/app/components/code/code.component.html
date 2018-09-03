@@ -11,12 +11,12 @@
 
   <div class="row">
     <div class="col-12">
-      <app-status class="pull-left" [status]="code.status"></app-status>
+      <app-status class="float-left" [status]="code.status"></app-status>
 
-      <div class="pull-right">
+      <div class="float-right">
         <button id="code_info_delete_button"
                 *ngIf='this.canDelete' type="button"
-                class="btn btn-action pull-right ml-3"
+                class="btn btn-action float-right ml-3"
                 (click)="delete()"
                 translate>Delete</button>
 

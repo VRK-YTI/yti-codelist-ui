@@ -4,7 +4,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
 import { DataService } from '../../services/data.service';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';
 import { LanguageService } from '../../services/language.service';

@@ -1,4 +1,4 @@
-import { Component, Input, Optional, Self } from '@angular/core';
+import { Component, Input, OnDestroy, Optional, Self } from '@angular/core';
 import { Code } from '../../entities/code';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
@@ -6,8 +6,8 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { DataService } from '../../services/data.service';
-import { Observable } from 'rxjs';
-import { TranslateService } from 'ng2-translate';
+import { Observable, Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from '../../entities/code-simple';
 import { LanguageService } from '../../services/language.service';
 
@@ -60,7 +60,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
     </dl>
   `
 })
-export class ClassificationsInputComponent implements ControlValueAccessor {
+export class ClassificationsInputComponent implements ControlValueAccessor, OnDestroy {
 
   @Input() label: string;
   @Input() restrict = false;
@@ -71,6 +71,8 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
+
+  private subscriptionsToClean: Subscription[] = [];
 
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService,
@@ -85,9 +87,9 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
       parentControl.valueAccessor = this;
     }
 
-    Observable.combineLatest(this.languageService.language$).subscribe(([language]) => {
+    this.subscriptionsToClean.push(this.languageService.language$.subscribe((language) => {
       this.classifications$ = this.dataService.getDataClassificationsAsCodes(language);
-    });
+    }));
   }
 
   get dataClassifications(): CodePlain[] {
@@ -126,5 +128,9 @@ export class ClassificationsInputComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.propagateTouched = fn;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionsToClean.forEach(s => s.unsubscribe());
   }
 }

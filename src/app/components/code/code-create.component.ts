@@ -7,12 +7,13 @@ import { formatDate, validDateRange } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
 import { Status } from 'yti-common-ui/entities/status';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-code-create',
@@ -94,11 +95,11 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     };
 
     return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
-      .do(createdCode => {
+      .pipe(tap(createdCode => {
         console.log('Saved new Code');
         console.log('Saved code route: ' + createdCode.route);
         this.router.navigate(createdCode.route);
-      });
+      }));
   }
 
   get loading(): boolean {
@@ -120,7 +121,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
         }
       };
       return this.dataService.codeCodeValueExists(registryCode, schemeCode, control.value)
-        .map(exists => exists ? validationError : null);
+        .pipe(map(exists => exists ? validationError : null));
     };
   }
 

@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/
 import { Code } from '../../entities/code';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
 import { UserService } from 'yti-common-ui/services/user.service';

@@ -4,7 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
 import { Options } from 'yti-common-ui/components/dropdown.component';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
 
 @Component({

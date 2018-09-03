@@ -3,7 +3,7 @@ import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDate
 import { Moment } from 'moment';
 import { ExtensionSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { Code } from './code';
 import { ExtensionScheme } from './extension-scheme';
 

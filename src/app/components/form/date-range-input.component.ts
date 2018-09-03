@@ -1,8 +1,8 @@
 import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, NgControl } from '@angular/forms';
-import { DateRange, formatDisplayDate, validDate , formatDisplayDateRange} from '../../utils/date';
-import { Observable } from 'rxjs/Observable';
+import { DateRange, validDate , formatDisplayDateRange} from '../../utils/date';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-date-range-input',
@@ -56,7 +56,7 @@ export class DateRangeInputComponent {
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService) {
 
-    Observable.combineLatest(this.startControl.valueChanges, this.endControl.valueChanges)
+    combineLatest(this.startControl.valueChanges, this.endControl.valueChanges)
       .subscribe(() => this.propagateChange(this.value));
 
     if (parentControl) {

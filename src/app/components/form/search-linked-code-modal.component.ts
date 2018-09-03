@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
+import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
@@ -181,19 +182,21 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
   }
 
   filterCodes() {
-    const initialSearch = this.search$.take(1);
-    const debouncedSearch = this.search$.skip(1).debounceTime(500);
+    const initialSearch = this.search$.pipe(take(1));
+    const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
 
-    this.searchResults$ = Observable.combineLatest(this.codes$, initialSearch.concat(debouncedSearch))
-      .do(() => this.loading = false)
-      .map(([codes, search]) => {
-        return codes.filter(code => {
-          const label = this.languageService.translate(code.prefLabel, true);
-          const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-          const isNotRestricted = !contains(this.restricts, code.id);
-          return searchMatches && isNotRestricted;
-        });
-      });
+    this.searchResults$ = combineLatest(this.codes$, concat(initialSearch, debouncedSearch))
+      .pipe(
+        tap(() => this.loading = false),
+        map(([codes, search]) => {
+          return codes.filter(code => {
+            const label = this.languageService.translate(code.prefLabel, true);
+            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const isNotRestricted = !contains(this.restricts, code.id);
+            return searchMatches && isNotRestricted;
+          });
+        })
+      );
   }
 
   updateCodes() {

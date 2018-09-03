@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
 import { Organization } from '../../entities/organization';
+import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
 @Injectable()
 export class SearchLinkedOrganizationModalService {
@@ -101,19 +102,21 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
   }
 
   ngOnInit() {
-    const initialSearch = this.search$.take(1);
-    const debouncedSearch = this.search$.skip(1).debounceTime(500);
+    const initialSearch = this.search$.pipe(take(1));
+    const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
 
-    this.searchResults$ = Observable.combineLatest(this.organizations$, initialSearch.concat(debouncedSearch))
-      .do(() => this.loading = false)
-      .map(([organizations, search]) => {
-        return organizations.filter(organization => {
-          const label = this.languageService.translate(organization.prefLabel, true);
-          const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-          const isNotRestricted = !contains(this.restricts, organization.id);
-          return searchMatches && isNotRestricted;
-        });
-      });
+    this.searchResults$ = combineLatest(this.organizations$, concat(initialSearch, debouncedSearch))
+      .pipe(
+        tap(() => this.loading = false),
+        map(([organizations, search]) => {
+          return organizations.filter(organization => {
+            const label = this.languageService.translate(organization.prefLabel, true);
+            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const isNotRestricted = !contains(this.restricts, organization.id);
+            return searchMatches && isNotRestricted;
+          });
+        })
+      );
   }
 
   select(organization: Organization) {

@@ -42,11 +42,11 @@
       </a>
       <div ngbDropdownMenu>
         <a id="navigation_log_out_link" class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
-          <i class="fa fa-sign-out"></i>
+          <i class="fas fa-sign-out-alt"></i>
           <span translate>LOG OUT</span>
         </a>
         <a id="navigation_log_in_link" class="dropdown-item" *ngIf="!isLoggedIn()" (click)="logIn()">
-          <i class="fa fa-sign-in"></i>
+          <i class="fas fa-sign-in-alt"></i>
           <span translate>LOG IN</span>
         </a>
         <div class="dropdown-divider" [hidden]="noMenuItemsAvailable"></div>

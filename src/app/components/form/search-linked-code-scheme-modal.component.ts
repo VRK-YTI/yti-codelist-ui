@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
+import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
 @Injectable()
 export class SearchLinkedCodeSchemeModalService {
@@ -101,21 +102,23 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
   }
 
   ngOnInit() {
-    const initialSearch = this.search$.take(1);
-    const debouncedSearch = this.search$.skip(1).debounceTime(500);
+    const initialSearch = this.search$.pipe(take(1));
+    const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
 
     this.codeSchemes$ = this.dataService.searchCodeSchemes(null, null, null, null, false, this.languageService.language);
 
-    this.searchResults$ = Observable.combineLatest(this.codeSchemes$, initialSearch.concat(debouncedSearch))
-      .do(() => this.loading = false)
-      .map(([codeSchemes, search]) => {
-        return codeSchemes.filter(codeScheme => {
-          const label = this.languageService.translate(codeScheme.prefLabel, true);
-          const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-          const isNotRestricted = !contains(this.restricts, codeScheme.id);
-          return searchMatches && isNotRestricted;
-        });
-      });
+    this.searchResults$ = combineLatest(this.codeSchemes$, concat(initialSearch, debouncedSearch))
+      .pipe(
+        tap(() => this.loading = false),
+        map(([codeSchemes, search]) => {
+          return codeSchemes.filter(codeScheme => {
+            const label = this.languageService.translate(codeScheme.prefLabel, true);
+            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const isNotRestricted = !contains(this.restricts, codeScheme.id);
+            return searchMatches && isNotRestricted;
+          });
+        })
+      );
   }
 
   select(codeScheme: CodeScheme) {

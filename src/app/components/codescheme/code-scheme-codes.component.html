@@ -20,32 +20,32 @@
 
 <div class="codes row">
   <div class="col-md-6">
-    <div *ngIf="hasHierarchy()" class="d-inline-block mb-1 pull-left">
+    <div *ngIf="hasHierarchy()" class="d-inline-block mb-1 float-left">
       <button id="expand_all_button"
               *ngIf="showExpandAll()"
               type="button"
-              class="btn btn-action ml-3 pull-left"
+              class="btn btn-action ml-3 float-left"
               (click)="expandAll()"
               translate>Expand all</button>
       <button id="collapse_all_button"
               *ngIf="showCollapseAll()"
               type="button"
-              class="btn btn-action ml-3 pull-left"
+              class="btn btn-action ml-3 float-left"
               (click)="collapseAll()"
               translate>Collapse all</button>
     </div>
   </div>
 
   <div class="col-md-6">
-      <div *ngIf="canAddCode()" class="d-inline-block mb-1 pull-right">
+      <div *ngIf="canAddCode()" class="d-inline-block mb-1 float-right">
         <button id="import_codes_button"
                 type="button"
-                class="btn btn-action ml-3 pull-right"
+                class="btn btn-action ml-3 float-right"
                 (click)="importCodes()"
                 translate>Import codes</button>
         <button id="create_code_button"
                 type="button"
-                class="btn btn-action pull-right"
+                class="btn btn-action float-right"
                 (click)="createCode()"
                 translate>Create code</button>
       </div>

@@ -10,7 +10,7 @@
   <tr *ngFor="let version of codeScheme.allVersions">
     <td scope="row">{{version.validityDateRange}}</td>
     <td><a href="{{version.uri}}" target="_blank">{{version.prefLabel | translateValue:true }}</a></td>
-    <td><app-status class="pull-left" [status]="version.status"></app-status></td>
+    <td><app-status class="float-left" [status]="version.status"></app-status></td>
   </tr>
   </tbody>
 </table>

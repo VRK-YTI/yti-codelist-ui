@@ -1,6 +1,6 @@
 import { EditableService } from '../../services/editable.service';
 import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';

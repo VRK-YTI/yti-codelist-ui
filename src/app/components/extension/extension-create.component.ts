@@ -3,13 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
 import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { formatDate, validDateRange } from '../../utils/date';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-extension-create',
@@ -80,11 +81,11 @@ export class ExtensionCreateComponent implements OnInit {
       this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue)
-      .do(createdExtension => {
+      .pipe(tap(createdExtension => {
         console.log('Saved new Extension');
         console.log('Saved extension route: ' + createdExtension.route);
         this.router.navigate(createdExtension.route);
-      });
+      }));
   }
 
   get loading(): boolean {

@@ -9,7 +9,7 @@ import { ExtensionScheme } from '../../entities/extension-scheme';
     <div id="{{getIdIdentifier(extensionScheme) + '_view_extensionscheme'}}"
          class="extensionScheme"
          (click)="viewExtensionScheme(extensionScheme)">
-      <app-status class="pull-right status"
+      <app-status class="float-right status"
                   [status]="extensionScheme.status"></app-status>
       <span *ngIf="extensionScheme.hasPrefLabel()"
             class="extensionschemetitle">{{extensionScheme.codeValue}} - {{extensionScheme.prefLabel | translateValue}}</span>

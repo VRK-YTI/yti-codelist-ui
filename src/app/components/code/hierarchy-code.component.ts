@@ -13,7 +13,7 @@ import { CodeScheme } from '../../entities/code-scheme';
     <i id="hierarchy_code_aligner" [hidden]="hasChildren()" class="icon fa"></i>
 
     <div id="{{getIdIdentifier(code) + '_view_code'}}" class="code" (click)="viewCode(code)">
-      <app-status class="pull-right status" [status]="code.status"></app-status>
+      <app-status class="float-right status" [status]="code.status"></app-status>
       <span *ngIf="code.hasPrefLabel()" class="codetitle">{{code.codeValue}} - {{code.prefLabel | translateValue}}</span>
       <span *ngIf="!code.hasPrefLabel()" class="codetitle">{{code.codeValue}}</span>
     </div>

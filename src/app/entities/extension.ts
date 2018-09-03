@@ -7,7 +7,7 @@ import { ExtensionType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { ExtensionScheme } from './extension-scheme';
 import { ExtensionSimple } from './extension-simple';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { Code } from './code';
 
 export class Extension implements EditableEntity {

@@ -10,17 +10,17 @@
 
   <div class="row">
     <div class="col-12">
-      <app-status class="pull-left" [status]="extensionScheme.status"></app-status>
+      <app-status class="float-left" [status]="extensionScheme.status"></app-status>
 
-      <div class="pull-right">
+      <div class="float-right">
 
         <button id="delete_extensionscheme_button"
                 *ngIf='this.canDelete' type="button"
-                class="btn btn-action pull-right ml-3"
+                class="btn btn-action float-right ml-3"
                 (click)="delete()"
                 translate>Delete</button>
 
-        <div ngbDropdown class="d-inline-block pull-right ml-3" placement="bottom-right">
+        <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
           <div ngbDropdownMenu aria-labelledby="exportDropdown">
             <a id="codelist_export_excel_link" href='{{extensionScheme.url}}/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>

@@ -6,12 +6,13 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeRegistry } from '../../entities/code-registry';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-code-registry',
@@ -120,7 +121,7 @@ export class RegistryComponent implements OnInit, EditingComponent {
       ...rest
     });
 
-    return this.dataService.saveCodeRegistry(updatedCodeRegistry.serialize()).do(() => this.ngOnInit());
+    return this.dataService.saveCodeRegistry(updatedCodeRegistry.serialize()).pipe(tap(() => this.ngOnInit()));
   }
 
   viewCodeRegistry(codeRegistry: CodeRegistry) {

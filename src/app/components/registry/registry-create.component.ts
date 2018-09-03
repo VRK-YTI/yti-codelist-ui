@@ -4,11 +4,12 @@ import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { CodeRegistryType } from '../../services/api-schema';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { Organization } from '../../entities/organization';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registry-create',
@@ -62,10 +63,10 @@ export class RegistryCreateComponent implements OnInit {
 
     console.log('Saving new Registry');
     return this.dataService.createRegistry(codeRegistry)
-      .do(createdRegistry => {
+      .pipe(tap(createdRegistry => {
         console.log('Saved new Registry');
         this.router.navigate(createdRegistry.route);
-      });
+      }));
   }
 
   isCodeValuePatternValid(control: AbstractControl) {
@@ -82,7 +83,7 @@ export class RegistryCreateComponent implements OnInit {
         }
       };
       return this.dataService.registryCodeValueExists(registryCode)
-        .map(exists => exists ? validationError : null);
+        .pipe(map(exists => exists ? validationError : null));
     };
   }
 }

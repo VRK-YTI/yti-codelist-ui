@@ -6,10 +6,11 @@ import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { ExtensionSchemeType } from '../../services/api-schema';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-extension-scheme-create',
@@ -91,10 +92,10 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
     console.log('Saving new ExtensionScheme');
     return this.dataService.createExtensionScheme(extensionScheme, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
-      .do(createdExtensionScheme => {
+      .pipe(tap(createdExtensionScheme => {
         console.log('Saved new ExtensionScheme');
         this.router.navigate(createdExtensionScheme.route);
-      });
+      }));
   }
 
   isCodeValuePatternValid(control: AbstractControl) {
@@ -113,7 +114,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
         }
       };
       return this.dataService.extensionSchemeCodeValueExists(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue)
-        .map(exists => exists ? validationError : null);
+        .pipe(map(exists => exists ? validationError : null));
     };
   }
 }

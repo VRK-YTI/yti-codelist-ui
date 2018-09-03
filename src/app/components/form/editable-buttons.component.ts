@@ -11,25 +11,25 @@ import { EditableEntity } from '../../entities/editable-entity';
             [hidden]="!editing"
             type="button"
             [disabled]="!canSave() || operationPending || invalid" 
-            class="btn btn-action pull-right ml-3" 
+            class="btn btn-action float-right ml-3" 
             (click)="save()" translate>Save</button>
     
     <button id="editable_cancel_button"
             [hidden]="!editing"
             type="button" 
             [disabled]="operationPending"
-            class="btn btn-link pull-right" 
+            class="btn btn-link float-right" 
             (click)="cancel()" 
             translate>Cancel</button>
     
     <button id="editable_edit_button"
             [hidden]="editing"
             type="button" 
-            class="btn btn-action pull-right ml-3"
+            class="btn btn-action float-right ml-3"
             *ngIf="canEdit()"
             (click)="edit()" translate>Edit</button>
     
-    <app-ajax-loading-indicator-small class="pull-right" *ngIf="operationPending"></app-ajax-loading-indicator-small>
+    <app-ajax-loading-indicator-small class="float-right" *ngIf="operationPending"></app-ajax-loading-indicator-small>
   `
 })
 export class EditableButtonsComponent {

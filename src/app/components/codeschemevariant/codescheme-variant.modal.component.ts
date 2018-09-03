@@ -3,25 +3,23 @@ import {
   ElementRef,
   Injectable,
   ViewChild,
-  Input, AfterViewInit
+  AfterViewInit
 } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
-import { Vocabulary } from '../../entities/vocabulary';
 import { LanguageService } from '../../services/language.service';
 import { ModalService} from '../../services/modal.service';
 import { OnInit } from '@angular/core';
-import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { TranslateService } from 'ng2-translate';
-import { Observable } from 'rxjs/Rx';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable, BehaviorSubject, concat } from 'rxjs';
+import { debounceTime, skip, take } from 'rxjs/operators';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
-  const initialSearch = search$.take(1);
-  const debouncedSearch = search$.skip(1).debounceTime(500);
-  return initialSearch.concat(debouncedSearch);
+  const initialSearch = search$.pipe(take(1));
+  const debouncedSearch = search$.pipe(skip(1), debounceTime(500));
+  return concat(initialSearch, debouncedSearch);
 }
 
 @Injectable()
@@ -61,8 +59,7 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    Observable.combineLatest(this.debouncedSearch$)
-      .subscribe(([search]) => {
+    this.debouncedSearch$.subscribe(search => {
 
         if (!search) {
           this.searchResults = [];

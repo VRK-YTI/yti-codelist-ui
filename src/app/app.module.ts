@@ -8,18 +8,16 @@ import {
   MissingTranslationHandlerParams,
   TranslateLoader,
   TranslateModule
-} from 'ng2-translate';
+} from '@ngx-translate/core';
 import { AppComponent } from './components/app.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { LanguageService } from './services/language.service';
 import { NavigationBarComponent } from './components/navigation/navigation-bar.component';
 import { LocationService } from './services/location.service';
-import { Observable } from 'rxjs/Observable';
 import { CodeSchemeComponent } from './components/codescheme/code-scheme.component';
 import { CodeComponent } from './components/code/code.component';
 import { DataService } from './services/data.service';
 import { StyleTestComponent } from './components/style-test.component';
-import { StatusComponent } from 'yti-common-ui/components/status.component';
 import { ContentLanguageComponent } from './components/common/content-language.component';
 import { CodeSchemeCodesComponent } from './components/codescheme/code-scheme-codes.component';
 import { CodeSchemeInformationComponent } from './components/codescheme/code-scheme-information.component';
@@ -75,7 +73,7 @@ import { EditableService } from './services/editable.service';
 import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
 import { CodeInputComponent } from './components/form/code-input.component';
 import { ClipboardComponent } from './components/form/clipboard';
-import { ClipboardModule } from 'ngx-clipboard/dist';
+import { ClipboardModule } from 'ngx-clipboard';
 import { CodeSchemeExtensionSchemesComponent } from './components/codescheme/code-scheme-extensionschemes.component';
 import { ExtensionSchemeCreateComponent } from './components/extensionscheme/extension-scheme-create.component';
 import { ExtensionSchemeComponent } from './components/extensionscheme/extension-scheme.component';
@@ -124,17 +122,18 @@ import {
   SearchLinkedCodeSchemeModalComponent,
   SearchLinkedCodeSchemeModalService
 } from './components/form/search-linked-code-scheme-modal.component';
+import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 const localizations: { [lang: string]: string } = {
-  fi: Object.assign({},
-    require('json-loader!po-loader?format=mf!../../po/fi.po'),
-    require('json-loader!po-loader?format=mf!yti-common-ui/po/fi.po')
-  )
-  ,
-  en: Object.assign({},
-    require('json-loader!po-loader?format=mf!../../po/en.po'),
-    require('json-loader!po-loader?format=mf!yti-common-ui/po/en.po')
-  )
+  fi: {
+    ...JSON.parse(require('raw-loader!po-loader?format=mf!../../po/fi.po')),
+    ...JSON.parse(require('raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po'))
+  },
+  en: {
+    ...JSON.parse(require('raw-loader!po-loader?format=mf!../../po/en.po')),
+    ...JSON.parse(require('raw-loader!po-loader?format=mf!yti-common-ui/po/en.po'))
+  }
 };
 
 const appRoutes: Routes = [
@@ -162,7 +161,7 @@ export function resolveAuthenticatedUserEndpoint() {
 }
 
 export function createTranslateLoader(): TranslateLoader {
-  return {getTranslation: (lang: string) => Observable.of(localizations[lang])};
+  return { getTranslation: (lang: string) => of(localizations[lang]) };
 }
 
 export function createMissingTranslationHandler(): MissingTranslationHandler {
@@ -186,7 +185,6 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeComponent,
     CodeCreateComponent,
     ClipboardComponent,
-    StatusComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
     ExtensionSchemeComponent,
@@ -268,12 +266,18 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeschemeVariantModalComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    TranslateModule.forRoot({provide: TranslateLoader, useFactory: createTranslateLoader}),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader
+      }
+    }),
     YtiCommonModule,
     LazyForModule,
     ClipboardModule

@@ -6,7 +6,7 @@ import { DataService } from '../../services/data.service';
 import { Status } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
-import { Observable } from 'rxjs/Observable';
+import { Observable, pipe } from 'rxjs';
 import { requiredList } from 'yti-common-ui/utils/validator';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
@@ -17,6 +17,7 @@ import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { LanguageService } from '../../services/language.service';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -154,7 +155,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     if (this.cloning) {
       console.log('Cloning CodeScheme');
       return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning)
-        .do(createdCodeScheme => {
+        .pipe(tap(createdCodeScheme => {
           console.log('Saved cloned CodeScheme');
           this.router.navigate([
             'codescheme',
@@ -163,14 +164,14 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               schemeCode: codeScheme.codeValue
             }
           ]);
-        });
+        }));
     } else {
       console.log('Saving new CodeScheme');
       return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
-        .do(createdCodeScheme => {
+        .pipe(tap(createdCodeScheme => {
           console.log('Saved new CodeScheme');
           this.router.navigate(createdCodeScheme.route);
-        });
+        }));
     }
 
   }
@@ -190,7 +191,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
         }
       };
       return this.dataService.codeSchemeCodeValueExists(registryCode, schemeCode)
-        .map(exists => exists ? validationError : null);
+        .pipe(map(exists => exists ? validationError : null));
     };
   }
 

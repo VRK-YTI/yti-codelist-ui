@@ -6,13 +6,14 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { LanguageService } from '../../services/language.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-code',
@@ -137,6 +138,6 @@ export class CodeComponent implements OnInit, EditingComponent {
       endDate: validity.end
     });
 
-    return this.dataService.saveCode(updatedCode.serialize()).do(() => this.ngOnInit());
+    return this.dataService.saveCode(updatedCode.serialize()).pipe(tap(() => this.ngOnInit()));
   }
 }

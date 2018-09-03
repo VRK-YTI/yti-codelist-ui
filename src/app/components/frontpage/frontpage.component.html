@@ -57,7 +57,7 @@
                                [filterSubject]="status$"
                                [options]="statusOptions"></app-filter-dropdown>
 
-          <div *ngIf="canCreateCodeScheme()" class="pull-right d-inline-block">
+          <div *ngIf="canCreateCodeScheme()" class="float-right d-inline-block">
             <button id="import_codelist_button"
                     type="button"
                     class="btn btn-action"
@@ -85,7 +85,7 @@
           <div class="col-12">
             <div class="code-scheme" id="{{codeScheme.idIdentifier + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
-              <app-status class="pull-right" [status]="codeScheme.status"></app-status>
+              <app-status class="float-right" [status]="codeScheme.status"></app-status>
               <div class="organization">
                 <span *ngIf="codeScheme.codeRegistry.organizations.length == 0" translate>No organization</span>
                 <span *ngIf="codeScheme.codeRegistry.organizations.length == 1">{{codeScheme.codeRegistry.organizations[0].prefLabel | translateValue:true}}</span>
