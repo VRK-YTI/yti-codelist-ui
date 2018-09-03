@@ -180,6 +180,8 @@ export interface ExtensionType {
   extensionScheme: ExtensionSchemeType;
   extension?: ExtensionSimpleType;
   code: CodeType;
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface ExtensionSimpleType {
@@ -191,6 +193,8 @@ export interface ExtensionSimpleType {
   order?: string;
   modified?: string;
   code: CodeType;
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface CodeSchemeListItemType {

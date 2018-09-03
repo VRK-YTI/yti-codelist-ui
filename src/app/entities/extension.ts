@@ -1,6 +1,6 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
-import { formatDateTime, formatDisplayDateTime, parseDateTime } from '../utils/date';
+import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { Moment } from 'moment';
 import { ExtensionType } from '../services/api-schema';
@@ -21,6 +21,8 @@ export class Extension implements EditableEntity {
   extension?: ExtensionSimple;
   code: Code;
   prefLabel: Localizable;
+  startDate: Moment | null = null;
+  endDate: Moment | null = null;
 
   constructor(data: ExtensionType) {
     this.id = data.id;
@@ -37,6 +39,12 @@ export class Extension implements EditableEntity {
     }
     if (data.code) {
       this.code = new Code(data.code);
+    }
+    if (data.startDate) {
+      this.startDate = parseDate(data.startDate);
+    }
+    if (data.endDate) {
+      this.endDate = parseDate(data.endDate);
     }
   }
 
@@ -86,6 +94,8 @@ export class Extension implements EditableEntity {
       extensionScheme: this.extensionScheme.serialize(),
       extension: this.extension ? this.extension.serialize() : undefined,
       code: this.code.serialize(),
+      startDate: formatDate(this.startDate),
+      endDate: formatDate(this.endDate)
     };
   }
 

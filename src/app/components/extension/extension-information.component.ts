@@ -11,6 +11,7 @@ import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LocationService } from '../../services/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
+import { validDateRange } from '../../utils/date';
 
 @Component({
   selector: 'app-extension-information',
@@ -28,7 +29,8 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     prefLabel: new FormControl({}),
     extensionValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
-    extension: new FormControl(null)
+    extension: new FormControl(null),
+    validity: new FormControl(null, validDateRange)
   });
 
   constructor(private route: ActivatedRoute,
@@ -70,10 +72,11 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   reset() {
-    const { ...rest } = this.currentExtension;
+    const { startDate, endDate, ...rest } = this.currentExtension;
 
     this.extensionForm.reset({
-      ...rest
+      ...rest,
+      validity: { start: startDate, end: endDate }
     });
   }
 

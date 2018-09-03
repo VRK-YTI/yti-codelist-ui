@@ -9,6 +9,7 @@ import { ExtensionType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
 import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
+import { formatDate, validDateRange } from '../../utils/date';
 
 @Component({
   selector: 'app-extension-create',
@@ -24,7 +25,8 @@ export class ExtensionCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     extensionValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
-    extension: new FormControl(null)
+    extension: new FormControl(null),
+    validity: new FormControl(null, validDateRange)
   });
 
   constructor(private dataService: DataService,
@@ -64,11 +66,13 @@ export class ExtensionCreateComponent implements OnInit {
 
     console.log('Saving new Extension');
 
-    const { code, currentExtension, ...rest } = formData;
+    const { code, currentExtension, validity, ...rest } = formData;
 
     const extension: ExtensionType = <ExtensionType> {
       ...rest,
       code: code,
+      startDate: formatDate(validity.start),
+      endDate: formatDate(validity.end),
       extension: currentExtension
     };
 

@@ -133,11 +133,13 @@ export class ExtensionComponent implements OnInit, EditingComponent {
 
     console.log('Store Extension changes to server!');
 
-    const {...rest} = formData;
+    const { validity, ...rest } = formData;
     const updatedExtension = this.extension.clone();
 
     Object.assign(updatedExtension, {
       ...rest,
+      startDate: validity.start,
+      endDate: validity.end
     });
 
     return this.dataService.saveExtension(updatedExtension.serialize()).do(() => this.ngOnInit());
