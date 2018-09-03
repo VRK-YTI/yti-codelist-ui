@@ -205,15 +205,6 @@ msgstr ""
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Import extension schemes"
-msgstr ""
-
-msgid "Create extension scheme"
-msgstr ""
-
-msgid "This code list does not have any extension schemes yet."
-msgstr ""
-
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -267,6 +258,12 @@ msgid "Export CSV"
 msgstr ""
 
 msgid "Extension schemes"
+msgstr ""
+
+msgid "Create extension scheme"
+msgstr ""
+
+msgid "Import extension schemes"
 msgstr ""
 
 msgid "CODES"
@@ -620,7 +617,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 
 msgid "Front page"
@@ -745,10 +742,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
@@ -848,6 +845,9 @@ msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

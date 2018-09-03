@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-31 14:44+0300\n"
+"PO-Revision-Date: 2018-09-03 14:24+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -214,15 +214,6 @@ msgstr "Sitovuustaso"
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Import extension schemes"
-msgstr "Tuo laajennusjärjestelmiä"
-
-msgid "Create extension scheme"
-msgstr "Luo laajennusjärjestelmä"
-
-msgid "This code list does not have any extension schemes yet."
-msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
-
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -284,6 +275,12 @@ msgstr "Lataa CSV"
 
 msgid "Extension schemes"
 msgstr "Laajennusjärjestelmät"
+
+msgid "Create extension scheme"
+msgstr "Luo laajennusjärjestelmä"
+
+msgid "Import extension schemes"
+msgstr "Tuo laajennusjärjestelmiä"
 
 msgid "CODES"
 msgstr "KOODIT"
@@ -684,8 +681,9 @@ msgstr "Voimassaolon päättymispäivämäärä"
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
-msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -812,12 +810,11 @@ msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr "Aineistossa puuttuu arvo sarakkeesta CODE riviltä {{ identifier }}."
 
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
-msgstr ""
-"Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
@@ -926,6 +923,11 @@ msgstr ""
 "Laajennusten linkityksessä syklinen ongelma. Tarkista, että laajennus-"
 "ketjussa ei ole rinnakkaisia viitteitä laajennusten välillä."
 
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
+msgstr ""
+"Laajennusjärjestelmään ei voi liittää sitä koodistoa, jonka alaisuudessa se "
+"on."
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
 
@@ -981,6 +983,9 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
+
+#~ msgid "This code list does not have any extension schemes yet."
+#~ msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
 
 #~ msgid "UNFINISHED"
 #~ msgstr "Keskeneräinen"

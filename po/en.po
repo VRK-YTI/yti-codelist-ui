@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-08-31 14:44+0300\n"
+"PO-Revision-Date: 2018-09-03 14:24+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -214,15 +214,6 @@ msgstr ""
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Import extension schemes"
-msgstr ""
-
-msgid "Create extension scheme"
-msgstr ""
-
-msgid "This code list does not have any extension schemes yet."
-msgstr ""
-
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -276,6 +267,12 @@ msgid "Export CSV"
 msgstr ""
 
 msgid "Extension schemes"
+msgstr ""
+
+msgid "Create extension scheme"
+msgstr ""
+
+msgid "Import extension schemes"
 msgstr ""
 
 msgid "CODES"
@@ -665,10 +662,10 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "The technical code or permanent identifier of the extension scheme"
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
-"ORDER."
+"EXTENSIONVALUE."
 
 msgid "Front page"
 msgstr ""
@@ -798,13 +795,13 @@ msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
 "CODE."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
-"EXTENSIONVALUE."
+"ORDER."
+
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Erroneous start date on row {{ identifier }}."
@@ -914,6 +911,11 @@ msgid "ERR_MSG_USER_EXTENSION_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 "Cyclic dependency in extension linking. Please ensure that the chained "
 "extensions are not linked to each in a cyclic manner."
+
+msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
+msgstr ""
+"ExtensionScheme cannot be linked to the same code list which it is attached "
+"to."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
