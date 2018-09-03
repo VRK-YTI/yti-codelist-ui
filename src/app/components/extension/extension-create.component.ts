@@ -26,7 +26,7 @@ export class ExtensionCreateComponent implements OnInit {
     extensionValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
     extension: new FormControl(null),
-    validity: new FormControl(null, validDateRange)
+    validity: new FormControl({ start: null, end: null }, validDateRange)
   });
 
   constructor(private dataService: DataService,
