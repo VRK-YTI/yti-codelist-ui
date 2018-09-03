@@ -418,10 +418,10 @@ msgid "Registries"
 msgstr "Rekisterit"
 
 msgid "Suomi.fi Controlled Vocabularies"
-msgstr ""
+msgstr "Suomi.fi-sanastot"
 
 msgid "Suomi.fi Data Vocabularies"
-msgstr ""
+msgstr "Suomi.fi-tietomallit"
 
 msgid "User right management"
 msgstr "Oikeuksienhallinta"
