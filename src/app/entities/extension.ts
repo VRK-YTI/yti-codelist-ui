@@ -112,6 +112,32 @@ export class Extension implements EditableEntity {
     }
   }
 
+  getDisplayNameWithExtensionScheme(extensionScheme: ExtensionScheme,
+                                    localizer: Localizer,
+                                    translater: TranslateService,
+                                    useUILanguage: boolean = false): string {
+    const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
+
+    let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
+    if (!codeTitle) {
+      codeTitle = this.code ? this.code.codeValue : null;
+    }
+    if (this.code.codeScheme.id !== extensionScheme.parentCodeScheme.id) {
+      const codeSchemeTitle = localizer.translate(this.code.codeScheme.prefLabel, useUILanguage);
+      codeTitle = codeTitle + ' - ' + codeSchemeTitle;
+    }
+
+    const extensionValue = this.extensionValue;
+
+    if (extensionTitle && extensionValue) {
+      return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
+    } else if (extensionValue) {
+      return `${extensionValue} - ${codeTitle}`;
+    } else {
+      return codeTitle ? codeTitle : '';
+    }
+  }
+
   hasPrefLabel() {
     return hasLocalization(this.code.prefLabel);
   }

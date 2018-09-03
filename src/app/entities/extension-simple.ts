@@ -1,10 +1,11 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { formatDateTime, formatDisplayDateTime, parseDateTime } from '../utils/date';
 import { Moment } from 'moment';
-import { ExtensionSimpleType, ExtensionType } from '../services/api-schema';
+import { ExtensionSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
-import { CodePlain } from './code-simple';
 import { TranslateService } from 'ng2-translate';
+import { Code } from './code';
+import { ExtensionScheme } from './extension-scheme';
 
 export class ExtensionSimple {
 
@@ -12,8 +13,8 @@ export class ExtensionSimple {
   url: string;
   extensionValue: string;
   order?: string;
-  modified: Moment|null = null;
-  code: CodePlain;
+  modified: Moment | null = null;
+  code: Code;
   prefLabel: Localizable;
 
   constructor(data: ExtensionSimpleType) {
@@ -26,7 +27,7 @@ export class ExtensionSimple {
       this.modified = parseDateTime(data.modified);
     }
     if (data.code) {
-      this.code = new CodePlain(data.code);
+      this.code = new Code(data.code);
     }
   }
 
@@ -60,6 +61,32 @@ export class ExtensionSimple {
       return `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
     } else {
       return `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
+    }
+  }
+
+  getDisplayNameWithExtensionScheme(extensionScheme: ExtensionScheme,
+                                    localizer: Localizer,
+                                    translater: TranslateService,
+                                    useUILanguage: boolean = false): string {
+    const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
+
+    let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
+    if (!codeTitle) {
+      codeTitle = this.code ? this.code.codeValue : null;
+    }
+    if (this.code.codeScheme.id !== extensionScheme.parentCodeScheme.id) {
+      const codeSchemeTitle = localizer.translate(this.code.codeScheme.prefLabel, useUILanguage);
+      codeTitle = codeTitle + ' - ' + codeSchemeTitle;
+    }
+
+    const extensionValue = this.extensionValue;
+
+    if (extensionTitle && extensionValue) {
+      return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
+    } else if (extensionValue) {
+      return `${extensionValue} - ${codeTitle}`;
+    } else {
+      return codeTitle ? codeTitle : '';
     }
   }
 

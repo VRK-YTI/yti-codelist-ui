@@ -190,7 +190,7 @@ export interface ExtensionSimpleType {
   prefLabel?: Localizable;
   order?: string;
   modified?: string;
-  code: CodePlainType;
+  code: CodeType;
 }
 
 export interface CodeSchemeListItemType {

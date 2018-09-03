@@ -29,7 +29,7 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && extension">
-          <span>{{extension.getDisplayName(languageService, translateService)}}</span>
+          <span>{{extension.getDisplayNameWithExtensionScheme(extensionScheme, languageService, translateService)}}</span>
         </div>
         <div *ngIf="editing && extension">
           <a>
@@ -37,7 +37,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeExtension(extension)"></i>
           </a>
-          <span>{{extension.getDisplayName(languageService, translateService)}}</span>
+          <span>{{extension.getDisplayNameWithExtensionScheme(extensionScheme, languageService, translateService)}}</span>
           <app-error-messages id="extension_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
@@ -59,8 +59,10 @@ export class ExtensionInputComponent implements ControlValueAccessor {
   @Input() required = false;
   control = new FormControl(null);
 
-  private propagateChange: (fn: any) => void = () => {};
-  private propagateTouched: (fn: any) => void = () => {};
+  private propagateChange: (fn: any) => void = () => {
+  };
+  private propagateTouched: (fn: any) => void = () => {
+  };
 
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService,
@@ -76,8 +78,8 @@ export class ExtensionInputComponent implements ControlValueAccessor {
     }
   }
 
-  get extension() {
-    return this.control.value as Extension;
+  get extension(): Extension {
+    return this.control.value;
   }
 
   selectExtension() {

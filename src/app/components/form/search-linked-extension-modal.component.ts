@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, Renderer, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -79,7 +79,8 @@ export class SearchLinkedExtensionModalService {
       <button id="cancel_modal_button"
               type="button"
               class="btn btn-link cancel"
-              (click)="cancel()" translate>Cancel</button>
+              (click)="cancel()" translate>Cancel
+      </button>
     </div>
   `
 })
