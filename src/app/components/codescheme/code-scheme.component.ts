@@ -36,6 +36,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   codeRegistries: CodeRegistry[];
   env: string;
   chosenVariant: CodeScheme;
+  deleting = false;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -103,7 +104,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.codes == null ||
       this.extensionSchemes == null ||
       this.codeRegistries == null ||
-      this.env == null;
+      this.env == null ||
+      this.deleting;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -147,9 +149,12 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   delete() {
     this.confirmationModalService.openRemoveCodeScheme()
       .then(() => {
+        this.deleting = true;
         this.dataService.deleteCodeScheme(this.codeScheme).subscribe(res => {
+          this.deleting = false;
           this.router.navigate(['frontpage']);
         }, error => {
+          this.deleting = false;
           this.errorModalService.openSubmitError(error);
         });
       }, ignoreModalClose);
