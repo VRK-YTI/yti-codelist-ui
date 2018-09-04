@@ -1,11 +1,5 @@
 @import '~yti-common-ui/theme/variables';
 
-.emptyExtensionSchemes {
-  margin-right: 200px;
-  padding: 10px 40px;
-  margin-top: 5px;
-}
-
 :host /deep/ .extensionSchemes {
 
   color: $primary;
@@ -39,9 +33,13 @@
         font-size: 14px;
       }
     }
+  }
 
-    li.child-code {
-      padding-left: 15px;
-    }
+  .nav-link {
+    font-size: medium;
+  }
+
+  .exttabs {
+    margin-top: -60px;
   }
 }
