@@ -47,8 +47,7 @@ function removeFromControl<T>(control: FormControl) {
                 id="add_code_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
-                (click)="selectCode()" translate>Select code
-        </button>
+                (click)="selectCode()" translate>Select code</button>
       </dd>
     </dl>
   `
