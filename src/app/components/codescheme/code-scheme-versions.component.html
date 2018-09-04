@@ -4,6 +4,7 @@
     <th scope="col" translate>Validity</th>
     <th scope="col" translate>Name</th>
     <th scope="col" translate>Status</th>
+    <th scope="col" translate>&nbsp;</th>
   </tr>
   </thead>
   <tbody>
@@ -11,6 +12,7 @@
     <td scope="row">{{version.validityDateRange}}</td>
     <td><a href="{{getVersionUri(version.uri)}}" target="_blank">{{version.prefLabel | translateValue:true }}</a></td>
     <td><app-status class="float-left" [status]="version.status"></app-status></td>
+    <td>&nbsp;</td>
   </tr>
   </tbody>
 </table>
