@@ -37,7 +37,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   codeRegistries: CodeRegistry[];
   env: string;
   chosenVariant: CodeScheme;
-  forbiddenVariantSearchResultIds : string[] = [];
+  forbiddenVariantSearchResultIds: string[] = [];
   deleting = false;
 
   constructor(private userService: UserService,
