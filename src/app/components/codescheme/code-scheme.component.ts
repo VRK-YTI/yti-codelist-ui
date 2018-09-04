@@ -217,7 +217,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get showUnfinishedFeature() {
-    return this.env === 'dev';
+    return this.env === 'dev' || this.env === 'local';
   }
 
   reloadCodeScheme() {

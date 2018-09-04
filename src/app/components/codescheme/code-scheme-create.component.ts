@@ -125,7 +125,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   get showUnfinishedFeature() {
-    return this.env === 'dev';
+    return this.env === 'dev' || this.env === 'local';
   }
 
   get loading(): boolean {

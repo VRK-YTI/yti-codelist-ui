@@ -103,7 +103,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get showUnfinishedFeature() {
-    return this.env === 'dev';
+    return this.env === 'dev' || this.env === 'local';
   }
 
   getCodeUri() {

@@ -66,7 +66,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   }
 
   get showUnfinishedFeature() {
-    return this.env === 'dev';
+    return this.env === 'dev' || this.env === 'local';
   }
 
   get loading(): boolean {

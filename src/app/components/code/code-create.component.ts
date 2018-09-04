@@ -141,6 +141,6 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
   }
 
   get showUnfinishedFeature() {
-    return this.env === 'dev';
+    return this.env === 'dev' || this.env === 'local';
   }
 }
