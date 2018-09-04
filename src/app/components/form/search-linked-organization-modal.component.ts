@@ -50,7 +50,6 @@ export class SearchLinkedOrganizationModalService {
                    [placeholder]="searchLabel"
                    [(ngModel)]="search"/>
           </div>
-
         </div>
       </div>
 
