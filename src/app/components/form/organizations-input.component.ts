@@ -53,8 +53,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="addOrganization()" translate>Add organization
-        </button>
+                (click)="addOrganization()" translate>Add organization</button>
       </dd>
     </dl>
   `
