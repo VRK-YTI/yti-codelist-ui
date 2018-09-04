@@ -77,8 +77,7 @@ export class SearchLinkedCodeModalService {
                             (click)="selectCodeScheme(codeScheme)"
                             class="dropdown-item"
                             [class.active]="selectedCodeScheme === codeScheme">
-                            {{codeScheme.getLongDisplayName(languageService, false)}}
-                    </button>
+                      {{codeScheme.getLongDisplayName(languageService, false)}}</button>
                   </div>
                 </div>
               </dd>
