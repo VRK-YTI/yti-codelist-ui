@@ -1,6 +1,6 @@
 import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class CodeListErrorModalService {
@@ -12,9 +12,8 @@ export class CodeListErrorModalService {
 
     const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
 
-    if (error instanceof Response) {
-
-      const body = error.json();
+    if (error instanceof HttpErrorResponse) {
+      const body = error.error;
 
       this.errorModalService.openWithOptions({
         title: 'Submit error',
