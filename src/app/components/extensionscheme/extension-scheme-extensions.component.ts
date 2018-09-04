@@ -4,7 +4,7 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Extension } from '../../entities/extension';
 import { ExtensionScheme } from '../../entities/extension-scheme';
-import { ExtensionComponent } from './extension-scheme.component';
+import { ExtensionSchemeComponent } from './extension-scheme.component';
 import { ExtensionSchemeExtensionsImportModalService } from '../extension/extension-import-modal.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class ExtensionSchemeExtensionsComponent {
   @Input() extensions: Extension[];
   @Input() extensionScheme: ExtensionScheme;
 
-  constructor(private extensionSchemeComponent: ExtensionComponent,
+  constructor(private extensionSchemeComponent: ExtensionSchemeComponent,
               private extensionSchemeExtensionsImportModalService: ExtensionSchemeExtensionsImportModalService,
               private router: Router,
               private authorizationManager: AuthorizationManager) {

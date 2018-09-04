@@ -21,7 +21,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./extension-scheme.component.scss'],
   providers: [EditableService],
 })
-export class ExtensionComponent implements OnInit, EditingComponent {
+export class ExtensionSchemeComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
