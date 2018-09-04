@@ -45,8 +45,7 @@ function removeFromControl<T>(control: FormControl) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="selectExtension()" translate>Select extension
-        </button>
+                (click)="selectExtension()" translate>Select extension</button>
       </dd>
     </dl>
   `
