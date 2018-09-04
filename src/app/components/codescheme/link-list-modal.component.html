@@ -12,13 +12,13 @@
         <label>{{propertyExternalReferences.label | translateValue}}</label>
 
         <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
-          <div class="form-check">
+          <div class="form-check"
+               (click)="selectedExternalReference = externalReference">
             <label class="form-check-label">
               <input id="{{externalReference.getIdIdentifier(languageService) + '_external_reference_input'}}"
                      class="form-check-input"
                      type="radio"
                      name="externalReference"
-                     (click)="selectedExternalReference = externalReference"
                      [checked]="selectedExternalReference === externalReference"
                      title="{{externalReference.title | translateValue}}">
               <span>{{externalReference.getDisplayName(languageService)}}</span>
