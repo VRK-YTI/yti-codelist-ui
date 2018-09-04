@@ -12,7 +12,8 @@
         <label>{{propertyExternalReferences.label | translateValue}}</label>
 
         <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
-          <div class="form-check"
+          <div id="{{externalReference.getIdIdentifier(languageService) + '_external_reference_div'}}"
+               class="form-check"
                (click)="selectedExternalReference = externalReference">
             <label class="form-check-label">
               <input id="{{externalReference.getIdIdentifier(languageService) + '_external_reference_input'}}"
