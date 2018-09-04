@@ -118,8 +118,7 @@ export class SearchLinkedCodeModalService {
       <button id="cancel_modal_button"
               type="button"
               class="btn btn-link cancel"
-              (click)="cancel()" translate>Cancel
-      </button>
+              (click)="cancel()" translate>Cancel</button>
     </div>
   `
 })
