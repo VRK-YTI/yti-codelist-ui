@@ -26,8 +26,7 @@ import { EditableService } from '../../services/editable.service';
                       (click)="select(propertyTypeOption)"
                       class="dropdown-item"
                       [class.active]="isSelected(propertyTypeOption)">
-                {{propertyTypeOption.prefLabel | translateValue}}
-              </button>
+                {{propertyTypeOption.prefLabel | translateValue}}</button>
             </div>
           </div>
           <app-error-messages id="propertytype_error_messages" [control]="parentControl"></app-error-messages>

@@ -60,8 +60,7 @@ export class SearchLinkedExtensionModalService {
         <div class="col-12">
           <div class="content-box">
             <div class="search-results">
-              <div id="{{extension.idIdentifier + '_extension_link'}}"
-                   class="search-result"
+              <div class="search-result"
                    *ngFor="let extension of searchResults$ | async; let last = last"
                    (click)="select(extension)">
                 <div class="content" [class.last]="last">                  
@@ -80,8 +79,7 @@ export class SearchLinkedExtensionModalService {
       <button id="cancel_modal_button"
               type="button"
               class="btn btn-link cancel"
-              (click)="cancel()" translate>Cancel
-      </button>
+              (click)="cancel()" translate>Cancel</button>
     </div>
   `
 })
