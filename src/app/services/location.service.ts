@@ -13,8 +13,8 @@ const codeSchemeImportAndCreatePage = { localizationKey: 'Add code list', route:
 const createNewVersionOfCodeSchemePage = { localizationKey: 'createNewVersion', route: ['createcodescheme'] };
 const createCodeSchemePage = { localizationKey: 'Create code list', route: ['createcodescheme'] };
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
-const createExtensionSchemePage = { localizationKey: 'Create extension scheme', route: ['createextensionscheme'] };
-const createExtensionPage = { localizationKey: 'Create extension', route: ['createextension'] };
+const createExtensionPage = { localizationKey: 'Create extension', route: ['createextensionscheme'] };
+const createMemberPage = { localizationKey: 'Create member', route: ['createextension'] };
 const createRegistryPage = { localizationKey: 'Create registry', route: ['createregistry'] };
 
 @Injectable()
@@ -61,11 +61,11 @@ export class LocationService {
     this.changeLocation(code.location);
   }
 
-  atExtensionSchemePage(extensionScheme: ExtensionScheme): void {
+  atExtensionPage(extensionScheme: ExtensionScheme): void {
     this.changeLocation(extensionScheme.location);
   }
 
-  atExtensionPage(extension: Extension): void {
+  atMemberPage(extension: Extension): void {
     this.changeLocation(extension.location);
   }
 
@@ -85,12 +85,12 @@ export class LocationService {
     this.changeLocation([...codeScheme.location, createCodePage]);
   }
 
-  atExtensionSchemeCreatePage(codeScheme: CodeScheme): void {
-    this.changeLocation([...codeScheme.location, createExtensionSchemePage]);
+  atExtensionCreatePage(codeScheme: CodeScheme): void {
+    this.changeLocation([...codeScheme.location, createExtensionPage]);
   }
 
-  atExtensionCreatePage(extensionScheme: ExtensionScheme): void {
-    this.changeLocation([...extensionScheme.location, createExtensionPage]);
+  atMemberCreatePage(extensionScheme: ExtensionScheme): void {
+    this.changeLocation([...extensionScheme.location, createMemberPage]);
   }
 
   atInformationAboutService(): void {

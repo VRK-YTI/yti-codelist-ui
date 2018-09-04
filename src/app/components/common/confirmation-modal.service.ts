@@ -28,11 +28,11 @@ export class CodeListConfirmationModalService {
   }
 
   openRemoveExtensionScheme() {
-    return this.confirmationModalService.open('REMOVE EXTENSION SCHEME?', '');
+    return this.confirmationModalService.open('REMOVE EXTENSION?', '');
   }
 
   openRemoveExtension() {
-    return this.confirmationModalService.open('REMOVE EXTENSION?', '');
+    return this.confirmationModalService.open('REMOVE MEMBER?', '');
   }
 
   openOverWriteExistingValuesFromVocabularies() {

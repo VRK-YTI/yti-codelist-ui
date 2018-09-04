@@ -55,7 +55,7 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
 
       this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
         this.extensionScheme = extensionScheme;
-        this.locationService.atExtensionSchemePage(extensionScheme);
+        this.locationService.atExtensionPage(extensionScheme);
       });
     }
   }

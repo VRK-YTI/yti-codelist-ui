@@ -41,18 +41,18 @@
         </div>
 
         <div *ngIf="showUnfinishedFeature && this.canAddExtensionScheme" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Extension schemes</button>
+          <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Extensions</button>
           <div ngbDropdownMenu aria-labelledby="extensionSchemeDropdown">
             <button id="create_extensionscheme_button"
                     type="button"
                     class="dropdown-item"
                     (click)="createExtensionScheme()"
-                    translate>Create extension scheme</button>
+                    translate>Create extension</button>
             <button id="import_extensionschemes_button"
                     type="button"
                     class="dropdown-item"
                     (click)="importExtensionSchemes()"
-                    translate>Import extension schemes</button>
+                    translate>Import extensions</button>
           </div>
         </div>
         <app-content-language></app-content-language>
@@ -105,7 +105,7 @@
 
     <ngb-tab *ngIf="showUnfinishedFeature && extensionSchemes.length > 0" id="codelist_extensionschemes_tab">
       <ng-template ngbTabTitle>
-        <span translate>EXTENSION SCHEMES</span>
+        <span translate>EXTENSIONS</span>
       </ng-template>
 
       <ng-template ngbTabContent>

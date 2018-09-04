@@ -5,7 +5,7 @@
     <ngb-tab *ngFor="let propertyExtensionSchemes of extensionSchemesByType"
              id="codelist_extensionscheme_{{ propertyExtensionSchemes.label | translateValue }}_tab">
       <ng-template ngbTabTitle>
-        <span>{{propertyExtensionSchemes.label | translateValue}}</span>
+        <span>{{propertyExtensionSchemes.label}}</span>
       </ng-template>
 
       <ng-template ngbTabContent>

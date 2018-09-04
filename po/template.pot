@@ -58,13 +58,13 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid "Select extension"
+msgid "Select member"
 msgstr ""
 
-msgid "Choose extension"
+msgid "Choose member"
 msgstr ""
 
-msgid "Search extension"
+msgid "Search member"
 msgstr ""
 
 msgid "Add link"
@@ -257,19 +257,19 @@ msgstr ""
 msgid "Export CSV"
 msgstr ""
 
-msgid "Extension schemes"
+msgid "Extensions"
 msgstr ""
 
-msgid "Create extension scheme"
+msgid "Create extension"
 msgstr ""
 
-msgid "Import extension schemes"
+msgid "Import extensions"
 msgstr ""
 
 msgid "CODES"
 msgstr ""
 
-msgid "EXTENSION SCHEMES"
+msgid "EXTENSIONS"
 msgstr ""
 
 msgid "versionHistory"
@@ -323,37 +323,40 @@ msgstr ""
 msgid "No search results"
 msgstr ""
 
-msgid "Extension scheme"
+msgid "Extension"
 msgstr ""
 
-msgid "Extension name"
+msgid "Member name"
 msgstr ""
 
-msgid "Extension value"
+msgid "Member value"
 msgstr ""
 
 msgid "Code"
 msgstr ""
 
-msgid "Extension"
+msgid "Member"
 msgstr ""
 
-msgid "Create extension"
+msgid "Create member"
 msgstr ""
 
-msgid "Import extensions"
+msgid "Import members"
+msgstr ""
+
+msgid "Extension scheme"
 msgstr ""
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "Extension scheme name"
+msgid "Extension name"
 msgstr ""
 
-msgid "Extension scheme type"
+msgid "Extension type"
 msgstr ""
 
-msgid "This extension scheme does not have any extensions yet."
+msgid "This extension does not have any members yet."
 msgstr ""
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
@@ -362,7 +365,7 @@ msgstr ""
 msgid "Codescheme"
 msgstr ""
 
-msgid "EXTENSIONS"
+msgid "MEMBERS"
 msgstr ""
 
 msgid "code list"
@@ -617,7 +620,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
 
 msgid "Front page"
@@ -679,13 +682,19 @@ msgstr ""
 msgid "REMOVE CODE LIST?"
 msgstr ""
 
-msgid "REMOVE EXTENSION SCHEME?"
-msgstr ""
-
 msgid "REMOVE EXTENSION?"
 msgstr ""
 
+msgid "REMOVE MEMBER?"
+msgstr ""
+
 msgid "DETACH VARIANT?"
+msgstr ""
+
+msgid "CALCULATIONHIERARCHIES"
+msgstr ""
+
+msgid "DEFINITIONHIERARCHIES"
 msgstr ""
 
 msgid "ADMIN"
@@ -742,10 +751,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"

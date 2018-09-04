@@ -59,7 +59,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
     this.dataService.getExtension(extensionId).subscribe(extension => {
       this.currentExtension = extension;
-      this.locationService.atExtensionPage(extension);
+      this.locationService.atMemberPage(extension);
     });
 
     this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {

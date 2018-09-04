@@ -4,7 +4,7 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Extension } from '../../entities/extension';
 import { ExtensionScheme } from '../../entities/extension-scheme';
-import { ExtensionSchemeComponent } from './extension-scheme.component';
+import { ExtensionComponent } from './extension-scheme.component';
 import { ExtensionSchemeExtensionsImportModalService } from '../extension/extension-import-modal.component';
 
 @Component({
@@ -17,13 +17,13 @@ export class ExtensionSchemeExtensionsComponent {
   @Input() extensions: Extension[];
   @Input() extensionScheme: ExtensionScheme;
 
-  constructor(private extensionSchemeComponent: ExtensionSchemeComponent,
+  constructor(private extensionSchemeComponent: ExtensionComponent,
               private extensionSchemeExtensionsImportModalService: ExtensionSchemeExtensionsImportModalService,
               private router: Router,
               private authorizationManager: AuthorizationManager) {
   }
 
-  importExtensions() {
+  importMembers() {
     this.extensionSchemeExtensionsImportModalService.open(this.extensionScheme).then(success => {
       if (success) {
         this.extensionSchemeComponent.refreshExtensions();
@@ -31,10 +31,10 @@ export class ExtensionSchemeExtensionsComponent {
     }, ignoreModalClose);
   }
 
-  createExtension() {
-    console.log('Extension create clicked.');
+  createMember() {
+    console.log('Member create clicked.');
     this.router.navigate(
-      ['createextension',
+      ['createmember',
         {
           registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
           schemeCode: this.extensionScheme.parentCodeScheme.codeValue,

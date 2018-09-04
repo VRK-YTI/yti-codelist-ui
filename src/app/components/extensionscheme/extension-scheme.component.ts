@@ -21,7 +21,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./extension-scheme.component.scss'],
   providers: [EditableService],
 })
-export class ExtensionSchemeComponent implements OnInit, EditingComponent {
+export class ExtensionComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
@@ -60,7 +60,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
 
     this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
       this.extensionScheme = extensionScheme;
-      this.locationService.atExtensionSchemePage(extensionScheme);
+      this.locationService.atExtensionPage(extensionScheme);
     });
 
     this.dataService.getExtensions(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {

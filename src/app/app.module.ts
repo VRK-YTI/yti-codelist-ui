@@ -75,12 +75,12 @@ import { CodeInputComponent } from './components/form/code-input.component';
 import { ClipboardComponent } from './components/form/clipboard';
 import { ClipboardModule } from 'ngx-clipboard';
 import { CodeSchemeExtensionSchemesComponent } from './components/codescheme/code-scheme-extensionschemes.component';
-import { ExtensionSchemeCreateComponent } from './components/extensionscheme/extension-scheme-create.component';
-import { ExtensionSchemeComponent } from './components/extensionscheme/extension-scheme.component';
+import { ExtensionCreateComponent } from './components/extensionscheme/extension-scheme-create.component';
+import { ExtensionComponent } from './components/extensionscheme/extension-scheme.component';
 import { ExtensionSchemeInformationComponent } from './components/extensionscheme/extension-scheme-information.component';
 import { ExtensionSchemeExtensionsComponent } from './components/extensionscheme/extension-scheme-extensions.component';
 import { ExtensionInformationComponent } from './components/extension/extension-information.component';
-import { ExtensionCreateComponent } from './components/extension/extension-create.component';
+import { MemberCreateComponent } from './components/extension/extension-create.component';
 import { ExtensionSchemeListitemComponent } from './components/extensionscheme/extension-scheme-listitem.component';
 import {
   ExtensionSchemeExtensionsImportModalService,
@@ -91,7 +91,7 @@ import {
   ExtensionSchemesImportModalService
 } from './components/extensionscheme/extension-scheme-import-modal.component';
 import { ExtensionListitemComponent } from './components/extension/extension-listitem.component';
-import { ExtensionComponent } from './components/extension/extension.component';
+import { MemberComponent } from './components/extension/extension.component';
 import {
   SearchLinkedExtensionModalComponent,
   SearchLinkedExtensionModalService
@@ -141,14 +141,14 @@ const appRoutes: Routes = [
   {path: 'frontpage', redirectTo: '/', pathMatch: 'full'},
   {path: 'createcode', component: CodeCreateComponent, pathMatch: 'full'},
   {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
-  {path: 'createextensionscheme', component: ExtensionSchemeCreateComponent, pathMatch: 'full'},
   {path: 'createextension', component: ExtensionCreateComponent, pathMatch: 'full'},
+  {path: 'createmember', component: MemberCreateComponent, pathMatch: 'full'},
   {path: 'createregistry', component: RegistryCreateComponent, pathMatch: 'full'},
   {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'extensionscheme', component: ExtensionSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'extensionscheme', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'member', component: MemberComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
   {path: 'userDetails', component: UserDetailsComponent},
   {path: 'information', component: InformationAboutServiceComponent},
@@ -187,13 +187,13 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ClipboardComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
-    ExtensionSchemeComponent,
     ExtensionComponent,
+    MemberComponent,
     CodeSchemeExtensionSchemesComponent,
     ExtensionSchemeInformationComponent,
     ExtensionSchemeExtensionsComponent,
     ExtensionInformationComponent,
-    ExtensionCreateComponent,
+    MemberCreateComponent,
     ExtensionSchemeListitemComponent,
     RegistriesComponent,
     RegistryCreateComponent,
@@ -208,7 +208,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeCodesImportModalComponent,
     CodeSchemeImportModalComponent,
     CodeSchemeCreateComponent,
-    ExtensionSchemeCreateComponent,
+    ExtensionCreateComponent,
     ExtensionsImportModalComponent,
     ExtensionSchemesImportModalComponent,
     LocalizableInputComponent,

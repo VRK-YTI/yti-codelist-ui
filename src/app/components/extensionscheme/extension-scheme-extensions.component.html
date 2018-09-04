@@ -4,14 +4,14 @@
       <button id="import_extensions_button"
               type="button"
               class="btn btn-action ml-3 float-right"
-              (click)="importExtensions()"
-              translate>Import extensions</button>
+              (click)="importMembers()"
+              translate>Import members</button>
 
       <button id="create_extension_button"
               type="button"
               class="btn btn-action float-right"
-              (click)="createExtension()"
-              translate>Create extension</button>
+              (click)="createMember()"
+              translate>Create member</button>
     </div>
   </div>
 
@@ -24,6 +24,6 @@
   </div>
 
   <div class="emptyExtensions" *ngIf="extensions.length === 0">
-    <span translate>This extension scheme does not have any extensions yet.</span>
+    <span translate>This extension does not have any members yet.</span>
   </div>
 </div>

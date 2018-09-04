@@ -18,7 +18,7 @@ import { map, tap } from 'rxjs/operators';
   styleUrls: ['./extension-scheme-create.component.scss'],
   providers: [EditableService]
 })
-export class ExtensionSchemeCreateComponent implements OnInit {
+export class ExtensionCreateComponent implements OnInit {
 
   codeScheme: CodeScheme;
   env: string;
@@ -61,7 +61,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-      this.locationService.atExtensionSchemeCreatePage(this.codeScheme);
+      this.locationService.atExtensionCreatePage(this.codeScheme);
     });
   }
 

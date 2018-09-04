@@ -203,7 +203,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   createExtensionScheme() {
     console.log('Create extensionScheme clicked!');
     this.router.navigate(
-      ['createextensionscheme',
+      ['createextension',
         {
           registryCode: this.codeScheme.codeRegistry.codeValue,
           schemeCode: this.codeScheme.codeValue

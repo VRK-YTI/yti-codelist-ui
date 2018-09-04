@@ -45,7 +45,7 @@ function removeFromControl<T>(control: FormControl) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="selectExtension()" translate>Select extension</button>
+                (click)="selectExtension()" translate>Select member</button>
       </dd>
     </dl>
   `
@@ -82,8 +82,8 @@ export class ExtensionInputComponent implements ControlValueAccessor {
   }
 
   selectExtension() {
-    const titleLabel = this.translateService.instant('Choose extension');
-    const searchlabel = this.translateService.instant('Search extension');
+    const titleLabel = this.translateService.instant('Choose member');
+    const searchlabel = this.translateService.instant('Search member');
     const extensions = this.dataService.getExtensions(
       this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
       this.extensionScheme.parentCodeScheme.codeValue,

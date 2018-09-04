@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-03 14:24+0300\n"
+"PO-Revision-Date: 2018-09-04 15:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -67,13 +67,13 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid "Select extension"
+msgid "Select member"
 msgstr ""
 
-msgid "Choose extension"
+msgid "Choose member"
 msgstr ""
 
-msgid "Search extension"
+msgid "Search member"
 msgstr ""
 
 msgid "Add link"
@@ -266,19 +266,19 @@ msgstr ""
 msgid "Export CSV"
 msgstr ""
 
-msgid "Extension schemes"
+msgid "Extensions"
 msgstr ""
 
-msgid "Create extension scheme"
+msgid "Create extension"
 msgstr ""
 
-msgid "Import extension schemes"
+msgid "Import extensions"
 msgstr ""
 
 msgid "CODES"
 msgstr ""
 
-msgid "EXTENSION SCHEMES"
+msgid "EXTENSIONS"
 msgstr ""
 
 msgid "versionHistory"
@@ -332,37 +332,40 @@ msgstr "Search for the code list from Refence Data"
 msgid "No search results"
 msgstr ""
 
-msgid "Extension scheme"
+msgid "Extension"
 msgstr ""
 
-msgid "Extension name"
+msgid "Member name"
 msgstr ""
 
-msgid "Extension value"
+msgid "Member value"
 msgstr ""
 
 msgid "Code"
 msgstr ""
 
-msgid "Extension"
+msgid "Member"
 msgstr ""
 
-msgid "Create extension"
+msgid "Create member"
 msgstr ""
 
-msgid "Import extensions"
+msgid "Import members"
+msgstr ""
+
+msgid "Extension scheme"
 msgstr ""
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Extension scheme ID"
 
-msgid "Extension scheme name"
+msgid "Extension name"
 msgstr ""
 
-msgid "Extension scheme type"
+msgid "Extension type"
 msgstr ""
 
-msgid "This extension scheme does not have any extensions yet."
+msgid "This extension does not have any members yet."
 msgstr ""
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
@@ -371,7 +374,7 @@ msgstr "Extension scheme ID"
 msgid "Codescheme"
 msgstr ""
 
-msgid "EXTENSIONS"
+msgid "MEMBERS"
 msgstr ""
 
 msgid "code list"
@@ -662,10 +665,10 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "The technical code or permanent identifier of the extension scheme"
 
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
-"EXTENSIONVALUE."
+"ORDER."
 
 msgid "Front page"
 msgstr ""
@@ -726,14 +729,20 @@ msgstr ""
 msgid "REMOVE CODE LIST?"
 msgstr ""
 
-msgid "REMOVE EXTENSION SCHEME?"
+msgid "REMOVE EXTENSION?"
 msgstr ""
 
-msgid "REMOVE EXTENSION?"
+msgid "REMOVE MEMBER?"
 msgstr ""
 
 msgid "DETACH VARIANT?"
 msgstr "Remove the link between variant and this code list?"
+
+msgid "CALCULATIONHIERARCHIES"
+msgstr ""
+
+msgid "DEFINITIONHIERARCHIES"
+msgstr ""
 
 msgid "ADMIN"
 msgstr "Admin"
@@ -795,13 +804,13 @@ msgstr ""
 "Row number {{ identifier }} in the data is missing a value in the column "
 "CODE."
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
-msgstr ""
-"Row number {{ identifier }} in the data is missing a value in the column "
-"ORDER."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in the column "
+"EXTENSIONVALUE."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Erroneous start date on row {{ identifier }}."

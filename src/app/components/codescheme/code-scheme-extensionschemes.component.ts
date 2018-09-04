@@ -6,6 +6,7 @@ import { CodeSchemeComponent } from './code-scheme.component';
 import { ExtensionScheme, groupByType, PropertyTypeExtensionSchemes } from '../../entities/extension-scheme';
 import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
 import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-code-scheme-extensionschemes',
@@ -21,7 +22,8 @@ export class CodeSchemeExtensionSchemesComponent {
   constructor(private codeSchemeComponent: CodeSchemeComponent,
               private extensionSchemesImportModalService: ExtensionSchemesImportModalService,
               private router: Router,
-              private authorizationManager: AuthorizationManager) {
+              private authorizationManager: AuthorizationManager,
+              private translateService: TranslateService) {
   }
 
   importExtensionSchemes() {
@@ -37,6 +39,6 @@ export class CodeSchemeExtensionSchemesComponent {
   }
 
   get extensionSchemesByType(): PropertyTypeExtensionSchemes[] {
-    return groupByType(this.extensionSchemes);
+    return groupByType(this.translateService, this.extensionSchemes);
   }
 }

@@ -18,7 +18,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./extension-create.component.scss'],
   providers: [EditableService]
 })
-export class ExtensionCreateComponent implements OnInit {
+export class MemberCreateComponent implements OnInit {
 
   extensionScheme: ExtensionScheme;
 
@@ -43,7 +43,7 @@ export class ExtensionCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ExtensionCreateComponent onInit');
+    console.log('MemberCreateComponent onInit');
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
     const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
@@ -55,7 +55,7 @@ export class ExtensionCreateComponent implements OnInit {
 
     this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
       this.extensionScheme = extensionScheme;
-      this.locationService.atExtensionCreatePage(this.extensionScheme);
+      this.locationService.atMemberCreatePage(this.extensionScheme);
     });
   }
 
@@ -83,7 +83,6 @@ export class ExtensionCreateComponent implements OnInit {
       this.extensionScheme.codeValue)
       .pipe(tap(createdExtension => {
         console.log('Saved new Extension');
-        console.log('Saved extension route: ' + createdExtension.route);
         this.router.navigate(createdExtension.route);
       }));
   }

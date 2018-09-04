@@ -17,16 +17,16 @@
         <app-literal [label]="'Code list' | translate"
                      [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"></app-literal>
 
-        <app-literal [label]="'Extension scheme' | translate"
+        <app-literal [label]="'Extension' | translate"
                      [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
 
         <app-localizable-input [id]="'extension_name_input'"
-                               [label]="'Extension name' | translate"
+                               [label]="'Member name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal-input *ngIf="requireExtensionValue"
                            [id]="'extension_extensionvalue_input'"
-                           [label]="'Extension value' | translate"
+                           [label]="'Member value' | translate"
                            [required]="true"
                            [formControlName]="'extensionValue'"></app-literal-input>
 
@@ -37,7 +37,7 @@
                         [formControlName]="'code'"></app-code-input>
 
         <app-extension-input id="extension_extension_input"
-                             [label]="'Extension' | translate"
+                             [label]="'Member' | translate"
                              [extensionScheme]="currentExtension.extensionScheme"
                              [currentExtension]="currentExtension"
                              [formControlName]="'extension'"></app-extension-input>

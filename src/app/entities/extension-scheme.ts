@@ -10,6 +10,7 @@ import { CodeScheme } from './code-scheme';
 import { PropertyType } from './property-type';
 import { contains, groupBy, index } from 'yti-common-ui/utils/array';
 import { requireDefined } from 'yti-common-ui/utils/object';
+import { TranslateService } from '@ngx-translate/core';
 
 export class ExtensionScheme implements EditableEntity {
 
@@ -66,7 +67,7 @@ export class ExtensionScheme implements EditableEntity {
     return [
       ...this.parentCodeScheme.location,
       {
-        localizationKey: 'Extension scheme',
+        localizationKey: 'Extension',
         label: this.prefLabel,
         value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
         route: this.route
@@ -117,16 +118,26 @@ export class ExtensionScheme implements EditableEntity {
 }
 
 export interface PropertyTypeExtensionSchemes {
-  label: Localizable;
+  label: string;
   extensionSchemes: ExtensionScheme[];
 }
 
-export function groupByType(extSchemes: ExtensionScheme[]): PropertyTypeExtensionSchemes[] {
+export function groupByType(translateService: TranslateService, extSchemes: ExtensionScheme[]): PropertyTypeExtensionSchemes[] {
 
   const propertyTypes: PropertyType[] = extSchemes.map(es => requireDefined(es.propertyType));
   const propertyTypesByName = index(propertyTypes, pt => pt.localName);
   const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
 
   return Array.from(groupBy(extSchemes, es => mapNormalizedType(requireDefined(es.propertyType))))
-    .map(([propertyType, extensionSchemes]) => ({ label: propertyType.prefLabel, extensionSchemes }));
+    .map(([propertyType, extensionSchemes]) => ({ label: mapLocalNameToLabel(translateService, propertyType), extensionSchemes }));
+}
+
+export function mapLocalNameToLabel(translateService: TranslateService, propertyType: PropertyType): string {
+  if (propertyType.localName === 'calculationHierarchy') {
+    return translateService.instant('CALCULATIONHIERARCHIES');
+  } else if (propertyType.localName === 'definitionHierarchy') {
+    return translateService.instant('DEFINITIONHIERARCHIES');
+  } else {
+    return propertyType.localName;
+  }
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-03 14:24+0300\n"
+"PO-Revision-Date: 2018-09-04 15:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -67,14 +67,14 @@ msgstr "Peruuta"
 msgid "Edit"
 msgstr "Muokkaa"
 
-msgid "Select extension"
-msgstr "Valitse laajennus"
+msgid "Select member"
+msgstr "Valitse jäsen"
 
-msgid "Choose extension"
-msgstr "Valitse laajennus"
+msgid "Choose member"
+msgstr "Valitse jäsen"
 
-msgid "Search extension"
-msgstr "Etsi laajennusta"
+msgid "Search member"
+msgstr "Hae jäsentä"
 
 msgid "Add link"
 msgstr "Lisää linkki"
@@ -104,7 +104,7 @@ msgid "All vocabularies"
 msgstr "Kaikki sanastot"
 
 msgid "LABEL_TEXT_CODE_VALUE"
-msgstr " Koodin arvo"
+msgstr "Koodin arvo"
 
 msgid "Code name"
 msgstr "Koodin nimi"
@@ -273,20 +273,20 @@ msgstr "Lataa Excel"
 msgid "Export CSV"
 msgstr "Lataa CSV"
 
-msgid "Extension schemes"
-msgstr "Laajennusjärjestelmät"
+msgid "Extensions"
+msgstr "Laajennukset"
 
-msgid "Create extension scheme"
-msgstr "Luo laajennusjärjestelmä"
+msgid "Create extension"
+msgstr "Luo laajennus"
 
-msgid "Import extension schemes"
-msgstr "Tuo laajennusjärjestelmiä"
+msgid "Import extensions"
+msgstr "Tuo laajennuksia"
 
 msgid "CODES"
 msgstr "KOODIT"
 
-msgid "EXTENSION SCHEMES"
-msgstr "LAAJENNUSJÄRJESTELMÄT"
+msgid "EXTENSIONS"
+msgstr "LAAJENNUKSET"
 
 msgid "versionHistory"
 msgstr "Versiohistoria"
@@ -339,38 +339,41 @@ msgstr "Hae liitettävä koodisto Koodistoista"
 msgid "No search results"
 msgstr "Ei hakutuloksia"
 
-msgid "Extension scheme"
-msgstr "Laajennusjärjestelmä"
+msgid "Extension"
+msgstr "Laajennus"
 
-msgid "Extension name"
-msgstr "Laajennuksen nimi"
+msgid "Member name"
+msgstr "Jäsenen nimi"
 
-msgid "Extension value"
-msgstr "Laajennuksen arvo"
+msgid "Member value"
+msgstr "Jäsenen arvo"
 
 msgid "Code"
 msgstr "Koodi"
 
-msgid "Extension"
-msgstr "Laajennus"
+msgid "Member"
+msgstr "Jäsen"
 
-msgid "Create extension"
-msgstr "Luo laajennus"
+msgid "Create member"
+msgstr "Luo jäsen"
 
-msgid "Import extensions"
-msgstr "Tuo laajennuksia"
+msgid "Import members"
+msgstr "Tuo jäseniä"
+
+msgid "Extension scheme"
+msgstr "Laajennusjärjestelmä"
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus"
 
-msgid "Extension scheme name"
-msgstr "Laajennusjärjestelmän nimi"
+msgid "Extension name"
+msgstr "Laajennuksen nimi"
 
-msgid "Extension scheme type"
-msgstr "Laajennusjärjestelmän tyyppi"
+msgid "Extension type"
+msgstr "Laajennuksen tyyppi"
 
-msgid "This extension scheme does not have any extensions yet."
-msgstr "Tällä laajennusjärjestelmällä ei ole yhtään laajennusta."
+msgid "This extension does not have any members yet."
+msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus"
@@ -378,8 +381,8 @@ msgstr "Laajennusjärjestelmän tunnus"
 msgid "Codescheme"
 msgstr "Koodisto"
 
-msgid "EXTENSIONS"
-msgstr "LAAJENNUKSET"
+msgid "MEMBERS"
+msgstr "JÄSENET"
 
 msgid "code list"
 msgstr "koodisto"
@@ -681,9 +684,8 @@ msgstr "Voimassaolon päättymispäivämäärä"
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
 
-msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
-msgstr ""
-"Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -746,14 +748,20 @@ msgstr "POISTETAANKO KOODI?"
 msgid "REMOVE CODE LIST?"
 msgstr "POISTETAANKO KOODISTO?"
 
-msgid "REMOVE EXTENSION SCHEME?"
-msgstr "POISTETAANKO LAAJENNUSJÄRJESTELMÄ?"
-
 msgid "REMOVE EXTENSION?"
 msgstr "POISTETAANKO LAAJENNUS?"
 
+msgid "REMOVE MEMBER?"
+msgstr "POISTETAANKO JÄSEN?"
+
 msgid "DETACH VARIANT?"
 msgstr "Poistetaanko variantin linkitys?"
+
+msgid "CALCULATIONHIERARCHIES"
+msgstr "LASKENTAHIERARKIAT"
+
+msgid "DEFINITIONHIERARCHIES"
+msgstr "MÄÄRITYSHIERARKIAT"
 
 msgid "ADMIN"
 msgstr "Ylläpitäjä"
@@ -810,11 +818,12 @@ msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr "Aineistossa puuttuu arvo sarakkeesta CODE riviltä {{ identifier }}."
 
-msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
-msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgstr ""
+"Aineistossa puuttuu arvo sarakkeesta EXTENSIONVALUE riviltä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr "Virheellinen alkupäivä rivillä {{ identifier }}."
@@ -984,6 +993,39 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 msgid "extensionValueValidationError"
 msgstr "Laajennuksen arvo ei voi olla tyhjä."
 
+#~ msgid "Select extension"
+#~ msgstr "Valitse laajennus"
+
+#~ msgid "Choose extension"
+#~ msgstr "Valitse laajennus"
+
+#~ msgid "Search extension"
+#~ msgstr "Etsi laajennusta"
+
+#~ msgid "Extension value"
+#~ msgstr "Laajennuksen arvo"
+
+#~ msgid "Extension scheme name"
+#~ msgstr "Laajennusjärjestelmän nimi"
+
+#~ msgid "Import extension"
+#~ msgstr "Tuo laajennus"
+
+#~ msgid "Extension schemes"
+#~ msgstr "Laajennusjärjestelmät"
+
+#~ msgid "Create extension scheme"
+#~ msgstr "Luo laajennusjärjestelmä"
+
+#~ msgid "Import extension schemes"
+#~ msgstr "Tuo laajennusjärjestelmiä"
+
+#~ msgid "EXTENSION SCHEMES"
+#~ msgstr "LAAJENNUSJÄRJESTELMÄT"
+
+#~ msgid "REMOVE EXTENSION SCHEME?"
+#~ msgstr "POISTETAANKO LAAJENNUSJÄRJESTELMÄ?"
+
 #~ msgid "This code list does not have any extension schemes yet."
 #~ msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
 
@@ -1004,9 +1046,6 @@ msgstr "Laajennuksen arvo ei voi olla tyhjä."
 
 #~ msgid "Extension scheme value"
 #~ msgstr "Laajennusjärjestelmän tunnus"
-
-#~ msgid "Code value"
-#~ msgstr "Tunnus"
 
 #~ msgid "Registry value"
 #~ msgstr "Rekisterin tunnus"
