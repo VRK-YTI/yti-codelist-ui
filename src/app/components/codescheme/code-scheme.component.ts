@@ -6,7 +6,6 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
-import { Observable } from 'rxjs/Observable';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
 import { UserService } from 'yti-common-ui/services/user.service';
@@ -16,10 +15,11 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
 import { CodeRegistry } from '../../entities/code-registry';
-import {CodeSchemeListItem} from '../../entities/code-scheme-list-item';
-import {comparingLocalizable} from 'yti-common-ui/utils/comparator';
-import {CodeschemeVariantModalService} from '../codeschemevariant/codescheme-variant.modal.component';
+import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
 import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-code-scheme',
