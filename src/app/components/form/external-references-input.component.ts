@@ -40,7 +40,7 @@ import { LanguageService } from '../../services/language.service';
                       type="button"
                       class="icon icon-pencil"
                       (click)="editExternalReference(externalReference)"></button>
-              <button [id]="'remove_' + externalReference.getIdIdentifier(languageService) + '_ref_button'" 
+              <button [id]="'remove_' + externalReference.getIdIdentifier(languageService) + '_ref_button'"
                       type="button"
                       class="icon icon-trash"
                       (click)="removeExternalReference(externalReference)"></button>

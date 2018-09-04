@@ -15,7 +15,7 @@ export class LinkListModalService {
   }
 
   public open(codeSchemeId: string, restrictExternalReferenceIds: string[]): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkListModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as LinkListModalComponent;
     instance.codeSchemeId = codeSchemeId;
     instance.restrictExternalReferenceIds = restrictExternalReferenceIds;
@@ -37,6 +37,8 @@ export class LinkListModalComponent implements OnInit {
   externalReferences: ExternalReference[] = [];
   selectedExternalReference: ExternalReference;
 
+  loading = true;
+
   constructor(private modal: NgbActiveModal,
               private dataService: DataService,
               private linkCreateModalService: LinkCreateModalService,
@@ -44,9 +46,10 @@ export class LinkListModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getExternalReferences(this.codeSchemeId).subscribe(externalReferences => {
-      this.externalReferences = externalReferences.filter(externalReference =>
+    this.dataService.getExternalReferences(this.codeSchemeId).subscribe(extReferences => {
+      this.externalReferences = extReferences.filter(externalReference =>
         this.restrictExternalReferenceIds.indexOf(externalReference.id) === -1);
+      this.loading = false;
     });
   }
 
@@ -70,5 +73,9 @@ export class LinkListModalComponent implements OnInit {
 
   get externalReferencesByType(): PropertyTypeExternalReferences[] {
     return groupByType(this.externalReferences);
+  }
+
+  externalReferenceIdentity(index: number, item: ExternalReference) {
+    return item.id;
   }
 }
