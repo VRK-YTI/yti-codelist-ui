@@ -18,9 +18,14 @@ export class CodeSchemeVariantsComponent {
   @Input() codeRegistries: CodeRegistry[];
   @Output() detachVariantRequest = new EventEmitter<CodeSchemeListItem>();
 
+  env: string;
+
   constructor(private dataService: DataService,
               private confirmationModalService: CodeListConfirmationModalService,
               private authorizationManager: AuthorizationManager) {
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
   }
 
   detachAVariant(chosenVariantCodeScheme: CodeSchemeListItem) {
@@ -36,5 +41,12 @@ export class CodeSchemeVariantsComponent {
 
   canAttachOrDetachAVariant(): boolean {
     return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
+  }
+
+  getVariantUri(variantUri: string) {
+    if (this.env !== 'prod') {
+      return variantUri + '?env=' + this.env;
+    }
+    return variantUri;
   }
 }

@@ -15,6 +15,7 @@ import { Observable, BehaviorSubject, concat } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeListErrorModalService } from '../common/error-modal.service';
+import {anyMatching} from "yti-common-ui/utils/array";
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -28,9 +29,10 @@ export class CodeschemeVariantModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(): Promise<CodeScheme> {
+  public open(forbiddenVariantSearchResultIds: string[]): Promise<CodeScheme> {
     const modalRef = this.modalService.open(CodeschemeVariantModalComponent, {size: 'lg'});
     const instance = modalRef.componentInstance as CodeschemeVariantModalComponent;
+    instance.forbiddenVariantSearchResultIds = forbiddenVariantSearchResultIds;
     return modalRef.result;
   }
 }
@@ -50,6 +52,7 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
   search$ = new BehaviorSubject('');
   debouncedSearch$ = debounceSearch(this.search$);
   cancelText: string;
+  forbiddenVariantSearchResultIds: string[] = [];
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
@@ -67,7 +70,8 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
           this.loading = true;
           this.dataService.searchCodeSchemes(search, null, null, null, false,  null).subscribe(codeSchemes => {
               this.loading = false;
-              this.searchResults = codeSchemes;
+              this.searchResults = codeSchemes.filter(cs =>
+                !anyMatching(this.forbiddenVariantSearchResultIds, forbiddenId => cs.id === forbiddenId));
             },
             err => {
               this.loading = false;
