@@ -124,7 +124,7 @@ import {
 } from './components/form/search-linked-code-scheme-modal.component';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import {RefreshComponent} from "./components/refresh.component";
+import {RefreshComponent} from './components/refresh.component';
 
 function removeEmptyValues(obj: {}) {
 
