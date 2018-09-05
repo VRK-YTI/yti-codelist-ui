@@ -24,7 +24,6 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
 
   extensionSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
-    propertyType: new FormControl(null),
     codeSchemes: new FormControl([]),
     validity: new FormControl(null, validDateRange),
     status: new FormControl()
