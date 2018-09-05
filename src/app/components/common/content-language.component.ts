@@ -1,7 +1,5 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Language, LanguageService } from '../../services/language.service';
-import { Subscription } from 'rxjs';
-import { contains } from 'yti-common-ui/utils/array';
 
 @Component({
   selector: 'app-content-language',
@@ -20,7 +18,7 @@ import { contains } from 'yti-common-ui/utils/array';
     </div>
   `
 })
-export class ContentLanguageComponent implements OnInit, OnDestroy {
+export class ContentLanguageComponent {
 
   @Input() placement = 'bottom-right';
 
@@ -30,21 +28,7 @@ export class ContentLanguageComponent implements OnInit, OnDestroy {
     { code: 'en' as Language, name: 'In English (EN)' }
   ];
 
-  private subscriptionToClean: Subscription[] = [];
-
   constructor(public languageService: LanguageService) {
-  }
-
-  ngOnInit() {
-
-    this.subscriptionToClean.push(this.languageService.language$
-      .subscribe(language => {
-        const languageExistsInContentLanguages = contains(this.languages.map(lang => lang.code), language);
-
-        if (languageExistsInContentLanguages) {
-          this.contentLanguage = language;
-        }
-      }));
   }
 
   get contentLanguage() {
@@ -53,9 +37,5 @@ export class ContentLanguageComponent implements OnInit, OnDestroy {
 
   set contentLanguage(value: Language) {
     this.languageService.contentLanguage = value;
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptionToClean.forEach(s => s.unsubscribe());
   }
 }
