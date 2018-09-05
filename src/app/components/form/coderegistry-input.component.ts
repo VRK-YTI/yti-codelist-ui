@@ -56,8 +56,6 @@ export class RegistryInputComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
 
-    // TODO: fetch or filter code registries only for this user
-
     this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
       this.codeRegistryOptions = [
         { value: null, name: () => this.translateService.instant('No registry'), idIdentifier: () => 'all_selected' },

@@ -14,11 +14,17 @@
       <app-status class="float-left" [status]="code.status"></app-status>
 
       <div class="float-right">
-        <button id="code_info_delete_button"
-                *ngIf='this.canDelete' type="button"
-                class="btn btn-action float-right ml-3"
-                (click)="delete()"
-                translate>Delete</button>
+        <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="codeDropdown" ngbDropdownToggle translate>Choose action</button>
+          <div ngbDropdownMenu aria-labelledby="codeDropdown">
+            <button id="code_info_delete_button"
+                    *ngIf="this.canDelete"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="delete()"
+                    translate>Delete code</button>
+          </div>
+        </div>
 
         <app-content-language></app-content-language>
       </div>

@@ -17,12 +17,17 @@
   <div class="row">
     <div class="col-12">
       <div class="float-right">
-
-        <button id="delete_registry_button"
-                *ngIf='this.canDelete' type="button"
-                class="btn btn-action float-right ml-3"
-                (click)="delete()"
-                translate>Delete</button>
+        <div *ngIf='this.canDelete' ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="registryDropdown" ngbDropdownToggle translate>Choose action</button>
+          <div ngbDropdownMenu aria-labelledby="registryDropdown">
+            <button id="delete_registry_button"
+                    *ngIf='this.canDelete'
+                    type="button"
+                    class="dropdown-item"
+                    (click)="delete()"
+                    translate>Delete registry</button>
+          </div>
+        </div>
         <app-content-language></app-content-language>
       </div>
     </div>

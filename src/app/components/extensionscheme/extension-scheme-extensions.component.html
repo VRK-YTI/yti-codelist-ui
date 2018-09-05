@@ -1,20 +1,4 @@
 <div class="extensions row">
-  <div class="col-md-12">
-    <div *ngIf="canAddExtension()" class="d-inline-block mb-1 float-right">
-      <button id="import_extensions_button"
-              type="button"
-              class="btn btn-action ml-3 float-right"
-              (click)="importMembers()"
-              translate>Import members</button>
-
-      <button id="create_extension_button"
-              type="button"
-              class="btn btn-action float-right"
-              (click)="createMember()"
-              translate>Create member</button>
-    </div>
-  </div>
-
   <div id="extensionscheme_extensions_div" class="col-md-12">
     <ul id="extensionscheme_extensions_regular">
       <li *ngFor="let extension of extensions; trackBy: extensionIdentity">

@@ -36,21 +36,6 @@
     </div>
   </div>
 
-  <div class="col-md-6">
-      <div *ngIf="canAddCode()" class="d-inline-block mb-1 float-right">
-        <button id="import_codes_button"
-                type="button"
-                class="btn btn-action ml-3 float-right"
-                (click)="importCodes()"
-                translate>Import codes</button>
-        <button id="create_code_button"
-                type="button"
-                class="btn btn-action float-right"
-                (click)="createCode()"
-                translate>Create code</button>
-      </div>
-  </div>
-
   <div id="codelist_code_list_div" class="col-md-12">
     <ul *ngIf="listedCodes.length <= 500" id="codelist_code_list_regular">
       <li *ngFor="let code of listedCodes; trackBy: codeIdentity">

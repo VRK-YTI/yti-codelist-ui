@@ -20,6 +20,7 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 
 @Component({
   selector: 'app-code-scheme',
@@ -34,7 +35,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   codeScheme: CodeScheme;
   codes: CodePlain[];
   extensionSchemes: ExtensionScheme[];
-  codeRegistries: CodeRegistry[];
   env: string;
   chosenVariant: CodeScheme;
   forbiddenVariantSearchResultIds: string[] = [];
@@ -51,7 +51,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private extensionSchemesImportModalService: ExtensionSchemesImportModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
-              private codeschemeVariantModalService: CodeschemeVariantModalService) {
+              private codeschemeVariantModalService: CodeschemeVariantModalService,
+              private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -65,17 +66,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       throw new Error(`Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}'`);
     }
 
-    this.dataService.getCodeRegistriesForUser().subscribe(codeRegistries => {
-      this.codeRegistries = codeRegistries;
-    });
-
     this.dataService.getServiceConfiguration().subscribe(configuration => {
       this.env = configuration.env;
     });
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-      this.codeScheme.variantsOfThisCodeScheme.sort( comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
+      this.codeScheme.variantsOfThisCodeScheme.sort(comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
         item.prefLabel ? item.prefLabel : {}));
       this.locationService.atCodeSchemePage(codeScheme);
     });
@@ -105,7 +102,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.codeScheme == null ||
       this.codes == null ||
       this.extensionSchemes == null ||
-      this.codeRegistries == null ||
       this.env == null ||
       this.deleting;
   }
@@ -129,23 +125,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   isEditing(): boolean {
     return this.editableService.editing;
-  }
-
-  canDeleteCodeScheme() {
-    return this.authorizationManager.canDeleteCodeScheme(this.codeScheme);
-  }
-
-  get canAddExtensionScheme(): boolean {
-    return this.authorizationManager.canEdit(this.codeScheme);
-  }
-
-  get canCreateANewVersionFromCodeScheme(): boolean {
-    return !this.codeScheme.nextCodeschemeId && this.codeScheme.status === 'VALID' &&
-      this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
-  }
-
-  get isSuperUser(): boolean {
-    return this.userService.user.superuser;
   }
 
   delete() {
@@ -177,7 +156,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     console.log('Store CodeScheme changes to server!');
 
-    const {validity, ...rest} = formData;
+    const { validity, ...rest } = formData;
     const updatedCodeScheme = this.codeScheme.clone();
 
     Object.assign(updatedCodeScheme, {
@@ -212,9 +191,71 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     );
   }
 
+  importCodes() {
+    this.codeSchemeCodesImportModalService.open(this.codeScheme).then(success => {
+      if (success) {
+        this.refreshCodes();
+      }
+    }, ignoreModalClose);
+  }
+
+  createCode() {
+    this.router.navigate(
+      ['createcode',
+        {
+          registryCode: this.codeScheme.codeRegistry.codeValue,
+          schemeCode: this.codeScheme.codeValue
+        }
+      ]
+    );
+  }
+
+  get showMenu(): boolean {
+    console.log('delete: ' + this.canDeleteCodeScheme);
+    console.log('add es: ' + this.canAddExtensionScheme);
+    console.log('create version: ' + this.canCreateANewVersionFromCodeScheme);
+    console.log('attach variant: ' + this.canAttachOrDetachAVariant);
+    console.log('add code: ' + this.canAddCode);
+    return this.canDeleteCodeScheme ||
+      this.canAddExtensionScheme ||
+      this.canCreateANewVersionFromCodeScheme ||
+      this.canAttachOrDetachAVariant ||
+      this.canAddCode;
+  }
+
+  get canDeleteCodeScheme(): boolean {
+    return this.authorizationManager.canDeleteCodeScheme(this.codeScheme);
+  }
+
+  get canAddExtensionScheme(): boolean {
+    console.log('es check show unfinished: ' + this.showUnfinishedFeature);
+    console.log('es check allow edit: ' + this.authorizationManager.canEdit(this.codeScheme));
+    return this.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  get canCreateANewVersionFromCodeScheme(): boolean {
+    return this.showUnfinishedFeature &&
+      !this.codeScheme.nextCodeschemeId &&
+      this.codeScheme.status === 'VALID' &&
+      this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  get canAttachOrDetachAVariant(): boolean {
+    return this.showUnfinishedFeature &&
+      this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  get isSuperUser(): boolean {
+    return this.userService.user.superuser;
+  }
+
+  get canAddCode(): boolean {
+    return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
+  }
+
   createANewVersionFromThisCodeScheme() {
     console.log('Copy codescheme clicked!');
-    this.router.navigate(['createcodescheme'], {queryParams: {'originalCodeSchemeId': this.codeScheme.id}});
+    this.router.navigate(['createcodescheme'], { queryParams: { 'originalCodeSchemeId': this.codeScheme.id } });
   }
 
   get showUnfinishedFeature() {
@@ -228,21 +269,17 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-      this.codeScheme.variantsOfThisCodeScheme.sort( comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
+      this.codeScheme.variantsOfThisCodeScheme.sort(comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
         item.prefLabel ? item.prefLabel : {}));
       this.locationService.atCodeSchemePage(codeScheme);
     });
   }
 
-  canAttachOrDetachAVariant(): boolean {
-    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
-  }
-
   openVariantSearchModal() {
-    this.codeScheme.variantsOfThisCodeScheme.forEach( variant => {
+    this.codeScheme.variantsOfThisCodeScheme.forEach(variant => {
       this.forbiddenVariantSearchResultIds.push(variant.id);
     });
-    this.codeScheme.allVersions.forEach( version => {
+    this.codeScheme.allVersions.forEach(version => {
       this.forbiddenVariantSearchResultIds.push(version.id);
     });
     this.codeschemeVariantModalService.open(this.forbiddenVariantSearchResultIds)
@@ -261,9 +298,11 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
           const theStart = this.chosenVariant.startDate ? this.chosenVariant.startDate.toISOString(true) : undefined;
           const theEnd = this.chosenVariant.endDate ? this.chosenVariant.endDate.toISOString(true) : undefined;
           this.codeScheme.variantsOfThisCodeScheme.push(
-            new CodeSchemeListItem( { id: this.chosenVariant.id, prefLabel: this.chosenVariant.prefLabel,
+            new CodeSchemeListItem({
+              id: this.chosenVariant.id, prefLabel: this.chosenVariant.prefLabel,
               uri: this.chosenVariant.uri, startDate: theStart,
-              endDate: theEnd, status: this.chosenVariant.status} )
+              endDate: theEnd, status: this.chosenVariant.status
+            })
           );
         }
       });

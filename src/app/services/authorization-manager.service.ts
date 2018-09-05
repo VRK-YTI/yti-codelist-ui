@@ -42,7 +42,7 @@ export class AuthorizationManager {
       this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.map(org => org.id)));
   }
 
-  canCreateACodeSchemeOrAVersionAndAttachAVariant(codeRegistries: CodeRegistry[]) {
+  canCreateCodeScheme(codeRegistries: CodeRegistry[]) {
 
     const userRegistries = this.filterAllowedRegistriesForUser(codeRegistries);
     return this.user.superuser || (this.user.isInRoleInAnyOrganization(['ADMIN', 'CODE_LIST_EDITOR']) && userRegistries.length > 0);

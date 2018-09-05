@@ -10,7 +10,7 @@ import { CodeRegistry } from '../entities/code-registry';
 const frontPage = { localizationKey: 'Front page', route: [''] };
 const informationAboutServicePage = { localizationKey: 'Information about the service', route: ['information'] };
 const codeSchemeImportAndCreatePage = { localizationKey: 'Add code list', route: ['importandcreatecodescheme'] };
-const createNewVersionOfCodeSchemePage = { localizationKey: 'createNewVersion', route: ['createcodescheme'] };
+const createNewVersionOfCodeSchemePage = { localizationKey: 'Create a new version', route: ['createcodescheme'] };
 const createCodeSchemePage = { localizationKey: 'Create code list', route: ['createcodescheme'] };
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
 const createExtensionPage = { localizationKey: 'Create extension', route: ['createextensionscheme'] };

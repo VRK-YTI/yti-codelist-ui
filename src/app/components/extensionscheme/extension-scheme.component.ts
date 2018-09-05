@@ -14,6 +14,7 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { Extension } from '../../entities/extension';
 import { tap } from 'rxjs/operators';
+import { ExtensionSchemeExtensionsImportModalService } from '../extension/extension-import-modal.component';
 
 @Component({
   selector: 'app-extension-scheme',
@@ -37,6 +38,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
               public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
+              private extensionSchemeExtensionsImportModalService: ExtensionSchemeExtensionsImportModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager) {
 
@@ -102,15 +104,6 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
     return this.editableService.editing;
   }
 
-  get canDelete() {
-    return this.userService.user.superuser ||
-      (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&
-        (this.extensionScheme.parentCodeScheme.status === 'INCOMPLETE' ||
-          this.extensionScheme.parentCodeScheme.status === 'DRAFT' ||
-          this.extensionScheme.parentCodeScheme.status === 'SUGGESTED' ||
-          this.extensionScheme.parentCodeScheme.status === 'SUBMITTED'));
-  }
-
   delete() {
     this.confirmationModalService.openRemoveExtensionScheme()
       .then(() => {
@@ -120,6 +113,44 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
           this.errorModalService.openSubmitError(error);
         });
       }, ignoreModalClose);
+  }
+
+  importMembers() {
+    this.extensionSchemeExtensionsImportModalService.open(this.extensionScheme).then(success => {
+      if (success) {
+        this.refreshExtensions();
+      }
+    }, ignoreModalClose);
+  }
+
+  createMember() {
+    console.log('Member create clicked.');
+    this.router.navigate(
+      ['createmember',
+        {
+          registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
+          schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
+          extensionSchemeCode: this.extensionScheme.codeValue
+        }
+      ]
+    );
+  }
+
+  get showMenu(): boolean {
+    return this.canAddExtension || this.canDelete;
+  }
+
+  get canDelete() {
+    return this.userService.user.superuser ||
+      (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&
+        (this.extensionScheme.parentCodeScheme.status === 'INCOMPLETE' ||
+          this.extensionScheme.parentCodeScheme.status === 'DRAFT' ||
+          this.extensionScheme.parentCodeScheme.status === 'SUGGESTED' ||
+          this.extensionScheme.parentCodeScheme.status === 'SUBMITTED'));
+  }
+
+  get canAddExtension(): boolean {
+    return this.authorizationManager.canEdit(this.extensionScheme.parentCodeScheme) && !this.extensionScheme.restricted;
   }
 
   get isSuperUser() {

@@ -8,15 +8,17 @@
 
   <h1 class="text-content-wrap" translate>Registries</h1>
 
-
   <div class="row">
     <div class="col-md-12">
-      <div *ngIf="canAddRegistry()" class="d-inline-block mb-1 ml-3 float-right">
-        <button id="create_registry_button"
-                type="button"
-                class="btn btn-action float-right"
-                (click)="createRegistry()"
-                translate>Create registry</button>
+      <div *ngIf="canAddRegistry()" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+        <button class="btn btn-action" id="registryDropdown" ngbDropdownToggle translate>Choose action</button>
+        <div ngbDropdownMenu aria-labelledby="registryDropdown">
+          <button *ngIf="canAddRegistry()" id="create_registry_button"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createRegistry()"
+                  translate>Create registry</button>
+        </div>
       </div>
       <app-content-language></app-content-language>
     </div>

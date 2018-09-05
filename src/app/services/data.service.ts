@@ -263,10 +263,12 @@ export class DataService {
 
   getExternalReferences(codeSchemeId: string): Observable<ExternalReference[]> {
 
-    const params = {
-      'codeSchemeId': codeSchemeId,
-      'expand': 'propertyType'
-    };
+    const params = new HttpParams()
+      .append('expand', 'propertyType');
+
+    if (codeSchemeId) {
+      params.append('codeSchemeId', codeSchemeId);
+    }
 
     return this.http.get<WithResults<ExternalReferenceType>>(`${externalReferencesBasePath}/`, {params})
       .pipe(map(res => res.results.map(data => new ExternalReference(data))));

@@ -14,47 +14,64 @@
 
       <div class="float-right">
 
-        <button id="attach_variant_button"
-                *ngIf="showUnfinishedFeature && canAttachOrDetachAVariant()" type="button"
-                class="btn btn-action float-right ml-3"
-                (click)="openVariantSearchModal()"
-                translate>attachVariantToCodeScheme</button>
-
-        <button id="clone_codelist_button"
-                *ngIf="showUnfinishedFeature && canCreateANewVersionFromCodeScheme" type="button"
-                class="btn btn-action float-right ml-3"
-                (click)="createANewVersionFromThisCodeScheme()"
-                translate>createNewVersion</button>
-
-        <button id="delete_codelist_button"
-                *ngIf='canDeleteCodeScheme()' type="button"
-                class="btn btn-action float-right ml-3"
-                (click)="delete()"
-                translate>Delete</button>
-
-        <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
-          <div ngbDropdownMenu aria-labelledby="exportDropdown">
-            <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
-            <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
-          </div>
-        </div>
-
-        <div *ngIf="showUnfinishedFeature && this.canAddExtensionScheme" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Extensions</button>
-          <div ngbDropdownMenu aria-labelledby="extensionSchemeDropdown">
+        <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="codeSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
+          <div ngbDropdownMenu aria-labelledby="codeSchemeDropdown">
+            <button id="clone_codelist_button"
+                    *ngIf="canCreateANewVersionFromCodeScheme"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createANewVersionFromThisCodeScheme()"
+                    translate>Create a new version</button>
+            <button id="attach_variant_button"
+                    *ngIf="canAttachOrDetachAVariant"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="openVariantSearchModal()"
+                    translate>Attach variant to code list</button>
+            <button id="create_code_button"
+                    *ngIf="canAddCode"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createCode()"
+                    translate>Create code</button>
+            <button id="import_codes_button"
+                    *ngIf="canAddCode"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="importCodes()"
+                    translate>Import codes</button>
             <button id="create_extensionscheme_button"
+                    *ngIf="canAddExtensionScheme"
                     type="button"
                     class="dropdown-item"
                     (click)="createExtensionScheme()"
                     translate>Create extension</button>
             <button id="import_extensionschemes_button"
+                    *ngIf="canAddExtensionScheme"
                     type="button"
                     class="dropdown-item"
                     (click)="importExtensionSchemes()"
                     translate>Import extensions</button>
+            <button id="delete_codelist_button"
+                    *ngIf="canDeleteCodeScheme"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="delete()"
+                    translate>Delete code list</button>
           </div>
         </div>
+
+        <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
+          <div ngbDropdownMenu aria-labelledby="exportDropdown">
+            <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank"
+               class="dropdown-item" translate>Export Excel</a>
+            <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank"
+               class="dropdown-item" translate>Export CSV</a>
+          </div>
+        </div>
+
         <app-content-language></app-content-language>
       </div>
     </div>
@@ -63,7 +80,8 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+        <span translate>Registry</span><span>: </span><span class="routedLink"
+                                                            (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.dataClassifications.length > 0">
         <span translate>Classification</span><span>: </span>
@@ -109,7 +127,8 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-scheme-extensionschemes [codeScheme]="codeScheme" [extensionSchemes]="extensionSchemes"></app-code-scheme-extensionschemes>
+        <app-code-scheme-extensionschemes [codeScheme]="codeScheme"
+                                          [extensionSchemes]="extensionSchemes"></app-code-scheme-extensionschemes>
       </ng-template>
     </ngb-tab>
 
@@ -123,15 +142,19 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="showUnfinishedFeature && (codeScheme.variantsOfThisCodeScheme.length > 0 || codeScheme.variantMothersOfThisCodeScheme.length > 0)" id="codelist_variants_tab">
+    <ngb-tab
+      *ngIf="showUnfinishedFeature && (codeScheme.variantsOfThisCodeScheme.length > 0 || codeScheme.variantMothersOfThisCodeScheme.length > 0)"
+      id="codelist_variants_tab">
       <ng-template ngbTabTitle>
         <span translate>variants</span>
       </ng-template>
 
       <ng-template ngbTabContent>
         <dt><label *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0">Koodiston variantit</label></dt>
-        <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()" [codeScheme]="codeScheme" [codeRegistries]="codeRegistries"></app-code-scheme-variants>
-        <dt><label *ngIf="codeScheme.variantMothersOfThisCodeScheme.length > 0">Varianttina muissa koodistoissa</label></dt>
+        <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()" [codeScheme]="codeScheme"
+                                  [codeRegistries]="codeRegistries"></app-code-scheme-variants>
+        <dt><label *ngIf="codeScheme.variantMothersOfThisCodeScheme.length > 0">Varianttina muissa koodistoissa</label>
+        </dt>
         <app-code-scheme-variant-mothers [codeScheme]="codeScheme"></app-code-scheme-variant-mothers>
       </ng-template>
     </ngb-tab>

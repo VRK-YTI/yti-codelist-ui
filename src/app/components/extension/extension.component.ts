@@ -95,6 +95,10 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     this.router.navigate(route);
   }
 
+  get showMenu(): boolean {
+    return this.canDelete;
+  }
+
   get canDelete() {
     return this.userService.user.superuser ||
       (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&

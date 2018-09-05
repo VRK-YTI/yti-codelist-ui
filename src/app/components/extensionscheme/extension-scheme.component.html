@@ -14,17 +14,36 @@
 
       <div class="float-right">
 
-        <button id="delete_extensionscheme_button"
-                *ngIf='this.canDelete' type="button"
-                class="btn btn-action float-right ml-3"
-                (click)="delete()"
-                translate>Delete</button>
+        <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+          <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
+          <div ngbDropdownMenu aria-labelledby="extensionSchemeDropdown">
+            <button id="create_extension_button"
+                    *ngIf="canAddExtension"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createMember()"
+                    translate>Create member</button>
+            <button id="import_extensions_button"
+                    *ngIf="canAddExtension"
+                    class="dropdown-item"
+                    (click)="importMembers()"
+                    translate>Import members</button>
+            <button id="delete_extensionscheme_button"
+                    *ngIf="canDelete"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="delete()"
+                    translate>Delete extension</button>
+          </div>
+        </div>
 
         <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
           <div ngbDropdownMenu aria-labelledby="exportDropdown">
-            <a id="codelist_export_excel_link" href='{{extensionScheme.url}}/?format=excel' target="_blank" class="dropdown-item" translate>Export Excel</a>
-            <a id="codelist_export_csv_link" href='{{extensionScheme.url}}/extensions/?format=csv' target="_blank" class="dropdown-item" translate>Export CSV</a>
+            <a id="codelist_export_excel_link" href='{{extensionScheme.url}}/?format=excel' target="_blank"
+               class="dropdown-item" translate>Export Excel</a>
+            <a id="codelist_export_csv_link" href='{{extensionScheme.url}}/extensions/?format=csv' target="_blank"
+               class="dropdown-item" translate>Export CSV</a>
           </div>
         </div>
 
@@ -39,7 +58,7 @@
         <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(extensionScheme.parentCodeScheme.codeRegistry.route)">{{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span translate>Codescheme</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span  translate>Codescheme</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
     </div>
   </div>
@@ -51,7 +70,8 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-extension-scheme-extensions [extensions]="extensions" [extensionScheme]="extensionScheme"></app-extension-scheme-extensions>
+        <app-extension-scheme-extensions [extensions]="extensions"
+                                         [extensionScheme]="extensionScheme"></app-extension-scheme-extensions>
       </ng-template>
     </ngb-tab>
 

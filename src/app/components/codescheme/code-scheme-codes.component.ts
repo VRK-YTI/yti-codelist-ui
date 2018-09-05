@@ -21,33 +21,7 @@ export class CodeSchemeCodesComponent {
 
   searchTerm = '';
 
-  constructor(private codeSchemeComponent: CodeSchemeComponent,
-              private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
-              private router: Router,
-              private authorizationManager: AuthorizationManager) {
-  }
-
-  importCodes() {
-    this.codeSchemeCodesImportModalService.open(this.codeScheme).then(success => {
-      if (success) {
-        this.codeSchemeComponent.refreshCodes();
-      }
-    }, ignoreModalClose);
-  }
-
-  createCode() {
-    this.router.navigate(
-      ['createcode',
-        {
-          registryCode: this.codeScheme.codeRegistry.codeValue,
-          schemeCode: this.codeScheme.codeValue
-        }
-      ]
-    );
-  }
-
-  canAddCode() {
-    return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
+  constructor() {
   }
 
   get listedCodes() {
@@ -117,7 +91,7 @@ export class CodeSchemeCodesComponent {
   showCollapseAll() {
     return this.hasExpanded() && !this.searchTerm;
   }
-  
+
   get emptySearch() {
     return this.searchTerm && this.listedCodes.length === 0;
   }

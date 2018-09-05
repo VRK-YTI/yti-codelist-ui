@@ -91,8 +91,13 @@ export class CodeComponent implements OnInit, EditingComponent {
     this.router.navigate(route);
   }
 
+  get showMenu(): boolean {
+    return this.canDelete;
+  }
+
   get canDelete() {
-    return this.userService.user.superuser || (this.authorizationManager.canDelete(this.codeScheme) &&
+    return this.userService.user.superuser ||
+      (this.authorizationManager.canDelete(this.codeScheme) &&
       (this.codeScheme.status === 'INCOMPLETE' ||
         this.codeScheme.status === 'DRAFT' ||
         this.codeScheme.status === 'SUGGESTED' ||

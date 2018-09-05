@@ -130,7 +130,10 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
-msgid "Delete"
+msgid "Choose action"
+msgstr ""
+
+msgid "Delete code"
 msgstr ""
 
 msgid "Registry"
@@ -173,9 +176,6 @@ msgid "Expand all"
 msgstr ""
 
 msgid "Collapse all"
-msgstr ""
-
-msgid "Import codes"
 msgstr ""
 
 msgid "This code list does not have any codes yet."
@@ -242,10 +242,22 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-msgid "attachVariantToCodeScheme"
+msgid "Create a new version"
 msgstr ""
 
-msgid "createNewVersion"
+msgid "Attach variant to code list"
+msgstr ""
+
+msgid "Import codes"
+msgstr ""
+
+msgid "Create extension"
+msgstr ""
+
+msgid "Import extensions"
+msgstr ""
+
+msgid "Delete code list"
 msgstr ""
 
 msgid "Export"
@@ -255,15 +267,6 @@ msgid "Export Excel"
 msgstr ""
 
 msgid "Export CSV"
-msgstr ""
-
-msgid "Extensions"
-msgstr ""
-
-msgid "Create extension"
-msgstr ""
-
-msgid "Import extensions"
 msgstr ""
 
 msgid "CODES"
@@ -344,6 +347,9 @@ msgstr ""
 msgid "Import members"
 msgstr ""
 
+msgid "Delete member"
+msgstr ""
+
 msgid "Extension scheme"
 msgstr ""
 
@@ -360,6 +366,9 @@ msgid "This extension does not have any members yet."
 msgstr ""
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
+msgstr ""
+
+msgid "Delete extension"
 msgstr ""
 
 msgid "Codescheme"
@@ -426,6 +435,9 @@ msgid "Registry name"
 msgstr ""
 
 msgid "Code registry name"
+msgstr ""
+
+msgid "Delete registry"
 msgstr ""
 
 msgid "CODE LISTS"
@@ -860,6 +872,9 @@ msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"
+msgstr ""
+
+msgid "createNewVersion"
 msgstr ""
 
 msgid "cancelTextForCodeCreation"

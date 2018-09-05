@@ -17,35 +17,7 @@ export class ExtensionSchemeExtensionsComponent {
   @Input() extensions: Extension[];
   @Input() extensionScheme: ExtensionScheme;
 
-  constructor(private extensionSchemeComponent: ExtensionSchemeComponent,
-              private extensionSchemeExtensionsImportModalService: ExtensionSchemeExtensionsImportModalService,
-              private router: Router,
-              private authorizationManager: AuthorizationManager) {
-  }
-
-  importMembers() {
-    this.extensionSchemeExtensionsImportModalService.open(this.extensionScheme).then(success => {
-      if (success) {
-        this.extensionSchemeComponent.refreshExtensions();
-      }
-    }, ignoreModalClose);
-  }
-
-  createMember() {
-    console.log('Member create clicked.');
-    this.router.navigate(
-      ['createmember',
-        {
-          registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-          schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
-          extensionSchemeCode: this.extensionScheme.codeValue
-        }
-      ]
-    );
-  }
-
-  canAddExtension() {
-    return this.authorizationManager.canEdit(this.extensionScheme.parentCodeScheme) && !this.extensionScheme.restricted;
+  constructor() {
   }
 
   extensionIdentity(index: number, item: Extension) {

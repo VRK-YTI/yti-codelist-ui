@@ -40,7 +40,7 @@ export class CodeSchemeVariantsComponent {
   }
 
   canAttachOrDetachAVariant(): boolean {
-    return this.authorizationManager.canCreateACodeSchemeOrAVersionAndAttachAVariant(this.codeRegistries);
+    return this.authorizationManager.canEdit(this.codeScheme);
   }
 
   getVariantUri(variantUri: string) {
