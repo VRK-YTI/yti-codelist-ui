@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-05 11:53+0300\n"
+"PO-Revision-Date: 2018-09-05 14:31+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -260,7 +260,10 @@ msgstr ""
 msgid "Import codes"
 msgstr ""
 
-msgid "Create extension"
+msgid "Create calculation hierarchy"
+msgstr ""
+
+msgid "Create definition hierarchy"
 msgstr ""
 
 msgid "Import extensions"
@@ -369,6 +372,9 @@ msgid "Extension name"
 msgstr ""
 
 msgid "Extension type"
+msgstr ""
+
+msgid "Create extension"
 msgstr ""
 
 msgid "This extension does not have any members yet."
@@ -896,31 +902,31 @@ msgstr ""
 "PROPERTYTYPE."
 
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
-msgstr "Code linked to extension does not exist."
+msgstr "Code linked to member does not exist."
 
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr "Code order has duplicate values."
 
 msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
 msgstr ""
-"Code linked to extension does not belong to parent code list or to any "
-"related code lists."
+"Code linked to member does not belong to parent code list or to any related "
+"code lists."
 
 msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Maximum hierarchies reached for extensions."
+msgstr "Maximum hierarchies reached for members."
 
 msgid "ERR_MSG_USER_EXTENSIONVALUE_NOT_SET"
-msgstr "Extension value is not set or it’s empty."
+msgstr "Member value is not set or it’s empty."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
-msgstr "Code list linked to ExtensionScheme not found."
+msgstr "Code list linked to Extension not found."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to ExtensionScheme not found."
 
 msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
-"Extensions have duplicate codes defined, please use UUID when referencing to "
+"Members have duplicate codes defined, please use UUID when referencing to "
 "them."
 
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
@@ -930,18 +936,15 @@ msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
-"Cyclic dependency in extension linking. Please ensure that the chained "
-"extensions are not linked to each in a cyclic manner."
+"Cyclic dependency in member linking. Please ensure that the chained members "
+"are not linked to each in a cyclic manner."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
-"ExtensionScheme cannot be linked to the same code list which it is attached "
-"to."
+"Extension cannot be linked to the same code list which it is attached to."
 
-#, fuzzy
-#| msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
-msgstr "PropertyType linked to ExtensionScheme not found."
+msgstr "PropertyType cannot be changed when editing extension."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
@@ -994,7 +997,7 @@ msgid "codeValueExists"
 msgstr "Code value is already in use."
 
 msgid "extensionSchemeCodeValueExists"
-msgstr "Extension scheme value is already in use in this code list."
+msgstr "Extension value is already in use in this code list."
 
 msgid "codeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
@@ -1003,7 +1006,7 @@ msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
-msgstr "Extension value cannot be empty."
+msgstr "Member value cannot be empty."
 
 #~ msgid "attachVariantToCodeScheme"
 #~ msgstr "Attach a variant to the code list"

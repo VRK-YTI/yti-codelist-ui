@@ -41,12 +41,18 @@
                     class="dropdown-item"
                     (click)="importCodes()"
                     translate>Import codes</button>
-            <button id="create_extensionscheme_button"
+            <button id="create_extensionscheme_calculationhierarchy_button"
                     *ngIf="canAddExtensionScheme"
                     type="button"
                     class="dropdown-item"
-                    (click)="createExtensionScheme()"
-                    translate>Create extension</button>
+                    (click)="createExtensionScheme('calculationHierarchy')"
+                    translate>Create calculation hierarchy</button>
+            <button id="create_extensionscheme_definitionhierarchy_button"
+                    *ngIf="canAddExtensionScheme"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createExtensionScheme('definitionHierarchy')"
+                    translate>Create definition hierarchy</button>
             <button id="import_extensionschemes_button"
                     *ngIf="canAddExtensionScheme"
                     type="button"

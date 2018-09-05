@@ -251,7 +251,10 @@ msgstr ""
 msgid "Import codes"
 msgstr ""
 
-msgid "Create extension"
+msgid "Create calculation hierarchy"
+msgstr ""
+
+msgid "Create definition hierarchy"
 msgstr ""
 
 msgid "Import extensions"
@@ -360,6 +363,9 @@ msgid "Extension name"
 msgstr ""
 
 msgid "Extension type"
+msgstr ""
+
+msgid "Create extension"
 msgstr ""
 
 msgid "This extension does not have any members yet."

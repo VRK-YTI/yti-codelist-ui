@@ -11,6 +11,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { map, tap } from 'rxjs/operators';
+import { PropertyType } from '../../entities/property-type';
 
 @Component({
   selector: 'app-extension-scheme-create',
@@ -23,12 +24,12 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   codeScheme: CodeScheme;
   env: string;
   codeSchemes: CodeScheme[];
+  propertyType: PropertyType;
 
   extensionSchemeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
-    validity: new FormControl({start: null, end: null}, validDateRange),
-    propertyType: new FormControl(null),
+    validity: new FormControl({ start: null, end: null }, validDateRange),
     codeSchemes: new FormControl([]),
     status: new FormControl('DRAFT' as Status),
   }, null, this.codeValueExistsValidator());
@@ -51,13 +52,19 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
   ngOnInit() {
     const registryCode = this.route.snapshot.params.registryCode;
-    console.log('CodeCreateComponent onInit registryCode: ' + registryCode);
+    console.log('ExtensionSchemeCreateComponent onInit registryCode: ' + registryCode);
     const schemeCode = this.route.snapshot.params.schemeCode;
-    console.log('CodeCreateComponent onInit schemeCode: ' + schemeCode);
+    console.log('ExtensionSchemeCreateComponent onInit schemeCode: ' + schemeCode);
+    const propertyTypeLocalName = this.route.snapshot.params.propertyTypeLocalName;
+    console.log('ExtensionSchemeCreateComponent onInit propertyTypeLocalName: ' + propertyTypeLocalName);
 
-    if (!registryCode || !schemeCode) {
-      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}'`);
+    if (!registryCode || !schemeCode || !propertyTypeLocalName) {
+      throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}', propertyTypeLocalName: '${propertyTypeLocalName}'`);
     }
+
+    this.dataService.getPropertyType(propertyTypeLocalName).subscribe(propertyType => {
+      this.propertyType = propertyType;
+    });
 
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
@@ -70,7 +77,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return !this.env && this.codeScheme == null;
+    return !this.env && this.codeScheme == null && this.propertyType == null;
   }
 
   back() {
@@ -81,13 +88,13 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
     console.log('Saving new ExtensionScheme');
 
-    const {validity, propertyType, ...rest} = formData;
+    const { validity, ...rest } = formData;
 
     const extensionScheme: ExtensionSchemeType = <ExtensionSchemeType> {
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
-      propertyType: propertyType.serialize()
+      propertyType: this.propertyType.serialize()
     };
 
     console.log('Saving new ExtensionScheme');
@@ -100,7 +107,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
   isCodeValuePatternValid(control: AbstractControl) {
     const isCodeValueValid = control.value.match(/^[a-zA-Z0-9_\-]*$/);
-    return !isCodeValueValid ? {'codeValueValidationError': {value: control.value}} : null;
+    return !isCodeValueValid ? { 'codeValueValidationError': { value: control.value } } : null;
   }
 
   codeValueExistsValidator(): AsyncValidatorFn {

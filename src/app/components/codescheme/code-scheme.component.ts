@@ -179,13 +179,14 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     }, ignoreModalClose);
   }
 
-  createExtensionScheme() {
-    console.log('Create extensionScheme clicked!');
+  createExtensionScheme(propertyTypeLocalName: string) {
+    console.log('Create extensionScheme clicked with type: ' + propertyTypeLocalName);
     this.router.navigate(
-      ['createextension',
+      ['createextensionscheme',
         {
           registryCode: this.codeScheme.codeRegistry.codeValue,
-          schemeCode: this.codeScheme.codeValue
+          schemeCode: this.codeScheme.codeValue,
+          propertyTypeLocalName: propertyTypeLocalName
         }
       ]
     );

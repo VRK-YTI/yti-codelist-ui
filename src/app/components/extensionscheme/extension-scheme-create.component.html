@@ -38,11 +38,9 @@
                                [infoText]="'INFO_TEXT_EXTENSION_SCHEME_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <app-property-type-select id="propertytype_select"
-                                  [label]="'Extension type' | translate"
-                                  [context]="'ExtensionScheme'"
-                                  [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"
-                                  [formControlName]="'propertyType'"></app-property-type-select>
+        <app-literal [label]="'Extension type' | translate"
+                     [value]="propertyType.prefLabel | translateValue"
+                     [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"></app-literal>
 
         <app-code-scheme-input id="extension_code_scheme_input"
                                [label]="'Code list' | translate"

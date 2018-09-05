@@ -217,6 +217,12 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new PropertyType(data))));
   }
 
+  getPropertyType(propertyTypeLocalName: string): Observable<PropertyType> {
+
+    return this.http.get<PropertyTypeType>(`${propertyTypesBasePath}/${propertyTypeLocalName}`)
+      .pipe(map(res => new PropertyType(res)));
+  }
+
   getDataClassifications(language: string): Observable<DataClassification[]> {
 
     const params = {
