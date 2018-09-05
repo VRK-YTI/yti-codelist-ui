@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-05 14:31+0300\n"
+"PO-Revision-Date: 2018-09-05 15:26+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -366,7 +366,7 @@ msgid "Extension scheme"
 msgstr ""
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
-msgstr "Extension scheme ID"
+msgstr "Extension code value"
 
 msgid "Extension name"
 msgstr ""
@@ -381,7 +381,7 @@ msgid "This extension does not have any members yet."
 msgstr ""
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
-msgstr "Extension scheme ID"
+msgstr "Extension code value"
 
 msgid "Delete extension"
 msgstr ""
@@ -649,13 +649,13 @@ msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Time registry information was last changed."
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
-msgstr "Code list that this extension scheme is linked"
+msgstr "Code list that this extension is linked"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
-msgstr "Extension scheme identifier"
+msgstr "Extension code value"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
-msgstr "Extension scheme name"
+msgstr "Extension name"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_TYPE"
 msgstr "E.g. Calculation hierarchy and Definition hierarchy"
@@ -666,7 +666,7 @@ msgstr ""
 "Submitted, Valid, Superseded, Retired, Invalid, Suggested."
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY"
-msgstr "The period in which the extension scheme is valid"
+msgstr "The period in which the extension is valid"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_LAST_MODIFICATION"
 msgstr "Last edit time"
@@ -681,7 +681,7 @@ msgstr ""
 "valid."
 
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
-msgstr "The technical code or permanent identifier of the extension scheme"
+msgstr "The technical code or permanent identifier of the extension"
 
 msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr ""
@@ -1007,18 +1007,3 @@ msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Member value cannot be empty."
-
-#~ msgid "attachVariantToCodeScheme"
-#~ msgstr "Attach a variant to the code list"
-
-#~ msgid "UNFINISHED"
-#~ msgstr "Unfinished"
-
-#~ msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
-#~ msgstr "The technical code or permanent identifier of the extension scheme"
-
-#~ msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
-#~ msgstr "This codelist is a variant of the following code list"
-
-#~ msgid "otherVariantsFromTheSameMOtherAre"
-#~ msgstr "Other variants of the same code list are"

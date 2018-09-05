@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-05 14:54+0300\n"
+"PO-Revision-Date: 2018-09-05 15:24+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -373,7 +373,7 @@ msgid "Extension scheme"
 msgstr "Laajennusjärjestelmä"
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
-msgstr "Laajennusjärjestelmän tunnus"
+msgstr "Laajennuksen tunnus"
 
 msgid "Extension name"
 msgstr "Laajennuksen nimi"
@@ -388,7 +388,7 @@ msgid "This extension does not have any members yet."
 msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
-msgstr "Laajennusjärjestelmän tunnus"
+msgstr "Laajennuksen tunnus"
 
 msgid "Delete extension"
 msgstr "Poista laajennus"
@@ -668,27 +668,26 @@ msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
-msgstr "Koodisto, johon tämä laajennusjärjestelmä on liitetty"
+msgstr "Koodisto, johon tämä laajennus on liitetty"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
-msgstr "Laajennusjärjestelmän tunnus"
+msgstr "Laajennuksen tunnus"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
-msgstr "Laajennusjärjestelmän nimi"
+msgstr "Laajennuksen nimi"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_TYPE"
 msgstr ""
-"Esimerkkejä laajennusjärjestelmistä ovat laskentahierarkia ja "
-"määrityshierarkia."
+"Esimerkkejä laajennuksista ovat laskentahierarkia ja määrityshierarkia."
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_STATUS"
 msgstr ""
-"Laajennusjärjestelmän hallintaan ja elinkaareen liittyvä tila. Mahdollisia "
-"arvoja ovat: Keskeneräinen, Luonnos, Odottaa hyväksyntää, Voimassa oleva, "
-"Korvattu, Poistettu käytöstä, Virheellinen ja Ehdotus."
+"Laajennusten hallintaan ja elinkaareen liittyvä tila. Mahdollisia arvoja "
+"ovat: Keskeneräinen, Luonnos, Odottaa hyväksyntää, Voimassa oleva, Korvattu, "
+"Poistettu käytöstä, Virheellinen ja Ehdotus."
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY"
-msgstr "Ajanjakso, jona laajennusjärjestelmä on voimassa"
+msgstr "Ajanjakso, jona laajennus on voimassa"
 
 msgid "INFO_TEXT_EXTENSION_SCHEME_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
@@ -700,7 +699,7 @@ msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
 msgstr "Voimassaolon päättymispäivämäärä"
 
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
-msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
+msgstr "Laajennuksen tunnus tai pysyvä tunniste"
 
 msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
 msgstr "Aineistossa puuttuu arvo sarakkeesta ORDER riviltä {{ identifier }}."
@@ -1014,101 +1013,3 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Jäsenen arvo ei voi olla tyhjä."
-
-#~ msgid "Delete"
-#~ msgstr "Poista"
-
-#~ msgid "Select action"
-#~ msgstr "Valitse toiminto"
-
-#~ msgid "attachVariantToCodeScheme"
-#~ msgstr "Liitä koodistoon variantti"
-
-#~ msgid "Actions"
-#~ msgstr "Toiminnot"
-
-#~ msgid "Extensions"
-#~ msgstr "Laajennukset"
-
-#~ msgid "Choose extension"
-#~ msgstr "Valitse laajennus"
-
-#~ msgid "Search extension"
-#~ msgstr "Etsi laajennusta"
-
-#~ msgid "Extension value"
-#~ msgstr "Laajennuksen arvo"
-
-#~ msgid "Extension scheme name"
-#~ msgstr "Laajennusjärjestelmän nimi"
-
-#~ msgid "Import extension"
-#~ msgstr "Tuo laajennus"
-
-#~ msgid "Extension schemes"
-#~ msgstr "Laajennusjärjestelmät"
-
-#~ msgid "Import extension schemes"
-#~ msgstr "Tuo laajennusjärjestelmiä"
-
-#~ msgid "EXTENSION SCHEMES"
-#~ msgstr "LAAJENNUSJÄRJESTELMÄT"
-
-#~ msgid "REMOVE EXTENSION SCHEME?"
-#~ msgstr "POISTETAANKO LAAJENNUSJÄRJESTELMÄ?"
-
-#~ msgid "This code list does not have any extension schemes yet."
-#~ msgstr "Tällä koodistolla ei ole yhtään laajennusjärjestelmää."
-
-#~ msgid "UNFINISHED"
-#~ msgstr "Keskeneräinen"
-
-#~ msgid "Detach a variant"
-#~ msgstr "Irrota variantti koodistosta"
-
-#~ msgid "Detach"
-#~ msgstr "Irrota"
-
-#~ msgid "Extension scheme ID"
-#~ msgstr "Tunnus"
-
-#~ msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_VALUE"
-#~ msgstr "Laajennusjärjestelmän tunnus tai pysyvä tunniste"
-
-#~ msgid "Extension scheme value"
-#~ msgstr "Laajennusjärjestelmän tunnus"
-
-#~ msgid "Registry value"
-#~ msgstr "Rekisterin tunnus"
-
-#~ msgid "Voimassa"
-#~ msgstr "Voimassa"
-
-#~ msgid "Nimi"
-#~ msgstr "Nimi"
-
-#~ msgid "Tila"
-#~ msgstr "Tila"
-
-#, fuzzy
-#~| msgid "Search for code"
-#~ msgid "Search for codescheme"
-#~ msgstr "Hae koodia"
-
-#~ msgid "thisCodeschemeIsAVariantFromTheFollowingMother"
-#~ msgstr "Tämä koodisto on variantti seuraavasta koodistosta"
-
-#~ msgid "otherVariantsFromTheSameMOtherAre"
-#~ msgstr "Muut variantit samasta koodistosta ovat"
-
-#~ msgid "Copy the code list"
-#~ msgstr "Kopioi koodisto"
-
-#~ msgid "Code list value"
-#~ msgstr "Koodiston tunnus"
-
-#~ msgid "Start date"
-#~ msgstr "Alkupäivä"
-
-#~ msgid "End date"
-#~ msgstr "Loppupäivä"
