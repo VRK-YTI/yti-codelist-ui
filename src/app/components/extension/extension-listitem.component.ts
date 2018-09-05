@@ -28,7 +28,7 @@ export class ExtensionListitemComponent {
   viewExtension(extension: Extension) {
     console.log('View member: ' + extension.id);
     this.router.navigate([
-      'member',
+      'extension',
       {
         registryCode: extension.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
         schemeCode: extension.extensionScheme.parentCodeScheme.codeValue,

@@ -17,8 +17,8 @@
             <button id="extension_delete_button"
                     *ngIf='canDelete'
                     type="button"
-                    class="btn btn-action float-right ml-3"
                     class="dropdown-item"
+                    (click)="delete()"
                     translate>Delete member</button>
           </div>
         </div>

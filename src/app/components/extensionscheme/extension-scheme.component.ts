@@ -126,7 +126,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   createMember() {
     console.log('Member create clicked.');
     this.router.navigate(
-      ['createmember',
+      ['createextension',
         {
           registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
           schemeCode: this.extensionScheme.parentCodeScheme.codeValue,

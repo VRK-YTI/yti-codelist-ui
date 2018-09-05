@@ -26,18 +26,6 @@ export class CodeSchemeExtensionSchemesComponent {
               private translateService: TranslateService) {
   }
 
-  importExtensionSchemes() {
-    this.codeSchemeComponent.importExtensionSchemes();
-  }
-
-  createExtensionScheme() {
-    this.codeSchemeComponent.createExtensionScheme();
-  }
-
-  get canAddExtensionScheme(): boolean {
-    return this.authorizationManager.canEdit(this.codeScheme);
-  }
-
   get extensionSchemesByType(): PropertyTypeExtensionSchemes[] {
     return groupByType(this.translateService, this.extensionSchemes);
   }

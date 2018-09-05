@@ -162,7 +162,7 @@ const appRoutes: Routes = [
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'extensionscheme', component: ExtensionSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'member', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
   {path: 'userDetails', component: UserDetailsComponent},
   {path: 'information', component: InformationAboutServiceComponent},
