@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ResolveEnd, Router, RouterModule, Routes } from '@angular/router';
+import {ResolveEnd, Route, Router, RouterModule, Routes, UrlSegment, UrlSegmentGroup} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -124,6 +124,7 @@ import {
 } from './components/form/search-linked-code-scheme-modal.component';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import {RefreshComponent} from "./components/refresh.component";
 
 function removeEmptyValues(obj: {}) {
 
@@ -167,7 +168,20 @@ const appRoutes: Routes = [
   {path: 'information', component: InformationAboutServiceComponent},
   {path: 'registries', component: RegistriesComponent, pathMatch: 'full'},
   {path: 'registry', component: RegistryComponent, pathMatch: 'full'},
+  // NOTE: If createRefreshRouteMatcher(['re']) starts to work after angular upgrade, then switch to that.
+  { matcher: refreshRouteMatcher, component: RefreshComponent }
 ];
+
+export function refreshRouteMatcher(segments: UrlSegment[], group: UrlSegmentGroup, route: Route) {
+  if (segments.length >= 1 && segments[0].path === 're') {
+    return {
+      consumed: segments
+    };
+  }
+  return {
+    consumed: []
+  };
+}
 
 export function resolveAuthenticatedUserEndpoint() {
   return '/codelist-intake/api/authenticated-user';
@@ -260,7 +274,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeVersionsComponent,
     CodeSchemeVariantsComponent,
     CodeSchemeVariantMothersComponent,
-    CodeschemeVariantModalComponent
+    CodeschemeVariantModalComponent,
+    RefreshComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,

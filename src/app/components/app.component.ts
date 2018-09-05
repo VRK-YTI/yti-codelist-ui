@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     <ng-template ngbModalContainer></ng-template>
     <app-navigation-bar></app-navigation-bar>
     <div class="container-fluid">
-      <app-breadcrumb [location]="location"></app-breadcrumb>
+      <app-breadcrumb [location]="location" [linkActive]="true" [refreshPath]="['re']"></app-breadcrumb>
       <router-outlet></router-outlet>
     </div>
     <app-footer [title]="'Reference Data' | translate" 
