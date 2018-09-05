@@ -212,11 +212,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get showMenu(): boolean {
-    console.log('delete: ' + this.canDeleteCodeScheme);
-    console.log('add es: ' + this.canAddExtensionScheme);
-    console.log('create version: ' + this.canCreateANewVersionFromCodeScheme);
-    console.log('attach variant: ' + this.canAttachOrDetachAVariant);
-    console.log('add code: ' + this.canAddCode);
     return this.canDeleteCodeScheme ||
       this.canAddExtensionScheme ||
       this.canCreateANewVersionFromCodeScheme ||
@@ -229,8 +224,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canAddExtensionScheme(): boolean {
-    console.log('es check show unfinished: ' + this.showUnfinishedFeature);
-    console.log('es check allow edit: ' + this.authorizationManager.canEdit(this.codeScheme));
     return this.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
   }
 
