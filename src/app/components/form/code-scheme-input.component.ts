@@ -48,7 +48,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
           <app-error-messages id="codeschemes_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
-        <button id="add_classification_button"
+        <button id="add_codelist_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
