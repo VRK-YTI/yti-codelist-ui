@@ -13,7 +13,6 @@ const codeSchemeImportAndCreatePage = { localizationKey: 'Add code list', route:
 const createNewVersionOfCodeSchemePage = { localizationKey: 'Create a new version', route: ['createcodescheme'] };
 const createCodeSchemePage = { localizationKey: 'Create code list', route: ['createcodescheme'] };
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
-const createExtensionPage = { localizationKey: 'Create extension', route: ['createextensionscheme'] };
 const createMemberPage = { localizationKey: 'Create member', route: ['createextension'] };
 const createRegistryPage = { localizationKey: 'Create registry', route: ['createregistry'] };
 
@@ -85,7 +84,8 @@ export class LocationService {
     this.changeLocation([...codeScheme.location, createCodePage]);
   }
 
-  atExtensionCreatePage(codeScheme: CodeScheme): void {
+  atExtensionCreatePage(codeScheme: CodeScheme, title: string): void {
+    const createExtensionPage = { localizationKey: title, route: ['createextensionscheme'] };
     this.changeLocation([...codeScheme.location, createExtensionPage]);
   }
 

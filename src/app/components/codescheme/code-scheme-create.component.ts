@@ -109,7 +109,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           });
           this.locationService.atCreateNewVersionOfCodeSchemePage(originalCodeScheme);
         });
-        this.pageTitle = 'createNewVersion';
+        this.pageTitle = 'Create a new version';
       } else {
         this.locationService.atCodeSchemeCreatePage();
       }

@@ -2,13 +2,13 @@
   <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>
 
-<div [hidden]="loading" class="content-box">
+<div *ngIf="!loading" class="content-box">
 
   <app-back-button [id]="'extensionscheme_create_back_button'" (back)="back()"></app-back-button>
 
   <div class="row">
     <div class="col-12">
-      <h1 class="float-left" translate>Create extension</h1>
+      <h1 class="float-left">{{this.title | translate}}</h1>
       <app-content-language></app-content-language>
     </div>
   </div>

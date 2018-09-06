@@ -25,6 +25,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   env: string;
   codeSchemes: CodeScheme[];
   propertyType: PropertyType;
+  title: string;
 
   extensionSchemeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
@@ -58,6 +59,8 @@ export class ExtensionSchemeCreateComponent implements OnInit {
     const propertyTypeLocalName = this.route.snapshot.params.propertyTypeLocalName;
     console.log('ExtensionSchemeCreateComponent onInit propertyTypeLocalName: ' + propertyTypeLocalName);
 
+    this.resolveTitle(propertyTypeLocalName);
+
     if (!registryCode || !schemeCode || !propertyTypeLocalName) {
       throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}', propertyTypeLocalName: '${propertyTypeLocalName}'`);
     }
@@ -68,8 +71,18 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-      this.locationService.atExtensionCreatePage(this.codeScheme);
+      this.locationService.atExtensionCreatePage(this.codeScheme, this.title);
     });
+  }
+
+  resolveTitle(propertyTypeLocalName: string) {
+    if (propertyTypeLocalName === 'calculationHierarchy') {
+      this.title = 'Create calculation hierarchy';
+    } else if (propertyTypeLocalName === 'definitionHierarchy') {
+      this.title = 'Create definition hierarchy';
+    } else {
+      this.title = 'Create extension';
+    }
   }
 
   get showUnfinishedFeature() {
@@ -77,7 +90,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return !this.env && this.codeScheme == null && this.propertyType == null;
+    return !this.env && this.codeScheme == null && !this.propertyType;
   }
 
   back() {

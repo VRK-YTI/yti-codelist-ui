@@ -7,6 +7,15 @@ msgstr ""
 msgid "Reference Data"
 msgstr ""
 
+msgid "Create calculation hierarchy"
+msgstr ""
+
+msgid "Create definition hierarchy"
+msgstr ""
+
+msgid "Create extension"
+msgstr ""
+
 msgid "Add classification"
 msgstr ""
 
@@ -251,12 +260,6 @@ msgstr ""
 msgid "Import codes"
 msgstr ""
 
-msgid "Create calculation hierarchy"
-msgstr ""
-
-msgid "Create definition hierarchy"
-msgstr ""
-
 msgid "Import extensions"
 msgstr ""
 
@@ -365,7 +368,7 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
-msgid "Create extension"
+msgid "{{title}}"
 msgstr ""
 
 msgid "This extension does not have any members yet."
@@ -881,9 +884,6 @@ msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"
-msgstr ""
-
-msgid "createNewVersion"
 msgstr ""
 
 msgid "cancelTextForCodeCreation"
