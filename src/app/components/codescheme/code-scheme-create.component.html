@@ -132,6 +132,7 @@
         <app-external-references-input id="codelist_links_input"
                                        [label]="'Links' | translate"
                                        [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
+                                       [languageCodes]="codeSchemeForm.controls['languageCodes'].value"
                                        [formControlName]="'externalReferences'"
                                        [hidden]="cloning"></app-external-references-input>
       </div>

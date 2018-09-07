@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-12">
 
-      <app-content-language class="float-right"></app-content-language>
+      <app-content-language [languageCodes]="languageCodes" class="float-right mb-2"></app-content-language>
 
       <form #form="ngForm">
 
@@ -29,7 +29,7 @@
                            [name]="'href'"
                            [required]="true"
                            required
-                           [infoText]="'INFO_TEXT_LINK_URL'"         
+                           [infoText]="'INFO_TEXT_LINK_URL'"
                            [(ngModel)]="externalReference.href"></app-literal-input>
 
         <app-property-type-select id="propertytype_select"

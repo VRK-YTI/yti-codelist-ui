@@ -147,6 +147,7 @@
       <app-external-references-input id="codelist_links_input"
                                      [label]="'Links' | translate"
                                      [codeSchemeId]="codeScheme.id"
+                                     [languageCodes]="codeSchemeForm.controls['languageCodes'].value"
                                      [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
     </div>

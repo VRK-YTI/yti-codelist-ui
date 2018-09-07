@@ -4,6 +4,7 @@ import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-link-edit-modal',
@@ -13,6 +14,7 @@ import { ModalService } from '../../services/modal.service';
 export class LinkEditModalComponent implements OnInit {
 
   @Input() link: ExternalReference;
+  @Input() languageCodes: CodePlain[];
 
   linkForm = new FormGroup({
     title: new FormControl({}),
@@ -57,10 +59,11 @@ export class LinkEditModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(externalReference: ExternalReference): void {
-    const modalRef = this.modalService.open(LinkEditModalComponent, {size: 'sm'});
+  public open(externalReference: ExternalReference, languageCodes: CodePlain[]): void {
+    const modalRef = this.modalService.open(LinkEditModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as LinkEditModalComponent;
     console.log('Href: ' + externalReference.href);
     instance.link = externalReference;
+    instance.languageCodes = languageCodes;
   }
 }

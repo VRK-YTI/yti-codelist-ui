@@ -9,6 +9,7 @@ import { LinkEditModalService } from '../codescheme/link-edit-modal.component';
 import { LinkShowModalService } from '../codescheme/link-show-modal.component';
 import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { LanguageService } from '../../services/language.service';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-external-references-input',
@@ -64,6 +65,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
   @Input() infoText: string;
   @Input() restrict = false;
   @Input() required = false;
+  @Input() languageCodes: CodePlain[];
   control = new FormControl([]);
 
   private propagateChange: (fn: any) => void = () => {};
@@ -96,16 +98,16 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
 
     const restrictIds = this.externalReferences.map(link => link.id);
 
-    this.linkListModalService.open(this.codeSchemeId, restrictIds)
+    this.linkListModalService.open(this.codeSchemeId, restrictIds, this.languageCodes)
       .then(link => this.externalReferences.push(link), ignoreModalClose);
   }
 
   editExternalReference(externalReference: ExternalReference) {
-    this.linkEditModalService.open(externalReference);
+    this.linkEditModalService.open(externalReference, this.languageCodes);
   }
 
   showExternalReference(externalReference: ExternalReference) {
-    this.linkShowModalService.open(externalReference);
+    this.linkShowModalService.open(externalReference, this.languageCodes);
   }
 
   removeExternalReference(externalReference: ExternalReference) {

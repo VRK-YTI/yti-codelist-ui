@@ -7,6 +7,7 @@ import { LinkCreateModalService } from './link-create-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ModalService } from '../../services/modal.service';
 import { LanguageService } from '../../services/language.service';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-link-list-modal',
@@ -18,6 +19,7 @@ export class LinkListModalComponent implements OnInit {
 
   @Input() codeSchemeId: string;
   @Input() restrictExternalReferenceIds: string[];
+  @Input() languageCodes: CodePlain[];
 
   externalReferences: ExternalReference[] = [];
   selectedExternalReference: ExternalReference;
@@ -48,7 +50,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   create() {
-    this.linkCreateModalService.open()
+    this.linkCreateModalService.open(this.languageCodes)
       .then(externalReference => this.modal.close(externalReference), ignoreModalClose);
   }
 
@@ -71,11 +73,12 @@ export class LinkListModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(codeSchemeId: string, restrictExternalReferenceIds: string[]): Promise<ExternalReference> {
+  public open(codeSchemeId: string, restrictExternalReferenceIds: string[], languageCodes: CodePlain[]): Promise<ExternalReference> {
     const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as LinkListModalComponent;
     instance.codeSchemeId = codeSchemeId;
     instance.restrictExternalReferenceIds = restrictExternalReferenceIds;
+    instance.languageCodes = languageCodes;
     return modalRef.result;
   }
 }
