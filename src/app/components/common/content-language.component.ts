@@ -49,9 +49,22 @@ export class ContentLanguageComponent implements OnInit {
   }
 
   ngOnInit() {
+    const uiLanguage: Language = this.languageService.language;
     if (this.languageCodes && this.languageCodes.length > 0) {
-      const language: Language = this.languageCodes[0].codeValue as Language;
+      const defaultLanguageCodes: CodePlain[] = this.languageCodes.filter(languageCode =>
+        codeValueMatches(uiLanguage, languageCode)
+      );
+      let language: Language;
+      if (defaultLanguageCodes.length === 1) {
+        language = defaultLanguageCodes[0].codeValue as Language;
+      } else {
+        language = this.languageCodes[0].codeValue as Language;
+      }
       this.contentLanguage = language;
+    }
+
+    function codeValueMatches(languageCode: string, code: CodePlain) {
+      return code.codeValue === languageCode;
     }
   }
 
