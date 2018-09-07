@@ -60,7 +60,6 @@ export class ContentLanguageComponent implements OnInit {
   }
 
   set contentLanguage(value: Language) {
-    console.log('Setting content language to: ' + value);
     this.languageService.contentLanguage = value;
   }
 }
