@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Language, LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
 
@@ -6,7 +6,8 @@ import { CodePlain } from '../../entities/code-simple';
   selector: 'app-content-language',
   template: `
     <div ngbDropdown class="d-inline-block float-right" [placement]="placement">
-      <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle>{{contentLanguage}}</button>
+      <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle>
+        {{contentLanguage}}</button>
       <div ngbDropdownMenu aria-labelledby="content_language_dropdown_button">
         <div *ngIf="languageCodes && languageCodes.length > 0">
           <div *ngFor="let languageCode of languageCodes">
@@ -14,7 +15,8 @@ import { CodePlain } from '../../entities/code-simple';
                     class="dropdown-item"
                     type="button"
                     [class.active]="this.translateStringToLanguage(languageCode.codeValue) === contentLanguage"
-                    (click)='contentLanguage = this.translateStringToLanguage(languageCode.codeValue)'>{{languageCode.prefLabel | translateValue:true}} - ({{languageCode.codeValue}})</button>
+                    (click)='contentLanguage = this.translateStringToLanguage(languageCode.codeValue)'>
+              {{languageCode.prefLabel | translateValue:true}} - ({{languageCode.codeValue}})</button>
           </div>
         </div>
         <div *ngIf="!languageCodes || languageCodes.length == 0">
@@ -30,7 +32,7 @@ import { CodePlain } from '../../entities/code-simple';
     </div>
   `
 })
-export class ContentLanguageComponent implements OnInit {
+export class ContentLanguageComponent implements OnInit, OnChanges {
 
   @Input() placement = 'bottom-right';
   @Input() languageCodes: CodePlain[];
@@ -49,22 +51,43 @@ export class ContentLanguageComponent implements OnInit {
   }
 
   ngOnInit() {
-    const uiLanguage: Language = this.languageService.language;
-    if (this.languageCodes && this.languageCodes.length > 0) {
-      const defaultLanguageCodes: CodePlain[] = this.languageCodes.filter(languageCode =>
-        codeValueMatches(uiLanguage, languageCode)
-      );
-      let language: Language;
-      if (defaultLanguageCodes.length === 1) {
-        language = defaultLanguageCodes[0].codeValue as Language;
-      } else {
-        language = this.languageCodes[0].codeValue as Language;
+    this.refreshLanguages();
+  }
+
+  get hasCustomLanguages(): boolean {
+    return this.languageCodes && this.languageCodes.length > 0;
+  }
+
+  ngOnChanges() {
+    if (this.hasCustomLanguages) {
+      const currentLanguage = this.languageService.contentLanguage;
+      if (!this.findLanguage(currentLanguage)) {
+        this.refreshLanguages();
       }
-      this.contentLanguage = language;
+    }
+  }
+
+  findLanguage(language: Language): CodePlain | undefined {
+    const defaultLanguageCodes: CodePlain[] = this.languageCodes.filter(languageCode =>
+      codeValueMatches(language, languageCode)
+    );
+
+    if (defaultLanguageCodes && defaultLanguageCodes.length > 0) {
+      return defaultLanguageCodes[0];
+    } else {
+      return undefined;
     }
 
     function codeValueMatches(languageCode: string, code: CodePlain) {
       return code.codeValue === languageCode;
+    }
+  }
+
+  refreshLanguages() {
+    if (this.hasCustomLanguages) {
+      const uiLanguage: Language = this.languageService.language;
+      const defaultLanguage = this.findLanguage(uiLanguage);
+      this.contentLanguage = defaultLanguage ? defaultLanguage.codeValue : this.languageCodes[0].codeValue as Language;
     }
   }
 
