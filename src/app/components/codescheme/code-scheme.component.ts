@@ -106,7 +106,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get contentLanguages(): CodePlain[] {
-    console.log('codescheme base contentLanguages called!');
     return this.codeScheme.languageCodes;
   }
 
