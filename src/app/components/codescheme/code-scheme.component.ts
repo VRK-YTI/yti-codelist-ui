@@ -38,6 +38,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   chosenVariant: CodeScheme;
   forbiddenVariantSearchResultIds: string[] = [];
   deleting = false;
+  languageCodes: CodePlain[] | null;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -106,10 +107,16 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get contentLanguages(): CodePlain[] {
-    return this.codeScheme.languageCodes;
+    if (this.languageCodes) {
+      return this.languageCodes;
+    } else {
+      return this.codeScheme.languageCodes;
+    }
   }
 
   onTabChange(event: NgbTabChangeEvent) {
+
+    this.languageCodes = null;
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -175,6 +182,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   importExtensionSchemes() {
+
     this.extensionSchemesImportModalService.open(this.codeScheme).then(success => {
       if (success) {
         this.refreshExtensionSchemes();
@@ -183,6 +191,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   createExtensionScheme(propertyTypeLocalName: string) {
+
     console.log('Create extensionScheme clicked with type: ' + propertyTypeLocalName);
     this.router.navigate(
       ['createextensionscheme',
@@ -196,6 +205,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   importCodes() {
+
     this.codeSchemeCodesImportModalService.open(this.codeScheme).then(success => {
       if (success) {
         this.refreshCodes();
@@ -204,6 +214,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   createCode() {
+
     this.router.navigate(
       ['createcode',
         {
@@ -215,6 +226,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get showMenu(): boolean {
+
     return this.canDeleteCodeScheme ||
       this.canAddExtensionScheme ||
       this.canCreateANewVersionFromCodeScheme ||
@@ -303,5 +315,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
           );
         }
       });
+  }
+
+  changeLanguages(codes: CodePlain[]) {
+    this.languageCodes = codes;
   }
 }
