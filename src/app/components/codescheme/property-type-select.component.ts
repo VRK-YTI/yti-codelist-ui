@@ -58,7 +58,6 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit
   }
 
   ngOnInit() {
-    console.log('PropertyTypeSelectComponent onInit called!');
     this.dataService.getPropertyTypes(this.context).subscribe(types => {
 
       if (types.length === 0) {

@@ -58,11 +58,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    console.log('CodeCreateComponent onInit');
     const registryCode = this.route.snapshot.params.registryCode;
-    console.log('CodeCreateComponent onInit registryCode: ' + registryCode);
     const schemeCode = this.route.snapshot.params.schemeCode;
-    console.log('CodeCreateComponent onInit schemeCode: ' + schemeCode);
 
     if (!registryCode || !schemeCode) {
       throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}'`);
@@ -84,7 +81,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.router.navigate(this.codeScheme.route);
   }
 
-  save(formData: any): Observable<any> {    
+  save(formData: any): Observable<any> {
 
     const { validity, externalReferences, ...rest } = formData;
 
@@ -104,7 +101,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
         this.router.navigate(createdCode.route);
       }));
     }
-    
+
     if (contains(restrictedStatuses, code.status)) {
       return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));
     } else {

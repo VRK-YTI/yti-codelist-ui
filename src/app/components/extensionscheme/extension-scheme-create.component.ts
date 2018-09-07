@@ -56,11 +56,8 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
   ngOnInit() {
     const registryCode = this.route.snapshot.params.registryCode;
-    console.log('ExtensionSchemeCreateComponent onInit registryCode: ' + registryCode);
     const schemeCode = this.route.snapshot.params.schemeCode;
-    console.log('ExtensionSchemeCreateComponent onInit schemeCode: ' + schemeCode);
     const propertyTypeLocalName = this.route.snapshot.params.propertyTypeLocalName;
-    console.log('ExtensionSchemeCreateComponent onInit propertyTypeLocalName: ' + propertyTypeLocalName);
 
     this.resolveTitle(propertyTypeLocalName);
 
@@ -93,7 +90,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return !this.env && this.codeScheme == null && !this.propertyType;
+    return !this.env && !this.codeScheme && !this.propertyType;
   }
 
   back() {
