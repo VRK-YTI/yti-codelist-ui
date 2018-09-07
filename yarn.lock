@@ -6879,9 +6879,9 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
 
-"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#8b73fe0b6e9b5c77a140c7d7001db11ca67ca036":
+"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#60c1df23597b01998a8237ca67e3c800d29497ec":
   version "0.0.0"
-  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#8b73fe0b6e9b5c77a140c7d7001db11ca67ca036"
+  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#60c1df23597b01998a8237ca67e3c800d29497ec"
 
 zone.js@~0.8.26:
   version "0.8.26"

@@ -656,7 +656,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ROW_MISSING_CODE"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr ""
 
 msgid "Front page"
@@ -787,7 +787,7 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
@@ -796,7 +796,7 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
@@ -920,6 +920,24 @@ msgid "terminologyIntegrationModalInstructionTextWhenCreatingCode"
 msgstr ""
 
 msgid "terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme"
+msgstr ""
+
+msgid "CHANGE STATUS?"
+msgstr ""
+
+msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
+msgstr ""
+
+msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
+msgstr ""
+
+msgid "CHOOSE STATUS?"
+msgstr ""
+
+msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
+msgstr ""
+
+msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
 msgstr ""
 
 msgid "invalidDate"

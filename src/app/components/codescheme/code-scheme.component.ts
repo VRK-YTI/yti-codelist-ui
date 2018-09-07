@@ -17,9 +17,10 @@ import { ExtensionSchemesImportModalService } from '../extensionscheme/extension
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap, flatMap } from 'rxjs/operators';
+import { Observable, from } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
+import { changeToRestrictedStatus } from '../../utils/status-check';
 
 @Component({
   selector: 'app-code-scheme',
@@ -157,8 +158,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   save(formData: any): Observable<any> {
 
-    console.log('Store CodeScheme changes to server!');
-
     const { validity, ...rest } = formData;
     const updatedCodeScheme = this.codeScheme.clone();
 
@@ -167,7 +166,17 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       startDate: validity.start,
       endDate: validity.end
     });
-    return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).pipe(tap(() => this.ngOnInit()));
+
+    const save = () => {
+      console.log('Store CodeScheme changes to server!');
+      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).pipe(tap(() => this.ngOnInit()));
+    };
+
+    if (changeToRestrictedStatus(this.codeScheme, formData.status)) {
+      return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(flatMap(save));
+    } else {
+      return save();
+    }
   }
 
   navigateToRoute(route: any[]) {

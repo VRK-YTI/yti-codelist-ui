@@ -42,4 +42,14 @@ export class CodeListConfirmationModalService {
   openDetachVariant() {
     return this.confirmationModalService.open('DETACH VARIANT?', '');
   }
+  
+  openChangeToRestrictedStatus() {
+    return this.confirmationModalService.open('CHANGE STATUS?',
+      'CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1', 'CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2');
+  }
+
+  openChooseToRestrictedStatus() {
+    return this.confirmationModalService.open('CHOOSE STATUS?',
+      'CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1', 'CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2');
+  }
 }

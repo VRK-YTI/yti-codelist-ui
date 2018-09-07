@@ -2,6 +2,7 @@ import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import { CodeListErrorModalService } from '../components/common/error-modal.service';
+import { isModalClose } from 'yti-common-ui/utils/modal';
 
 export interface EditingComponent {
   isEditing(): boolean;
@@ -69,7 +70,10 @@ export class EditableService implements OnDestroy {
       },
       error(err: any) {
         that.saving$.next(false);
-        that.errorModalService.openSubmitError(err);
+        
+        if (!isModalClose(err)) {
+          that.errorModalService.openSubmitError(err);
+        }
       }
     });
   }

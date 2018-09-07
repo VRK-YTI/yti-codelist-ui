@@ -5,7 +5,7 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
@@ -13,8 +13,9 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { Extension } from '../../entities/extension';
-import { tap } from 'rxjs/operators';
+import { tap, flatMap } from 'rxjs/operators';
 import { ExtensionSchemeExtensionsImportModalService } from '../extension/extension-import-modal.component';
+import { changeToRestrictedStatus } from '../../utils/status-check';
 
 @Component({
   selector: 'app-extension-scheme',
@@ -166,9 +167,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   }
 
   save(formData: any): Observable<any> {
-
-    console.log('Store ExtensionScheme changes to server!');
-
+    
     const {validity, ...rest} = formData;
     const updateExtensionScheme = this.extensionScheme.clone();
 
@@ -178,7 +177,16 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
       endDate: validity.end
     });
 
-    return this.dataService.saveExtensionScheme(updateExtensionScheme.serialize()).pipe(tap(() => this.ngOnInit()));
+    const save = () => {
+      console.log('Store ExtensionScheme changes to server!');
+      return this.dataService.saveExtensionScheme(updateExtensionScheme.serialize()).pipe(tap(() => this.ngOnInit()));
+    };
+
+    if (changeToRestrictedStatus(this.extensionScheme, formData.status)) {
+      return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(flatMap(save));
+    } else {
+      return save();
+    }
   }
 
   get showUnfinishedFeature() {

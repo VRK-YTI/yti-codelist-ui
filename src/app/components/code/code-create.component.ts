@@ -6,14 +6,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType } from '../../services/api-schema';
-import { Status } from 'yti-common-ui/entities/status';
-import { Observable } from 'rxjs';
+import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
+import { Observable, from } from 'rxjs';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, flatMap } from 'rxjs/operators';
+import { contains } from 'yti-common-ui/utils/array';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
   selector: 'app-code-create',
@@ -43,7 +45,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
               private router: Router,
               private editableService: EditableService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -81,9 +84,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.router.navigate(this.codeScheme.route);
   }
 
-  save(formData: any): Observable<any> {
-
-    console.log('Saving new Code');
+  save(formData: any): Observable<any> {    
 
     const { validity, externalReferences, ...rest } = formData;
 
@@ -94,12 +95,21 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
       externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
     };
 
-    return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
+    const save = () => {
+      console.log('Saving new Code');
+      return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
       .pipe(tap(createdCode => {
         console.log('Saved new Code');
         console.log('Saved code route: ' + createdCode.route);
         this.router.navigate(createdCode.route);
       }));
+    }
+    
+    if (contains(restrictedStatuses, code.status)) {
+      return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));
+    } else {
+      return save();
+    }
   }
 
   get loading(): boolean {

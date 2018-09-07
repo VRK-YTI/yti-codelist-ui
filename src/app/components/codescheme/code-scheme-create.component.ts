@@ -3,10 +3,10 @@ import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators }
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { Status } from 'yti-common-ui/entities/status';
+import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
-import { Observable, pipe } from 'rxjs';
+import { Observable, pipe, from } from 'rxjs';
 import { requiredList } from 'yti-common-ui/utils/validator';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
@@ -17,7 +17,9 @@ import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { LanguageService } from '../../services/language.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, flatMap } from 'rxjs/operators';
+import { contains } from 'yti-common-ui/utils/array';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -61,7 +63,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private activatedRoute: ActivatedRoute,
               private location: Location,
               private languageService: LanguageService,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -173,8 +176,6 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   save(formData: any): Observable<any> {
 
-    console.log('Saving new CodeScheme');
-
     const { validity, codeRegistry, defaultCode, dataClassifications, languageCodes, externalReferences, ...rest } = formData;
 
     const codeScheme: CodeSchemeType = <CodeSchemeType> {
@@ -202,14 +203,21 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           ]);
         }));
     } else {
-      console.log('Saving new CodeScheme');
-      return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
-        .pipe(tap(createdCodeScheme => {
-          console.log('Saved new CodeScheme');
-          this.router.navigate(createdCodeScheme.route);
-        }));
-    }
+      const save = () => {
+        console.log('Saving new CodeScheme');
+        return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
+          .pipe(tap(createdCodeScheme => {
+            console.log('Saved new CodeScheme');
+            this.router.navigate(createdCodeScheme.route);
+          }));
+      }
 
+      if (contains(restrictedStatuses, codeScheme.status)) {
+        return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));
+      } else {
+        return save();
+      }
+    }
   }
 
   isCodeValuePatternValid (control: AbstractControl) {

@@ -3,15 +3,17 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators }
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { Status } from 'yti-common-ui/entities/status';
+import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { ExtensionSchemeType } from '../../services/api-schema';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, flatMap } from 'rxjs/operators';
 import { PropertyType } from '../../entities/property-type';
+import { contains } from 'yti-common-ui/utils/array';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
   selector: 'app-extension-scheme-create',
@@ -40,7 +42,8 @@ export class ExtensionSchemeCreateComponent implements OnInit {
               private dataService: DataService,
               private editableService: EditableService,
               private location: Location,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -99,8 +102,6 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
   save(formData: any): Observable<any> {
 
-    console.log('Saving new ExtensionScheme');
-
     const { validity, ...rest } = formData;
 
     const extensionScheme: ExtensionSchemeType = <ExtensionSchemeType> {
@@ -110,12 +111,20 @@ export class ExtensionSchemeCreateComponent implements OnInit {
       propertyType: this.propertyType.serialize()
     };
 
-    console.log('Saving new ExtensionScheme');
-    return this.dataService.createExtensionScheme(extensionScheme, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
-      .pipe(tap(createdExtensionScheme => {
-        console.log('Saved new ExtensionScheme');
-        this.router.navigate(createdExtensionScheme.route);
-      }));
+    const save = () => {
+      console.log('Saving new ExtensionScheme');
+      return this.dataService.createExtensionScheme(extensionScheme, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
+        .pipe(tap(createdExtensionScheme => {
+          console.log('Saved new ExtensionScheme');
+          this.router.navigate(createdExtensionScheme.route);
+        }));
+    }
+
+    if (contains(restrictedStatuses, extensionScheme.status)) {
+      return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));
+    } else {
+      return save();
+    }
   }
 
   isCodeValuePatternValid(control: AbstractControl) {
