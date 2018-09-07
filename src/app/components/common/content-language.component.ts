@@ -52,11 +52,6 @@ export class ContentLanguageComponent implements OnInit {
     if (this.languageCodes && this.languageCodes.length > 0) {
       const language: Language = this.languageCodes[0].codeValue as Language;
       this.contentLanguage = language;
-      this.languageCodes.forEach(languageCode => {
-        console.log('codeValue: ' + languageCode.codeValue);
-      });
-    } else {
-      console.log('languageCodes length is 0!');
     }
   }
 
