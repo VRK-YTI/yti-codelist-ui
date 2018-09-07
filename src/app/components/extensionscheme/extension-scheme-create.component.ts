@@ -90,7 +90,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return !this.env && !this.codeScheme && !this.propertyType;
+    return !this.env || !this.codeScheme || !this.propertyType;
   }
 
   back() {
