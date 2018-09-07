@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -7,29 +7,6 @@ import { ModalService } from '../../services/modal.service';
 import { Extension } from '../../entities/extension';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
-
-@Injectable()
-export class SearchLinkedExtensionModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  open(extensions$: Observable<Extension[]>,
-       titleLabel: string,
-       searchLabel: string,
-       restrictExtensionIds: string[],
-       useUILanguage: boolean = false): Promise<Extension> {
-
-    const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedExtensionModalComponent;
-    instance.extensions$ = extensions$;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictExtensionIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
 
 @Component({
   selector: 'app-search-linked-extension-modal',
@@ -100,8 +77,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
-              public translateService: TranslateService,
-              private renderer: Renderer) {
+              public translateService: TranslateService) {
   }
 
   ngOnInit() {
@@ -128,7 +104,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
   }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    this.searchInput.nativeElement.focus();
   }
 
   get search() {
@@ -141,5 +117,28 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class SearchLinkedExtensionModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  open(extensions$: Observable<Extension[]>,
+       titleLabel: string,
+       searchLabel: string,
+       restrictExtensionIds: string[],
+       useUILanguage: boolean = false): Promise<Extension> {
+
+    const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedExtensionModalComponent;
+    instance.extensions$ = extensions$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictExtensionIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
@@ -8,45 +8,6 @@ import { ModalService } from '../../services/modal.service';
 import { Code } from '../../entities/code';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
-
-@Injectable()
-export class SearchLinkedCodeModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  openWithCodes(codes$: Observable<Code[]>,
-                titleLabel: string,
-                searchLabel: string,
-                restrictCodeIds: string[],
-                useUILanguage: boolean = false): Promise<Code> {
-
-    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
-    instance.codes$ = codes$;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictCodeIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-
-  openWithCodeSchemes(codeSchemes: CodeScheme[],
-                      titleLabel: string,
-                      searchLabel: string,
-                      restrictCodeIds: string[],
-                      useUILanguage: boolean = false): Promise<Code> {
-
-    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
-    instance.codeSchemes = codeSchemes;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictCodeIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
 
 @Component({
   selector: 'app-search-linked-code-modal',
@@ -141,8 +102,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
-              private dataService: DataService,
-              private renderer: Renderer) {
+              private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -159,7 +119,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    this.searchInput.nativeElement.focus();
   }
 
   get search() {
@@ -203,5 +163,44 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
       this.selectedCodeScheme.codeValue,
       this.languageService.language);
     this.filterCodes();
+  }
+}
+
+@Injectable()
+export class SearchLinkedCodeModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  openWithCodes(codes$: Observable<Code[]>,
+                titleLabel: string,
+                searchLabel: string,
+                restrictCodeIds: string[],
+                useUILanguage: boolean = false): Promise<Code> {
+
+    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
+    instance.codes$ = codes$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictCodeIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
+  }
+
+  openWithCodeSchemes(codeSchemes: CodeScheme[],
+                      titleLabel: string,
+                      searchLabel: string,
+                      restrictCodeIds: string[],
+                      useUILanguage: boolean = false): Promise<Code> {
+
+    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
+    instance.codeSchemes = codeSchemes;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictCodeIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }

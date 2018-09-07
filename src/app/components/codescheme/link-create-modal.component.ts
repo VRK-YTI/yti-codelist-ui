@@ -4,18 +4,6 @@ import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { ModalService } from '../../services/modal.service';
 
-@Injectable()
-export class LinkCreateModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkCreateModalComponent, {size: 'sm'});
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-link-create-modal',
   templateUrl: './link-create-modal.component.html',
@@ -39,3 +27,16 @@ export class LinkCreateModalComponent {
     this.modal.close(this.externalReference);
   }
 }
+
+@Injectable()
+export class LinkCreateModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkCreateModalComponent, {size: 'sm'});
+    return modalRef.result;
+  }
+}
+

@@ -24,21 +24,6 @@ function debounceSearch(search$: Observable<string>): Observable<string> {
   return concat(initialSearch, debouncedSearch);
 }
 
-@Injectable()
-export class TerminologyIntegrationModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(updatingExistingEntity: boolean, targetEntityKind: string): Promise<Concept> {
-    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'lg'});
-    const instance = modalRef.componentInstance as TerminologyIntegrationCodeschemeModalComponent;
-    instance.updatingExistingEntity = updatingExistingEntity;
-    instance.targetEntityKind = targetEntityKind;
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-terminology-integration-codescheme-modal',
   templateUrl: './terminology-integration-codescheme-modal.component.html',
@@ -90,12 +75,12 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
-        value: voc,
-        name: () => voc ? this.languageService.translate(voc.prefLabel, true)
-          : this.translateService.instant('All vocabularies'),
-        idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
-          : 'all_selected'
-      })
+          value: voc,
+          name: () => voc ? this.languageService.translate(voc.prefLabel, true)
+            : this.translateService.instant('All vocabularies'),
+          idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
+            : 'all_selected'
+        })
       );
 
     }, error => {
@@ -151,5 +136,20 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class TerminologyIntegrationModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(updatingExistingEntity: boolean, targetEntityKind: string): Promise<Concept> {
+    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'lg'});
+    const instance = modalRef.componentInstance as TerminologyIntegrationCodeschemeModalComponent;
+    instance.updatingExistingEntity = updatingExistingEntity;
+    instance.targetEntityKind = targetEntityKind;
+    return modalRef.result;
   }
 }

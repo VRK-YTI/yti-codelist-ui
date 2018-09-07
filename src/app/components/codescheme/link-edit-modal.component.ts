@@ -5,20 +5,6 @@ import { EditableService } from '../../services/editable.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
 
-@Injectable()
-export class LinkEditModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(externalReference: ExternalReference): void {
-    const modalRef = this.modalService.open(LinkEditModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as LinkEditModalComponent;
-    console.log('Href: ' + externalReference.href);
-    instance.link = externalReference;
-  }
-}
-
 @Component({
   selector: 'app-link-edit-modal',
   templateUrl: './link-edit-modal.component.html',
@@ -62,5 +48,19 @@ export class LinkEditModalComponent implements OnInit {
 
   canSave() {
     return this.linkForm.valid;
+  }
+}
+
+@Injectable()
+export class LinkEditModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(externalReference: ExternalReference): void {
+    const modalRef = this.modalService.open(LinkEditModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as LinkEditModalComponent;
+    console.log('Href: ' + externalReference.href);
+    instance.link = externalReference;
   }
 }

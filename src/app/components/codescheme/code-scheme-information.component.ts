@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -30,6 +30,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeScheme: CodeScheme;
   @Input() languageCodes: CodePlain[];
+  @Output() change = new EventEmitter<CodePlain[]>();
 
   dataClassifications: Code[];
   env: string;
@@ -53,6 +54,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   });
 
   cancelSubscription: Subscription;
+  languageChangeSubscription: Subscription;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -68,6 +70,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
+    this.languageChangeSubscription = this.codeSchemeForm.controls['languageCodes'].valueChanges
+      .subscribe(data => this.updateLanguages(data));
+
     dataService.getServiceConfiguration().subscribe(configuration => {
       this.env = configuration.env;
     });
@@ -75,6 +80,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.reset();
+  }
+
+  updateLanguages(codes: CodePlain[]) {
+    this.change.emit(codes);
   }
 
   private reset() {
@@ -93,6 +102,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
+    this.languageChangeSubscription.unsubscribe();
   }
 
   get showUnfinishedFeature() {

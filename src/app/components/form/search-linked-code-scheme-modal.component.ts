@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -7,27 +7,6 @@ import { ModalService } from '../../services/modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
-
-@Injectable()
-export class SearchLinkedCodeSchemeModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  open(titleLabel: string,
-       searchLabel: string,
-       restrictCodeIds: string[],
-       useUILanguage: boolean = false): Promise<CodeScheme> {
-
-    const modalRef = this.modalService.open(SearchLinkedCodeSchemeModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedCodeSchemeModalComponent;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictCodeIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
 
 @Component({
   selector: 'app-search-linked-code-scheme-modal',
@@ -96,8 +75,7 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
-              private dataService: DataService,
-              private renderer: Renderer) {
+              private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -125,7 +103,7 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
   }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    this.searchInput.nativeElement.focus();
   }
 
   get search() {
@@ -138,5 +116,26 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class SearchLinkedCodeSchemeModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  open(titleLabel: string,
+       searchLabel: string,
+       restrictCodeIds: string[],
+       useUILanguage: boolean = false): Promise<CodeScheme> {
+
+    const modalRef = this.modalService.open(SearchLinkedCodeSchemeModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeSchemeModalComponent;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictCodeIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }

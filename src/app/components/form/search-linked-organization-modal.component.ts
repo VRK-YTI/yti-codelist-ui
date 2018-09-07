@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -6,29 +6,6 @@ import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
 import { Organization } from '../../entities/organization';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
-
-@Injectable()
-export class SearchLinkedOrganizationModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  open(organizations$: Observable<Organization[]>,
-       titleLabel: string,
-       searchLabel: string,
-       restrictOrganizationIds: string[],
-       useUILanguage: boolean = false): Promise<Organization> {
-
-    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as SearchLinkedOrganizationModalComponent;
-    instance.organizations$ = organizations$;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictOrganizationIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
 
 @Component({
   selector: 'app-search-linked-organizatione-modal',
@@ -95,8 +72,7 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
   loading = false;
 
   constructor(public modal: NgbActiveModal,
-              public languageService: LanguageService,
-              private renderer: Renderer) {
+              public languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -122,7 +98,7 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
   }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    this.searchInput.nativeElement.focus();
   }
 
   get search() {
@@ -135,5 +111,28 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class SearchLinkedOrganizationModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  open(organizations$: Observable<Organization[]>,
+       titleLabel: string,
+       searchLabel: string,
+       restrictOrganizationIds: string[],
+       useUILanguage: boolean = false): Promise<Organization> {
+
+    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedOrganizationModalComponent;
+    instance.organizations$ = organizations$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictOrganizationIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }

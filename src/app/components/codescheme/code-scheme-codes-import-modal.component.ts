@@ -5,21 +5,7 @@ import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ModalService } from '../../services/modal.service';
-import { CodeListErrorModalService } from '../../components/common/error-modal.service';
-
-@Injectable()
-export class CodeSchemeCodesImportModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(codeScheme: CodeScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(CodeSchemeCodesImportModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as CodeSchemeCodesImportModalComponent;
-    instance.codeScheme = codeScheme;
-    return modalRef.result;
-  }
-}
+import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({
   selector: 'app-code-scheme-codes-import-modal',
@@ -78,5 +64,19 @@ export class CodeSchemeCodesImportModalComponent {
           this.codeListErrorModalService.openSubmitError(error);
         });
     }
+  }
+}
+
+@Injectable()
+export class CodeSchemeCodesImportModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(codeScheme: CodeScheme): Promise<boolean> {
+    const modalRef = this.modalService.open(CodeSchemeCodesImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as CodeSchemeCodesImportModalComponent;
+    instance.codeScheme = codeScheme;
+    return modalRef.result;
   }
 }
