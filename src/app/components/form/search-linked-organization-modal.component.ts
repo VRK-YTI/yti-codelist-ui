@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -72,8 +72,7 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
   loading = false;
 
   constructor(public modal: NgbActiveModal,
-              public languageService: LanguageService,
-              private renderer: Renderer) {
+              public languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -99,7 +98,7 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
   }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    this.searchInput.nativeElement.focus();
   }
 
   get search() {
@@ -127,7 +126,7 @@ export class SearchLinkedOrganizationModalService {
        restrictOrganizationIds: string[],
        useUILanguage: boolean = false): Promise<Organization> {
 
-    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as SearchLinkedOrganizationModalComponent;
     instance.organizations$ = organizations$;
     instance.titleLabel = titleLabel;

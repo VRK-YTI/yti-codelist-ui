@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, Renderer, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -75,8 +75,7 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
-              private dataService: DataService,
-              private renderer: Renderer) {
+              private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -104,7 +103,7 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
   }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.searchInput.nativeElement, 'focus');
+    this.searchInput.nativeElement.focus();
   }
 
   get search() {
