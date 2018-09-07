@@ -34,7 +34,7 @@ export class ExtensionCreateComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private editableService: EditableService,
-              private languageService: LanguageService,
+              public languageService: LanguageService,
               private locationService: LocationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);

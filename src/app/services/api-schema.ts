@@ -41,6 +41,7 @@ export interface CodeSchemeType extends BaseResourceType {
   changeNote?: Localizable;
   definition?: Localizable;
   dataClassifications: CodePlainType[];
+  languageCodes: CodePlainType[];
   externalReferences?: ExternalReferenceType[];
   extensionSchemes?: ExtensionSchemeSimpleType[];
   conceptUriInVocabularies: string;

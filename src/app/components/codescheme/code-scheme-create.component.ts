@@ -32,6 +32,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   uuidOfOriginalCodeSchemeIfCloning: string;
   pageTitle = 'Create code list';
   cloning = false;
+  allLanguageCodes: CodePlain[];
 
   codeSchemeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
@@ -46,6 +47,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     externalReferences: new FormControl([]),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     dataClassifications: new FormControl([], [requiredList]),
+    languageCodes: new FormControl([], [requiredList]),
     defaultCode: new FormControl(null),
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required),
@@ -70,6 +72,11 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     this.dataService.getServiceConfiguration().subscribe(configuration => {
       this.env = configuration.env;
+    });
+
+    this.dataService.getLanguageCodes(this.languageService.language).subscribe(languageCodes => {
+      this.allLanguageCodes = languageCodes;
+      this.setDefaultLanguageCodes();
     });
 
     this.activatedRoute.queryParams.subscribe(params => {
@@ -107,6 +114,21 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               this.codeSchemeForm.patchValue({dataClassifications: dataClassificationsToCopy});
             }
           });
+          this.dataService.getLanguageCodes(this.languageService.language).subscribe(next2 => {
+            const allLanguageCodes = next2;
+            const languageCodesToCopy: CodePlain[] = [];
+            originalCodeScheme.languageCodes.forEach(function (originalLanguageCode) {
+              allLanguageCodes.forEach(function(potentialLanguageCode) {
+                const uriToCompare = potentialLanguageCode.codeScheme.uri + '/' + potentialLanguageCode.codeValue;
+                if (uriToCompare === originalLanguageCode.uri) {
+                  languageCodesToCopy.push(potentialLanguageCode);
+                }
+              });
+            });
+            if (languageCodesToCopy.length > 0) {
+              this.codeSchemeForm.patchValue({languageCodes: languageCodesToCopy});
+            }
+          });
           this.locationService.atCreateNewVersionOfCodeSchemePage(originalCodeScheme);
         });
         this.pageTitle = 'Create a new version';
@@ -124,12 +146,25 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     }
   }
 
+  setDefaultLanguageCodes() {
+    const defaultLanguageCodes: CodePlain[] = this.allLanguageCodes.filter(languageCode =>
+      codeValueMatches('fi', languageCode) ||
+      codeValueMatches('sv', languageCode) ||
+      codeValueMatches('en', languageCode)
+    );
+    this.codeSchemeForm.patchValue({languageCodes: defaultLanguageCodes});
+
+    function codeValueMatches(languageCode: string, code: CodePlain) {
+      return code.codeValue === languageCode;
+    }
+  }
+
   get showUnfinishedFeature() {
     return this.env === 'dev' || this.env === 'local';
   }
 
   get loading(): boolean {
-    return !this.codeRegistriesLoaded || !this.env;
+    return !this.codeRegistriesLoaded || !this.env || !this.allLanguageCodes;
   }
 
   back() {
@@ -140,7 +175,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     console.log('Saving new CodeScheme');
 
-    const { validity, codeRegistry, defaultCode, dataClassifications, externalReferences, ...rest } = formData;
+    const { validity, codeRegistry, defaultCode, dataClassifications, languageCodes, externalReferences, ...rest } = formData;
 
     const codeScheme: CodeSchemeType = <CodeSchemeType> {
       ...rest,
@@ -149,6 +184,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       codeRegistry: codeRegistry.serialize(),
       defaultCode: defaultCode ? defaultCode.serialize() : undefined,
       dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize()),
+      languageCodes: languageCodes.map((lc: CodePlain) => lc.serialize()),
       externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
     };
 

@@ -6,7 +6,7 @@
 
   <app-back-button [id]="'codelist_back_button'" (back)="back()"></app-back-button>
 
-  <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService, false)}}</h1>
+  <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService, true)}}</h1>
 
   <div class="row">
     <div class="col-12">
@@ -78,7 +78,7 @@
           </div>
         </div>
 
-        <app-content-language></app-content-language>
+        <app-content-language [languageCodes]="contentLanguages"></app-content-language>
       </div>
     </div>
   </div>
@@ -87,15 +87,18 @@
     <div class="col-12">
       <div class="metaitem">
         <span translate>Registry</span><span>: </span><span class="routedLink"
-                                                            (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+                                                            (click)="navigateToRoute(codeScheme.codeRegistry.route)">
+        {{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.dataClassifications.length > 0">
         <span translate>Classification</span><span>: </span>
-        <span *ngFor="let dataClassification of codeScheme.dataClassifications; let last = last">{{dataClassification.prefLabel | translateValue:false}}{{last ? '' : ', '}}</span>
+        <span
+          *ngFor="let dataClassification of codeScheme.dataClassifications; let last = last">{{dataClassification.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.codeRegistry.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of codeScheme.codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:false}}{{last ? '' : ', '}}</span>
+        <span
+          *ngFor="let organization of codeScheme.codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
       </div>
     </div>
   </div>
@@ -123,7 +126,8 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-scheme-information [codeScheme]="codeScheme"></app-code-scheme-information>
+        <app-code-scheme-information [codeScheme]="codeScheme"
+                                     [languageCodes]="languageCodes"></app-code-scheme-information>
       </ng-template>
     </ngb-tab>
 
@@ -156,10 +160,10 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <dt><label *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0">Koodiston variantit</label></dt>
-        <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()" [codeScheme]="codeScheme"
-                                  [codeRegistries]="codeRegistries"></app-code-scheme-variants>
-        <dt><label *ngIf="codeScheme.variantMothersOfThisCodeScheme.length > 0">Varianttina muissa koodistoissa</label>
+        <dt><label *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0" translate>Variants of this code list</label></dt>
+        <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()"
+                                  [codeScheme]="codeScheme"></app-code-scheme-variants>
+        <dt><label *ngIf="codeScheme.variantMothersOfThisCodeScheme.length > 0" translate>Variant in other code lists</label>
         </dt>
         <app-code-scheme-variant-mothers [codeScheme]="codeScheme"></app-code-scheme-variant-mothers>
       </ng-template>

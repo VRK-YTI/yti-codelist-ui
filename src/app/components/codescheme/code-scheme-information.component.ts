@@ -19,6 +19,7 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -28,6 +29,7 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeScheme: CodeScheme;
+  @Input() languageCodes: CodePlain[];
 
   dataClassifications: Code[];
   env: string;
@@ -43,6 +45,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),
+    languageCodes: new FormControl([], [requiredList]),
     defaultCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
@@ -75,7 +78,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
-    const {externalReferences, dataClassifications, defaultCode, startDate, endDate, ...rest} = this.codeScheme;
+    const { externalReferences, dataClassifications, defaultCode, startDate, endDate, ...rest } = this.codeScheme;
 
     dataClassifications.sort(comparingLocalizable<Code>(this.languageService, classification => classification.prefLabel));
 
@@ -84,7 +87,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
       externalReferences: externalReferences.map(link => link.clone()),
       dataClassifications: dataClassifications.map(classification => classification.clone()),
       defaultCode: defaultCode,
-      validity: {start: startDate, end: endDate}
+      validity: { start: startDate, end: endDate }
     });
   }
 
@@ -125,11 +128,11 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
     this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
       .then(() => {
-        this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
-        this.codeSchemeForm.patchValue({definition: concept.definition});
+        this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
+        this.codeSchemeForm.patchValue({ definition: concept.definition });
       }, ignoreModalClose);
     this.codeScheme.conceptUriInVocabularies = concept.uri;
-    this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
+    this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
   }
 
   getCodeSchemeUri() {

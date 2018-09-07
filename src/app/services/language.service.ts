@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Localizable, Localizer, Language } from 'yti-common-ui/types/localization';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { contains } from 'yti-common-ui/utils/array';
+import { Language, Localizable, Localizer } from 'yti-common-ui/types/localization';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export { Language };
 
@@ -20,13 +19,8 @@ export class LanguageService implements Localizer {
     this.language$.subscribe(lang => this.translateService.use(lang));
 
     this.language$.subscribe(language => {
-        // TODO: is supported content language actually code list dependant
-        const languageExistsInContentLanguages = contains(['fi', 'en', 'sv'], language);
-
-        if (languageExistsInContentLanguages) {
-          this.contentLanguage = language;
-        }
-      });
+      this.contentLanguage = language;
+    });
   }
 
   get language(): Language {

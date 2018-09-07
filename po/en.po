@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-06 14:41+0300\n"
+"PO-Revision-Date: 2018-09-06 16:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -14,15 +14,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Reference Data"
-msgstr ""
-
-msgid "Create calculation hierarchy"
-msgstr ""
-
-msgid "Create definition hierarchy"
-msgstr ""
-
-msgid "Create extension"
 msgstr ""
 
 msgid "Add classification"
@@ -86,6 +77,15 @@ msgid "Search member"
 msgstr ""
 
 msgid "Add link"
+msgstr ""
+
+msgid "Add language code"
+msgstr ""
+
+msgid "Choose language code"
+msgstr ""
+
+msgid "Search language code"
 msgstr ""
 
 msgid "Add organization"
@@ -205,6 +205,9 @@ msgstr ""
 msgid "Code list name"
 msgstr ""
 
+msgid "Language code"
+msgstr ""
+
 msgid "Change note"
 msgstr ""
 
@@ -267,6 +270,12 @@ msgid "Attach variant to code list"
 msgstr ""
 
 msgid "Import codes"
+msgstr ""
+
+msgid "Create calculation hierarchy"
+msgstr ""
+
+msgid "Create definition hierarchy"
 msgstr ""
 
 msgid "Import extensions"
@@ -375,9 +384,6 @@ msgid "Extension name"
 msgstr ""
 
 msgid "Extension type"
-msgstr ""
-
-msgid "{{title}}"
 msgstr ""
 
 msgid "This extension does not have any members yet."
@@ -618,6 +624,11 @@ msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 "Validity end date. The date on which the resource is no longer effective or "
 "valid."
+
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Language code of the code lists. The selected languages control which "
+"languages your content is localized in."
 
 msgid "INFO_TEXT_LINK_TITLE"
 msgstr "Info text coming soon..."

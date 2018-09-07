@@ -29,7 +29,7 @@
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal [label]="'Extension type' | translate"
-                     [value]="extensionScheme.propertyType.prefLabel | translateValue"
+                     [value]="extensionScheme.propertyType.prefLabel | translateValue:false"
                      [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"></app-literal>
 
         <app-code-scheme-input id="extension_code_scheme_input"

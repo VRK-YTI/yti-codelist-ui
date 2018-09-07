@@ -1,21 +1,14 @@
-import {
-  Component,
-  ElementRef,
-  Injectable,
-  ViewChild,
-  AfterViewInit
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
-import { ModalService} from '../../services/modal.service';
-import { OnInit } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, BehaviorSubject, concat } from 'rxjs';
+import { BehaviorSubject, concat, Observable } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import {anyMatching} from "yti-common-ui/utils/array";
+import { anyMatching } from 'yti-common-ui/utils/array';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -30,7 +23,7 @@ export class CodeschemeVariantModalService {
   }
 
   public open(forbiddenVariantSearchResultIds: string[]): Promise<CodeScheme> {
-    const modalRef = this.modalService.open(CodeschemeVariantModalComponent, {size: 'lg'});
+    const modalRef = this.modalService.open(CodeschemeVariantModalComponent, { size: 'lg' });
     const instance = modalRef.componentInstance as CodeschemeVariantModalComponent;
     instance.forbiddenVariantSearchResultIds = forbiddenVariantSearchResultIds;
     return modalRef.result;
@@ -64,21 +57,21 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.debouncedSearch$.subscribe(search => {
 
-        if (!search) {
-          this.searchResults = [];
-        } else {
-          this.loading = true;
-          this.dataService.searchCodeSchemes(search, null, null, null, false,  null).subscribe(codeSchemes => {
-              this.loading = false;
-              this.searchResults = codeSchemes.filter(cs =>
-                !anyMatching(this.forbiddenVariantSearchResultIds, forbiddenId => cs.id === forbiddenId));
-            },
-            err => {
-              this.loading = false;
-              this.codeListErrorModalService.openSubmitError(err);
-            });
-        }
-      });
+      if (!search) {
+        this.searchResults = [];
+      } else {
+        this.loading = true;
+        this.dataService.searchCodeSchemes(search, null, null, null, false, null).subscribe(codeSchemes => {
+            this.loading = false;
+            this.searchResults = codeSchemes.filter(cs =>
+              !anyMatching(this.forbiddenVariantSearchResultIds, forbiddenId => cs.id === forbiddenId));
+          },
+          err => {
+            this.loading = false;
+            this.codeListErrorModalService.openSubmitError(err);
+          });
+      }
+    });
   }
 
   ngAfterViewInit() {

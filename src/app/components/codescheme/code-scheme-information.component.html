@@ -63,6 +63,11 @@
                                  [required]="true"
                                  [formControlName]="'dataClassifications'"></app-classifications-input>
 
+      <app-languagecodes-input [id]="'codelist_languagecode_input'"
+                               [label]="'Language code' | translate"
+                               [required]="true"
+                               [formControlName]="'languageCodes'"></app-languagecodes-input>
+
       <app-code-input id="default_code_input"
                       [label]="'Default code' | translate"
                       [codeSchemes]="[this.codeScheme]"

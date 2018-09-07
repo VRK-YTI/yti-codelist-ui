@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-06 14:40+0300\n"
+"PO-Revision-Date: 2018-09-07 12:52+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -15,15 +15,6 @@ msgstr ""
 
 msgid "Reference Data"
 msgstr "Koodistot"
-
-msgid "Create calculation hierarchy"
-msgstr "Luo laskentahierarkia"
-
-msgid "Create definition hierarchy"
-msgstr "Luo määrityshierarkia"
-
-msgid "Create extension"
-msgstr "Luo laajennus"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
@@ -87,6 +78,15 @@ msgstr "Hae jäsentä"
 
 msgid "Add link"
 msgstr "Lisää linkki"
+
+msgid "Add language code"
+msgstr "Lisa kielikoodi"
+
+msgid "Choose language code"
+msgstr "Valitse kielikoodi"
+
+msgid "Search language code"
+msgstr "Hae kielikoodia"
 
 msgid "Add organization"
 msgstr "Valitse organisaatio"
@@ -205,6 +205,9 @@ msgstr "Tunnus"
 msgid "Code list name"
 msgstr "Koodiston nimi"
 
+msgid "Language code"
+msgstr "Kielikoodi"
+
 msgid "Change note"
 msgstr "Muutostieto"
 
@@ -276,6 +279,12 @@ msgstr "Liitä koodistoon variantti"
 msgid "Import codes"
 msgstr "Tuo koodeja"
 
+msgid "Create calculation hierarchy"
+msgstr "Luo laskentahierarkia"
+
+msgid "Create definition hierarchy"
+msgstr "Luo määrityshierarkia"
+
 msgid "Import extensions"
 msgstr "Tuo laajennuksia"
 
@@ -302,6 +311,12 @@ msgstr "Versiohistoria"
 
 msgid "variants"
 msgstr "Variantit"
+
+msgid "Variants of this code list"
+msgstr "Koodiston variant"
+
+msgid "Variant in other code lists"
+msgstr "Varianttina muissa koodistoissa"
 
 msgid "Link title"
 msgstr "Linkin nimi"
@@ -383,9 +398,6 @@ msgstr "Laajennuksen nimi"
 
 msgid "Extension type"
 msgstr "Laajennuksen tyyppi"
-
-msgid "{{title}}"
-msgstr ""
 
 msgid "This extension does not have any members yet."
 msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
@@ -639,6 +651,12 @@ msgstr "Koodin voimassaolon alkamispäivämäärä"
 
 msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr "Koodin voimassaolon päättymispäivämäärä"
+
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Koodiston kielikoodi-valinnat. Koodistoon valitut kielikoodit määrittelevät "
+"millä kielillä voit lokalisoilla koodiston sisällön.\n"
+"Plaaplaa!"
 
 msgid "INFO_TEXT_LINK_TITLE"
 msgstr "Infoteksti tulossa..."
@@ -1013,3 +1031,6 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "extensionValueValidationError"
 msgstr "Jäsenen arvo ei voi olla tyhjä."
+
+#~ msgid "Create extension"
+#~ msgstr "Luo laajennus"

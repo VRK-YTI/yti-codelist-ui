@@ -15,7 +15,6 @@ import {AuthorizationManager} from '../../services/authorization-manager.service
 export class CodeSchemeVariantsComponent {
 
   @Input() codeScheme: CodeScheme;
-  @Input() codeRegistries: CodeRegistry[];
   @Output() detachVariantRequest = new EventEmitter<CodeSchemeListItem>();
 
   env: string;

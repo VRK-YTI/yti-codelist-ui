@@ -7,15 +7,6 @@ msgstr ""
 msgid "Reference Data"
 msgstr ""
 
-msgid "Create calculation hierarchy"
-msgstr ""
-
-msgid "Create definition hierarchy"
-msgstr ""
-
-msgid "Create extension"
-msgstr ""
-
 msgid "Add classification"
 msgstr ""
 
@@ -77,6 +68,15 @@ msgid "Search member"
 msgstr ""
 
 msgid "Add link"
+msgstr ""
+
+msgid "Add language code"
+msgstr ""
+
+msgid "Choose language code"
+msgstr ""
+
+msgid "Search language code"
 msgstr ""
 
 msgid "Add organization"
@@ -196,6 +196,9 @@ msgstr ""
 msgid "Code list name"
 msgstr ""
 
+msgid "Language code"
+msgstr ""
+
 msgid "Change note"
 msgstr ""
 
@@ -260,6 +263,12 @@ msgstr ""
 msgid "Import codes"
 msgstr ""
 
+msgid "Create calculation hierarchy"
+msgstr ""
+
+msgid "Create definition hierarchy"
+msgstr ""
+
 msgid "Import extensions"
 msgstr ""
 
@@ -285,6 +294,12 @@ msgid "versionHistory"
 msgstr ""
 
 msgid "variants"
+msgstr ""
+
+msgid "Variants of this code list"
+msgstr ""
+
+msgid "Variant in other code lists"
 msgstr ""
 
 msgid "Link title"
@@ -366,9 +381,6 @@ msgid "Extension name"
 msgstr ""
 
 msgid "Extension type"
-msgstr ""
-
-msgid "{{title}}"
 msgstr ""
 
 msgid "This extension does not have any members yet."
@@ -579,6 +591,9 @@ msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgstr ""
+
+msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_TITLE"

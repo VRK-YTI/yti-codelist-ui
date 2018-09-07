@@ -286,6 +286,10 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodePlain(data))));
   }
 
+  getLanguageCodes(language: string): Observable<Code[]> {
+    return this.getCodes('interoperabilityplatform', 'languagecodes', language);
+  }
+
   getCodes(registryCodeValue: string, schemeCodeValue: string, language: string): Observable<Code[]> {
 
     let params = new HttpParams()

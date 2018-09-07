@@ -14,7 +14,6 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
-import { CodeRegistry } from '../../entities/code-registry';
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
@@ -104,6 +103,11 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.extensionSchemes == null ||
       this.env == null ||
       this.deleting;
+  }
+
+  get contentLanguages(): CodePlain[] {
+    console.log('codescheme base contentLanguages called!');
+    return this.codeScheme.languageCodes;
   }
 
   onTabChange(event: NgbTabChangeEvent) {

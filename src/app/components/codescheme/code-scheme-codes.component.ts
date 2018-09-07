@@ -1,11 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { CodeScheme } from '../../entities/code-scheme';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { contains } from 'yti-common-ui/utils/array';
-import { CodeSchemeComponent } from './code-scheme.component';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
 import { CodePlain } from '../../entities/code-simple';
 

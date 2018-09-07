@@ -125,6 +125,7 @@ import {
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import {RefreshComponent} from './components/refresh.component';
+import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -259,6 +260,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     DateInputComponent,
     DateRangeInputComponent,
     ClassificationsInputComponent,
+    LanguageCodesInputComponent,
     OrganizationsInputComponent,
     CodeInputComponent,
     CodeSchemeInputComponent,

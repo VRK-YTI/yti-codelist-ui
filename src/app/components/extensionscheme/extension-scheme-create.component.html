@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-12">
       <h1 class="float-left">{{this.title | translate}}</h1>
-      <app-content-language></app-content-language>
+      <app-content-language [languageCodes]="codeScheme.languageCodes"></app-content-language>
     </div>
   </div>
 
@@ -39,7 +39,7 @@
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal [label]="'Extension type' | translate"
-                     [value]="propertyType.prefLabel | translateValue"
+                     [value]="propertyType.prefLabel | translateValue:true"
                      [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"></app-literal>
 
         <app-code-scheme-input id="extension_code_scheme_input"
