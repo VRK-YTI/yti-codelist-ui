@@ -8,29 +8,6 @@ import { Extension } from '../../entities/extension';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
-@Injectable()
-export class SearchLinkedExtensionModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  open(extensions$: Observable<Extension[]>,
-       titleLabel: string,
-       searchLabel: string,
-       restrictExtensionIds: string[],
-       useUILanguage: boolean = false): Promise<Extension> {
-
-    const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedExtensionModalComponent;
-    instance.extensions$ = extensions$;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictExtensionIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-search-linked-extension-modal',
   styleUrls: ['./search-linked-extension-modal.component.scss'],
@@ -141,5 +118,28 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class SearchLinkedExtensionModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  open(extensions$: Observable<Extension[]>,
+       titleLabel: string,
+       searchLabel: string,
+       restrictExtensionIds: string[],
+       useUILanguage: boolean = false): Promise<Extension> {
+
+    const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedExtensionModalComponent;
+    instance.extensions$ = extensions$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictExtensionIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }

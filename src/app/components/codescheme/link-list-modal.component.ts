@@ -8,21 +8,6 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ModalService } from '../../services/modal.service';
 import { LanguageService } from '../../services/language.service';
 
-@Injectable()
-export class LinkListModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(codeSchemeId: string, restrictExternalReferenceIds: string[]): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as LinkListModalComponent;
-    instance.codeSchemeId = codeSchemeId;
-    instance.restrictExternalReferenceIds = restrictExternalReferenceIds;
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-link-list-modal',
   templateUrl: './link-list-modal.component.html',
@@ -77,5 +62,20 @@ export class LinkListModalComponent implements OnInit {
 
   externalReferenceIdentity(index: number, item: ExternalReference) {
     return item.id;
+  }
+}
+
+@Injectable()
+export class LinkListModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(codeSchemeId: string, restrictExternalReferenceIds: string[]): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as LinkListModalComponent;
+    instance.codeSchemeId = codeSchemeId;
+    instance.restrictExternalReferenceIds = restrictExternalReferenceIds;
+    return modalRef.result;
   }
 }

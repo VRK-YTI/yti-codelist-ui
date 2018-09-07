@@ -7,29 +7,6 @@ import { ModalService } from '../../services/modal.service';
 import { Organization } from '../../entities/organization';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
-@Injectable()
-export class SearchLinkedOrganizationModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  open(organizations$: Observable<Organization[]>,
-       titleLabel: string,
-       searchLabel: string,
-       restrictOrganizationIds: string[],
-       useUILanguage: boolean = false): Promise<Organization> {
-
-    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as SearchLinkedOrganizationModalComponent;
-    instance.organizations$ = organizations$;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictOrganizationIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-search-linked-organizatione-modal',
   styleUrls: ['./search-linked-organization-modal.component.scss'],
@@ -135,5 +112,28 @@ export class SearchLinkedOrganizationModalComponent implements AfterViewInit, On
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class SearchLinkedOrganizationModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  open(organizations$: Observable<Organization[]>,
+       titleLabel: string,
+       searchLabel: string,
+       restrictOrganizationIds: string[],
+       useUILanguage: boolean = false): Promise<Organization> {
+
+    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as SearchLinkedOrganizationModalComponent;
+    instance.organizations$ = organizations$;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictOrganizationIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }

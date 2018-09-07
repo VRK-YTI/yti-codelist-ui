@@ -16,20 +16,6 @@ function debounceSearch(search$: Observable<string>): Observable<string> {
   return concat(initialSearch, debouncedSearch);
 }
 
-@Injectable()
-export class CodeschemeVariantModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(forbiddenVariantSearchResultIds: string[]): Promise<CodeScheme> {
-    const modalRef = this.modalService.open(CodeschemeVariantModalComponent, { size: 'lg' });
-    const instance = modalRef.componentInstance as CodeschemeVariantModalComponent;
-    instance.forbiddenVariantSearchResultIds = forbiddenVariantSearchResultIds;
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-codescheme-variant-modal',
   templateUrl: './codescheme-variant.modal.component.html',
@@ -100,5 +86,19 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class CodeschemeVariantModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(forbiddenVariantSearchResultIds: string[]): Promise<CodeScheme> {
+    const modalRef = this.modalService.open(CodeschemeVariantModalComponent, { size: 'lg' });
+    const instance = modalRef.componentInstance as CodeschemeVariantModalComponent;
+    instance.forbiddenVariantSearchResultIds = forbiddenVariantSearchResultIds;
+    return modalRef.result;
   }
 }

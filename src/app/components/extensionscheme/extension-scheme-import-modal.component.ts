@@ -4,21 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ModalService } from '../../services/modal.service';
-import { CodeListErrorModalService } from '../../components/common/error-modal.service';
-
-@Injectable()
-export class ExtensionSchemesImportModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(codeScheme: CodeScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(ExtensionSchemesImportModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as ExtensionSchemesImportModalComponent;
-    instance.codeScheme = codeScheme;
-    return modalRef.result;
-  }
-}
+import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({
   selector: 'app-extension-scheme-import-modal',
@@ -80,5 +66,19 @@ export class ExtensionSchemesImportModalComponent {
           this.codeListErrorModalService.openSubmitError(error);
         });
     }
+  }
+}
+
+@Injectable()
+export class ExtensionSchemesImportModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(codeScheme: CodeScheme): Promise<boolean> {
+    const modalRef = this.modalService.open(ExtensionSchemesImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as ExtensionSchemesImportModalComponent;
+    instance.codeScheme = codeScheme;
+    return modalRef.result;
   }
 }

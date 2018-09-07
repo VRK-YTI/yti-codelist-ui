@@ -7,17 +7,6 @@ import { Router } from '@angular/router';
 import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 
-@Injectable()
-export class CodeSchemeImportModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  public open(): void {
-    this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
-  }
-}
-
 @Component({
   selector: 'app-code-scheme-import-modal',
   templateUrl: './code-scheme-import-modal.component.html',
@@ -86,5 +75,16 @@ export class CodeSchemeImportModalComponent {
         this.errorModalService.openSubmitError(error);
       });
     }
+  }
+}
+
+@Injectable()
+export class CodeSchemeImportModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  public open(): void {
+    this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
   }
 }

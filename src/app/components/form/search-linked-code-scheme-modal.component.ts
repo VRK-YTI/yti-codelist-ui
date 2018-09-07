@@ -8,27 +8,6 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
-@Injectable()
-export class SearchLinkedCodeSchemeModalService {
-
-  constructor(private modalService: ModalService) {
-  }
-
-  open(titleLabel: string,
-       searchLabel: string,
-       restrictCodeIds: string[],
-       useUILanguage: boolean = false): Promise<CodeScheme> {
-
-    const modalRef = this.modalService.open(SearchLinkedCodeSchemeModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedCodeSchemeModalComponent;
-    instance.titleLabel = titleLabel;
-    instance.searchLabel = searchLabel;
-    instance.restricts = restrictCodeIds;
-    instance.useUILanguage = useUILanguage;
-    return modalRef.result;
-  }
-}
-
 @Component({
   selector: 'app-search-linked-code-scheme-modal',
   styleUrls: ['./search-linked-code-scheme-modal.component.scss'],
@@ -138,5 +117,26 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+}
+
+@Injectable()
+export class SearchLinkedCodeSchemeModalService {
+
+  constructor(private modalService: ModalService) {
+  }
+
+  open(titleLabel: string,
+       searchLabel: string,
+       restrictCodeIds: string[],
+       useUILanguage: boolean = false): Promise<CodeScheme> {
+
+    const modalRef = this.modalService.open(SearchLinkedCodeSchemeModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedCodeSchemeModalComponent;
+    instance.titleLabel = titleLabel;
+    instance.searchLabel = searchLabel;
+    instance.restricts = restrictCodeIds;
+    instance.useUILanguage = useUILanguage;
+    return modalRef.result;
   }
 }
