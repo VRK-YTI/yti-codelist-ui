@@ -109,6 +109,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({ status: originalCodeScheme.status });
           this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
           this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
+          this.codeSchemeForm.patchValue({ organizations: originalCodeScheme.organizations });
           this.dataService.getDataClassificationsAsCodes(this.languageService.language).subscribe(next2 => {
             const allDataClassifications = next2;
             const dataClassificationsToCopy: CodePlain[] = [];
