@@ -12,7 +12,7 @@
     <div *ngIf="canCreateCodeScheme()" class="col-md-2 float-right d-inline-block">
       <button id="import_codelist_button"
               type="button"
-              class="btn btn-action"
+              class="btn btn-action float-right"
               (click)="importCodeScheme()"
               translate>Add code list</button>
     </div>
@@ -37,20 +37,26 @@
   <br/>
   <div class="row">
     <div class="col-md-4">
-      <div class="inline-label"><span class="search-label">Rajaa tietoalueella</span></div>
+      <div class="inline-label"><span class="search-label" translate>Filter with classification</span></div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
       <div class="content-box">
         <h4 class="strong" translate>Classification</h4>
+
         <div *ngFor="let dataClassification of dataClassifications">
-          <div *ngIf="dataClassification.count > 0" class="classification"
-              id="{{dataClassification.entity.codeValue + '_classification_filter_link'}}"
-               [class.active]="isClassificationSelected(dataClassification.entity)"
-               (click)="toggleClassification(dataClassification.entity)">
-            <span class="name">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
-            <span class="count">({{dataClassification.count}})</span>
+          <div *ngIf="dataClassification.count > 0">
+
+            <div class="classification"
+                id="{{dataClassification.entity.codeValue + '_classification_filter_link'}}"
+                 [class.active]="isClassificationSelected(dataClassification.entity)"
+                 (click)="toggleClassification(dataClassification.entity)">
+              <img class="float-left" [src]="groupIconSrc(dataClassification.entity.codeValue)" width="30" height="30" >
+              <span class="count float-right">({{dataClassification.count}})</span>
+              <span class="name" style="vertical-align: middle;">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
+
+            </div>
           </div>
         </div>
       </div>
@@ -93,7 +99,15 @@
           <div class="col-12">
             <div class="result-list-item" *ngFor="let codeScheme of filteredCodeSchemes">
               <div class="codeschemeInListing" id="{{codeScheme.idIdentifier + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)">
-                <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
+                <div class="row mb-4">
+                  <div class="col-8">
+                    <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
+                  </div>
+                  <div class="col-4">
+                    <div><span class="float-right">{{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span><img class="float-right" [src]="groupIconSrc('P9')" width="30" height="30" ></div>
+                  </div>
+                </div>
+
                 <app-status class="float-right" [status]="codeScheme.status"></app-status>
                 <div class="description">{{codeScheme.getDisplayDescription(languageService, true)}}</div>
                 <div class="classification">{{codeScheme.getDisplayClassificationListing(languageService, true)}}</div>

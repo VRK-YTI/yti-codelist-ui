@@ -18,6 +18,7 @@ app-filter-dropdown {
 
   &.active {
     font-weight: 500;
+    background-color: rgb(237, 243, 249);
   }
 
   .name {
@@ -158,6 +159,11 @@ app-filter-dropdown {
   }
 
   .organization {
+  }
+
+  .classification {
+    display: inline;
+    background-color: rgb(237, 243, 249);
   }
 
   .type {

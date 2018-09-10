@@ -407,7 +407,13 @@ msgstr ""
 msgid "organizations"
 msgstr ""
 
+msgid "Frontpage long description"
+msgstr ""
+
 msgid "Extend search to codes"
+msgstr ""
+
+msgid "Filter with classification"
 msgstr ""
 
 msgid "Filter results"
@@ -956,9 +962,6 @@ msgid "searchresult"
 msgstr ""
 
 msgid "searchresults"
-msgstr ""
-
-msgid "Frontpage long description"
 msgstr ""
 
 msgid "invalidDate"
