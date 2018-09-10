@@ -61,3 +61,114 @@ app-filter-dropdown {
     padding-left: 8px;
   }
 }
+
+.search-label {
+  font-weight: bolder;
+  font-size: smaller;
+  padding-bottom: 0.55rem;
+}
+
+.codescheme-container {
+
+  .tool-inner-title {
+    display: none;
+  }
+
+  .tool-info {
+    width: calc(100% - 200px);
+  }
+
+  .search-label {
+    font-weight: bolder;
+    font-size: smaller;
+    padding-bottom: 0.55rem;
+  }
+
+  .inline-label {
+    padding: 0.55rem 0.55rem 0.55rem 0rem;
+  }
+
+  .result-list-container {
+    padding-bottom: 0px;
+  }
+
+  .result-list-item {
+    border-top: 1px solid $gray-500;
+    margin-left: -25px;
+    margin-right: -25px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  ul.dot-separated-list {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+
+    li {
+      display: inline-block;
+      color: $gray-k40;
+      font-size: 0.75rem;
+      line-height: 0.9375rem;
+    }
+
+    li:not(:empty)~:not(:empty):before {
+      content: "·";
+      padding-left: .66667em;
+      padding-right: .66667em
+    }
+  }
+}
+
+.codeschemeInListing {
+
+  display: inline-block;
+  width: 100%;
+  padding: 5px 10px 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-left: $active-indicator-width solid $white;
+
+  &:hover {
+    border-left: $active-indicator-width solid $primary;
+  }
+
+  .name {
+    color: $blue-link;
+    font-family: $font-family-sans-semibold;
+    font-size: large;
+    font-weight: 400;
+    width: calc(100% - 200px);
+    display: block;
+  }
+
+  .description {
+    display: block;
+    margin-top: 15px;
+    width: calc(100% - 200px);
+  }
+
+  .group {
+    font-family: $font-family-sans-semibold;
+    text-transform: uppercase;
+  }
+
+  .organizations {
+  }
+
+  .organization {
+  }
+
+  .type {
+    float: right;
+    clear: right;
+    color: $gray-k40;
+    margin-bottom: 0.5rem;
+  }
+
+  .status {
+    float: right;
+    clear: right;
+  }
+}

@@ -398,16 +398,19 @@ msgstr ""
 msgid "MEMBERS"
 msgstr ""
 
-msgid "code list"
+msgid "search result"
 msgstr ""
 
-msgid "code lists"
+msgid "search results"
 msgstr ""
 
 msgid "organizations"
 msgstr ""
 
 msgid "Extend search to codes"
+msgstr ""
+
+msgid "Filter results"
 msgstr ""
 
 msgid "Search did not find any code lists."
@@ -656,7 +659,7 @@ msgstr ""
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
 msgid "Front page"
@@ -796,13 +799,13 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
@@ -938,6 +941,15 @@ msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr ""
 
 msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
+msgstr ""
+
+msgid "searchresult"
+msgstr ""
+
+msgid "searchresults"
+msgstr ""
+
+msgid "Frontpage long description"
 msgstr ""
 
 msgid "invalidDate"

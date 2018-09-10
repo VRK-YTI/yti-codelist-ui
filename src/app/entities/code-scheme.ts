@@ -1,5 +1,5 @@
 import { AbstractResource } from './abstract-resource';
-import { Localizable } from 'yti-common-ui/types/localization';
+import {Localizable, Localizer} from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { CodeRegistry } from './code-registry';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
@@ -132,6 +132,27 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   getOwningOrganizationIds(): string[] {
     return this.codeRegistry.organizations.map(org => org.id);
+  }
+
+  getDisplayDescription(localizer: Localizer, useUILanguage: boolean = false): string {
+    const displayDesc = localizer.translate(this.description, useUILanguage);
+    return displayDesc ? displayDesc : "";
+  }
+
+  getDisplayClassification(localizer: Localizer, useUILanguage: boolean = false, theClassification: Localizable): string {
+    const displayDesc = localizer.translate(theClassification, useUILanguage);
+    return displayDesc ? displayDesc : "";
+  }
+
+  getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
+    const results : string[] = [];
+    this.dataClassifications.forEach( (dc) => {
+      const displayClassification = localizer.translate(dc.prefLabel, useUILanguage);
+      if (displayClassification) {
+        results.push(displayClassification);
+      }
+    });
+    return results;
   }
 
   allowOrganizationEdit(): boolean {
