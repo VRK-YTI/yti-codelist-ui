@@ -75,7 +75,7 @@ export class ExtensionScheme implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.parentCodeScheme.codeRegistry.organizations.map(org => org.id);
+    return this.parentCodeScheme.organizations.map(org => org.id);
   }
 
   allowOrganizationEdit(): boolean {

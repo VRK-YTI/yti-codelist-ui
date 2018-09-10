@@ -53,6 +53,7 @@ export interface CodeSchemeType extends BaseResourceType {
   nextCodeschemeId: string|null;
   prevCodeschemeId: string|null;
   lastCodeschemeId: string|null;
+  organizations: OrganizationType[];
 }
 
 export interface CodePlainType extends BaseResourceType {

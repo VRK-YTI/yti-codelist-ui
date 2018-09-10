@@ -18,6 +18,12 @@
                              [infoText]="'INFO_TEXT_CODELIST_NAME'"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
+      <app-organizations-input id="registry_organizations_input"
+                               [label]="'Organization' | translate"
+                               [required]="true"
+                               [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
+                               [formControlName]="'organizations'"></app-organizations-input>
+
       <dl *ngIf="editing">
         <dd>
           <div>
@@ -73,18 +79,6 @@
                       [codeSchemes]="[this.codeScheme]"
                       [infoText]="'INFO_TEXT_DEFAULT_CODE'"
                       [formControlName]="'defaultCode'"></app-code-input>
-
-      <dl *ngIf="codeScheme.codeRegistry.organizations.length > 0">
-        <dt>
-          <label translate>Organization</label>
-          <app-information-symbol [infoText]="'INFO_TEXT_ORGANIZATION'"></app-information-symbol>
-        </dt>
-        <dd>
-          <div *ngFor="let organization of codeScheme.codeRegistry.organizations">
-            <span>{{organization.prefLabel | translateValue:true}}</span><br/>
-          </div>
-        </dd>
-      </dl>
 
       <app-localizable-textarea [id]="'codelist_description_textarea'"
                                 [label]="'Description' | translate"

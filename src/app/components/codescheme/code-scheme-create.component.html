@@ -41,6 +41,12 @@
           <app-error-messages id="code_list_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
         </div>
 
+        <app-organizations-input id="registry_organizations_input"
+                                 [label]="'Organization' | translate"
+                                 [required]="true"
+                                 [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
+                                 [formControlName]="'organizations'"></app-organizations-input>
+
         <dl>
           <dd>
             <div>

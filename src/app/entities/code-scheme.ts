@@ -13,6 +13,7 @@ import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
 import { ExtensionSchemeSimple } from './extension-scheme-simple';
 import {CodeSchemeListItem} from './code-scheme-list-item';
+import { Organization } from './organization';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -41,6 +42,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   prevCodeschemeId: string|null = null;
   lastCodeschemeId: string|null = null;
   allVersions: CodeSchemeListItem[] = [];
+  organizations: Organization[];
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -94,6 +96,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     if (data.lastCodeschemeId) {
       this.lastCodeschemeId = data.lastCodeschemeId;
     }
+    this.organizations = (data.organizations || []).map(o => new Organization(o));
   }
 
   get modifiedDisplayValue(): string {
@@ -131,7 +134,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.codeRegistry.organizations.map(org => org.id);
+    return this.organizations.map(org => org.id);
   }
 
   getDisplayDescription(localizer: Localizer, useUILanguage: boolean = false): string {
@@ -193,7 +196,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       nextCodeschemeId: this.nextCodeschemeId,
       prevCodeschemeId: this.prevCodeschemeId,
       lastCodeschemeId: this.lastCodeschemeId,
-      allVersions: this.allVersions.map(li => li.serialize())
+      allVersions: this.allVersions.map(li => li.serialize()),
+      organizations: this.organizations.map(o => o.serialize())
     };
   }
 

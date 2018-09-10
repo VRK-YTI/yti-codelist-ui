@@ -54,7 +54,7 @@ export class RegistryCreateComponent implements OnInit {
 
     console.log('Saving new Registry');
 
-    const {organizations, ...rest} = formData;
+    const { organizations, ...rest } = formData;
 
     const codeRegistry: CodeRegistryType = <CodeRegistryType> {
       ...rest,
@@ -71,7 +71,7 @@ export class RegistryCreateComponent implements OnInit {
 
   isCodeValuePatternValid(control: AbstractControl) {
     const isCodeValueValid = control.value.match(/^[a-zA-Z0-9_\-]*$/);
-    return !isCodeValueValid ? {'codeValueValidationError': {value: control.value}} : null;
+    return !isCodeValueValid ? { 'codeValueValidationError': { value: control.value } } : null;
   }
 
   codeValueExistsValidator(): AsyncValidatorFn {

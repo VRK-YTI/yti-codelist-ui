@@ -30,7 +30,7 @@
     <div class="col-md-4 mt-2">
       <div class="checkbox">
         <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
-        <label for="search_code_details_checkbox" translate>Extend search to codes</label>
+        <label for="search_code_details_checkbox" translate>Extend search to cofdes</label>
       </div>
     </div>
   </div>
@@ -98,9 +98,9 @@
                 <div class="description">{{codeScheme.getDisplayDescription(languageService, true)}}</div>
                 <div class="classification">{{codeScheme.getDisplayClassificationListing(languageService, true)}}</div>
                 <div class="organization">
-                  <span *ngIf="codeScheme.codeRegistry.organizations.length == 0" translate>No organization</span>
-                  <span *ngIf="codeScheme.codeRegistry.organizations.length == 1">{{codeScheme.codeRegistry.organizations[0].prefLabel | translateValue:true}}</span>
-                  <span *ngIf="codeScheme.codeRegistry.organizations.length > 1">{{codeScheme.codeRegistry.organizations.length}} {{'organizations' | translate}}</span>
+                  <span *ngIf="codeScheme.organizations.length == 0" translate>No organization</span>
+                  <span *ngIf="codeScheme.organizations.length == 1">{{codeScheme.organizations[0].prefLabel | translateValue:true}}</span>
+                  <span *ngIf="codeScheme.organizations.length > 1">{{codeScheme.organizations.length}} {{'organizations' | translate}}</span>
                 </div>
               </div>
             </div>

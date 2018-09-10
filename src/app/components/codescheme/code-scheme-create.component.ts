@@ -1,12 +1,12 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { AsyncValidatorFn, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
+import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
-import { Observable, pipe, from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { requiredList } from 'yti-common-ui/utils/validator';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
@@ -17,9 +17,10 @@ import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { LanguageService } from '../../services/language.service';
-import { map, tap, flatMap } from 'rxjs/operators';
+import { flatMap, map, tap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { Organization } from '../../entities/organization';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -54,6 +55,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required),
     conceptUriInVocabularies: new FormControl(''),
+    organizations: new FormControl([], [requiredList])
   }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
@@ -89,24 +91,29 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
         this.codeRegistriesLoaded = true; // when cloning, no registries are needed, need to fake loading is ready
         this.dataService.getCodeSchemeWithUuid(this.uuidOfOriginalCodeSchemeIfCloning).subscribe(next => {
           const originalCodeScheme: CodeScheme = next;
-          this.codeSchemeForm.patchValue({prefLabel: originalCodeScheme.prefLabel});
-          this.codeSchemeForm.patchValue({codeValue: originalCodeScheme.codeValue});
-          this.codeSchemeForm.patchValue({description: originalCodeScheme.description});
-          this.codeSchemeForm.patchValue({definition: originalCodeScheme.definition});
-          this.codeSchemeForm.patchValue({changeNote: originalCodeScheme.changeNote});
-          this.codeSchemeForm.patchValue({version: originalCodeScheme.version});
-          this.codeSchemeForm.patchValue({source: originalCodeScheme.source});
-          this.codeSchemeForm.patchValue({legalBase: originalCodeScheme.legalBase});
-          this.codeSchemeForm.patchValue({governancePolicy: originalCodeScheme.governancePolicy});
-          this.codeSchemeForm.patchValue({validity: {start: originalCodeScheme.startDate, end: originalCodeScheme.endDate} });
-          this.codeSchemeForm.patchValue({status: originalCodeScheme.status});
-          this.codeSchemeForm.patchValue({conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies});
-          this.codeSchemeForm.patchValue({codeRegistry: originalCodeScheme.codeRegistry}); // when cloning, enforce same registry
+          this.codeSchemeForm.patchValue({ prefLabel: originalCodeScheme.prefLabel });
+          this.codeSchemeForm.patchValue({ codeValue: originalCodeScheme.codeValue });
+          this.codeSchemeForm.patchValue({ description: originalCodeScheme.description });
+          this.codeSchemeForm.patchValue({ definition: originalCodeScheme.definition });
+          this.codeSchemeForm.patchValue({ changeNote: originalCodeScheme.changeNote });
+          this.codeSchemeForm.patchValue({ version: originalCodeScheme.version });
+          this.codeSchemeForm.patchValue({ source: originalCodeScheme.source });
+          this.codeSchemeForm.patchValue({ legalBase: originalCodeScheme.legalBase });
+          this.codeSchemeForm.patchValue({ governancePolicy: originalCodeScheme.governancePolicy });
+          this.codeSchemeForm.patchValue({
+            validity: {
+              start: originalCodeScheme.startDate,
+              end: originalCodeScheme.endDate
+            }
+          });
+          this.codeSchemeForm.patchValue({ status: originalCodeScheme.status });
+          this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
+          this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
           this.dataService.getDataClassificationsAsCodes(this.languageService.language).subscribe(next2 => {
             const allDataClassifications = next2;
             const dataClassificationsToCopy: CodePlain[] = [];
             originalCodeScheme.dataClassifications.forEach(function (originalClassification) {
-              allDataClassifications.forEach(function(potentialClassification) {
+              allDataClassifications.forEach(function (potentialClassification) {
                 const uriToCompare = potentialClassification.codeScheme.uri + '/' + potentialClassification.codeValue;
                 if (uriToCompare === originalClassification.uri) {
                   dataClassificationsToCopy.push(potentialClassification);
@@ -114,14 +121,14 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               });
             });
             if (dataClassificationsToCopy.length > 0) {
-              this.codeSchemeForm.patchValue({dataClassifications: dataClassificationsToCopy});
+              this.codeSchemeForm.patchValue({ dataClassifications: dataClassificationsToCopy });
             }
           });
           this.dataService.getLanguageCodes(this.languageService.language).subscribe(next2 => {
             const allLanguageCodes = next2;
             const languageCodesToCopy: CodePlain[] = [];
             originalCodeScheme.languageCodes.forEach(function (originalLanguageCode) {
-              allLanguageCodes.forEach(function(potentialLanguageCode) {
+              allLanguageCodes.forEach(function (potentialLanguageCode) {
                 const uriToCompare = potentialLanguageCode.codeScheme.uri + '/' + potentialLanguageCode.codeValue;
                 if (uriToCompare === originalLanguageCode.uri) {
                   languageCodesToCopy.push(potentialLanguageCode);
@@ -129,7 +136,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               });
             });
             if (languageCodesToCopy.length > 0) {
-              this.codeSchemeForm.patchValue({languageCodes: languageCodesToCopy});
+              this.codeSchemeForm.patchValue({ languageCodes: languageCodesToCopy });
             }
           });
           this.locationService.atCreateNewVersionOfCodeSchemePage(originalCodeScheme);
@@ -155,7 +162,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       codeValueMatches('sv', languageCode) ||
       codeValueMatches('en', languageCode)
     );
-    this.codeSchemeForm.patchValue({languageCodes: defaultLanguageCodes});
+    this.codeSchemeForm.patchValue({ languageCodes: defaultLanguageCodes });
 
     function codeValueMatches(languageCode: string, code: CodePlain) {
       return code.codeValue === languageCode;
@@ -176,7 +183,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   save(formData: any): Observable<any> {
 
-    const { validity, codeRegistry, defaultCode, dataClassifications, languageCodes, externalReferences, ...rest } = formData;
+    const { validity, codeRegistry, defaultCode, dataClassifications, languageCodes, externalReferences, organizations, ...rest } = formData;
 
     const codeScheme: CodeSchemeType = <CodeSchemeType> {
       ...rest,
@@ -186,7 +193,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       defaultCode: defaultCode ? defaultCode.serialize() : undefined,
       dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize()),
       languageCodes: languageCodes.map((lc: CodePlain) => lc.serialize()),
-      externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
+      externalReferences: externalReferences.map((er: ExternalReference) => er.serialize()),
+      organizations: organizations.map((organization: Organization) => organization.serialize())
     };
 
     if (this.cloning) {
@@ -220,9 +228,9 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  isCodeValuePatternValid (control: AbstractControl) {
+  isCodeValuePatternValid(control: AbstractControl) {
     const isCodeValueValid = control.value.match(/^[a-zA-Z0-9_\-]*$/);
-    return !isCodeValueValid ? {'codeValueValidationError': {value: control.value}} : null;
+    return !isCodeValueValid ? { 'codeValueValidationError': { value: control.value } } : null;
   }
 
   codeValueExistsValidator(): AsyncValidatorFn {
@@ -240,8 +248,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open(false, 'codescheme').
-    then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(false, 'codescheme').then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {
@@ -249,8 +256,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeSchemeForm.patchValue({prefLabel: concept.prefLabel});
-    this.codeSchemeForm.patchValue({definition: concept.definition});
-    this.codeSchemeForm.patchValue({conceptUriInVocabularies: concept.uri});
+    this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
+    this.codeSchemeForm.patchValue({ definition: concept.definition });
+    this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
   }
 }

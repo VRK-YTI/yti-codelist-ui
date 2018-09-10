@@ -515,6 +515,9 @@ msgstr ""
 msgid "INFO_TEXT_ORGANIZATION"
 msgstr ""
 
+msgid "INFO_TEXT_CODELIST_ORGANIZATION"
+msgstr ""
+
 msgid "INFO_TEXT_CODELIST_DESCRIPTION"
 msgstr ""
 
@@ -902,6 +905,9 @@ msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

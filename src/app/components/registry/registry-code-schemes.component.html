@@ -7,9 +7,9 @@
             <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
             <app-status class="float-right" [status]="codeScheme.status"></app-status>
             <div class="organization">
-              <span *ngIf="codeScheme.codeRegistry.organizations.length == 0" translate>No organization</span>
-              <span *ngIf="codeScheme.codeRegistry.organizations.length == 1">{{codeScheme.codeRegistry.organizations[0].prefLabel | translateValue:true}}</span>
-              <span *ngIf="codeScheme.codeRegistry.organizations.length > 1">{{codeScheme.codeRegistry.organizations.length}} {{'organizations' | translate}}</span>
+              <span *ngIf="codeScheme.organizations.length == 0" translate>No organization</span>
+              <span *ngIf="codeScheme.organizations.length == 1">{{codeScheme.organizations[0].prefLabel | translateValue:true}}</span>
+              <span *ngIf="codeScheme.organizations.length > 1">{{codeScheme.organizations.length}} {{'organizations' | translate}}</span>
             </div>
           </div>
         </div>

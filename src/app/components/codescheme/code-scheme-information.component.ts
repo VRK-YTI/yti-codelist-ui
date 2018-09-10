@@ -50,7 +50,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     defaultCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
-    conceptUriInVocabularies: new FormControl('')
+    conceptUriInVocabularies: new FormControl(''),
+    organizations: new FormControl([], [requiredList])
   });
 
   cancelSubscription: Subscription;
@@ -87,7 +88,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
-    const { externalReferences, dataClassifications, defaultCode, startDate, endDate, ...rest } = this.codeScheme;
+    const { externalReferences, dataClassifications, defaultCode, startDate, endDate, organizations, ...rest } = this.codeScheme;
 
     dataClassifications.sort(comparingLocalizable<Code>(this.languageService, classification => classification.prefLabel));
 
@@ -96,7 +97,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
       externalReferences: externalReferences.map(link => link.clone()),
       dataClassifications: dataClassifications.map(classification => classification.clone()),
       defaultCode: defaultCode,
-      validity: { start: startDate, end: endDate }
+      validity: { start: startDate, end: endDate },
+      organizations: organizations.map(organization => organization.clone())
     });
   }
 

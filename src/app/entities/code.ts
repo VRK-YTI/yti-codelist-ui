@@ -107,7 +107,7 @@ export class Code extends AbstractResource implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.codeScheme.codeRegistry.organizations.map(org => org.id);
+    return this.codeScheme.organizations.map(org => org.id);
   }
 
   allowOrganizationEdit(): boolean {
