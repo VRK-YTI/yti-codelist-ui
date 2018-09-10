@@ -117,6 +117,8 @@ export class Extension implements EditableEntity {
       return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
     } else if (extensionValue) {
       return `${extensionValue} - ${codeTitle}`;
+    } else if (extensionTitle) {
+      return `${extensionTitle} - ${codeTitle}`;
     } else {
       return codeTitle ? codeTitle : '';
     }
@@ -143,6 +145,8 @@ export class Extension implements EditableEntity {
       return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
     } else if (extensionValue) {
       return `${extensionValue} - ${codeTitle}`;
+    } else if (extensionTitle) {
+      return `${extensionTitle} - ${codeTitle}`;
     } else {
       return codeTitle ? codeTitle : '';
     }
