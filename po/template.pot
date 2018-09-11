@@ -790,6 +790,9 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr ""
 
+msgid "ERR_MSG_USER_MISSING_HEADER_ORGANIZATION"
+msgstr ""
+
 msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
 msgstr ""
 
