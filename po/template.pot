@@ -799,9 +799,6 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_ORGANIZATION"
-msgstr ""
-
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr ""
 
