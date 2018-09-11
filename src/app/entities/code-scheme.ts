@@ -147,7 +147,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return displayDesc ? displayDesc : "";
   }
 
-  getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
+  getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string {
     const results : string[] = [];
     this.dataClassifications.forEach( (dc) => {
       const displayClassification = localizer.translate(dc.prefLabel, useUILanguage);
@@ -155,7 +155,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
         results.push(displayClassification);
       }
     });
-    return results;
+    return results.join(' · ');
   }
 
   allowOrganizationEdit(): boolean {

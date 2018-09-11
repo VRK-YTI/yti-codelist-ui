@@ -18,6 +18,10 @@
     </div>
   </div>
 
+  <div class="inline-label">
+    <span class="search-label" translate>Search for code lists</span>
+    <app-information-symbol [infoText]="'INFO_TEXT_CODELIST_NAME'"></app-information-symbol>
+  </div>
   <div class="row mb-12">
     <div class="input-group input-group-lg input-group-search col-md-4">
       <input class="form-control"
@@ -37,7 +41,10 @@
   <br/>
   <div class="row">
     <div class="col-md-4">
-      <div class="inline-label"><span class="search-label" translate>Filter with classification</span></div>
+      <div class="inline-label">
+        <span class="search-label" translate>Filter with classification</span>
+        <app-information-symbol [infoText]="'INFO_TEXT_CODELIST_NAME'"></app-information-symbol>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -55,7 +62,6 @@
               <img class="float-left" [src]="groupIconSrc(dataClassification.entity.codeValue)" width="30" height="30" >
               <span class="count float-right">({{dataClassification.count}})</span>
               <span class="name" style="vertical-align: middle;">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
-
             </div>
           </div>
         </div>
@@ -70,7 +76,10 @@
 
       <div class="codescheme-container content-box" *ngIf="!searchInProgress">
 
-        <div class="inline-label float-left"><span class="search-label" translate>Filter results</span></div>
+        <div class="inline-label float-left">
+          <span class="search-label" translate>Filter results</span>
+          <app-information-symbol [infoText]="'INFO_TEXT_CODELIST_NAME'"></app-information-symbol>
+        </div>
 
         <app-filter-dropdown class="d-inline-block"
                              id="organization_filter_dropdown"
