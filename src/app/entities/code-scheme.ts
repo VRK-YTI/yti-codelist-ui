@@ -139,16 +139,16 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   getDisplayDescription(localizer: Localizer, useUILanguage: boolean = false): string {
     const displayDesc = localizer.translate(this.description, useUILanguage);
-    return displayDesc ? displayDesc : "";
+    return displayDesc ? displayDesc : '';
   }
 
   getDisplayClassification(localizer: Localizer, useUILanguage: boolean = false, theClassification: Localizable): string {
     const displayDesc = localizer.translate(theClassification, useUILanguage);
-    return displayDesc ? displayDesc : "";
+    return displayDesc ? displayDesc : '';
   }
 
   getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string {
-    const results : string[] = [];
+    const results: string[] = [];
     this.dataClassifications.forEach( (dc) => {
       const displayClassification = localizer.translate(dc.prefLabel, useUILanguage);
       if (displayClassification) {
