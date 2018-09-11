@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { Organization } from '../../entities/organization';
 import { map, tap } from 'rxjs/operators';
+import { requiredList } from 'yti-common-ui/utils/validator';
 
 @Component({
   selector: 'app-registry-create',
@@ -25,7 +26,7 @@ export class RegistryCreateComponent implements OnInit {
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
     definition: new FormControl({}),
-    organizations: new FormControl([])
+    organizations: new FormControl([], [requiredList])
   }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
