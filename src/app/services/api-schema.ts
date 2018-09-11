@@ -46,7 +46,6 @@ export interface CodeSchemeType extends BaseResourceType {
   extensionSchemes?: ExtensionSchemeSimpleType[];
   conceptUriInVocabularies: string;
   defaultCode?: CodePlainType;
-  motherOfThisVariant?: CodeSchemeListItemType;
   variantsOfThisCodeScheme?: CodeSchemeListItemType[];
   variantMothersOfThisCodeScheme?: CodeSchemeListItemType[];
   allVersions?: CodeSchemeListItemType[];

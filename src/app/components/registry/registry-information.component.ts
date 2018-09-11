@@ -8,6 +8,7 @@ import { LanguageService } from '../../services/language.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { FormControl, FormGroup } from '@angular/forms';
+import { requiredList } from 'yti-common-ui/utils/validator';
 
 @Component({
   selector: 'app-code-registry-information',
@@ -24,7 +25,7 @@ export class RegistryInformationComponent implements OnChanges, OnDestroy {
   codeRegistryForm = new FormGroup({
     prefLabel: new FormControl({}),
     definition: new FormControl({}),
-    organizations: new FormControl([])
+    organizations: new FormControl([], [requiredList])
   });
 
   cancelSubscription: Subscription;

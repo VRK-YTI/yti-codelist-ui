@@ -154,25 +154,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     return this.codeScheme.uri;
   }
 
-  getCodeSchemeMotherUri() {
-    if (this.codeScheme.motherOfThisVariant != null) {
-      if (this.env !== 'prod') {
-        return this.codeScheme.motherOfThisVariant.uri + '?env=' + this.env;
-      }
-      return this.codeScheme.motherOfThisVariant.uri;
-    } else {
-      return null;
-    }
-  }
-
-  getCodeSchemeMotherPrefLabel() {
-    if (this.codeScheme.motherOfThisVariant != null) {
-      return this.codeScheme.motherOfThisVariant.prefLabel;
-    } else {
-      return null;
-    }
-  }
-
   getConceptUri() {
     const conceptUri = this.codeScheme.conceptUriInVocabularies;
     if (conceptUri != null && conceptUri.length > 0) {

@@ -35,7 +35,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   modified: Moment|null = null;
   defaultCode: CodePlain|null = null;
   extensionSchemes: ExtensionSchemeSimple[] = [];
-  motherOfThisVariant: CodeSchemeListItem|null = null;
   variantsOfThisCodeScheme: CodeSchemeListItem[] = [];
   variantMothersOfThisCodeScheme: CodeSchemeListItem[] = [];
   nextCodeschemeId: string|null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
@@ -74,9 +73,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.conceptUriInVocabularies = data.conceptUriInVocabularies;
     if (data.defaultCode) {
       this.defaultCode = new CodePlain(data.defaultCode);
-    }
-    if (data.motherOfThisVariant) {
-      this.motherOfThisVariant = new CodeSchemeListItem(data.motherOfThisVariant);
     }
     if (data.variantsOfThisCodeScheme) {
       this.variantsOfThisCodeScheme = (data.variantsOfThisCodeScheme || []).map(variant => new CodeSchemeListItem(variant));
