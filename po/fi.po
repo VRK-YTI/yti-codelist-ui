@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-11 12:55+0300\n"
+"PO-Revision-Date: 2018-09-11 14:27+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -386,9 +386,6 @@ msgstr "Tuo jäseniä"
 
 msgid "Delete member"
 msgstr "Poista jäsen"
-
-msgid "Extension scheme"
-msgstr "Laajennusjärjestelmä"
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennuksen tunnus"

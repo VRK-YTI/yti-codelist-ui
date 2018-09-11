@@ -371,9 +371,6 @@ msgstr ""
 msgid "Delete member"
 msgstr ""
 
-msgid "Extension scheme"
-msgstr ""
-
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 

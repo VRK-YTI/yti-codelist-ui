@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-11 12:55+0300\n"
+"PO-Revision-Date: 2018-09-11 14:27+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -378,9 +378,6 @@ msgid "Import members"
 msgstr ""
 
 msgid "Delete member"
-msgstr ""
-
-msgid "Extension scheme"
 msgstr ""
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
