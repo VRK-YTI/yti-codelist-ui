@@ -143,8 +143,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       .then(() => {
         this.deleting = true;
         this.dataService.deleteCodeScheme(this.codeScheme).subscribe(res => {
-          this.deleting = false;
-          this.router.navigate(['frontpage']);
+          if (res.meta.code === 200) {
+            this.deleting = false;
+            this.router.navigate(['frontpage']);
+          } else {
+            this.deleting = false;
+            this.errorModalService.openSubmitError(res);
+          }
         }, error => {
           this.deleting = false;
           this.errorModalService.openSubmitError(error);

@@ -677,7 +677,7 @@ msgstr ""
 msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
 msgid "Front page"
@@ -826,10 +826,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
@@ -926,6 +926,12 @@ msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

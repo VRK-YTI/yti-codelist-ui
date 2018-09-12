@@ -120,7 +120,11 @@ export class CodeComponent implements OnInit, EditingComponent {
     this.confirmationModalService.openRemoveCode()
       .then(() => {
         this.dataService.deleteCode(this.code).subscribe(res => {
-          this.router.navigate(this.code.codeScheme.route);
+          if (res.meta.code === 200) {
+            this.router.navigate(this.code.codeScheme.route);
+          } else {
+            this.errorModalService.openSubmitError(res);
+          }
         }, error => {
           this.errorModalService.openSubmitError(error);
         });

@@ -344,19 +344,14 @@ export class DataService {
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`, code);
   }
 
-  deleteCode(code: Code): Observable<boolean> {
+  deleteCode(code: Code): Observable<ApiResponseType> {
 
     const registryCodeValue = code.codeScheme.codeRegistry.codeValue;
     const schemeCodeValue = code.codeScheme.codeValue;
     const encodedCodeCodeValue = encodeURIComponent(code.codeValue);
 
-    return this.http.delete(
-      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`,
-      { observe: 'response' } )
-      .pipe(
-        map(res => res.status === 200),
-        catchError(err => of(false))
-      );
+    return this.http.delete<ApiResponseType>(
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`);
   }
 
   createCodeScheme(codeSchemeToCreate: CodeSchemeType, registryCodeValue: string): Observable<CodeScheme> {
@@ -388,16 +383,11 @@ export class DataService {
     return this.http.post<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeToSave.codeValue}/`, codeSchemeToSave);
   }
 
-  deleteCodeScheme(theCodeScheme: CodeScheme): Observable<boolean> {
+  deleteCodeScheme(theCodeScheme: CodeScheme): Observable<ApiResponseType> {
 
     const registryCode = theCodeScheme.codeRegistry.codeValue;
 
-    return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${theCodeScheme.codeValue}/`,
-      { observe: 'response' } )
-      .pipe(
-        map(res => res.status === 200),
-        catchError(err => of(false))
-      );
+    return this.http.delete<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${theCodeScheme.codeValue}/`);
   }
 
   uploadCodeSchemes(registryCode: string, file: File, format: string): Observable<CodeScheme[]> {
