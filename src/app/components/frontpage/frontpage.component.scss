@@ -67,17 +67,18 @@ app-filter-dropdown {
   }
 }
 
-.checkboxx {
+.checkbox {
 
   input {
     vertical-align:middle;
     position: relative;
     display: inline-block;
+    margin-bottom: 6px;
   }
 
   label {
     vertical-align: middle;
-    padding-left: 16px;
+    padding-left: 10px;
     display: inline-block;
   }
 }
@@ -212,11 +213,4 @@ app-filter-dropdown {
   .orange {
     color: $orange;
   }
-
-  input[type=checkbox] {
-    vertical-align: middle;
-    position: relative;
-    bottom: 1px;
-  }
-
 }
