@@ -6,9 +6,11 @@ app-filter-dropdown {
 
 .classification {
 
-  display: inline-block;
+  display: block;
   width: 100%;
-  padding: 5px 10px 5px 5px;
+  padding: 0px 10px 0px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
   border-left: $active-indicator-width solid $white;
 
@@ -18,16 +20,25 @@ app-filter-dropdown {
 
   &.active {
     font-weight: 500;
-    background-color: rgb(237, 243, 249);
   }
 
   .name {
-    float: left;
+    line-height: 36px;
+    vertical-align: middle;
   }
 
   .count {
     float: right;
     color: $primary;
+    line-height: 36px;
+    vertical-align: middle;
+  }
+
+  img {
+    float: left;
+    width: 36px;
+    height: 36px;
+    margin: 0px 10px 0px 0px;
   }
 }
 
@@ -56,17 +67,24 @@ app-filter-dropdown {
   }
 }
 
-.checkbox {
+.checkboxx {
+
+  input {
+    vertical-align:middle;
+    position: relative;
+    display: inline-block;
+  }
 
   label {
-    padding-left: 8px;
+    vertical-align: middle;
+    padding-left: 16px;
+    display: inline-block;
   }
 }
 
 .search-label {
   font-weight: bolder;
-  font-size: smaller;
-  padding-bottom: 0.55rem;
+  padding-bottom: 2.5rem;
 }
 
 .codescheme-container {
@@ -81,8 +99,7 @@ app-filter-dropdown {
 
   .search-label {
     font-weight: bolder;
-    font-size: smaller;
-    padding-bottom: 0.55rem;
+    padding-bottom: 2.5rem;
   }
 
   .inline-label {
@@ -161,7 +178,7 @@ app-filter-dropdown {
   .organization {
   }
 
-  .classification {
+  .classifications {
     display: inline;
     background-color: rgb(237, 243, 249);
   }
@@ -177,4 +194,29 @@ app-filter-dropdown {
     float: right;
     clear: right;
   }
+
+  #classifications-list {
+    list-style: none;
+    padding: 0px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  #classifications-list > li {
+    display: inline-block;
+    margin: 0px 5px 0px 0px;
+    background-color: rgb(237, 243, 249);
+  }
+
+  .orange {
+    color: $orange;
+  }
+
+  input[type=checkbox] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+  }
+
 }

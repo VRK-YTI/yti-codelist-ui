@@ -135,7 +135,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   getDisplayDescription(localizer: Localizer, useUILanguage: boolean = false): string {
     const displayDesc = localizer.translate(this.description, useUILanguage);
-    return displayDesc ? displayDesc : '';
+    return displayDesc ? displayDesc.substr(0, 550).concat('...') : '';
   }
 
   getDisplayClassification(localizer: Localizer, useUILanguage: boolean = false, theClassification: Localizable): string {
@@ -143,12 +143,23 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return displayDesc ? displayDesc : '';
   }
 
-  getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string {
+  getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
     const results: string[] = [];
     this.dataClassifications.forEach( (dc) => {
       const displayClassification = localizer.translate(dc.prefLabel, useUILanguage);
       if (displayClassification) {
         results.push(displayClassification);
+      }
+    });
+    return results;
+  }
+
+  getDisplayOrganizationList(localizer: Localizer, useUILanguage: boolean = false): string {
+    const results: string[] = [];
+    this.organizations.forEach( (org) => {
+      const displayOrg = localizer.translate(org.prefLabel, useUILanguage);
+      if (displayOrg) {
+        results.push(displayOrg);
       }
     });
     return results.join(' · ');

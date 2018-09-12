@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-11 14:27+0300\n"
+"PO-Revision-Date: 2018-09-12 14:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -411,14 +411,14 @@ msgstr "Koodisto"
 msgid "MEMBERS"
 msgstr "JÄSENET"
 
+msgid "Search term"
+msgstr "Hakutermi"
+
 msgid "search result"
 msgstr "hakutulos"
 
 msgid "search results"
-msgstr "halutulosta"
-
-msgid "organizations"
-msgstr "organisaatiota"
+msgstr "hakutulosta"
 
 msgid "Frontpage long description"
 msgstr ""
@@ -473,6 +473,9 @@ msgstr "Luo rekisteri"
 msgid "No registries found."
 msgstr "Rekistereitä ei ole."
 
+msgid "organizations"
+msgstr "organisaatiota"
+
 msgid "This registry does not have any code lists yet."
 msgstr "Tällä rekisterillä ei ole yhtään koodistoa."
 
@@ -518,8 +521,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_CODE_SHORT_NAME"
-msgstr "Koodin lyhyt nimi tai lyhenne"
+msgid "INFO_TEXT_CODE_VALIDITY"
+msgstr "Ajanjakso, jona koodi on voimassa"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -637,6 +640,9 @@ msgstr ""
 "Koodin merkitykseen liittyvän käsitteen määritelmä Sanastot-työkalun "
 "sanastosta tai itse annettu määritelmä."
 
+msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgstr "Koodin lyhyt nimi tai lyhenne"
+
 msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 "Tieto siitä, mihin julkisten palvelujen luokituksen palveluluokkaan koodisto "
@@ -644,9 +650,6 @@ msgstr ""
 "työkaluissa jokainen resurssi (koodisto, tietomalli tai sanasto) "
 "luokitellaan Julkisten palvelujen luokituksella. Luokitusta käytetään "
 "etusivun haussa rajaamaan hakutuloksia."
-
-msgid "INFO_TEXT_CODE_VALIDITY"
-msgstr "Ajanjakso, jona koodi on voimassa"
 
 msgid "INFO_TEXT_CODE_URI"
 msgstr ""
@@ -735,6 +738,26 @@ msgstr "Voimassaolon päättymispäivämäärä"
 
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennuksen tunnus tai pysyvä tunniste"
+
+msgid "INFO_TEXT_FRONTPAGE_SEARCH"
+msgstr ""
+"Haku kohdistuu oletuksena koodistojen nimiin. Voit hakea koodien nimiä "
+"rastimalla \"Kohdista haku myös koodeihin\"."
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION"
+msgstr ""
+"Kaikki koodistot on luokiteltu johonkin tietoalueeseen. Tietoaluetta "
+"klikkaamalla voit suodattaa hakutuloksiin näkyviin vain tiettyyn "
+"tietoalueeseen kuuluvat koodistot. Poistat valinnan klikkaamalla uudestaan "
+"samaa luokkaa."
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
+msgstr ""
+"Voit suodattaa hakutuloksia organisaatiolla, rekisterillä tai tilalla. "
+"Organisaatio tarkoittaa koodiston sisällöntuottajaorganisaatiota, joka "
+"vastaa koodiston ylläpidosta. Rekisteri tarkoittaa kokoelmaa koodistoja, "
+"joita esim. käytetään samassa yhteydessä. Tila tarkoittaa koodiston "
+"hallinnan tilaa."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."

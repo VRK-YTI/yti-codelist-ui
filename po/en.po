@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-11 14:27+0300\n"
+"PO-Revision-Date: 2018-09-12 14:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -404,13 +404,13 @@ msgstr ""
 msgid "MEMBERS"
 msgstr ""
 
+msgid "Search term"
+msgstr ""
+
 msgid "search result"
 msgstr ""
 
 msgid "search results"
-msgstr ""
-
-msgid "organizations"
 msgstr ""
 
 msgid "Frontpage long description"
@@ -466,6 +466,9 @@ msgstr ""
 msgid "No registries found."
 msgstr ""
 
+msgid "organizations"
+msgstr ""
+
 msgid "This registry does not have any code lists yet."
 msgstr ""
 
@@ -511,8 +514,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_SHORT_NAME"
-msgstr "Short name or abbreviation of the code"
+msgid "INFO_TEXT_CODE_VALIDITY"
+msgstr "The period in which the code is valid"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -619,15 +622,15 @@ msgstr ""
 "Definition of the term related to the information content of the encoding "
 "Vocabulary tool vocabulary concept or self-defined code definition."
 
+msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgstr "Short name or abbreviation of the code"
+
 msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 "Classification of the code lists. In the Interoperability Platform tools, "
 "each resource (code list or classification, data model, or vocabulary) is "
 "classified by the Classification of Public Services. It is used for example "
 "to filter the search results."
-
-msgid "INFO_TEXT_CODE_VALIDITY"
-msgstr "The period in which the code is valid"
 
 msgid "INFO_TEXT_CODE_URI"
 msgstr "Permanent web address of the code"
@@ -718,6 +721,26 @@ msgstr ""
 
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "The technical code or permanent identifier of the extension"
+
+msgid "INFO_TEXT_FRONTPAGE_SEARCH"
+msgstr ""
+"The names of the code lists are searched as a default. You may search for "
+"the names of the codes by checking the box \"Extend search to codes\""
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION"
+msgstr ""
+"All code lists are classified into information domains. To see code lists "
+"classified into a certain information domain, click the name of the "
+"information domain. You may remove the filter by clicking the name of "
+"information domain again."
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
+msgstr ""
+"You may filter the search results with the organization, registry or status "
+"information. Organization is for the organization that is responsible for "
+"upkeeping the code list. Registry is for a collection of code lists that are "
+"e.g. used in the same context. Status is for the governance status of the "
+"code list."
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Code {{ identifier }} already exists."

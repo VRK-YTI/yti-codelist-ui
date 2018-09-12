@@ -3,8 +3,6 @@
 </div>
 
 <div *ngIf="!loading">
-  <h1>Koodistot</h1>
-
   <div class="row mb-12">
     <div class="col-md-10">
       <p translate>Frontpage long description</p>
@@ -20,19 +18,19 @@
 
   <div class="inline-label">
     <span class="search-label" translate>Search for code lists</span>
-    <app-information-symbol [infoText]="'INFO_TEXT_CODELIST_NAME'"></app-information-symbol>
+    <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_SEARCH'"></app-information-symbol>
   </div>
   <div class="row mb-12">
-    <div class="input-group input-group-lg input-group-search col-md-4">
+    <div class="input-group input-group-lg input-group-search col-md-6">
       <input class="form-control"
              #schemeSearch
              id="search_box_input"
              type="text"
              [(ngModel)]="searchTerm"
-             placeholder="{{'Search for code lists' | translate}}"/>
+             placeholder="{{'Search term' | translate}}"/>
     </div>
-    <div class="col-md-4 mt-2">
-      <div class="checkbox">
+    <div class="col-md-4">
+      <div class="checkboxx">
         <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
         <label for="search_code_details_checkbox" translate>Extend search to codes</label>
       </div>
@@ -43,15 +41,13 @@
     <div class="col-md-4">
       <div class="inline-label">
         <span class="search-label" translate>Filter with classification</span>
-        <app-information-symbol [infoText]="'INFO_TEXT_CODELIST_NAME'"></app-information-symbol>
+        <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION'"></app-information-symbol>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
       <div class="content-box">
-        <h4 class="strong" translate>Classification</h4>
-
         <div *ngFor="let dataClassification of dataClassifications">
           <div *ngIf="dataClassification.count > 0">
 
@@ -59,7 +55,7 @@
                 id="{{dataClassification.entity.codeValue + '_classification_filter_link'}}"
                  [class.active]="isClassificationSelected(dataClassification.entity)"
                  (click)="toggleClassification(dataClassification.entity)">
-              <img class="float-left" [src]="groupIconSrc(dataClassification.entity.codeValue)" width="30" height="30" >
+              <img class="float-left" [src]="groupIconSrc(dataClassification.entity.codeValue)" >
               <span class="count float-right">({{dataClassification.count}})</span>
               <span class="name" style="vertical-align: middle;">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
             </div>
@@ -78,7 +74,7 @@
 
         <div class="inline-label float-left">
           <span class="search-label" translate>Filter results</span>
-          <app-information-symbol [infoText]="'INFO_TEXT_CODELIST_NAME'"></app-information-symbol>
+          <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_RESULTS'"></app-information-symbol>
         </div>
 
         <app-filter-dropdown class="d-inline-block"
@@ -99,8 +95,8 @@
         <div class="row mb-4">
           <div class="col-12">
             <span *ngIf="filteredCodeSchemes.length == 0" translate>Search did not find any code lists.</span>
-            <span *ngIf="filteredCodeSchemes.length == 1"><b>1</b> {{'search result' | translate}}</span>
-            <span *ngIf="filteredCodeSchemes.length > 1"><b>{{filteredCodeSchemes.length}}</b> {{'search results' | translate}}</span>
+            <span *ngIf="filteredCodeSchemes.length == 1">1 {{'search result' | translate}}</span>
+            <span *ngIf="filteredCodeSchemes.length > 1">{{filteredCodeSchemes.length}} {{'search results' | translate}}</span>
           </div>
         </div>
 
@@ -113,17 +109,27 @@
                     <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
                   </div>
                   <div class="col-4">
-                    <div><span class="float-right">{{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span><img class="float-right" [src]="groupIconSrc('P9')" width="30" height="30" ></div>
+                    <div><span class="float-right">{{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span>
+                      <i class="material-icons float-right orange">account_balance</i>
+                    </div>
                   </div>
                 </div>
 
                 <app-status class="float-right" [status]="codeScheme.status"></app-status>
                 <div class="description">{{codeScheme.getDisplayDescription(languageService, true)}}</div>
-                <div class="classification">{{codeScheme.getDisplayClassificationListing(languageService, true)}}</div>
+                <br/>
+                <ul id="classifications-list">
+                  <li *ngFor="let classification of codeScheme.getDisplayClassificationListing(languageService, true)">
+                    {{classification}}
+                  </li>
+                </ul>
                 <div class="organization">
                   <span *ngIf="codeScheme.organizations.length == 0" translate>No organization</span>
                   <span *ngIf="codeScheme.organizations.length == 1">{{codeScheme.organizations[0].prefLabel | translateValue:true}}</span>
-                  <span *ngIf="codeScheme.organizations.length > 1">{{codeScheme.organizations.length}} {{'organizations' | translate}}</span>
+                  <span *ngIf="codeScheme.organizations.length > 1">
+                    {{codeScheme.getDisplayOrganizationList(languageService, true)}}
+                  </span>
+
                 </div>
               </div>
             </div>

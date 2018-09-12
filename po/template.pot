@@ -395,13 +395,13 @@ msgstr ""
 msgid "MEMBERS"
 msgstr ""
 
+msgid "Search term"
+msgstr ""
+
 msgid "search result"
 msgstr ""
 
 msgid "search results"
-msgstr ""
-
-msgid "organizations"
 msgstr ""
 
 msgid "Frontpage long description"
@@ -452,6 +452,9 @@ msgstr ""
 msgid "No registries found."
 msgstr ""
 
+msgid "organizations"
+msgstr ""
+
 msgid "This registry does not have any code lists yet."
 msgstr ""
 
@@ -497,7 +500,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgid "INFO_TEXT_CODE_VALIDITY"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -581,10 +584,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_DEFINITION"
 msgstr ""
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_CODE_SHORT_NAME"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY"
+msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_URI"
@@ -663,6 +666,15 @@ msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgstr ""
+
+msgid "INFO_TEXT_FRONTPAGE_SEARCH"
+msgstr ""
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION"
+msgstr ""
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
 msgstr ""
 
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
