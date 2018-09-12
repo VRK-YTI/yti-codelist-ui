@@ -388,16 +388,11 @@ export class DataService {
     return this.http.post<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeToSave.codeValue}/`, codeSchemeToSave);
   }
 
-  deleteCodeScheme(theCodeScheme: CodeScheme): Observable<boolean> {
+  deleteCodeScheme(theCodeScheme: CodeScheme): Observable<ApiResponseType> {
 
     const registryCode = theCodeScheme.codeRegistry.codeValue;
 
-    return this.http.delete(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${theCodeScheme.codeValue}/`,
-      { observe: 'response' } )
-      .pipe(
-        map(res => res.status === 200),
-        catchError(err => of(false))
-      );
+    return this.http.delete<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${theCodeScheme.codeValue}/`);
   }
 
   uploadCodeSchemes(registryCode: string, file: File, format: string): Observable<CodeScheme[]> {

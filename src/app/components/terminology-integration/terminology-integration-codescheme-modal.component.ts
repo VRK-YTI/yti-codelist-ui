@@ -66,9 +66,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
               this.loading = false;
               this.searchResults = concepts;
             },
-            err => {
+            error => {
               this.loading = false;
-              this.codeListErrorModalService.openSubmitError(err);
+              this.codeListErrorModalService.openSubmitError(error);
             });
         }
       });
