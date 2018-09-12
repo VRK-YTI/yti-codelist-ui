@@ -759,8 +759,8 @@ msgstr ""
 "joita esim. käytetään samassa yhteydessä. Tila tarkoittaa koodiston "
 "hallinnan tilaa."
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Koodi {{ identifier }} on jo olemassa."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Koodisto on jo olemassa."
 
 msgid "Front page"
 msgstr "Etusivu"

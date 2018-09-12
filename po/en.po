@@ -742,8 +742,8 @@ msgstr ""
 "e.g. used in the same context. Status is for the governance status of the "
 "code list."
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
-msgstr "Code {{ identifier }} already exists."
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Code list already exists."
 
 msgid "Front page"
 msgstr ""
