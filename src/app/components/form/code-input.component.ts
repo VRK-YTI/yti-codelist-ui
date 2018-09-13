@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';
 import { LanguageService } from '../../services/language.service';
+import { Code } from '../../entities/code';
 
 function addToControl<T>(control: FormControl, item: T) {
 
@@ -30,7 +31,8 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && code">
-          <span>{{code.getLongDisplayName(languageService, false)}}</span>
+          <span *ngIf="!showDetailLabel">{{code.getLongDisplayName(languageService, false)}}</span>
+          <span *ngIf="showDetailLabel">{{code.getDisplayNameWithCodeSchemeAndRegistry(languageService, false)}}</span>
         </div>
         <div *ngIf="editing && code">
           <a>
@@ -38,7 +40,8 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeCode(code)"></i>
           </a>
-          <span>{{code.getLongDisplayName(languageService, false)}}</span>
+          <span *ngIf="!showDetailLabel">{{code.getLongDisplayName(languageService, false)}}</span>
+          <span *ngIf="showDetailLabel">{{code.getDisplayNameWithCodeSchemeAndRegistry(languageService, false)}}</span>
         </div>
 
         <app-error-messages id="code_error_messages" [control]="parentControl"></app-error-messages>
@@ -58,6 +61,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   @Input() codeSchemes: CodeScheme[];
   @Input() required = false;
   @Input() infoText: string;
+  @Input() showDetailLabel: boolean;
   control = new FormControl(null);
 
   private propagateChange: (fn: any) => void = () => {};
@@ -78,7 +82,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   }
 
   get code() {
-    return this.control.value as CodePlain;
+    return this.control.value as Code;
   }
 
   selectCode() {

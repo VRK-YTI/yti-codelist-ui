@@ -11,6 +11,7 @@ import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { formatDate, validDateRange } from '../../utils/date';
 import { tap } from 'rxjs/operators';
+import { Code } from '../../entities/code';
 
 @Component({
   selector: 'app-extension-create',
@@ -101,5 +102,14 @@ export class ExtensionCreateComponent implements OnInit {
 
   get allCodeSchemes(): CodeScheme[] {
     return [ this.extensionScheme.parentCodeScheme, ...this.extensionScheme.codeSchemes ];
+  }
+
+  get showCodeDetailLabel(): boolean {
+    const currentCode: Code = this.extensionForm.controls['code'].value;
+    if (currentCode) {
+      return currentCode.codeScheme.id !== this.extensionScheme.parentCodeScheme.id;
+    } else {
+      return false;
+    }
   }
 }

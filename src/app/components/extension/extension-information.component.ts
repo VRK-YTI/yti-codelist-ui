@@ -12,6 +12,7 @@ import { LocationService } from '../../services/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { validDateRange } from '../../utils/date';
+import { Code } from '../../entities/code';
 
 @Component({
   selector: 'app-extension-information',
@@ -113,5 +114,14 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
 
   get allCodeSchemes(): CodeScheme[] {
     return [ this.extensionScheme.parentCodeScheme, ...this.extensionScheme.codeSchemes ];
+  }
+
+  get showCodeDetailLabel(): boolean {
+    const currentCode: Code = this.extensionForm.controls['code'].value;
+    if (currentCode) {
+      return currentCode.codeScheme.id !== this.extensionScheme.parentCodeScheme.id;
+    } else {
+      return false;
+    }
   }
 }

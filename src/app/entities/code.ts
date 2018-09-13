@@ -1,4 +1,4 @@
-import { Localizable } from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
@@ -135,6 +135,17 @@ export class Code extends AbstractResource implements EditableEntity {
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       order: this.order
     };
+  }
+
+  getDisplayNameWithCodeSchemeAndRegistry(localizer: Localizer, useUILanguage: boolean = false): string {
+    let displayName = localizer.translate(this.prefLabel, useUILanguage);
+    if (displayName) {
+      displayName = this.codeValue + ' - ' + displayName;
+    } else {
+      displayName = this.codeValue;
+    }
+    displayName = displayName + ' - ' + this.codeScheme.getDisplayName(localizer, useUILanguage) + ' - ' + this.codeScheme.codeRegistry.getDisplayName(localizer, useUILanguage);
+    return displayName;
   }
 
   clone(): Code {
