@@ -480,7 +480,7 @@ export class DataService {
   getExtensions(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Extension[]> {
 
     const params = {
-      'expand': 'extensionScheme,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code'
+      'expand': 'extensionScheme,codeRegistry,organization,code,externalReference,propertyType,codeScheme'
     };
 
     return this.http.get<WithResults<ExtensionType>>(
