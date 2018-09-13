@@ -135,7 +135,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   getDisplayDescription(localizer: Localizer, useUILanguage: boolean = false): string {
     const displayDesc = localizer.translate(this.description, useUILanguage);
-    return displayDesc ? displayDesc.substr(0, 550).concat('...') : '';
+    return displayDesc ? displayDesc : '';
   }
 
   getDisplayClassification(localizer: Localizer, useUILanguage: boolean = false, theClassification: Localizable): string {

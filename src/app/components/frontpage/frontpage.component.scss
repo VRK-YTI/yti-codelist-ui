@@ -164,8 +164,31 @@ app-filter-dropdown {
 
   .description {
     display: block;
-    margin-top: 15px;
     width: calc(100% - 200px);
+    overflow: hidden;
+    position: relative;
+    line-height: 1.4em;
+    max-height: 4.2em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 2em;
+  }
+
+  .description:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .description:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
   }
 
   .group {
