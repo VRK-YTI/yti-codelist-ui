@@ -1,7 +1,5 @@
 import { Localizable } from 'yti-common-ui/types/localization';
 import { DataClassificationType } from '../services/api-schema';
-import { Moment } from 'moment';
-import { formatDateTime, parseDateTime } from '../utils/date';
 
 export class DataClassification {
 
@@ -10,7 +8,6 @@ export class DataClassification {
   status: string;
   codeValue: string;
   prefLabel: Localizable;
-  codeScheme: { uri: string };
   count: number;
 
   constructor(data: DataClassificationType) {
@@ -19,7 +16,6 @@ export class DataClassification {
     this.status = data.status;
     this.codeValue = data.codeValue;
     this.prefLabel = data.prefLabel || {};
-    this.codeScheme = data.codeScheme;
     this.count = data.count;
   }
 
@@ -30,7 +26,6 @@ export class DataClassification {
       status: this.status,
       codeValue: this.codeValue,
       prefLabel: { ...this.prefLabel },
-      codeScheme: this.codeScheme,
       count: this.count
     };
   }

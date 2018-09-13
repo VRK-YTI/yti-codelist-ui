@@ -206,7 +206,7 @@ export class DataService {
     }
 
     if (organization) {
-      params = params.append('organizationId', organization);
+      params = params.append('organizations', organization);
     }
 
     return this.http.get<WithResults<CodeSchemeType>>(`${codeSchemesBasePath}`, { params })

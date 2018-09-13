@@ -128,7 +128,6 @@ export interface DataClassificationType  {
   status: string;
   codeValue: string;
   prefLabel: Localizable;
-  codeScheme: { uri: string };
   count: number;
 }
 
