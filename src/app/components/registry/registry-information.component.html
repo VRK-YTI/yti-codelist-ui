@@ -30,11 +30,10 @@
                                  [infoText]="'INFO_TEXT_REGISTRY_ORGANIZATION'"
                                  [formControlName]="'organizations'"></app-organizations-input>
 
-        <!-- TODO: Change formControlName "definition" to "description" (YTI-981 & YTI-982). -->
         <app-localizable-textarea [id]="'registry_description_textarea'"
                                   [label]="'Description' | translate"
                                   [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
-                                  [formControlName]="'definition'"></app-localizable-textarea>
+                                  [formControlName]="'description'"></app-localizable-textarea>
 
         <app-clipboard [label]="'URI' | translate"
                        [value]="getRegistryUri()"

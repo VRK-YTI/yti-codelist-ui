@@ -10,18 +10,16 @@ import { Localizable } from 'yti-common-ui/types/localization';
 
 export class CodeRegistry extends AbstractResource implements EditableEntity {
 
-  // TODO: Change definition to description (YTI-981 & YTI-982).
-
   organizations: Organization[];
   modified: Moment|null = null;
-  definition: Localizable;
+  description: Localizable;
 
   constructor(data: CodeRegistryType) {
     super(data);
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
     }
-    this.definition = data.definition || {};
+    this.description = data.description || {};
     this.organizations = (data.organizations || []).map(o => new Organization(o));
   }
 
@@ -34,7 +32,7 @@ export class CodeRegistry extends AbstractResource implements EditableEntity {
       codeValue: this.codeValue,
       modified: formatDateTime(this.modified),
       prefLabel: {...this.prefLabel},
-      definition: {...this.definition},
+      description: {...this.description},
       organizations: this.organizations.map(o => o.serialize())
     };
   }

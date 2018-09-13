@@ -22,7 +22,7 @@ export interface BaseResourceType {
 export interface CodeRegistryType extends BaseResourceType {
 
   modified?: string;
-  definition?: Localizable;
+  description?: Localizable;
   organizations: OrganizationType[];
 }
 

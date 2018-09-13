@@ -20,12 +20,10 @@ import { requiredList } from 'yti-common-ui/utils/validator';
 })
 export class RegistryCreateComponent implements OnInit {
 
-  // TODO: Change definition to description (YTI-981 & YTI-982).
-
   codeRegistryForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
-    definition: new FormControl({}),
+    description: new FormControl({}),
     organizations: new FormControl([], [requiredList])
   }, null, this.codeValueExistsValidator());
 
