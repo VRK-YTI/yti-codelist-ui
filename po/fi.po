@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-12 14:47+0300\n"
+"PO-Revision-Date: 2018-09-13 08:36+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1031,6 +1031,9 @@ msgstr ""
 
 msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr "Koodia ei voi poistaa, koska se on linkitettynä käytössä."
+
+msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr "Tätä koodistoa ei voi poistaa."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
