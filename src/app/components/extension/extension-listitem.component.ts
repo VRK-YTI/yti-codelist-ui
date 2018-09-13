@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Extension } from '../../entities/extension';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ExtensionSimple } from '../../entities/extension-simple';
+import { ExtensionScheme } from '../../entities/extension-scheme';
 
 @Component({
   selector: 'app-extension-listitem',
@@ -10,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   template: `
     <div id="{{getIdIdentifier(extension) + '_view_extension'}}"
          class="extension"
-         (click)="viewExtension(extension)">
+         (click)="viewExtension()">
       <span class="extensiontitle">{{extension.getDisplayName(languageService, translateService)}}</span>
     </div>
   `
@@ -18,22 +20,23 @@ import { TranslateService } from '@ngx-translate/core';
 
 export class ExtensionListitemComponent {
 
-  @Input() extension: Extension;
+  @Input() extensionScheme: ExtensionScheme;
+  @Input() extension: ExtensionSimple;
 
   constructor(private router: Router,
               public languageService: LanguageService,
               public translateService: TranslateService) {
   }
 
-  viewExtension(extension: Extension) {
-    console.log('View member: ' + extension.id);
+  viewExtension() {
+    console.log('View member: ' + this.extension.id);
     this.router.navigate([
       'extension',
       {
-        registryCode: extension.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-        schemeCode: extension.extensionScheme.parentCodeScheme.codeValue,
-        extensionSchemeCode: extension.extensionScheme.codeValue,
-        extensionId: extension.id
+        registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
+        schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
+        extensionSchemeCode: this.extensionScheme.codeValue,
+        extensionId: this.extension.id
       }
     ]);
   }

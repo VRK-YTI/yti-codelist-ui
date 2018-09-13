@@ -193,7 +193,7 @@ export interface ExtensionSimpleType {
   prefLabel?: Localizable;
   order?: string;
   modified?: string;
-  code: CodeType;
+  code: CodePlainType;
   startDate?: string;
   endDate?: string;
 }

@@ -5,17 +5,17 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
-import { Observable, from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
-import { Extension } from '../../entities/extension';
-import { tap, flatMap } from 'rxjs/operators';
+import { flatMap, tap } from 'rxjs/operators';
 import { ExtensionSchemeExtensionsImportModalService } from '../extension/extension-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
+import { ExtensionSimple } from '../../entities/extension-simple';
 
 @Component({
   selector: 'app-extension-scheme',
@@ -28,7 +28,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   extensionScheme: ExtensionScheme;
-  extensions: Extension[];
+  extensions: ExtensionSimple[];
   env: string;
 
   constructor(private userService: UserService,
@@ -66,13 +66,13 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
       this.locationService.atExtensionPage(extensionScheme);
     });
 
-    this.dataService.getExtensions(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {
+    this.dataService.getSimpleExtensions(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {
       this.extensions = extensions;
     });
   }
 
   refreshExtensions() {
-    this.dataService.getExtensions(
+    this.dataService.getSimpleExtensions(
       this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue).subscribe(extensions => {

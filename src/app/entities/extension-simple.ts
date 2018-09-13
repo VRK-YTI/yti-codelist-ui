@@ -4,8 +4,7 @@ import { Moment } from 'moment';
 import { ExtensionSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
-import { Code } from './code';
-import { ExtensionScheme } from './extension-scheme';
+import { CodePlain } from './code-simple';
 
 export class ExtensionSimple {
 
@@ -14,7 +13,7 @@ export class ExtensionSimple {
   extensionValue: string;
   order?: string;
   modified: Moment | null = null;
-  code: Code;
+  code: CodePlain;
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
@@ -29,7 +28,7 @@ export class ExtensionSimple {
       this.modified = parseDateTime(data.modified);
     }
     if (data.code) {
-      this.code = new Code(data.code);
+      this.code = new CodePlain(data.code);
     }
     if (data.startDate) {
       this.startDate = parseDate(data.startDate);
@@ -59,42 +58,19 @@ export class ExtensionSimple {
 
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
     const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
-    let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
-    if (!codeTitle) {
-      codeTitle = this.code ? this.code.codeValue : null;
-    }
-    const extensionValue = this.extensionValue;
-    const codeLabel = translater.instant('code');
-    const valueLabel = translater.instant('value');
-
-    if (extensionTitle) {
-      return `${extensionTitle} - ${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
-    } else {
-      return `${codeLabel}: ${codeTitle} - ${valueLabel}: ${extensionValue}`;
-    }
-  }
-
-  getDisplayNameWithExtensionScheme(extensionScheme: ExtensionScheme,
-                                    localizer: Localizer,
-                                    translater: TranslateService,
-                                    useUILanguage: boolean = false): string {
-    const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
 
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
-    if (this.code.codeScheme.id !== extensionScheme.parentCodeScheme.id) {
-      const codeSchemeTitle = localizer.translate(this.code.codeScheme.prefLabel, useUILanguage);
-      codeTitle = codeTitle + ' - ' + codeSchemeTitle;
-    }
-
     const extensionValue = this.extensionValue;
 
     if (extensionTitle && extensionValue) {
       return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
     } else if (extensionValue) {
       return `${extensionValue} - ${codeTitle}`;
+    } else if (extensionTitle) {
+      return `${extensionTitle} - ${codeTitle}`;
     } else {
       return codeTitle ? codeTitle : '';
     }

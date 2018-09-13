@@ -14,9 +14,9 @@ import {
   ConceptType,
   DataClassificationType,
   ExtensionSchemeType,
+  ExtensionSimpleType,
   ExtensionType,
   ExternalReferenceType,
-  OrganizationType,
   PropertyTypeType,
   VocabularyType
 } from './api-schema';
@@ -32,6 +32,7 @@ import { Concept } from '../entities/concept';
 import { ExtensionScheme } from '../entities/extension-scheme';
 import { Extension } from '../entities/extension';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { ExtensionSimple } from '../entities/extension-simple';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -103,7 +104,7 @@ export class DataService {
       expand: 'organization'
     };
 
-    return this.http.get<WithResults<CodeRegistryType>>(codeRegistriesBasePath, {params})
+    return this.http.get<WithResults<CodeRegistryType>>(codeRegistriesBasePath, { params })
       .pipe(map(res => res.results.map(data => new CodeRegistry(data))));
   }
 
@@ -122,7 +123,7 @@ export class DataService {
       expand: 'organization'
     };
 
-    return this.http.get<CodeRegistryType>(`${codeRegistriesBasePath}/${coderegistryCode}/`, {params})
+    return this.http.get<CodeRegistryType>(`${codeRegistriesBasePath}/${coderegistryCode}/`, { params })
       .pipe(map(res => new CodeRegistry(res)));
   }
 
@@ -167,7 +168,7 @@ export class DataService {
       params = params.append('userOrganizations', userOrganizations.join(','));
     }
 
-    return this.http.get<WithResults<CodeSchemeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/`, {params})
+    return this.http.get<WithResults<CodeSchemeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/`, { params })
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
@@ -203,7 +204,7 @@ export class DataService {
       params = params.append('organizationId', organization);
     }
 
-    return this.http.get<WithResults<CodeSchemeType>>(`${codeSchemesBasePath}`, {params})
+    return this.http.get<WithResults<CodeSchemeType>>(`${codeSchemesBasePath}`, { params })
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
@@ -213,7 +214,7 @@ export class DataService {
       context: context
     };
 
-    return this.http.get<WithResults<PropertyTypeType>>(`${propertyTypesBasePath}/`, {params})
+    return this.http.get<WithResults<PropertyTypeType>>(`${propertyTypesBasePath}/`, { params })
       .pipe(map(res => res.results.map(data => new PropertyType(data))));
   }
 
@@ -229,7 +230,7 @@ export class DataService {
       language: language
     };
 
-    return this.http.get<WithResults<DataClassificationType>>(`${dataClassificationsBasePath}/`, {params})
+    return this.http.get<WithResults<DataClassificationType>>(`${dataClassificationsBasePath}/`, { params })
       .pipe(map(res => res.results.map((data: DataClassificationType) => new DataClassification(data))));
   }
 
@@ -243,7 +244,7 @@ export class DataService {
       params = params.append('language', language);
     }
 
-    return this.http.get<WithResults<CodeType>>(`${codeRegistriesBasePath}/jupo/${codeSchemes}/serviceclassification/${codes}/`, {params})
+    return this.http.get<WithResults<CodeType>>(`${codeRegistriesBasePath}/jupo/${codeSchemes}/serviceclassification/${codes}/`, { params })
       .pipe(map(res => res.results.map(data => new Code(data))));
   }
 
@@ -253,7 +254,7 @@ export class DataService {
       'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extensionScheme'
     };
 
-    return this.http.get<CodeSchemeType>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/`, {params})
+    return this.http.get<CodeSchemeType>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/`, { params })
       .pipe(map(res => new CodeScheme(res)));
   }
 
@@ -263,7 +264,7 @@ export class DataService {
       'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extensionScheme'
     };
 
-    return this.http.get<CodeSchemeType>(`${codeSchemesBasePath}/${codeSchemeUuid}`, {params})
+    return this.http.get<CodeSchemeType>(`${codeSchemesBasePath}/${codeSchemeUuid}`, { params })
       .pipe(map(res => new CodeScheme(res)));
   }
 
@@ -276,7 +277,7 @@ export class DataService {
       params.append('codeSchemeId', codeSchemeId);
     }
 
-    return this.http.get<WithResults<ExternalReferenceType>>(`${externalReferencesBasePath}/`, {params})
+    return this.http.get<WithResults<ExternalReferenceType>>(`${externalReferencesBasePath}/`, { params })
       .pipe(map(res => res.results.map(data => new ExternalReference(data))));
   }
 
@@ -299,7 +300,7 @@ export class DataService {
       params = params.append('language', language);
     }
 
-    return this.http.get<WithResults<CodeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/`, {params})
+    return this.http.get<WithResults<CodeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/`, { params })
       .pipe(map(res => res.results.map(data => new Code(data))));
   }
 
@@ -313,7 +314,7 @@ export class DataService {
 
     return this.http.get<CodeType>(
       `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`,
-      {params})
+      { params })
       .pipe(map(res => new Code(res)));
   }
 
@@ -365,9 +366,9 @@ export class DataService {
   }
 
   cloneCodeScheme(codeSchemeToClone: CodeSchemeType, registryCodeValue: string, originalCodeSchemeUuid: string): Observable<CodeScheme[]> {
-      return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/clone/codescheme/${originalCodeSchemeUuid}`,
-        codeSchemeToClone)
-        .pipe(map(res => res.results.map((data: CodeSchemeType) => new CodeScheme(data))));
+    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/clone/codescheme/${originalCodeSchemeUuid}`,
+      codeSchemeToClone)
+      .pipe(map(res => res.results.map((data: CodeSchemeType) => new CodeScheme(data))));
   }
 
   createCodeSchemes(codeSchemeList: CodeSchemeType[], registryCodeValue: string): Observable<CodeScheme[]> {
@@ -399,7 +400,7 @@ export class DataService {
       'format': format
     };
 
-    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`, formData, {params})
+    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`, formData, { params })
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
@@ -413,7 +414,7 @@ export class DataService {
     };
 
     return this.http.post<WithResults<CodeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}`,
-      formData, {params})
+      formData, { params })
       .pipe(map(res => res.results.map((data: CodeType) => new Code(data))));
   }
 
@@ -451,7 +452,7 @@ export class DataService {
 
     return this.http.get<ExtensionSchemeType>(
       `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/${extensionSchemeCodeValue}`,
-      {params})
+      { params })
       .pipe(map(res => new ExtensionScheme(res)));
   }
 
@@ -461,7 +462,7 @@ export class DataService {
       'expand': 'codeScheme,codeRegistry,externalReference,propertyType'
     };
 
-    return this.http.get<WithResults<ExtensionSchemeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/`, {params})
+    return this.http.get<WithResults<ExtensionSchemeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/`, { params })
       .pipe(map(res => res.results.map(data => new ExtensionScheme(data))));
   }
 
@@ -473,8 +474,21 @@ export class DataService {
 
     return this.http.get<ExtensionType>(
       `${extensionsBasePath}/${extensionId}`,
-      {params})
+      { params })
       .pipe(map(res => new Extension(res)));
+  }
+
+  getSimpleExtensions(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<ExtensionSimple[]> {
+
+    const params = {
+      'expand': 'code'
+    };
+
+    return this.http.get<WithResults<ExtensionType>>(
+      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
+      `${extensionSchemeCodeValue}/${extensions}/`,
+      { params })
+      .pipe(map(res => res.results.map((data: ExtensionSimpleType) => new ExtensionSimple(data))));
   }
 
   getExtensions(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Extension[]> {
@@ -486,7 +500,7 @@ export class DataService {
     return this.http.get<WithResults<ExtensionType>>(
       `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
       `${extensionSchemeCodeValue}/${extensions}/`,
-      {params})
+      { params })
       .pipe(map(res => res.results.map((data: ExtensionType) => new Extension(data))));
   }
 
@@ -512,7 +526,7 @@ export class DataService {
     };
 
     return this.http.post<WithResults<ExtensionSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}`,
-      formData, {params})
+      formData, { params })
       .pipe(map(res => res.results.map(data => new ExtensionScheme(data))));
   }
 
@@ -545,7 +559,7 @@ export class DataService {
 
     return this.http.delete(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensionSchemes}/` +
-      `${extensionScheme.codeValue}`, { observe: 'response' } )
+      `${extensionScheme.codeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
@@ -555,7 +569,7 @@ export class DataService {
   deleteExtension(extension: Extension): Observable<boolean> {
 
     return this.http.delete(
-      `${extensionsIntakeBasePath}/${extension.id}`, { observe: 'response' } )
+      `${extensionsIntakeBasePath}/${extension.id}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
@@ -578,7 +592,7 @@ export class DataService {
     return this.http.post<WithResults<ExtensionType>>(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
       `${extensionSchemeCodeValue}/${extensions}`,
-      formData, {params})
+      formData, { params })
       .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 
@@ -618,7 +632,7 @@ export class DataService {
 
   registryCodeValueExists(registryCodeValue: string): Observable<boolean> {
 
-    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}`, { observe: 'response' } )
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
@@ -627,7 +641,7 @@ export class DataService {
 
   codeSchemeCodeValueExists(registryCodeValue: string, schemeCodeValue: string): Observable<boolean> {
 
-    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}`, { observe: 'response' } )
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
@@ -638,7 +652,7 @@ export class DataService {
 
     const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
     return this.http.head(
-      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}`, { observe: 'response' } )
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
@@ -652,7 +666,7 @@ export class DataService {
     const encodedExtensionSchemeCodeValue = encodeURIComponent(extensionSchemeCodeValue);
     return this.http.head(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
-      `${encodedExtensionSchemeCodeValue}`, { observe: 'response' } )
+      `${encodedExtensionSchemeCodeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
