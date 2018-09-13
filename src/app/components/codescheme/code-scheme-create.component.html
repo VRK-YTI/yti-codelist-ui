@@ -41,11 +41,10 @@
           <app-error-messages id="code_list_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
         </div>
 
-        <app-organizations-input id="registry_organizations_input"
-                                 [label]="'Organization' | translate"
-                                 [required]="true"
-                                 [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
-                                 [formControlName]="'organizations'"></app-organizations-input>
+        <app-localizable-input [id]="'codelist_name_input'"
+                               [label]="'Code list name' | translate"
+                               [infoText]="'INFO_TEXT_CODELIST_NAME'"
+                               [formControlName]="'prefLabel'"></app-localizable-input>
 
         <dl>
           <dd>
@@ -74,10 +73,11 @@
           </dl>
         </div>
 
-        <app-localizable-input [id]="'codelist_name_input'"
-                               [label]="'Code list name' | translate"
-                               [infoText]="'INFO_TEXT_CODELIST_NAME'"
-                               [formControlName]="'prefLabel'"></app-localizable-input>
+        <app-organizations-input id="registry_organizations_input"
+                                 [label]="'Organization' | translate"
+                                 [required]="true"
+                                 [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
+                                 [formControlName]="'organizations'"></app-organizations-input>
 
         <app-classifications-input [id]="'codelist_classification_input'"
                                    [label]="'Classification' | translate"

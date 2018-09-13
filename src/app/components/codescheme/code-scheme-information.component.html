@@ -18,12 +18,6 @@
                              [infoText]="'INFO_TEXT_CODELIST_NAME'"
                              [formControlName]="'prefLabel'"></app-localizable-input>
 
-      <app-organizations-input id="registry_organizations_input"
-                               [label]="'Organization' | translate"
-                               [required]="true"
-                               [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
-                               [formControlName]="'organizations'"></app-organizations-input>
-
       <dl *ngIf="editing">
         <dd>
           <div>
@@ -63,6 +57,12 @@
                    [label]="'Registry' | translate"
                    [value]="codeScheme.codeRegistry.prefLabel | translateValue"
                    [infoText]="'INFO_TEXT_CODE_REGISTRY'"></app-literal>
+
+      <app-organizations-input id="registry_organizations_input"
+                               [label]="'Organization' | translate"
+                               [required]="true"
+                               [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
+                               [formControlName]="'organizations'"></app-organizations-input>
 
       <app-classifications-input id="data_classifications_input"
                                  [label]="'Classification' | translate"
