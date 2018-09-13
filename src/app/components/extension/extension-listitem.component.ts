@@ -9,7 +9,7 @@ import { ExtensionScheme } from '../../entities/extension-scheme';
   selector: 'app-extension-listitem',
   styleUrls: ['./extension-listitem.component.scss'],
   template: `
-    <div id="{{getIdIdentifier(extension) + '_view_extension'}}"
+    <div id="{{getIdIdentifier() + '_view_extension'}}"
          class="extension"
          (click)="viewExtension()">
       <span class="extensiontitle">{{extension.getDisplayName(languageService, translateService)}}</span>
