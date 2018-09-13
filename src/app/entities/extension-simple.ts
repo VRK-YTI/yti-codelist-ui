@@ -5,6 +5,7 @@ import { ExtensionSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from './code-simple';
+import { ExtensionScheme } from './extension-scheme';
 
 export class ExtensionSimple {
 
@@ -14,6 +15,7 @@ export class ExtensionSimple {
   order?: string;
   modified: Moment | null = null;
   code: CodePlain;
+  extension?: ExtensionSimple;
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
@@ -29,6 +31,9 @@ export class ExtensionSimple {
     }
     if (data.code) {
       this.code = new CodePlain(data.code);
+    }
+    if (data.extension) {
+      this.extension = new ExtensionSimple(data.extension);
     }
     if (data.startDate) {
       this.startDate = parseDate(data.startDate);
@@ -51,6 +56,7 @@ export class ExtensionSimple {
       modified: formatDateTime(this.modified),
       order: this.order,
       code: this.code.serialize(),
+      extension: this.extension ? this.extension.serialize() : undefined,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate)
     };

@@ -29,7 +29,7 @@ function removeFromControl<T>(control: FormControl) {
       </dt>
       <dd>
         <div *ngIf="!editing && extension">
-          <span>{{extension.getDisplayNameWithExtensionScheme(extensionScheme, languageService, translateService)}}</span>
+          <span>{{extension.getDisplayName(languageService, translateService)}}</span>
         </div>
         <div *ngIf="editing && extension">
           <a>
@@ -37,7 +37,7 @@ function removeFromControl<T>(control: FormControl) {
                class="fa fa-times"
                (click)="removeExtension(extension)"></i>
           </a>
-          <span>{{extension.getDisplayNameWithExtensionScheme(extensionScheme, languageService, translateService)}}</span>
+          <span>{{extension.getDisplayName(languageService, translateService)}}</span>
           <app-error-messages id="extension_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 

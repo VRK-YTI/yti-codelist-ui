@@ -194,6 +194,7 @@ export interface ExtensionSimpleType {
   order?: string;
   modified?: string;
   code: CodePlainType;
+  extension?: ExtensionSimpleType;
   startDate?: string;
   endDate?: string;
 }

@@ -90,7 +90,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
         tap(() => this.loading = false),
         map(([extensions, search]) => {
           return extensions.filter(extension => {
-            const label = extension.getDisplayName(this.languageService, this.translateService);
+            const label = extension.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
             const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
             const isNotRestricted = !contains(this.restricts, extension.id);
             return searchMatches && isNotRestricted;
