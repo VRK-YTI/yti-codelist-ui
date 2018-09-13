@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Extension } from '../../entities/extension';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ExtensionSimple } from '../../entities/extension-simple';
@@ -41,7 +40,7 @@ export class ExtensionListitemComponent {
     ]);
   }
 
-  getIdIdentifier(extension: Extension) {
+  getIdIdentifier() {
     return `${this.extension.id}`;
   }
 }
