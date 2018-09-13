@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {CodeScheme} from '../../entities/code-scheme';
-import {DataService} from '../../services/data.service';
+import { Component, Input } from '@angular/core';
+import { CodeScheme } from '../../entities/code-scheme';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-code-scheme-versions',
