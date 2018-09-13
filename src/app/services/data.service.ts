@@ -113,7 +113,12 @@ export class DataService {
   }
 
   getOrganizations(): Observable<Organization[]> {
-    return this.http.get<WithResults<Organization>>(organizationsBasePath)
+
+    const params = {
+      onlyOrganizationsWithCodeSchemes: 'true'
+    };
+
+    return this.http.get<WithResults<Organization>>(organizationsBasePath, {params})
       .pipe(map(res => res.results.map(data => new Organization(data))));
   }
 
