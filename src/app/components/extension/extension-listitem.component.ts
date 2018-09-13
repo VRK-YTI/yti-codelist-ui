@@ -19,7 +19,9 @@ import { ExtensionScheme } from '../../entities/extension-scheme';
 
 export class ExtensionListitemComponent {
 
-  @Input() extensionScheme: ExtensionScheme;
+  @Input() codeRegistryCodeValue: string;
+  @Input() codeSchemeCodeValue: string;
+  @Input() extensionSchemeCodeValue: string;
   @Input() extension: ExtensionSimple;
 
   constructor(private router: Router,
@@ -32,9 +34,9 @@ export class ExtensionListitemComponent {
     this.router.navigate([
       'extension',
       {
-        registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-        schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
-        extensionSchemeCode: this.extensionScheme.codeValue,
+        registryCode: this.codeRegistryCodeValue,
+        schemeCode: this.codeSchemeCodeValue,
+        extensionSchemeCode: this.extensionSchemeCodeValue,
         extensionId: this.extension.id
       }
     ]);

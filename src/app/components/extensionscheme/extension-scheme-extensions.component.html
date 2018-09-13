@@ -2,7 +2,10 @@
   <div id="extensionscheme_extensions_div" class="col-md-12">
     <ul id="extensionscheme_extensions_regular">
       <li *ngFor="let extension of extensions; trackBy: extensionIdentity">
-        <app-extension-listitem [extensionScheme]="extensionScheme" [extension]="extension"></app-extension-listitem>
+        <app-extension-listitem [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
+                                [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
+                                [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                                [extension]="extension"></app-extension-listitem>
       </li>
     </ul>
   </div>
