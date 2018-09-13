@@ -934,6 +934,9 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
 
+msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
