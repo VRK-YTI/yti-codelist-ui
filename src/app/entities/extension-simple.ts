@@ -5,7 +5,6 @@ import { ExtensionSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from './code-simple';
-import { ExtensionScheme } from './extension-scheme';
 
 export class ExtensionSimple {
 
