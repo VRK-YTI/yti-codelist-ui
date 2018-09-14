@@ -74,7 +74,7 @@ export class HierarchyExtensionComponent {
     this.router.navigate([
       'extension',
       {
-        registryCode: this.codeRegistryCodeValue,        
+        registryCode: this.codeRegistryCodeValue,
         schemeCode: this.codeSchemeCodeValue,
         extensionSchemeCode: this.extensionSchemeCodeValue,
         extensionId: this.extension.id
