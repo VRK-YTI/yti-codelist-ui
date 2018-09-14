@@ -380,6 +380,18 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
+msgid "Search for member"
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "members"
+msgstr ""
+
+msgid "Search did not find any members."
+msgstr ""
+
 msgid "This extension does not have any members yet."
 msgstr ""
 

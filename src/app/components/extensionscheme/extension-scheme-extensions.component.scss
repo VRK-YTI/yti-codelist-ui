@@ -44,4 +44,17 @@
       padding-left: 15px;
     }
   }
+
+  .hugelist {
+    height: 1000px;
+    overflow-y: scroll;
+  }
+}
+
+.input-group-search {
+  padding-bottom: 8px;
+}
+
+.search-text {
+  padding-left: 33px;
 }

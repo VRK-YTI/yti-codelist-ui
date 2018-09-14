@@ -126,6 +126,7 @@ import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import {RefreshComponent} from './components/refresh.component';
 import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
+import { HierarchyExtensionComponent } from './components/extension/hierarchy-extension.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -277,7 +278,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeVariantsComponent,
     CodeSchemeVariantMothersComponent,
     CodeschemeVariantModalComponent,
-    RefreshComponent
+    RefreshComponent,
+    HierarchyExtensionComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,

@@ -1,11 +1,60 @@
+<div class="row" *ngIf="extensions.length > 0">
+  <div class="col-md-4">
+    <div class="input-group input-group-lg input-group-search">
+      <input class="form-control"
+             id="search_extension_box_input"
+             type="text"
+             [(ngModel)]="searchTerm"
+             placeholder="{{'Search for member' | translate}}"/>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4" *ngIf="extensions.length > 0">
+  <div class="col-12 search-text">
+    <span *ngIf="emptySearch" translate>Search did not find any members.</span>
+    <span *ngIf="numberOfExentensions == 1"><b>1</b> {{'member' | translate}}</span>
+    <span *ngIf="numberOfExentensions > 1"><b>{{numberOfExentensions}}</b> {{'members' | translate}}</span>
+  </div>
+</div>
+
 <div class="extensions row">
+  <div class="col-md-6">
+      <div *ngIf="hasHierarchy()" class="d-inline-block mb-1 float-left">
+        <button id="expand_all_button"
+                *ngIf="showExpandAll()"
+                type="button"
+                class="btn btn-action ml-3 float-left"
+                (click)="expandAll()"
+                translate>Expand all</button>
+        <button id="collapse_all_button"
+                *ngIf="showCollapseAll()"
+                type="button"
+                class="btn btn-action ml-3 float-left"
+                (click)="collapseAll()"
+                translate>Collapse all</button>
+      </div>
+  </div>
+
   <div id="extensionscheme_extensions_div" class="col-md-12">
-    <ul id="extensionscheme_extensions_regular">
-      <li *ngFor="let extension of extensions; trackBy: extensionIdentity">
-        <app-extension-listitem [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
-                                [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
-                                [extensionSchemeCodeValue]="extensionScheme.codeValue"
-                                [extension]="extension"></app-extension-listitem>
+    <ul *ngIf="extensions.length <= 500" id="extensionscheme_extensions_regular">
+      <li *ngFor="let extension of listedExtensions; trackBy: extensionIdentity">
+        <app-hierarchy-extension [extensions]="extensions"
+                                 [extension]="extension"
+                                 [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
+                                 [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
+                                 [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                                 [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-extension>
+      </li>
+    </ul>
+    <ul *ngIf="extensions.length > 500" class="hugelist" id="extensionscheme_extensions_huge">
+      <li *lazyFor="let extension of listedExtensions, withHeight 65">
+        <app-hierarchy-extension [extensions]="extensions"
+                                 [extension]="extension"
+                                 [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
+                                 [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
+                                 [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                                 [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-extension>
       </li>
     </ul>
   </div>

@@ -18,6 +18,7 @@ export class ExtensionSimple {
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
+  expanded: boolean;
 
   constructor(data: ExtensionSimpleType) {
     this.id = data.id;
@@ -40,6 +41,7 @@ export class ExtensionSimple {
     if (data.endDate) {
       this.endDate = parseDate(data.endDate);
     }
+    this.expanded = false;
   }
 
   get modifiedDisplayValue(): string {
