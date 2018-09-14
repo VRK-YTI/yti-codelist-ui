@@ -46,7 +46,7 @@ export class HierarchyExtensionComponent {
   }
 
   get children() {
-    return this.extensions.filter(extension => this.extension.extension ? extension.id === this.extension.extension.id : false);
+    return this.extensions.filter(extension => extension.extension != null && extension.extension.id === this.extension.id);
   }
 
   get expanded() {

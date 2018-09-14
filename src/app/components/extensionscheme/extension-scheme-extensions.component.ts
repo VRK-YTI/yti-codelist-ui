@@ -42,27 +42,30 @@ export class ExtensionSchemeExtensionsComponent {
   }
 
   get topLevelExtensions() {
-    return this.extensions.filter(extension => !contains(this.childExtensions, extension));
+    return this.extensions.filter(extension => !extension.extension);
   }
 
-  get parentExentensions() {
-    return this.extensions.filter(extension => extension.extension);
+  get parentExtensions() {
+    const childExtensions = this.extensions.filter(extension => extension.extension != null);
+    const broaderExtensionIds = childExtensions.map(extension => extension.extension!.id);
+
+    return this.extensions.filter(extension => contains(broaderExtensionIds, extension.id));
   }
 
   get childExtensions() {
-    return this.extensions.filter(extension => contains(this.parentExentensions.map(ext => ext.extension!.id), extension.id));
+    return this.extensions.filter(extension => contains(this.parentExtensions.map(ext => ext.extension!.id), extension.id));
   }
 
-  get numberOfExentensions() {
+  get numberOfExtensions() {
     return this.searchTermHasValue ? this.filteredExtensions.length : this.extensions.length;
   }
 
   get numberOfExpanded() {
-    return this.parentExentensions.filter(extension => extension.expanded).length;
+    return this.parentExtensions.filter(extension => extension.expanded).length;
   }
 
   get numberOfCollapsed() {
-    return this.parentExentensions.filter(extension => !extension.expanded).length;
+    return this.parentExtensions.filter(extension => !extension.expanded).length;
   }
 
   get emptySearch() {
@@ -87,7 +90,7 @@ export class ExtensionSchemeExtensionsComponent {
 
   expandAll() {
     this.extensions.map(extension => {
-      if (contains(this.parentExentensions, extension)) {
+      if (contains(this.parentExtensions, extension)) {
         extension.expanded = true;
       }
     });
@@ -95,7 +98,7 @@ export class ExtensionSchemeExtensionsComponent {
 
   collapseAll() {
     this.extensions.map(extension => {
-      if (contains(this.parentExentensions, extension)) {
+      if (contains(this.parentExtensions, extension)) {
         extension.expanded = false;
       }
     });
