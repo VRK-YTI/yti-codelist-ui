@@ -1,18 +1,18 @@
 <table *ngIf="codeScheme.allVersions.length > 0" class="table table-sm">
   <thead class="thead-light">
   <tr>
-    <th scope="col" translate>Validity</th>
-    <th scope="col" translate>Name</th>
-    <th scope="col" translate>Status</th>
-    <th scope="col">&nbsp;</th>
+    <th scope="col" translate width="30%">Validity</th>
+    <th scope="col" translate width="30%">Name</th>
+    <th scope="col" translate width="30%">Status</th>
+    <th scope="col" width="10%">&nbsp;</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let version of codeScheme.allVersions">
-    <td scope="row">{{version.validityDateRange}}</td>
-    <td><a href="{{getVersionUri(version.uri)}}" target="_blank">{{version.prefLabel | translateValue:true }}</a></td>
-    <td><app-status class="float-left" [status]="version.status"></app-status></td>
-    <td>&nbsp;</td>
+    <td scope="row" width="30%">{{version.validityDateRange}}</td>
+    <td width="30%"><a href="{{getVersionUri(version.uri)}}" target="_blank">{{version.prefLabel | translateValue:true }}</a></td>
+    <td width="30%"><app-status class="float-left" [status]="version.status"></app-status></td>
+    <td width="10%">&nbsp;</td>
   </tr>
   </tbody>
 </table>

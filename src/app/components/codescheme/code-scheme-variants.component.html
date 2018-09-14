@@ -1,26 +1,26 @@
 <table *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0" class="table table-sm">
   <thead class="thead-light">
   <tr>
-    <th scope="col" translate>Validity</th>
-    <th scope="col" translate>Name</th>
-    <th scope="col" translate>Status</th>
-    <th scope="col">&nbsp;</th>
+    <th scope="col" translate width="30%">Validity</th>
+    <th scope="col" translate width="30%">Name</th>
+    <th scope="col" translate width="30%">Status</th>
+    <th scope="col" width="10%">&nbsp;</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let variant of codeScheme.variantsOfThisCodeScheme">
-    <td scope="row">{{variant.validityDateRange}}</td>
-    <td><a href="{{getVariantUri(variant.uri)}}" target="_blank">{{variant.prefLabel | translateValue:true }}</a></td>
-    <td><app-status class="float-left" [status]="variant.status"></app-status></td>
+    <td scope="row" width="30%">{{variant.validityDateRange}}</td>
+    <td width="30%"><a href="{{getVariantUri(variant.uri)}}" target="_blank">{{variant.prefLabel | translateValue:true }}</a></td>
+    <td width="30%"><app-status class="float-left" [status]="variant.status"></app-status></td>
 
-    <td *ngIf="canAttachOrDetachAVariant()">
+    <td *ngIf="canAttachOrDetachAVariant()" width="10%">
       <a>
         <i [id]="'detach_variant_' + variant.id + '_link'"
            class="fa fa-times"
            (click)="detachAVariant(variant)"></i>
       </a>
     </td>
-    <td *ngIf="!canAttachOrDetachAVariant()">
+    <td *ngIf="!canAttachOrDetachAVariant()" width="20%">
       &nbsp;
     </td>
   </tr>
