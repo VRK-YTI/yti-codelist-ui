@@ -111,4 +111,8 @@ export class ExtensionSchemeExtensionsComponent {
   showCollapseAll() {
     return this.hasExpanded() && !this.searchTerm;
   }
+
+  allowExpandAllAndCollapseAll() {
+    return this.hasHierarchy && this.extensions.length <= 500;
+  }
 }

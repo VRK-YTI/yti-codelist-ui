@@ -20,7 +20,7 @@
 
 <div class="extensions row">
   <div class="col-md-6">
-      <div *ngIf="hasHierarchy()" class="d-inline-block mb-1 float-left">
+      <div *ngIf="allowExpandAllAndCollapseAll()" class="d-inline-block mb-1 float-left">
         <button id="expand_all_button"
                 *ngIf="showExpandAll()"
                 type="button"
