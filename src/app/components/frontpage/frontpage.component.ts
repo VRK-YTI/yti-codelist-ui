@@ -99,7 +99,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       }));
     });
 
-    this.subscriptionToClean.push(combineLatest(this.dataService.getOrganizations(), this.languageService.language$)
+    this.subscriptionToClean.push(combineLatest(this.dataService.getOrganizationsWithCodeSchemes(), this.languageService.language$)
       .subscribe(([organizations]) => {
         this.organizationOptions = [null, ...organizations].map(organization => ({
           value: organization,
