@@ -29,12 +29,12 @@ export class CodeSchemeCodesComponent {
   }
 
   get topLevelCodes() {
-    return this.codes.filter(code => !code.broaderCodeId);
+    return this.codes.filter(code => !code.broaderCode);
   }
 
   get parentCodes() {
-    const childCodes = this.codes.filter(code => code.broaderCodeId != null);
-    const broaderCodeIds = childCodes.map(code => code.broaderCodeId);
+    const childCodes = this.codes.filter(code => code.broaderCode != null);
+    const broaderCodeIds = childCodes.map(code => code.broaderCode!.id);
 
     return this.codes.filter(code => contains(broaderCodeIds, code.id));
   }
@@ -44,7 +44,7 @@ export class CodeSchemeCodesComponent {
   }
 
   hasHierarchy() {
-    return this.codes.filter(code => code.broaderCodeId !== undefined).length > 0;
+    return this.codes.filter(code => code.broaderCode !== undefined).length > 0;
   }
 
   get numberOfExpanded() {

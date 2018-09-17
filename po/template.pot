@@ -121,6 +121,9 @@ msgstr ""
 msgid "Short name"
 msgstr ""
 
+msgid "Broader code"
+msgstr ""
+
 msgid "Validity"
 msgstr ""
 
@@ -512,7 +515,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY"
+msgid "INFO_TEXT_CODE_URI"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -599,10 +602,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_SHORT_NAME"
 msgstr ""
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_CODE_VALIDITY"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_URI"
+msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
@@ -689,7 +692,10 @@ msgstr ""
 msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "INFO_TEXT_BROADER_CODE"
+msgstr ""
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr ""
 
 msgid "Front page"
@@ -841,10 +847,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
@@ -947,6 +953,12 @@ msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

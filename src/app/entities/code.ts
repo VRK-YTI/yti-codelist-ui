@@ -10,6 +10,7 @@ import { Moment } from 'moment';
 import { CodeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
+import { CodePlain } from './code-simple';
 
 export class Code extends AbstractResource implements EditableEntity {
 
@@ -21,7 +22,7 @@ export class Code extends AbstractResource implements EditableEntity {
   description: Localizable = {};
   definition: Localizable = {};
   externalReferences: ExternalReference[] = [];
-  broaderCodeId: string;
+  broaderCode: CodePlain|null = null;
   hierarchyLevel: number;
   expanded: boolean;
   conceptUriInVocabularies: string;
@@ -48,9 +49,6 @@ export class Code extends AbstractResource implements EditableEntity {
     this.description = data.description || {};
     this.definition = data.definition || {};
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
-    if (data.broaderCodeId) {
-      this.broaderCodeId = data.broaderCodeId;
-    }
     if (data.hierarchyLevel) {
       this.hierarchyLevel = data.hierarchyLevel;
     }
@@ -60,6 +58,9 @@ export class Code extends AbstractResource implements EditableEntity {
     }
     if (data.order) {
       this.order = data.order;
+    }
+    if (data.broaderCode) {
+      this.broaderCode = new CodePlain(data.broaderCode);
     }
   }
 
@@ -130,7 +131,7 @@ export class Code extends AbstractResource implements EditableEntity {
       description: { ...this.description },
       definition: { ...this.definition },
       externalReferences: this.externalReferences.map(er => er.serialize()),
-      broaderCodeId: this.broaderCodeId,
+      broaderCode: this.broaderCode ? this.broaderCode.serialize() : undefined,
       hierarchyLevel: this.hierarchyLevel,
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       order: this.order

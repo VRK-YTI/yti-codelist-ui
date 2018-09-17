@@ -58,7 +58,7 @@ export interface CodeSchemeType extends BaseResourceType {
 export interface CodePlainType extends BaseResourceType {
 
   status: Status;
-  broaderCodeId?: string;
+  broaderCode?: CodePlainType;
   hierarchyLevel?: number;
 }
 
@@ -73,7 +73,7 @@ export interface CodeType extends BaseResourceType {
   description?: Localizable;
   definition?: Localizable;
   externalReferences?: ExternalReferenceType[];
-  broaderCodeId?: string;
+  broaderCode?: CodePlainType;
   hierarchyLevel?: number;
   conceptUriInVocabularies: string;
   order?: string;

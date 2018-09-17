@@ -62,6 +62,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() infoText: string;
   @Input() showDetailLabel: boolean;
+  @Input() restricts: string[] = [];
   control = new FormControl(null);
 
   private propagateChange: (fn: any) => void = () => {};
@@ -89,7 +90,7 @@ export class CodeInputComponent implements ControlValueAccessor {
     const titleLabel = this.translateService.instant('Choose code');
     const searchlabel = this.translateService.instant('Search code');
 
-    this.searchLinkedCodeModalService.openWithCodeSchemes(this.codeSchemes, titleLabel, searchlabel, [], true)
+    this.searchLinkedCodeModalService.openWithCodeSchemes(this.codeSchemes, titleLabel, searchlabel, this.restricts, true)
       .then(code => addToControl(this.control, code), ignoreModalClose);
   }
 

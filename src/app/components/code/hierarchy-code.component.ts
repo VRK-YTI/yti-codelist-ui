@@ -41,7 +41,7 @@ export class HierarchyCodeComponent {
   }
 
   get children() {
-    return this.codes.filter(code => code.broaderCodeId === this.code.id);
+    return this.codes.filter(code => code.broaderCode != null && code.broaderCode.id === this.code.id);
   }
 
   get expanded() {

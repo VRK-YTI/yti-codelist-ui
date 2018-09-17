@@ -77,6 +77,14 @@
                          [formControlName]="'shortName'"
                          [restrict]="restricted"></app-literal-input>
 
+      <app-code-input id="broader_code_input"
+                      [label]="'Broader code' | translate"
+                      [codeSchemes]="codeSchemes"
+                      [showDetailLabel]="false"
+                      [restricts]="[this.code.id]"
+                      [infoText]="'INFO_TEXT_BROADER_CODE'"
+                      [formControlName]="'broaderCode'"></app-code-input>
+
       <app-date-range-input id="code_validity_input"
                             [label]="'Validity' | translate"
                             [infoText]="'INFO_TEXT_CODE_VALIDITY'"

@@ -5,7 +5,7 @@ import { CodePlainType } from '../services/api-schema';
 export class CodePlain extends AbstractResource {
 
   status: Status = 'DRAFT';
-  broaderCodeId: string;
+  broaderCode: CodePlain|null = null;
   hierarchyLevel: number;
   expanded: boolean;
 
@@ -15,8 +15,8 @@ export class CodePlain extends AbstractResource {
     if (data.status) {
       this.status = data.status;
     }
-    if (data.broaderCodeId) {
-      this.broaderCodeId = data.broaderCodeId;
+    if (data.broaderCode) {
+      this.broaderCode = new CodePlain(data.broaderCode);
     }
     if (data.hierarchyLevel) {
       this.hierarchyLevel = data.hierarchyLevel;
@@ -32,7 +32,7 @@ export class CodePlain extends AbstractResource {
       codeValue: this.codeValue,
       prefLabel: {...this.prefLabel},
       status: this.status,
-      broaderCodeId: this.broaderCodeId,
+      broaderCode: this.broaderCode ? this.broaderCode.serialize() : undefined,
       hierarchyLevel: this.hierarchyLevel
     };
   }

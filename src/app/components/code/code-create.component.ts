@@ -35,6 +35,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     definition: new FormControl({}),
     shortName: new FormControl(''),
     externalReferences: new FormControl([]),
+    broaderCode: new FormControl(null),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status),
     conceptUriInVocabularies: new FormControl('')
@@ -111,6 +112,12 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
 
   get loading(): boolean {
     return this.codeScheme == null;
+  }
+
+  get codeSchemes(): CodeScheme[] {
+    const codeSchemes: CodeScheme[] = [];
+    codeSchemes.push(this.codeScheme);
+    return codeSchemes;
   }
 
   isCodeValuePatternValid (control: AbstractControl) {

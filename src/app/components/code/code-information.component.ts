@@ -11,6 +11,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-code-information',
@@ -30,6 +31,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     definition: new FormControl(''),
     shortName: new FormControl(''),
     externalReferences: new FormControl(),
+    broaderCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
     conceptUriInVocabularies: new FormControl('')
@@ -76,6 +78,12 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
       return false;
     }
     return this.code.restricted;
+  }
+
+  get codeSchemes(): CodeScheme[] {
+    const codeSchemes: CodeScheme[] = [];
+    codeSchemes.push(this.code.codeScheme);
+    return codeSchemes;
   }
 
   ngOnDestroy() {
