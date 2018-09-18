@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-18 15:44+0300\n"
+"PO-Revision-Date: 2018-09-18 23:21+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -273,14 +273,14 @@ msgstr "Vakiokoodi"
 msgid "Name"
 msgstr "Nimi"
 
+msgid "Import codes"
+msgstr "Tuo koodeja"
+
 msgid "Create a new version"
 msgstr "Luo uusi versio"
 
 msgid "Attach variant to code list"
 msgstr "Liitä koodistoon variantti"
-
-msgid "Import codes"
-msgstr "Tuo koodeja"
 
 msgid "Create calculation hierarchy"
 msgstr "Luo laskentahierarkia"
@@ -366,30 +366,6 @@ msgstr "Hae liitettävä koodisto Koodistoista"
 msgid "No search results"
 msgstr "Ei hakutuloksia"
 
-msgid "Extension"
-msgstr "Laajennus"
-
-msgid "Member name"
-msgstr "Jäsenen nimi"
-
-msgid "Member value"
-msgstr "Jäsenen arvo"
-
-msgid "Code"
-msgstr "Koodi"
-
-msgid "Broader member"
-msgstr "Hierarkkinen yläjäsen"
-
-msgid "Create member"
-msgstr "Luo jäsen"
-
-msgid "Import members"
-msgstr "Tuo jäseniä"
-
-msgid "Delete member"
-msgstr "Poista jäsen"
-
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr "Laajennuksen tunnus"
 
@@ -416,6 +392,12 @@ msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
 msgstr "Laajennuksen tunnus"
+
+msgid "Create member"
+msgstr "Luo jäsen"
+
+msgid "Import members"
+msgstr "Tuo jäseniä"
 
 msgid "Delete extension"
 msgstr "Poista laajennus"
@@ -457,6 +439,27 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 
 msgid "No organization"
 msgstr "Ei organisaatiota"
+
+msgid "Member"
+msgstr "Jäsen"
+
+msgid "Member name"
+msgstr "Jäsenen nimi"
+
+msgid "Member value"
+msgstr "Jäsenen arvo"
+
+msgid "Code"
+msgstr "Koodi"
+
+msgid "Broader member"
+msgstr "Hierarkkinen yläjäsen"
+
+msgid "Delete member"
+msgstr "Poista jäsen"
+
+msgid "Extension"
+msgstr "Laajennus"
 
 msgid "Impersonate user"
 msgstr "Esiinny käyttäjänä"
@@ -776,6 +779,9 @@ msgstr ""
 msgid "INFO_TEXT_BROADER_CODE"
 msgstr "Koodiston koodi, joka määrittelee tämän koodin päätason hierarkiassa."
 
+msgid "INFO_TEXT_MEMBER_VALIDITY"
+msgstr "Ajanjakso, jona jäsen on voimassa"
+
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
 
@@ -993,21 +999,21 @@ msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
 msgstr ""
 "Aineistossa puuttuu arvo sarakkeesta PROPERTYTYPE riviltä {{ identifier }}."
 
-msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr "Jäseneen liitettyä koodia ei ole olemassa."
 
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr "Koodin order-sarakkeen kentistä löytyi samoja arvoja."
 
-msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 "Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen "
 "liitettyihin koodistoihin."
 
-msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
+msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Jäsenten maksimi hierarkinen taso ylittyi."
 
-msgid "ERR_MSG_USER_EXTENSIONVALUE_NOT_SET"
+msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Jäsenen arvoa ei ole määritetty, tai se on tyhjä."
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
@@ -1016,7 +1022,7 @@ msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
 
-msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
+msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
 "Laajennukseen on liitetty sama koodi useammin kuin kerran, käytä UUID:tä "
 "viitteenä."
@@ -1025,7 +1031,7 @@ msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
 msgstr ""
 "Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamista."
 
-msgid "ERR_MSG_USER_EXTENSION_CYCLIC_DEPENDENCY_ISSUE"
+msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 "Jäsenten linkityksessä syklinen ongelma. Tarkista, että laajennus-ketjussa "
 "ei ole rinnakkaisia viitteitä jäsenten välillä."
@@ -1141,5 +1147,5 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
-msgid "extensionValueValidationError"
+msgid "memberValueValidationError"
 msgstr "Jäsenen arvo ei voi olla tyhjä."

@@ -10,23 +10,23 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
-import { Extension } from '../../entities/extension';
+import { Member } from '../../entities/member';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-extension',
-  templateUrl: './extension.component.html',
-  styleUrls: ['./extension.component.scss'],
+  selector: 'app-member',
+  templateUrl: './member.component.html',
+  styleUrls: ['./member.component.scss'],
   providers: [EditableService]
 })
-export class ExtensionComponent implements OnInit, EditingComponent {
+export class MemberComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
-  extension: Extension;
+  member: Member;
   extensionScheme: ExtensionScheme;
 
   constructor(private userService: UserService,
@@ -49,15 +49,15 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
     const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
-    const extensionId = this.route.snapshot.params.extensionId;
+    const memberId = this.route.snapshot.params.memberId;
 
-    if (!extensionId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
-      throw new Error(`Illegal route, extensionId: '${extensionId}', registry: '${registryCodeValue}', ` +
+    if (!memberId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+      throw new Error(`Illegal route, memberId: '${memberId}', registry: '${registryCodeValue}', ` +
         `scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
     }
 
-    this.dataService.getExtension(extensionId).subscribe(extension => {
-      this.extension = extension;
+    this.dataService.getMember(memberId).subscribe(extension => {
+      this.member = extension;
       this.locationService.atMemberPage(extension);
     });
 
@@ -67,7 +67,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   get loading(): boolean {
-    return this.extension == null || this.extensionScheme == null;
+    return this.member == null || this.extensionScheme == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -120,10 +120,10 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   delete() {
-    this.confirmationModalService.openRemoveExtension()
+    this.confirmationModalService.openRemoveMember()
       .then(() => {
-        this.dataService.deleteExtension(this.extension).subscribe(res => {
-          this.router.navigate(this.extension.extensionScheme.route);
+        this.dataService.deleteExtension(this.member).subscribe(res => {
+          this.router.navigate(this.member.extensionScheme.route);
         }, error => {
           this.errorModalService.openSubmitError(error);
         });
@@ -136,10 +136,10 @@ export class ExtensionComponent implements OnInit, EditingComponent {
 
   save(formData: any): Observable<any> {
 
-    console.log('Store Extension changes to server!');
+    console.log('Store Member changes to server!');
 
     const { validity, ...rest } = formData;
-    const updatedExtension = this.extension.clone();
+    const updatedExtension = this.member.clone();
 
     Object.assign(updatedExtension, {
       ...rest,

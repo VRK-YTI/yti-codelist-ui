@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <form [formGroup]="extensionForm" #form="ngForm">
+  <form [formGroup]="memberForm" #form="ngForm">
 
     <div class="row">
       <div class="col-12">
@@ -40,36 +40,36 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <div class="form-group">
-          <app-literal [label]="'Extension' | translate"
+          <app-literal [label]="'Member' | translate"
                        [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
 
-          <app-error-messages id="extension_form_error_messages" [control]="extensionForm"></app-error-messages>
+          <app-error-messages id="extension_form_error_messages" [control]="memberForm"></app-error-messages>
 
-          <app-localizable-input [id]="'extension_name_input'"
+          <app-localizable-input [id]="'member_name_input'"
                                  [label]="'Member name' | translate"
                                  [formControlName]="'prefLabel'"></app-localizable-input>
 
-          <app-literal-input *ngIf="requireExtensionValue"
-                             [id]="'extension_extensionvalue_input'"
+          <app-literal-input *ngIf="requireMemberValue"
+                             [id]="'member_extensionvalue_input'"
                              [label]="'Member value' | translate"
                              [required]="true"
-                             [formControlName]="'extensionValue'"></app-literal-input>
+                             [formControlName]="'memberValue'"></app-literal-input>
 
-          <app-code-input id="extension_code_input"
+          <app-code-input id="member_code_input"
                           [label]="'Code' | translate"
                           [codeSchemes]="this.allCodeSchemes"
                           [required]="true"
                           [showDetailLabel]="showCodeDetailLabel"
                           [formControlName]="'code'"></app-code-input>
 
-          <app-extension-input id="extension_extension_input"
+          <app-member-input id="member_broadermember_input"
                                [label]="'Broader member' | translate"
                                [extensionScheme]="extensionScheme"
-                               [formControlName]="'extension'"></app-extension-input>
+                               [formControlName]="'broaderMember'"></app-member-input>
 
-          <app-date-range-input id="extensionscheme_validity_input"
+          <app-date-range-input id="member_validity_input"
                                 [label]="'Validity' | translate"
-                                [infoText]="'INFO_TEXT_EXTENSION_SCHEME_VALIDITY'"
+                                [infoText]="'INFO_TEXT_MEMBER_VALIDITY'"
                                 [formControlName]="'validity'"></app-date-range-input>
         </div>
       </div>

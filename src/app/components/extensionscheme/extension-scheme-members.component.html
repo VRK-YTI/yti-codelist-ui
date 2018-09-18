@@ -1,0 +1,65 @@
+<div class="row" *ngIf="members.length > 0">
+  <div class="col-md-4">
+    <div class="input-group input-group-lg input-group-search">
+      <input class="form-control"
+             id="search_extension_box_input"
+             type="text"
+             [(ngModel)]="searchTerm"
+             placeholder="{{'Search for member' | translate}}"/>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4" *ngIf="members.length > 0">
+  <div class="col-12 search-text">
+    <span *ngIf="emptySearch" translate>Search did not find any members.</span>
+    <span *ngIf="numberOfMembers == 1"><b>1</b> {{'member' | translate}}</span>
+    <span *ngIf="numberOfMembers > 1"><b>{{numberOfMembers}}</b> {{'members' | translate}}</span>
+  </div>
+</div>
+
+<div class="extensions row">
+  <div class="col-md-6">
+      <div *ngIf="allowExpandAllAndCollapseAll()" class="d-inline-block mb-1 float-left">
+        <button id="expand_all_button"
+                *ngIf="showExpandAll()"
+                type="button"
+                class="btn btn-action ml-3 float-left"
+                (click)="expandAll()"
+                translate>Expand all</button>
+        <button id="collapse_all_button"
+                *ngIf="showCollapseAll()"
+                type="button"
+                class="btn btn-action ml-3 float-left"
+                (click)="collapseAll()"
+                translate>Collapse all</button>
+      </div>
+  </div>
+
+  <div id="extensionscheme_members_div" class="col-md-12">
+    <ul *ngIf="members.length <= 500" id="extensionscheme_members_regular">
+      <li *ngFor="let member of listedMembers; trackBy: memberIdentity">
+        <app-hierarchy-member [members]="members"
+                              [member]="member"
+                              [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
+                              [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
+                              [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                              [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-member>
+      </li>
+    </ul>
+    <ul *ngIf="members.length > 500" class="hugelist" id="extensionscheme_members_huge">
+      <li *lazyFor="let member of listedMembers, withHeight 65">
+        <app-hierarchy-member [members]="members"
+                              [member]="member"
+                              [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
+                              [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
+                              [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                              [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-member>
+      </li>
+    </ul>
+  </div>
+
+  <div class="emptyMembers" *ngIf="members.length === 0">
+    <span translate>This extension does not have any members yet.</span>
+  </div>
+</div>

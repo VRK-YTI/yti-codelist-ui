@@ -5,7 +5,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ExtensionScheme } from '../../entities/extension-scheme';
-import { ExtensionType } from '../../services/api-schema';
+import { MemberType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
 import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
@@ -14,20 +14,20 @@ import { tap } from 'rxjs/operators';
 import { Code } from '../../entities/code';
 
 @Component({
-  selector: 'app-extension-create',
-  templateUrl: './extension-create.component.html',
-  styleUrls: ['./extension-create.component.scss'],
+  selector: 'app-member-create',
+  templateUrl: './member-create.component.html',
+  styleUrls: ['./member-create.component.scss'],
   providers: [EditableService]
 })
-export class ExtensionCreateComponent implements OnInit {
+export class MemberCreateComponent implements OnInit {
 
   extensionScheme: ExtensionScheme;
 
-  extensionForm = new FormGroup({
+  memberForm = new FormGroup({
     prefLabel: new FormControl({}),
-    extensionValue: new FormControl(''),
+    memberValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
-    extension: new FormControl(null),
+    broaderMember: new FormControl(null),
     validity: new FormControl({ start: null, end: null }, validDateRange)
   });
 
@@ -44,7 +44,7 @@ export class ExtensionCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ExtensionCreateComponent onInit');
+    console.log('MemberCreateComponent onInit');
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
     const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
@@ -66,11 +66,11 @@ export class ExtensionCreateComponent implements OnInit {
 
   save(formData: any): Observable<any> {
 
-    console.log('Saving new Extension');
+    console.log('Saving new Member');
 
     const { code, currentExtension, validity, ...rest } = formData;
 
-    const extension: ExtensionType = <ExtensionType> {
+    const member: MemberType = <MemberType> {
       ...rest,
       code: code,
       startDate: formatDate(validity.start),
@@ -78,13 +78,13 @@ export class ExtensionCreateComponent implements OnInit {
       extension: currentExtension
     };
 
-    return this.dataService.createExtension(extension,
+    return this.dataService.createMember(member,
       this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue)
-      .pipe(tap(createdExtension => {
-        console.log('Saved new Extension');
-        this.router.navigate(createdExtension.route);
+      .pipe(tap(createdMember => {
+        console.log('Saved new Member');
+        this.router.navigate(createdMember.route);
       }));
   }
 
@@ -93,10 +93,10 @@ export class ExtensionCreateComponent implements OnInit {
   }
 
   canSave() {
-    return this.extensionForm.valid;
+    return this.memberForm.valid;
   }
 
-  get requireExtensionValue(): boolean {
+  get requireMemberValue(): boolean {
     return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
   }
 
@@ -105,7 +105,7 @@ export class ExtensionCreateComponent implements OnInit {
   }
 
   get showCodeDetailLabel(): boolean {
-    const currentCode: Code = this.extensionForm.controls['code'].value;
+    const currentCode: Code = this.memberForm.controls['code'].value;
     if (currentCode) {
       return currentCode.codeScheme.id !== this.extensionScheme.parentCodeScheme.id;
     } else {

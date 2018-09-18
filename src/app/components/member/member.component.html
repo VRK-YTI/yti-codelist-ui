@@ -6,7 +6,7 @@
 
   <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
 
-  <h1 class="text-content-wrap">{{extension.getDisplayName(languageService, translateService)}}</h1>
+  <h1 class="text-content-wrap">{{member.getDisplayName(languageService, translateService)}}</h1>
 
   <div class="row">
     <div class="col-12">
@@ -53,7 +53,7 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-extension-information [currentExtension]="extension"></app-extension-information>
+        <app-member-information [currentMember]="member"></app-member-information>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

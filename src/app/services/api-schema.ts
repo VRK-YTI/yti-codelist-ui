@@ -169,31 +169,31 @@ export interface ExtensionSchemeSimpleType {
   description?: Localizable;
 }
 
-export interface ExtensionType {
+export interface MemberType {
 
   id: string;
   url: string;
-  extensionValue: string;
+  memberValue: string;
   prefLabel?: Localizable;
   order?: string;
   modified?: string;
   extensionScheme: ExtensionSchemeType;
-  extension?: ExtensionSimpleType;
+  broaderMember?: MemberSimpleType;
   code: CodeType;
   startDate?: string;
   endDate?: string;
 }
 
-export interface ExtensionSimpleType {
+export interface MemberSimpleType {
 
   id: string;
   url: string;
-  extensionValue: string;
+  memberValue: string;
   prefLabel?: Localizable;
   order?: string;
   modified?: string;
   code: CodePlainType;
-  extension?: ExtensionSimpleType;
+  broaderMember?: MemberSimpleType;
   startDate?: string;
   endDate?: string;
 }

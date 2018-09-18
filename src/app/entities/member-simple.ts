@@ -1,30 +1,30 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { Moment } from 'moment';
-import { ExtensionSimpleType } from '../services/api-schema';
+import { MemberSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from './code-simple';
 
-export class ExtensionSimple {
+export class MemberSimple {
 
   id: string;
   url: string;
-  extensionValue: string;
+  memberValue: string;
   order?: string;
   modified: Moment | null = null;
   code: CodePlain;
-  extension?: ExtensionSimple;
+  broaderMember?: MemberSimple;
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
   expanded: boolean;
 
-  constructor(data: ExtensionSimpleType) {
+  constructor(data: MemberSimpleType) {
     this.id = data.id;
     this.url = data.url;
     this.order = data.order;
-    this.extensionValue = data.extensionValue;
+    this.memberValue = data.memberValue;
     this.prefLabel = data.prefLabel || {};
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
@@ -32,8 +32,8 @@ export class ExtensionSimple {
     if (data.code) {
       this.code = new CodePlain(data.code);
     }
-    if (data.extension) {
-      this.extension = new ExtensionSimple(data.extension);
+    if (data.broaderMember) {
+      this.broaderMember = new MemberSimple(data.broaderMember);
     }
     if (data.startDate) {
       this.startDate = parseDate(data.startDate);
@@ -48,16 +48,16 @@ export class ExtensionSimple {
     return formatDisplayDateTime(this.modified);
   }
 
-  serialize(): ExtensionSimpleType {
+  serialize(): MemberSimpleType {
     return {
       id: this.id,
       url: this.url,
-      extensionValue: this.extensionValue,
+      memberValue: this.memberValue,
       prefLabel: { ...this.prefLabel },
       modified: formatDateTime(this.modified),
       order: this.order,
       code: this.code.serialize(),
-      extension: this.extension ? this.extension.serialize() : undefined,
+      broaderMember: this.broaderMember ? this.broaderMember.serialize() : undefined,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate)
     };
@@ -70,12 +70,12 @@ export class ExtensionSimple {
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
-    const extensionValue = this.extensionValue;
+    const memberValue = this.memberValue;
 
-    if (extensionTitle && extensionValue) {
-      return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
-    } else if (extensionValue) {
-      return `${extensionValue} - ${codeTitle}`;
+    if (extensionTitle && memberValue) {
+      return `${memberValue} ${extensionTitle} - ${codeTitle}`;
+    } else if (memberValue) {
+      return `${memberValue} - ${codeTitle}`;
     } else if (extensionTitle) {
       return `${extensionTitle} - ${codeTitle}`;
     } else {
@@ -87,7 +87,7 @@ export class ExtensionSimple {
     return hasLocalization(this.code.prefLabel);
   }
 
-  clone(): ExtensionSimple {
-    return new ExtensionSimple(this.serialize());
+  clone(): MemberSimple {
+    return new MemberSimple(this.serialize());
   }
 }

@@ -78,25 +78,25 @@ import { CodeSchemeExtensionSchemesComponent } from './components/codescheme/cod
 import { ExtensionSchemeCreateComponent } from './components/extensionscheme/extension-scheme-create.component';
 import { ExtensionSchemeComponent } from './components/extensionscheme/extension-scheme.component';
 import { ExtensionSchemeInformationComponent } from './components/extensionscheme/extension-scheme-information.component';
-import { ExtensionSchemeExtensionsComponent } from './components/extensionscheme/extension-scheme-extensions.component';
-import { ExtensionInformationComponent } from './components/extension/extension-information.component';
-import { ExtensionCreateComponent } from './components/extension/extension-create.component';
+import { ExtensionSchemeMembersComponent } from './components/extensionscheme/extension-scheme-members.component';
+import { MemberInformationComponent } from './components/member/member-information.component';
+import { MemberCreateComponent } from './components/member/member-create.component';
 import { ExtensionSchemeListitemComponent } from './components/extensionscheme/extension-scheme-listitem.component';
 import {
   ExtensionSchemeExtensionsImportModalService,
-  ExtensionsImportModalComponent
-} from './components/extension/extension-import-modal.component';
+  MembersImportModalComponent
+} from './components/member/member-import-modal.component';
 import {
   ExtensionSchemesImportModalComponent,
   ExtensionSchemesImportModalService
 } from './components/extensionscheme/extension-scheme-import-modal.component';
-import { ExtensionListitemComponent } from './components/extension/extension-listitem.component';
-import { ExtensionComponent } from './components/extension/extension.component';
+import { MemberListitemComponent } from './components/member/member-listitem.component';
+import { MemberComponent } from './components/member/member.component';
 import {
-  SearchLinkedExtensionModalComponent,
-  SearchLinkedExtensionModalService
-} from './components/form/search-linked-extension-modal.component';
-import { ExtensionInputComponent } from './components/form/extension-input-component';
+  SearchLinkedMemberModalComponent,
+  SearchLinkedMemberModalService
+} from './components/form/search-linked-member-modal.component';
+import { MemberInputComponent } from './components/form/member-input.component';
 import { LogoComponent } from './components/navigation/logo.component';
 import { RegistryListitemComponent } from './components/registry/registry-listitem';
 import { RegistriesComponent } from './components/registry/registries.component';
@@ -126,7 +126,7 @@ import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import {RefreshComponent} from './components/refresh.component';
 import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
-import { HierarchyExtensionComponent } from './components/extension/hierarchy-extension.component';
+import { HierarchyMemberComponent } from './components/member/hierarchy-member.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -158,13 +158,13 @@ const appRoutes: Routes = [
   {path: 'createcode', component: CodeCreateComponent, pathMatch: 'full'},
   {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
   {path: 'createextensionscheme', component: ExtensionSchemeCreateComponent, pathMatch: 'full'},
-  {path: 'createextension', component: ExtensionCreateComponent, pathMatch: 'full'},
+  {path: 'createmember', component: MemberCreateComponent, pathMatch: 'full'},
   {path: 'createregistry', component: RegistryCreateComponent, pathMatch: 'full'},
   {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
   {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'extensionscheme', component: ExtensionSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
+  {path: 'member', component: MemberComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
   {path: 'styles', component: StyleTestComponent},
   {path: 'userDetails', component: UserDetailsComponent},
   {path: 'information', component: InformationAboutServiceComponent},
@@ -217,12 +217,12 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
     ExtensionSchemeComponent,
-    ExtensionComponent,
+    MemberComponent,
     CodeSchemeExtensionSchemesComponent,
     ExtensionSchemeInformationComponent,
-    ExtensionSchemeExtensionsComponent,
-    ExtensionInformationComponent,
-    ExtensionCreateComponent,
+    ExtensionSchemeMembersComponent,
+    MemberInformationComponent,
+    MemberCreateComponent,
     ExtensionSchemeListitemComponent,
     RegistriesComponent,
     RegistryCreateComponent,
@@ -230,7 +230,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     RegistryInformationComponent,
     RegistryListitemComponent,
     RegistryCodeSchemesComponent,
-    ExtensionListitemComponent,
+    MemberListitemComponent,
     CodeSchemeInformationComponent,
     CodeSchemeImportAndCreateComponent,
     CodeInformationComponent,
@@ -238,7 +238,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeImportModalComponent,
     CodeSchemeCreateComponent,
     ExtensionSchemeCreateComponent,
-    ExtensionsImportModalComponent,
+    MembersImportModalComponent,
     ExtensionSchemesImportModalComponent,
     LocalizableInputComponent,
     LocalizableTextareaComponent,
@@ -265,11 +265,11 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     OrganizationsInputComponent,
     CodeInputComponent,
     CodeSchemeInputComponent,
-    ExtensionInputComponent,
+    MemberInputComponent,
     SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
     SearchLinkedCodeSchemeModalComponent,
-    SearchLinkedExtensionModalComponent,
+    SearchLinkedMemberModalComponent,
     RegistryInputComponent,
     HierarchyCodeComponent,
     TerminologyIntegrationCodeschemeModalComponent,
@@ -279,13 +279,13 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeVariantMothersComponent,
     CodeschemeVariantModalComponent,
     RefreshComponent,
-    HierarchyExtensionComponent
+    HierarchyMemberComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
     CodeSchemeCodesImportModalComponent,
     ExtensionSchemesImportModalComponent,
-    ExtensionsImportModalComponent,
+    MembersImportModalComponent,
     LinkShowModalComponent,
     LinkEditModalComponent,
     LinkCreateModalComponent,
@@ -293,7 +293,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedOrganizationModalComponent,
     SearchLinkedCodeModalComponent,
     SearchLinkedCodeSchemeModalComponent,
-    SearchLinkedExtensionModalComponent,
+    SearchLinkedMemberModalComponent,
     TerminologyIntegrationCodeschemeModalComponent,
     CodeschemeVariantModalComponent
   ],
@@ -336,7 +336,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedOrganizationModalService,
     SearchLinkedCodeModalService,
     SearchLinkedCodeSchemeModalService,
-    SearchLinkedExtensionModalService,
+    SearchLinkedMemberModalService,
     CodeListErrorModalService,
     TerminologyIntegrationModalService,
     TerminologyIntegrationCodeschemeModalComponent,

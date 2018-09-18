@@ -2,11 +2,11 @@ import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { SearchLinkedExtensionModalService } from './search-linked-extension-modal.component';
+import { SearchLinkedMemberModalService } from './search-linked-member-modal.component';
 import { DataService } from '../../services/data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ExtensionScheme } from '../../entities/extension-scheme';
-import { Extension } from '../../entities/extension';
+import { Member } from '../../entities/member';
 import { LanguageService } from '../../services/language.service';
 
 function addToControl<T>(control: FormControl, item: T) {
@@ -20,41 +20,41 @@ function removeFromControl<T>(control: FormControl) {
 }
 
 @Component({
-  selector: 'app-extension-input',
+  selector: 'app-member-input',
   template: `
-    <dl *ngIf="editing || extension">
+    <dl *ngIf="editing || member">
       <dt>
         <label>{{label}}</label>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
-        <div *ngIf="!editing && extension">
-          <span>{{extension.getDisplayName(languageService, translateService)}}</span>
+        <div *ngIf="!editing && member">
+          <span>{{member.getDisplayName(languageService, translateService)}}</span>
         </div>
-        <div *ngIf="editing && extension">
+        <div *ngIf="editing && member">
           <a>
-            <i id="remove_extension_link"
+            <i id="remove_member_link"
                class="fa fa-times"
-               (click)="removeExtension(extension)"></i>
+               (click)="removeMember(member)"></i>
           </a>
-          <span>{{extension.getDisplayName(languageService, translateService)}}</span>
+          <span>{{member.getDisplayName(languageService, translateService)}}</span>
           <app-error-messages id="extension_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
-        <button id="add_extension_button"
+        <button id="add_member_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="selectExtension()" translate>Select member</button>
+                (click)="selectMember()" translate>Select member</button>
       </dd>
     </dl>
   `
 })
-export class ExtensionInputComponent implements ControlValueAccessor {
+export class MemberInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() extensionScheme: ExtensionScheme;
-  @Input() currentExtension: Extension;
+  @Input() currentMember: Member;
   @Input() required = false;
   control = new FormControl(null);
 
@@ -68,7 +68,7 @@ export class ExtensionInputComponent implements ControlValueAccessor {
               public translateService: TranslateService,
               public languageService: LanguageService,
               private dataService: DataService,
-              private searchLinkedExtensionModalService: SearchLinkedExtensionModalService) {
+              private searchLinkedExtensionModalService: SearchLinkedMemberModalService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
@@ -77,28 +77,28 @@ export class ExtensionInputComponent implements ControlValueAccessor {
     }
   }
 
-  get extension(): Extension {
+  get member(): Member {
     return this.control.value;
   }
 
-  selectExtension() {
+  selectMember() {
     const titleLabel = this.translateService.instant('Choose member');
     const searchlabel = this.translateService.instant('Search member');
-    const extensions = this.dataService.getExtensions(
+    const members = this.dataService.getMembers(
       this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue);
 
     this.searchLinkedExtensionModalService.open(
-      extensions,
+      members,
       titleLabel,
       searchlabel,
-      [this.currentExtension ? this.currentExtension.id : ''],
+      [this.currentMember ? this.currentMember.id : ''],
       true)
       .then(extension => addToControl(this.control, extension), ignoreModalClose);
   }
 
-  removeExtension() {
+  removeMember() {
     removeFromControl(this.control);
   }
 

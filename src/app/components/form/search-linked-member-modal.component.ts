@@ -4,13 +4,13 @@ import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
-import { Extension } from '../../entities/extension';
+import { Member } from '../../entities/member';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-linked-extension-modal',
-  styleUrls: ['./search-linked-extension-modal.component.scss'],
+  styleUrls: ['./search-linked-member-modal.component.scss'],
   template: `
     <div class="modal-header">
       <h4 class="modal-title">
@@ -60,17 +60,17 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
     </div>
   `
 })
-export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnInit {
+export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
   @Input() restricts: string[];
   @Input() titleLabel: string;
   @Input() searchLabel: string;
-  @Input() extensions$: Observable<Extension[]>;
+  @Input() members$: Observable<Member[]>;
   @Input() useUILanguage: boolean;
 
-  searchResults$: Observable<Extension[]>;
+  searchResults$: Observable<Member[]>;
 
   search$ = new BehaviorSubject('');
   loading = false;
@@ -85,7 +85,7 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
     const initialSearch = this.search$.pipe(take(1));
     const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
 
-    this.searchResults$ = combineLatest(this.extensions$, concat(initialSearch, debouncedSearch))
+    this.searchResults$ = combineLatest(this.members$, concat(initialSearch, debouncedSearch))
       .pipe(
         tap(() => this.loading = false),
         map(([extensions, search]) => {
@@ -99,8 +99,8 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
       );
   }
 
-  select(extension: Extension) {
-    this.modal.close(extension);
+  select(member: Member) {
+    this.modal.close(member);
   }
 
   ngAfterViewInit() {
@@ -121,20 +121,20 @@ export class SearchLinkedExtensionModalComponent implements AfterViewInit, OnIni
 }
 
 @Injectable()
-export class SearchLinkedExtensionModalService {
+export class SearchLinkedMemberModalService {
 
   constructor(private modalService: ModalService) {
   }
 
-  open(extensions$: Observable<Extension[]>,
+  open(members$: Observable<Member[]>,
        titleLabel: string,
        searchLabel: string,
        restrictExtensionIds: string[],
-       useUILanguage: boolean = false): Promise<Extension> {
+       useUILanguage: boolean = false): Promise<Member> {
 
-    const modalRef = this.modalService.open(SearchLinkedExtensionModalComponent, { size: 'sm' });
-    const instance = modalRef.componentInstance as SearchLinkedExtensionModalComponent;
-    instance.extensions$ = extensions$;
+    const modalRef = this.modalService.open(SearchLinkedMemberModalComponent, { size: 'sm' });
+    const instance = modalRef.componentInstance as SearchLinkedMemberModalComponent;
+    instance.members$ = members$;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
     instance.restricts = restrictExtensionIds;

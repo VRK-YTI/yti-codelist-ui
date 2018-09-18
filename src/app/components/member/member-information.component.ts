@@ -6,7 +6,7 @@ import { LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { Extension } from '../../entities/extension';
+import { Member } from '../../entities/member';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { LocationService } from '../../services/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,22 +15,22 @@ import { validDateRange } from '../../utils/date';
 import { Code } from '../../entities/code';
 
 @Component({
-  selector: 'app-extension-information',
-  templateUrl: './extension-information.component.html',
-  styleUrls: ['./extension-information.component.scss']
+  selector: 'app-member-information',
+  templateUrl: './member-information.component.html',
+  styleUrls: ['./member-information.component.scss']
 })
-export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestroy {
+export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input() currentExtension: Extension;
+  @Input() currentMember: Member;
   extensionScheme: ExtensionScheme;
 
   cancelSubscription: Subscription;
 
-  extensionForm = new FormGroup({
+  memberForm = new FormGroup({
     prefLabel: new FormControl({}),
-    extensionValue: new FormControl(''),
+    memberValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
-    extension: new FormControl(null),
+    broaderMember: new FormControl(null),
     validity: new FormControl(null, validDateRange)
   });
 
@@ -51,15 +51,15 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
     const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
-    const extensionId = this.route.snapshot.params.extensionId;
+    const memberId = this.route.snapshot.params.memberId;
 
-    if (!extensionId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
-      throw new Error(`Illegal route, extensionId: '${extensionId}', registry: '${registryCodeValue}', ` +
+    if (!memberId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+      throw new Error(`Illegal route, memberId: '${memberId}', registry: '${registryCodeValue}', ` +
         `scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
     }
 
-    this.dataService.getExtension(extensionId).subscribe(extension => {
-      this.currentExtension = extension;
+    this.dataService.getMember(memberId).subscribe(extension => {
+      this.currentMember = extension;
       this.locationService.atMemberPage(extension);
     });
 
@@ -73,9 +73,9 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   reset() {
-    const { startDate, endDate, ...rest } = this.currentExtension;
+    const { startDate, endDate, ...rest } = this.currentMember;
 
-    this.extensionForm.reset({
+    this.memberForm.reset({
       ...rest,
       validity: { start: startDate, end: endDate }
     });
@@ -93,7 +93,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
     if (this.isSuperUser) {
       return false;
     }
-    return this.currentExtension.extensionScheme.restricted;
+    return this.currentMember.extensionScheme.restricted;
   }
 
   ngOnDestroy() {
@@ -101,14 +101,14 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   get loading(): boolean {
-    return this.extensionScheme == null || this.currentExtension == null;
+    return this.extensionScheme == null || this.currentMember == null;
   }
 
   canSave() {
-    return this.extensionForm.valid;
+    return this.memberForm.valid;
   }
 
-  get requireExtensionValue(): boolean {
+  get requireMemberValue(): boolean {
     return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
   }
 
@@ -117,7 +117,7 @@ export class ExtensionInformationComponent implements OnInit, OnChanges, OnDestr
   }
 
   get showCodeDetailLabel(): boolean {
-    const currentCode: Code = this.extensionForm.controls['code'].value;
+    const currentCode: Code = this.memberForm.controls['code'].value;
     if (currentCode) {
       return currentCode.codeScheme.id !== this.extensionScheme.parentCodeScheme.id;
     } else {

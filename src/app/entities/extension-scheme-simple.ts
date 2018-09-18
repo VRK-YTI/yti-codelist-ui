@@ -52,7 +52,7 @@ export class ExtensionSchemeSimple {
 
   get location(): Location[] {
     return [{
-      localizationKey: 'Extension scheme',
+      localizationKey: 'Member scheme',
       label: this.prefLabel,
       value: !hasLocalization(this.prefLabel) ? this.codeValue : '',
       route: this.route

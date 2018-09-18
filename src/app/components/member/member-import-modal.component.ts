@@ -8,11 +8,11 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 
 @Component({
-  selector: 'app-extension-import-modal',
-  templateUrl: './extension-import-modal.component.html',
+  selector: 'app-member-import-modal',
+  templateUrl: './member-import-modal.component.html',
   providers: [EditableService]
 })
-export class ExtensionsImportModalComponent {
+export class MembersImportModalComponent {
 
   @Input() extensionScheme: ExtensionScheme;
   file?: File;
@@ -79,8 +79,8 @@ export class ExtensionSchemeExtensionsImportModalService {
   }
 
   public open(extensionScheme: ExtensionScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(ExtensionsImportModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as ExtensionsImportModalComponent;
+    const modalRef = this.modalService.open(MembersImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as MembersImportModalComponent;
     instance.extensionScheme = extensionScheme;
     return modalRef.result;
   }

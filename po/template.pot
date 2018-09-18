@@ -257,13 +257,13 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "Import codes"
+msgstr ""
+
 msgid "Create a new version"
 msgstr ""
 
 msgid "Attach variant to code list"
-msgstr ""
-
-msgid "Import codes"
 msgstr ""
 
 msgid "Create calculation hierarchy"
@@ -272,7 +272,7 @@ msgstr ""
 msgid "Create definition hierarchy"
 msgstr ""
 
-msgid "Import extensions"
+msgid "Import members"
 msgstr ""
 
 msgid "Delete code list"
@@ -350,30 +350,6 @@ msgstr ""
 msgid "No search results"
 msgstr ""
 
-msgid "Extension"
-msgstr ""
-
-msgid "Member name"
-msgstr ""
-
-msgid "Member value"
-msgstr ""
-
-msgid "Code"
-msgstr ""
-
-msgid "Broader member"
-msgstr ""
-
-msgid "Create member"
-msgstr ""
-
-msgid "Import members"
-msgstr ""
-
-msgid "Delete member"
-msgstr ""
-
 msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
 msgstr ""
 
@@ -395,13 +371,19 @@ msgstr ""
 msgid "Search did not find any members."
 msgstr ""
 
-msgid "This extension does not have any members yet."
+msgid "This member does not have any members yet."
 msgstr ""
 
 msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
 msgstr ""
 
-msgid "Delete extension"
+msgid "Create member"
+msgstr ""
+
+msgid "Import members"
+msgstr ""
+
+msgid "Delete member"
 msgstr ""
 
 msgid "Codescheme"
@@ -435,6 +417,27 @@ msgid "Search did not find any code lists."
 msgstr ""
 
 msgid "No organization"
+msgstr ""
+
+msgid "Member"
+msgstr ""
+
+msgid "Member name"
+msgstr ""
+
+msgid "Member value"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid "Broader member"
+msgstr ""
+
+msgid "Delete member"
+msgstr ""
+
+msgid "Extension"
 msgstr ""
 
 msgid "Impersonate user"
@@ -695,6 +698,9 @@ msgstr ""
 msgid "INFO_TEXT_BROADER_CODE"
 msgstr ""
 
+msgid "INFO_TEXT_MEMBER_VALIDITY"
+msgstr ""
+
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr ""
 
@@ -907,19 +913,19 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_FOUND"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr ""
 
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_CODE_NOT_ALLOWED"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_HIERARCHY_MAXLEVEL_REACHED"
+msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSIONVALUE_NOT_SET"
+msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
@@ -928,13 +934,13 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSIONS_HAVE_DUPLICATE_CODE_USE_UUID"
+msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_CYCLIC_DEPENDENCY_ISSUE"
+msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
@@ -1030,5 +1036,5 @@ msgstr ""
 msgid "codeCodeValueValidationError"
 msgstr ""
 
-msgid "extensionValueValidationError"
+msgid "memberValueValidationError"
 msgstr ""

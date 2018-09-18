@@ -31,7 +31,7 @@ export class CodeListConfirmationModalService {
     return this.confirmationModalService.open('REMOVE EXTENSION?', '');
   }
 
-  openRemoveExtension() {
+  openRemoveMember() {
     return this.confirmationModalService.open('REMOVE MEMBER?', '');
   }
 

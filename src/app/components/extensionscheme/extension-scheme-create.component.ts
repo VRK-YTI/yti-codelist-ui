@@ -81,7 +81,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
     } else if (propertyTypeLocalName === 'definitionHierarchy') {
       this.title = 'Create definition hierarchy';
     } else {
-      this.title = 'Create extension';
+      this.title = 'Create member';
     }
   }
 

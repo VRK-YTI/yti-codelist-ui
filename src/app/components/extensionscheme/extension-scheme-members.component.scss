@@ -1,6 +1,6 @@
 @import '~yti-common-ui/theme/variables';
 
-.emptyExtensions {
+.emptyMembers {
   margin-right: 200px;
   padding: 10px 40px;
   margin-top: 5px;
@@ -16,7 +16,7 @@
     width: 20px;
   }
 
-  .extension {
+  .member {
     cursor: pointer;
     padding: 10px 40px 10px 10px;
     background-color: $light;

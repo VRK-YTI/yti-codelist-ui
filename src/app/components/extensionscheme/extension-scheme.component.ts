@@ -13,9 +13,9 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ExtensionScheme } from '../../entities/extension-scheme';
 import { flatMap, tap } from 'rxjs/operators';
-import { ExtensionSchemeExtensionsImportModalService } from '../extension/extension-import-modal.component';
+import { ExtensionSchemeExtensionsImportModalService } from '../member/member-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
-import { ExtensionSimple } from '../../entities/extension-simple';
+import { MemberSimple } from '../../entities/member-simple';
 
 @Component({
   selector: 'app-extension-scheme',
@@ -28,7 +28,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   extensionScheme: ExtensionScheme;
-  extensions: ExtensionSimple[];
+  extensions: MemberSimple[];
   env: string;
 
   constructor(private userService: UserService,
@@ -66,13 +66,13 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
       this.locationService.atExtensionPage(extensionScheme);
     });
 
-    this.dataService.getSimpleExtensions(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {
+    this.dataService.getSimpleMembers(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {
       this.extensions = extensions;
     });
   }
 
   refreshExtensions() {
-    this.dataService.getSimpleExtensions(
+    this.dataService.getSimpleMembers(
       this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
       this.extensionScheme.parentCodeScheme.codeValue,
       this.extensionScheme.codeValue).subscribe(extensions => {
@@ -127,7 +127,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   createMember() {
     console.log('Member create clicked.');
     this.router.navigate(
-      ['createextension',
+      ['createmember',
         {
           registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
           schemeCode: this.extensionScheme.parentCodeScheme.codeValue,

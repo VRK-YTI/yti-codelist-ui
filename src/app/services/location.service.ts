@@ -4,7 +4,7 @@ import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
 import { Location } from 'yti-common-ui/types/location';
 import { ExtensionScheme } from '../entities/extension-scheme';
-import { Extension } from '../entities/extension';
+import { Member } from '../entities/member';
 import { CodeRegistry } from '../entities/code-registry';
 
 const frontPage = { localizationKey: 'Front page', route: [''] };
@@ -13,7 +13,7 @@ const codeSchemeImportAndCreatePage = { localizationKey: 'Add code list', route:
 const createNewVersionOfCodeSchemePage = { localizationKey: 'Create a new version', route: ['createcodescheme'] };
 const createCodeSchemePage = { localizationKey: 'Create code list', route: ['createcodescheme'] };
 const createCodePage = { localizationKey: 'Create code', route: ['createcode'] };
-const createMemberPage = { localizationKey: 'Create member', route: ['createextension'] };
+const createMemberPage = { localizationKey: 'Create member', route: ['createmember'] };
 const createRegistryPage = { localizationKey: 'Create registry', route: ['createregistry'] };
 
 @Injectable()
@@ -64,8 +64,8 @@ export class LocationService {
     this.changeLocation(extensionScheme.location);
   }
 
-  atMemberPage(extension: Extension): void {
-    this.changeLocation(extension.location);
+  atMemberPage(member: Member): void {
+    this.changeLocation(member.location);
   }
 
   atCodeSchemeImportAndCreatePage(): void {

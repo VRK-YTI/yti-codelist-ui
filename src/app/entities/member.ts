@@ -3,39 +3,39 @@ import { Location } from 'yti-common-ui/types/location';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { Moment } from 'moment';
-import { ExtensionType } from '../services/api-schema';
+import { MemberType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { ExtensionScheme } from './extension-scheme';
-import { ExtensionSimple } from './extension-simple';
+import { MemberSimple } from './member-simple';
 import { TranslateService } from '@ngx-translate/core';
 import { Code } from './code';
 
-export class Extension implements EditableEntity {
+export class Member implements EditableEntity {
 
   id: string;
   url: string;
-  extensionValue: string;
+  memberValue: string;
   order?: string;
   modified: Moment | null = null;
   extensionScheme: ExtensionScheme;
-  extension?: ExtensionSimple;
+  broaderMember?: MemberSimple;
   code: Code;
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
 
-  constructor(data: ExtensionType) {
+  constructor(data: MemberType) {
     this.id = data.id;
     this.url = data.url;
     this.order = data.order;
-    this.extensionValue = data.extensionValue;
+    this.memberValue = data.memberValue;
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
     }
     this.prefLabel = data.prefLabel || {};
     this.extensionScheme = new ExtensionScheme(data.extensionScheme);
-    if (data.extension) {
-      this.extension = new ExtensionSimple(data.extension);
+    if (data.broaderMember) {
+      this.broaderMember = new MemberSimple(data.broaderMember);
     }
     if (data.code) {
       this.code = new Code(data.code);
@@ -54,12 +54,12 @@ export class Extension implements EditableEntity {
 
   get route(): any[] {
     return [
-      'extension',
+      'member',
       {
         registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
         schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
         extensionSchemeCode: this.extensionScheme.codeValue,
-        extensionId: this.id
+        memberId: this.id
       }
     ];
   }
@@ -83,16 +83,16 @@ export class Extension implements EditableEntity {
     return true;
   }
 
-  serialize(): ExtensionType {
+  serialize(): MemberType {
     return {
       id: this.id,
       url: this.url,
       prefLabel: { ...this.prefLabel },
-      extensionValue: this.extensionValue,
+      memberValue: this.memberValue,
       modified: formatDateTime(this.modified),
       order: this.order,
       extensionScheme: this.extensionScheme.serialize(),
-      extension: this.extension ? this.extension.serialize() : undefined,
+      broaderMember: this.broaderMember ? this.broaderMember.serialize() : undefined,
       code: this.code.serialize(),
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate)
@@ -111,12 +111,12 @@ export class Extension implements EditableEntity {
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
-    const extensionValue = this.extensionValue;
+    const memberValue = this.memberValue;
 
-    if (extensionTitle && extensionValue) {
-      return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
-    } else if (extensionValue) {
-      return `${extensionValue} - ${codeTitle}`;
+    if (extensionTitle && memberValue) {
+      return `${memberValue} ${extensionTitle} - ${codeTitle}`;
+    } else if (memberValue) {
+      return `${memberValue} - ${codeTitle}`;
     } else if (extensionTitle) {
       return `${extensionTitle} - ${codeTitle}`;
     } else {
@@ -139,12 +139,12 @@ export class Extension implements EditableEntity {
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
-    const extensionValue = this.extensionValue;
+    const memberValue = this.memberValue;
 
-    if (extensionTitle && extensionValue) {
-      return `${extensionValue} ${extensionTitle} - ${codeTitle}`;
-    } else if (extensionValue) {
-      return `${extensionValue} - ${codeTitle}`;
+    if (extensionTitle && memberValue) {
+      return `${memberValue} ${extensionTitle} - ${codeTitle}`;
+    } else if (memberValue) {
+      return `${memberValue} - ${codeTitle}`;
     } else if (extensionTitle) {
       return `${extensionTitle} - ${codeTitle}`;
     } else {
@@ -156,7 +156,7 @@ export class Extension implements EditableEntity {
     return hasLocalization(this.code.prefLabel);
   }
 
-  clone(): Extension {
-    return new Extension(this.serialize());
+  clone(): Member {
+    return new Member(this.serialize());
   }
 }
