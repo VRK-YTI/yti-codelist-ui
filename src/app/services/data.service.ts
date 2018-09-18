@@ -124,7 +124,7 @@ export class DataService {
       onlyOrganizationsWithCodeSchemes: 'true'
     };
 
-    return this.http.get<WithResults<Organization>>(organizationsBasePath, {params})
+    return this.http.get<WithResults<Organization>>(organizationsBasePath, { params })
       .pipe(map(res => res.results.map(data => new Organization(data))));
   }
 
@@ -172,8 +172,8 @@ export class DataService {
 
   getCodeSchemesForCodeRegistry(registryCodeValue: string): Observable<CodeScheme[]> {
 
-    let params = new HttpParams();
-    params = params.append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme');
+    let params = new HttpParams()
+      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme');
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
     if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
@@ -281,11 +281,11 @@ export class DataService {
 
   getExternalReferences(codeSchemeId: string): Observable<ExternalReference[]> {
 
-    const params = new HttpParams()
-      .append('expand', 'propertyType');
+    let params = new HttpParams()
+      .append('expand', 'propertyType')
 
     if (codeSchemeId) {
-      params.append('codeSchemeId', codeSchemeId);
+      params = params.append('codeSchemeId', codeSchemeId);
     }
 
     return this.http.get<WithResults<ExternalReferenceType>>(`${externalReferencesBasePath}/`, { params })
