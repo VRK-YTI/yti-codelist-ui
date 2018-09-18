@@ -5,7 +5,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedMemberModalService } from './search-linked-member-modal.component';
 import { DataService } from '../../services/data.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { Member } from '../../entities/member';
 import { LanguageService } from '../../services/language.service';
 
@@ -53,7 +53,7 @@ function removeFromControl<T>(control: FormControl) {
 export class MemberInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
-  @Input() extensionScheme: ExtensionScheme;
+  @Input() extension: Extension;
   @Input() currentMember: Member;
   @Input() required = false;
   control = new FormControl(null);
@@ -85,9 +85,9 @@ export class MemberInputComponent implements ControlValueAccessor {
     const titleLabel = this.translateService.instant('Choose member');
     const searchlabel = this.translateService.instant('Search member');
     const members = this.dataService.getMembers(
-      this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-      this.extensionScheme.parentCodeScheme.codeValue,
-      this.extensionScheme.codeValue);
+      this.extension.parentCodeScheme.codeRegistry.codeValue,
+      this.extension.parentCodeScheme.codeValue,
+      this.extension.codeValue);
 
     this.searchLinkedExtensionModalService.open(
       members,

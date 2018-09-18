@@ -1,5 +1,5 @@
 import { AbstractResource } from './abstract-resource';
-import {Localizable, Localizer} from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { Location } from 'yti-common-ui/types/location';
 import { CodeRegistry } from './code-registry';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
@@ -7,12 +7,12 @@ import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import {CodeSchemeType} from '../services/api-schema';
+import { CodeSchemeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
-import { ExtensionSchemeSimple } from './extension-scheme-simple';
-import {CodeSchemeListItem} from './code-scheme-list-item';
+import { ExtensionSimple } from './extension-simple';
+import { CodeSchemeListItem } from './code-scheme-list-item';
 import { Organization } from './organization';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
@@ -22,8 +22,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   status: Status = 'DRAFT';
   legalBase: string;
   governancePolicy: string;
-  startDate: Moment|null = null;
-  endDate: Moment|null = null;
+  startDate: Moment | null = null;
+  endDate: Moment | null = null;
   codeRegistry: CodeRegistry;
   description: Localizable = {};
   changeNote: Localizable = {};
@@ -32,14 +32,14 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   languageCodes: CodePlain[] = [];
   externalReferences: ExternalReference[] = [];
   conceptUriInVocabularies: string;
-  modified: Moment|null = null;
-  defaultCode: CodePlain|null = null;
-  extensionSchemes: ExtensionSchemeSimple[] = [];
+  modified: Moment | null = null;
+  defaultCode: CodePlain | null = null;
+  extensions: ExtensionSimple[] = [];
   variantsOfThisCodeScheme: CodeSchemeListItem[] = [];
   variantMothersOfThisCodeScheme: CodeSchemeListItem[] = [];
-  nextCodeschemeId: string|null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
-  prevCodeschemeId: string|null = null;
-  lastCodeschemeId: string|null = null;
+  nextCodeschemeId: string | null = null; // these IDs have to flow thru the UI as well, otherwise dataloss ensues
+  prevCodeschemeId: string | null = null;
+  lastCodeschemeId: string | null = null;
   allVersions: CodeSchemeListItem[] = [];
   organizations: Organization[];
 
@@ -69,7 +69,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.dataClassifications = (data.dataClassifications || []).map(dc => new CodePlain(dc));
     this.languageCodes = (data.languageCodes || []).map(lc => new CodePlain(lc));
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
-    this.extensionSchemes = (data.extensionSchemes || []).map(es => new ExtensionSchemeSimple(es));
+    this.extensions = (data.extensions || []).map(es => new ExtensionSimple(es));
     this.conceptUriInVocabularies = data.conceptUriInVocabularies;
     if (data.defaultCode) {
       this.defaultCode = new CodePlain(data.defaultCode);
@@ -145,7 +145,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
     const results: string[] = [];
-    this.dataClassifications.forEach( (dc) => {
+    this.dataClassifications.forEach((dc) => {
       const displayClassification = localizer.translate(dc.prefLabel, useUILanguage);
       if (displayClassification) {
         results.push(displayClassification);
@@ -156,7 +156,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   getDisplayOrganizationList(localizer: Localizer, useUILanguage: boolean = false): string {
     const results: string[] = [];
-    this.organizations.forEach( (org) => {
+    this.organizations.forEach((org) => {
       const displayOrg = localizer.translate(org.prefLabel, useUILanguage);
       if (displayOrg) {
         results.push(displayOrg);
@@ -195,7 +195,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       dataClassifications: this.dataClassifications.map(dc => dc.serialize()),
       languageCodes: this.languageCodes.map(lc => lc.serialize()),
       externalReferences: this.externalReferences.map(er => er.serialize()),
-      extensionSchemes: this.extensionSchemes.map(es => es.serialize()),
+      extensions: this.extensions.map(es => es.serialize()),
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       defaultCode: this.defaultCode ? this.defaultCode.serialize() : undefined,
       variantsOfThisCodeScheme: this.variantsOfThisCodeScheme.map(v => v.serialize()),

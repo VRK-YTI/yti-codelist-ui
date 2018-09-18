@@ -7,11 +7,11 @@ import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({
-  selector: 'app-extension-scheme-import-modal',
-  templateUrl: './extension-scheme-import-modal.component.html',
+  selector: 'app-extension-import-modal',
+  templateUrl: './extension-import-modal.component.html',
   providers: [EditableService]
 })
-export class ExtensionSchemesImportModalComponent {
+export class ExtensionsImportModalComponent {
 
   @Input() codeScheme: CodeScheme;
   file?: File;
@@ -46,15 +46,15 @@ export class ExtensionSchemesImportModalComponent {
     console.log(this.file);
   }
 
-  uploadExtensionSchemesFile() {
+  uploadExtensionsFile() {
     if (!this.file) {
       throw new Error('File must be set');
     }
-    console.log('uploadExtensionSchemesFile');
+    console.log('uploadExtensionsFile');
     if (this.file !== undefined) {
       this.uploading = true;
 
-      this.dataService.uploadExtensionSchemes(
+      this.dataService.uploadExtensions(
         this.codeScheme.codeRegistry.codeValue,
         this.codeScheme.codeValue,
         this.file,
@@ -70,14 +70,14 @@ export class ExtensionSchemesImportModalComponent {
 }
 
 @Injectable()
-export class ExtensionSchemesImportModalService {
+export class ExtensionImportModalService {
 
   constructor(private modalService: ModalService) {
   }
 
   public open(codeScheme: CodeScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(ExtensionSchemesImportModalComponent, {size: 'sm'});
-    const instance = modalRef.componentInstance as ExtensionSchemesImportModalComponent;
+    const modalRef = this.modalService.open(ExtensionsImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as ExtensionsImportModalComponent;
     instance.codeScheme = codeScheme;
     return modalRef.result;
   }

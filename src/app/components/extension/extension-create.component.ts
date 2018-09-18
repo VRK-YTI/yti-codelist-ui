@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
-import { ExtensionSchemeType } from '../../services/api-schema';
+import { ExtensionType } from '../../services/api-schema';
 import { Observable, from } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
@@ -16,12 +16,12 @@ import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 @Component({
-  selector: 'app-extension-scheme-create',
-  templateUrl: './extension-scheme-create.component.html',
-  styleUrls: ['./extension-scheme-create.component.scss'],
+  selector: 'app-extension-create',
+  templateUrl: './extension-create.component.html',
+  styleUrls: ['./extension-create.component.scss'],
   providers: [EditableService]
 })
-export class ExtensionSchemeCreateComponent implements OnInit {
+export class ExtensionCreateComponent implements OnInit {
 
   codeScheme: CodeScheme;
   env: string;
@@ -29,7 +29,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
   propertyType: PropertyType;
   title: string;
 
-  extensionSchemeForm = new FormGroup({
+  extensionForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
     validity: new FormControl({ start: null, end: null }, validDateRange),
@@ -101,7 +101,7 @@ export class ExtensionSchemeCreateComponent implements OnInit {
 
     const { validity, ...rest } = formData;
 
-    const extensionScheme: ExtensionSchemeType = <ExtensionSchemeType> {
+    const extension: ExtensionType = <ExtensionType> {
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
@@ -109,15 +109,15 @@ export class ExtensionSchemeCreateComponent implements OnInit {
     };
 
     const save = () => {
-      console.log('Saving new ExtensionScheme');
-      return this.dataService.createExtensionScheme(extensionScheme, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
-        .pipe(tap(createdExtensionScheme => {
-          console.log('Saved new ExtensionScheme');
-          this.router.navigate(createdExtensionScheme.route);
+      console.log('Saving new Extension');
+      return this.dataService.createExtension(extension, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
+        .pipe(tap(createdExtension => {
+          console.log('Saved new Extension');
+          this.router.navigate(createdExtension.route);
         }));
-    }
+    };
 
-    if (contains(restrictedStatuses, extensionScheme.status)) {
+    if (contains(restrictedStatuses, extension.status)) {
       return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));
     } else {
       return save();
@@ -133,13 +133,13 @@ export class ExtensionSchemeCreateComponent implements OnInit {
     return (control: AbstractControl) => {
       const registryCodeValue = this.codeScheme.codeRegistry.codeValue;
       const schemeCodeValue = this.codeScheme.codeValue;
-      const extensionSchemeCodeValue = control.value.codeValue;
+      const extensionCodeValue = control.value.codeValue;
       const validationError = {
-        extensionSchemeCodeValueExists: {
+        extensionCodeValueExists: {
           valid: false
         }
       };
-      return this.dataService.extensionSchemeCodeValueExists(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue)
+      return this.dataService.extensionCodeValueExists(registryCodeValue, schemeCodeValue, extensionCodeValue)
         .pipe(map(exists => exists ? validationError : null));
     };
   }

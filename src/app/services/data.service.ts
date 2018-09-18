@@ -13,7 +13,7 @@ import {
   CodeType,
   ConceptType,
   DataClassificationType,
-  ExtensionSchemeType,
+  ExtensionType,
   MemberSimpleType,
   MemberType,
   ExternalReferenceType,
@@ -29,7 +29,7 @@ import { AuthorizationManager } from './authorization-manager.service';
 import { Vocabulary } from '../entities/vocabulary';
 import { CodePlain } from '../entities/code-simple';
 import { Concept } from '../entities/concept';
-import { ExtensionScheme } from '../entities/extension-scheme';
+import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
@@ -48,7 +48,7 @@ const codes = 'codes';
 const externalReferences = 'externalreferences';
 const classifications = 'dataclassifications';
 const propertytypes = 'propertytypes';
-const extensionSchemes = 'extensionschemes';
+const extensions = 'extensions';
 const members = 'members';
 const organizations = 'organizations';
 const fakeableUsers = 'fakeableUsers';
@@ -173,7 +173,7 @@ export class DataService {
   getCodeSchemesForCodeRegistry(registryCodeValue: string): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme');
+      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension');
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
     if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
@@ -187,7 +187,7 @@ export class DataService {
                     sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extensionScheme')
+      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension')
       .append('searchCodes', searchCodes.toString());
 
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
@@ -262,7 +262,7 @@ export class DataService {
   getCodeScheme(registryCodeValue: string, schemeCodeValue: string): Observable<CodeScheme> {
 
     const params = {
-      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extensionScheme'
+      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extension'
     };
 
     return this.http.get<CodeSchemeType>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/`, { params })
@@ -272,7 +272,7 @@ export class DataService {
   getCodeSchemeWithUuid(codeSchemeUuid: string): Observable<CodeScheme> {
 
     const params = {
-      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extensionScheme'
+      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extension'
     };
 
     return this.http.get<CodeSchemeType>(`${codeSchemesBasePath}/${codeSchemeUuid}`, { params })
@@ -455,32 +455,32 @@ export class DataService {
       .pipe(map(response => response.results.map((data: ConceptType) => new Concept(data))));
   }
 
-  getExtensionScheme(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<ExtensionScheme> {
+  getExtension(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Extension> {
 
     const params = {
       'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code'
     };
 
-    return this.http.get<ExtensionSchemeType>(
-      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/${extensionSchemeCodeValue}`,
+    return this.http.get<ExtensionType>(
+      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/${extensionCodeValue}`,
       { params })
-      .pipe(map(res => new ExtensionScheme(res)));
+      .pipe(map(res => new Extension(res)));
   }
 
-  getExtensionSchemes(registryCodeValue: string, schemeCodeValue: string): Observable<ExtensionScheme[]> {
+  getExtensions(registryCodeValue: string, schemeCodeValue: string): Observable<Extension[]> {
 
     const params = {
       'expand': 'codeScheme,codeRegistry,externalReference,propertyType'
     };
 
-    return this.http.get<WithResults<ExtensionSchemeType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/`, { params })
-      .pipe(map(res => res.results.map(data => new ExtensionScheme(data))));
+    return this.http.get<WithResults<ExtensionType>>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/`, { params })
+      .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 
   getMember(memberId: string): Observable<Member> {
 
     const params = {
-      'expand': 'extensionScheme,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code'
+      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code'
     };
 
     return this.http.get<MemberType>(
@@ -489,45 +489,45 @@ export class DataService {
       .pipe(map(res => new Member(res)));
   }
 
-  getSimpleMembers(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<MemberSimple[]> {
+  getSimpleMembers(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<MemberSimple[]> {
 
     const params = {
       'expand': 'code'
     };
 
     return this.http.get<WithResults<MemberType>>(
-      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
-      `${extensionSchemeCodeValue}/${members}/`,
+      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/` +
+      `${extensionCodeValue}/${members}/`,
       { params })
       .pipe(map(res => res.results.map((data: MemberSimpleType) => new MemberSimple(data))));
   }
 
-  getMembers(registryCodeValue: string, schemeCodeValue: string, extensionSchemeCodeValue: string): Observable<Member[]> {
+  getMembers(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Member[]> {
 
     const params = {
-      'expand': 'extensionScheme,codeRegistry,organization,code,externalReference,propertyType,codeScheme'
+      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme'
     };
 
     return this.http.get<WithResults<MemberType>>(
-      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
-      `${extensionSchemeCodeValue}/${members}/`,
+      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/` +
+      `${extensionCodeValue}/${members}/`,
       { params })
       .pipe(map(res => res.results.map((data: MemberType) => new Member(data))));
   }
 
-  saveExtensionScheme(extensionSchemeToSave: ExtensionSchemeType): Observable<ApiResponseType> {
+  saveExtension(extensionToSave: ExtensionType): Observable<ApiResponseType> {
 
-    console.log('Saving ExtensionScheme in dataservice');
-    console.log(extensionSchemeToSave);
-    const registryCodeValue = extensionSchemeToSave.parentCodeScheme.codeRegistry.codeValue;
-    const codeSchemeCodeValue = extensionSchemeToSave.parentCodeScheme.codeValue;
+    console.log('Saving Extension in dataservice');
+    console.log(extensionToSave);
+    const registryCodeValue = extensionToSave.parentCodeScheme.codeRegistry.codeValue;
+    const codeSchemeCodeValue = extensionToSave.parentCodeScheme.codeValue;
 
     return this.http.post<ApiResponseType>(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/` +
-      `${extensionSchemes}/${extensionSchemeToSave.codeValue}/`, extensionSchemeToSave);
+      `${extensions}/${extensionToSave.codeValue}/`, extensionToSave);
   }
 
-  uploadExtensionSchemes(registryCodeValue: string, schemeCodeValue: string, file: File, format: string): Observable<ExtensionScheme[]> {
+  uploadExtensions(registryCodeValue: string, schemeCodeValue: string, file: File, format: string): Observable<Extension[]> {
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -536,48 +536,48 @@ export class DataService {
       'format': format
     };
 
-    return this.http.post<WithResults<ExtensionSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}`,
+    return this.http.post<WithResults<ExtensionType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}`,
       formData, { params })
-      .pipe(map(res => res.results.map(data => new ExtensionScheme(data))));
+      .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 
-  createExtensionScheme(extensionSchemeToCreate: ExtensionSchemeType,
-                        registryCodeValue: string,
-                        codeSchemeCodeValue: string): Observable<ExtensionScheme> {
-    return this.createExtensionSchemes([extensionSchemeToCreate], registryCodeValue, codeSchemeCodeValue).pipe(map(createdExtensionSchemes => {
-      if (createdExtensionSchemes.length !== 1) {
-        throw new Error('Exactly one code scheme needs to be created');
+  createExtension(extensionToCreate: ExtensionType,
+                  registryCodeValue: string,
+                  codeSchemeCodeValue: string): Observable<Extension> {
+    return this.createExtensions([extensionToCreate], registryCodeValue, codeSchemeCodeValue).pipe(map(createdExtensions => {
+      if (createdExtensions.length !== 1) {
+        throw new Error('Exactly one extension needs to be created');
       } else {
-        console.log('ExtensionScheme created!');
-        return createdExtensionSchemes[0];
+        console.log('Extension created!');
+        return createdExtensions[0];
       }
     }));
   }
 
-  createExtensionSchemes(extensionSchemeList: ExtensionSchemeType[],
-                         registryCodeValue: string,
-                         codeSchemeCodeValue: string): Observable<ExtensionScheme[]> {
+  createExtensions(extensionList: ExtensionType[],
+                   registryCodeValue: string,
+                   codeSchemeCodeValue: string): Observable<Extension[]> {
 
-    return this.http.post<WithResults<ExtensionSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensionSchemes}`,
-      extensionSchemeList)
-      .pipe(map(res => res.results.map(data => new ExtensionScheme(data))));
+    return this.http.post<WithResults<ExtensionType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensions}`,
+      extensionList)
+      .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 
-  deleteExtensionScheme(extensionScheme: ExtensionScheme): Observable<boolean> {
+  deleteExtension(extension: Extension): Observable<boolean> {
 
-    const registryCodeValue = extensionScheme.parentCodeScheme.codeRegistry.codeValue;
-    const codeSchemeCodeValue = extensionScheme.parentCodeScheme.codeValue;
+    const registryCodeValue = extension.parentCodeScheme.codeRegistry.codeValue;
+    const codeSchemeCodeValue = extension.parentCodeScheme.codeValue;
 
     return this.http.delete(
-      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensionSchemes}/` +
-      `${extensionScheme.codeValue}`, { observe: 'response' })
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensions}/` +
+      `${extension.codeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
       );
   }
 
-  deleteExtension(extension: Member): Observable<boolean> {
+  deleteMember(extension: Member): Observable<boolean> {
 
     return this.http.delete(
       `${membersIntakeBasePath}/${extension.id}`, { observe: 'response' })
@@ -587,11 +587,11 @@ export class DataService {
       );
   }
 
-  uploadExtensions(registryCodeValue: string,
-                   schemeCodeValue: string,
-                   extensionSchemeCodeValue: string,
-                   file: File,
-                   format: string): Observable<Member[]> {
+  uploadMembers(registryCodeValue: string,
+                schemeCodeValue: string,
+                extensionCodeValue: string,
+                file: File,
+                format: string): Observable<Member[]> {
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -601,27 +601,27 @@ export class DataService {
     };
 
     return this.http.post<WithResults<MemberType>>(
-      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
-      `${extensionSchemeCodeValue}/${members}`,
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/` +
+      `${extensionCodeValue}/${members}`,
       formData, { params })
       .pipe(map(res => res.results.map(data => new Member(data))));
   }
 
-  saveExtension(extensionToSave: MemberType): Observable<ApiResponseType> {
+  saveMember(memberToSave: MemberType): Observable<ApiResponseType> {
 
     console.log('Saving Member in dataservice');
-    console.log(extensionToSave);
+    console.log(memberToSave);
 
     return this.http.post<ApiResponseType>(
-      `${membersIntakeBasePath}/${extensionToSave.id}`, extensionToSave);
+      `${membersIntakeBasePath}/${memberToSave.id}`, memberToSave);
   }
 
   createMember(extension: MemberType,
                registryCodeValue: string,
                schemeCodeValue: string,
-               extensionSchemeCodeValue: string): Observable<Member> {
+               extensionCodeValue: string): Observable<Member> {
 
-    return this.createMembers([extension], registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).pipe(map(createdMembers => {
+    return this.createMembers([extension], registryCodeValue, schemeCodeValue, extensionCodeValue).pipe(map(createdMembers => {
       if (createdMembers.length !== 1) {
         throw new Error('Exactly one member needs to be created');
       } else {
@@ -633,10 +633,10 @@ export class DataService {
   createMembers(extensionList: MemberType[],
                 registryCodeValue: string,
                 schemeCodeValue: string,
-                extensionSchemeCodeValue: string): Observable<Member[]> {
+                extensionCodeValue: string): Observable<Member[]> {
 
     return this.http.post<WithResults<MemberType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/` +
-      `${extensionSchemes}/${extensionSchemeCodeValue}/${members}/`,
+      `${extensions}/${extensionCodeValue}/${members}/`,
       extensionList)
       .pipe(map(res => res.results.map(data => new Member(data))));
   }
@@ -670,14 +670,14 @@ export class DataService {
       );
   }
 
-  extensionSchemeCodeValueExists(registryCodeValue: string,
+  extensionCodeValueExists(registryCodeValue: string,
                                  schemeCodeValue: string,
-                                 extensionSchemeCodeValue: string): Observable<boolean> {
+                                 extensionCodeValue: string): Observable<boolean> {
 
-    const encodedExtensionSchemeCodeValue = encodeURIComponent(extensionSchemeCodeValue);
+    const encodedExtensionCodeValue = encodeURIComponent(extensionCodeValue);
     return this.http.head(
-      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensionSchemes}/` +
-      `${encodedExtensionSchemeCodeValue}`, { observe: 'response' })
+      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/` +
+      `${encodedExtensionCodeValue}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))

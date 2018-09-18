@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <app-content-language [languageCodes]="extensionScheme.parentCodeScheme.languageCodes"></app-content-language>
+        <app-content-language [languageCodes]="extension.parentCodeScheme.languageCodes"></app-content-language>
       </div>
     </div>
   </div>
@@ -31,17 +31,17 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(extensionScheme.parentCodeScheme.codeRegistry.route)">{{extensionScheme.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(extension.parentCodeScheme.codeRegistry.route)">{{extension.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span translate>Code list</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span translate>Code list</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span translate>Extension</span><span>: {{extensionScheme.getDisplayName(languageService)}}</span>
+        <span translate>Extension</span><span>: {{extension.getDisplayName(languageService)}}</span>
       </div>
-      <div class="metaitem" *ngIf="extensionScheme.parentCodeScheme.organizations.length > 0">
+      <div class="metaitem" *ngIf="extension.parentCodeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of extensionScheme.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+        <span *ngFor="let organization of extension.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
       </div>
     </div>
   </div>

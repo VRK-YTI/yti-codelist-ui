@@ -1,19 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { Member } from '../../entities/member';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
 
 @Component({
-  selector: 'app-extension-scheme-members',
-  templateUrl: './extension-scheme-members.component.html',
-  styleUrls: ['./extension-scheme-members.component.scss']
+  selector: 'app-extension-members',
+  templateUrl: './extension-members.component.html',
+  styleUrls: ['./extension-members.component.scss']
 })
-export class ExtensionSchemeMembersComponent {
+export class ExtensionMembersComponent {
 
   @Input() members: MemberSimple[];
-  @Input() extensionScheme: ExtensionScheme;
+  @Input() extension: Extension;
 
   searchTerm = '';
 
@@ -25,8 +25,8 @@ export class ExtensionSchemeMembersComponent {
   }
 
   getIdIdentifier(extension: Member) {
-    return `${this.extensionScheme.parentCodeScheme.codeRegistry.codeValue}_${this.extensionScheme.parentCodeScheme.codeValue}_` +
-    `${this.extensionScheme.codeValue}_${extension.id}`;
+    return `${this.extension.parentCodeScheme.codeRegistry.codeValue}_${this.extension.parentCodeScheme.codeValue}_` +
+    `${this.extension.codeValue}_${extension.id}`;
   }
 
   get listedMembers() {

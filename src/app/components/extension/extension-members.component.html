@@ -36,24 +36,24 @@
       </div>
   </div>
 
-  <div id="extensionscheme_members_div" class="col-md-12">
-    <ul *ngIf="members.length <= 500" id="extensionscheme_members_regular">
+  <div id="extension_members_div" class="col-md-12">
+    <ul *ngIf="members.length <= 500" id="extension_members_regular">
       <li *ngFor="let member of listedMembers; trackBy: memberIdentity">
         <app-hierarchy-member [members]="members"
                               [member]="member"
-                              [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
-                              [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
-                              [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                              [codeRegistryCodeValue]="extension.parentCodeScheme.codeRegistry.codeValue"
+                              [codeSchemeCodeValue]="extension.parentCodeScheme.codeValue"
+                              [extensionCodeValue]="extension.codeValue"
                               [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-member>
       </li>
     </ul>
-    <ul *ngIf="members.length > 500" class="hugelist" id="extensionscheme_members_huge">
+    <ul *ngIf="members.length > 500" class="hugelist" id="extension_members_huge">
       <li *lazyFor="let member of listedMembers, withHeight 65">
         <app-hierarchy-member [members]="members"
                               [member]="member"
-                              [codeRegistryCodeValue]="extensionScheme.parentCodeScheme.codeRegistry.codeValue"
-                              [codeSchemeCodeValue]="extensionScheme.parentCodeScheme.codeValue"
-                              [extensionSchemeCodeValue]="extensionScheme.codeValue"
+                              [codeRegistryCodeValue]="extension.parentCodeScheme.codeRegistry.codeValue"
+                              [codeSchemeCodeValue]="extension.parentCodeScheme.codeValue"
+                              [extensionCodeValue]="extension.codeValue"
                               [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-member>
       </li>
     </ul>

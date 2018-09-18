@@ -20,7 +20,7 @@ export class MemberListitemComponent {
 
   @Input() codeRegistryCodeValue: string;
   @Input() codeSchemeCodeValue: string;
-  @Input() extensionSchemeCodeValue: string;
+  @Input() extensionCodeValue: string;
   @Input() member: MemberSimple;
 
   constructor(private router: Router,
@@ -35,7 +35,7 @@ export class MemberListitemComponent {
       {
         registryCode: this.codeRegistryCodeValue,
         schemeCode: this.codeSchemeCodeValue,
-        extensionSchemeCode: this.extensionSchemeCodeValue,
+        extensionCode: this.extensionCodeValue,
         memberId: this.member.id
       }
     ]);

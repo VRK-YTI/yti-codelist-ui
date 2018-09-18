@@ -11,7 +11,7 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { Member } from '../../entities/member';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs/operators';
@@ -27,7 +27,7 @@ export class MemberComponent implements OnInit, EditingComponent {
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   member: Member;
-  extensionScheme: ExtensionScheme;
+  extension: Extension;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -48,12 +48,12 @@ export class MemberComponent implements OnInit, EditingComponent {
 
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
-    const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
+    const extensionCodeValue = this.route.snapshot.params.extensionCode;
     const memberId = this.route.snapshot.params.memberId;
 
-    if (!memberId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+    if (!memberId || !registryCodeValue || !schemeCodeValue || !extensionCodeValue) {
       throw new Error(`Illegal route, memberId: '${memberId}', registry: '${registryCodeValue}', ` +
-        `scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
+        `scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
 
     this.dataService.getMember(memberId).subscribe(extension => {
@@ -61,13 +61,13 @@ export class MemberComponent implements OnInit, EditingComponent {
       this.locationService.atMemberPage(extension);
     });
 
-    this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
-      this.extensionScheme = extensionScheme;
+    this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
+      this.extension = extension;
     });
   }
 
   get loading(): boolean {
-    return this.member == null || this.extensionScheme == null;
+    return this.member == null || this.extension == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -84,7 +84,7 @@ export class MemberComponent implements OnInit, EditingComponent {
   }
 
   back() {
-    this.router.navigate(this.extensionScheme.route);
+    this.router.navigate(this.extension.route);
   }
 
   isEditing(): boolean {
@@ -101,11 +101,11 @@ export class MemberComponent implements OnInit, EditingComponent {
 
   get canDelete() {
     return this.userService.user.superuser ||
-      (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&
-        (this.extensionScheme.status === 'INCOMPLETE' ||
-          this.extensionScheme.status === 'DRAFT' ||
-          this.extensionScheme.status === 'SUGGESTED' ||
-          this.extensionScheme.status === 'SUBMITTED'));
+      (this.authorizationManager.canDelete(this.extension.parentCodeScheme) &&
+        (this.extension.status === 'INCOMPLETE' ||
+          this.extension.status === 'DRAFT' ||
+          this.extension.status === 'SUGGESTED' ||
+          this.extension.status === 'SUBMITTED'));
   }
 
   get isSuperUser() {
@@ -116,14 +116,14 @@ export class MemberComponent implements OnInit, EditingComponent {
     if (this.isSuperUser) {
       return false;
     }
-    return this.extensionScheme.restricted;
+    return this.extension.restricted;
   }
 
   delete() {
     this.confirmationModalService.openRemoveMember()
       .then(() => {
-        this.dataService.deleteExtension(this.member).subscribe(res => {
-          this.router.navigate(this.member.extensionScheme.route);
+        this.dataService.deleteMember(this.member).subscribe(res => {
+          this.router.navigate(this.member.extension.route);
         }, error => {
           this.errorModalService.openSubmitError(error);
         });
@@ -147,6 +147,6 @@ export class MemberComponent implements OnInit, EditingComponent {
       endDate: validity.end
     });
 
-    return this.dataService.saveExtension(updatedExtension.serialize()).pipe(tap(() => this.ngOnInit()));
+    return this.dataService.saveMember(updatedExtension.serialize()).pipe(tap(() => this.ngOnInit()));
   }
 }

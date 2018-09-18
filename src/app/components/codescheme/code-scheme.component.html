@@ -41,23 +41,23 @@
                     class="dropdown-item"
                     (click)="openVariantSearchModal()"
                     translate>Attach variant to code list</button>
-            <button id="create_extensionscheme_calculationhierarchy_button"
-                    *ngIf="canAddExtensionScheme"
+            <button id="create_extension_calculationhierarchy_button"
+                    *ngIf="canAddExtension"
                     type="button"
                     class="dropdown-item"
-                    (click)="createExtensionScheme('calculationHierarchy')"
+                    (click)="createExtension('calculationHierarchy')"
                     translate>Create calculation hierarchy</button>
-            <button id="create_extensionscheme_definitionhierarchy_button"
-                    *ngIf="canAddExtensionScheme"
+            <button id="create_extension_definitionhierarchy_button"
+                    *ngIf="canAddExtension"
                     type="button"
                     class="dropdown-item"
-                    (click)="createExtensionScheme('definitionHierarchy')"
+                    (click)="createExtension('definitionHierarchy')"
                     translate>Create definition hierarchy</button>
-            <button id="import_extensionschemes_button"
-                    *ngIf="canAddExtensionScheme"
+            <button id="import_extensions_button"
+                    *ngIf="canAddExtension"
                     type="button"
                     class="dropdown-item"
-                    (click)="importExtensionSchemes()"
+                    (click)="importExtensions()"
                     translate>Import extensions</button>
             <button id="delete_codelist_button"
                     *ngIf="canDeleteCodeScheme"
@@ -131,14 +131,14 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="showUnfinishedFeature && extensionSchemes.length > 0" id="codelist_extensionschemes_tab">
+    <ngb-tab *ngIf="showUnfinishedFeature && extensions.length > 0" id="codelist_extensions_tab">
       <ng-template ngbTabTitle>
         <span translate>EXTENSIONS</span>
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-scheme-extensionschemes [codeScheme]="codeScheme"
-                                          [extensionSchemes]="extensionSchemes"></app-code-scheme-extensionschemes>
+        <app-code-scheme-extensions [codeScheme]="codeScheme"
+                                    [extensions]="extensions"></app-code-scheme-extensions>
       </ng-template>
     </ngb-tab>
 

@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
 import { Location } from 'yti-common-ui/types/location';
-import { ExtensionScheme } from '../entities/extension-scheme';
+import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
 import { CodeRegistry } from '../entities/code-registry';
 
@@ -60,8 +60,8 @@ export class LocationService {
     this.changeLocation(code.location);
   }
 
-  atExtensionPage(extensionScheme: ExtensionScheme): void {
-    this.changeLocation(extensionScheme.location);
+  atExtensionPage(extension: Extension): void {
+    this.changeLocation(extension.location);
   }
 
   atMemberPage(member: Member): void {
@@ -85,12 +85,12 @@ export class LocationService {
   }
 
   atExtensionCreatePage(codeScheme: CodeScheme, title: string): void {
-    const createExtensionPage = { localizationKey: title, route: ['createextensionscheme'] };
+    const createExtensionPage = { localizationKey: title, route: ['createextension'] };
     this.changeLocation([...codeScheme.location, createExtensionPage]);
   }
 
-  atMemberCreatePage(extensionScheme: ExtensionScheme): void {
-    this.changeLocation([...extensionScheme.location, createMemberPage]);
+  atMemberCreatePage(extension: Extension): void {
+    this.changeLocation([...extension.location, createMemberPage]);
   }
 
   atInformationAboutService(): void {

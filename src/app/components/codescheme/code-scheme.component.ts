@@ -12,8 +12,8 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
-import { ExtensionScheme } from '../../entities/extension-scheme';
-import { ExtensionSchemesImportModalService } from '../extensionscheme/extension-scheme-import-modal.component';
+import { Extension } from '../../entities/extension';
+import { ExtensionImportModalService } from '../extension/extension-import-modal.component';
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
@@ -34,7 +34,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   codeScheme: CodeScheme;
   codes: CodePlain[];
-  extensionSchemes: ExtensionScheme[];
+  extensions: Extension[];
   env: string;
   chosenVariant: CodeScheme;
   forbiddenVariantSearchResultIds: string[] = [];
@@ -49,7 +49,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
-              private extensionSchemesImportModalService: ExtensionSchemesImportModalService,
+              private extensionsImportModalService: ExtensionImportModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
               private codeschemeVariantModalService: CodeschemeVariantModalService,
@@ -82,8 +82,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.codes = codes;
     });
 
-    this.dataService.getExtensionSchemes(registryCodeValue, schemeCodeValue).subscribe(extensionSchemes => {
-      this.extensionSchemes = extensionSchemes;
+    this.dataService.getExtensions(registryCodeValue, schemeCodeValue).subscribe(extensions => {
+      this.extensions = extensions;
     });
   }
 
@@ -93,16 +93,16 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     });
   }
 
-  refreshExtensionSchemes() {
-    this.dataService.getExtensionSchemes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(extensionSchemes => {
-      this.extensionSchemes = extensionSchemes;
+  refreshExtensions() {
+    this.dataService.getExtensions(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(extensions => {
+      this.extensions = extensions;
     });
   }
 
   get loading(): boolean {
     return this.codeScheme == null ||
       this.codes == null ||
-      this.extensionSchemes == null ||
+      this.extensions == null ||
       this.env == null ||
       this.deleting;
   }
@@ -195,20 +195,20 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.router.navigate(route);
   }
 
-  importExtensionSchemes() {
+  importExtensions() {
 
-    this.extensionSchemesImportModalService.open(this.codeScheme).then(success => {
+    this.extensionsImportModalService.open(this.codeScheme).then(success => {
       if (success) {
-        this.refreshExtensionSchemes();
+        this.refreshExtensions();
       }
     }, ignoreModalClose);
   }
 
-  createExtensionScheme(propertyTypeLocalName: string) {
+  createExtension(propertyTypeLocalName: string) {
 
-    console.log('Create extensionScheme clicked with type: ' + propertyTypeLocalName);
+    console.log('Create extension clicked with type: ' + propertyTypeLocalName);
     this.router.navigate(
-      ['createextensionscheme',
+      ['createextension',
         {
           registryCode: this.codeScheme.codeRegistry.codeValue,
           schemeCode: this.codeScheme.codeValue,
@@ -242,7 +242,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   get showMenu(): boolean {
 
     return this.canDeleteCodeScheme ||
-      this.canAddExtensionScheme ||
+      this.canAddExtension ||
       this.canCreateANewVersionFromCodeScheme ||
       this.canAttachOrDetachAVariant ||
       this.canAddCode;
@@ -252,7 +252,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.authorizationManager.canDeleteCodeScheme(this.codeScheme);
   }
 
-  get canAddExtensionScheme(): boolean {
+  get canAddExtension(): boolean {
     return this.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
   }
 

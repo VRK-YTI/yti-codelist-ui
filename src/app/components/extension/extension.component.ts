@@ -11,24 +11,24 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { flatMap, tap } from 'rxjs/operators';
-import { ExtensionSchemeExtensionsImportModalService } from '../member/member-import-modal.component';
+import { MembersImportModalService } from '../member/member-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
 import { MemberSimple } from '../../entities/member-simple';
 
 @Component({
-  selector: 'app-extension-scheme',
-  templateUrl: './extension-scheme.component.html',
-  styleUrls: ['./extension-scheme.component.scss'],
+  selector: 'app-extension',
+  templateUrl: './extension.component.html',
+  styleUrls: ['./extension.component.scss'],
   providers: [EditableService],
 })
-export class ExtensionSchemeComponent implements OnInit, EditingComponent {
+export class ExtensionComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
-  extensionScheme: ExtensionScheme;
-  extensions: MemberSimple[];
+  extension: Extension;
+  members: MemberSimple[];
   env: string;
 
   constructor(private userService: UserService,
@@ -39,7 +39,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
               public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
-              private extensionSchemeExtensionsImportModalService: ExtensionSchemeExtensionsImportModalService,
+              private extensionMembersImportModalService: MembersImportModalService,
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager) {
 
@@ -54,34 +54,34 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
 
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
-    const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
+    const extensionCodeValue = this.route.snapshot.params.extensionCode;
 
-    if (!registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+    if (!registryCodeValue || !schemeCodeValue || !extensionCodeValue) {
       throw new Error(
-        `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}`);
+        `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}`);
     }
 
-    this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
-      this.extensionScheme = extensionScheme;
-      this.locationService.atExtensionPage(extensionScheme);
+    this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
+      this.extension = extension;
+      this.locationService.atExtensionPage(extension);
     });
 
-    this.dataService.getSimpleMembers(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensions => {
-      this.extensions = extensions;
+    this.dataService.getSimpleMembers(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(members => {
+      this.members = members;
     });
   }
 
   refreshExtensions() {
     this.dataService.getSimpleMembers(
-      this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-      this.extensionScheme.parentCodeScheme.codeValue,
-      this.extensionScheme.codeValue).subscribe(extensions => {
-      this.extensions = extensions;
+      this.extension.parentCodeScheme.codeRegistry.codeValue,
+      this.extension.parentCodeScheme.codeValue,
+      this.extension.codeValue).subscribe(members => {
+      this.members = members;
     });
   }
 
   get loading(): boolean {
-    return this.extensionScheme == null || this.extensions == null;
+    return this.extension == null || this.members == null;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -98,7 +98,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   }
 
   back() {
-    this.router.navigate(this.extensionScheme.parentCodeScheme.route);
+    this.router.navigate(this.extension.parentCodeScheme.route);
   }
 
   isEditing(): boolean {
@@ -106,10 +106,10 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   }
 
   delete() {
-    this.confirmationModalService.openRemoveExtensionScheme()
+    this.confirmationModalService.openRemoveExtension()
       .then(() => {
-        this.dataService.deleteExtensionScheme(this.extensionScheme).subscribe(res => {
-          this.router.navigate(this.extensionScheme.parentCodeScheme.route);
+        this.dataService.deleteExtension(this.extension).subscribe(res => {
+          this.router.navigate(this.extension.parentCodeScheme.route);
         }, error => {
           this.errorModalService.openSubmitError(error);
         });
@@ -117,7 +117,7 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   }
 
   importMembers() {
-    this.extensionSchemeExtensionsImportModalService.open(this.extensionScheme).then(success => {
+    this.extensionMembersImportModalService.open(this.extension).then(success => {
       if (success) {
         this.refreshExtensions();
       }
@@ -129,9 +129,9 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
     this.router.navigate(
       ['createmember',
         {
-          registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-          schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
-          extensionSchemeCode: this.extensionScheme.codeValue
+          registryCode: this.extension.parentCodeScheme.codeRegistry.codeValue,
+          schemeCode: this.extension.parentCodeScheme.codeValue,
+          extensionCode: this.extension.codeValue
         }
       ]
     );
@@ -143,15 +143,15 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
 
   get canDelete() {
     return this.userService.user.superuser ||
-      (this.authorizationManager.canDelete(this.extensionScheme.parentCodeScheme) &&
-        (this.extensionScheme.parentCodeScheme.status === 'INCOMPLETE' ||
-          this.extensionScheme.parentCodeScheme.status === 'DRAFT' ||
-          this.extensionScheme.parentCodeScheme.status === 'SUGGESTED' ||
-          this.extensionScheme.parentCodeScheme.status === 'SUBMITTED'));
+      (this.authorizationManager.canDelete(this.extension.parentCodeScheme) &&
+        (this.extension.parentCodeScheme.status === 'INCOMPLETE' ||
+          this.extension.parentCodeScheme.status === 'DRAFT' ||
+          this.extension.parentCodeScheme.status === 'SUGGESTED' ||
+          this.extension.parentCodeScheme.status === 'SUBMITTED'));
   }
 
   get canAddExtension(): boolean {
-    return this.authorizationManager.canEdit(this.extensionScheme.parentCodeScheme) && !this.extensionScheme.restricted;
+    return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted;
   }
 
   get isSuperUser() {
@@ -169,20 +169,20 @@ export class ExtensionSchemeComponent implements OnInit, EditingComponent {
   save(formData: any): Observable<any> {
     
     const {validity, ...rest} = formData;
-    const updateExtensionScheme = this.extensionScheme.clone();
+    const updatedExtension = this.extension.clone();
 
-    Object.assign(updateExtensionScheme, {
+    Object.assign(updatedExtension, {
       ...rest,
       startDate: validity.start,
       endDate: validity.end
     });
 
     const save = () => {
-      console.log('Store ExtensionScheme changes to server!');
-      return this.dataService.saveExtensionScheme(updateExtensionScheme.serialize()).pipe(tap(() => this.ngOnInit()));
+      console.log('Store Extension changes to server!');
+      return this.dataService.saveExtension(updatedExtension.serialize()).pipe(tap(() => this.ngOnInit()));
     };
 
-    if (changeToRestrictedStatus(this.extensionScheme, formData.status)) {
+    if (changeToRestrictedStatus(this.extension, formData.status)) {
       return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(flatMap(save));
     } else {
       return save();

@@ -4,19 +4,19 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'extensionscheme_back_button'" (back)="back()"></app-back-button>
+  <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
 
-  <h1 class="text-content-wrap">{{extensionScheme.getDisplayName(languageService)}}</h1>
+  <h1 class="text-content-wrap">{{extension.getDisplayName(languageService)}}</h1>
 
   <div class="row">
     <div class="col-12">
-      <app-status class="float-left" [status]="extensionScheme.status"></app-status>
+      <app-status class="float-left" [status]="extension.status"></app-status>
 
       <div class="float-right">
 
         <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="extensionSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
-          <div ngbDropdownMenu aria-labelledby="extensionSchemeDropdown">
+          <button class="btn btn-action" id="extensionDropdown" ngbDropdownToggle translate>Choose action</button>
+          <div ngbDropdownMenu aria-labelledby="extensionDropdown">
             <button id="create_extension_button"
                     *ngIf="canAddExtension"
                     type="button"
@@ -28,7 +28,7 @@
                     class="dropdown-item"
                     (click)="importMembers()"
                     translate>Import members</button>
-            <button id="delete_extensionscheme_button"
+            <button id="delete_extension_button"
                     *ngIf="canDelete"
                     type="button"
                     class="dropdown-item"
@@ -40,14 +40,14 @@
         <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
           <div ngbDropdownMenu aria-labelledby="exportDropdown">
-            <a id="codelist_export_excel_link" href='{{extensionScheme.url}}/?format=excel' target="_blank"
+            <a id="codelist_export_excel_link" href="{{extension.url}}/?format=excel" target="_blank"
                class="dropdown-item" translate>Export Excel</a>
-            <a id="codelist_export_csv_link" href='{{extensionScheme.url}}/extensions/?format=csv' target="_blank"
+            <a id="codelist_export_csv_link" href="{{extension.url}}/extensions/?format=csv" target="_blank"
                class="dropdown-item" translate>Export CSV</a>
           </div>
         </div>
 
-        <app-content-language [languageCodes]="extensionScheme.parentCodeScheme.languageCodes"></app-content-language>
+        <app-content-language [languageCodes]="extension.parentCodeScheme.languageCodes"></app-content-language>
       </div>
     </div>
   </div>
@@ -55,33 +55,33 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(extensionScheme.parentCodeScheme.codeRegistry.route)">{{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(extension.parentCodeScheme.codeRegistry.route)">{{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span  translate>Codescheme</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span  translate>Codescheme</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
     </div>
   </div>
 
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="extensionscheme_extensions_tabs">
+    <ngb-tab id="extension_extensions_tabs">
       <ng-template ngbTabTitle>
         <span translate>MEMBERS</span>
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-extension-scheme-members [members]="extensions"
-                                      [extensionScheme]="extensionScheme"></app-extension-scheme-members>
+        <app-extension-members [members]="members"
+                               [extension]="extension"></app-extension-members>
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab id="extensionscheme_info_tab">
+    <ngb-tab id="extension_info_tab">
       <ng-template ngbTabTitle>
         <span translate>INFORMATION</span>
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-extension-scheme-information [extensionScheme]="extensionScheme"></app-extension-scheme-information>
+        <app-extension-information [extension]="extension"></app-extension-information>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

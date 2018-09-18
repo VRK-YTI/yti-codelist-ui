@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'extensionscheme_create_back_button'" (back)="back()"></app-back-button>
+  <app-back-button [id]="'extension_create_back_button'" (back)="back()"></app-back-button>
 
   <div class="row">
     <div class="col-12">
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <form [formGroup]="extensionSchemeForm" #form="ngForm">
+  <form [formGroup]="extensionForm" #form="ngForm">
 
     <div class="row">
       <div class="col-12">
@@ -23,17 +23,17 @@
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-literal-input [id]="'extensionscheme_codevalue_input'"
+        <app-literal-input [id]="'extension_codevalue_input'"
                            [label]="'LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID' | translate"
                            [required]="true"
                            [infoText]="'INFO_TEXT_CREATE_EXTENSION_SCHEME_ID'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
-            <app-error-messages id="extensionscheme_form_error_messages" [control]="extensionSchemeForm"></app-error-messages>
+            <app-error-messages id="extension_form_error_messages" [control]="extensionForm"></app-error-messages>
         </div>
 
-        <app-localizable-input [id]="'extensionscheme_name_input'"
+        <app-localizable-input [id]="'extension_name_input'"
                                [label]="'Extension name' | translate"
                                [infoText]="'INFO_TEXT_EXTENSION_SCHEME_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
@@ -47,11 +47,11 @@
                                [parentCodeScheme]="codeScheme"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>
 
-        <app-status-input id="extensionscheme_status_input"
+        <app-status-input id="extension_status_input"
                           [infoText]="'INFO_TEXT_EXTENSION_SCHEME_STATUS'"
                           [formControlName]="'status'"></app-status-input>
 
-        <app-date-range-input id="extensionscheme_validity_input"
+        <app-date-range-input id="extension_validity_input"
                               [label]="'Validity' | translate"
                               [infoText]="'INFO_TEXT_EXTENSION_SCHEME_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>

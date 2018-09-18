@@ -7,7 +7,7 @@ import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Member } from '../../entities/member';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { LocationService } from '../../services/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
@@ -22,7 +22,7 @@ import { Code } from '../../entities/code';
 export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() currentMember: Member;
-  extensionScheme: ExtensionScheme;
+  extension: Extension;
 
   cancelSubscription: Subscription;
 
@@ -50,12 +50,12 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
-    const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
+    const extensionCodeValue = this.route.snapshot.params.extensionCode;
     const memberId = this.route.snapshot.params.memberId;
 
-    if (!memberId || !registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+    if (!memberId || !registryCodeValue || !schemeCodeValue || !extensionCodeValue) {
       throw new Error(`Illegal route, memberId: '${memberId}', registry: '${registryCodeValue}', ` +
-        `scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
+        `scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
 
     this.dataService.getMember(memberId).subscribe(extension => {
@@ -63,8 +63,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
       this.locationService.atMemberPage(extension);
     });
 
-    this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
-      this.extensionScheme = extensionScheme;
+    this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
+      this.extension = extension;
     });
   }
 
@@ -93,7 +93,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     if (this.isSuperUser) {
       return false;
     }
-    return this.currentMember.extensionScheme.restricted;
+    return this.currentMember.extension.restricted;
   }
 
   ngOnDestroy() {
@@ -101,7 +101,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   get loading(): boolean {
-    return this.extensionScheme == null || this.currentMember == null;
+    return this.extension == null || this.currentMember == null;
   }
 
   canSave() {
@@ -109,17 +109,17 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   get requireMemberValue(): boolean {
-    return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
+    return this.extension.propertyType.localName === 'calculationHierarchy';
   }
 
   get allCodeSchemes(): CodeScheme[] {
-    return [ this.extensionScheme.parentCodeScheme, ...this.extensionScheme.codeSchemes ];
+    return [ this.extension.parentCodeScheme, ...this.extension.codeSchemes ];
   }
 
   get showCodeDetailLabel(): boolean {
     const currentCode: Code = this.memberForm.controls['code'].value;
     if (currentCode) {
-      return currentCode.codeScheme.id !== this.extensionScheme.parentCodeScheme.id;
+      return currentCode.codeScheme.id !== this.extension.parentCodeScheme.id;
     } else {
       return false;
     }

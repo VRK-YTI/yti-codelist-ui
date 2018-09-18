@@ -3,52 +3,52 @@
 </div>
 
 <div *ngIf="!loading">
-  <form [formGroup]="extensionSchemeForm" #form="ngForm">
+  <form [formGroup]="extensionForm" #form="ngForm">
 
     <div class="row">
       <div class="col-12">
         <app-editable-buttons [form]="form"
-                              [entity]="extensionScheme"></app-editable-buttons>
+                              [entity]="extension"></app-editable-buttons>
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-8 col-md-10">
-        <app-literal *ngIf="this.extensionScheme.parentCodeScheme"
+        <app-literal *ngIf="this.extension.parentCodeScheme"
                      [label]="'Code list' | translate"
-                     [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"
+                     [value]="extension.parentCodeScheme.getDisplayName(languageService)"
                      [infoText]="'INFO_TEXT_EXTENSION_SCHEME_CODE_LIST'"></app-literal>
 
         <app-literal [label]="'LABEL_TEXT_EXTENSION_SCHEME_ID' | translate"
-                     [value]="extensionScheme.codeValue"
+                     [value]="extension.codeValue"
                      [infoText]="'INFO_TEXT_EXTENSION_SCHEME_ID'"></app-literal>
 
-        <app-localizable-input [id]="'extensionscheme_name_input'"
+        <app-localizable-input [id]="'extension_name_input'"
                                [label]="'Extension name' | translate"
                                [infoText]="'INFO_TEXT_EXTENSION_SCHEME_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal [label]="'Extension type' | translate"
-                     [value]="extensionScheme.propertyType.prefLabel | translateValue:false"
+                     [value]="extension.propertyType.prefLabel | translateValue:false"
                      [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"></app-literal>
 
         <app-code-scheme-input id="extension_code_scheme_input"
                                [label]="'Code list' | translate"
-                               [parentCodeScheme]="extensionScheme.parentCodeScheme"
+                               [parentCodeScheme]="extension.parentCodeScheme"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>
 
-        <app-status-input id="extensionscheme_status_input"
+        <app-status-input id="extension_status_input"
                           [formControlName]="'status'"
                           [restrict]="restricted"
                           [infoText]="'INFO_TEXT_EXTENSION_SCHEME_STATUS'"></app-status-input>
 
-        <app-date-range-input id="extensionscheme_validity_input"
+        <app-date-range-input id="extension_validity_input"
                               [label]="'Validity' | translate"
                               [infoText]="'INFO_TEXT_EXTENSION_SCHEME_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
         <app-literal [label]="'Last modification' | translate"
-                     [value]="extensionScheme.modifiedDisplayValue"
+                     [value]="extension.modifiedDisplayValue"
                      [infoText]="'INFO_TEXT_EXTENSION_SCHEME_LAST_MODIFICATION'"></app-literal>
       </div>
     </div>

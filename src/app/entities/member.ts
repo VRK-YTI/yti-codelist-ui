@@ -5,7 +5,7 @@ import { EditableEntity } from './editable-entity';
 import { Moment } from 'moment';
 import { MemberType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
-import { ExtensionScheme } from './extension-scheme';
+import { Extension } from './extension';
 import { MemberSimple } from './member-simple';
 import { TranslateService } from '@ngx-translate/core';
 import { Code } from './code';
@@ -17,7 +17,7 @@ export class Member implements EditableEntity {
   memberValue: string;
   order?: string;
   modified: Moment | null = null;
-  extensionScheme: ExtensionScheme;
+  extension: Extension;
   broaderMember?: MemberSimple;
   code: Code;
   prefLabel: Localizable;
@@ -33,7 +33,7 @@ export class Member implements EditableEntity {
       this.modified = parseDateTime(data.modified);
     }
     this.prefLabel = data.prefLabel || {};
-    this.extensionScheme = new ExtensionScheme(data.extensionScheme);
+    this.extension = new Extension(data.extension);
     if (data.broaderMember) {
       this.broaderMember = new MemberSimple(data.broaderMember);
     }
@@ -56,9 +56,9 @@ export class Member implements EditableEntity {
     return [
       'member',
       {
-        registryCode: this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-        schemeCode: this.extensionScheme.parentCodeScheme.codeValue,
-        extensionSchemeCode: this.extensionScheme.codeValue,
+        registryCode: this.extension.parentCodeScheme.codeRegistry.codeValue,
+        schemeCode: this.extension.parentCodeScheme.codeValue,
+        extensionCode: this.extension.codeValue,
         memberId: this.id
       }
     ];
@@ -66,7 +66,7 @@ export class Member implements EditableEntity {
 
   get location(): Location[] {
     return [
-      ...this.extensionScheme.location,
+      ...this.extension.location,
       {
         localizationKey: 'Member',
         label: this.prefLabel,
@@ -76,7 +76,7 @@ export class Member implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.extensionScheme.parentCodeScheme.organizations.map(org => org.id);
+    return this.extension.parentCodeScheme.organizations.map(org => org.id);
   }
 
   allowOrganizationEdit(): boolean {
@@ -91,7 +91,7 @@ export class Member implements EditableEntity {
       memberValue: this.memberValue,
       modified: formatDateTime(this.modified),
       order: this.order,
-      extensionScheme: this.extensionScheme.serialize(),
+      extension: this.extension.serialize(),
       broaderMember: this.broaderMember ? this.broaderMember.serialize() : undefined,
       code: this.code.serialize(),
       startDate: formatDate(this.startDate),
@@ -106,7 +106,7 @@ export class Member implements EditableEntity {
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
-    if (this.code.codeScheme.id !== this.extensionScheme.parentCodeScheme.id) {
+    if (this.code.codeScheme.id !== this.extension.parentCodeScheme.id) {
       const codeSchemeTitle = localizer.translate(this.code.codeScheme.prefLabel, useUILanguage);
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
@@ -124,17 +124,17 @@ export class Member implements EditableEntity {
     }
   }
 
-  getDisplayNameWithExtensionScheme(extensionScheme: ExtensionScheme,
-                                    localizer: Localizer,
-                                    translater: TranslateService,
-                                    useUILanguage: boolean = false): string {
+  getDisplayNameWithExtension(extension: Extension,
+                              localizer: Localizer,
+                              translater: TranslateService,
+                              useUILanguage: boolean = false): string {
     const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
 
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
-    if (this.code.codeScheme.id !== extensionScheme.parentCodeScheme.id) {
+    if (this.code.codeScheme.id !== extension.parentCodeScheme.id) {
       const codeSchemeTitle = localizer.translate(this.code.codeScheme.prefLabel, useUILanguage);
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }

@@ -15,10 +15,10 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <app-literal [label]="'Code list' | translate"
-                     [value]="extensionScheme.parentCodeScheme.getDisplayName(languageService)"></app-literal>
+                     [value]="extension.parentCodeScheme.getDisplayName(languageService)"></app-literal>
 
         <app-literal [label]="'Member' | translate"
-                     [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
+                     [value]="extension.getDisplayName(languageService)"></app-literal>
 
         <app-localizable-input [id]="'member_name_input'"
                                [label]="'Member name' | translate"
@@ -39,7 +39,7 @@
 
         <app-member-input id="member_broadermember_input"
                              [label]="'Broader member' | translate"
-                             [extensionScheme]="currentMember.extensionScheme"
+                          [extension]="currentMember.extension"
                              [currentMember]="currentMember"
                              [formControlName]="'broaderMember'"></app-member-input>
 

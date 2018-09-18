@@ -7,22 +7,22 @@ import { validDateRange } from '../../utils/date';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
-  selector: 'app-extension-scheme-information',
-  templateUrl: './extension-scheme-information.component.html',
-  styleUrls: ['./extension-scheme-information.component.scss']
+  selector: 'app-extension-information',
+  templateUrl: './extension-information.component.html',
+  styleUrls: ['./extension-information.component.scss']
 })
-export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
+export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnInit {
 
-  @Input() extensionScheme: ExtensionScheme;
+  @Input() extension: Extension;
 
   codeSchemes: CodeScheme[];
 
-  extensionSchemeForm = new FormGroup({
+  extensionForm = new FormGroup({
     prefLabel: new FormControl({}),
     codeSchemes: new FormControl([]),
     validity: new FormControl(null, validDateRange),
@@ -42,19 +42,19 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
   }
 
   ngOnInit() {
-    if (!this.extensionScheme) {
+    if (!this.extension) {
       const registryCodeValue = this.route.snapshot.params.registryCode;
       const schemeCodeValue = this.route.snapshot.params.schemeCode;
-      const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
+      const extensionCodeValue = this.route.snapshot.params.extensionCode;
 
-      if (!registryCodeValue || !schemeCodeValue || !extensionSchemeCodeValue) {
+      if (!registryCodeValue || !schemeCodeValue || !extensionCodeValue) {
         throw new Error(
-          `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}`);
+          `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}`);
       }
 
-      this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
-        this.extensionScheme = extensionScheme;
-        this.locationService.atExtensionPage(extensionScheme);
+      this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
+        this.extension = extension;
+        this.locationService.atExtensionPage(extension);
       });
     }
   }
@@ -64,9 +64,9 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
   }
 
   private reset() {
-    const { startDate, endDate, ...rest } = this.extensionScheme;
+    const { startDate, endDate, ...rest } = this.extension;
 
-    this.extensionSchemeForm.reset({
+    this.extensionForm.reset({
       ...rest,
       validity: { start: startDate, end: endDate }
     });
@@ -88,10 +88,10 @@ export class ExtensionSchemeInformationComponent implements OnChanges, OnDestroy
     if (this.isSuperUser) {
       return false;
     }
-    return this.extensionScheme.restricted;
+    return this.extension.restricted;
   }
 
   get loading(): boolean {
-    return this.extensionScheme == null;
+    return this.extension == null;
   }
 }

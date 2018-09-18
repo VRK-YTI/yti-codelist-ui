@@ -43,7 +43,7 @@ export interface CodeSchemeType extends BaseResourceType {
   dataClassifications: CodePlainType[];
   languageCodes: CodePlainType[];
   externalReferences?: ExternalReferenceType[];
-  extensionSchemes?: ExtensionSchemeSimpleType[];
+  extensions?: ExtensionSimpleType[];
   conceptUriInVocabularies: string;
   defaultCode?: CodePlainType;
   variantsOfThisCodeScheme?: CodeSchemeListItemType[];
@@ -139,7 +139,7 @@ export interface OrganizationType {
   url: string;
 }
 
-export interface ExtensionSchemeType {
+export interface ExtensionType {
 
   id: string;
   url: string;
@@ -155,7 +155,7 @@ export interface ExtensionSchemeType {
   description?: Localizable;
 }
 
-export interface ExtensionSchemeSimpleType {
+export interface ExtensionSimpleType {
 
   id: string;
   url: string;
@@ -177,7 +177,7 @@ export interface MemberType {
   prefLabel?: Localizable;
   order?: string;
   modified?: string;
-  extensionScheme: ExtensionSchemeType;
+  extension: ExtensionType;
   broaderMember?: MemberSimpleType;
   code: CodeType;
   startDate?: string;

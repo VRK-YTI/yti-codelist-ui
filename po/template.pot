@@ -58,15 +58,6 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid "Select member"
-msgstr ""
-
-msgid "Choose member"
-msgstr ""
-
-msgid "Search member"
-msgstr ""
-
 msgid "Add link"
 msgstr ""
 
@@ -77,6 +68,15 @@ msgid "Choose language code"
 msgstr ""
 
 msgid "Search language code"
+msgstr ""
+
+msgid "Select member"
+msgstr ""
+
+msgid "Choose member"
+msgstr ""
+
+msgid "Search member"
 msgstr ""
 
 msgid "Add organization"
@@ -272,7 +272,7 @@ msgstr ""
 msgid "Create definition hierarchy"
 msgstr ""
 
-msgid "Import members"
+msgid "Import extensions"
 msgstr ""
 
 msgid "Delete code list"
@@ -359,6 +359,9 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
+msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
+msgstr ""
+
 msgid "Search for member"
 msgstr ""
 
@@ -371,10 +374,7 @@ msgstr ""
 msgid "Search did not find any members."
 msgstr ""
 
-msgid "This member does not have any members yet."
-msgstr ""
-
-msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
+msgid "This extension does not have any members yet."
 msgstr ""
 
 msgid "Create member"
@@ -383,7 +383,7 @@ msgstr ""
 msgid "Import members"
 msgstr ""
 
-msgid "Delete member"
+msgid "Delete extension"
 msgstr ""
 
 msgid "Codescheme"
@@ -1027,7 +1027,7 @@ msgstr ""
 msgid "codeValueExists"
 msgstr ""
 
-msgid "extensionSchemeCodeValueExists"
+msgid "extensionCodeValueExists"
 msgstr ""
 
 msgid "codeValueValidationError"

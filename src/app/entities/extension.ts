@@ -4,7 +4,7 @@ import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDate
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { ExtensionSchemeType } from '../services/api-schema';
+import { ExtensionType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodeScheme } from './code-scheme';
 import { PropertyType } from './property-type';
@@ -12,7 +12,7 @@ import { contains, groupBy, index } from 'yti-common-ui/utils/array';
 import { requireDefined } from 'yti-common-ui/utils/object';
 import { TranslateService } from '@ngx-translate/core';
 
-export class ExtensionScheme implements EditableEntity {
+export class Extension implements EditableEntity {
 
   id: string;
   url: string;
@@ -26,7 +26,7 @@ export class ExtensionScheme implements EditableEntity {
   prefLabel: Localizable;
   modified: Moment | null = null;
 
-  constructor(data: ExtensionSchemeType) {
+  constructor(data: ExtensionType) {
     this.id = data.id;
     this.codeValue = data.codeValue;
     this.url = data.url;
@@ -54,11 +54,11 @@ export class ExtensionScheme implements EditableEntity {
 
   get route(): any[] {
     return [
-      'extensionscheme',
+      'extension',
       {
         registryCode: this.parentCodeScheme.codeRegistry.codeValue,
         schemeCode: this.parentCodeScheme.codeValue,
-        extensionSchemeCode: this.codeValue
+        extensionCode: this.codeValue
       }
     ];
   }
@@ -86,7 +86,7 @@ export class ExtensionScheme implements EditableEntity {
     return contains(restrictedStatuses, this.status);
   }
 
-  serialize(): ExtensionSchemeType {
+  serialize(): ExtensionType {
     console.log('codeSchemes: ' + this.codeSchemes);
     return {
       id: this.id,
@@ -112,24 +112,24 @@ export class ExtensionScheme implements EditableEntity {
     return hasLocalization(this.prefLabel);
   }
 
-  clone(): ExtensionScheme {
-    return new ExtensionScheme(this.serialize());
+  clone(): Extension {
+    return new Extension(this.serialize());
   }
 }
 
-export interface PropertyTypeExtensionSchemes {
+export interface PropertyTypeExtensions {
   label: string;
-  extensionSchemes: ExtensionScheme[];
+  extensions: Extension[];
 }
 
-export function groupByType(translateService: TranslateService, extSchemes: ExtensionScheme[]): PropertyTypeExtensionSchemes[] {
+export function groupByType(translateService: TranslateService, exts: Extension[]): PropertyTypeExtensions[] {
 
-  const propertyTypes: PropertyType[] = extSchemes.map(es => requireDefined(es.propertyType));
+  const propertyTypes: PropertyType[] = exts.map(es => requireDefined(es.propertyType));
   const propertyTypesByName = index(propertyTypes, pt => pt.localName);
   const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
 
-  return Array.from(groupBy(extSchemes, es => mapNormalizedType(requireDefined(es.propertyType))))
-    .map(([propertyType, extensionSchemes]) => ({ label: mapLocalNameToLabel(translateService, propertyType), extensionSchemes }));
+  return Array.from(groupBy(exts, es => mapNormalizedType(requireDefined(es.propertyType))))
+    .map(([propertyType, extensions]) => ({ label: mapLocalNameToLabel(translateService, propertyType), extensions: extensions }));
 }
 
 export function mapLocalNameToLabel(translateService: TranslateService, propertyType: PropertyType): string {

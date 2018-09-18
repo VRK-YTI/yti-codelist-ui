@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberSimple } from '../../entities/member-simple';
@@ -26,7 +26,7 @@ import { MemberSimple } from '../../entities/member-simple';
                               [member]="member"
                               [codeRegistryCodeValue]="codeRegistryCodeValue"
                               [codeSchemeCodeValue]="codeSchemeCodeValue"
-                              [extensionSchemeCodeValue]="extensionSchemeCodeValue"
+                              [extensionCodeValue]="extensionCodeValue"
                               [ignoreHierarchy]="ignoreHierarchy"></app-hierarchy-member>
       </li>
     </ul>
@@ -39,7 +39,7 @@ export class HierarchyMemberComponent {
   @Input() member: MemberSimple;
   @Input() codeRegistryCodeValue: string;
   @Input() codeSchemeCodeValue: string;
-  @Input() extensionSchemeCodeValue: string;
+  @Input() extensionCodeValue: string;
   @Input() ignoreHierarchy: boolean;
 
   constructor(private router: Router,
@@ -78,7 +78,7 @@ export class HierarchyMemberComponent {
       {
         registryCode: this.codeRegistryCodeValue,
         schemeCode: this.codeSchemeCodeValue,
-        extensionSchemeCode: this.extensionSchemeCodeValue,
+        extensionCode: this.extensionCodeValue,
         memberId: this.member.id
       }
     ]);

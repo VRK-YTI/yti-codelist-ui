@@ -4,7 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 import { MemberType } from '../../services/api-schema';
 import { LanguageService } from '../../services/language.service';
 import { LocationService } from '../../services/location.service';
@@ -21,7 +21,7 @@ import { Code } from '../../entities/code';
 })
 export class MemberCreateComponent implements OnInit {
 
-  extensionScheme: ExtensionScheme;
+  extension: Extension;
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -47,21 +47,21 @@ export class MemberCreateComponent implements OnInit {
     console.log('MemberCreateComponent onInit');
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
-    const extensionSchemeCodeValue = this.route.snapshot.params.extensionSchemeCode;
+    const extensionCodeValue = this.route.snapshot.params.extensionCode;
 
     if (!registryCodeValue || !schemeCodeValue) {
       throw new Error(
-        `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extensionScheme: '${extensionSchemeCodeValue}'`);
+        `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
 
-    this.dataService.getExtensionScheme(registryCodeValue, schemeCodeValue, extensionSchemeCodeValue).subscribe(extensionScheme => {
-      this.extensionScheme = extensionScheme;
-      this.locationService.atMemberCreatePage(this.extensionScheme);
+    this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
+      this.extension = extension;
+      this.locationService.atMemberCreatePage(this.extension);
     });
   }
 
   back() {
-    this.router.navigate(this.extensionScheme.route);
+    this.router.navigate(this.extension.route);
   }
 
   save(formData: any): Observable<any> {
@@ -79,9 +79,9 @@ export class MemberCreateComponent implements OnInit {
     };
 
     return this.dataService.createMember(member,
-      this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-      this.extensionScheme.parentCodeScheme.codeValue,
-      this.extensionScheme.codeValue)
+      this.extension.parentCodeScheme.codeRegistry.codeValue,
+      this.extension.parentCodeScheme.codeValue,
+      this.extension.codeValue)
       .pipe(tap(createdMember => {
         console.log('Saved new Member');
         this.router.navigate(createdMember.route);
@@ -89,7 +89,7 @@ export class MemberCreateComponent implements OnInit {
   }
 
   get loading(): boolean {
-    return this.extensionScheme == null;
+    return this.extension == null;
   }
 
   canSave() {
@@ -97,17 +97,17 @@ export class MemberCreateComponent implements OnInit {
   }
 
   get requireMemberValue(): boolean {
-    return this.extensionScheme.propertyType.localName === 'calculationHierarchy';
+    return this.extension.propertyType.localName === 'calculationHierarchy';
   }
 
   get allCodeSchemes(): CodeScheme[] {
-    return [ this.extensionScheme.parentCodeScheme, ...this.extensionScheme.codeSchemes ];
+    return [ this.extension.parentCodeScheme, ...this.extension.codeSchemes ];
   }
 
   get showCodeDetailLabel(): boolean {
     const currentCode: Code = this.memberForm.controls['code'].value;
     if (currentCode) {
-      return currentCode.codeScheme.id !== this.extensionScheme.parentCodeScheme.id;
+      return currentCode.codeScheme.id !== this.extension.parentCodeScheme.id;
     } else {
       return false;
     }

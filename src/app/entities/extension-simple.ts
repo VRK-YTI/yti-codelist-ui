@@ -3,12 +3,12 @@ import { Location } from 'yti-common-ui/types/location';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { ExtensionSchemeSimpleType } from '../services/api-schema';
+import { ExtensionSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { PropertyType } from './property-type';
 import { contains } from 'yti-common-ui/utils/array';
 
-export class ExtensionSchemeSimple {
+export class ExtensionSimple {
 
   id: string;
   url: string;
@@ -20,7 +20,7 @@ export class ExtensionSchemeSimple {
   prefLabel: Localizable;
   modified: Moment|null = null;
 
-  constructor(data: ExtensionSchemeSimpleType) {
+  constructor(data: ExtensionSimpleType) {
     this.id = data.id;
     this.codeValue = data.codeValue;
     this.url = data.url;
@@ -43,9 +43,9 @@ export class ExtensionSchemeSimple {
 
   get route(): any[] {
     return [
-      'extensionscheme',
+      'extension',
       {
-        extensionSchemeCode: this.codeValue
+        extensionCode: this.codeValue
       }
     ];
   }
@@ -63,7 +63,7 @@ export class ExtensionSchemeSimple {
     return contains(restrictedStatuses, this.status);
   }
 
-  serialize(): ExtensionSchemeSimpleType {
+  serialize(): ExtensionSimpleType {
     return {
       id: this.id,
       url: this.url,
@@ -86,7 +86,7 @@ export class ExtensionSchemeSimple {
     return hasLocalization(this.prefLabel);
   }
 
-  clone(): ExtensionSchemeSimple {
-    return new ExtensionSchemeSimple(this.serialize());
+  clone(): ExtensionSimple {
+    return new ExtensionSimple(this.serialize());
   }
 }

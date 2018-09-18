@@ -5,7 +5,7 @@ import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import { ExtensionScheme } from '../../entities/extension-scheme';
+import { Extension } from '../../entities/extension';
 
 @Component({
   selector: 'app-member-import-modal',
@@ -14,7 +14,7 @@ import { ExtensionScheme } from '../../entities/extension-scheme';
 })
 export class MembersImportModalComponent {
 
-  @Input() extensionScheme: ExtensionScheme;
+  @Input() extension: Extension;
   file?: File;
   format = 'Excel';
   uploading = false;
@@ -52,14 +52,14 @@ export class MembersImportModalComponent {
     if (!this.file) {
       throw new Error('File must be set');
     }
-    console.log('uploadExtensionSchemesFile');
+    console.log('uploadExtensionsFile');
     if (this.file !== undefined) {
       this.uploading = true;
 
-      this.dataService.uploadExtensions(
-        this.extensionScheme.parentCodeScheme.codeRegistry.codeValue,
-        this.extensionScheme.parentCodeScheme.codeValue,
-        this.extensionScheme.codeValue,
+      this.dataService.uploadMembers(
+        this.extension.parentCodeScheme.codeRegistry.codeValue,
+        this.extension.parentCodeScheme.codeValue,
+        this.extension.codeValue,
         this.file,
         this.format)
         .subscribe(codes => {
@@ -73,15 +73,15 @@ export class MembersImportModalComponent {
 }
 
 @Injectable()
-export class ExtensionSchemeExtensionsImportModalService {
+export class MembersImportModalService {
 
   constructor(private modalService: ModalService) {
   }
 
-  public open(extensionScheme: ExtensionScheme): Promise<boolean> {
+  public open(extension: Extension): Promise<boolean> {
     const modalRef = this.modalService.open(MembersImportModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as MembersImportModalComponent;
-    instance.extensionScheme = extensionScheme;
+    instance.extension = extension;
     return modalRef.result;
   }
 }

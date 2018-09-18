@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-12">
       <h1 class="float-left" translate>Create member</h1>
-      <app-content-language [languageCodes]="extensionScheme.parentCodeScheme.languageCodes"></app-content-language>
+      <app-content-language [languageCodes]="extension.parentCodeScheme.languageCodes"></app-content-language>
     </div>
   </div>
 
@@ -18,21 +18,21 @@
     <div class="row">
       <div class="col-12">
         <app-editable-buttons [form]="form"
-                              [entity]="extensionScheme"></app-editable-buttons>
+                              [entity]="extension"></app-editable-buttons>
       </div>
     </div>
 
     <div class="row metabar">
       <div class="col-12">
         <div class="metaitem">
-          <span translate>Registry</span><span>: {{extensionScheme.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+          <span translate>Registry</span><span>: {{extension.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
         </div>
         <div class="metaitem">
-          <span translate>Code list</span><span>: {{extensionScheme.parentCodeScheme.getDisplayName(languageService)}}</span>
+          <span translate>Code list</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
         </div>
-        <div class="metaitem" *ngIf="extensionScheme.parentCodeScheme.organizations.length > 0">
+        <div class="metaitem" *ngIf="extension.parentCodeScheme.organizations.length > 0">
           <span translate>Organization</span><span>: </span>
-          <span *ngFor="let organization of extensionScheme.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+          <span *ngFor="let organization of extension.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
       <div class="col-lg-8 col-md-10">
         <div class="form-group">
           <app-literal [label]="'Member' | translate"
-                       [value]="extensionScheme.getDisplayName(languageService)"></app-literal>
+                       [value]="extension.getDisplayName(languageService)"></app-literal>
 
           <app-error-messages id="extension_form_error_messages" [control]="memberForm"></app-error-messages>
 
@@ -64,7 +64,7 @@
 
           <app-member-input id="member_broadermember_input"
                                [label]="'Broader member' | translate"
-                               [extensionScheme]="extensionScheme"
+                            [extension]="extension"
                                [formControlName]="'broaderMember'"></app-member-input>
 
           <app-date-range-input id="member_validity_input"
