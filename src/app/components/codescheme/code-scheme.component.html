@@ -17,18 +17,6 @@
         <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="codeSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
           <div ngbDropdownMenu aria-labelledby="codeSchemeDropdown">
-            <button id="clone_codelist_button"
-                    *ngIf="canCreateANewVersionFromCodeScheme"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createANewVersionFromThisCodeScheme()"
-                    translate>Create a new version</button>
-            <button id="attach_variant_button"
-                    *ngIf="canAttachOrDetachAVariant"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="openVariantSearchModal()"
-                    translate>Attach variant to code list</button>
             <button id="create_code_button"
                     *ngIf="canAddCode"
                     type="button"
@@ -41,6 +29,18 @@
                     class="dropdown-item"
                     (click)="importCodes()"
                     translate>Import codes</button>
+            <button id="clone_codelist_button"
+                    *ngIf="canCreateANewVersionFromCodeScheme"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createANewVersionFromThisCodeScheme()"
+                    translate>Create a new version</button>
+            <button id="attach_variant_button"
+                    *ngIf="canAttachOrDetachAVariant"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="openVariantSearchModal()"
+                    translate>Attach variant to code list</button>
             <button id="create_extensionscheme_calculationhierarchy_button"
                     *ngIf="canAddExtensionScheme"
                     type="button"
