@@ -362,7 +362,7 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-msgid "Member"
+msgid "Broader member"
 msgstr ""
 
 msgid "Create member"
