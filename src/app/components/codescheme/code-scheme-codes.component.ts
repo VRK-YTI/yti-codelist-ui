@@ -87,6 +87,10 @@ export class CodeSchemeCodesComponent {
     return this.hasExpanded() && !this.searchTerm;
   }
 
+  allowExpandAllAndCollapseAll() {
+    return this.hasHierarchy && this.codes.length <= 500;
+  }
+
   get emptySearch() {
     return this.searchTerm && this.listedCodes.length === 0;
   }
