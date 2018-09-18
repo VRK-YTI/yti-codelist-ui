@@ -17,20 +17,20 @@
         <app-literal *ngIf="this.extension.parentCodeScheme"
                      [label]="'Code list' | translate"
                      [value]="extension.parentCodeScheme.getDisplayName(languageService)"
-                     [infoText]="'INFO_TEXT_EXTENSION_SCHEME_CODE_LIST'"></app-literal>
+                     [infoText]="'INFO_TEXT_EXTENSION_CODE_LIST'"></app-literal>
 
-        <app-literal [label]="'LABEL_TEXT_EXTENSION_SCHEME_ID' | translate"
+        <app-literal [label]="'LABEL_TEXT_EXTENSION_ID' | translate"
                      [value]="extension.codeValue"
-                     [infoText]="'INFO_TEXT_EXTENSION_SCHEME_ID'"></app-literal>
+                     [infoText]="'INFO_TEXT_EXTENSION_ID'"></app-literal>
 
         <app-localizable-input [id]="'extension_name_input'"
                                [label]="'Extension name' | translate"
-                               [infoText]="'INFO_TEXT_EXTENSION_SCHEME_NAME'"
+                               [infoText]="'INFO_TEXT_EXTENSION_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal [label]="'Extension type' | translate"
                      [value]="extension.propertyType.prefLabel | translateValue:false"
-                     [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"></app-literal>
+                     [infoText]="'INFO_TEXT_EXTENSION_TYPE'"></app-literal>
 
         <app-code-scheme-input id="extension_code_scheme_input"
                                [label]="'Code list' | translate"
@@ -40,16 +40,16 @@
         <app-status-input id="extension_status_input"
                           [formControlName]="'status'"
                           [restrict]="restricted"
-                          [infoText]="'INFO_TEXT_EXTENSION_SCHEME_STATUS'"></app-status-input>
+                          [infoText]="'INFO_TEXT_EXTENSION_STATUS'"></app-status-input>
 
         <app-date-range-input id="extension_validity_input"
                               [label]="'Validity' | translate"
-                              [infoText]="'INFO_TEXT_EXTENSION_SCHEME_VALIDITY'"
+                              [infoText]="'INFO_TEXT_EXTENSION_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
         <app-literal [label]="'Last modification' | translate"
                      [value]="extension.modifiedDisplayValue"
-                     [infoText]="'INFO_TEXT_EXTENSION_SCHEME_LAST_MODIFICATION'"></app-literal>
+                     [infoText]="'INFO_TEXT_EXTENSION_LAST_MODIFICATION'"></app-literal>
       </div>
     </div>
   </form>

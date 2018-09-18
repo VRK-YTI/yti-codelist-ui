@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-19 01:44+0300\n"
+"PO-Revision-Date: 2018-09-19 02:33+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -67,15 +67,6 @@ msgstr "Peruuta"
 msgid "Edit"
 msgstr "Muokkaa"
 
-msgid "Select member"
-msgstr "Valitse jäsen"
-
-msgid "Choose member"
-msgstr "Valitse jäsen"
-
-msgid "Search member"
-msgstr "Hae jäsentä"
-
 msgid "Add link"
 msgstr "Lisää linkki"
 
@@ -87,6 +78,15 @@ msgstr "Valitse kielikoodi"
 
 msgid "Search language code"
 msgstr "Hae kielikoodia"
+
+msgid "Select member"
+msgstr "Valitse jäsen"
+
+msgid "Choose member"
+msgstr "Valitse jäsen"
+
+msgid "Search member"
+msgstr "Hae jäsentä"
 
 msgid "Add organization"
 msgstr "Valitse organisaatio"
@@ -366,7 +366,7 @@ msgstr "Hae liitettävä koodisto Koodistoista"
 msgid "No search results"
 msgstr "Ei hakutuloksia"
 
-msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgid "LABEL_TEXT_CREATE_EXTENSION_ID"
 msgstr "Laajennuksen tunnus"
 
 msgid "Extension name"
@@ -374,6 +374,9 @@ msgstr "Laajennuksen nimi"
 
 msgid "Extension type"
 msgstr "Laajennuksen tyyppi"
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr "Laajennuksen tunnus"
 
 msgid "Search for member"
 msgstr "Hae jäsentä"
@@ -389,9 +392,6 @@ msgstr "Haulla ei löytynyt yhtään jäsentä."
 
 msgid "This extension does not have any members yet."
 msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
-
-msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
-msgstr "Laajennuksen tunnus"
 
 msgid "Create member"
 msgstr "Luo jäsen"
@@ -722,38 +722,38 @@ msgstr "Rekisterin pysyvä tunniste ja verkko-osoite"
 msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
+msgid "INFO_TEXT_EXTENSION_CODE_LIST"
 msgstr "Koodisto, johon tämä laajennus on liitetty"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
+msgid "INFO_TEXT_EXTENSION_ID"
 msgstr "Laajennuksen tunnus"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
+msgid "INFO_TEXT_EXTENSION_NAME"
 msgstr "Laajennuksen nimi"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_TYPE"
+msgid "INFO_TEXT_EXTENSION_TYPE"
 msgstr ""
 "Esimerkkejä laajennuksista ovat laskentahierarkia ja määrityshierarkia."
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_STATUS"
+msgid "INFO_TEXT_EXTENSION_STATUS"
 msgstr ""
 "Laajennusten hallintaan ja elinkaareen liittyvä tila. Mahdollisia arvoja "
 "ovat: Keskeneräinen, Luonnos, Odottaa hyväksyntää, Voimassa oleva, Korvattu, "
 "Poistettu käytöstä, Virheellinen ja Ehdotus."
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY"
+msgid "INFO_TEXT_EXTENSION_VALIDITY"
 msgstr "Ajanjakso, jona laajennus on voimassa"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_LAST_MODIFICATION"
+msgid "INFO_TEXT_EXTENSION_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_START_DATE"
+msgid "INFO_TEXT_EXTENSION_VALIDITY_START_DATE"
 msgstr "Voimassaolon alkamispäivämäärä"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
+msgid "INFO_TEXT_EXTENSION_VALIDITY_END_DATE"
 msgstr "Voimassaolon päättymispäivämäärä"
 
-msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgid "INFO_TEXT_CREATE_EXTENSION_ID"
 msgstr "Laajennuksen tunnus tai pysyvä tunniste"
 
 msgid "INFO_TEXT_FRONTPAGE_SEARCH"
@@ -1016,10 +1016,10 @@ msgstr "Jäsenten maksimi hierarkinen taso ylittyi."
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Jäsenen arvoa ei ole määritetty, tai se on tyhjä."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
 msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
 
 msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
@@ -1036,10 +1036,10 @@ msgstr ""
 "Jäsenten linkityksessä syklinen ongelma. Tarkista, että laajennus-ketjussa "
 "ei ole rinnakkaisia viitteitä jäsenten välillä."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr "Laajennukseen ei voi liittää sitä koodistoa, jonka alaisuudessa se on."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr "Laajennuksen tyyppiä ei voi vaihtaa muokkauksessa."
 
 msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
@@ -1138,7 +1138,7 @@ msgstr "Koodiston tunnus on jo käytössä tässä rekisterissä."
 msgid "codeValueExists"
 msgstr "Tunnus on jo käytössä."
 
-msgid "extensionSchemeCodeValueExists"
+msgid "extensionCodeValueExists"
 msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
 
 msgid "codeValueValidationError"

@@ -24,9 +24,9 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <app-literal-input [id]="'extension_codevalue_input'"
-                           [label]="'LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID' | translate"
+                           [label]="'LABEL_TEXT_CREATE_EXTENSION_ID' | translate"
                            [required]="true"
-                           [infoText]="'INFO_TEXT_CREATE_EXTENSION_SCHEME_ID'"
+                           [infoText]="'INFO_TEXT_CREATE_EXTENSION_ID'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
@@ -35,12 +35,12 @@
 
         <app-localizable-input [id]="'extension_name_input'"
                                [label]="'Extension name' | translate"
-                               [infoText]="'INFO_TEXT_EXTENSION_SCHEME_NAME'"
+                               [infoText]="'INFO_TEXT_EXTENSION_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal [label]="'Extension type' | translate"
                      [value]="propertyType.prefLabel | translateValue:true"
-                     [infoText]="'INFO_TEXT_EXTENSION_SCHEME_TYPE'"></app-literal>
+                     [infoText]="'INFO_TEXT_EXTENSION_TYPE'"></app-literal>
 
         <app-code-scheme-input id="extension_code_scheme_input"
                                [label]="'Code list' | translate"
@@ -48,12 +48,12 @@
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>
 
         <app-status-input id="extension_status_input"
-                          [infoText]="'INFO_TEXT_EXTENSION_SCHEME_STATUS'"
+                          [infoText]="'INFO_TEXT_EXTENSION_STATUS'"
                           [formControlName]="'status'"></app-status-input>
 
         <app-date-range-input id="extension_validity_input"
                               [label]="'Validity' | translate"
-                              [infoText]="'INFO_TEXT_EXTENSION_SCHEME_VALIDITY'"
+                              [infoText]="'INFO_TEXT_EXTENSION_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
       </div>
     </div>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-19 01:44+0300\n"
+"PO-Revision-Date: 2018-09-19 02:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -67,15 +67,6 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-msgid "Select member"
-msgstr ""
-
-msgid "Choose member"
-msgstr ""
-
-msgid "Search member"
-msgstr ""
-
 msgid "Add link"
 msgstr ""
 
@@ -86,6 +77,15 @@ msgid "Choose language code"
 msgstr ""
 
 msgid "Search language code"
+msgstr ""
+
+msgid "Select member"
+msgstr ""
+
+msgid "Choose member"
+msgstr ""
+
+msgid "Search member"
 msgstr ""
 
 msgid "Add organization"
@@ -360,14 +360,17 @@ msgstr "Search for the code list from Refence Data"
 msgid "No search results"
 msgstr ""
 
-msgid "LABEL_TEXT_CREATE_EXTENSION_SCHEME_ID"
-msgstr "Member code value"
+msgid "LABEL_TEXT_CREATE_EXTENSION_ID"
+msgstr "Extension code value"
 
 msgid "Extension name"
 msgstr ""
 
 msgid "Extension type"
 msgstr ""
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr "Extension code value"
 
 msgid "Search for member"
 msgstr ""
@@ -383,9 +386,6 @@ msgstr ""
 
 msgid "This extension does not have any members yet."
 msgstr ""
-
-msgid "LABEL_TEXT_EXTENSION_SCHEME_ID"
-msgstr "Member code value"
 
 msgid "Create member"
 msgstr ""
@@ -706,39 +706,39 @@ msgstr "Permanent web address of the code registry"
 msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Time registry information was last changed."
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_CODE_LIST"
+msgid "INFO_TEXT_EXTENSION_CODE_LIST"
 msgstr "Code list that this extension is linked"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_ID"
+msgid "INFO_TEXT_EXTENSION_ID"
 msgstr "Extension code value"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_NAME"
+msgid "INFO_TEXT_EXTENSION_NAME"
 msgstr "Extension name"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_TYPE"
+msgid "INFO_TEXT_EXTENSION_TYPE"
 msgstr "E.g. Calculation hierarchy and Definition hierarchy"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_STATUS"
+msgid "INFO_TEXT_EXTENSION_STATUS"
 msgstr ""
 "Administrative and life cycle status. Possible values are Incomplete, Draft, "
 "Submitted, Valid, Superseded, Retired, Invalid, Suggested."
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY"
+msgid "INFO_TEXT_EXTENSION_VALIDITY"
 msgstr "The period in which the extension is valid"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_LAST_MODIFICATION"
+msgid "INFO_TEXT_EXTENSION_LAST_MODIFICATION"
 msgstr "Last edit time"
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_START_DATE"
+msgid "INFO_TEXT_EXTENSION_VALIDITY_START_DATE"
 msgstr ""
 "Validity start date. The date on which the resource is effective or valid."
 
-msgid "INFO_TEXT_EXTENSION_SCHEME_VALIDITY_END_DATE"
+msgid "INFO_TEXT_EXTENSION_VALIDITY_END_DATE"
 msgstr ""
 "Validity end date. The date on which the resource is no longer effective or "
 "valid."
 
-msgid "INFO_TEXT_CREATE_EXTENSION_SCHEME_ID"
+msgid "INFO_TEXT_CREATE_EXTENSION_ID"
 msgstr "The technical code or permanent identifier of the extension"
 
 msgid "INFO_TEXT_FRONTPAGE_SEARCH"
@@ -1008,10 +1008,10 @@ msgstr "Maximum hierarchies reached for members."
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Member value is not set or it’s empty."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_NOT_FOUND"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr "Code list linked to extension not found."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_NOT_FOUND"
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to ExtensionScheme not found."
 
 msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
@@ -1029,10 +1029,11 @@ msgstr ""
 "Cyclic dependency in member linking. Please ensure that the chained members "
 "are not linked to each in a cyclic manner."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_CODESCHEME_MAPPED_TO_PARENT"
-msgstr "Extension cannot be linked to the same code list which it is attached to."
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
+msgstr ""
+"Extension cannot be linked to the same code list which it is attached to."
 
-msgid "ERR_MSG_USER_EXTENSIONSCHEME_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr "PropertyType cannot be changed when editing extension."
 
 msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
@@ -1132,7 +1133,7 @@ msgstr "Code list value is already in use in this registry."
 msgid "codeValueExists"
 msgstr "Code value is already in use."
 
-msgid "extensionSchemeCodeValueExists"
+msgid "extensionCodeValueExists"
 msgstr "Extension value is already in use in this code list."
 
 msgid "codeValueValidationError"
