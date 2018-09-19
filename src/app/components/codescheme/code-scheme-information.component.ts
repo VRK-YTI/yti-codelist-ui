@@ -3,9 +3,6 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { EditableService } from '../../services/editable.service';
-import { LinkListModalService } from './link-list-modal.component';
-import { LinkShowModalService } from './link-show-modal.component';
-import { LinkEditModalService } from './link-edit-modal.component';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Code } from '../../entities/code';
 import { LanguageService } from '../../services/language.service';
@@ -14,8 +11,6 @@ import { validDateRange } from '../../utils/date';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { Router } from '@angular/router';
-import { CodeListErrorModalService } from '../common/error-modal.service';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
@@ -59,11 +54,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   constructor(private userService: UserService,
               private dataService: DataService,
-              private router: Router,
-              private errorModalService: CodeListErrorModalService,
-              private linkEditModalService: LinkEditModalService,
-              private linkShowModalService: LinkShowModalService,
-              private linkListModalService: LinkListModalService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
               public languageService: LanguageService,
