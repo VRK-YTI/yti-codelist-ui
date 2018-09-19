@@ -178,7 +178,7 @@ export interface MemberType {
   order?: string;
   modified?: string;
   extension: ExtensionType;
-  broaderMember?: MemberSimpleType;
+  relatedMember?: MemberSimpleType;
   code: CodeType;
   startDate?: string;
   endDate?: string;
@@ -193,7 +193,7 @@ export interface MemberSimpleType {
   order?: string;
   modified?: string;
   code: CodePlainType;
-  broaderMember?: MemberSimpleType;
+  relatedMember?: MemberSimpleType;
   startDate?: string;
   endDate?: string;
 }

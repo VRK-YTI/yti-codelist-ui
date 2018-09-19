@@ -42,18 +42,18 @@ export class ExtensionMembersComponent {
   }
 
   get topLevelMembers() {
-    return this.members.filter(member => !member.broaderMember);
+    return this.members.filter(member => !member.relatedMember);
   }
 
   get parentMembers() {
-    const childMembers = this.members.filter(member => member.broaderMember != null);
-    const broaderMemberIds = childMembers.map(member => member.broaderMember!.id);
+    const childMembers = this.members.filter(member => member.relatedMember != null);
+    const relatedMemberIds = childMembers.map(member => member.relatedMember!.id);
 
-    return this.members.filter(member => contains(broaderMemberIds, member.id));
+    return this.members.filter(member => contains(relatedMemberIds, member.id));
   }
 
   get childMembers() {
-    return this.members.filter(member => contains(this.parentMembers.map(mem => mem.broaderMember!.id), member.id));
+    return this.members.filter(member => contains(this.parentMembers.map(mem => mem.relatedMember!.id), member.id));
   }
 
   get numberOfMembers() {
@@ -73,7 +73,7 @@ export class ExtensionMembersComponent {
   }
 
   hasHierarchy() {
-    return this.members.filter(member => member.broaderMember !== undefined).length > 0;
+    return this.members.filter(member => member.relatedMember !== undefined).length > 0;
   }
 
   searchTermHasValue() {

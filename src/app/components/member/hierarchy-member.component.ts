@@ -48,7 +48,7 @@ export class HierarchyMemberComponent {
   }
 
   get children() {
-    return this.members.filter(member => member.broaderMember != null && member.broaderMember.id === this.member.id);
+    return this.members.filter(member => member.relatedMember != null && member.relatedMember.id === this.member.id);
   }
 
   get expanded() {

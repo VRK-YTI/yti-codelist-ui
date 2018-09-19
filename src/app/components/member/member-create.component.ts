@@ -27,7 +27,7 @@ export class MemberCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     memberValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
-    broaderMember: new FormControl(null),
+    relatedMember: new FormControl(null),
     validity: new FormControl({ start: null, end: null }, validDateRange)
   });
 

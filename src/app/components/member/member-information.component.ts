@@ -30,7 +30,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     prefLabel: new FormControl({}),
     memberValue: new FormControl(''),
     code: new FormControl(null, Validators.required),
-    broaderMember: new FormControl(null),
+    relatedMember: new FormControl(null),
     validity: new FormControl(null, validDateRange)
   });
 

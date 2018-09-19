@@ -14,7 +14,7 @@ export class MemberSimple {
   order?: string;
   modified: Moment | null = null;
   code: CodePlain;
-  broaderMember?: MemberSimple;
+  relatedMember?: MemberSimple;
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
@@ -32,8 +32,8 @@ export class MemberSimple {
     if (data.code) {
       this.code = new CodePlain(data.code);
     }
-    if (data.broaderMember) {
-      this.broaderMember = new MemberSimple(data.broaderMember);
+    if (data.relatedMember) {
+      this.relatedMember = new MemberSimple(data.relatedMember);
     }
     if (data.startDate) {
       this.startDate = parseDate(data.startDate);
@@ -57,7 +57,7 @@ export class MemberSimple {
       modified: formatDateTime(this.modified),
       order: this.order,
       code: this.code.serialize(),
-      broaderMember: this.broaderMember ? this.broaderMember.serialize() : undefined,
+      relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate)
     };

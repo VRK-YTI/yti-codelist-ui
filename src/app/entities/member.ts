@@ -18,7 +18,7 @@ export class Member implements EditableEntity {
   order?: string;
   modified: Moment | null = null;
   extension: Extension;
-  broaderMember?: MemberSimple;
+  relatedMember?: MemberSimple;
   code: Code;
   prefLabel: Localizable;
   startDate: Moment | null = null;
@@ -34,8 +34,8 @@ export class Member implements EditableEntity {
     }
     this.prefLabel = data.prefLabel || {};
     this.extension = new Extension(data.extension);
-    if (data.broaderMember) {
-      this.broaderMember = new MemberSimple(data.broaderMember);
+    if (data.relatedMember) {
+      this.relatedMember = new MemberSimple(data.relatedMember);
     }
     if (data.code) {
       this.code = new Code(data.code);
@@ -92,7 +92,7 @@ export class Member implements EditableEntity {
       modified: formatDateTime(this.modified),
       order: this.order,
       extension: this.extension.serialize(),
-      broaderMember: this.broaderMember ? this.broaderMember.serialize() : undefined,
+      relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
       code: this.code.serialize(),
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate)
