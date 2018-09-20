@@ -25,19 +25,19 @@
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal-input *ngIf="requireMemberValue"
-                           [id]="'extension_membervalue1_input'"
+                           [id]="'member_membervalue1_input'"
                            [label]="'Member value 1' | translate"
                            [required]="true"
                            [formControlName]="'memberValue_1'"></app-literal-input>
 
         <app-literal-input *ngIf="requireMemberValue"
-                           [id]="'extension_membervalue2_input'"
+                           [id]="'member_membervalue2_input'"
                            [label]="'Member value 2' | translate"
                            [required]="false"
                            [formControlName]="'memberValue_2'"></app-literal-input>
 
         <app-literal-input *ngIf="requireMemberValue"
-                           [id]="'extension_membervalue3_input'"
+                           [id]="'member_membervalue3_input'"
                            [label]="'Member value 3' | translate"
                            [required]="false"
                            [formControlName]="'memberValue_3'"></app-literal-input>
@@ -49,11 +49,11 @@
                         [showDetailLabel]="showCodeDetailLabel"
                         [formControlName]="'code'"></app-code-input>
 
-        <app-member-input id="member_broadermember_input"
-                             [label]="'Broader member' | translate"
+        <app-member-input id="member_relatedmember_input"
+                          [label]="'Broader member' | translate"
                           [extension]="currentMember.extension"
-                             [currentMember]="currentMember"
-                             [formControlName]="'relatedMember'"></app-member-input>
+                          [currentMember]="currentMember"
+                          [formControlName]="'relatedMember'"></app-member-input>
 
         <app-date-range-input id="member_validity_input"
                               [label]="'Validity' | translate"

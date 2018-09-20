@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
+  <app-back-button [id]="'member_back_button'" (back)="back()"></app-back-button>
 
   <h1 class="text-content-wrap">{{member.getDisplayName(languageService, translateService)}}</h1>
 
@@ -14,7 +14,7 @@
         <div *ngIf='showMenu' ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="memberDropdown" ngbDropdownToggle translate>Choose action</button>
           <div ngbDropdownMenu aria-labelledby="memberDropdown">
-            <button id="extension_delete_button"
+            <button id="member_delete_button"
                     *ngIf='canDelete'
                     type="button"
                     class="dropdown-item"
@@ -47,7 +47,7 @@
   </div>
 
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="extension_info_tab">
+    <ngb-tab id="member_info_tab">
       <ng-template ngbTabTitle>
         <span translate>INFORMATION</span>
       </ng-template>

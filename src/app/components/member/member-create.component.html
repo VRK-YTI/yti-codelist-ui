@@ -4,7 +4,7 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'extension_create_back_button'" (back)="back()"></app-back-button>
+  <app-back-button [id]="'member_create_back_button'" (back)="back()"></app-back-button>
 
   <div class="row">
     <div class="col-12">
@@ -43,26 +43,26 @@
           <app-literal [label]="'Member' | translate"
                        [value]="extension.getDisplayName(languageService)"></app-literal>
 
-          <app-error-messages id="extension_form_error_messages" [control]="memberForm"></app-error-messages>
+          <app-error-messages id="member_form_error_messages" [control]="memberForm"></app-error-messages>
 
           <app-localizable-input [id]="'member_name_input'"
                                  [label]="'Member name' | translate"
                                  [formControlName]="'prefLabel'"></app-localizable-input>
 
           <app-literal-input *ngIf="requireMemberValue"
-                             [id]="'member_extensionvalue1_input'"
+                             [id]="'member_membervalue1_input'"
                              [label]="'Member value 1' | translate"
                              [required]="true"
                              [formControlName]="'memberValue_1'"></app-literal-input>
 
           <app-literal-input *ngIf="requireMemberValue"
-                             [id]="'member_extensionvalue2_input'"
+                             [id]="'member_membervalue2_input'"
                              [label]="'Member value 2' | translate"
                              [required]="false"
                              [formControlName]="'memberValue_2'"></app-literal-input>
 
           <app-literal-input *ngIf="requireMemberValue"
-                             [id]="'member_extensionvalue3_input'"
+                             [id]="'member_membervalue3_input'"
                              [label]="'Member value 3' | translate"
                              [required]="false"
                              [formControlName]="'memberValue_3'"></app-literal-input>
@@ -74,10 +74,10 @@
                           [showDetailLabel]="showCodeDetailLabel"
                           [formControlName]="'code'"></app-code-input>
 
-          <app-member-input id="member_broadermember_input"
-                               [label]="'Broader member' | translate"
+          <app-member-input id="member_relatedmember_input"
+                            [label]="'Broader member' | translate"
                             [extension]="extension"
-                               [formControlName]="'relatedMember'"></app-member-input>
+                            [formControlName]="'relatedMember'"></app-member-input>
 
           <app-date-range-input id="member_validity_input"
                                 [label]="'Validity' | translate"
