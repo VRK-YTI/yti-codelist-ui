@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-20 08:55+0300\n"
+"PO-Revision-Date: 2018-09-20 10:05+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -440,7 +440,13 @@ msgstr ""
 msgid "Member name"
 msgstr ""
 
-msgid "Member value"
+msgid "Member value 1"
+msgstr ""
+
+msgid "Member value 2"
+msgstr ""
+
+msgid "Member value 3"
 msgstr ""
 
 msgid "Code"
@@ -1012,7 +1018,7 @@ msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr "Code list linked to extension not found."
 
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
-msgstr "PropertyType linked to ExtensionScheme not found."
+msgstr "PropertyType linked to extension not found."
 
 msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
