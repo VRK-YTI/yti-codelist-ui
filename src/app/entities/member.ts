@@ -14,7 +14,9 @@ export class Member implements EditableEntity {
 
   id: string;
   url: string;
-  memberValue: string;
+  memberValue_1: string;
+  memberValue_2: string;
+  memberValue_3: string;
   order?: string;
   modified: Moment | null = null;
   extension: Extension;
@@ -28,7 +30,9 @@ export class Member implements EditableEntity {
     this.id = data.id;
     this.url = data.url;
     this.order = data.order;
-    this.memberValue = data.memberValue;
+    this.memberValue_1 = data.memberValue_1;
+    this.memberValue_2 = data.memberValue_2;
+    this.memberValue_3 = data.memberValue_3;
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
     }
@@ -88,7 +92,9 @@ export class Member implements EditableEntity {
       id: this.id,
       url: this.url,
       prefLabel: { ...this.prefLabel },
-      memberValue: this.memberValue,
+      memberValue_1: this.memberValue_1,
+      memberValue_2: this.memberValue_2,
+      memberValue_3: this.memberValue_3,
       modified: formatDateTime(this.modified),
       order: this.order,
       extension: this.extension.serialize(),
@@ -111,17 +117,32 @@ export class Member implements EditableEntity {
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
-    const memberValue = this.memberValue;
+    const memberValue_1 = this.memberValue_1;
+    const memberValue_2 = this.memberValue_2;
 
-    if (extensionTitle && memberValue) {
-      return `${memberValue} ${extensionTitle} - ${codeTitle}`;
-    } else if (memberValue) {
-      return `${memberValue} - ${codeTitle}`;
-    } else if (extensionTitle) {
-      return `${extensionTitle} - ${codeTitle}`;
-    } else {
-      return codeTitle ? codeTitle : '';
+    let displayName = '';
+
+    if (memberValue_1) {
+      displayName = `${memberValue_1}`;
     }
+
+    if (extensionTitle) {
+      displayName = `${displayName} ${extensionTitle}`
+    }
+
+    if (codeTitle) {
+      if (extensionTitle) {
+        displayName = `${displayName} · ${codeTitle}`
+      } else {
+        displayName = `${displayName} ${codeTitle}`
+      }
+    }
+
+    if (memberValue_2) {
+      displayName = `${displayName} ${memberValue_2}`;
+    }
+
+    return displayName;
   }
 
   getDisplayNameWithExtension(extension: Extension,
@@ -139,17 +160,32 @@ export class Member implements EditableEntity {
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
-    const memberValue = this.memberValue;
+    const memberValue_1 = this.memberValue_1;
+    const memberValue_2 = this.memberValue_2;
 
-    if (extensionTitle && memberValue) {
-      return `${memberValue} ${extensionTitle} - ${codeTitle}`;
-    } else if (memberValue) {
-      return `${memberValue} - ${codeTitle}`;
-    } else if (extensionTitle) {
-      return `${extensionTitle} - ${codeTitle}`;
-    } else {
-      return codeTitle ? codeTitle : '';
+    let displayName = '';
+
+    if (memberValue_1) {
+      displayName = `${memberValue_1}`;
     }
+
+    if (extensionTitle) {
+      displayName = `${displayName} ${extensionTitle}`
+    }
+
+    if (codeTitle) {
+      if (extensionTitle) {
+        displayName = `${displayName} · ${codeTitle}`
+      } else {
+        displayName = `${displayName} ${codeTitle}`
+      }
+    }
+
+    if (memberValue_2) {
+      displayName = `${displayName} ${memberValue_2}`;
+    }
+
+    return displayName;
   }
 
   hasPrefLabel() {

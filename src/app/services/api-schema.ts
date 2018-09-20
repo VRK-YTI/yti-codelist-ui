@@ -173,7 +173,9 @@ export interface MemberType {
 
   id: string;
   url: string;
-  memberValue: string;
+  memberValue_1: string;
+  memberValue_2: string;
+  memberValue_3: string;
   prefLabel?: Localizable;
   order?: string;
   modified?: string;
@@ -188,7 +190,9 @@ export interface MemberSimpleType {
 
   id: string;
   url: string;
-  memberValue: string;
+  memberValue_1: string;
+  memberValue_2: string;
+  memberValue_3: string;
   prefLabel?: Localizable;
   order?: string;
   modified?: string;

@@ -425,7 +425,13 @@ msgstr ""
 msgid "Member name"
 msgstr ""
 
-msgid "Member value"
+msgid "Member value 1"
+msgstr ""
+
+msgid "Member value 2"
+msgstr ""
+
+msgid "Member value 3"
 msgstr ""
 
 msgid "Code"

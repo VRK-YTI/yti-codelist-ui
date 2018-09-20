@@ -25,10 +25,22 @@
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <app-literal-input *ngIf="requireMemberValue"
-                           [id]="'extension_extensionvalue_input'"
-                           [label]="'Member value' | translate"
+                           [id]="'extension_membervalue1_input'"
+                           [label]="'Member value 1' | translate"
                            [required]="true"
-                           [formControlName]="'memberValue'"></app-literal-input>
+                           [formControlName]="'memberValue_1'"></app-literal-input>
+
+        <app-literal-input *ngIf="requireMemberValue"
+                           [id]="'extension_membervalue2_input'"
+                           [label]="'Member value 2' | translate"
+                           [required]="false"
+                           [formControlName]="'memberValue_2'"></app-literal-input>
+
+        <app-literal-input *ngIf="requireMemberValue"
+                           [id]="'extension_membervalue3_input'"
+                           [label]="'Member value 3' | translate"
+                           [required]="false"
+                           [formControlName]="'memberValue_3'"></app-literal-input>
 
         <app-code-input id="member_code_input"
                         [label]="'Code' | translate"

@@ -28,7 +28,9 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
-    memberValue: new FormControl(''),
+    memberValue_1: new FormControl(''),
+    memberValue_2: new FormControl(''),
+    memberValue_3: new FormControl(''),
     code: new FormControl(null, Validators.required),
     relatedMember: new FormControl(null),
     validity: new FormControl(null, validDateRange)
