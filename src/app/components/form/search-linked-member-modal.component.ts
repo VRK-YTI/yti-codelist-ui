@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-search-linked-extension-modal',
+  selector: 'app-search-linked-member-modal',
   styleUrls: ['./search-linked-member-modal.component.scss'],
   template: `
     <div class="modal-header">
@@ -24,7 +24,7 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
         <div class="col-12">
 
           <div class="input-group input-group-lg input-group-search">
-            <input #searchInput id="search_linked_extension_input"
+            <input #searchInput id="search_linked_member_input"
                    type="text" class="form-control"
                    [placeholder]="searchLabel"
                    [(ngModel)]="search"/>

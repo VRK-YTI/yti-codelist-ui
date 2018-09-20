@@ -14,7 +14,7 @@ import { MemberSimple } from '../../entities/member-simple';
        class="icon fa fa-plus" (click)="expand()"></i>
     <i [id]="getIdIdentifier() + '_hierarchy_member_collapse'" [hidden]="!hasChildren() || collapsed"
        class="icon fa fa-minus" (click)="collapse()"></i>
-    <i id="hierarchy_extension_aligner" [hidden]="hasChildren()" class="icon fa"></i>
+    <i id="hierarchy_member_aligner" [hidden]="hasChildren()" class="icon fa"></i>
 
     <div [id]="getIdIdentifier() + '_view_extension'" class="member" (click)="viewMember()">
       <span class="membertitle">{{member.getDisplayName(languageService, translateService)}}</span>
