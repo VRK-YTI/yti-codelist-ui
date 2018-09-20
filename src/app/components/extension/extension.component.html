@@ -17,13 +17,13 @@
         <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="extensionDropdown" ngbDropdownToggle translate>Choose action</button>
           <div ngbDropdownMenu aria-labelledby="extensionDropdown">
-            <button id="create_extension_button"
+            <button id="create_member_button"
                     *ngIf="canAddExtension"
                     type="button"
                     class="dropdown-item"
                     (click)="createMember()"
                     translate>Create member</button>
-            <button id="import_extensions_button"
+            <button id="import_members_button"
                     *ngIf="canAddExtension"
                     class="dropdown-item"
                     (click)="importMembers()"
