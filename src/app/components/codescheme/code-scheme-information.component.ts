@@ -39,7 +39,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     source: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
-    shrotName: new FormControl(''),
     externalReferences: new FormControl(),
     dataClassifications: new FormControl([], [requiredList]),
     languageCodes: new FormControl([], [requiredList]),
