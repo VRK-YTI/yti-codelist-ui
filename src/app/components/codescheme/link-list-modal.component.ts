@@ -8,6 +8,8 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ModalService } from '../../services/modal.service';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
+import { PropertyType } from '../../entities/property-type';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-link-list-modal',
@@ -15,29 +17,21 @@ import { CodePlain } from '../../entities/code-simple';
   styleUrls: ['./link-list-modal.component.scss'],
   providers: [EditableService]
 })
-export class LinkListModalComponent implements OnInit {
+export class LinkListModalComponent {
 
   @Input() codeSchemeId: string;
   @Input() restrictExternalReferenceIds: string[];
   @Input() languageCodes: CodePlain[];
-
-  externalReferences: ExternalReference[] = [];
+  @Input() propertyType: PropertyType;
+  @Input() externalReferences: ExternalReference[];
+  
   selectedExternalReference: ExternalReference;
-
-  loading = true;
 
   constructor(private modal: NgbActiveModal,
               private dataService: DataService,
               private linkCreateModalService: LinkCreateModalService,
-              public languageService: LanguageService) {
-  }
-
-  ngOnInit() {
-    this.dataService.getExternalReferences(this.codeSchemeId).subscribe(extReferences => {
-      this.externalReferences = extReferences.filter(externalReference =>
-        this.restrictExternalReferenceIds.indexOf(externalReference.id) === -1);
-      this.loading = false;
-    });
+              public languageService: LanguageService,
+              public translateService: TranslateService) {
   }
 
   close() {
@@ -50,7 +44,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   create() {
-    this.linkCreateModalService.open(this.languageCodes)
+    this.linkCreateModalService.open(this.languageCodes, this.propertyType)
       .then(externalReference => this.modal.close(externalReference), ignoreModalClose);
   }
 
@@ -65,6 +59,16 @@ export class LinkListModalComponent implements OnInit {
   externalReferenceIdentity(index: number, item: ExternalReference) {
     return item.id;
   }
+
+  get modalLabel() {
+    const propertyTypeName = this.languageService.translate(this.propertyType.prefLabel);
+    return this.translateService.instant('Select') + ' ' + propertyTypeName.charAt(0).toLowerCase() + propertyTypeName.slice(1);
+  }
+
+  get createNewButtonLabel() {
+    const propertyTypeName = this.languageService.translate(this.propertyType.prefLabel); 
+    return this.translateService.instant('Create new') + ' ' + propertyTypeName.charAt(0).toLowerCase() + propertyTypeName.slice(1);
+  }
 }
 
 @Injectable()
@@ -73,12 +77,13 @@ export class LinkListModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(codeSchemeId: string, restrictExternalReferenceIds: string[], languageCodes: CodePlain[]): Promise<ExternalReference> {
+  public open(codeSchemeId: string, externalReferences: ExternalReference[], languageCodes: CodePlain[], propertyType: PropertyType): Promise<ExternalReference> {
     const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as LinkListModalComponent;
     instance.codeSchemeId = codeSchemeId;
-    instance.restrictExternalReferenceIds = restrictExternalReferenceIds;
+    instance.externalReferences = externalReferences;
     instance.languageCodes = languageCodes;
+    instance.propertyType = propertyType;
     return modalRef.result;
   }
 }

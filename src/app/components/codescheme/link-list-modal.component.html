@@ -1,12 +1,8 @@
-<div *ngIf="loading">
-  <app-ajax-loading-indicator></app-ajax-loading-indicator>
-</div>
-
 <div *ngIf="!loading">
   <div class="modal-header">
     <h4 class="modal-title strong">
       <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
-      <span translate>Select link</span>
+      {{modalLabel}}
     </h4>
   </div>
   <div class="modal-body">
@@ -37,7 +33,7 @@
   </div>
   <div class="modal-footer">
     <button id="select_link_button" type="button" class="btn btn-action" [disabled]="!canSelect()" (click)="select()" translate>Select</button>
-    <button id="add_new_link_button" type="button" class="btn btn-action" (click)="create()" translate>Add new link</button>
+    <button id="add_new_link_button" type="button" class="btn btn-action" (click)="create()">{{createNewButtonLabel}}</button>
     <button id="cancel_modal_button" type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
   </div>
 </div>

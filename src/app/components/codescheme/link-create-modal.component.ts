@@ -1,19 +1,20 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { ModalService } from '../../services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
-import { LinkEditModalComponent } from './link-edit-modal.component';
+import { PropertyType } from '../../entities/property-type';
 
 @Component({
   selector: 'app-link-create-modal',
   templateUrl: './link-create-modal.component.html',
   providers: [EditableService]
 })
-export class LinkCreateModalComponent {
+export class LinkCreateModalComponent implements OnInit {
 
   @Input() languageCodes: CodePlain[];
+  @Input() propertyType: PropertyType;
 
   externalReference = new ExternalReference();
 
@@ -21,6 +22,10 @@ export class LinkCreateModalComponent {
               private modal: NgbActiveModal) {
 
     this.editableService.edit();
+  }
+
+  ngOnInit() {
+    this.externalReference.propertyType = this.propertyType;
   }
 
   close() {
@@ -38,10 +43,11 @@ export class LinkCreateModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(languageCodes: CodePlain[]): Promise<ExternalReference> {
+  public open(languageCodes: CodePlain[], propertyType: PropertyType): Promise<ExternalReference> {
     const modalRef = this.modalService.open(LinkCreateModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as LinkCreateModalComponent;
     instance.languageCodes = languageCodes;
+    instance.propertyType = propertyType;
     return modalRef.result;
   }
 }

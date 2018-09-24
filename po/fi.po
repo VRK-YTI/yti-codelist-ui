@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-22 15:38+0300\n"
+"PO-Revision-Date: 2018-09-24 12:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -15,6 +15,12 @@ msgstr ""
 
 msgid "Reference Data"
 msgstr "Koodistot"
+
+msgid "Select"
+msgstr "Valitse"
+
+msgid "Create new"
+msgstr "Luo uusi"
 
 msgid "Add classification"
 msgstr "Lisää luokitus"
@@ -330,8 +336,8 @@ msgstr "URL"
 msgid "Link type"
 msgstr "Linkin tyyppi"
 
-msgid "Add new link"
-msgstr "Lisää uusi linkki"
+msgid "Create new link"
+msgstr "Luo uusi linkki"
 
 msgid "Add"
 msgstr "Lisää"
@@ -339,14 +345,8 @@ msgstr "Lisää"
 msgid "Edit link"
 msgstr "Muokkaa"
 
-msgid "Select link"
-msgstr "Valitse linkki"
-
 msgid "There are no links available, please create new ones."
 msgstr "Linkkejä ei ole saatavilla. Luo uusia linkkejä."
-
-msgid "Select"
-msgstr "Valitse"
 
 msgid "Show link"
 msgstr "Näytä linkki"
@@ -1158,6 +1158,12 @@ msgstr "Jäsenen arvo ei voi olla tyhjä."
 
 msgid "memberValueRegexpValidationError"
 msgstr "Jäsenen arvossa esiintyy ei sallittuja merkkejä."
+
+#~ msgid "Add new link"
+#~ msgstr "Lisää uusi linkki"
+
+#~ msgid "Select link"
+#~ msgstr "Valitse linkki"
 
 #~ msgid "Member value 1"
 #~ msgstr "Jäsenen arvo 1"

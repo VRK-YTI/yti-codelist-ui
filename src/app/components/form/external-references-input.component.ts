@@ -1,4 +1,4 @@
-import { Component, Input, Optional, Self } from '@angular/core';
+import { Component, Input, Optional, Self, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
@@ -10,6 +10,9 @@ import { LinkShowModalService } from '../codescheme/link-show-modal.component';
 import { LinkListModalService } from '../codescheme/link-list-modal.component';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
+import { DataService } from '../../services/data.service';
+import { PropertyType } from '../../entities/property-type';
+import { LinkCreateModalService } from '../codescheme/link-create-modal.component';
 
 @Component({
   selector: 'app-external-references-input',
@@ -49,8 +52,21 @@ import { CodePlain } from '../../entities/code-simple';
           </div>
         </div>
 
-        <div *ngIf="editing && !restrict">
-          <button id="add_link_button" class="btn btn-action" (click)="addLink()" translate>Add link</button>
+        <div *ngIf="loading">
+          <app-ajax-loading-indicator></app-ajax-loading-indicator>
+        </div>
+
+        <div *ngIf="editing && !restrict && !loading">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-action" id="add_link_propertytype_dropdown" ngbDropdownToggle translate>Add link</button>
+            <div ngbDropdownMenu aria-labelledby="add_link_propertytype_dropdown">
+              <button *ngFor="let propertyTypeOption of propertyTypes"
+                      [id]="propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'"
+                      (click)="addLink(propertyTypeOption)"
+                      class="dropdown-item">
+              {{propertyTypeOption.prefLabel | translateValue}}</button>            
+            </div>
+          </div>
         </div>
 
         <app-error-messages id="external_references_error_messages" [control]="parentControl"></app-error-messages>
@@ -58,7 +74,7 @@ import { CodePlain } from '../../entities/code-simple';
     </dl>
   `
 })
-export class ExternalReferencesInputComponent implements ControlValueAccessor {
+export class ExternalReferencesInputComponent implements ControlValueAccessor, OnInit {
 
   @Input() label: string;
   @Input() codeSchemeId: string;
@@ -67,6 +83,9 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() languageCodes: CodePlain[];
   control = new FormControl([]);
+  propertyTypes: PropertyType[];
+
+  loading = false;
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -77,13 +96,27 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
               private confirmationModalService: CodeListConfirmationModalService,
               private linkEditModalService: LinkEditModalService,
               private linkShowModalService: LinkShowModalService,
-              private linkListModalService: LinkListModalService) {
+              private linkListModalService: LinkListModalService,
+              private linkCreateModalService: LinkCreateModalService,
+              private dataService: DataService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
     if (parentControl) {
       parentControl.valueAccessor = this;
     }
+  }
+
+  ngOnInit() {
+
+    this.dataService.getPropertyTypes('ExternalReference').subscribe(types => {
+
+      if (types.length === 0) {
+        throw new Error('No types');
+      }
+
+      this.propertyTypes = types;
+    });
   }
 
   get externalReferences(): ExternalReference[] {
@@ -94,12 +127,30 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor {
     return groupByType(this.externalReferences);
   }
 
-  addLink() {
+  addLink(propertyType: PropertyType) {
 
-    const restrictIds = this.externalReferences.map(link => link.id);
+    this.loading = true;
 
-    this.linkListModalService.open(this.codeSchemeId, restrictIds, this.languageCodes)
-      .then(link => this.externalReferences.push(link), ignoreModalClose);
+    this.dataService.getExternalReferences(this.codeSchemeId).subscribe(extReferences => {
+      
+      const restrictIds = this.externalReferences.map(link => link.id);
+      const otherExternalReferences = extReferences.filter(externalReference => restrictIds.indexOf(externalReference.id) === -1);
+      const externalReferencesOfThisType = otherExternalReferences.filter(extRef => extRef.propertyType!.id === propertyType.id);
+      const externalReferencesOfThisTypeFound = externalReferencesOfThisType.length > 0;      
+
+      this.loading = false;
+
+      if (externalReferencesOfThisTypeFound) {
+        this.linkListModalService.open(this.codeSchemeId, externalReferencesOfThisType, this.languageCodes, propertyType)
+        .then(link => this.externalReferences.push(link), ignoreModalClose);
+      } else {
+        this.linkCreateModalService.open(this.languageCodes, propertyType)
+        .then(link => {
+          this.externalReferences.push(link);
+        }, ignoreModalClose);
+      }
+
+    });
   }
 
   editExternalReference(externalReference: ExternalReference) {
