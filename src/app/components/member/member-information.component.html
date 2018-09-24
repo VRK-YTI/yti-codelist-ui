@@ -25,7 +25,7 @@
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
         <div *ngFor="let valueType of extension.propertyType.valueTypes">
-          <app-literal-input [id]="'member_' + valueType.localName + '_input'"
+          <app-literal-input [id]="'member_membervalue_' + valueType.localName + '_input'"
                              [label]="valueType.prefLabel | translateValue"
                              [required]="valueType.required"
                              [formControlName]="valueType.localName"></app-literal-input>

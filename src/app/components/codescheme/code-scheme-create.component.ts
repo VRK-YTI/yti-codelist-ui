@@ -220,7 +220,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
             console.log('Saved new CodeScheme');
             this.router.navigate(createdCodeScheme.route);
           }));
-      }
+      };
 
       if (contains(restrictedStatuses, codeScheme.status)) {
         return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));
