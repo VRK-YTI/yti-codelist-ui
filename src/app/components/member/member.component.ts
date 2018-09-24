@@ -15,6 +15,9 @@ import { Extension } from '../../entities/extension';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs/operators';
+import { MemberValueType } from '../../services/api-schema';
+import { MemberValue } from '../../entities/member-value';
+import { ValueType } from '../../entities/value-type';
 
 @Component({
   selector: 'app-member',
@@ -67,6 +70,7 @@ export class MemberComponent implements OnInit, EditingComponent {
   }
 
   get loading(): boolean {
+
     return this.member == null || this.extension == null;
   }
 
@@ -84,22 +88,27 @@ export class MemberComponent implements OnInit, EditingComponent {
   }
 
   back() {
+
     this.router.navigate(this.extension.route);
   }
 
   isEditing(): boolean {
+
     return this.editableService.editing;
   }
 
   navigateToRoute(route: any[]) {
+
     this.router.navigate(route);
   }
 
   get showMenu(): boolean {
+
     return this.canDelete;
   }
 
   get canDelete() {
+
     return this.userService.user.superuser ||
       (this.authorizationManager.canDelete(this.extension.parentCodeScheme) &&
         (this.extension.status === 'INCOMPLETE' ||
@@ -109,10 +118,12 @@ export class MemberComponent implements OnInit, EditingComponent {
   }
 
   get isSuperUser() {
+
     return this.userService.user.superuser;
   }
 
   get restricted() {
+
     if (this.isSuperUser) {
       return false;
     }
@@ -120,6 +131,7 @@ export class MemberComponent implements OnInit, EditingComponent {
   }
 
   delete() {
+
     this.confirmationModalService.openRemoveMember()
       .then(() => {
         this.dataService.deleteMember(this.member).subscribe(res => {
@@ -131,22 +143,72 @@ export class MemberComponent implements OnInit, EditingComponent {
   }
 
   cancelEditing(): void {
+
     this.editableService.cancel();
+  }
+
+  findIdFromMembersForValueType(valueType: ValueType): MemberValue | null {
+    let memberValue: MemberValue | null = null;
+    this.member.memberValues.forEach(mv => {
+      if (mv.valueType.localName === valueType.localName) {
+        memberValue = mv;
+      }
+    });
+    return memberValue;
   }
 
   save(formData: any): Observable<any> {
 
-    console.log('Store Member changes to server!');
+    // TODO: Refactor this hacking so that memberValues are handled dynamically as a list in a dedicated formControl and component.
 
-    const { validity, ...rest } = formData;
-    const updatedExtension = this.member.clone();
+    const { validity, unaryOperator, comparisonOperator, ...rest } = formData;
+    const updatedMember = this.member.clone();
 
-    Object.assign(updatedExtension, {
+    const updatedUnaryOperator = unaryOperator;
+    const unaryValueType = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
+    const updatedComparisonOperator = comparisonOperator;
+    const comparisonValueType = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
+
+    const updatedMemberValues: MemberValue[] = [];
+
+    if (updatedUnaryOperator && unaryValueType) {
+      const data: MemberValueType = <MemberValueType> {
+        value: updatedUnaryOperator,
+        valueType: unaryValueType
+      };
+      const existingMemberValue = this.findIdFromMembersForValueType(unaryValueType);
+      if (existingMemberValue) {
+      }
+      if (existingMemberValue) {
+        data.id = existingMemberValue.id;
+      }
+      const unaryOperatorMemberValue: MemberValue = new MemberValue(data);
+      updatedMemberValues.push(unaryOperatorMemberValue);
+    }
+
+    if (updatedComparisonOperator && comparisonValueType) {
+      const data: MemberValueType = <MemberValueType> {
+        value: updatedComparisonOperator,
+        valueType: comparisonValueType
+      };
+      const existingMemberValue = this.findIdFromMembersForValueType(comparisonValueType);
+      if (existingMemberValue) {
+      }
+      if (existingMemberValue) {
+        data.id = existingMemberValue.id;
+      }
+      const comparisonOperatorMemberValue: MemberValue = new MemberValue(data);
+      updatedMemberValues.push(comparisonOperatorMemberValue);
+    }
+
+    updatedMember.memberValues = updatedMemberValues;
+
+    Object.assign(updatedMember, {
       ...rest,
       startDate: validity.start,
       endDate: validity.end
     });
 
-    return this.dataService.saveMember(updatedExtension.serialize()).pipe(tap(() => this.ngOnInit()));
+    return this.dataService.saveMember(updatedMember.serialize()).pipe(tap(() => this.ngOnInit()));
   }
 }

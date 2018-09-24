@@ -102,6 +102,12 @@
                          [restrict]="restricted"
                          [infoText]="'INFO_TEXT_CODELIST_VERSION'"></app-literal-input>
 
+      <app-literal-input [id]="'codelist_short_name_input'"
+                         [label]="'Short name' | translate"
+                         [formControlName]="'shortName'"
+                         [restrict]="restricted"
+                         [infoText]="'INFO_TEXT_CODELIST_SHORT_NAME'"></app-literal-input>
+
       <app-literal-input [id]="'codelist_source_input'"
                          [label]="'Source' | translate"
                          [formControlName]="'source'"

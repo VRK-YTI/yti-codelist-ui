@@ -49,9 +49,9 @@ export interface CodeSchemeType extends BaseResourceType {
   variantsOfThisCodeScheme?: CodeSchemeListItemType[];
   variantMothersOfThisCodeScheme?: CodeSchemeListItemType[];
   allVersions?: CodeSchemeListItemType[];
-  nextCodeschemeId: string|null;
-  prevCodeschemeId: string|null;
-  lastCodeschemeId: string|null;
+  nextCodeschemeId: string | null;
+  prevCodeschemeId: string | null;
+  lastCodeschemeId: string | null;
   organizations: OrganizationType[];
 }
 
@@ -95,8 +95,7 @@ export interface VocabularyType {
   prefLabel: Localizable;
 }
 
-
-export interface ExternalReferenceType  {
+export interface ExternalReferenceType {
 
   modified?: string;
   id: string;
@@ -108,7 +107,7 @@ export interface ExternalReferenceType  {
   propertyType?: PropertyTypeType;
 }
 
-export interface PropertyTypeType  {
+export interface PropertyTypeType {
 
   id: string;
   prefLabel: Localizable;
@@ -119,9 +118,10 @@ export interface PropertyTypeType  {
   context: string;
   externaluri: string;
   type: string;
+  valueTypes?: ValueTypeType[];
 }
 
-export interface DataClassificationType  {
+export interface DataClassificationType {
 
   id: string;
   uri: string;
@@ -173,11 +173,10 @@ export interface MemberType {
 
   id: string;
   url: string;
-  memberValue_1: string;
-  memberValue_2: string;
-  memberValue_3: string;
+  memberValues?: MemberValueType[];
   prefLabel?: Localizable;
   order?: string;
+  created?: string;
   modified?: string;
   extension: ExtensionType;
   relatedMember?: MemberSimpleType;
@@ -190,11 +189,10 @@ export interface MemberSimpleType {
 
   id: string;
   url: string;
-  memberValue_1: string;
-  memberValue_2: string;
-  memberValue_3: string;
+  memberValues: MemberValueType[];
   prefLabel?: Localizable;
   order?: string;
+  created?: string;
   modified?: string;
   code: CodePlainType;
   relatedMember?: MemberSimpleType;
@@ -209,4 +207,24 @@ export interface CodeSchemeListItemType {
   startDate?: string;
   endDate?: string;
   status: string;
+}
+
+export interface ValueTypeType {
+
+  id: string;
+  prefLabel: Localizable;
+  localName: string;
+  typeUri: string;
+  required: boolean;
+  regexp: string;
+  valueTypeUri: string;
+}
+
+export interface MemberValueType {
+
+  id?: string;
+  value: string;
+  valueType: ValueTypeType;
+  created?: string;
+  modified?: string;
 }

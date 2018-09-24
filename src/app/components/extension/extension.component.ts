@@ -167,8 +167,8 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   save(formData: any): Observable<any> {
-    
-    const {validity, ...rest} = formData;
+
+    const { validity, ...rest } = formData;
     const updatedExtension = this.extension.clone();
 
     Object.assign(updatedExtension, {

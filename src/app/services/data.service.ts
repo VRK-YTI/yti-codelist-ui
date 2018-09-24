@@ -173,7 +173,7 @@ export class DataService {
   getCodeSchemesForCodeRegistry(registryCodeValue: string): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension');
+      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType');
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
     if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
@@ -187,7 +187,7 @@ export class DataService {
                     sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension')
+      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType')
       .append('searchCodes', searchCodes.toString());
 
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
@@ -221,9 +221,9 @@ export class DataService {
 
   getPropertyTypes(context: string): Observable<PropertyType[]> {
 
-    const params = {
-      context: context
-    };
+    const params = new HttpParams()
+      .append('expand', 'valueType')
+      .append('context', context);
 
     return this.http.get<WithResults<PropertyTypeType>>(`${propertyTypesBasePath}/`, { params })
       .pipe(map(res => res.results.map(data => new PropertyType(data))));
@@ -231,7 +231,10 @@ export class DataService {
 
   getPropertyType(propertyTypeLocalName: string): Observable<PropertyType> {
 
-    return this.http.get<PropertyTypeType>(`${propertyTypesBasePath}/${propertyTypeLocalName}`)
+    const params = new HttpParams()
+      .append('expand', 'valueType');
+
+    return this.http.get<PropertyTypeType>(`${propertyTypesBasePath}/${propertyTypeLocalName}`, { params })
       .pipe(map(res => new PropertyType(res)));
   }
 
@@ -248,7 +251,7 @@ export class DataService {
   getDataClassificationsAsCodes(language: string): Observable<Code[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType')
+      .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType')
       .append('hierarchyLevel', '1');
 
     if (language) {
@@ -262,7 +265,7 @@ export class DataService {
   getCodeScheme(registryCodeValue: string, schemeCodeValue: string): Observable<CodeScheme> {
 
     const params = {
-      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extension'
+      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extension,valueType'
     };
 
     return this.http.get<CodeSchemeType>(`${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/`, { params })
@@ -272,7 +275,7 @@ export class DataService {
   getCodeSchemeWithUuid(codeSchemeUuid: string): Observable<CodeScheme> {
 
     const params = {
-      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extension'
+      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,extension,valueType'
     };
 
     return this.http.get<CodeSchemeType>(`${codeSchemesBasePath}/${codeSchemeUuid}`, { params })
@@ -305,7 +308,7 @@ export class DataService {
   getCodes(registryCodeValue: string, schemeCodeValue: string, language: string): Observable<Code[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType');
+      .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType');
 
     if (language) {
       params = params.append('language', language);
@@ -318,7 +321,7 @@ export class DataService {
   getCode(registryCodeValue: string, schemeCodeValue: string, codeCodeValue: string): Observable<Code> {
 
     const params = {
-      'expand': 'codeScheme,codeRegistry,externalReference,propertyType,organization'
+      'expand': 'codeScheme,codeRegistry,externalReference,propertyType,organization,valueType'
     };
 
     const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
@@ -458,7 +461,7 @@ export class DataService {
   getExtension(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Extension> {
 
     const params = {
-      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code'
+      'expand': 'codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,valueType'
     };
 
     return this.http.get<ExtensionType>(
@@ -480,7 +483,7 @@ export class DataService {
   getMember(memberId: string): Observable<Member> {
 
     const params = {
-      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code'
+      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,valueType,memberValue'
     };
 
     return this.http.get<MemberType>(
@@ -492,10 +495,10 @@ export class DataService {
   getSimpleMembers(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<MemberSimple[]> {
 
     const params = {
-      'expand': 'code'
+      'expand': 'code,memberValue,valueType'
     };
 
-    return this.http.get<WithResults<MemberType>>(
+    return this.http.get<WithResults<MemberSimpleType>>(
       `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/` +
       `${extensionCodeValue}/${members}/`,
       { params })
@@ -505,7 +508,7 @@ export class DataService {
   getMembers(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Member[]> {
 
     const params = {
-      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme'
+      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,valueType,memberValue'
     };
 
     return this.http.get<WithResults<MemberType>>(
@@ -548,7 +551,6 @@ export class DataService {
       if (createdExtensions.length !== 1) {
         throw new Error('Exactly one extension needs to be created');
       } else {
-        console.log('Extension created!');
         return createdExtensions[0];
       }
     }));
@@ -608,9 +610,6 @@ export class DataService {
   }
 
   saveMember(memberToSave: MemberType): Observable<ApiResponseType> {
-
-    console.log('Saving Member in dataservice');
-    console.log(memberToSave);
 
     return this.http.post<ApiResponseType>(
       `${membersIntakeBasePath}/${memberToSave.id}`, memberToSave);

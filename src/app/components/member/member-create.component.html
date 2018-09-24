@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <div class="form-group">
-          <app-literal [label]="'Member' | translate"
+          <app-literal [label]="'Extension' | translate"
                        [value]="extension.getDisplayName(languageService)"></app-literal>
 
           <app-error-messages id="member_form_error_messages" [control]="memberForm"></app-error-messages>
@@ -49,23 +49,12 @@
                                  [label]="'Member name' | translate"
                                  [formControlName]="'prefLabel'"></app-localizable-input>
 
-          <app-literal-input *ngIf="requireMemberValue"
-                             [id]="'member_membervalue1_input'"
-                             [label]="'Member value 1' | translate"
-                             [required]="true"
-                             [formControlName]="'memberValue_1'"></app-literal-input>
-
-          <app-literal-input *ngIf="requireMemberValue"
-                             [id]="'member_membervalue2_input'"
-                             [label]="'Member value 2' | translate"
-                             [required]="false"
-                             [formControlName]="'memberValue_2'"></app-literal-input>
-
-          <app-literal-input *ngIf="requireMemberValue"
-                             [id]="'member_membervalue3_input'"
-                             [label]="'Member value 3' | translate"
-                             [required]="false"
-                             [formControlName]="'memberValue_3'"></app-literal-input>
+          <div *ngFor="let valueType of extension.propertyType.valueTypes">
+            <app-literal-input [id]="'member_membervalues_input'"
+                               [label]="valueType.prefLabel | translateValue"
+                               [required]="valueType.required"
+                               [formControlName]="valueType.localName"></app-literal-input>
+          </div>
 
           <app-code-input id="member_code_input"
                           [label]="'Code' | translate"

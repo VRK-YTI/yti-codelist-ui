@@ -5,14 +5,12 @@ import { MemberSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from './code-simple';
+import { MemberValue } from './member-value';
 
 export class MemberSimple {
 
   id: string;
   url: string;
-  memberValue_1: string;
-  memberValue_2: string;
-  memberValue_3: string;
   order?: string;
   modified: Moment | null = null;
   code: CodePlain;
@@ -21,15 +19,14 @@ export class MemberSimple {
   startDate: Moment | null = null;
   endDate: Moment | null = null;
   expanded: boolean;
+  memberValues: MemberValue[];
 
   constructor(data: MemberSimpleType) {
     this.id = data.id;
     this.url = data.url;
     this.order = data.order;
-    this.memberValue_1 = data.memberValue_1;
-    this.memberValue_2 = data.memberValue_2;
-    this.memberValue_3 = data.memberValue_3;
     this.prefLabel = data.prefLabel || {};
+    this.memberValues = (data.memberValues || []).map(mv => new MemberValue(mv));
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
     }
@@ -56,17 +53,25 @@ export class MemberSimple {
     return {
       id: this.id,
       url: this.url,
-      memberValue_1: this.memberValue_1,
-      memberValue_2: this.memberValue_2,
-      memberValue_3: this.memberValue_3,
       prefLabel: { ...this.prefLabel },
       modified: formatDateTime(this.modified),
       order: this.order,
       code: this.code.serialize(),
       relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
       startDate: formatDate(this.startDate),
-      endDate: formatDate(this.endDate)
+      endDate: formatDate(this.endDate),
+      memberValues: this.memberValues.map(mv => mv.serialize())
     };
+  }
+
+  getMemberValueForLocalName(localName: string) {
+    let memberValueValue;
+    this.memberValues.forEach(memberValue => {
+      if (memberValue.valueType.localName === 'localName') {
+        memberValueValue = memberValue.value;
+      }
+    });
+    return memberValueValue;
   }
 
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
@@ -76,13 +81,14 @@ export class MemberSimple {
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
-    const memberValue_1 = this.memberValue_1;
-    const memberValue_2 = this.memberValue_2;
+
+    const unaryOperator = this.getMemberValueForLocalName('unaryOperator');
+    const comparisonOperator = this.getMemberValueForLocalName('comparisonOperator');
 
     let displayName = '';
 
-    if (memberValue_1) {
-      displayName = `${memberValue_1}`;
+    if (unaryOperator) {
+      displayName = `${unaryOperator}`;
     }
 
     if (extensionTitle) {
@@ -97,8 +103,8 @@ export class MemberSimple {
       }
     }
 
-    if (memberValue_2) {
-      displayName = `${displayName} ${memberValue_2}`;
+    if (comparisonOperator) {
+      displayName = `${displayName} ${comparisonOperator}`;
     }
 
     return displayName;

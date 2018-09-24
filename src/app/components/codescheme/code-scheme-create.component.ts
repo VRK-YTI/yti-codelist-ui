@@ -45,6 +45,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     changeNote: new FormControl({}),
     version: new FormControl(''),
     source: new FormControl(''),
+    shortName: new FormControl(''),
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl([]),

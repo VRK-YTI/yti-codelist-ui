@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-20 08:55+0300\n"
+"PO-Revision-Date: 2018-09-22 15:38+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -440,20 +440,11 @@ msgstr "Haulla ei löytynyt yhtään koodistoa."
 msgid "No organization"
 msgstr "Ei organisaatiota"
 
-msgid "Member"
-msgstr "Jäsen"
+msgid "Extension"
+msgstr "Laajennus"
 
 msgid "Member name"
 msgstr "Jäsenen nimi"
-
-msgid "Member value 1"
-msgstr "Jäsenen arvo 1"
-
-msgid "Member value 2"
-msgstr "Jäsenen arvo 2"
-
-msgid "Member value 3"
-msgstr "Jäsenen arvo 3"
 
 msgid "Code"
 msgstr "Koodi"
@@ -463,9 +454,6 @@ msgstr "Hierarkkinen yläjäsen"
 
 msgid "Delete member"
 msgstr "Poista jäsen"
-
-msgid "Extension"
-msgstr "Laajennus"
 
 msgid "Impersonate user"
 msgstr "Esiinny käyttäjänä"
@@ -545,11 +533,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_CODE_URI"
-msgstr ""
-"Koodin pysyvä tunniste ja verkko-osoite. Muodostuu ohjelmallisesti "
-"seuraavasti http://uri.suomi.fi/codelist/[rekisteri]/[koodiston tunnus]/"
-"[koodi]"
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgstr "Viimeisin muokkauksen ajanhetki"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -594,6 +579,9 @@ msgstr ""
 
 msgid "INFO_TEXT_CODELIST_VERSION"
 msgstr "Koodiston versionumero esim. 1 tai v1"
+
+msgid "INFO_TEXT_CODELIST_SHORT_NAME"
+msgstr "Koodin lyhyt nimi tai lyhenne"
 
 msgid "INFO_TEXT_CODELIST_SOURCE"
 msgstr ""
@@ -673,6 +661,12 @@ msgstr "Koodin lyhyt nimi tai lyhenne"
 msgid "INFO_TEXT_CODE_VALIDITY"
 msgstr "Ajanjakso, jona koodi on voimassa"
 
+msgid "INFO_TEXT_CODE_URI"
+msgstr ""
+"Koodin pysyvä tunniste ja verkko-osoite. Muodostuu ohjelmallisesti "
+"seuraavasti http://uri.suomi.fi/codelist/[rekisteri]/[koodiston tunnus]/"
+"[koodi]"
+
 msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 "Tieto siitä, mihin julkisten palvelujen luokituksen palveluluokkaan koodisto "
@@ -680,9 +674,6 @@ msgstr ""
 "työkaluissa jokainen resurssi (koodisto, tietomalli tai sanasto) "
 "luokitellaan Julkisten palvelujen luokituksella. Luokitusta käytetään "
 "etusivun haussa rajaamaan hakutuloksia."
-
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
-msgstr "Viimeisin muokkauksen ajanhetki"
 
 msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
 msgstr "Linkit"
@@ -788,8 +779,14 @@ msgstr "Koodiston koodi, joka määrittelee tämän koodin päätason hierarkias
 msgid "INFO_TEXT_MEMBER_VALIDITY"
 msgstr "Ajanjakso, jona jäsen on voimassa"
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
+msgid "INFO_TEXT_MEMBER_VALIDITY_START_DATE"
+msgstr "Jäsenen voimassaolon alkamispäivämäärä"
+
+msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
+msgstr "Jäsenen voimassaolon päättymispäivämäärä"
+
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Koodisto on jo olemassa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -817,6 +814,9 @@ msgstr "vaadittu"
 
 msgid "All statuses"
 msgstr "Kaikki tilat"
+
+msgid "Member"
+msgstr "Jäsen"
 
 msgid "value"
 msgstr "arvo"
@@ -944,11 +944,11 @@ msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Koodisto on jo olemassa."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr "Aineistolle annettua luokitusta ei löydy."
@@ -1017,7 +1017,7 @@ msgstr ""
 "liitettyihin koodistoihin."
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Jäsenten maksimi hierarkinen taso ylittyi."
+msgstr "Jäsenten maksimi hierarkkinen taso ylittyi."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Jäsenen arvoa ei ole määritetty, tai se on tyhjä."
@@ -1065,7 +1065,7 @@ msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Tätä koodistoa ei voi poistaa."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Koodien maksimi hierarkinen taso ylittyi."
+msgstr "Koodien maksimi hierarkkinen taso ylittyi."
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
@@ -1155,3 +1155,15 @@ msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "memberValueValidationError"
 msgstr "Jäsenen arvo ei voi olla tyhjä."
+
+msgid "memberValueRegexpValidationError"
+msgstr "Jäsenen arvossa esiintyy ei sallittuja merkkejä."
+
+#~ msgid "Member value 1"
+#~ msgstr "Jäsenen arvo 1"
+
+#~ msgid "Member value 2"
+#~ msgstr "Jäsenen arvo 2"
+
+#~ msgid "Member value 3"
+#~ msgstr "Jäsenen arvo 3"

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -13,6 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { validDateRange } from '../../utils/date';
 import { Code } from '../../entities/code';
+import { MemberValue } from '../../entities/member-value';
+import { ValueType } from '../../entities/value-type';
 
 @Component({
   selector: 'app-member-information',
@@ -28,9 +30,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
-    memberValue_1: new FormControl(''),
-    memberValue_2: new FormControl(''),
-    memberValue_3: new FormControl(''),
+    unaryOperator: new FormControl('', [this.isUnaryOperatorRequired.bind(this), this.isUnaryOperatorPatternValid.bind(this)]),
+    comparisonOperator: new FormControl('', [this.isComparisonOperatorRequired.bind(this), this.isComparisonOperatorPatternValid.bind(this)]),
     code: new FormControl(null, Validators.required),
     relatedMember: new FormControl(null),
     validity: new FormControl(null, validDateRange)
@@ -71,27 +72,48 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
     this.reset();
   }
 
+  getValueFromMemberValues(memberValues: MemberValue[], localName: string): string | undefined {
+
+    let value: string | undefined;
+    memberValues.forEach(memberValue => {
+      if (memberValue.valueType.localName === localName) {
+        value = memberValue.value;
+      }
+    });
+    return value;
+  }
+
   reset() {
-    const { startDate, endDate, ...rest } = this.currentMember;
+
+    const { startDate, endDate, memberValues, ...rest } = this.currentMember;
+
+    const unaryOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'unaryOperator');
+    const comparisonOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'comparisonOperator');
 
     this.memberForm.reset({
       ...rest,
+      unaryOperator: unaryOperator,
+      comparisonOperator: comparisonOperator,
       validity: { start: startDate, end: endDate }
     });
   }
 
   get editing() {
+
     return this.editableService.editing;
   }
 
   get isSuperUser() {
+
     return this.userService.user.superuser;
   }
 
   get restricted() {
+
     if (this.isSuperUser) {
       return false;
     }
@@ -99,31 +121,75 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   ngOnDestroy() {
+
     this.cancelSubscription.unsubscribe();
   }
 
   get loading(): boolean {
+
     return this.extension == null || this.currentMember == null;
   }
 
   canSave() {
+
     return this.memberForm.valid;
   }
 
-  get requireMemberValue(): boolean {
-    return this.extension.propertyType.localName === 'calculationHierarchy';
-  }
-
   get allCodeSchemes(): CodeScheme[] {
-    return [ this.extension.parentCodeScheme, ...this.extension.codeSchemes ];
+
+    return [this.extension.parentCodeScheme, ...this.extension.codeSchemes];
   }
 
   get showCodeDetailLabel(): boolean {
+
     const currentCode: Code = this.memberForm.controls['code'].value;
     if (currentCode) {
       return currentCode.codeScheme.id !== this.extension.parentCodeScheme.id;
     } else {
       return false;
     }
+  }
+
+  isUnaryOperatorRequired(control: AbstractControl) {
+
+    if (!this.loading) {
+      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
+      return valueType && ((valueType.required && control.value.length > 0) || !valueType.required) ? null : { 'memberValueValidationError': { value: control.value } };
+    }
+    return null;
+  }
+
+  isComparisonOperatorRequired(control: AbstractControl) {
+
+    if (!this.loading) {
+      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
+      return valueType && ((valueType.required && control.value.length > 0) || !valueType.required) ? null : { 'memberValueValidationError': { value: control.value } };
+    }
+    return null;
+  }
+
+  isUnaryOperatorPatternValid(control: AbstractControl) {
+    if (!this.loading) {
+      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
+      if (valueType && valueType.regexp) {
+        const isMemberValueValid = control.value.match(valueType.regexp);
+        return !isMemberValueValid ? { 'memberValueRegexpValidationError': { value: control.value } } : null;
+      }
+      return null;
+    }
+    return null;
+  }
+
+  isComparisonOperatorPatternValid(control: AbstractControl) {
+
+    if (!this.loading) {
+      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
+      if (valueType && valueType.regexp) {
+        const isMemberValueValid = control.value.match(valueType.regexp);
+        return !isMemberValueValid ? { 'memberValueRegexpValidationError': { value: control.value } } : null;
+      }
+      return null;
+    }
+    return null;
   }
 }

@@ -1,5 +1,6 @@
 import { Localizable } from 'yti-common-ui/types/localization';
 import { PropertyTypeType } from '../services/api-schema';
+import { ValueType } from './value-type';
 
 export class PropertyType {
 
@@ -12,7 +13,7 @@ export class PropertyType {
   context: string;
   externaluri: string;
   type: string;
-
+  valueTypes: ValueType[] = [];
 
   constructor(data: PropertyTypeType) {
     this.id = data.id;
@@ -23,10 +24,21 @@ export class PropertyType {
     this.context = data.context;
     this.localName = data.localName;
     this.type = data.type;
+    if (data.valueTypes) {
+      this.valueTypes = (data.valueTypes || []).map(vt => new ValueType(vt));
+    }
   }
 
   get idIdentifier(): string {
     return `${this.context}_${this.localName}`;
+  }
+
+  valueTypeForLocalName(localName: string): ValueType | null {
+    const filteredValueTypes: ValueType[] = this.valueTypes.filter(valueType => valueType.localName === localName);
+    if (filteredValueTypes) {
+      return filteredValueTypes[0];
+    }
+    return null;
   }
 
   serialize(): PropertyTypeType {
@@ -39,7 +51,8 @@ export class PropertyType {
       propertyUri: this.propertyUri,
       context: this.context,
       externaluri: this.externaluri,
-      type: this.type
+      type: this.type,
+      valueTypes: this.valueTypes.map(vt => vt.serialize())
     };
   }
 

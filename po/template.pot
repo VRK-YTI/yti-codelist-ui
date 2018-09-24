@@ -419,19 +419,10 @@ msgstr ""
 msgid "No organization"
 msgstr ""
 
-msgid "Member"
+msgid "Extension"
 msgstr ""
 
 msgid "Member name"
-msgstr ""
-
-msgid "Member value 1"
-msgstr ""
-
-msgid "Member value 2"
-msgstr ""
-
-msgid "Member value 3"
 msgstr ""
 
 msgid "Code"
@@ -441,9 +432,6 @@ msgid "Broader member"
 msgstr ""
 
 msgid "Delete member"
-msgstr ""
-
-msgid "Extension"
 msgstr ""
 
 msgid "Impersonate user"
@@ -524,7 +512,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_URI"
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -558,6 +546,9 @@ msgid "INFO_TEXT_CODELIST_CHANGE_NOTE"
 msgstr ""
 
 msgid "INFO_TEXT_CODELIST_VERSION"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_SHORT_NAME"
 msgstr ""
 
 msgid "INFO_TEXT_CODELIST_SOURCE"
@@ -614,10 +605,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_VALIDITY"
 msgstr ""
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_CODE_URI"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgid "INFO_TEXT_CLASSIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
@@ -707,7 +698,13 @@ msgstr ""
 msgid "INFO_TEXT_MEMBER_VALIDITY"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgid "INFO_TEXT_MEMBER_VALIDITY_START_DATE"
+msgstr ""
+
+msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
+msgstr ""
+
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
 msgid "Front page"
@@ -735,6 +732,9 @@ msgid "required"
 msgstr ""
 
 msgid "All statuses"
+msgstr ""
+
+msgid "Member"
 msgstr ""
 
 msgid "value"
@@ -859,10 +859,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr ""
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
@@ -1043,4 +1043,7 @@ msgid "codeCodeValueValidationError"
 msgstr ""
 
 msgid "memberValueValidationError"
+msgstr ""
+
+msgid "memberValueRegexpValidationError"
 msgstr ""

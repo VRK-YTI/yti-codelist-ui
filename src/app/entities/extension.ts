@@ -87,7 +87,6 @@ export class Extension implements EditableEntity {
   }
 
   serialize(): ExtensionType {
-    console.log('codeSchemes: ' + this.codeSchemes);
     return {
       id: this.id,
       url: this.url,

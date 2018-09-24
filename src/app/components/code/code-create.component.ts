@@ -101,7 +101,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
         console.log('Saved code route: ' + createdCode.route);
         this.router.navigate(createdCode.route);
       }));
-    }
+    };
 
     if (contains(restrictedStatuses, code.status)) {
       return from(this.confirmationModalService.openChooseToRestrictedStatus()).pipe(flatMap(save));

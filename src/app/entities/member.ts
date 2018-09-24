@@ -9,15 +9,15 @@ import { Extension } from './extension';
 import { MemberSimple } from './member-simple';
 import { TranslateService } from '@ngx-translate/core';
 import { Code } from './code';
+import { MemberValue } from './member-value';
+import { ValueType } from './value-type';
 
 export class Member implements EditableEntity {
 
   id: string;
   url: string;
-  memberValue_1: string;
-  memberValue_2: string;
-  memberValue_3: string;
   order?: string;
+  created: Moment | null = null;
   modified: Moment | null = null;
   extension: Extension;
   relatedMember?: MemberSimple;
@@ -25,14 +25,13 @@ export class Member implements EditableEntity {
   prefLabel: Localizable;
   startDate: Moment | null = null;
   endDate: Moment | null = null;
+  memberValues: MemberValue[] = [];
 
   constructor(data: MemberType) {
     this.id = data.id;
     this.url = data.url;
     this.order = data.order;
-    this.memberValue_1 = data.memberValue_1;
-    this.memberValue_2 = data.memberValue_2;
-    this.memberValue_3 = data.memberValue_3;
+    this.memberValues = (data.memberValues || []).map(mv => new MemberValue(mv));
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
     }
@@ -92,17 +91,32 @@ export class Member implements EditableEntity {
       id: this.id,
       url: this.url,
       prefLabel: { ...this.prefLabel },
-      memberValue_1: this.memberValue_1,
-      memberValue_2: this.memberValue_2,
-      memberValue_3: this.memberValue_3,
+      created: formatDateTime(this.modified),
       modified: formatDateTime(this.modified),
       order: this.order,
       extension: this.extension.serialize(),
       relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
       code: this.code.serialize(),
       startDate: formatDate(this.startDate),
-      endDate: formatDate(this.endDate)
+      endDate: formatDate(this.endDate),
+      memberValues: this.memberValues.map(mv => mv.serialize())
     };
+  }
+
+  getMemberValueForLocalNameIfEnabled(extension: Extension,
+                                      localName: string) {
+    let memberValueValue: string | undefined;
+    const valueType: ValueType | null = (extension.propertyType.valueTypeForLocalName(localName));
+    if (valueType && this.memberValues) {
+      this.memberValues.forEach(memberValue => {
+        if (memberValue.valueType.localName === localName) {
+          memberValueValue = memberValue.value;
+        }
+      });
+    } else {
+      memberValueValue = undefined;
+    }
+    return memberValueValue;
   }
 
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
@@ -117,13 +131,12 @@ export class Member implements EditableEntity {
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
-    const memberValue_1 = this.memberValue_1;
-    const memberValue_2 = this.memberValue_2;
-
     let displayName = '';
 
-    if (memberValue_1) {
-      displayName = `${memberValue_1}`;
+    const unaryOperator = this.getMemberValueForLocalNameIfEnabled(this.extension, 'unaryOperator');
+
+    if (unaryOperator) {
+      displayName = `${unaryOperator}`;
     }
 
     if (extensionTitle) {
@@ -138,8 +151,10 @@ export class Member implements EditableEntity {
       }
     }
 
-    if (memberValue_2) {
-      displayName = `${displayName} ${memberValue_2}`;
+    const comparisonOperator = this.getMemberValueForLocalNameIfEnabled(this.extension, 'comparisonOperator');
+
+    if (comparisonOperator) {
+      displayName = `${displayName} ${comparisonOperator}`;
     }
 
     return displayName;
@@ -160,13 +175,12 @@ export class Member implements EditableEntity {
       codeTitle = codeTitle + ' - ' + codeSchemeTitle;
     }
 
-    const memberValue_1 = this.memberValue_1;
-    const memberValue_2 = this.memberValue_2;
-
     let displayName = '';
 
-    if (memberValue_1) {
-      displayName = `${memberValue_1}`;
+    const unaryOperator = this.getMemberValueForLocalNameIfEnabled(extension, 'unaryOperator');
+
+    if (unaryOperator) {
+      displayName = `${unaryOperator}`;
     }
 
     if (extensionTitle) {
@@ -181,8 +195,10 @@ export class Member implements EditableEntity {
       }
     }
 
-    if (memberValue_2) {
-      displayName = `${displayName} ${memberValue_2}`;
+    const comparisonOperator = this.getMemberValueForLocalNameIfEnabled(extension, 'comparisonOperator');
+
+    if (comparisonOperator) {
+      displayName = `${displayName} ${comparisonOperator}`;
     }
 
     return displayName;
