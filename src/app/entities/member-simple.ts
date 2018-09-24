@@ -67,7 +67,7 @@ export class MemberSimple {
   getMemberValueForLocalName(localName: string) {
     let memberValueValue;
     this.memberValues.forEach(memberValue => {
-      if (memberValue.valueType.localName === 'localName') {
+      if (memberValue.valueType.localName === localName) {
         memberValueValue = memberValue.value;
       }
     });
