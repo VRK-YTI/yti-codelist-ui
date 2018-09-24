@@ -189,7 +189,7 @@ export interface MemberSimpleType {
 
   id: string;
   url: string;
-  memberValues: MemberValueType[];
+  memberValues?: MemberValueType[];
   prefLabel?: Localizable;
   order?: string;
   created?: string;
