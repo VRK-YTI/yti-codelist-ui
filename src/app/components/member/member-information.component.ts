@@ -154,7 +154,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
-      return valueType && ((valueType.required && control.value.length > 0) || !valueType.required) ? null : { 'memberValueValidationError': { value: control.value } };
+      return !valueType || (valueType && ((valueType.required && control.value.length > 0) || !valueType.required)) ? null : { 'memberValueValidationError': { value: control.value } };
     }
     return null;
   }
@@ -163,7 +163,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
-      return valueType && ((valueType.required && control.value.length > 0) || !valueType.required) ? null : { 'memberValueValidationError': { value: control.value } };
+      return !valueType || (valueType && ((valueType.required && control.value.length > 0) || !valueType.required)) ? null : { 'memberValueValidationError': { value: control.value } };
     }
     return null;
   }
