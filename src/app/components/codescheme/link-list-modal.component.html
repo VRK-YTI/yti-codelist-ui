@@ -1,39 +1,37 @@
-<div *ngIf="!loading">
-  <div class="modal-header">
-    <h4 class="modal-title strong">
-      <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
-      {{modalLabel}}
-    </h4>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-md-12">
-        <div *ngFor="let propertyExternalReferences of externalReferencesByType; trackBy: externalReferenceIdentity">
-          <label>{{propertyExternalReferences.label | translateValue}}</label>
+<div class="modal-header">
+  <h4 class="modal-title strong">
+    <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
+    {{modalLabel}}
+  </h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngFor="let propertyExternalReferences of externalReferencesByType; trackBy: externalReferenceIdentity">
+        <label>{{propertyExternalReferences.label | translateValue}}</label>
 
-          <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input id="{{externalReference.getIdIdentifier(languageService) + '_external_reference_link'}}"
-                       class="form-check-input"
-                       type="radio"
-                       [checked]="selectedExternalReference === externalReference"
-                       (click)="selectedExternalReference = externalReference">
-                <span>{{externalReference.getDisplayName(languageService)}}</span>
-              </label>
-            </div>
+        <div *ngFor="let externalReference of propertyExternalReferences.externalReferences">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input id="{{externalReference.getIdIdentifier(languageService) + '_external_reference_link'}}"
+                     class="form-check-input"
+                     type="radio"
+                     [checked]="selectedExternalReference === externalReference"
+                     (click)="selectedExternalReference = externalReference">
+              <span>{{externalReference.getDisplayName(languageService)}}</span>
+            </label>
           </div>
         </div>
+      </div>
 
-        <div *ngIf="externalReferences.length === 0">
-          <span translate>There are no links available, please create new ones.</span>
-        </div>
+      <div *ngIf="externalReferences.length === 0">
+        <span translate>There are no links available, please create new ones.</span>
       </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <button id="select_link_button" type="button" class="btn btn-action" [disabled]="!canSelect()" (click)="select()" translate>Select</button>
-    <button id="add_new_link_button" type="button" class="btn btn-action" (click)="create()">{{createNewButtonLabel}}</button>
-    <button id="cancel_modal_button" type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
-  </div>
+</div>
+<div class="modal-footer">
+  <button id="select_link_button" type="button" class="btn btn-action" [disabled]="!canSelect()" (click)="select()" translate>Select</button>
+  <button id="add_new_link_button" type="button" class="btn btn-action" (click)="create()">{{createNewButtonLabel}}</button>
+  <button id="cancel_modal_button" type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
 </div>
