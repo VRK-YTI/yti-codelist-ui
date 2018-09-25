@@ -18,8 +18,7 @@ import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-code-scheme-information',
-  templateUrl: './code-scheme-information.component.html',
-  styleUrls: ['./code-scheme-information.component.scss']
+  templateUrl: './code-scheme-information.component.html'
 })
 export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 

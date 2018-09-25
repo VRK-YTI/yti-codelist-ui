@@ -39,7 +39,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
         </div>
         <div *ngIf="editing">
           <div *ngFor="let organization of selectableOrganizations">
-            <a>
+            <a class="removal-X">
               <i [id]="'remove_' + organization.getIdIdentifier(languageService) + '_organization_link'"
                  class="fa fa-times"
                  (click)="removeOrganization(organization)"></i>

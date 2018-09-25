@@ -70,10 +70,10 @@ app-filter-dropdown {
 .checkbox {
 
   input {
-    vertical-align:middle;
+    vertical-align: middle;
     position: relative;
     display: inline-block;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
   }
 
   label {
@@ -131,7 +131,7 @@ app-filter-dropdown {
       line-height: 0.9375rem;
     }
 
-    li:not(:empty)~:not(:empty):before {
+    li:not(:empty) ~ :not(:empty):before {
       content: "·";
       padding-left: .66667em;
       padding-right: .66667em

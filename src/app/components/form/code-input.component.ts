@@ -35,7 +35,7 @@ function removeFromControl<T>(control: FormControl) {
           <span *ngIf="showDetailLabel">{{code.getDisplayNameWithCodeSchemeAndRegistry(languageService, false)}}</span>
         </div>
         <div *ngIf="editing && code">
-          <a>
+          <a class="removal-X">
             <i id="remove_code_link"
                class="fa fa-times"
                (click)="removeCode(code)"></i>

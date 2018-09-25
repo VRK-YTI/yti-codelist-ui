@@ -48,7 +48,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
 
         <div *ngIf="editing && selectedLanguageCodes.length > 1">
           <div *ngFor="let languageCode of selectedLanguageCodes">
-            <a>
+            <a class="removal-X">
               <i [id]="'remove_' + languageCode.codeValue + '_languagecode_link'"
                  class="fa fa-times"
                  (click)="removeLanguageCode(languageCode)"></i>

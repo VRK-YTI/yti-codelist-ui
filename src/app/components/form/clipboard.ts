@@ -5,6 +5,7 @@ const clippyImage = require('../../../assets/clippy.svg');
 
 @Component({
   selector: 'app-clipboard',
+  styleUrls: ['./clipboard.scss'],
   template: `
     <dl>
       <dt>
@@ -15,7 +16,7 @@ const clippyImage = require('../../../assets/clippy.svg');
         <a *ngIf="showAsLink" target="_blank" href="{{value}}">{{value}}</a>
         <span *ngIf="!showAsLink">{{value}}</span>
         <img [src]="this.clippyImage"
-             class="svg-icon"
+             class="svg-icon clipboard"
              #t="ngbTooltip"
              ngbTooltip="{{'Copy value to clipboard' | translate:translateParams}}"
              #p="ngbPopover"

@@ -32,7 +32,7 @@ function removeFromControl<T>(control: FormControl) {
           <span>{{member.getDisplayName(languageService, translateService)}}</span>
         </div>
         <div *ngIf="editing && member">
-          <a>
+          <a  class="removal-X">
             <i id="remove_member_link"
                class="fa fa-times"
                (click)="removeMember(member)"></i>

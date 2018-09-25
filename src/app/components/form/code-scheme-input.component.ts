@@ -38,7 +38,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
         </div>
         <div *ngIf="editing">
           <div *ngFor="let codeScheme of codeSchemes">
-            <a>
+            <a class="removal-X">
               <i [id]="'remove_' + codeScheme.codeValue + '_code_scheme_link'"
                  class="fa fa-times"
                  (click)="removeCodeScheme(codeScheme)"></i>
