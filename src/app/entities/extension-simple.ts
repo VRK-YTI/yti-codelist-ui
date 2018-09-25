@@ -11,6 +11,7 @@ import { contains } from 'yti-common-ui/utils/array';
 export class ExtensionSimple {
 
   id: string;
+  uri: string;
   url: string;
   codeValue: string;
   status: Status = 'DRAFT';
@@ -22,8 +23,9 @@ export class ExtensionSimple {
 
   constructor(data: ExtensionSimpleType) {
     this.id = data.id;
-    this.codeValue = data.codeValue;
+    this.uri = data.uri;
     this.url = data.url;
+    this.codeValue = data.codeValue;
     this.prefLabel = data.prefLabel || {};
     this.propertyType = new PropertyType(data.propertyType);
     if (data.modified) {

@@ -47,6 +47,11 @@
                               [infoText]="'INFO_TEXT_EXTENSION_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
+        <app-clipboard [label]="'URI' | translate"
+                       [value]="getExtensionUri()"
+                       [showAsLink]="false"
+                       [infoText]="'INFO_TEXT_URI'"></app-clipboard>
+
         <app-literal [label]="'Last modification' | translate"
                      [value]="extension.modifiedDisplayValue"
                      [infoText]="'INFO_TEXT_EXTENSION_LAST_MODIFICATION'"></app-literal>

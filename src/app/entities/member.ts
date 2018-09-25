@@ -16,6 +16,7 @@ export class Member implements EditableEntity {
 
   id: string;
   url: string;
+  uri: string;
   order?: string;
   created: Moment | null = null;
   modified: Moment | null = null;
@@ -30,6 +31,7 @@ export class Member implements EditableEntity {
   constructor(data: MemberType) {
     this.id = data.id;
     this.url = data.url;
+    this.uri = data.uri;
     this.order = data.order;
     this.memberValues = (data.memberValues || []).map(mv => new MemberValue(mv));
     if (data.modified) {
@@ -89,6 +91,7 @@ export class Member implements EditableEntity {
   serialize(): MemberType {
     return {
       id: this.id,
+      uri: this.uri,
       url: this.url,
       prefLabel: { ...this.prefLabel },
       created: formatDateTime(this.modified),

@@ -21,6 +21,7 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   @Input() extension: Extension;
 
   codeSchemes: CodeScheme[];
+  env: string;
 
   extensionForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -39,6 +40,10 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
               public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+
+    this.dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
   }
 
   ngOnInit() {
@@ -92,6 +97,13 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   }
 
   get loading(): boolean {
-    return this.extension == null;
+    return this.extension == null || this.env == null;
+  }
+
+  getExtensionUri() {
+    if (this.env !== 'prod') {
+      return this.extension.uri + '?env=' + this.env;
+    }
+    return this.extension.uri;
   }
 }
