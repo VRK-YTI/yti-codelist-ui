@@ -30,6 +30,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   extension: Extension;
   members: MemberSimple[];
   env: string;
+  deleting: boolean;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -81,7 +82,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   get loading(): boolean {
-    return this.extension == null || this.members == null;
+    return this.extension == null || this.members == null || this.deleting;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -108,9 +109,12 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   delete() {
     this.confirmationModalService.openRemoveExtension()
       .then(() => {
+        this.deleting = true;
         this.dataService.deleteExtension(this.extension).subscribe(res => {
+          this.deleting = false;
           this.router.navigate(this.extension.parentCodeScheme.route);
         }, error => {
+          this.deleting = false;
           this.errorModalService.openSubmitError(error);
         });
       }, ignoreModalClose);

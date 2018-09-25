@@ -28,6 +28,7 @@ export class CodeComponent implements OnInit, EditingComponent {
 
   code: Code;
   codeScheme: CodeScheme;
+  deleting: boolean;
 
   constructor(public languageService: LanguageService,
               private userService: UserService,
@@ -64,7 +65,7 @@ export class CodeComponent implements OnInit, EditingComponent {
   }
 
   get loading(): boolean {
-    return this.code == null || this.codeScheme == null;
+    return this.code == null || this.codeScheme == null || this.deleting;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -119,13 +120,16 @@ export class CodeComponent implements OnInit, EditingComponent {
   delete() {
     this.confirmationModalService.openRemoveCode()
       .then(() => {
+        this.deleting = true;
         this.dataService.deleteCode(this.code).subscribe(res => {
+          this.deleting = false;
           if (res.meta.code === 200) {
             this.router.navigate(this.code.codeScheme.route);
           } else {
             this.errorModalService.openSubmitError(res);
           }
         }, error => {
+          this.deleting = false;
           this.errorModalService.openSubmitError(error);
         });
       }, ignoreModalClose);
