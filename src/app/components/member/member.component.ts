@@ -31,6 +31,7 @@ export class MemberComponent implements OnInit, EditingComponent {
 
   member: Member;
   extension: Extension;
+  deleting: boolean;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -71,7 +72,7 @@ export class MemberComponent implements OnInit, EditingComponent {
 
   get loading(): boolean {
 
-    return this.member == null || this.extension == null;
+    return this.member == null || this.extension == null || this.deleting;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
@@ -134,9 +135,12 @@ export class MemberComponent implements OnInit, EditingComponent {
 
     this.confirmationModalService.openRemoveMember()
       .then(() => {
+        this.deleting = true;
         this.dataService.deleteMember(this.member).subscribe(res => {
+          this.deleting = false;
           this.router.navigate(this.member.extension.route);
         }, error => {
+          this.deleting = false;
           this.errorModalService.openSubmitError(error);
         });
       }, ignoreModalClose);
