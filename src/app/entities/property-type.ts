@@ -12,7 +12,6 @@ export class PropertyType {
   propertyUri: string;
   context: string;
   externaluri: string;
-  type: string;
   valueTypes: ValueType[] = [];
 
   constructor(data: PropertyTypeType) {
@@ -23,7 +22,6 @@ export class PropertyType {
     this.propertyUri = data.propertyUri;
     this.context = data.context;
     this.localName = data.localName;
-    this.type = data.type;
     if (data.valueTypes) {
       this.valueTypes = (data.valueTypes || []).map(vt => new ValueType(vt));
     }
@@ -51,7 +49,6 @@ export class PropertyType {
       propertyUri: this.propertyUri,
       context: this.context,
       externaluri: this.externaluri,
-      type: this.type,
       valueTypes: this.valueTypes.map(vt => vt.serialize())
     };
   }

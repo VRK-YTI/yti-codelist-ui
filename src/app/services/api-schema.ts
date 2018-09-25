@@ -117,7 +117,6 @@ export interface PropertyTypeType {
   propertyUri: string;
   context: string;
   externaluri: string;
-  type: string;
   valueTypes?: ValueTypeType[];
 }
 
