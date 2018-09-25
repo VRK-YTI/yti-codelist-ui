@@ -1,10 +1,10 @@
 {
-  "/codelist-intake/**": {
+  "/codelist-intake/*": {
     "target": "https://koodistot-dev.suomi.fi",
     "changeOrigin": true,
     "secure": false
   },
-  "/codelist-api/**": {
+  "/codelist-api/*": {
     "target": "https://koodistot-dev.suomi.fi",
     "changeOrigin": true,
     "secure": false
