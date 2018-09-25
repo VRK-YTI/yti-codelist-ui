@@ -68,6 +68,7 @@ export class ExtensionSimple {
   serialize(): ExtensionSimpleType {
     return {
       id: this.id,
+      uri: this.uri,
       url: this.url,
       codeValue: this.codeValue,
       propertyType: this.propertyType.serialize(),
