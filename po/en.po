@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-26 08:51+0300\n"
+"PO-Revision-Date: 2018-09-26 16:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -431,9 +431,6 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "No organization"
-msgstr ""
-
 msgid "Extension"
 msgstr ""
 
@@ -480,6 +477,9 @@ msgid "No registries found."
 msgstr ""
 
 msgid "organizations"
+msgstr ""
+
+msgid "No organization"
 msgstr ""
 
 msgid "This registry does not have any code lists yet."
@@ -1069,6 +1069,11 @@ msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr "Member value is not valid."
+
+msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in one of the "
+"required member value columns."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""

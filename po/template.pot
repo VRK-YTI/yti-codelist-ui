@@ -416,9 +416,6 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "No organization"
-msgstr ""
-
 msgid "Extension"
 msgstr ""
 
@@ -465,6 +462,9 @@ msgid "No registries found."
 msgstr ""
 
 msgid "organizations"
+msgstr ""
+
+msgid "No organization"
 msgstr ""
 
 msgid "This registry does not have any code lists yet."
@@ -974,6 +974,9 @@ msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-26 08:50+0300\n"
+"PO-Revision-Date: 2018-09-26 16:20+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -437,9 +437,6 @@ msgstr "Suodata hakutuloksia"
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
-msgid "No organization"
-msgstr "Ei organisaatiota"
-
 msgid "Extension"
 msgstr "Laajennus"
 
@@ -487,6 +484,9 @@ msgstr "Rekistereitä ei ole."
 
 msgid "organizations"
 msgstr "organisaatiota"
+
+msgid "No organization"
+msgstr "Ei organisaatiota"
 
 msgid "This registry does not have any code lists yet."
 msgstr "Tällä rekisterillä ei ole yhtään koodistoa."
@@ -1074,6 +1074,11 @@ msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr "Jäsenen arvo ei ole sallittu."
+
+msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
+msgstr ""
+"Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä "
+"{{ identifier }}."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
