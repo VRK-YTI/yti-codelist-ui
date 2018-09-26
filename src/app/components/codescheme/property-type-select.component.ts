@@ -18,7 +18,7 @@ import { LanguageService } from '../../services/language.service';
           <div ngbDropdown class="d-inline-block">
 
             <button class="btn btn-dropdown" id="propertytype_dropdown_button" ngbDropdownToggle>
-              <span *ngIf="value">{{value.prefLabel | translateValue}}</span>
+              <span *ngIf="value">{{value.prefLabel | translateValue:true}}</span>
             </button>
 
             <div *ngIf="propertyTypes" ngbDropdownMenu aria-labelledby="propertytype_dropdown_button">
@@ -27,7 +27,7 @@ import { LanguageService } from '../../services/language.service';
                       (click)="select(propertyTypeOption)"
                       class="dropdown-item"
                       [class.active]="isSelected(propertyTypeOption)">
-                {{propertyTypeOption.prefLabel | translateValue}}</button>
+                {{propertyTypeOption.prefLabel | translateValue:true}}</button>
             </div>
           </div>
           <app-error-messages id="propertytype_error_messages" [control]="parentControl"></app-error-messages>
