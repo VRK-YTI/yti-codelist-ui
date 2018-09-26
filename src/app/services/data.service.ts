@@ -286,7 +286,7 @@ export class DataService {
   getExternalReferences(codeSchemeId: string): Observable<ExternalReference[]> {
 
     let params = new HttpParams()
-      .append('expand', 'propertyType')
+      .append('expand', 'propertyType');
 
     if (codeSchemeId) {
       params = params.append('codeSchemeId', codeSchemeId);

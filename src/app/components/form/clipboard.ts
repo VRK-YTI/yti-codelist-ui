@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { NgbPopover, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 const clippyImage = require('../../../assets/clippy.svg');
