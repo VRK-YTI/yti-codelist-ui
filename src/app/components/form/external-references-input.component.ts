@@ -1,4 +1,4 @@
-import { Component, Input, Optional, Self, OnInit } from '@angular/core';
+import { Component, Input, Optional, Self, OnInit, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
@@ -13,6 +13,7 @@ import { CodePlain } from '../../entities/code-simple';
 import { DataService } from '../../services/data.service';
 import { PropertyType } from '../../entities/property-type';
 import { LinkCreateModalService } from '../codescheme/link-create-modal.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-external-references-input',
@@ -64,7 +65,7 @@ import { LinkCreateModalService } from '../codescheme/link-create-modal.componen
                       [id]="propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'"
                       (click)="addLink(propertyTypeOption)"
                       class="dropdown-item">
-              {{propertyTypeOption.prefLabel | translateValue}}</button>            
+              {{propertyTypeOption.prefLabel | translateValue:true}}</button>            
             </div>
           </div>
         </div>
@@ -74,7 +75,7 @@ import { LinkCreateModalService } from '../codescheme/link-create-modal.componen
     </dl>
   `
 })
-export class ExternalReferencesInputComponent implements ControlValueAccessor, OnInit {
+export class ExternalReferencesInputComponent implements ControlValueAccessor, OnInit, OnDestroy {
 
   @Input() label: string;
   @Input() codeSchemeId: string;
@@ -86,6 +87,8 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
   propertyTypes: PropertyType[];
 
   loading = false;
+
+  private subscriptionToClean: Subscription[] = [];
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -109,14 +112,16 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
 
   ngOnInit() {
 
-    this.dataService.getPropertyTypes('ExternalReference', this.languageService.language).subscribe(types => {
+    this.subscriptionToClean.push(this.languageService.language$.subscribe(language => {
+      this.dataService.getPropertyTypes('ExternalReference', language).subscribe(types => {
 
-      if (types.length === 0) {
-        throw new Error('No types');
-      }
+        if (types.length === 0) {
+          throw new Error('No types');
+        }
 
-      this.propertyTypes = types;
-    });
+        this.propertyTypes = types;
+      });
+    }));
   }
 
   get externalReferences(): ExternalReference[] {
@@ -179,6 +184,10 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
 
   get editing() {
     return this.editableService.editing && !this.restrict;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionToClean.forEach(s => s.unsubscribe());
   }
 
   writeValue(obj: any): void {
