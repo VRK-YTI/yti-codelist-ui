@@ -24,7 +24,9 @@ import { ValueType } from '../../entities/value-type';
 export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() currentMember: Member;
+
   extension: Extension;
+  env: string;
 
   cancelSubscription: Subscription;
 
@@ -47,6 +49,10 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
               public languageService: LanguageService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
   }
 
   ngOnInit() {
@@ -127,7 +133,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   get loading(): boolean {
 
-    return this.extension == null || this.currentMember == null;
+    return this.extension == null || this.currentMember == null || this.env == null;
   }
 
   canSave() {
@@ -150,6 +156,14 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     }
   }
 
+  getMemberUri() {
+
+    if (this.env !== 'prod') {
+      return this.currentMember.uri + '?env=' + this.env;
+    }
+    return this.currentMember.uri;
+  }
+
   isUnaryOperatorRequired(control: AbstractControl) {
 
     if (!this.loading) {
@@ -169,11 +183,12 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   isUnaryOperatorPatternValid(control: AbstractControl) {
+
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
       if (valueType && valueType.regexp) {
         const isMemberValueValid = control.value.match(valueType.regexp);
-        return !isMemberValueValid ? { 'memberValueRegexpValidationError': { value: control.value } } : null;
+        return !isMemberValueValid ? { 'memberValueUnaryOperatorRegexpValidationError': { value: control.value } } : null;
       }
       return null;
     }
@@ -186,7 +201,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
       if (valueType && valueType.regexp) {
         const isMemberValueValid = control.value.match(valueType.regexp);
-        return !isMemberValueValid ? { 'memberValueRegexpValidationError': { value: control.value } } : null;
+        return !isMemberValueValid ? { 'memberValueComparisonOperatorRegexpValidationError': { value: control.value } } : null;
       }
       return null;
     }

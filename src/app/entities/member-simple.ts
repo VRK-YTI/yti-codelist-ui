@@ -10,6 +10,7 @@ import { MemberValue } from './member-value';
 export class MemberSimple {
 
   id: string;
+  uri: string;
   url: string;
   order?: string;
   modified: Moment | null = null;
@@ -23,6 +24,7 @@ export class MemberSimple {
 
   constructor(data: MemberSimpleType) {
     this.id = data.id;
+    this.uri = data.uri;
     this.url = data.url;
     this.order = data.order;
     this.prefLabel = data.prefLabel || {};
@@ -52,6 +54,7 @@ export class MemberSimple {
   serialize(): MemberSimpleType {
     return {
       id: this.id,
+      uri: this.uri,
       url: this.url,
       prefLabel: { ...this.prefLabel },
       modified: formatDateTime(this.modified),

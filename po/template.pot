@@ -704,7 +704,7 @@ msgstr ""
 msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
 msgstr ""
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr ""
 
 msgid "Front page"
@@ -859,10 +859,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
@@ -973,6 +973,9 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
@@ -1018,10 +1021,10 @@ msgstr ""
 msgid "searchresults"
 msgstr ""
 
-msgid "invalidDate"
+msgid "codeValueValidationError"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "invalidDate"
 msgstr ""
 
 msgid "registryCodeValueExists"
@@ -1036,7 +1039,7 @@ msgstr ""
 msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "codeValueValidationError"
+msgid "invalidDateRange"
 msgstr ""
 
 msgid "codeCodeValueValidationError"
@@ -1046,4 +1049,10 @@ msgid "memberValueValidationError"
 msgstr ""
 
 msgid "memberValueRegexpValidationError"
+msgstr ""
+
+msgid "memberValueUnaryOperatorRegexpValidationError"
+msgstr ""
+
+msgid "memberValueComparisonOperatorRegexpValidationError"
 msgstr ""

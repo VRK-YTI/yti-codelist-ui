@@ -3,6 +3,7 @@ import { DataService } from '../../services/data.service';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { PropertyType } from '../../entities/property-type';
 import { EditableService } from '../../services/editable.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-property-type-select',
@@ -50,7 +51,8 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit
 
   constructor(@Self() @Optional() public parentControl: NgControl,
               private editableService: EditableService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private languageService: LanguageService) {
 
     if (parentControl) {
       parentControl.valueAccessor = this;
@@ -58,7 +60,8 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit
   }
 
   ngOnInit() {
-    this.dataService.getPropertyTypes(this.context).subscribe(types => {
+
+    this.dataService.getPropertyTypes(this.context, this.languageService.language).subscribe(types => {
 
       if (types.length === 0) {
         throw new Error('No types');

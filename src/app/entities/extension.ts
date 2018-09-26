@@ -15,6 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class Extension implements EditableEntity {
 
   id: string;
+  uri: string;
   url: string;
   codeValue: string;
   status: Status = 'DRAFT';
@@ -28,8 +29,9 @@ export class Extension implements EditableEntity {
 
   constructor(data: ExtensionType) {
     this.id = data.id;
-    this.codeValue = data.codeValue;
+    this.uri = data.uri;
     this.url = data.url;
+    this.codeValue = data.codeValue;
     this.prefLabel = data.prefLabel || {};
     if (data.status) {
       this.status = data.status;
@@ -89,6 +91,7 @@ export class Extension implements EditableEntity {
   serialize(): ExtensionType {
     return {
       id: this.id,
+      uri: this.uri,
       url: this.url,
       codeValue: this.codeValue,
       propertyType: this.propertyType.serialize(),

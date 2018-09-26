@@ -117,7 +117,6 @@ export interface PropertyTypeType {
   propertyUri: string;
   context: string;
   externaluri: string;
-  type: string;
   valueTypes?: ValueTypeType[];
 }
 
@@ -142,6 +141,7 @@ export interface OrganizationType {
 export interface ExtensionType {
 
   id: string;
+  uri: string;
   url: string;
   codeValue: string;
   propertyType: PropertyTypeType;
@@ -158,6 +158,7 @@ export interface ExtensionType {
 export interface ExtensionSimpleType {
 
   id: string;
+  uri: string;
   url: string;
   codeValue: string;
   propertyType: PropertyTypeType;
@@ -172,6 +173,7 @@ export interface ExtensionSimpleType {
 export interface MemberType {
 
   id: string;
+  uri: string;
   url: string;
   memberValues?: MemberValueType[];
   prefLabel?: Localizable;
@@ -188,6 +190,7 @@ export interface MemberType {
 export interface MemberSimpleType {
 
   id: string;
+  uri: string;
   url: string;
   memberValues?: MemberValueType[];
   prefLabel?: Localizable;

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-24 12:35+0300\n"
+"PO-Revision-Date: 2018-09-26 08:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -785,8 +785,8 @@ msgstr "Jäsenen voimassaolon alkamispäivämäärä"
 msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
 msgstr "Jäsenen voimassaolon päättymispäivämäärä"
 
-msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
-msgstr "Koodisto on jo olemassa."
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -944,11 +944,11 @@ msgstr "Virheellinen loppupäivä rivillä {{ identifier }}."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
 msgstr "Koodi {{ identifier }} on jo olemassa."
 
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Koodisto on jo olemassa."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
 
 msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
 msgstr "Aineistolle annettua luokitusta ei löydy."
@@ -993,10 +993,10 @@ msgid "ERR_MSG_INVALID_ID"
 msgstr "Aineistossa oleva ID-sarakkeen arvo ei ole sallittu."
 
 msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
-msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "ERR_MSG_INVALID_CODEVALUE"
-msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
 
 msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
 msgstr "Ei yhteyttä Sanastoihin."
@@ -1072,6 +1072,9 @@ msgstr ""
 "Koodien linkityksessä syklinen ongelma. Tarkista, että koodin hierarkia-"
 "ketjussa ei ole rinnakkaisia viitteitä koodien välillä."
 
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr "Jäsenen arvo ei ole sallittu."
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
 
@@ -1129,11 +1132,11 @@ msgstr "hakutulos"
 msgid "searchresults"
 msgstr "hakutulosta"
 
+msgid "codeValueValidationError"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
-
-msgid "invalidDateRange"
-msgstr "Virheellinen päivämääräväli"
 
 msgid "registryCodeValueExists"
 msgstr "Rekisterin tunnus on jo käytössä."
@@ -1147,17 +1150,26 @@ msgstr "Tunnus on jo käytössä."
 msgid "extensionCodeValueExists"
 msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
 
-msgid "codeValueValidationError"
-msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-"
+msgid "invalidDateRange"
+msgstr "Virheellinen päivämääräväli"
 
 msgid "codeCodeValueValidationError"
-msgstr "Tunnus on virheellinen. Sallitut arvot ovat: a-zA-Z0-9_-.+*#&"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-.+*#&"
 
 msgid "memberValueValidationError"
 msgstr "Jäsenen arvo ei voi olla tyhjä."
 
 msgid "memberValueRegexpValidationError"
 msgstr "Jäsenen arvossa esiintyy ei sallittuja merkkejä."
+
+msgid "memberValueUnaryOperatorRegexpValidationError"
+msgstr ""
+"Jäsenen arvossa esiintyy ei sallittuja merkkejä. Sallitut merkit ovat + ja -."
+
+msgid "memberValueComparisonOperatorRegexpValidationError"
+msgstr ""
+"Jäsenen arvossa esiintyy ei sallittuja merkkejä. Sallitut merkit ovat =, <= "
+"ja >=."
 
 #~ msgid "Add new link"
 #~ msgstr "Lisää uusi linkki"
