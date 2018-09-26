@@ -219,11 +219,12 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
-  getPropertyTypes(context: string): Observable<PropertyType[]> {
+  getPropertyTypes(context: string, language: string): Observable<PropertyType[]> {
 
     const params = new HttpParams()
       .append('expand', 'valueType')
-      .append('context', context);
+      .append('context', context)
+      .append('language', language);
 
     return this.http.get<WithResults<PropertyTypeType>>(`${propertyTypesBasePath}/`, { params })
       .pipe(map(res => res.results.map(data => new PropertyType(data))));

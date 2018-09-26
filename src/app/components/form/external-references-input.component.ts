@@ -109,7 +109,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
 
   ngOnInit() {
 
-    this.dataService.getPropertyTypes('ExternalReference').subscribe(types => {
+    this.dataService.getPropertyTypes('ExternalReference', this.languageService.language).subscribe(types => {
 
       if (types.length === 0) {
         throw new Error('No types');
