@@ -65,6 +65,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   private subscriptionToClean: Subscription[] = [];
 
+  fullDescription: {[key: string] : boolean} = {};
+
   constructor(private dataService: DataService,
               private router: Router,
               public languageService: LanguageService,
@@ -218,5 +220,13 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   canCreateCodeScheme() {
     return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
+  }
+
+  toggleFullDescription(codeSchemeId: string) {
+    if (this.fullDescription[codeSchemeId]) {
+      delete this.fullDescription[codeSchemeId];
+    } else {
+      this.fullDescription[codeSchemeId] = true;
+    }
   }
 }
