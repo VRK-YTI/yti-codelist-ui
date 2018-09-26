@@ -65,7 +65,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   private subscriptionToClean: Subscription[] = [];
 
-  fullDescription: {[key: string] : boolean} = {};
+  fullDescription: {[key: string]: boolean} = {};
 
   constructor(private dataService: DataService,
               private router: Router,
