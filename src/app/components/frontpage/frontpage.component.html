@@ -105,7 +105,7 @@
         </div>
 
         <div class="row">
-          <div class="col-12">
+          <div class="col-md-12">
             <div class="result-list-item" *ngFor="let codeScheme of filteredCodeSchemes">
               <span class="type"><i class="material-icons">account_balance</i>{{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span>
 
@@ -113,7 +113,8 @@
 
               <a class="name" (click)="viewCodeScheme(codeScheme)">{{codeScheme.getDisplayName(languageService, true)}}</a>
 
-                <div class="description-container" [ngClass]="{'expand': fullDescription[codeScheme.id]}">
+                <div class="description-container"
+                     style="width: calc(100% - 260px);"[ngClass]="{'expand': fullDescription[codeScheme.id]}">
                   <span class="description">{{codeScheme.description | translateValue: true}}</span>
                   <div class="limiter-container">
                     <div class="description-limiter" (click)="toggleFullDescription(codeScheme.id)"></div>
