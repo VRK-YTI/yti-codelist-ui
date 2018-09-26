@@ -30,10 +30,11 @@ nav.navbar {
     content: '\f002'; // FIXME: $fa-var-search variable doesn't work
     font-family: "Font Awesome 5 Free Solid";
     top: 10px;
-    right: 25px;
+    right: 15px;
     font-size: $font-size-lg;
     position: absolute;
     z-index: 10;
+    color: grey;
   }
 }
 
