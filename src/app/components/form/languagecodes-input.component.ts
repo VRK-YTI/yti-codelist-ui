@@ -10,7 +10,6 @@ import { Observable, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from '../../entities/code-simple';
 import { LanguageService } from '../../services/language.service';
-import { CodeScheme } from '../../entities/code-scheme';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
 

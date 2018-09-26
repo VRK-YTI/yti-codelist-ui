@@ -1,7 +1,5 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Moment } from 'moment';
 import { BaseResourceType } from '../services/api-schema';
-import { parseDateTime } from '../utils/date';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 
 export abstract class AbstractResource {
