@@ -46,6 +46,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   organizationOptions: FilterOptions<Organization>;
 
   dataClassifications: { entity: DataClassification, count: number }[];
+  dataClassificationsWithAtLeastOneEntry: { entity: DataClassification, count: number }[];
   registry$ = new BehaviorSubject<CodeRegistry|null>(null);
 
   searchTerm$ = new BehaviorSubject('');
@@ -176,6 +177,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
               entity: classification,
               count: calculateCount(classification, codeSchemes)
             }));
+            this.dataClassificationsWithAtLeastOneEntry = this.dataClassifications.filter(dc => dc.count > 0);
           });
       });
   }

@@ -46,20 +46,18 @@
       </div>
     </div>
   </div>
-  <div class="row information-domain-container">
+  <div class="row">
     <div class="col-md-4">
-      <div class="content-box">
-
-        <div *ngFor="let dataClassification of dataClassifications">
-          <div *ngIf="dataClassification.count > 0">
-            <div class="classification"
-                id="{{dataClassification.entity.codeValue + '_classification_filter_link'}}"
-                 [class.active]="isClassificationSelected(dataClassification.entity)"
-                 (click)="toggleClassification(dataClassification.entity)">
-              <img class="float-left" [src]="groupIconSrc(dataClassification.entity.codeValue)" >
-              <span class="count float-right">({{dataClassification.count}})</span>
+      <div class="information-domain-container">
+        <div class="content-box">
+          <div class="information-domain"
+               *ngFor="let dataClassification of dataClassificationsWithAtLeastOneEntry"
+               [class.active]="isClassificationSelected(dataClassification.entity)"
+               [id]="dataClassification.entity.codeValue + '_classification_filter_link'"
+               (click)="toggleClassification(dataClassification.entity)">
+              <img [src]="groupIconSrc(dataClassification.entity.codeValue)" >
               <span class="name" style="vertical-align: middle;">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
-            </div>
+              <span class="count">({{dataClassification.count}})</span>
           </div>
         </div>
       </div>
