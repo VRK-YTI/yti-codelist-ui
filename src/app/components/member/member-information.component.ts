@@ -188,7 +188,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
       if (valueType && valueType.regexp) {
         const isMemberValueValid = control.value.match(valueType.regexp);
-        return !isMemberValueValid ? { 'memberValueRegexpValidationError': { value: control.value } } : null;
+        return !isMemberValueValid ? { 'memberValueUnaryOperatorRegexpValidationError': { value: control.value } } : null;
       }
       return null;
     }
@@ -201,7 +201,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
       if (valueType && valueType.regexp) {
         const isMemberValueValid = control.value.match(valueType.regexp);
-        return !isMemberValueValid ? { 'memberValueRegexpValidationError': { value: control.value } } : null;
+        return !isMemberValueValid ? { 'memberValueComparisonOperatorRegexpValidationError': { value: control.value } } : null;
       }
       return null;
     }

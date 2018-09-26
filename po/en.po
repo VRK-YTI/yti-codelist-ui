@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-25 18:20+0300\n"
+"PO-Revision-Date: 2018-09-26 08:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -987,10 +987,10 @@ msgid "ERR_MSG_INVALID_ID"
 msgstr "Invalid ID value defined in data."
 
 msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
-msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-.+*#&"
 
 msgid "ERR_MSG_INVALID_CODEVALUE"
-msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
 
 msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
 msgstr "Cannot reach Controlled Vocabularies tool."
@@ -1130,11 +1130,11 @@ msgstr "search result"
 msgid "searchresults"
 msgstr "search results"
 
+msgid "codeValueValidationError"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
+
 msgid "invalidDate"
 msgstr "Invalid date"
-
-msgid "invalidDateRange"
-msgstr "Invalid date range"
 
 msgid "registryCodeValueExists"
 msgstr "Registry code value is already in use."
@@ -1148,14 +1148,23 @@ msgstr "Code value is already in use."
 msgid "extensionCodeValueExists"
 msgstr "Extension value is already in use in this code list."
 
-msgid "codeValueValidationError"
-msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-"
+msgid "invalidDateRange"
+msgstr "Invalid date range"
 
 msgid "codeCodeValueValidationError"
-msgstr "Code value is not valid. Allowed values are: a-zA-Z0-9_-.+*#&"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-.+*#&"
 
 msgid "memberValueValidationError"
 msgstr "Member value cannot be empty."
 
 msgid "memberValueRegexpValidationError"
 msgstr "Member value contains illegal characters."
+
+msgid "memberValueUnaryOperatorRegexpValidationError"
+msgstr ""
+"Member value contains illegal characters. Allowed characters are + and -."
+
+msgid "memberValueComparisonOperatorRegexpValidationError"
+msgstr ""
+"Member value contains illegal characters. Allowed characters are =, <= and "
+">=."

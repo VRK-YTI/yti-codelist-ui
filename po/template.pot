@@ -1021,10 +1021,10 @@ msgstr ""
 msgid "searchresults"
 msgstr ""
 
-msgid "invalidDate"
+msgid "codeValueValidationError"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "invalidDate"
 msgstr ""
 
 msgid "registryCodeValueExists"
@@ -1039,7 +1039,7 @@ msgstr ""
 msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "codeValueValidationError"
+msgid "invalidDateRange"
 msgstr ""
 
 msgid "codeCodeValueValidationError"
@@ -1049,4 +1049,10 @@ msgid "memberValueValidationError"
 msgstr ""
 
 msgid "memberValueRegexpValidationError"
+msgstr ""
+
+msgid "memberValueUnaryOperatorRegexpValidationError"
+msgstr ""
+
+msgid "memberValueComparisonOperatorRegexpValidationError"
 msgstr ""
