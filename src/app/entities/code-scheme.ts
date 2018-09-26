@@ -133,16 +133,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return this.organizations.map(org => org.id);
   }
 
-  getDisplayDescription(localizer: Localizer, useUILanguage: boolean = false): string {
-    const displayDesc = localizer.translate(this.description, useUILanguage);
-    return displayDesc ? displayDesc : '';
-  }
-
-  getDisplayClassification(localizer: Localizer, useUILanguage: boolean = false, theClassification: Localizable): string {
-    const displayDesc = localizer.translate(theClassification, useUILanguage);
-    return displayDesc ? displayDesc : '';
-  }
-
   getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
     const results: string[] = [];
     this.dataClassifications.forEach((dc) => {
@@ -152,17 +142,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       }
     });
     return results;
-  }
-
-  getDisplayOrganizationList(localizer: Localizer, useUILanguage: boolean = false): string {
-    const results: string[] = [];
-    this.organizations.forEach((org) => {
-      const displayOrg = localizer.translate(org.prefLabel, useUILanguage);
-      if (displayOrg) {
-        results.push(displayOrg);
-      }
-    });
-    return results.join(' · ');
   }
 
   allowOrganizationEdit(): boolean {
