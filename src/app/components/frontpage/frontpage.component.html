@@ -111,7 +111,7 @@
 
               <app-status class="status" [status]="codeScheme.status"></app-status>
 
-              <a class="name" (click)="viewCodeScheme(codeScheme)">{{codeScheme.getDisplayName(languageService, true)}}</a>
+              <a class="name" [routerLink]="codeScheme.route">{{codeScheme.getDisplayName(languageService, true)}}</a>
 
                 <div class="description-container"
                      style="width: calc(100% - 260px);"[ngClass]="{'expand': fullDescription[codeScheme.id]}">
