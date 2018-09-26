@@ -16,18 +16,19 @@
     </div>
   </div>
 
-  <div class="inline-label">
-    <span class="search-label" translate>Search for code lists</span>
+  <div><span class="search-label" translate>Search for code lists</span>
     <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_SEARCH'"></app-information-symbol>
   </div>
-  <div class="row mb-12">
-    <div class="input-group input-group-lg input-group-search col-md-6">
-      <input class="form-control"
-             #schemeSearch
-             id="search_box_input"
-             type="text"
-             [(ngModel)]="searchTerm"
-             placeholder="{{'Search term' | translate}}"/>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="input-group input-group-lg input-group-search">
+        <input class="form-control"
+               #schemeSearch
+               id="search_box_input"
+               type="text"
+               [(ngModel)]="searchTerm"
+               placeholder="{{'Search term' | translate}}"/>
+      </div>
     </div>
     <div class="col-md-4" style="line-height: 45px">
       <div class="checkbox">
@@ -36,7 +37,7 @@
       </div>
     </div>
   </div>
-  <br/>
+
   <div class="row">
     <div class="col-md-4">
       <div class="inline-label">
@@ -76,7 +77,6 @@
             <span class="search-label search-label-inline" style="padding-bottom: 0px; padding-right: 0px"
                   translate>Filter results</span>
             <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_RESULTS'"></app-information-symbol>
-
 
             <app-filter-dropdown class="d-inline-block"
                                  id="organization_filter_dropdown"
