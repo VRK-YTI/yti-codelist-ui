@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-27 15:09+0300\n"
+"PO-Revision-Date: 2018-09-28 15:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -785,8 +785,8 @@ msgstr "Jäsenen voimassaolon alkamispäivämäärä"
 msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
 msgstr "Jäsenen voimassaolon päättymispäivämäärä"
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
+msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
+msgstr "Aineistolle annettua luokitusta ei löydy."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -947,11 +947,11 @@ msgstr "Koodi {{ identifier }} on jo olemassa."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Koodisto on jo olemassa."
 
+msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
-msgstr "Aineistolle annettua luokitusta ei löydy."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
@@ -995,8 +995,18 @@ msgstr "Aineistossa oleva ID-sarakkeen arvo ei ole sallittu."
 msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat ovat: a-zA-Z0-9_-.+*#&"
 
+msgid "ERR_MSG_INVALID_CODE_CODEVALUE_WITH_IDENTIFIER"
+msgstr ""
+"Tunnus on virheellinen rivillä {{ identifier }}. Sallitut merkit ovat ovat: "
+"a-zA-Z0-9_-.+*#&"
+
 msgid "ERR_MSG_INVALID_CODEVALUE"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
+
+msgid "ERR_MSG_INVALID_CODEVALUE_WITH_IDENTIFIER"
+msgstr ""
+"Tunnus on virheellinen rivillä {{ identifier }}. Sallitut merkit ovat: a-zA-"
+"Z0-9_-"
 
 msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
 msgstr "Ei yhteyttä Sanastoihin."
