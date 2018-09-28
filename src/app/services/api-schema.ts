@@ -114,7 +114,7 @@ export interface PropertyTypeType {
   definition: Localizable;
   localName: string;
   url: string;
-  propertyUri: string;
+  uri: string;
   context: string;
   externaluri: string;
   valueTypes?: ValueTypeType[];
@@ -220,7 +220,7 @@ export interface ValueTypeType {
   typeUri: string;
   required: boolean;
   regexp: string;
-  valueTypeUri: string;
+  uri: string;
 }
 
 export interface MemberValueType {

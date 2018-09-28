@@ -7,7 +7,7 @@ export class ValueType {
   prefLabel: Localizable = {};
   localName: string;
   typeUri: string;
-  valueTypeUri: string;
+  uri: string;
   required: boolean;
   regexp: string;
 
@@ -31,7 +31,7 @@ export class ValueType {
       typeUri: this.typeUri,
       required: this.required,
       regexp: this.regexp,
-      valueTypeUri: this.valueTypeUri
+      uri: this.uri
     };
   }
 

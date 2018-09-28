@@ -9,7 +9,7 @@ export class PropertyType {
   definition: Localizable = {};
   localName: string;
   url: string;
-  propertyUri: string;
+  uri: string;
   context: string;
   externaluri: string;
   valueTypes: ValueType[] = [];
@@ -19,7 +19,7 @@ export class PropertyType {
     this.prefLabel = data.prefLabel || {};
     this.definition = data.definition || {};
     this.url = data.url;
-    this.propertyUri = data.propertyUri;
+    this.uri = data.uri;
     this.context = data.context;
     this.localName = data.localName;
     if (data.valueTypes) {
@@ -46,7 +46,7 @@ export class PropertyType {
       definition: { ...this.definition },
       localName: this.localName,
       url: this.url,
-      propertyUri: this.propertyUri,
+      uri: this.uri,
       context: this.context,
       externaluri: this.externaluri,
       valueTypes: this.valueTypes.map(vt => vt.serialize())
