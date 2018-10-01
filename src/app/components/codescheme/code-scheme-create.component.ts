@@ -125,13 +125,12 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               this.codeSchemeForm.patchValue({ dataClassifications: dataClassificationsToCopy });
             }
           });
-          this.dataService.getLanguageCodes(this.languageService.language).subscribe(next2 => {
-            const allLanguageCodes = next2;
+          this.dataService.getLanguageCodes(this.languageService.language).subscribe(next3 => {
+            const allLanguageCodes = next3;
             const languageCodesToCopy: CodePlain[] = [];
             originalCodeScheme.languageCodes.forEach(function (originalLanguageCode) {
               allLanguageCodes.forEach(function (potentialLanguageCode) {
-                const uriToCompare = potentialLanguageCode.codeScheme.uri + '/' + potentialLanguageCode.codeValue;
-                if (uriToCompare === originalLanguageCode.uri) {
+                if (originalLanguageCode.codeValue === potentialLanguageCode.codeValue) {
                   languageCodesToCopy.push(potentialLanguageCode);
                 }
               });
