@@ -115,7 +115,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
             const dataClassificationsToCopy: CodePlain[] = [];
             originalCodeScheme.dataClassifications.forEach(function (originalClassification) {
               allDataClassifications.forEach(function (potentialClassification) {
-                const uriToCompare = potentialClassification.codeScheme.uri + '/' + potentialClassification.codeValue;
+                const uriToCompare = potentialClassification.codeScheme.uri + '/code/' + potentialClassification.codeValue;
                 if (uriToCompare === originalClassification.uri) {
                   dataClassificationsToCopy.push(potentialClassification);
                 }
