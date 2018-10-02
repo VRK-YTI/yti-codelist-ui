@@ -142,7 +142,7 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="showUnfinishedFeature && codeScheme.allVersions.length > 0" id="codelist_versionhistory_tab">
+    <ngb-tab *ngIf="codeScheme.allVersions.length > 0" id="codelist_versionhistory_tab">
       <ng-template ngbTabTitle>
         <span translate>versionHistory</span>
       </ng-template>
@@ -153,7 +153,7 @@
     </ngb-tab>
 
     <ngb-tab
-      *ngIf="showUnfinishedFeature && (codeScheme.variantsOfThisCodeScheme.length > 0 || codeScheme.variantMothersOfThisCodeScheme.length > 0)"
+      *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0 || codeScheme.variantMothersOfThisCodeScheme.length > 0"
       id="codelist_variants_tab">
       <ng-template ngbTabTitle>
         <span translate>variants</span>

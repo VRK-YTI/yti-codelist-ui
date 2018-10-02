@@ -257,15 +257,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canCreateANewVersionFromCodeScheme(): boolean {
-    return this.showUnfinishedFeature &&
-      !this.codeScheme.nextCodeschemeId &&
+    return !this.codeScheme.nextCodeschemeId &&
       this.codeScheme.status === 'VALID' &&
       this.authorizationManager.canEdit(this.codeScheme);
   }
 
   get canAttachOrDetachAVariant(): boolean {
-    return this.showUnfinishedFeature &&
-      this.authorizationManager.canEdit(this.codeScheme);
+    return this.authorizationManager.canEdit(this.codeScheme);
   }
 
   get isSuperUser(): boolean {
