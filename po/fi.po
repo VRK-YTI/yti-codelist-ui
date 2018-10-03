@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-09-28 17:06+0300\n"
+"PO-Revision-Date: 2018-10-03 16:21+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -785,8 +785,8 @@ msgstr "Jäsenen voimassaolon alkamispäivämäärä"
 msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
 msgstr "Jäsenen voimassaolon päättymispäivämäärä"
 
-msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
-msgstr "Aineistolle annettua luokitusta ei löydy."
+msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
+msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -950,11 +950,11 @@ msgstr "Koodisto on jo olemassa."
 msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
 msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
 
+msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
+msgstr "Aineistolle annettua luokitusta ei löydy."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
-msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
 msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
@@ -1086,6 +1086,9 @@ msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr "Jäsenen arvo ei ole sallittu."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
+msgstr "Jäsenen arvo ei ole sallittu rivillä {{ identifier }}."
 
 msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
 msgstr ""
