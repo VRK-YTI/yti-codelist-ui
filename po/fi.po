@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-03 17:22+0300\n"
+"PO-Revision-Date: 2018-10-03 17:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1154,11 +1154,11 @@ msgstr "hakutulos"
 msgid "searchresults"
 msgstr "hakutulosta"
 
-msgid "codeValueValidationError"
-msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
-
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
+
+msgid "invalidDateRange"
+msgstr "Virheellinen päivämääräväli"
 
 msgid "registryCodeValueExists"
 msgstr "Rekisterin tunnus on jo käytössä."
@@ -1172,17 +1172,11 @@ msgstr "Tunnus on jo käytössä."
 msgid "extensionCodeValueExists"
 msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
 
-msgid "invalidDateRange"
-msgstr "Virheellinen päivämääräväli"
+msgid "codeValueValidationError"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-.+*#&"
-
-msgid "memberValueValidationError"
-msgstr "Jäsenen arvo ei voi olla tyhjä."
-
-msgid "memberValueRegexpValidationError"
-msgstr "Jäsenen arvossa esiintyy ei sallittuja merkkejä."
 
 msgid "memberValueUnaryOperatorRegexpValidationError"
 msgstr ""
@@ -1192,18 +1186,3 @@ msgid "memberValueComparisonOperatorRegexpValidationError"
 msgstr ""
 "Jäsenen arvossa esiintyy ei sallittuja merkkejä. Sallitut merkit ovat =, <= "
 "ja >=."
-
-#~ msgid "Add new link"
-#~ msgstr "Lisää uusi linkki"
-
-#~ msgid "Select link"
-#~ msgstr "Valitse linkki"
-
-#~ msgid "Member value 1"
-#~ msgstr "Jäsenen arvo 1"
-
-#~ msgid "Member value 2"
-#~ msgstr "Jäsenen arvo 2"
-
-#~ msgid "Member value 3"
-#~ msgstr "Jäsenen arvo 3"

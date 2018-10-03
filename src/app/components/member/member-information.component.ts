@@ -32,8 +32,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
-    unaryOperator: new FormControl('', [this.isUnaryOperatorRequired.bind(this), this.isUnaryOperatorPatternValid.bind(this)]),
-    comparisonOperator: new FormControl('', [this.isComparisonOperatorRequired.bind(this), this.isComparisonOperatorPatternValid.bind(this)]),
+    unaryOperator: new FormControl('', [this.isUnaryOperatorPatternValid.bind(this)]),
+    comparisonOperator: new FormControl('', [this.isComparisonOperatorPatternValid.bind(this)]),
     code: new FormControl(null, Validators.required),
     relatedMember: new FormControl(null),
     validity: new FormControl(null, validDateRange)
@@ -164,29 +164,11 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     return this.currentMember.uri;
   }
 
-  isUnaryOperatorRequired(control: AbstractControl) {
-
-    if (!this.loading) {
-      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
-      return !valueType || (valueType && ((valueType.required && control.value.length > 0) || !valueType.required)) ? null : { 'memberValueValidationError': { value: control.value } };
-    }
-    return null;
-  }
-
-  isComparisonOperatorRequired(control: AbstractControl) {
-
-    if (!this.loading) {
-      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
-      return !valueType || (valueType && ((valueType.required && control.value.length > 0) || !valueType.required)) ? null : { 'memberValueValidationError': { value: control.value } };
-    }
-    return null;
-  }
-
   isUnaryOperatorPatternValid(control: AbstractControl) {
 
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
-      if (valueType && valueType.regexp) {
+      if (valueType && valueType.regexp && control.value.length > 0) {
         const isMemberValueValid = control.value.match(valueType.regexp);
         return !isMemberValueValid ? { 'memberValueUnaryOperatorRegexpValidationError': { value: control.value } } : null;
       }
@@ -199,7 +181,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
-      if (valueType && valueType.regexp) {
+      if (valueType && valueType.regexp && control.value.length > 0) {
         const isMemberValueValid = control.value.match(valueType.regexp);
         return !isMemberValueValid ? { 'memberValueComparisonOperatorRegexpValidationError': { value: control.value } } : null;
       }
