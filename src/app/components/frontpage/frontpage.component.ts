@@ -19,7 +19,7 @@ import { ServiceConfiguration } from '../../entities/service-configuration';
 import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 import { debounceTime, flatMap, map, skip, take, tap } from 'rxjs/operators';
 import { ObservableInput } from 'rxjs/internal/types';
-import { getGroupSvgIcon } from 'yti-common-ui/utils/icons';
+import { getInformationDomainSvgIcon } from 'yti-common-ui/utils/icons';
 
 // XXX: fixes problem with type definition having strongly typed parameters ending with 6
 function myCombineLatest<T, T2, T3, T4, T5, T6, T7>(v1: ObservableInput<T>,
@@ -62,7 +62,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   configuration: ServiceConfiguration;
 
-  groupIconSrc = getGroupSvgIcon;
+  groupIconSrc = getInformationDomainSvgIcon;
 
   private subscriptionToClean: Subscription[] = [];
 

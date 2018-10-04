@@ -105,7 +105,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="result-list-item" *ngFor="let codeScheme of filteredCodeSchemes">
-              <span class="type"><i class="material-icons">account_balance</i>{{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span>
+              <span class="type"><i class="material-icons icon-orange">account_balance</i>{{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span>
 
               <app-status class="status" [status]="codeScheme.status"></app-status>
 
