@@ -156,7 +156,7 @@ export class MemberCreateComponent implements OnInit {
 
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
-      if (valueType && valueType.regexp && control.value.length > 0) {
+      if (valueType && valueType.regexp && control.value != null && control.value.length > 0) {
         const isMemberValueValid = control.value.match(valueType.regexp);
         return !isMemberValueValid ? { 'memberValueUnaryOperatorRegexpValidationError': { value: control.value } } : null;
       }
@@ -169,7 +169,7 @@ export class MemberCreateComponent implements OnInit {
 
     if (!this.loading) {
       const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
-      if (valueType && valueType.regexp && control.value.length > 0) {
+      if (valueType && valueType.regexp && control.value != null && control.value.length > 0) {
         const isMemberValueValid = control.value.match(valueType.regexp);
         return !isMemberValueValid ? { 'memberValueComparisonOperatorRegexpValidationError': { value: control.value } } : null;
       }
