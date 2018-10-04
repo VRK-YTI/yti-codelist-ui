@@ -494,6 +494,12 @@ msgstr ""
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
+msgid "Concept suggestion instruction text"
+msgstr ""
+
+msgid "Suggest the concept to Controlled Vocabularies"
+msgstr ""
+
 msgid "Email"
 msgstr ""
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-03 17:48+0300\n"
+"PO-Revision-Date: 2018-10-04 15:12+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -514,6 +514,14 @@ msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
+
+msgid "Concept suggestion instruction text"
+msgstr ""
+"Jos käsitettä ei löydy, ehdota sitä Sanastoihin. Tätä varten Sanaston pitää "
+"olla valittuna."
+
+msgid "Suggest the concept to Controlled Vocabularies"
+msgstr "Ehdota käsitettä Sanastoihin"
 
 msgid "Email"
 msgstr "Sähköposti"

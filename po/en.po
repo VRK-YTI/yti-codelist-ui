@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-03 17:48+0300\n"
+"PO-Revision-Date: 2018-10-04 15:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -507,6 +507,14 @@ msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr "Search the variant"
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
+msgstr ""
+
+msgid "Concept suggestion instruction text"
+msgstr ""
+"If the proper concept does not exist, please suggest it to Controlled "
+"Vocabularies. This requires that a vocabulary is chosen first."
+
+msgid "Suggest the concept to Controlled Vocabularies"
 msgstr ""
 
 msgid "Email"
