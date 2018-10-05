@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-05 08:53+0300\n"
+"PO-Revision-Date: 2018-10-05 09:30+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -793,8 +793,8 @@ msgstr "Jäsenen voimassaolon alkamispäivämäärä"
 msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
 msgstr "Jäsenen voimassaolon päättymispäivämäärä"
 
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
-msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -964,11 +964,11 @@ msgstr "Aineistolle annettua luokitusta ei löydy."
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
 
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
+msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
-msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr "Virhe luettaessa CSV-tiedostoa. Tarkasta tuotavan tiedoston muoto."
@@ -1161,6 +1161,12 @@ msgstr "hakutulos"
 
 msgid "searchresults"
 msgstr "hakutulosta"
+
+msgid "SUGGEST CONCEPT?"
+msgstr "Ehdotus Sanastot-työkaluun"
+
+msgid "SUGGEST CONCEPT MODAL QUESTION"
+msgstr "Halautko ehdottaa käsitettä nnn sanastoon xxx? "
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

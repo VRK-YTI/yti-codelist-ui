@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-05 08:51+0300\n"
+"PO-Revision-Date: 2018-10-05 09:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -781,8 +781,8 @@ msgstr ""
 "Validity end date. The date on which the resource is no longer effective or "
 "valid."
 
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
-msgstr "Error parsing Excel file, sheet not found."
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Error parsing Excel file."
 
 msgid "Front page"
 msgstr ""
@@ -958,11 +958,11 @@ msgstr "Data contains faulty classification."
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Existing CODEVALUE differs from input data, change not allowed."
 
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
+msgstr "Error parsing Excel file, sheet not found."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
-msgstr "Error parsing Excel file."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr "Error parsing CSV file."
@@ -1160,6 +1160,12 @@ msgstr "search result"
 
 msgid "searchresults"
 msgstr "search results"
+
+msgid "SUGGEST CONCEPT?"
+msgstr "Suggestion to controlled vocabularies"
+
+msgid "SUGGEST CONCEPT MODAL QUESTION"
+msgstr "Do you want to suggest concept xxx to vocabulary yyy?"
 
 msgid "invalidDate"
 msgstr "Invalid date"
