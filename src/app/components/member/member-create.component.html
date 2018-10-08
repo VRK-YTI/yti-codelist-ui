@@ -56,6 +56,20 @@
                                [formControlName]="valueType.localName"></app-literal-input>
           </div>
 
+          <app-clipboard *ngIf="getCodeUri()"
+                         id="member_code_uri"
+                         [label]="'Code URI' | translate"
+                         [value]="getCodeUri()"
+                         [showAsLink]="false"
+                         [infoText]="'INFO_TEXT_CODE_URI'"></app-clipboard>
+
+          <app-clipboard *ngIf="getCodeConceptUri()"
+                         id="member_code_terminology_uri"
+                         [label]="'Code vocabularies URI' | translate"
+                         [value]="getCodeConceptUri()"
+                         [showAsLink]="false"
+                         [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-clipboard>
+
           <app-code-input id="member_code_input"
                           [label]="'Code' | translate"
                           [codeSchemes]="this.allCodeSchemes"

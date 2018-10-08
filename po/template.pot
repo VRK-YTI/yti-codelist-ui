@@ -422,6 +422,12 @@ msgstr ""
 msgid "Member name"
 msgstr ""
 
+msgid "Code URI"
+msgstr ""
+
+msgid "Code vocabularies URI"
+msgstr ""
+
 msgid "Code"
 msgstr ""
 
@@ -494,12 +500,6 @@ msgstr ""
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
-msgid "Concept suggestion instruction text"
-msgstr ""
-
-msgid "Suggest the concept to Controlled Vocabularies"
-msgstr ""
-
 msgid "Email"
 msgstr ""
 
@@ -518,7 +518,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgid "INFO_TEXT_CODE_CONCEPT_URI"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -615,6 +615,9 @@ msgid "INFO_TEXT_CODE_URI"
 msgstr ""
 
 msgid "INFO_TEXT_CLASSIFICATION"
+msgstr ""
+
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
@@ -1037,6 +1040,12 @@ msgid "searchresult"
 msgstr ""
 
 msgid "searchresults"
+msgstr ""
+
+msgid "Concept suggestion instruction text"
+msgstr ""
+
+msgid "Suggest the concept to Controlled Vocabularies"
 msgstr ""
 
 msgid "SUGGEST CONCEPT?"
