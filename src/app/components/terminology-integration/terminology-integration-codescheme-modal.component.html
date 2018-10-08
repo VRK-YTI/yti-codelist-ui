@@ -47,7 +47,7 @@
       </div>
 
       <div *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults()">
-        <p translate>No search results</p>
+        <p translate style="padding: 10px">No search results</p>
       </div>
 
       <div *ngIf="loading">
@@ -55,12 +55,30 @@
       </div>
     </div>
 
+    <div class="pb-2" *ngIf="!loading && (debouncedSearch$ | async)">
+      <p translate style="padding-top: 10px">Concept suggestion instruction text</p>
+
+      <dl>
+        <dd>
+          <div>
+            <button id="open_terminology_modal_button"
+                    type="button"
+                    class="btn btn-sm btn-secondary-action mt-2"
+                    (click)="suggestAConcept()" [disabled]="!canSuggest()" translate>Suggest the concept to Controlled Vocabularies</button>
+            &nbsp;
+            <button id="cancel_modal_button"
+                    type="button"
+                    class="btn btn-sm btn-secondary-action mt-2"
+                    (click)="cancel()">{{cancelText | translate}}</button>
+          </div>
+        </dd>
+      </dl>
+
+    </div>
+
   </div>
+
 </div>
 
 <div class="modal-footer">
-  <button id="cancel_modal_button"
-          type="button"
-          class="btn btn-link cancel"
-          (click)="cancel()">{{cancelText | translate}}</button>
 </div>

@@ -14,9 +14,9 @@ import {
   ConceptType,
   DataClassificationType,
   ExtensionType,
+  ExternalReferenceType,
   MemberSimpleType,
   MemberType,
-  ExternalReferenceType,
   PropertyTypeType,
   VocabularyType
 } from './api-schema';
@@ -59,6 +59,7 @@ const vocabularies = 'vocabularies';
 const concepts = 'concepts';
 const searchterm = 'searchterm';
 const vocabulary = 'vocabulary';
+const suggestion = 'suggestion';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -76,6 +77,7 @@ const groupManagementRequestsBasePath = `/${intakeContext}/${api}/${version}/${g
 const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyContext}`;
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
 const terminologyConceptsPath = `${terminologyBasePath}/${concepts}`;
+const terminologyConceptSuggestionPath = `${terminologyBasePath}/${suggestion}`;
 
 interface FakeableUser {
   email: string;
@@ -671,8 +673,8 @@ export class DataService {
   }
 
   extensionCodeValueExists(registryCodeValue: string,
-                                 schemeCodeValue: string,
-                                 extensionCodeValue: string): Observable<boolean> {
+                           schemeCodeValue: string,
+                           extensionCodeValue: string): Observable<boolean> {
 
     const encodedExtensionCodeValue = encodeURIComponent(extensionCodeValue);
     return this.http.head(
@@ -699,5 +701,10 @@ export class DataService {
     return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/detachvariant/${idOfVariantToDetach}`,
       mother)
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
+  }
+
+  suggestAConcept(suggeztion: string, vocabularyId: string, contentLanguage: string): Observable<Concept[]> {
+    return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}/vocabulary/${vocabularyId}/language/${contentLanguage}`, suggeztion)
+      .pipe(map(res => res.results.map((data: ConceptType) => new Concept(data))));
   }
 }

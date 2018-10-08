@@ -17,6 +17,8 @@ import { Observable, BehaviorSubject, concat, combineLatest } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';
 import { Concept } from '../../entities/concept';
 import { CodeListErrorModalService } from '../common/error-modal.service';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -51,7 +53,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
               private modal: NgbActiveModal,
               public languageService: LanguageService,
               private translateService: TranslateService,
-              private codeListErrorModalService: CodeListErrorModalService) {
+              private codeListErrorModalService: CodeListErrorModalService,
+              private codeListConfirmationModalService: CodeListConfirmationModalService) {
   }
 
   ngOnInit() {
@@ -136,6 +139,27 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   cancel() {
     this.modal.dismiss('cancel');
+  }
+
+  canSuggest() {
+    const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
+    const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
+    return vocabularyId !== '' && this.search$.getValue() !== '';
+  }
+
+  suggestAConcept() {
+
+    const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
+    const vocabularyName: string =  vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
+    this.codeListConfirmationModalService.openSuggestConcept(this.search$.getValue(), vocabularyName)
+      .then(() => {
+        const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
+        return this.dataService.suggestAConcept(this.search$.getValue(), vocabularyId, this.languageService.contentLanguage).subscribe(next => {
+          const conceptSuggestions: Concept[] = next;
+          this.select(next[0]);
+        });
+      }, ignoreModalClose);
+
   }
 }
 
