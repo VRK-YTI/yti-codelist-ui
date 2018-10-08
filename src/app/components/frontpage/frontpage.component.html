@@ -112,8 +112,7 @@
 
               <a class="name" [routerLink]="codeScheme.route">{{codeScheme.getDisplayName(languageService, true)}}</a>
 
-                <div class="description-container"
-                     style="width: calc(100% - 260px);"[ngClass]="{'expand': fullDescription[codeScheme.id]}">
+                <div class="description-container" [ngClass]="{'expand': fullDescription[codeScheme.id]}">
                   <span class="description">{{codeScheme.description | translateValue: true}}</span>
                   <div class="limiter-container">
                     <div class="description-limiter" (click)="toggleFullDescription(codeScheme.id)"></div>
