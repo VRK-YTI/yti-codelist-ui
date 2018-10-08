@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-05 09:47+0300\n"
+"PO-Revision-Date: 2018-10-08 08:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -437,6 +437,12 @@ msgstr ""
 msgid "Member name"
 msgstr ""
 
+msgid "Code URI"
+msgstr ""
+
+msgid "Code vocabularies URI"
+msgstr ""
+
 msgid "Code"
 msgstr ""
 
@@ -509,14 +515,6 @@ msgstr "Search the variant"
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
-msgid "Concept suggestion instruction text"
-msgstr ""
-"If the proper concept does not exist, please suggest it to Controlled "
-"Vocabularies. Choose the vocabulary for the suggestion."
-
-msgid "Suggest the concept to Controlled Vocabularies"
-msgstr ""
-
 msgid "Email"
 msgstr ""
 
@@ -535,8 +533,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
-msgstr "Last edit time"
+msgid "INFO_TEXT_CODE_CONCEPT_URI"
+msgstr "Permanent address of the concept linked to code"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -661,6 +659,9 @@ msgstr ""
 "each resource (code list or classification, data model, or vocabulary) is "
 "classified by the Classification of Public Services. It is used for example "
 "to filter the search results."
+
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgstr "Last edit time"
 
 msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
 msgstr "Links"
@@ -1160,6 +1161,14 @@ msgstr "search result"
 
 msgid "searchresults"
 msgstr "search results"
+
+msgid "Concept suggestion instruction text"
+msgstr ""
+"If the proper concept does not exist, please suggest it to Controlled "
+"Vocabularies. Choose the vocabulary for the suggestion."
+
+msgid "Suggest the concept to Controlled Vocabularies"
+msgstr ""
 
 msgid "SUGGEST CONCEPT?"
 msgstr "Suggestion to controlled vocabularies"

@@ -148,12 +148,38 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   get showCodeDetailLabel(): boolean {
 
-    const currentCode: Code = this.memberForm.controls['code'].value;
-    if (currentCode) {
-      return currentCode.codeScheme.id !== this.extension.parentCodeScheme.id;
-    } else {
-      return false;
+    const code: Code = this.memberForm.controls['code'].value;
+    if (code) {
+      return code.codeScheme.id !== this.extension.parentCodeScheme.id;
     }
+    return false;
+  }
+
+  getCodeUri(): string | null {
+
+    const code: Code = this.memberForm.controls['code'].value;
+    if (code) {
+      if (this.env !== 'prod') {
+        return code.uri + '?env=' + this.env;
+      }
+      return code.uri;
+    }
+    return null;
+  }
+
+  getCodeConceptUri(): string | null {
+
+    const code: Code = this.memberForm.controls['code'].value;
+    if (code) {
+      const conceptUri: string = code.conceptUriInVocabularies;
+      if (conceptUri) {
+        if (this.env !== 'prod') {
+          return conceptUri + '?env=' + this.env;
+        }
+        return conceptUri;
+      }
+    }
+    return null;
   }
 
   getMemberUri() {

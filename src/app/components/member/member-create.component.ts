@@ -24,6 +24,7 @@ import { ValueType } from '../../entities/value-type';
 export class MemberCreateComponent implements OnInit {
 
   extension: Extension;
+  env: string;
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -44,6 +45,10 @@ export class MemberCreateComponent implements OnInit {
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
+
+    dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
   }
 
   ngOnInit() {
@@ -129,12 +134,39 @@ export class MemberCreateComponent implements OnInit {
 
   get loading(): boolean {
 
-    return this.extension == null;
+    return this.extension == null || this.env == null;
   }
 
   canSave() {
 
     return this.memberForm.valid;
+  }
+
+  getCodeUri(): string | null {
+
+    const code: Code = this.memberForm.controls['code'].value;
+    if (code) {
+      if (this.env !== 'prod') {
+        return code.uri + '?env=' + this.env;
+      }
+      return code.uri;
+    }
+    return null;
+  }
+
+  getCodeConceptUri(): string | null {
+
+    const code: Code = this.memberForm.controls['code'].value;
+    if (code) {
+      const conceptUri: string = code.conceptUriInVocabularies;
+      if (conceptUri) {
+        if (this.env !== 'prod') {
+          return conceptUri + '?env=' + this.env;
+        }
+        return conceptUri;
+      }
+    }
+    return null;
   }
 
   get allCodeSchemes(): CodeScheme[] {
