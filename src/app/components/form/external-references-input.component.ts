@@ -129,7 +129,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
   }
 
   get externalReferencesByType(): PropertyTypeExternalReferences[] {
-    return groupByType(this.externalReferences);
+    return groupByType(this.externalReferences, this.languageService);
   }
 
   addLink(propertyType: PropertyType) {
