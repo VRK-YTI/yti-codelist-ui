@@ -81,6 +81,11 @@
                       [infoText]="'INFO_TEXT_DEFAULT_CODE'"
                       [formControlName]="'defaultCode'"></app-code-input>
 
+      <app-status-input id="codelist_status_input"
+                        [formControlName]="'status'"
+                        [restrict]="restricted"
+                        [infoText]="'INFO_TEXT_CODELIST_STATUS'"></app-status-input>
+
       <app-localizable-textarea [id]="'codelist_description_textarea'"
                                 [label]="'Description' | translate"
                                 [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
@@ -119,11 +124,6 @@
                          [formControlName]="'governancePolicy'"
                          [restrict]="restricted"
                          [infoText]="'INFO_TEXT_CODELIST_GOVERNANCE_POLICY'"></app-literal-input>
-
-      <app-status-input id="codelist_status_input"
-                        [formControlName]="'status'"
-                        [restrict]="restricted"
-                        [infoText]="'INFO_TEXT_CODELIST_STATUS'"></app-status-input>
 
       <app-date-range-input id="codelist_validity_input"
                             [label]="'Validity' | translate"

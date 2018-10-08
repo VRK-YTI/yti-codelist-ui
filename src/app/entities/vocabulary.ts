@@ -17,11 +17,6 @@ export class Vocabulary {
     return displayName ? displayName : 'no_name_found';
   }
 
-/*  getDisplayNameWithGivenLanguage(localizer: Localizer, chosenLanguage: string): string {
-    const displayName = localizer.translate(this.prefLabel, chosenLanguage);
-    return displayName ? displayName : 'no_name_found';
-  }*/
-
   getIdIdentifier(localizer: Localizer, useUILanguage: boolean = false): string {
     const prefLabel = localizer.translate(this.prefLabel, useUILanguage);
     return labelNameToResourceIdIdentifier(prefLabel);
