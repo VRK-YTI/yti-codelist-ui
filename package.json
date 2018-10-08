@@ -61,7 +61,7 @@
     "po2json": "0.4.5",
     "protractor": "~5.4.0",
     "ts-node": "~5.0.1",
-    "tslint": "~5.9.1",
+    "tslint": "~5.11.0",
     "typescript": "~2.7.2"
   },
   "resolutions": {
