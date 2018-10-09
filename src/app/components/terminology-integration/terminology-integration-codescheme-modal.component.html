@@ -80,5 +80,9 @@
 
 </div>
 
-<div class="modal-footer">
+<div class="modal-footer" *ngIf="!search">
+  <button id="cancel_modal_button_when_no_search_done"
+          type="button"
+          class="btn btn-sm btn-secondary-action mt-2"
+          (click)="cancel()">{{cancelText | translate}}</button>
 </div>
