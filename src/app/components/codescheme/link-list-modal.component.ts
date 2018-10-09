@@ -53,7 +53,7 @@ export class LinkListModalComponent {
   }
 
   get externalReferencesByType(): PropertyTypeExternalReferences[] {
-    return groupByType(this.externalReferences);
+    return groupByType(this.externalReferences, this.languageService);
   }
 
   externalReferenceIdentity(index: number, item: ExternalReference) {

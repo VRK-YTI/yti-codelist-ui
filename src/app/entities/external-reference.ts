@@ -4,6 +4,7 @@ import { ExternalReferenceType } from '../services/api-schema';
 import { requireDefined } from 'yti-common-ui/utils/object';
 import { groupBy, index } from 'yti-common-ui/utils/array';
 import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
 export const CCBy40LicenseLinkId = '9a25f7fc-e4be-11e7-82ab-479f4f288376';
 export const CC0LicenseLinkId = '9553aad0-e4be-11e7-81e9-1faf2d228a02';
@@ -77,12 +78,14 @@ export interface PropertyTypeExternalReferences {
   externalReferences: ExternalReference[];
 }
 
-export function groupByType(extReferences: ExternalReference[]): PropertyTypeExternalReferences[] {
+export function groupByType(extReferences: ExternalReference[], localizer: Localizer): PropertyTypeExternalReferences[] {
 
-  const propertyTypes = extReferences.map(er => requireDefined(er.propertyType));
+  const extReferencesSorted = extReferences.sort(comparingLocalizable<ExternalReference>(localizer, c => c ? c.title : {}))
+  const propertyTypes = extReferencesSorted.map(er => requireDefined(er.propertyType));
   const propertyTypesByName = index(propertyTypes, pt => pt.localName);
   const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
 
-  return Array.from(groupBy(extReferences, er => mapNormalizedType(requireDefined(er.propertyType))))
-    .map(([propertyType, externalReferences]) => ({label: propertyType.prefLabel, externalReferences}));
+  return Array.from(groupBy(extReferencesSorted, er => mapNormalizedType(requireDefined(er.propertyType))))
+    .map(([propertyType, externalReferences]) => ({label: propertyType.prefLabel, externalReferences}))
+    .sort(comparingLocalizable<PropertyTypeExternalReferences>(localizer, c => c ? c.label : {}));
 }
