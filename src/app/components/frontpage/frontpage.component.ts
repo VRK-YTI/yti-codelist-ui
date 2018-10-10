@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeRegistry } from '../../entities/code-registry';
-import { DataClassification } from '../../entities/data-classification';
+import { InfoDomain } from '../../entities/info-domain';
 import { Organization } from '../../entities/organization';
 import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
@@ -45,12 +45,12 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   registryOptions: FilterOptions<CodeRegistry>;
   organizationOptions: FilterOptions<Organization>;
 
-  dataClassifications: { entity: DataClassification, count: number }[];
-  dataClassificationsWithAtLeastOneEntry: { entity: DataClassification, count: number }[];
+  infoDomains: { entity: InfoDomain, count: number }[];
+  infoDomainsWithAtLeastOneEntry: { entity: InfoDomain, count: number }[];
   registry$ = new BehaviorSubject<CodeRegistry|null>(null);
 
   searchTerm$ = new BehaviorSubject('');
-  classification$ = new BehaviorSubject<DataClassification|null>(null);
+  infoDomain$ = new BehaviorSubject<InfoDomain|null>(null);
   status$ = new BehaviorSubject<Status|null>(null);
   organization$ = new BehaviorSubject<Organization|null>(null);
 
@@ -125,7 +125,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     const debouncedSearchTerm = this.searchTerm$.pipe(skip(1), debounceTime(500));
     const searchTerm$ = concat(initialSearchTerm, debouncedSearchTerm);
 
-    const dataClassifications$ = this.dataService.getDataClassifications(this.languageService.language);
+    const infoDomains$ = this.dataService.getInfoDomains(this.languageService.language);
 
     function statusMatches(status: Status|null, codeScheme: CodeScheme) {
       return !status || codeScheme.status === status;
@@ -135,22 +135,22 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       return !registry || codeScheme.codeRegistry.codeValue === registry.codeValue;
     }
 
-    function calculateCount(classification: DataClassification, codeSchemes: CodeScheme[]) {
+    function calculateCount(infoDomain: InfoDomain, codeSchemes: CodeScheme[]) {
       return codeSchemes.filter(cs =>
-        anyMatching(cs.dataClassifications, rc => rc.id === classification.id)).length;
+        anyMatching(cs.infoDomains, rc => rc.id === infoDomain.id)).length;
     }
 
-    myCombineLatest(searchTerm$, this.classification$, this.status$, this.registry$, this.organization$,
+    myCombineLatest(searchTerm$, this.infoDomain$, this.status$, this.registry$, this.organization$,
       this.searchCodes$, this.languageService.language$)
       .pipe(
         tap(() => this.searchInProgress = true),
-        flatMap(([searchTerm, classification, status, registry, organization, searchCodes, language]) => {
+        flatMap(([searchTerm, infoDomain, status, registry, organization, searchCodes, language]) => {
 
-          const classificationCode = classification ? classification.codeValue : null;
+          const infoDomainCode = infoDomain ? infoDomain.codeValue : null;
           const organizationId = organization ? organization.id : null;
           const sortMode = this.configuration.codeSchemeSortMode || null;
 
-          return this.dataService.searchCodeSchemes(searchTerm, classificationCode, organizationId, sortMode, searchCodes, language)
+          return this.dataService.searchCodeSchemes(searchTerm, infoDomainCode, organizationId, sortMode, searchCodes, language)
             .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
               statusMatches(status, codeScheme) &&
               registryMatches(registry, codeScheme))
@@ -160,10 +160,10 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       )
       .subscribe(results => this.filteredCodeSchemes = results);
 
-    myCombineLatest(dataClassifications$, searchTerm$, this.status$, this.registry$, this.organization$,
+    myCombineLatest(infoDomains$, searchTerm$, this.status$, this.registry$, this.organization$,
       this.searchCodes$, this.languageService.language$)
-      .subscribe(([classifications, searchTerm, status, registry, organization, searchCodes, language]) => {
-        classifications.sort(comparingLocalizable<DataClassification>(this.languageService, classification => classification.prefLabel));
+      .subscribe(([infoDomains, searchTerm, status, registry, organization, searchCodes, language]) => {
+        infoDomains.sort(comparingLocalizable<InfoDomain>(this.languageService, infoDomain => infoDomain.prefLabel));
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
 
@@ -173,21 +173,21 @@ export class FrontpageComponent implements OnInit, OnDestroy {
             registryMatches(registry, codeScheme))
           ))
           .subscribe(codeSchemes => {
-            this.dataClassifications = classifications.map((classification: DataClassification) => ({
-              entity: classification,
-              count: calculateCount(classification, codeSchemes)
+            this.infoDomains = infoDomains.map((infoDomain: InfoDomain) => ({
+              entity: infoDomain,
+              count: calculateCount(infoDomain, codeSchemes)
             }));
-            this.dataClassificationsWithAtLeastOneEntry = this.dataClassifications.filter(dc => dc.count > 0);
+            this.infoDomainsWithAtLeastOneEntry = this.infoDomains.filter(dc => dc.count > 0);
           });
       });
   }
 
-  isClassificationSelected(classification: DataClassification) {
-    return this.classification$.getValue() === classification;
+  isInfoDomainSelected(infoDomain: InfoDomain) {
+    return this.infoDomain$.getValue() === infoDomain;
   }
 
-  toggleClassification(classification: DataClassification) {
-    this.classification$.next(this.isClassificationSelected(classification) ? null : classification);
+  toggleInfoDomain(infoDomain: InfoDomain) {
+    this.infoDomain$.next(this.isInfoDomainSelected(infoDomain) ? null : infoDomain);
   }
 
   toggleSearchCodes() {
@@ -204,7 +204,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   }
 
   get loading(): boolean {
-    return this.dataClassifications == null || this.filteredCodeSchemes == null;
+    return this.infoDomains == null || this.filteredCodeSchemes == null;
   }
 
   importCodeScheme() {

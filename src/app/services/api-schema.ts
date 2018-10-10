@@ -129,7 +129,7 @@ export interface PropertyTypeType {
   valueTypes?: ValueTypeType[];
 }
 
-export interface DataClassificationType {
+export interface InfoDomainType {
 
   id: string;
   uri: string;

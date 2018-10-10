@@ -28,7 +28,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   description: Localizable = {};
   changeNote: Localizable = {};
   definition: Localizable = {};
-  dataClassifications: CodePlain[] = [];
+  infoDomains: CodePlain[] = [];
   languageCodes: CodePlain[] = [];
   externalReferences: ExternalReference[] = [];
   conceptUriInVocabularies: string;
@@ -66,7 +66,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.description = data.description || {};
     this.changeNote = data.changeNote || {};
     this.definition = data.definition || {};
-    this.dataClassifications = (data.infoDomains || []).map(dc => new CodePlain(dc));
+    this.infoDomains = (data.infoDomains || []).map(dc => new CodePlain(dc));
     this.languageCodes = (data.languageCodes || []).map(lc => new CodePlain(lc));
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
     this.extensions = (data.extensions || []).map(es => new ExtensionSimple(es));
@@ -133,12 +133,12 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return this.organizations.map(org => org.id);
   }
 
-  getDisplayClassificationListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
+  getDisplayInfoDomainListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
     const results: string[] = [];
-    this.dataClassifications.forEach((dc) => {
-      const displayClassification = localizer.translate(dc.prefLabel, useUILanguage);
-      if (displayClassification) {
-        results.push(displayClassification);
+    this.infoDomains.forEach((dc) => {
+      const displayInfoDomain = localizer.translate(dc.prefLabel, useUILanguage);
+      if (displayInfoDomain) {
+        results.push(displayInfoDomain);
       }
     });
     return results;
@@ -171,7 +171,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       description: { ...this.description },
       changeNote: { ...this.changeNote },
       definition: { ...this.definition },
-      infoDomains: this.dataClassifications.map(dc => dc.serialize()),
+      infoDomains: this.infoDomains.map(dc => dc.serialize()),
       languageCodes: this.languageCodes.map(lc => lc.serialize()),
       externalReferences: this.externalReferences.map(er => er.serialize()),
       extensions: this.extensions.map(es => es.serialize()),

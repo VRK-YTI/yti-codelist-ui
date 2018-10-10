@@ -22,13 +22,13 @@ msgstr ""
 msgid "Create new"
 msgstr ""
 
-msgid "Add classification"
+msgid "Add infodomain"
 msgstr ""
 
-msgid "Choose classification"
+msgid "Choose infodomain"
 msgstr ""
 
-msgid "Search classification"
+msgid "Search infodomain"
 msgstr ""
 
 msgid "Copy value to clipboard"
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Registry"
 msgstr ""
 
-msgid "Classification"
+msgid "InfoDomain"
 msgstr ""
 
 msgid "Organization"
@@ -422,7 +422,7 @@ msgstr ""
 msgid "Extend search to codes"
 msgstr ""
 
-msgid "Filter with classification"
+msgid "Filter with infodomain"
 msgstr ""
 
 msgid "Filter results"
@@ -543,7 +543,7 @@ msgid "INFO_TEXT_CODELIST_CODE_VALUE"
 msgstr "The technical code or permanent identifier used by the organization."
 
 msgid "INFO_TEXT_CODELIST_NAME"
-msgstr "The name of the code list or classification"
+msgstr "The name of the code list or infodomain"
 
 msgid "INFO_TEXT_VOCABULARIES_URI"
 msgstr "Permanent web address of the concept in Controlled Vocabularies Tool"
@@ -588,7 +588,7 @@ msgstr "A related resource from which the described resource is derived."
 
 msgid "INFO_TEXT_CODELIST_LEGAL_BASE"
 msgstr ""
-"Indicates that the Code list or Classification is covered by a legal act or "
+"Indicates that the Code list or Infodomain is covered by a legal act or "
 "by some other formal agreement."
 
 msgid "INFO_TEXT_CODELIST_GOVERNANCE_POLICY"
@@ -653,11 +653,11 @@ msgstr "The period in which the code is valid"
 msgid "INFO_TEXT_CODE_URI"
 msgstr "Permanent web address of the code"
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
-"Classification of the code lists. In the Interoperability Platform tools, "
-"each resource (code list or classification, data model, or vocabulary) is "
-"classified by the Classification of Public Services. It is used for example "
+"Infodomain of the code lists. In the Interoperability Platform tools, "
+"each resource (code list or infodomain, data model, or vocabulary) is "
+"classified by the Infodomain of Public Services. It is used for example "
 "to filter the search results."
 
 msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
@@ -752,7 +752,7 @@ msgstr ""
 "The names of the code lists are searched as a default. You may search for "
 "the names of the codes by checking the box \"Extend search to codes\""
 
-msgid "INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION"
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_INFODOMAIN"
 msgstr ""
 "All code lists are classified into information domains. To see code lists "
 "classified into a certain information domain, click the name of the "
@@ -950,11 +950,11 @@ msgstr "Code {{ identifier }} already exists."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Code list already exists."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "The data is missing a column with the header CLASSIFICATION."
+msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
+msgstr "The data is missing a column with the header INFODOMAIN."
 
-msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
-msgstr "Data contains faulty classification."
+msgid "ERR_MSG_USER_BAD_INFODOMAIN"
+msgstr "Data contains faulty infodomain."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Existing CODEVALUE differs from input data, change not allowed."

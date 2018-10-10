@@ -1,7 +1,7 @@
 import { Localizable } from 'yti-common-ui/types/localization';
-import { DataClassificationType } from '../services/api-schema';
+import { InfoDomainType } from '../services/api-schema';
 
-export class DataClassification {
+export class InfoDomain {
 
   id: string;
   uri: string;
@@ -10,7 +10,7 @@ export class DataClassification {
   prefLabel: Localizable;
   count: number;
 
-  constructor(data: DataClassificationType) {
+  constructor(data: InfoDomainType) {
     this.id = data.id;
     this.uri = data.uri;
     this.status = data.status;
@@ -19,7 +19,7 @@ export class DataClassification {
     this.count = data.count;
   }
 
-  serialize(): DataClassificationType {
+  serialize(): InfoDomainType {
     return {
       id: this.id,
       uri: this.uri,
@@ -31,6 +31,6 @@ export class DataClassification {
   }
 
   clone() {
-    return new DataClassification(this.serialize());
+    return new InfoDomain(this.serialize());
   }
 }

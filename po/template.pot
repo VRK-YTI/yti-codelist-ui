@@ -13,15 +13,6 @@ msgstr ""
 msgid "Create new"
 msgstr ""
 
-msgid "Add classification"
-msgstr ""
-
-msgid "Choose classification"
-msgstr ""
-
-msgid "Search classification"
-msgstr ""
-
 msgid "Copy value to clipboard"
 msgstr ""
 
@@ -65,6 +56,15 @@ msgid "Edit"
 msgstr ""
 
 msgid "Add link"
+msgstr ""
+
+msgid "Add infodomain"
+msgstr ""
+
+msgid "Choose classification"
+msgstr ""
+
+msgid "Search classification"
 msgstr ""
 
 msgid "Add language code"
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Registry"
 msgstr ""
 
-msgid "Classification"
+msgid "InfoDomain"
 msgstr ""
 
 msgid "Organization"
@@ -407,7 +407,7 @@ msgstr ""
 msgid "Extend search to codes"
 msgstr ""
 
-msgid "Filter with classification"
+msgid "Filter with infodomain"
 msgstr ""
 
 msgid "Filter results"
@@ -498,6 +498,12 @@ msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
+msgstr ""
+
+msgid "Concept suggestion instruction text"
+msgstr ""
+
+msgid "Suggest the concept to Controlled Vocabularies"
 msgstr ""
 
 msgid "Email"
@@ -614,7 +620,7 @@ msgstr ""
 msgid "INFO_TEXT_CODE_URI"
 msgstr ""
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
@@ -695,7 +701,7 @@ msgstr ""
 msgid "INFO_TEXT_FRONTPAGE_SEARCH"
 msgstr ""
 
-msgid "INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION"
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
@@ -871,10 +877,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
+msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
 msgstr ""
 
-msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
+msgid "ERR_MSG_USER_BAD_INFODOMAIN"
 msgstr ""
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
@@ -1040,12 +1046,6 @@ msgid "searchresult"
 msgstr ""
 
 msgid "searchresults"
-msgstr ""
-
-msgid "Concept suggestion instruction text"
-msgstr ""
-
-msgid "Suggest the concept to Controlled Vocabularies"
 msgstr ""
 
 msgid "SUGGEST CONCEPT?"

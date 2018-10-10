@@ -27,7 +27,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
     <dl *ngIf="editing || codeSchemes.length > 0">
       <dt>
         <label>{{label}}</label>
-        <app-information-symbol [infoText]="'INFO_TEXT_CLASSIFICATION'"></app-information-symbol>
+        <app-information-symbol [infoText]="'INFO_TEXT_INFODOMAIN'"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>

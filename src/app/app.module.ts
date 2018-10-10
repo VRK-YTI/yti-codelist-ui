@@ -56,7 +56,7 @@ import { ModalService } from './services/modal.service';
 import { ExternalReferencesInputComponent } from './components/form/external-references-input.component';
 import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
-import { ClassificationsInputComponent } from './components/form/classifications-input.component';
+import { InfodomainsInputComponent } from './components/form/infodomains-input.component';
 import {
   SearchLinkedCodeModalComponent,
   SearchLinkedCodeModalService
@@ -260,7 +260,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     StatusInputComponent,
     DateInputComponent,
     DateRangeInputComponent,
-    ClassificationsInputComponent,
+    InfodomainsInputComponent,
     LanguageCodesInputComponent,
     OrganizationsInputComponent,
     CodeInputComponent,

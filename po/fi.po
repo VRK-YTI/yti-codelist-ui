@@ -22,13 +22,13 @@ msgstr "Valitse"
 msgid "Create new"
 msgstr "Luo uusi"
 
-msgid "Add classification"
+msgid "Add infodomain"
 msgstr "Lisää luokitus"
 
-msgid "Choose classification"
+msgid "Choose infodomain"
 msgstr "Valitse luokitus"
 
-msgid "Search classification"
+msgid "Search infodomain"
 msgstr "Hae luokitusta"
 
 msgid "Copy value to clipboard"
@@ -166,7 +166,7 @@ msgstr "Poista koodi"
 msgid "Registry"
 msgstr "Rekisteri"
 
-msgid "Classification"
+msgid "InfoDomain"
 msgstr "Luokitus"
 
 msgid "Organization"
@@ -428,7 +428,7 @@ msgstr ""
 msgid "Extend search to codes"
 msgstr "Kohdista haku myös koodeihin"
 
-msgid "Filter with classification"
+msgid "Filter with infodomain"
 msgstr "Rajaa tietoalueella"
 
 msgid "Filter results"
@@ -673,7 +673,7 @@ msgstr ""
 "seuraavasti http://uri.suomi.fi/codelist/[rekisteri]/[koodiston tunnus]/"
 "[koodi]"
 
-msgid "INFO_TEXT_CLASSIFICATION"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Tieto siitä, mihin julkisten palvelujen luokituksen palveluluokkaan koodisto "
 "liittyy. Koodisto voi kuulua useaan palveluluokkaan. Yhteentoimivuusalustan "
@@ -767,7 +767,7 @@ msgstr ""
 "Haku kohdistuu oletuksena koodistojen nimiin. Voit hakea koodien nimiä "
 "rastimalla \"Kohdista haku myös koodeihin\"."
 
-msgid "INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION"
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_INFODOMAIN"
 msgstr ""
 "Kaikki koodistot on luokiteltu johonkin tietoalueeseen. Tietoaluetta "
 "klikkaamalla voit suodattaa hakutuloksiin näkyviin vain tiettyyn "
@@ -956,10 +956,10 @@ msgstr "Koodi {{ identifier }} on jo olemassa."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Koodisto on jo olemassa."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_CLASSIFICATION"
-msgstr "Aineistosta puuttuu sarake otsikolla CLASSIFICATION."
+msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
+msgstr "Aineistosta puuttuu sarake otsikolla INFODOMAIN."
 
-msgid "ERR_MSG_USER_BAD_CLASSIFICATION"
+msgid "ERR_MSG_USER_BAD_INFODOMAIN"
 msgstr "Aineistolle annettua luokitusta ei löydy."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"

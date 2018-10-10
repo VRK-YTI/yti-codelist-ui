@@ -26,7 +26,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   @Input() languageCodes: CodePlain[];
   @Output() change = new EventEmitter<CodePlain[]>();
 
-  dataClassifications: Code[];
+  infoDomains: Code[];
   env: string;
 
   codeSchemeForm = new FormGroup({
@@ -39,7 +39,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     legalBase: new FormControl(''),
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl(),
-    dataClassifications: new FormControl([], [requiredList]),
+    infoDomains: new FormControl([], [requiredList]),
     languageCodes: new FormControl([], [requiredList]),
     defaultCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
@@ -77,14 +77,14 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
-    const { externalReferences, dataClassifications, defaultCode, startDate, endDate, organizations, ...rest } = this.codeScheme;
+    const { externalReferences, infoDomains, defaultCode, startDate, endDate, organizations, ...rest } = this.codeScheme;
 
-    dataClassifications.sort(comparingLocalizable<Code>(this.languageService, classification => classification.prefLabel));
+    infoDomains.sort(comparingLocalizable<Code>(this.languageService, infoDomain => infoDomain.prefLabel));
 
     this.codeSchemeForm.reset({
       ...rest,
       externalReferences: externalReferences.map(link => link.clone()),
-      dataClassifications: dataClassifications.map(classification => classification.clone()),
+      infoDomains: infoDomains.map(infoDomain => infoDomain.clone()),
       defaultCode: defaultCode,
       validity: { start: startDate, end: endDate },
       organizations: organizations.map(organization => organization.clone())

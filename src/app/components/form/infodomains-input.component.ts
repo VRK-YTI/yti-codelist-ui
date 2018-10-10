@@ -24,49 +24,49 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
 }
 
 @Component({
-  selector: 'app-classifications-input',
+  selector: 'app-infodomains-input',
   template: `
-    <dl *ngIf="editing || dataClassifications.length > 0">
+    <dl *ngIf="editing || infoDomains.length > 0">
       <dt>
         <label>{{label}}</label>
-        <app-information-symbol [infoText]="'INFO_TEXT_CLASSIFICATION'"></app-information-symbol>
+        <app-information-symbol [infoText]="'INFO_TEXT_INFODOMAIN'"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="!editing">
-          <div *ngFor="let dataClassification of dataClassifications">
-            <span>{{dataClassification.prefLabel | translateValue:true}}</span>
+          <div *ngFor="let infoDomain of infoDomains">
+            <span>{{infoDomain.prefLabel | translateValue:true}}</span>
           </div>
         </div>
         <div *ngIf="editing">
-          <div *ngFor="let classification of dataClassifications">
+          <div *ngFor="let infoDomain of infoDomains">
             <a class="removal-X">
-              <i [id]="'remove_' + classification.codeValue + '_classification_link'"
+              <i [id]="'remove_' + infoDomain.codeValue + '_infodomain_link'"
                  class="fa fa-times"
-                 (click)="removeDataClassification(classification)"></i>
+                 (click)="removeInfoDomain(infoDomain)"></i>
             </a>
-            <span>{{classification.prefLabel | translateValue:true}}</span>
+            <span>{{infoDomain.prefLabel | translateValue:true}}</span>
           </div>
-          <app-error-messages id="classification_error_messages" [control]="parentControl"></app-error-messages>
+          <app-error-messages id="infodomain_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
-        <button id="add_classification_button"
+        <button id="add_infodomain_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="addDataClassification()" translate>Add classification</button>
+                (click)="addInfoDomain()" translate>Add infodomain</button>
       </dd>
     </dl>
   `
 })
-export class ClassificationsInputComponent implements ControlValueAccessor, OnDestroy {
+export class InfodomainsInputComponent implements ControlValueAccessor, OnDestroy {
 
   @Input() label: string;
   @Input() restrict = false;
   @Input() required = false;
   control = new FormControl([]);
 
-  classifications$: Observable<Code[]>;
+  infoDomainsAsCodes$: Observable<Code[]>;
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -87,30 +87,30 @@ export class ClassificationsInputComponent implements ControlValueAccessor, OnDe
     }
 
     this.subscriptionsToClean.push(this.languageService.language$.subscribe((language) => {
-      this.classifications$ = this.dataService.getDataClassificationsAsCodes(language);
+      this.infoDomainsAsCodes$ = this.dataService.getInfoDomainsAsCodes(language);
     }));
   }
 
-  get dataClassifications(): CodePlain[] {
+  get infoDomains(): CodePlain[] {
     return (this.control.value as CodePlain[]).sort(comparingLocalizable<CodePlain>(
-      this.languageService, (classification: CodePlain) => classification.prefLabel));
+      this.languageService, (infoDomain: CodePlain) => infoDomain.prefLabel));
   }
 
-  addDataClassification() {
+  addInfoDomain() {
     const titleLabel = this.translateService.instant('Choose classification');
     const searchlabel = this.translateService.instant('Search classification');
-    const restrictIds = this.dataClassifications.map(classification => classification.id);
+    const restrictIds = this.infoDomains.map(infoDomain => infoDomain.id);
 
-    this.searchLinkedCodeModalService.openWithCodes(this.classifications, titleLabel, searchlabel, restrictIds, true)
-      .then((classification: Code) => addToControl(this.control, classification), ignoreModalClose);
+    this.searchLinkedCodeModalService.openWithCodes(this.infoDomainsAsObservableCodes, titleLabel, searchlabel, restrictIds, true)
+      .then((infoDomain: Code) => addToControl(this.control, infoDomain), ignoreModalClose);
   }
 
-  removeDataClassification(classification: CodePlain) {
-    removeFromControl(this.control, classification);
+  removeInfoDomain(infoDomain: CodePlain) {
+    removeFromControl(this.control, infoDomain);
   }
 
-  get classifications() {
-    return this.classifications$;
+  get infoDomainsAsObservableCodes() {
+    return this.infoDomainsAsCodes$;
   }
 
   get editing() {

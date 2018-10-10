@@ -49,7 +49,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     governancePolicy: new FormControl(''),
     externalReferences: new FormControl([]),
     validity: new FormControl({ start: null, end: null }, validDateRange),
-    dataClassifications: new FormControl([], [requiredList]),
+    infoDomains: new FormControl([], [requiredList]),
     languageCodes: new FormControl([], [requiredList]),
     defaultCode: new FormControl(null),
     status: new FormControl('DRAFT' as Status),
@@ -110,19 +110,19 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
           this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
           this.codeSchemeForm.patchValue({ organizations: originalCodeScheme.organizations });
-          this.dataService.getDataClassificationsAsCodes(this.languageService.language).subscribe(next2 => {
-            const allDataClassifications = next2;
-            const dataClassificationsToCopy: CodePlain[] = [];
-            originalCodeScheme.dataClassifications.forEach(function (originalClassification) {
-              allDataClassifications.forEach(function (potentialClassification) {
-                const uriToCompare = potentialClassification.codeScheme.uri + '/code/' + potentialClassification.codeValue;
-                if (uriToCompare === originalClassification.uri) {
-                  dataClassificationsToCopy.push(potentialClassification);
+          this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
+            const allInfoDomains = next2;
+            const infoDomainsToCopy: CodePlain[] = [];
+            originalCodeScheme.infoDomains.forEach(function (originalInfoDomain) {
+              allInfoDomains.forEach(function (potentialInfoDomain) {
+                const uriToCompare = potentialInfoDomain.codeScheme.uri + '/code/' + potentialInfoDomain.codeValue;
+                if (uriToCompare === originalInfoDomain.uri) {
+                  infoDomainsToCopy.push(potentialInfoDomain);
                 }
               });
             });
-            if (dataClassificationsToCopy.length > 0) {
-              this.codeSchemeForm.patchValue({ dataClassifications: dataClassificationsToCopy });
+            if (infoDomainsToCopy.length > 0) {
+              this.codeSchemeForm.patchValue({ infoDomains: infoDomainsToCopy });
             }
           });
           this.dataService.getLanguageCodes(this.languageService.language).subscribe(next3 => {
@@ -183,7 +183,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   save(formData: any): Observable<any> {
 
-    const { validity, codeRegistry, defaultCode, dataClassifications, languageCodes, externalReferences, organizations, ...rest } = formData;
+    const { validity, codeRegistry, defaultCode, infoDomains, languageCodes, externalReferences, organizations, ...rest } = formData;
 
     const codeScheme: CodeSchemeType = <CodeSchemeType> {
       ...rest,
@@ -191,7 +191,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       endDate: formatDate(validity.end),
       codeRegistry: codeRegistry.serialize(),
       defaultCode: defaultCode ? defaultCode.serialize() : undefined,
-      infoDomains: dataClassifications.map((dc: CodePlain) => dc.serialize()),
+      infoDomains: infoDomains.map((dc: CodePlain) => dc.serialize()),
       languageCodes: languageCodes.map((lc: CodePlain) => lc.serialize()),
       externalReferences: externalReferences.map((er: ExternalReference) => er.serialize()),
       organizations: organizations.map((organization: Organization) => organization.serialize())

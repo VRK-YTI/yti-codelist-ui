@@ -90,10 +90,10 @@
                                                             (click)="navigateToRoute(codeScheme.codeRegistry.route)">
         {{codeScheme.codeRegistry.getDisplayName(languageService, true)}}</span>
       </div>
-      <div class="metaitem" *ngIf="codeScheme.dataClassifications.length > 0">
-        <span translate>Classification</span><span>: </span>
+      <div class="metaitem" *ngIf="codeScheme.infoDomains.length > 0">
+        <span translate>InfoDomain</span><span>: </span>
         <span
-          *ngFor="let dataClassification of codeScheme.dataClassifications; let last = last">{{dataClassification.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+          *ngFor="let infoDomain of codeScheme.infoDomains; let last = last">{{infoDomain.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>

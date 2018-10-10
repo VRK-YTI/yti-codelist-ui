@@ -41,8 +41,8 @@
   <div class="row">
     <div class="col-md-4">
       <div class="inline-label">
-        <span class="search-label" translate>Filter with classification</span>
-        <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_W_CLASSIFICATION'"></app-information-symbol>
+        <span class="search-label" translate>Filter with infodomain</span>
+        <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_W_INFODOMAIN'"></app-information-symbol>
       </div>
     </div>
   </div>
@@ -51,13 +51,13 @@
       <div class="information-domain-container">
         <div class="content-box">
           <div class="information-domain"
-               *ngFor="let dataClassification of dataClassificationsWithAtLeastOneEntry"
-               [class.active]="isClassificationSelected(dataClassification.entity)"
-               [id]="dataClassification.entity.codeValue + '_classification_filter_link'"
-               (click)="toggleClassification(dataClassification.entity)">
-              <img [src]="groupIconSrc(dataClassification.entity.codeValue)" >
-              <span class="name" style="vertical-align: middle;">{{dataClassification.entity.prefLabel | translateValue:true }}</span>
-              <span class="count">({{dataClassification.count}})</span>
+               *ngFor="let infoDomain of infoDomainsWithAtLeastOneEntry"
+               [class.active]="isInfoDomainSelected(infoDomain.entity)"
+               [id]="infoDomain.entity.codeValue + '_infodomain_filter_link'"
+               (click)="toggleInfoDomain(infoDomain.entity)">
+              <img [src]="groupIconSrc(infoDomain.entity.codeValue)" >
+              <span class="name" style="vertical-align: middle;">{{infoDomain.entity.prefLabel | translateValue:true }}</span>
+              <span class="count">({{infoDomain.count}})</span>
           </div>
         </div>
       </div>
@@ -120,8 +120,8 @@
                 </div>
 
                 <span class="information-domains">
-                    <span class="badge badge-light" *ngFor="let classification of codeScheme.getDisplayClassificationListing(languageService, true)">
-                      {{classification}}
+                    <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.getDisplayInfoDomainListing(languageService, true)">
+                      {{infoDomain}}
                     </span>
                   </span>
 

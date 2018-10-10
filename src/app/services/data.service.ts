@@ -3,7 +3,7 @@ import { CodeScheme } from '../entities/code-scheme';
 import { CodeRegistry } from '../entities/code-registry';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { DataClassification } from '../entities/data-classification';
+import { InfoDomain } from '../entities/info-domain';
 import { Code } from '../entities/code';
 import {
   ApiResponseType,
@@ -12,7 +12,7 @@ import {
   CodeSchemeType,
   CodeType,
   ConceptType,
-  DataClassificationType,
+  InfoDomainType,
   ExtensionType,
   ExternalReferenceType,
   MemberSimpleType,
@@ -185,7 +185,7 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
-  searchCodeSchemes(searchTerm: string | null, classification: string | null, organization: string | null,
+  searchCodeSchemes(searchTerm: string | null, infoDomain: string | null, organization: string | null,
                     sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
@@ -209,8 +209,8 @@ export class DataService {
       params = params.append('searchTerm', searchTerm);
     }
 
-    if (classification) {
-      params = params.append('dataClassification', classification);
+    if (infoDomain) {
+      params = params.append('dataClassification', infoDomain);
     }
 
     if (organization) {
@@ -241,17 +241,17 @@ export class DataService {
       .pipe(map(res => new PropertyType(res)));
   }
 
-  getDataClassifications(language: string): Observable<DataClassification[]> {
+  getInfoDomains(language: string): Observable<InfoDomain[]> {
 
     const params = {
       language: language
     };
 
-    return this.http.get<WithResults<DataClassificationType>>(`${dataClassificationsBasePath}/`, { params })
-      .pipe(map(res => res.results.map((data: DataClassificationType) => new DataClassification(data))));
+    return this.http.get<WithResults<InfoDomainType>>(`${dataClassificationsBasePath}/`, { params })
+      .pipe(map(res => res.results.map((data: InfoDomainType) => new InfoDomain(data))));
   }
 
-  getDataClassificationsAsCodes(language: string): Observable<Code[]> {
+  getInfoDomainsAsCodes(language: string): Observable<Code[]> {
 
     let params = new HttpParams()
       .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType')
