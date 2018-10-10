@@ -66,7 +66,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.description = data.description || {};
     this.changeNote = data.changeNote || {};
     this.definition = data.definition || {};
-    this.dataClassifications = (data.dataClassifications || []).map(dc => new CodePlain(dc));
+    this.dataClassifications = (data.infoDomains || []).map(dc => new CodePlain(dc));
     this.languageCodes = (data.languageCodes || []).map(lc => new CodePlain(lc));
     this.externalReferences = (data.externalReferences || []).map(er => new ExternalReference(er));
     this.extensions = (data.extensions || []).map(es => new ExtensionSimple(es));
@@ -171,7 +171,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       description: { ...this.description },
       changeNote: { ...this.changeNote },
       definition: { ...this.definition },
-      dataClassifications: this.dataClassifications.map(dc => dc.serialize()),
+      infoDomains: this.dataClassifications.map(dc => dc.serialize()),
       languageCodes: this.languageCodes.map(lc => lc.serialize()),
       externalReferences: this.externalReferences.map(er => er.serialize()),
       extensions: this.extensions.map(es => es.serialize()),

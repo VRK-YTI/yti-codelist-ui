@@ -191,7 +191,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       endDate: formatDate(validity.end),
       codeRegistry: codeRegistry.serialize(),
       defaultCode: defaultCode ? defaultCode.serialize() : undefined,
-      dataClassifications: dataClassifications.map((dc: CodePlain) => dc.serialize()),
+      infoDomains: dataClassifications.map((dc: CodePlain) => dc.serialize()),
       languageCodes: languageCodes.map((lc: CodePlain) => lc.serialize()),
       externalReferences: externalReferences.map((er: ExternalReference) => er.serialize()),
       organizations: organizations.map((organization: Organization) => organization.serialize())
