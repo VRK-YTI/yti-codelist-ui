@@ -951,7 +951,7 @@ msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Code list already exists."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
-msgstr "The data is missing a column with the header INFODOMAIN."
+msgstr "The data is missing a column with the header INFORMATIONDOMAIN."
 
 msgid "ERR_MSG_USER_BAD_INFODOMAIN"
 msgstr "Data contains faulty infodomain."

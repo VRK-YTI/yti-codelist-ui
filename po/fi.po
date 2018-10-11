@@ -957,7 +957,7 @@ msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Koodisto on jo olemassa."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
-msgstr "Aineistosta puuttuu sarake otsikolla INFODOMAIN."
+msgstr "Aineistosta puuttuu sarake otsikolla INFORMATIONDOMAIN."
 
 msgid "ERR_MSG_USER_BAD_INFODOMAIN"
 msgstr "Aineistolle annettua luokitusta ei löydy."
