@@ -675,11 +675,7 @@ msgstr ""
 
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
-"Tieto siitä, mihin julkisten palvelujen luokituksen palveluluokkaan koodisto "
-"liittyy. Koodisto voi kuulua useaan palveluluokkaan. Yhteentoimivuusalustan "
-"työkaluissa jokainen resurssi (koodisto, tietomalli tai sanasto) "
-"luokitellaan Julkisten palvelujen luokituksella. Luokitusta käytetään "
-"etusivun haussa rajaamaan hakutuloksia."
+"Tieto siitä, mihin tietoalueeseen koodisto liittyy. Koodisto voi kuulua useaan tietoalueeseen. Tietoalueluokituksena käytetään Julkisten palvelujen luokitusta. Samaa tietoalueluokitusta käytetään Koodistot-työkalun lisäksi myös Sanastot- ja Tietomallit-työkaluissa. Tietoaluetta käytetään etusivun haussa rajaamaan hakutuloksia."
 
 msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
