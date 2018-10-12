@@ -58,13 +58,13 @@ msgstr ""
 msgid "Add link"
 msgstr ""
 
-msgid "Add infodomain"
+msgid "Add information domain"
 msgstr ""
 
-msgid "Choose classification"
+msgid "Choose information domain"
 msgstr ""
 
-msgid "Search classification"
+msgid "Search information domain"
 msgstr ""
 
 msgid "Add language code"
@@ -877,7 +877,7 @@ msgstr ""
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr ""
 
-msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
+msgid "ERR_MSG_USER_MISSING_HEADER_INFORMATIONDOMAIN"
 msgstr ""
 
 msgid "ERR_MSG_USER_BAD_INFORMATIONDOMAIN"

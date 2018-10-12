@@ -22,13 +22,13 @@ msgstr "Valitse"
 msgid "Create new"
 msgstr "Luo uusi"
 
-msgid "Add infodomain"
+msgid "Add information domain"
 msgstr "Lisää tietoalue"
 
-msgid "Choose infodomain"
+msgid "Choose information domain"
 msgstr "Valitse tietoalue"
 
-msgid "Search infodomain"
+msgid "Search information domain"
 msgstr "Hae tietoaluetta"
 
 msgid "Copy value to clipboard"

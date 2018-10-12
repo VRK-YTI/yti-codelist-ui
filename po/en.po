@@ -22,13 +22,13 @@ msgstr ""
 msgid "Create new"
 msgstr ""
 
-msgid "Add infodomain"
+msgid "Add infomation domain"
 msgstr ""
 
-msgid "Choose infodomain"
+msgid "Choose information domain"
 msgstr ""
 
-msgid "Search infodomain"
+msgid "Search information domain"
 msgstr ""
 
 msgid "Copy value to clipboard"
@@ -167,7 +167,7 @@ msgid "Registry"
 msgstr ""
 
 msgid "InfoDomain"
-msgstr ""
+msgstr "Information domain"
 
 msgid "Organization"
 msgstr ""

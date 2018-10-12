@@ -54,7 +54,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                (click)="addInfoDomain()" translate>Add infodomain</button>
+                (click)="addInfoDomain()" translate>Add information domain</button>
       </dd>
     </dl>
   `
@@ -97,8 +97,8 @@ export class InfodomainsInputComponent implements ControlValueAccessor, OnDestro
   }
 
   addInfoDomain() {
-    const titleLabel = this.translateService.instant('Choose classification');
-    const searchlabel = this.translateService.instant('Search classification');
+    const titleLabel = this.translateService.instant('Choose information domain');
+    const searchlabel = this.translateService.instant('Search information domain');
     const restrictIds = this.infoDomains.map(infoDomain => infoDomain.id);
 
     this.searchLinkedCodeModalService.openWithCodes(this.infoDomainsAsObservableCodes, titleLabel, searchlabel, restrictIds, true)

@@ -46,7 +46,7 @@ const codeSchemes = 'codeschemes';
 const codeScheme = 'codescheme';
 const codes = 'codes';
 const externalReferences = 'externalreferences';
-const classifications = 'dataclassifications';
+const infodomains = 'infodomains';
 const propertytypes = 'propertytypes';
 const extensions = 'extensions';
 const members = 'members';
@@ -68,7 +68,7 @@ const membersIntakeBasePath = `/${intakeContext}/${api}/${version}/${members}`;
 const configurationIntakeBasePath = `/${intakeContext}/${api}/${configuration}`;
 const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
-const dataClassificationsBasePath = `/${intakeContext}/${api}/${version}/${classifications}`;
+const infoDomainsBasePath = `/${intakeContext}/${api}/${version}/${infodomains}`;
 const propertyTypesBasePath = `/${apiContext}/${api}/${version}/${propertytypes}`;
 const organizationsBasePath = `/${intakeContext}/${api}/${version}/${organizations}`;
 const fakeableUsersPath = `/${intakeContext}/${api}/${fakeableUsers}`;
@@ -210,7 +210,7 @@ export class DataService {
     }
 
     if (infoDomain) {
-      params = params.append('dataClassification', infoDomain);
+      params = params.append('infoDomain', infoDomain);
     }
 
     if (organization) {
@@ -247,7 +247,7 @@ export class DataService {
       language: language
     };
 
-    return this.http.get<WithResults<InfoDomainType>>(`${dataClassificationsBasePath}/`, { params })
+    return this.http.get<WithResults<InfoDomainType>>(`${infoDomainsBasePath}/`, { params })
       .pipe(map(res => res.results.map((data: InfoDomainType) => new InfoDomain(data))));
   }
 
