@@ -422,7 +422,7 @@ msgstr ""
 msgid "Extend search to codes"
 msgstr ""
 
-msgid "Filter with infodomain"
+msgid "Filter with information domain"
 msgstr ""
 
 msgid "Filter results"
@@ -543,7 +543,7 @@ msgid "INFO_TEXT_CODELIST_CODE_VALUE"
 msgstr "The technical code or permanent identifier used by the organization."
 
 msgid "INFO_TEXT_CODELIST_NAME"
-msgstr "The name of the code list or infodomain"
+msgstr "The name of the code list or information domain"
 
 msgid "INFO_TEXT_VOCABULARIES_URI"
 msgstr "Permanent web address of the concept in Controlled Vocabularies Tool"
@@ -588,7 +588,7 @@ msgstr "A related resource from which the described resource is derived."
 
 msgid "INFO_TEXT_CODELIST_LEGAL_BASE"
 msgstr ""
-"Indicates that the Code list or Infodomain is covered by a legal act or "
+"Indicates that the Code list or Information domain is covered by a legal act or "
 "by some other formal agreement."
 
 msgid "INFO_TEXT_CODELIST_GOVERNANCE_POLICY"
@@ -655,9 +655,9 @@ msgstr "Permanent web address of the code"
 
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
-"Infodomain of the code lists. In the Interoperability Platform tools, "
-"each resource (code list or infodomain, data model, or vocabulary) is "
-"classified by the Infodomain of Public Services. It is used for example "
+"Information domain of the code lists. In the Interoperability Platform tools, "
+"each resource (code list or information domain, data model, or vocabulary) is "
+"classified by the information domain of Public Services. It is used for example "
 "to filter the search results."
 
 msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
@@ -953,8 +953,8 @@ msgstr "Code list already exists."
 msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
 msgstr "The data is missing a column with the header INFORMATIONDOMAIN."
 
-msgid "ERR_MSG_USER_BAD_INFODOMAIN"
-msgstr "Data contains faulty infodomain."
+msgid "ERR_MSG_USER_BAD_INFORMATIONDOMAIN"
+msgstr "Data contains faulty informationdomain."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Existing CODEVALUE differs from input data, change not allowed."

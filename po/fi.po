@@ -23,13 +23,13 @@ msgid "Create new"
 msgstr "Luo uusi"
 
 msgid "Add infodomain"
-msgstr "Lisää luokitus"
+msgstr "Lisää tietoalue"
 
 msgid "Choose infodomain"
-msgstr "Valitse luokitus"
+msgstr "Valitse tietoalue"
 
 msgid "Search infodomain"
-msgstr "Hae luokitusta"
+msgstr "Hae tietoaluetta"
 
 msgid "Copy value to clipboard"
 msgstr "Kopioi {{value}} leikepöydälle"
@@ -167,7 +167,7 @@ msgid "Registry"
 msgstr "Rekisteri"
 
 msgid "InfoDomain"
-msgstr "Luokitus"
+msgstr "Tietoalue"
 
 msgid "Organization"
 msgstr "Organisaatio"
@@ -956,11 +956,11 @@ msgstr "Koodi {{ identifier }} on jo olemassa."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Koodisto on jo olemassa."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
+msgid "ERR_MSG_USER_MISSING_HEADER_INFORMATIONDOMAIN"
 msgstr "Aineistosta puuttuu sarake otsikolla INFORMATIONDOMAIN."
 
-msgid "ERR_MSG_USER_BAD_INFODOMAIN"
-msgstr "Aineistolle annettua luokitusta ei löydy."
+msgid "ERR_MSG_USER_BAD_INFORMATIONDOMAIN"
+msgstr "Aineistolle annettua tietoaluetta ei löydy."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
