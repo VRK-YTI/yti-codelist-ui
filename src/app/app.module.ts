@@ -127,6 +127,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {RefreshComponent} from './components/refresh.component';
 import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
 import { HierarchyMemberComponent } from './components/member/hierarchy-member.component';
+import { SuggestConceptModalComponent, SuggestConceptModalService } from './components/terminology-integration/suggest-concept';
 
 function removeEmptyValues(obj: {}) {
 
@@ -279,7 +280,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeVariantMothersComponent,
     CodeschemeVariantModalComponent,
     RefreshComponent,
-    HierarchyMemberComponent
+    HierarchyMemberComponent,
+    SuggestConceptModalComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -295,7 +297,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedCodeSchemeModalComponent,
     SearchLinkedMemberModalComponent,
     TerminologyIntegrationCodeschemeModalComponent,
-    CodeschemeVariantModalComponent
+    CodeschemeVariantModalComponent,
+    SuggestConceptModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -341,6 +344,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     TerminologyIntegrationModalService,
     TerminologyIntegrationCodeschemeModalComponent,
     CodeschemeVariantModalService,
+    SuggestConceptModalService,
     EditableService,
     NgbActiveModal
   ],

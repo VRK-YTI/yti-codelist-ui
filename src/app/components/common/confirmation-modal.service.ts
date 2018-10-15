@@ -53,7 +53,7 @@ export class CodeListConfirmationModalService {
        'CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1', 'CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2');
   }
 
-  openSuggestConcept(concept: string, vocabulary: string) {
+  openSuggestConcept(concept: string, definition: string, vocabulary: string) {
     const translateParams = { concept: concept, vocabulary: vocabulary };
     return this.confirmationModalService.open('SUGGEST CONCEPT?', translateParams, 'SUGGEST CONCEPT MODAL QUESTION');
   }

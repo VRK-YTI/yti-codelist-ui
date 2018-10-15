@@ -92,7 +92,7 @@ export interface ConceptType {
 export interface ConceptSuggestionType {
 
   prefLabel: Localizable;
-  definition?: Localizable;
+  definition: Localizable;
   creator?: string;
   vocabulary: string; // UUID
   uri?: string;

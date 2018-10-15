@@ -1,0 +1,37 @@
+<form [formGroup]="conceptSuggestionForm" #form="ngForm">
+
+  <div class="row">
+    <dl>
+      <dd>
+        <div>
+          <button id="save_concept_suggestion_button"
+                  type="button"
+                  class="btn btn-sm btn-secondary-action mt-2"
+                  (click)="saveValues()" [disabled]="!canSavexx()" translate>Suggest the concept to Controlled Vocabularies</button>
+          &nbsp;
+          <button id="cancel_concept_suggestion_button"
+                  type="button"
+                  class="btn btn-sm btn-secondary-action mt-2"
+                  (click)="cancel()" translate="">cancel</button>
+        </div>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 col-md-10">
+
+      <app-localizable-input [id]="'concept_suggestion_name_input'"
+                             [label]="'Concept name' | translate"
+                             [infoText]="'INFO_TEXT_CONCEPT_NAME'"
+                             [formControlName]="'conceptName'"></app-localizable-input>
+
+      <app-localizable-input [id]="'concept_suggestion_definition_input'"
+                             [label]="'Concept definition' | translate"
+                             [infoText]="'INFO_TEXT_CONCEPT_DEFINITION'"
+                             [formControlName]="'conceptDefinition'"></app-localizable-input>
+
+    </div>
+  </div>
+
+</form>

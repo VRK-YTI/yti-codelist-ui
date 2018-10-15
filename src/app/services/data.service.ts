@@ -33,6 +33,7 @@ import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
+import { ConceptSuggestion } from '../entities/concept-suggestion';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -703,8 +704,9 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
-  suggestAConcept(suggeztion: string, vocabularyId: string, contentLanguage: string): Observable<Concept[]> {
-    return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}/vocabulary/${vocabularyId}/language/${contentLanguage}`, suggeztion)
+  suggestAConcept(suggeztion: string, definition: string, vocabularyId: string, contentLanguage: string): Observable<Concept[]> {
+    console.log('in dataservice', suggeztion, definition);
+    return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}/vocabulary/${vocabularyId}/language/${contentLanguage}/suggestion/${suggeztion}`, definition)
       .pipe(map(res => res.results.map((data: ConceptType) => new Concept(data))));
   }
 }

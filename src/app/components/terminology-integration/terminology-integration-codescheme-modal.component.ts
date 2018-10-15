@@ -19,6 +19,11 @@ import { Concept } from '../../entities/concept';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { ExternalReference } from '../../entities/external-reference';
+import { CodePlain } from '../../entities/code-simple';
+import { LinkEditModalComponent } from '../codescheme/link-edit-modal.component';
+import { SuggestConceptModalService } from './suggest-concept';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -48,13 +53,15 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   cancelText: string;
   terminologyIntegrationModalPageTitle: string;
   terminologyIntegrationModalInstructionText: string;
+  localizer: Localizer;
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
               public languageService: LanguageService,
               private translateService: TranslateService,
               private codeListErrorModalService: CodeListErrorModalService,
-              private codeListConfirmationModalService: CodeListConfirmationModalService) {
+              private codeListConfirmationModalService: CodeListConfirmationModalService,
+              private suggestConceptModalService: SuggestConceptModalService) {
   }
 
   ngOnInit() {
@@ -147,19 +154,24 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     return vocabularyId !== '' && this.search$.getValue() !== '';
   }
 
-  suggestAConcept() {
+  suggestAConcept(localizer: Localizer) {
 
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
     const vocabularyName: string =  vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
-    this.codeListConfirmationModalService.openSuggestConcept(this.search$.getValue(), vocabularyName)
-      .then(() => {
-        const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
-        return this.dataService.suggestAConcept(this.search$.getValue(), vocabularyId, this.languageService.contentLanguage).subscribe(next => {
-          const conceptSuggestions: Concept[] = next;
-          this.select(next[0]);
-        });
-      }, ignoreModalClose);
 
+    this.suggestConceptModalService.open(this.search$.getValue()).then( (result) => {
+      const suggestionNameLocalized: string = this.languageService.translate(result[0], true);
+      const suggestionDefinitionLocalized: string =  this.languageService.translate(result[1], true);
+      const resultArray: string[] = [suggestionNameLocalized, suggestionDefinitionLocalized];
+      this.codeListConfirmationModalService.openSuggestConcept(resultArray[0], resultArray[1], vocabularyName)
+        .then(() => {
+          const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
+          return this.dataService.suggestAConcept(resultArray[0], resultArray[1], vocabularyId, this.languageService.contentLanguage).subscribe(next => {
+            const conceptSuggestions: Concept[] = next;
+            this.select(next[0]);
+          });
+        }, ignoreModalClose);
+    }, ignoreModalClose);
   }
 }
 
@@ -177,3 +189,4 @@ export class TerminologyIntegrationModalService {
     return modalRef.result;
   }
 }
+
