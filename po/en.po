@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-16 14:57+0300\n"
+"PO-Revision-Date: 2018-10-16 15:17+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -972,8 +972,6 @@ msgstr "Code {{ identifier }} already exists."
 msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
 msgstr "Code list already exists."
 
-#, fuzzy
-#| msgid "ERR_MSG_USER_MISSING_HEADER_INFODOMAIN"
 msgid "ERR_MSG_USER_MISSING_HEADER_INFORMATIONDOMAIN"
 msgstr "The data is missing a column with the header INFORMATIONDOMAIN."
 
@@ -1106,6 +1104,9 @@ msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code list."
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Cannot delete this code."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for codes."

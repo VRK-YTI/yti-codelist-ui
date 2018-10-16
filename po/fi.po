@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-16 14:55+0300\n"
+"PO-Revision-Date: 2018-10-16 15:16+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1106,6 +1106,9 @@ msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Tätä koodistoa ei voi poistaa."
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Tätä koodia ei voi poistaa."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Koodien maksimi hierarkkinen taso ylittyi."
