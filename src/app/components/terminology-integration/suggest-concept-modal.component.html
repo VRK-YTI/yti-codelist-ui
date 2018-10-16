@@ -1,37 +1,50 @@
 <form [formGroup]="conceptSuggestionForm" #form="ngForm">
 
-  <div class="row">
-    <dl>
-      <dd>
-        <div>
-          <button id="save_concept_suggestion_button"
-                  type="button"
-                  class="btn btn-sm btn-secondary-action mt-2"
-                  (click)="saveValues()" [disabled]="!canSavexx()" translate>Suggest the concept to Controlled Vocabularies</button>
-          &nbsp;
-          <button id="cancel_concept_suggestion_button"
-                  type="button"
-                  class="btn btn-sm btn-secondary-action mt-2"
-                  (click)="cancel()" translate="">cancel</button>
-        </div>
-      </dd>
-    </dl>
+  <div class="modal-header">
+    <h4 class="modal-title strong">
+      <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
+      <span translate>Suggest the concept to Controlled Vocabularies</span>
+    </h4>
   </div>
 
-  <div class="row">
-    <div class="col-lg-8 col-md-10">
+  <div class="modal-body">
 
-      <app-localizable-input [id]="'concept_suggestion_name_input'"
-                             [label]="'Concept name' | translate"
-                             [infoText]="'INFO_TEXT_CONCEPT_NAME'"
-                             [formControlName]="'conceptName'"></app-localizable-input>
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
 
-      <app-localizable-input [id]="'concept_suggestion_definition_input'"
-                             [label]="'Concept definition' | translate"
-                             [infoText]="'INFO_TEXT_CONCEPT_DEFINITION'"
-                             [formControlName]="'conceptDefinition'"></app-localizable-input>
+        <app-localizable-input [id]="'concept_suggestion_name_input'"
+                               [label]="'Concept name' | translate"
+                               [required]="true"
+                               [infoText]="'INFO_TEXT_CONCEPT_NAME'"
+                               [formControlName]="'conceptName'"></app-localizable-input>
 
+        <app-localizable-textarea [id]="'concept_suggestion_definition_input'"
+                               [label]="'Concept definition' | translate"
+                               [required]="true"
+                               [infoText]="'INFO_TEXT_CONCEPT_DEFINITION'"
+                               [formControlName]="'conceptDefinition'"></app-localizable-textarea>
+
+      </div>
     </div>
+
+    <div class="row">
+      <dl>
+        <dd>
+          <div class="col-lg-12 col-md-12">
+            <button id="save_concept_suggestion_button"
+                    type="button"
+                    class="btn btn-sm btn-primary mt-2"
+                    (click)="saveValues()" [disabled]="!camSave()" translate>Suggest the concept to Controlled Vocabularies</button>
+            &nbsp;
+            <button id="cancel_concept_suggestion_button"
+                    type="button"
+                    class="btn btn-sm btn-secondary-action mt-2"
+                    (click)="cancel()" translate="">Cancel</button>
+          </div>
+        </dd>
+      </dl>
+    </div>
+
   </div>
 
 </form>

@@ -159,7 +159,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
     const vocabularyName: string =  vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
 
-    this.suggestConceptModalService.open(this.search$.getValue()).then( (result) => {
+    const conceptName: Localizable = { [this.languageService.language]: this.search$.getValue() };
+
+    this.suggestConceptModalService.open( conceptName ).then( (result) => {
       const suggestionNameLocalized: string = this.languageService.translate(result[0], true);
       const suggestionDefinitionLocalized: string =  this.languageService.translate(result[1], true);
       const resultArray: string[] = [suggestionNameLocalized, suggestionDefinitionLocalized];

@@ -491,6 +491,15 @@ msgstr ""
 msgid "CODE LISTS"
 msgstr ""
 
+msgid "Concept name"
+msgstr ""
+
+msgid "Concept definition"
+msgstr ""
+
+msgid "Suggest the concept to Controlled Vocabularies"
+msgstr ""
+
 msgid "Search for concept"
 msgstr ""
 
@@ -501,9 +510,6 @@ msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
 msgid "Concept suggestion instruction text"
-msgstr ""
-
-msgid "Suggest the concept to Controlled Vocabularies"
 msgstr ""
 
 msgid "Email"
@@ -524,7 +530,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_CONCEPT_URI"
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -620,10 +626,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_URI"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_CODE_CONCEPT_URI"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
@@ -717,6 +723,12 @@ msgid "INFO_TEXT_MEMBER_VALIDITY_START_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
+msgstr ""
+
+msgid "INFO_TEXT_CONCEPT_NAME"
+msgstr ""
+
+msgid "INFO_TEXT_CONCEPT_DEFINITION"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
