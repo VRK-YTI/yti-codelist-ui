@@ -22,6 +22,7 @@ export class NavigationBarComponent {
   groupManagementUrl: string;
   terminologyUrl: string;
   dataModelUrl: string;
+  env: string;
 
   constructor(public languageService: LanguageService,
               private userService: UserService,
@@ -36,6 +37,7 @@ export class NavigationBarComponent {
       this.groupManagementUrl = configuration.groupManagementConfig.url;
       this.terminologyUrl = configuration.terminologyConfig.url;
       this.dataModelUrl = configuration.dataModelConfig.url;
+      this.env = configuration.env;
     });
   }
 
@@ -92,4 +94,9 @@ export class NavigationBarComponent {
   showGroupManagementUrl() {
     return this.user.superuser || this.user.isAdminInAnyOrganization();
   }
+
+  get environmentIdentifier() {
+    return this.env ? this.env !== 'prod' ? ' - ' + this.env.toUpperCase() : '' : '';
+  }
+
 }
