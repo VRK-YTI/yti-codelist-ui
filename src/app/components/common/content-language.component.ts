@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Language, LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
 
@@ -32,7 +32,7 @@ import { CodePlain } from '../../entities/code-simple';
     </div>
   `
 })
-export class ContentLanguageComponent implements OnInit, OnChanges {
+export class ContentLanguageComponent implements OnChanges {
 
   @Input() placement = 'bottom-right';
   @Input() languageCodes: CodePlain[];
@@ -48,10 +48,6 @@ export class ContentLanguageComponent implements OnInit, OnChanges {
   }
 
   constructor(public languageService: LanguageService) {
-  }
-
-  ngOnInit() {
-    this.refreshLanguages();
   }
 
   get hasCustomLanguages(): boolean {
