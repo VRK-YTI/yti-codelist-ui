@@ -61,12 +61,12 @@ export class LinkListModalComponent {
   }
 
   get modalLabel() {
-    const propertyTypeName = this.languageService.translate(this.propertyType.prefLabel);
+    const propertyTypeName = this.languageService.translate(this.propertyType.prefLabel, true);
     return this.translateService.instant('Select') + ' ' + propertyTypeName.charAt(0).toLowerCase() + propertyTypeName.slice(1);
   }
 
   get createNewButtonLabel() {
-    const propertyTypeName = this.languageService.translate(this.propertyType.prefLabel); 
+    const propertyTypeName = this.languageService.translate(this.propertyType.prefLabel, true); 
     return this.translateService.instant('Create new') + ' ' + propertyTypeName.charAt(0).toLowerCase() + propertyTypeName.slice(1);
   }
 }
