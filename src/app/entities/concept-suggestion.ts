@@ -7,7 +7,7 @@ export class ConceptSuggestion {
   prefLabel: Localizable;
   definition: Localizable;
   creator?: string;
-  vocabulary: string; //UUID
+  vocabulary: string; // UUID
   uri?: string;
 
   constructor(data: ConceptSuggestionType) {
