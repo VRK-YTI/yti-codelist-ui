@@ -15,8 +15,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
 
 # Use changes to package.json to force Docker not to use the cache
 # when we change our application's dependencies:
-ADD package.json /tmp/package.json
-ADD yarn.lock /tmp/yarn.lock
+COPY package.json /tmp/package.json
+COPY yarn.lock /tmp/yarn.lock
 WORKDIR /tmp
 RUN ["yarn", "install"]
 
