@@ -1,4 +1,19 @@
 .form-check-label, .form-check-input {
   word-wrap: break-word;
   word-break: break-all;
+  position: relative;
+  display: inline;
+}
+
+.form-check-input {
+  top: 13px;
+}
+
+.form-check-label {
+  left: 5px;
+}
+
+.form-check-url {
+  display: block;
+  font-size: small;
 }
