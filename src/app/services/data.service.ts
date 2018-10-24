@@ -31,9 +31,8 @@ import { CodePlain } from '../entities/code-simple';
 import { Concept } from '../entities/concept';
 import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
-import { ConceptSuggestion } from '../entities/concept-suggestion';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -383,8 +382,8 @@ export class DataService {
     }));
   }
 
-  cloneCodeScheme(codeSchemeToClone: CodeSchemeType, registryCodeValue: string, originalCodeSchemeUuid: string): Observable<CodeScheme[]> {
-    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/clone/codescheme/${originalCodeSchemeUuid}`,
+  cloneCodeScheme(codeSchemeToClone: CodeSchemeType, registryCodeValue: string, originalCodeSchemeUuid: string, newVersionEmpty: boolean): Observable<CodeScheme[]> {
+    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/clone/codescheme/${originalCodeSchemeUuid}/newversionempty/${newVersionEmpty}`,
       codeSchemeToClone)
       .pipe(map(res => res.results.map((data: CodeSchemeType) => new CodeScheme(data))));
   }
@@ -409,8 +408,9 @@ export class DataService {
     return this.http.delete<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${theCodeScheme.codeValue}/`);
   }
 
-  uploadCodeSchemes(registryCode: string, file: File, format: string): Observable<CodeScheme[]> {
+  validateNewCodeSchemeVersionCreationThruFile(registryCode: string, file: File, format: string): Observable<HttpResponse<Object>> {
 
+    console.log('validating');
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
 
@@ -418,7 +418,21 @@ export class DataService {
       'format': format
     };
 
-    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`, formData, { params })
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/validate`, formData, { params, observe: 'response' });
+
+  }
+
+  uploadCodeSchemes(registryCode: string, file: File, format: string, newVersion: boolean = false, originalCodeSchemeIdIfCreatingNewVersion: string): Observable<CodeScheme[]> {
+
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    const params = {
+      'format': format,
+      'originalCodeSchemeIdIfCreatingNewVersion': originalCodeSchemeIdIfCreatingNewVersion
+    };
+
+    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${newVersion}`, formData, { params })
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 

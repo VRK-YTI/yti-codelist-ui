@@ -57,4 +57,8 @@ export class CodeListConfirmationModalService {
     const translateParams = { concept: concept, vocabulary: vocabulary };
     return this.confirmationModalService.open('SUGGEST CONCEPT?', translateParams, 'SUGGEST CONCEPT MODAL QUESTION');
   }
+
+  openCreateNewCodeSchemeVersionAsEmpty() {
+    return this.confirmationModalService.open('DETACH VARIANT?', undefined,  '');
+  }
 }

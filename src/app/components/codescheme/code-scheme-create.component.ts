@@ -38,6 +38,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   allLanguageCodes: CodePlain[];
 
   codeSchemeForm = new FormGroup({
+    newVersionEmpty: new FormControl('false', Validators.required),
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
     description: new FormControl({}),
@@ -183,7 +184,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   save(formData: any): Observable<any> {
 
-    const { validity, codeRegistry, defaultCode, infoDomains, languageCodes, externalReferences, organizations, ...rest } = formData;
+    const { newVersionEmpty, validity, codeRegistry, defaultCode, infoDomains, languageCodes, externalReferences, organizations, ...rest } = formData;
 
     const codeScheme: CodeSchemeType = <CodeSchemeType> {
       ...rest,
@@ -199,7 +200,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     if (this.cloning) {
       console.log('Cloning CodeScheme');
-      return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning)
+      return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning, newVersionEmpty)
         .pipe(tap(createdCodeScheme => {
           console.log('Saved cloned CodeScheme');
           this.router.navigate([
@@ -259,5 +260,13 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
     this.codeSchemeForm.patchValue({ definition: concept.definition });
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
+  }
+
+  areYouSureToCreateEmpty() {
+    this.confirmationModalService.openCreateNewCodeSchemeVersionAsEmpty().then( () => {
+      // do nothing if "yes" is clicked, default value of newVersionEmpty is already true
+    }, () => {
+      this.codeSchemeForm.patchValue({ newVersionEmpty: 'false' });
+    } )
   }
 }

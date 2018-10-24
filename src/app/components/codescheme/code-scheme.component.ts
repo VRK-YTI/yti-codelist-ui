@@ -21,6 +21,7 @@ import { tap, flatMap } from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
+import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
 
 @Component({
   selector: 'app-code-scheme',
@@ -53,7 +54,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
               private codeschemeVariantModalService: CodeschemeVariantModalService,
-              private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService) {
+              private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
+              private codeSchemeImportModalService: CodeSchemeImportModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -277,6 +279,11 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   createANewVersionFromThisCodeScheme() {
     console.log('Copy codescheme clicked!');
     this.router.navigate(['createcodescheme'], { queryParams: { 'originalCodeSchemeId': this.codeScheme.id } });
+  }
+
+  createANewVersionOfThisCodeSchemeFromFile() {
+    console.log('creating a new version of codescheme from file!');
+    this.codeSchemeImportModalService.open(true, this.codeScheme.id);
   }
 
   get showUnfinishedFeature() {

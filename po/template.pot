@@ -226,6 +226,15 @@ msgstr ""
 msgid "{{pageTitle}}"
 msgstr ""
 
+msgid "Choose how to create the new version"
+msgstr ""
+
+msgid "Create a new version with the existing content"
+msgstr ""
+
+msgid "Create a new blank version without the existing content"
+msgstr ""
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -267,6 +276,9 @@ msgid "Import codes"
 msgstr ""
 
 msgid "Create a new version"
+msgstr ""
+
+msgid "Create a new version fron file"
 msgstr ""
 
 msgid "Attach variant to code list"
@@ -530,7 +542,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -629,10 +641,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_CONCEPT_URI"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
@@ -731,7 +743,10 @@ msgstr ""
 msgid "INFO_TEXT_CONCEPT_DEFINITION"
 msgstr ""
 
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
+msgstr ""
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
 msgstr ""
 
 msgid "Front page"
@@ -901,13 +916,13 @@ msgstr ""
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
 msgstr ""
 
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr ""
 
-msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"

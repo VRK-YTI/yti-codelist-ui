@@ -35,6 +35,12 @@
                     class="dropdown-item"
                     (click)="createANewVersionFromThisCodeScheme()"
                     translate>Create a new version</button>
+            <button id="clone_codelist_from_file_button"
+                    *ngIf="canCreateANewVersionFromCodeScheme"
+                    type="button"
+                    class="dropdown-item"
+                    (click)="createANewVersionOfThisCodeSchemeFromFile()"
+                    translate>Create a new version fron file</button>
             <button id="attach_variant_button"
                     *ngIf="canAttachOrDetachAVariant"
                     type="button"

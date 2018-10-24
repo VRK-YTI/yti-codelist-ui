@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-16 15:16+0300\n"
+"PO-Revision-Date: 2018-10-24 15:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -235,6 +235,15 @@ msgstr "Sitovuustaso"
 msgid "{{pageTitle}}"
 msgstr ""
 
+msgid "Choose how to create the new version"
+msgstr "Uuteen versioon tuotavat aineistot"
+
+msgid "Create a new version with the existing content"
+msgstr "Luo uusi versio nykyisen aineiston pohjalta"
+
+msgid "Create a new blank version without the existing content"
+msgstr "Luo uusi versio tyhjänä ilman nykyisiä aineistoja"
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -284,6 +293,9 @@ msgstr "Tuo koodeja"
 
 msgid "Create a new version"
 msgstr "Luo uusi versio"
+
+msgid "Create a new version fron file"
+msgstr "Luo uusi versio tiedostosta"
 
 msgid "Attach variant to code list"
 msgstr "Liitä koodistoon variantti"
@@ -553,8 +565,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
-msgstr "Viimeisin muokkauksen ajanhetki"
+msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
+msgstr "Linkit"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -690,6 +702,9 @@ msgstr ""
 msgid "INFO_TEXT_CODE_CONCEPT_URI"
 msgstr "Koodiin liitetyn käsitteen pysyvä tunniste ja verkko-osoite."
 
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgstr "Viimeisin muokkauksen ajanhetki"
+
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Tieto siitä, mihin tietoalueeseen koodisto liittyy. Koodisto voi kuulua "
@@ -697,9 +712,6 @@ msgstr ""
 "luokitusta. Samaa tietoalueluokitusta käytetään Koodistot-työkalun lisäksi "
 "myös Sanastot- ja Tietomallit-työkaluissa. Tietoaluetta käytetään etusivun "
 "haussa rajaamaan hakutuloksia."
-
-msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
-msgstr "Linkit"
 
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr "Koodin voimassaolon alkamispäivämäärä"
@@ -814,8 +826,14 @@ msgstr "Ehdotettu käsitteen nimi."
 msgid "INFO_TEXT_CONCEPT_DEFINITION"
 msgstr "Alustava ehdotus käsitteen määritelmäksi tai kuvaukseksi."
 
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
-msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
+msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
+msgstr ""
+"Voit valita, haluatko tuoda koodiston uuteen versioon nykyiset koodit, "
+"laajennukset ja laajennuksen jäsenet vai luoda koodiston uuden version "
+"tyhjänä."
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "Aineistosta löytyi sama sarake useita kertoja."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -988,14 +1006,14 @@ msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
 msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr "Virhe luettaessa CSV-tiedostoa. Tarkasta tuotavan tiedoston muoto."
 
-msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
-msgstr "Aineistosta löytyi sama sarake useita kertoja."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
 msgstr ""

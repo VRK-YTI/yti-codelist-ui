@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-16 15:17+0300\n"
+"PO-Revision-Date: 2018-10-24 15:45+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -235,6 +235,15 @@ msgstr ""
 msgid "{{pageTitle}}"
 msgstr ""
 
+msgid "Choose how to create the new version"
+msgstr "The content imported to the new version"
+
+msgid "Create a new version with the existing content"
+msgstr ""
+
+msgid "Create a new blank version without the existing content"
+msgstr ""
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -276,6 +285,9 @@ msgid "Import codes"
 msgstr ""
 
 msgid "Create a new version"
+msgstr ""
+
+msgid "Create a new version fron file"
 msgstr ""
 
 msgid "Attach variant to code list"
@@ -547,8 +559,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
-msgstr "Last edit time"
+msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
+msgstr "Links"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -670,6 +682,9 @@ msgstr "Permanent web address of the code"
 msgid "INFO_TEXT_CODE_CONCEPT_URI"
 msgstr "Permanent address of the concept linked to code"
 
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgstr "Last edit time"
+
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Information domain that the code list is classified into. Information domain "
@@ -678,9 +693,6 @@ msgstr ""
 "classification, data model or terminology) is classified into at least one "
 "information domain. The information domain may be used to filter the search "
 "results."
-
-msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
-msgstr "Links"
 
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
@@ -804,8 +816,14 @@ msgstr "The proposed name of the concept"
 msgid "INFO_TEXT_CONCEPT_DEFINITION"
 msgstr "Initial proposal of the definition or a description of the concept."
 
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
-msgstr "Error parsing Excel file."
+msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
+msgstr ""
+"You may choose whether you want to import the existing codes, extensions and "
+"extension members to the new version or whether you want to create a new "
+"blank version without them."
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "Duplicate header value found, failing."
 
 msgid "Front page"
 msgstr ""
@@ -984,14 +1002,14 @@ msgstr "Existing CODEVALUE differs from input data, change not allowed."
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
 msgstr "Error parsing Excel file, sheet not found."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Error parsing Excel file."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr "Error parsing CSV file."
 
-msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
-msgstr "Duplicate header value found, failing."
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
 msgstr ""

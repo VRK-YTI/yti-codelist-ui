@@ -26,7 +26,7 @@ export class CodeSchemeImportAndCreateComponent implements OnInit {
 
   importFromFile() {
     console.log('Importing code list from file!');
-    this.codeSchemeImportModalService.open();
+    this.codeSchemeImportModalService.open(false, '');
   }
 
   createNewCodeScheme() {

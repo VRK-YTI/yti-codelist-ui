@@ -19,6 +19,8 @@ export class CodeSchemeImportModalComponent {
   format = 'Excel';
   uploading = false;
   codeRegistriesLoaded = false;
+  creatingNewCodeSchemeVersion = false;
+  originalCodeSchemeIdIfCreatingNewVersion: string;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -60,21 +62,44 @@ export class CodeSchemeImportModalComponent {
     console.log('uploadFile');
 
     this.uploading = true;
+    let okToImportFromVersionPerspective = true;
+    let validationPassedForNewCodeVersionCreation;
 
-    if (this.file != null && this.codeRegistry != null) {
-      this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format).subscribe(codeSchemes => {
-        if (codeSchemes.length === 1) {
-          this.router.navigate(codeSchemes[0].route);
-          this.modal.close(false);
-        } else if (codeSchemes.length > 1) {
-          this.router.navigate(['frontpage']);
-          this.modal.close(false);
+    this.dataService.validateNewCodeSchemeVersionCreationThruFile(this.codeRegistry.codeValue, this.file, this.format).subscribe( (next) => {
+      validationPassedForNewCodeVersionCreation = next.body;
+      if (this.creatingNewCodeSchemeVersion && !validationPassedForNewCodeVersionCreation) {
+        okToImportFromVersionPerspective = false;
+      }
+      if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective) {
+        this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIdIfCreatingNewVersion).subscribe(codeSchemes => {
+          if (this.creatingNewCodeSchemeVersion) {
+            this.router.navigate(['re'], {skipLocationChange: true}).then(() => this.router.navigate(codeSchemes[0].route));
+            this.modal.close(false);
+          } else {
+            if (codeSchemes.length === 1) {
+              this.router.navigate(codeSchemes[0].route);
+              this.modal.close(false);
+            } else if (codeSchemes.length > 1) {
+              this.router.navigate(['frontpage']);
+              this.modal.close(false);
+            }
+          }
+        }, error => {
+          this.uploading = false;
+          this.errorModalService.openSubmitError(error);
+        });
+      } else {
+        if (this.creatingNewCodeSchemeVersion ) {
+          this.uploading = false;
+          this.errorModalService.openSubmitError('There needs to be exactly one CodeScheme in the file!');
         }
-      }, error => {
-        this.uploading = false;
-        this.errorModalService.openSubmitError(error);
-      });
-    }
+      }
+
+    }, (error) => {
+      this.uploading = false;
+      this.errorModalService.openSubmitError('UNSIUOTABLE DATA!');
+    });
+
   }
 }
 
@@ -84,7 +109,11 @@ export class CodeSchemeImportModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(): void {
-    this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
+  public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIdIfCreatingNewVersion: string): void {
+    console.log('in open service creatingNewCodeScheneParan is ' , creatingNewCodeSchemeVersion);
+    const modalRef = this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
+    const instance = modalRef.componentInstance as CodeSchemeImportModalComponent;
+    instance.creatingNewCodeSchemeVersion = creatingNewCodeSchemeVersion;
+    instance.originalCodeSchemeIdIfCreatingNewVersion = originalCodeSchemeIdIfCreatingNewVersion;
   }
 }
