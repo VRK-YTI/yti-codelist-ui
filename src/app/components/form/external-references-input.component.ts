@@ -58,7 +58,7 @@ import { Subscription } from 'rxjs';
         </div>
 
         <div *ngIf="editing && !restrict && !loading">
-          <div ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block" placement='top-left'>
             <button class="btn btn-action" id="add_link_propertytype_dropdown" ngbDropdownToggle translate>Add link</button>
             <div ngbDropdownMenu aria-labelledby="add_link_propertytype_dropdown">
               <button *ngFor="let propertyTypeOption of propertyTypes"
