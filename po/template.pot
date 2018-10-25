@@ -1033,6 +1033,9 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
 msgstr ""
 
+msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
