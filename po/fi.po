@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-25 08:36+0300\n"
+"PO-Revision-Date: 2018-10-25 14:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -832,8 +832,10 @@ msgstr ""
 "laajennukset ja laajennuksen jäsenet vai luoda koodiston uuden version "
 "tyhjänä."
 
-msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
-msgstr "Aineistosta löytyi sama sarake useita kertoja."
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr ""
+"Aineistossa olevaa BROADER-sarakkeen koodia ei löydy tunnuksella "
+"{{ identifier }}."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1012,13 +1014,11 @@ msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr "Virhe luettaessa CSV-tiedostoa. Tarkasta tuotavan tiedoston muoto."
 
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "Aineistosta löytyi sama sarake useita kertoja."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
-msgstr ""
-"Aineistossa olevaa BROADER-sarakkeen koodia ei löydy tunnuksella "
-"{{ identifier }}."
 
 msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
@@ -1212,6 +1212,9 @@ msgstr "Ehdotus Sanastot-työkaluun"
 
 msgid "SUGGEST CONCEPT MODAL QUESTION"
 msgstr "Halautko ehdottaa käsitettä {{concept}} sanastoon {{vocabulary}}? "
+
+msgid "Are you sure you want to create the version as empty?"
+msgstr "Oletko varma, että haluat luoda uuden  version tyhjänä?"
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

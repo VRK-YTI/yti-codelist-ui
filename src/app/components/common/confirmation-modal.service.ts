@@ -59,6 +59,6 @@ export class CodeListConfirmationModalService {
   }
 
   openCreateNewCodeSchemeVersionAsEmpty() {
-    return this.confirmationModalService.open('DETACH VARIANT?', undefined,  '');
+    return this.confirmationModalService.open('Are you sure you want to create the version as empty?', undefined,  '');
   }
 }

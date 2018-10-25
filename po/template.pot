@@ -746,7 +746,7 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
-msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
 msgstr ""
 
 msgid "Front page"
@@ -922,10 +922,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
 msgstr ""
 
-msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
@@ -1085,6 +1085,9 @@ msgid "SUGGEST CONCEPT?"
 msgstr ""
 
 msgid "SUGGEST CONCEPT MODAL QUESTION"
+msgstr ""
+
+msgid "Are you sure you want to create the version as empty?"
 msgstr ""
 
 msgid "invalidDate"
