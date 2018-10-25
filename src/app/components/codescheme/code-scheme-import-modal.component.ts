@@ -91,13 +91,15 @@ export class CodeSchemeImportModalComponent {
       } else {
         if (this.creatingNewCodeSchemeVersion ) {
           this.uploading = false;
-          this.errorModalService.openSubmitError('There needs to be exactly one CodeScheme in the file!');
+          this.errorModalService.openSubmitError('UNSUITABLE DATA!');
+        } else {
+          this.uploading = false;
+          this.errorModalService.openSubmitError('UNSUITABLE DATA!');
         }
       }
-
     }, (error) => {
       this.uploading = false;
-      this.errorModalService.openSubmitError('UNSIUOTABLE DATA!');
+      this.errorModalService.openSubmitError(error);
     });
 
   }
