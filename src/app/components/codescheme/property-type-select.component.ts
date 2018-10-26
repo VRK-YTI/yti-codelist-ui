@@ -8,33 +8,35 @@ import { LanguageService } from '../../services/language.service';
 @Component({
   selector: 'app-property-type-select',
   template: `
-    <dl>
-      <dt>
-        <label>{{label}}</label>
-        <app-information-symbol [infoText]="infoText"></app-information-symbol>
-      </dt>
-      <dd>
-        <div *ngIf="editing" class="form-group">
-          <div ngbDropdown class="d-inline-block">
+    <div *ngIf="!loading">
+      <dl>
+        <dt>
+          <label>{{label}}</label>
+          <app-information-symbol [infoText]="infoText"></app-information-symbol>
+        </dt>
+        <dd>
+          <div *ngIf="editing" class="form-group">
+            <div ngbDropdown class="d-inline-block">
 
-            <button class="btn btn-dropdown" id="propertytype_dropdown_button" ngbDropdownToggle>
-              <span *ngIf="value">{{value.prefLabel | translateValue:true}}</span>
-            </button>
+              <button class="btn btn-dropdown" id="propertytype_dropdown_button" ngbDropdownToggle>
+                <span *ngIf="value">{{value.prefLabel | translateValue:true}}</span>
+              </button>
 
-            <div *ngIf="propertyTypes" ngbDropdownMenu aria-labelledby="propertytype_dropdown_button">
-              <button *ngFor="let propertyTypeOption of propertyTypes"
-                      [id]="propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'"
-                      (click)="select(propertyTypeOption)"
-                      class="dropdown-item"
-                      [class.active]="isSelected(propertyTypeOption)">
-                {{propertyTypeOption.prefLabel | translateValue:true}}</button>
+              <div *ngIf="propertyTypes" ngbDropdownMenu aria-labelledby="propertytype_dropdown_button">
+                <button *ngFor="let propertyTypeOption of propertyTypes"
+                        [id]="propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'"
+                        (click)="select(propertyTypeOption)"
+                        class="dropdown-item"
+                        [class.active]="isSelected(propertyTypeOption)">
+                  {{propertyTypeOption.prefLabel | translateValue:true}}</button>
+              </div>
             </div>
+            <app-error-messages id="propertytype_error_messages" [control]="parentControl"></app-error-messages>
           </div>
-          <app-error-messages id="propertytype_error_messages" [control]="parentControl"></app-error-messages>
-        </div>
-        <span *ngIf="!editing">{{value.prefLabel | translateValue}}</span>
-      </dd>
-    </dl>
+          <span *ngIf="!editing">{{value.prefLabel | translateValue}}</span>
+        </dd>
+      </dl>
+    </div>
   `
 })
 export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit {
@@ -45,6 +47,7 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit
 
   value: PropertyType;
   propertyTypes: PropertyType[];
+  loading = true;
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -72,6 +75,8 @@ export class PropertyTypeSelectComponent implements ControlValueAccessor, OnInit
       if (this.value == null) {
         this.select(types[0]);
       }
+
+      this.loading = false;
     });
   }
 
