@@ -146,7 +146,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
       this.loading = false;
 
       if (externalReferencesOfThisTypeFound) {
-        this.linkListModalService.open(this.codeSchemeId, externalReferencesOfThisType, this.languageCodes, propertyType)
+        this.linkListModalService.open(this.codeSchemeId, otherExternalReferences, this.languageCodes, propertyType, this.propertyTypes)
         .then(link => this.externalReferences.push(link), ignoreModalClose);
       } else {
         this.linkCreateModalService.open(this.languageCodes, propertyType)

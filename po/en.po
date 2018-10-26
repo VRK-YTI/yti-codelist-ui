@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-25 08:37+0300\n"
+"PO-Revision-Date: 2018-10-26 16:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -14,6 +14,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Reference Data"
+msgstr ""
+
+msgid "All link types"
+msgstr ""
+
+msgid "link"
 msgstr ""
 
 msgid "Select"
@@ -822,8 +828,10 @@ msgstr ""
 "extension members to the new version or whether you want to create a new "
 "blank version without them."
 
-msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
-msgstr "Duplicate header value found, failing."
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr ""
+"Broader code references a codevalue that does not exist with code value "
+"{{ identifier }}, failing."
 
 msgid "Front page"
 msgstr ""
@@ -1008,13 +1016,11 @@ msgstr "Error parsing Excel file."
 msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
 msgstr "Error parsing CSV file."
 
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "Duplicate header value found, failing."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
-msgstr ""
-"Broader code references a codevalue that does not exist with code value "
-"{{ identifier }}, failing."
 
 msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr "Broader code references codevalue of the code itself, failing."
@@ -1214,6 +1220,11 @@ msgstr "Suggestion to controlled vocabularies"
 msgid "SUGGEST CONCEPT MODAL QUESTION"
 msgstr ""
 "Do you want to suggest concept {{concept}} to vocabulary {{vocabulary}}?"
+
+#, fuzzy
+#| msgid "Choose how to create the new version"
+msgid "Are you sure you want to create the version as empty?"
+msgstr "The content imported to the new version"
 
 msgid "invalidDate"
 msgstr "Invalid date"

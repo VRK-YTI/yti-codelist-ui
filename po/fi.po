@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-25 14:32+0300\n"
+"PO-Revision-Date: 2018-10-26 16:29+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -15,6 +15,12 @@ msgstr ""
 
 msgid "Reference Data"
 msgstr "Koodistot"
+
+msgid "All link types"
+msgstr "Kaikki linkkityypit"
+
+msgid "link"
+msgstr "linkki"
 
 msgid "Select"
 msgstr "Valitse"
@@ -1248,3 +1254,6 @@ msgid "memberValueComparisonOperatorRegexpValidationError"
 msgstr ""
 "Jäsenen arvossa esiintyy ei sallittuja merkkejä. Sallitut merkit ovat =, <= "
 "ja >=."
+
+#~ msgid "Show links"
+#~ msgstr "Tyyppi"

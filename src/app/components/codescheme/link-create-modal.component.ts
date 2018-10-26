@@ -14,7 +14,7 @@ import { PropertyType } from '../../entities/property-type';
 export class LinkCreateModalComponent implements OnInit {
 
   @Input() languageCodes: CodePlain[];
-  @Input() propertyType: PropertyType;
+  @Input() propertyType: PropertyType | null;
 
   externalReference = new ExternalReference();
 
@@ -25,7 +25,9 @@ export class LinkCreateModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.externalReference.propertyType = this.propertyType;
+    if (this.propertyType) {
+      this.externalReference.propertyType = this.propertyType;
+    }
   }
 
   close() {
@@ -43,7 +45,7 @@ export class LinkCreateModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(languageCodes: CodePlain[], propertyType: PropertyType): Promise<ExternalReference> {
+  public open(languageCodes: CodePlain[], propertyType: PropertyType | null): Promise<ExternalReference> {
     const modalRef = this.modalService.open(LinkCreateModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as LinkCreateModalComponent;
     instance.languageCodes = languageCodes;
