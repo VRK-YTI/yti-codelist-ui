@@ -67,7 +67,7 @@ export class LinkListModalComponent implements OnInit {
 
   create() {
     this.linkCreateModalService.open(this.languageCodes, this.selectedPropertyType)
-      .then(externalReference => this.modal.close(externalReference), ignoreModalClose);
+      .then(externalReference => this.modal.close(externalReference), reasonToClose => this.modal.dismiss(reasonToClose));
   }
 
   canSelect() {
