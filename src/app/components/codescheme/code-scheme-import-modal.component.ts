@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
@@ -65,43 +65,62 @@ export class CodeSchemeImportModalComponent {
     let okToImportFromVersionPerspective = true;
     let validationPassedForNewCodeVersionCreation;
 
-    this.dataService.validateNewCodeSchemeVersionCreationThruFile(this.codeRegistry.codeValue, this.file, this.format).subscribe( (next) => {
-      validationPassedForNewCodeVersionCreation = next.body;
-      if (this.creatingNewCodeSchemeVersion && !validationPassedForNewCodeVersionCreation) {
-        okToImportFromVersionPerspective = false;
-      }
-      if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective) {
-        this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIdIfCreatingNewVersion).subscribe(codeSchemes => {
-          if (this.creatingNewCodeSchemeVersion) {
-            this.router.navigate(['re'], {skipLocationChange: true}).then(() => this.router.navigate(codeSchemes[0].route));
-            this.modal.close(false);
-          } else {
-            if (codeSchemes.length === 1) {
-              this.router.navigate(codeSchemes[0].route);
+    if (this.creatingNewCodeSchemeVersion) {
+      this.dataService.validateNewCodeSchemeVersionCreationThruFile(this.codeRegistry.codeValue, this.file, this.format).subscribe((next) => {
+        validationPassedForNewCodeVersionCreation = next.body;
+        if (this.creatingNewCodeSchemeVersion && !validationPassedForNewCodeVersionCreation) {
+          okToImportFromVersionPerspective = false;
+        }
+        if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective) {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIdIfCreatingNewVersion).subscribe(codeSchemes => {
+            if (this.creatingNewCodeSchemeVersion) {
+              this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(codeSchemes[0].route));
               this.modal.close(false);
-            } else if (codeSchemes.length > 1) {
-              this.router.navigate(['frontpage']);
-              this.modal.close(false);
+            } else {
+              if (codeSchemes.length === 1) {
+                this.router.navigate(codeSchemes[0].route);
+                this.modal.close(false);
+              } else if (codeSchemes.length > 1) {
+                this.router.navigate(['frontpage']);
+                this.modal.close(false);
+              }
             }
+          }, error => {
+            this.uploading = false;
+            this.errorModalService.openSubmitError(error);
+          });
+        } else {
+          if (this.creatingNewCodeSchemeVersion) {
+            this.uploading = false;
+            this.errorModalService.openSubmitError('UNSUITABLE DATA!');
+          } else {
+            this.uploading = false;
+            this.errorModalService.openSubmitError('UNSUITABLE DATA!');
+          }
+        }
+      }, (error) => {
+        this.uploading = false;
+        this.errorModalService.openSubmitError(error);
+      });
+    } else {
+      if (this.file != null && this.codeRegistry != null) {
+        this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIdIfCreatingNewVersion).subscribe(codeSchemes => {
+          if (codeSchemes.length === 1) {
+            this.router.navigate(codeSchemes[0].route);
+            this.modal.close(false);
+          } else if (codeSchemes.length > 1) {
+            this.router.navigate(['frontpage']);
+            this.modal.close(false);
           }
         }, error => {
           this.uploading = false;
           this.errorModalService.openSubmitError(error);
         });
       } else {
-        if (this.creatingNewCodeSchemeVersion ) {
           this.uploading = false;
           this.errorModalService.openSubmitError('UNSUITABLE DATA!');
-        } else {
-          this.uploading = false;
-          this.errorModalService.openSubmitError('UNSUITABLE DATA!');
-        }
       }
-    }, (error) => {
-      this.uploading = false;
-      this.errorModalService.openSubmitError(error);
-    });
-
+    }
   }
 }
 
@@ -112,7 +131,7 @@ export class CodeSchemeImportModalService {
   }
 
   public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIdIfCreatingNewVersion: string): void {
-    const modalRef = this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(CodeSchemeImportModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as CodeSchemeImportModalComponent;
     instance.creatingNewCodeSchemeVersion = creatingNewCodeSchemeVersion;
     instance.originalCodeSchemeIdIfCreatingNewVersion = originalCodeSchemeIdIfCreatingNewVersion;
