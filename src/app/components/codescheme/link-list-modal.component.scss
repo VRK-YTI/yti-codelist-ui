@@ -17,3 +17,21 @@
   display: block;
   font-size: small;
 }
+
+.modal-header {
+  flex-direction: column;
+
+  .type-filter {
+    vertical-align: middle;
+    margin: 20px 0 0 0;
+    span {
+      float: none;
+    }
+  }
+}
+
+.modal-body {
+  &.full-height {
+    height: calc(100vh - 550px);
+  }
+}
