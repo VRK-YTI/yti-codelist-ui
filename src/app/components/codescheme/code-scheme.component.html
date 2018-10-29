@@ -36,7 +36,7 @@
                     (click)="createANewVersionFromThisCodeScheme()"
                     translate>Create a new version</button>
             <button id="clone_codelist_from_file_button"
-                    *ngIf="canCreateANewVersionFromCodeScheme"
+                    *ngIf="canCreateANewVersionFromCodeScheme && showUnfinishedFeature"
                     type="button"
                     class="dropdown-item"
                     (click)="createANewVersionOfThisCodeSchemeFromFile()"
