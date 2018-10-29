@@ -300,7 +300,7 @@ msgstr "Tuo koodeja"
 msgid "Create a new version"
 msgstr "Luo uusi versio"
 
-msgid "Create a new version fron file"
+msgid "Create a new version from file"
 msgstr "Luo uusi versio tiedostosta"
 
 msgid "Attach variant to code list"

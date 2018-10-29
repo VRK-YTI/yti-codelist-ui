@@ -112,7 +112,6 @@ export class CodeSchemeImportModalService {
   }
 
   public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIdIfCreatingNewVersion: string): void {
-    console.log('in open service creatingNewCodeScheneParan is ' , creatingNewCodeSchemeVersion);
     const modalRef = this.modalService.open(CodeSchemeImportModalComponent, {size: 'sm'});
     const instance = modalRef.componentInstance as CodeSchemeImportModalComponent;
     instance.creatingNewCodeSchemeVersion = creatingNewCodeSchemeVersion;

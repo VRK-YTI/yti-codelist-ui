@@ -293,7 +293,7 @@ msgstr ""
 msgid "Create a new version"
 msgstr ""
 
-msgid "Create a new version fron file"
+msgid "Create a new version from file"
 msgstr ""
 
 msgid "Attach variant to code list"
