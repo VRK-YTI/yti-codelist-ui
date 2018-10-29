@@ -55,6 +55,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   terminologyIntegrationModalInstructionText: string;
   localizer: Localizer;
 
+  env: string;
+
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
               public languageService: LanguageService,
@@ -65,6 +67,11 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   }
 
   ngOnInit() {
+
+    this.dataService.getServiceConfiguration().subscribe(configuration => {
+      this.env = configuration.env;
+    });
+
     combineLatest(this.vocabulary$, this.debouncedSearch$)
       .subscribe(([vocabulary, search]) => {
 
@@ -175,6 +182,11 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         }, ignoreModalClose);
     }, ignoreModalClose);
   }
+
+  get showUnfinishedFeature() {
+    return this.env === 'dev' || this.env === 'local';
+  }
+
 }
 
 @Injectable()

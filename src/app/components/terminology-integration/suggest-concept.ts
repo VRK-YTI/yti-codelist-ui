@@ -49,7 +49,7 @@ export class SuggestConceptModalComponent implements OnInit {
     this.cancel();
   }
 
-  camSave() {
+  canSave() {
     return (this.languageService.translate(this.conceptSuggestionForm.value.conceptName, true).length > 0 &&
       this.languageService.translate(this.conceptSuggestionForm.value.conceptDefinition, true).length > 0)
   }
