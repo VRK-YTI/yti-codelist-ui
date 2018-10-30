@@ -32,6 +32,8 @@
 
 .modal-body {
   &.full-height {
-    height: calc(100vh - 550px);
+    height: auto;
+    min-height: 200px;
+    max-height: calc(100vh - 350px);
   }
 }
