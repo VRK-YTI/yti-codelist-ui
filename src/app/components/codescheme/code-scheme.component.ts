@@ -283,7 +283,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   createANewVersionOfThisCodeSchemeFromFile() {
     console.log('creating a new version of codescheme from file!');
-    this.codeSchemeImportModalService.open(true, this.codeScheme.id);
+    this.codeSchemeImportModalService.open(true, this.codeScheme);
   }
 
   get showUnfinishedFeature() {

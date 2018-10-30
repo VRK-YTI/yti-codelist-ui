@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { AfterContentInit, Component, Injectable } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
@@ -6,13 +6,14 @@ import { CodeRegistry } from '../../entities/code-registry';
 import { Router } from '@angular/router';
 import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-code-scheme-import-modal',
   templateUrl: './code-scheme-import-modal.component.html',
   providers: [EditableService]
 })
-export class CodeSchemeImportModalComponent {
+export class CodeSchemeImportModalComponent implements AfterContentInit {
 
   codeRegistry: CodeRegistry | null = null;
   file?: File;
@@ -20,7 +21,7 @@ export class CodeSchemeImportModalComponent {
   uploading = false;
   codeRegistriesLoaded = false;
   creatingNewCodeSchemeVersion = false;
-  originalCodeSchemeIdIfCreatingNewVersion: string;
+  originalCodeSchemeIfCreatingNewVersion: CodeScheme | null;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -29,6 +30,13 @@ export class CodeSchemeImportModalComponent {
               private errorModalService: CodeListErrorModalService) {
 
     this.editableService.edit();
+  }
+
+  ngAfterContentInit() {
+    if (this.creatingNewCodeSchemeVersion && this.originalCodeSchemeIfCreatingNewVersion != null) {
+      this.codeRegistry = this.originalCodeSchemeIfCreatingNewVersion.codeRegistry;
+    }
+    this.codeRegistriesLoaded = true;
   }
 
   get loading(): boolean {
@@ -71,8 +79,8 @@ export class CodeSchemeImportModalComponent {
         if (this.creatingNewCodeSchemeVersion && !validationPassedForNewCodeVersionCreation) {
           okToImportFromVersionPerspective = false;
         }
-        if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective) {
-          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIdIfCreatingNewVersion).subscribe(codeSchemes => {
+        if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective && this.originalCodeSchemeIfCreatingNewVersion != null) {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIfCreatingNewVersion.id).subscribe(codeSchemes => {
             if (this.creatingNewCodeSchemeVersion) {
               this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(codeSchemes[0].route));
               this.modal.close(false);
@@ -104,7 +112,7 @@ export class CodeSchemeImportModalComponent {
       });
     } else {
       if (this.file != null && this.codeRegistry != null) {
-        this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIdIfCreatingNewVersion).subscribe(codeSchemes => {
+        this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, '').subscribe(codeSchemes => {
           if (codeSchemes.length === 1) {
             this.router.navigate(codeSchemes[0].route);
             this.modal.close(false);
@@ -130,10 +138,10 @@ export class CodeSchemeImportModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIdIfCreatingNewVersion: string): void {
+  public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIfCreatingNewVersion: CodeScheme|null): void {
     const modalRef = this.modalService.open(CodeSchemeImportModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as CodeSchemeImportModalComponent;
     instance.creatingNewCodeSchemeVersion = creatingNewCodeSchemeVersion;
-    instance.originalCodeSchemeIdIfCreatingNewVersion = originalCodeSchemeIdIfCreatingNewVersion;
+    instance.originalCodeSchemeIfCreatingNewVersion = originalCodeSchemeIfCreatingNewVersion;
   }
 }

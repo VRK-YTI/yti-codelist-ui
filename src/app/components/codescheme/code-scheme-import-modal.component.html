@@ -11,14 +11,18 @@
   </div>
 
   <div class="modal-body">
-    <div class="row">
+    <div class="row" *ngIf="!creatingNewCodeSchemeVersion">
+        <div class="col-md-12">
+          <app-registry-input id="codelist_registry_input"
+                                  [label]="'Registry for the code list' | translate"
+                                  (loaded)="codeRegistriesLoaded = true"
+                                  [required]="true"
+                                  required
+                                  [(ngModel)]="codeRegistry"></app-registry-input>
+        </div>
+    </div>
+    <div class="row" *ngIf="creatingNewCodeSchemeVersion">
       <div class="col-md-12">
-        <app-registry-input id="codelist_registry_input"
-                                [label]="'Registry for the code list' | translate"
-                                (loaded)="codeRegistriesLoaded = true"
-                                [required]="true"
-                                required
-                                [(ngModel)]="codeRegistry"></app-registry-input>
       </div>
     </div>
 
