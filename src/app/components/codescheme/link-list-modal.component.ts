@@ -33,6 +33,8 @@ export class LinkListModalComponent implements OnInit {
   selectedPropertyType$ = new BehaviorSubject<PropertyType|null>(null);
   propertyTypeOptions: FilterOptions<PropertyType>;
 
+  hidden = false;
+
   constructor(private modal: NgbActiveModal,
               private linkCreateModalService: LinkCreateModalService,
               public languageService: LanguageService,
@@ -66,6 +68,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   create() {
+    this.hidden = true;
     this.linkCreateModalService.open(this.languageCodes, this.selectedPropertyType)
       .then(externalReference => this.modal.close(externalReference), reasonToClose => this.modal.dismiss(reasonToClose));
   }
