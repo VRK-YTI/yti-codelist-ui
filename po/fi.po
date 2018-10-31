@@ -1217,7 +1217,7 @@ msgid "SUGGEST CONCEPT?"
 msgstr "Ehdotus Sanastot-työkaluun"
 
 msgid "SUGGEST CONCEPT MODAL QUESTION"
-msgstr "Halautko ehdottaa käsitettä {{concept}} sanastoon {{vocabulary}}? "
+msgstr "Haluatko ehdottaa käsitettä {{concept}} sanastoon {{vocabulary}}? "
 
 msgid "Are you sure you want to create the version as empty?"
 msgstr "Oletko varma, että haluat luoda uuden  version tyhjänä?"
