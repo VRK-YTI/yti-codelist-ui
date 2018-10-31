@@ -1215,7 +1215,7 @@ msgid "searchresults"
 msgstr "search results"
 
 msgid "SUGGEST CONCEPT?"
-msgstr "Suggestion to controlled vocabularies"
+msgstr "Suggestion to Controlled Vocabularies"
 
 msgid "SUGGEST CONCEPT MODAL QUESTION"
 msgstr ""
