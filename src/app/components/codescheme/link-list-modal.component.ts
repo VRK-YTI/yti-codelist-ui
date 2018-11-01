@@ -3,7 +3,6 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
 import { LinkCreateModalService } from './link-create-modal.component';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ModalService } from '../../services/modal.service';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
