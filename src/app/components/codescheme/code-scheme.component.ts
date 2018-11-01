@@ -22,6 +22,7 @@ import { Observable, from } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme',
@@ -36,7 +37,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   codeScheme: CodeScheme;
   codes: CodePlain[];
   extensions: Extension[];
-  env: string;
   chosenVariant: CodeScheme;
   forbiddenVariantSearchResultIds: string[] = [];
   deleting = false;
@@ -55,7 +55,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private authorizationManager: AuthorizationManager,
               private codeschemeVariantModalService: CodeschemeVariantModalService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
-              private codeSchemeImportModalService: CodeSchemeImportModalService) {
+              private codeSchemeImportModalService: CodeSchemeImportModalService,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -68,10 +69,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     if (!registryCodeValue || !schemeCodeValue) {
       throw new Error(`Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}'`);
     }
-
-    this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
@@ -105,7 +102,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.codeScheme == null ||
       this.codes == null ||
       this.extensions == null ||
-      this.env == null ||
       this.deleting;
   }
 
@@ -255,7 +251,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canAddExtension(): boolean {
-    return this.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
+    return this.configurationService.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
   }
 
   get canCreateANewVersionFromCodeScheme(): boolean {
@@ -284,10 +280,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   createANewVersionOfThisCodeSchemeFromFile() {
     console.log('creating a new version of codescheme from file!');
     this.codeSchemeImportModalService.open(true, this.codeScheme);
-  }
-
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
   }
 
   reloadCodeScheme() {
@@ -338,5 +330,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   changeLanguages(codes: CodePlain[]) {
     this.languageCodes = codes;
+  }
+
+  get showUnfinishedFeature(): boolean {
+    return this.configurationService.showUnfinishedFeature;
   }
 }

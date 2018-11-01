@@ -14,6 +14,7 @@ import { tap } from 'rxjs/operators';
 import { Code } from '../../entities/code';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-member-create',
@@ -24,7 +25,6 @@ import { ValueType } from '../../entities/value-type';
 export class MemberCreateComponent implements OnInit {
 
   extension: Extension;
-  env: string;
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -40,15 +40,12 @@ export class MemberCreateComponent implements OnInit {
               private router: Router,
               private editableService: EditableService,
               public languageService: LanguageService,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -134,7 +131,7 @@ export class MemberCreateComponent implements OnInit {
 
   get loading(): boolean {
 
-    return this.extension == null || this.env == null;
+    return this.extension == null;
   }
 
   canSave() {
@@ -146,10 +143,7 @@ export class MemberCreateComponent implements OnInit {
 
     const code: Code = this.memberForm.controls['code'].value;
     if (code) {
-      if (this.env !== 'prod') {
-        return code.uri + '?env=' + this.env;
-      }
-      return code.uri;
+      return this.configurationService.getUriWithEnv(code.uri);
     }
     return null;
   }
@@ -160,10 +154,7 @@ export class MemberCreateComponent implements OnInit {
     if (code) {
       const conceptUri: string = code.conceptUriInVocabularies;
       if (conceptUri) {
-        if (this.env !== 'prod') {
-          return conceptUri + '?env=' + this.env;
-        }
-        return conceptUri;
+        return this.configurationService.getUriWithEnv(conceptUri);
       }
     }
     return null;

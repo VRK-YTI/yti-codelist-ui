@@ -128,6 +128,7 @@ import {RefreshComponent} from './components/refresh.component';
 import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
 import { HierarchyMemberComponent } from './components/member/hierarchy-member.component';
 import { SuggestConceptModalComponent, SuggestConceptModalService } from './components/terminology-integration/suggest-concept';
+import { ConfigurationService } from './services/configuration.service';
 
 function removeEmptyValues(obj: {}) {
 
@@ -346,7 +347,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeschemeVariantModalService,
     SuggestConceptModalService,
     EditableService,
-    NgbActiveModal
+    NgbActiveModal,
+    ConfigurationService
   ],
   bootstrap: [AppComponent]
 })

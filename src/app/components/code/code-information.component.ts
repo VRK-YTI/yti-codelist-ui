@@ -12,6 +12,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
 import { CodeScheme } from '../../entities/code-scheme';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-information',
@@ -23,7 +24,6 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   @Input() code: Code;
 
   cancelSubscription: Subscription;
-  env: string;
 
   codeForm = new FormGroup({
     prefLabel: new FormControl(''),
@@ -42,13 +42,10 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
               public languageService: LanguageService,
-              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService,
+              private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-
-    this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -110,24 +107,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
   }
 
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
-  }
-
   getCodeUri() {
-    if (this.env !== 'prod') {
-      return this.code.uri + '?env=' + this.env;
-    }
-    return this.code.uri;
+    return this.configurationService.getUriWithEnv(this.code.uri);
   }
 
   getConceptUri() {
     const conceptUri = this.code.conceptUriInVocabularies;
     if (conceptUri != null && conceptUri.length > 0) {
-      if (this.env !== 'prod') {
-        return conceptUri + '?env=' + this.env;
-      }
-      return conceptUri;
+      return this.configurationService.getUriWithEnv(conceptUri);
     }
     return null;
   }

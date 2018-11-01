@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import {DataService} from '../../services/data.service';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme-variant-mothers',
@@ -11,18 +12,11 @@ export class CodeSchemeVariantMothersComponent {
 
   @Input() codeScheme: CodeScheme;
 
-  env: string;
-
-  constructor(private dataService: DataService) {
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
+  constructor(private dataService: DataService,
+              private configurationService: ConfigurationService) {
   }
 
   getVariantUri(variantUri: string) {
-    if (this.env !== 'prod') {
-      return variantUri + '?env=' + this.env;
-    }
-    return variantUri;
+    return this.configurationService.getUriWithEnv(variantUri);
   }
 }

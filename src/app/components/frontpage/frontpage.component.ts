@@ -15,11 +15,11 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { anyMatching } from 'yti-common-ui/utils/array';
 import { Option } from 'yti-common-ui/components/dropdown.component';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
-import { ServiceConfiguration } from '../../entities/service-configuration';
 import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 import { debounceTime, flatMap, map, skip, take, tap } from 'rxjs/operators';
 import { ObservableInput } from 'rxjs/internal/types';
 import { getInformationDomainSvgIcon } from 'yti-common-ui/utils/icons';
+import { ConfigurationService } from '../../services/configuration.service';
 
 // XXX: fixes problem with type definition having strongly typed parameters ending with 6
 function myCombineLatest<T, T2, T3, T4, T5, T6, T7>(v1: ObservableInput<T>,
@@ -47,12 +47,12 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   infoDomains: { entity: InfoDomain, count: number }[];
   infoDomainsWithAtLeastOneEntry: { entity: InfoDomain, count: number }[];
-  registry$ = new BehaviorSubject<CodeRegistry|null>(null);
+  registry$ = new BehaviorSubject<CodeRegistry | null>(null);
 
   searchTerm$ = new BehaviorSubject('');
-  infoDomain$ = new BehaviorSubject<InfoDomain|null>(null);
-  status$ = new BehaviorSubject<Status|null>(null);
-  organization$ = new BehaviorSubject<Organization|null>(null);
+  infoDomain$ = new BehaviorSubject<InfoDomain | null>(null);
+  status$ = new BehaviorSubject<Status | null>(null);
+  organization$ = new BehaviorSubject<Organization | null>(null);
 
   filteredCodeSchemes: CodeScheme[];
 
@@ -60,32 +60,28 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   searchCodesValue = false;
   searchCodes$ = new BehaviorSubject(this.searchCodesValue);
 
-  configuration: ServiceConfiguration;
-
   groupIconSrc = getInformationDomainSvgIcon;
 
   private subscriptionToClean: Subscription[] = [];
 
-  fullDescription: {[key: string]: boolean} = {};
+  fullDescription: { [key: string]: boolean } = {};
 
   constructor(private dataService: DataService,
               private router: Router,
               public languageService: LanguageService,
               private translateService: TranslateService,
               private authorizationManager: AuthorizationManager,
-              locationService: LocationService) {
+              private locationService: LocationService,
+              private configurationService: ConfigurationService) {
 
     locationService.atFrontPage();
   }
 
   ngOnInit() {
-    this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.configuration = configuration;
-      if (configuration.defaultStatus) {
-        this.status$.next(configuration.defaultStatus as Status);
-      }
-      this.initialize();
-    });
+    if (this.configurationService.defaultStatus) {
+      this.status$.next(this.configurationService.defaultStatus as Status);
+    }
+    this.initialize();
   }
 
   initialize() {
@@ -127,11 +123,11 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
     const infoDomains$ = this.dataService.getInfoDomains(this.languageService.language);
 
-    function statusMatches(status: Status|null, codeScheme: CodeScheme) {
+    function statusMatches(status: Status | null, codeScheme: CodeScheme) {
       return !status || codeScheme.status === status;
     }
 
-    function registryMatches(registry: CodeRegistry|null, codeScheme: CodeScheme) {
+    function registryMatches(registry: CodeRegistry | null, codeScheme: CodeScheme) {
       return !registry || codeScheme.codeRegistry.codeValue === registry.codeValue;
     }
 
@@ -148,7 +144,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
           const infoDomainCode = infoDomain ? infoDomain.codeValue : null;
           const organizationId = organization ? organization.id : null;
-          const sortMode = this.configuration.codeSchemeSortMode || null;
+          const sortMode = this.configurationService.codeSchemeSortMode || null;
 
           return this.dataService.searchCodeSchemes(searchTerm, infoDomainCode, organizationId, sortMode, searchCodes, language)
             .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
@@ -165,7 +161,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .subscribe(([infoDomains, searchTerm, status, registry, organization, searchCodes, language]) => {
         infoDomains.sort(comparingLocalizable<InfoDomain>(this.languageService, infoDomain => infoDomain.prefLabel));
         const organizationId = organization ? organization.id : null;
-        const sortMode = this.configuration.codeSchemeSortMode ? this.configuration.codeSchemeSortMode : null;
+        const sortMode = this.configurationService.codeSchemeSortMode ? this.configurationService.codeSchemeSortMode : null;
 
         this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, language)
           .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>

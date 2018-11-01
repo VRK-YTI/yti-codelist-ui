@@ -1,29 +1,20 @@
-import {
-  Component,
-  ElementRef,
-  Injectable,
-  ViewChild,
-  Input, AfterViewInit
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
 import { Vocabulary } from '../../entities/vocabulary';
 import { LanguageService } from '../../services/language.service';
-import { ModalService} from '../../services/modal.service';
-import { OnInit } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable, BehaviorSubject, concat, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';
 import { Concept } from '../../entities/concept';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { ExternalReference } from '../../entities/external-reference';
-import { CodePlain } from '../../entities/code-simple';
-import { LinkEditModalComponent } from '../codescheme/link-edit-modal.component';
 import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
+import { ConfigurationService } from '../../services/configuration.service';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -42,7 +33,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   @Input() targetEntityKind: string; // code or codescheme
 
   vocabularyOptions: FilterOptions<Vocabulary>;
-  vocabulary$ = new BehaviorSubject<Vocabulary|null>(null);
+  vocabulary$ = new BehaviorSubject<Vocabulary | null>(null);
   loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -55,22 +46,17 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   terminologyIntegrationModalInstructionText: string;
   localizer: Localizer;
 
-  env: string;
-
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
               public languageService: LanguageService,
               private translateService: TranslateService,
               private codeListErrorModalService: CodeListErrorModalService,
               private codeListConfirmationModalService: CodeListConfirmationModalService,
-              private suggestConceptModalService: SuggestConceptModalService) {
+              private suggestConceptModalService: SuggestConceptModalService,
+              private configurationService: ConfigurationService) {
   }
 
   ngOnInit() {
-
-    this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
 
     combineLatest(this.vocabulary$, this.debouncedSearch$)
       .subscribe(([vocabulary, search]) => {
@@ -102,7 +88,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
     }, error => {
       this.vocabularyOptions = [
-        { value: null, name: () => this.translateService.instant('All vocabularies')}];
+        { value: null, name: () => this.translateService.instant('All vocabularies') }];
       this.codeListErrorModalService.openSubmitError(error);
     });
 
@@ -164,13 +150,13 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   suggestAConcept(localizer: Localizer) {
 
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
-    const vocabularyName: string =  vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
+    const vocabularyName: string = vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
 
     const conceptName: Localizable = { [this.languageService.language]: this.search$.getValue() };
 
-    this.suggestConceptModalService.open( conceptName ).then( (result) => {
+    this.suggestConceptModalService.open(conceptName).then((result) => {
       const suggestionNameLocalized: string = this.languageService.translate(result[0], true);
-      const suggestionDefinitionLocalized: string =  this.languageService.translate(result[1], true);
+      const suggestionDefinitionLocalized: string = this.languageService.translate(result[1], true);
       const resultArray: string[] = [suggestionNameLocalized, suggestionDefinitionLocalized];
       this.codeListConfirmationModalService.openSuggestConcept(resultArray[0], resultArray[1], vocabularyName)
         .then(() => {
@@ -183,10 +169,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     }, ignoreModalClose);
   }
 
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
+  get showUnfinishedFeature(): boolean {
+    return this.configurationService.showUnfinishedFeature;
   }
-
 }
 
 @Injectable()
@@ -196,7 +181,7 @@ export class TerminologyIntegrationModalService {
   }
 
   public open(updatingExistingEntity: boolean, targetEntityKind: string): Promise<Concept> {
-    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, {size: 'lg'});
+    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, { size: 'lg' });
     const instance = modalRef.componentInstance as TerminologyIntegrationCodeschemeModalComponent;
     instance.updatingExistingEntity = updatingExistingEntity;
     instance.targetEntityKind = targetEntityKind;

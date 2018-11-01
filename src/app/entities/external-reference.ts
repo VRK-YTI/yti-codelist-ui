@@ -80,7 +80,7 @@ export interface PropertyTypeExternalReferences {
 
 export function groupByType(extReferences: ExternalReference[], localizer: Localizer): PropertyTypeExternalReferences[] {
 
-  const extReferencesSorted = extReferences.sort(comparingLocalizable<ExternalReference>(localizer, c => c ? c.title : {}))
+  const extReferencesSorted = extReferences.sort(comparingLocalizable<ExternalReference>(localizer, c => c ? c.title : {}));
   const propertyTypes = extReferencesSorted.map(er => requireDefined(er.propertyType));
   const propertyTypesByName = index(propertyTypes, pt => pt.localName);
   const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
