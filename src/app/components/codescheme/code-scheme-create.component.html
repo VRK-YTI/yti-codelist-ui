@@ -6,20 +6,17 @@
 
   <app-back-button [id]="'codelist_create_back_button'" (back)="back()"></app-back-button>
 
-  <div class="row">
-    <div class="col-12">
-      <h1 class="float-left" translate>{{pageTitle}}</h1>
+  <div class="main">
+    <div>
+      <h1 translate>{{pageTitle}}</h1>
+    </div>
+    <div class="float-right">
+      <app-editable-buttons [form]="form"></app-editable-buttons>
       <app-content-language [languageCodes]="codeSchemeForm.controls['languageCodes'].value"></app-content-language>
     </div>
   </div>
 
   <form [formGroup]="codeSchemeForm" #form="ngForm">
-
-    <div class="row">
-      <div class="col-12">
-        <app-editable-buttons [form]="form"></app-editable-buttons>
-      </div>
-    </div>
 
     <div class="row">
       <div class="col-lg-8 col-md-10">

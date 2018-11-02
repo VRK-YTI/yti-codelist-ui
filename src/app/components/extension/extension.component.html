@@ -4,63 +4,64 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
-
-  <h1 class="text-content-wrap">{{extension.getDisplayName(languageService)}}</h1>
-
-  <div class="row">
-    <div class="col-12">
-      <app-status class="float-left" [status]="extension.status"></app-status>
-
-      <div class="float-right">
-
-        <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="extensionDropdown" ngbDropdownToggle translate>Choose action</button>
-          <div ngbDropdownMenu aria-labelledby="extensionDropdown">
-            <button id="create_member_button"
-                    *ngIf="canAddExtension"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createMember()"
-                    translate>Create member</button>
-            <button id="import_members_button"
-                    *ngIf="canAddExtension"
-                    class="dropdown-item"
-                    (click)="importMembers()"
-                    translate>Import members</button>
-            <button id="delete_extension_button"
-                    *ngIf="canDelete"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="delete()"
-                    translate>Delete extension</button>
-          </div>
-        </div>
-
-        <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
-          <div ngbDropdownMenu aria-labelledby="exportDropdown">
-            <a id="codelist_export_excel_link" href="{{extension.url}}/?format=excel"
-               target="_blank"
-               class="dropdown-item" translate>Export Excel</a>
-            <a id="codelist_export_csv_link" href="{{extension.url}}/members/?format=csv"
-               target="_blank"
-               class="dropdown-item" translate>Export CSV</a>
-          </div>
-        </div>
-
-        <app-content-language [languageCodes]="extension.parentCodeScheme.languageCodes"></app-content-language>
+  <div class="main">
+    <div>
+      <div class="d-inline-block">
+        <h1 class="text-content-wrap">{{extension.getDisplayName(languageService)}}</h1>
       </div>
+      <div class="d-inline-block ml-5">
+        <app-status class="float-left" [status]="extension.status"></app-status>
+      </div>
+    </div>
+
+    <div>
+      <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+        <button class="btn btn-action" id="extensionDropdown" ngbDropdownToggle translate>Choose action</button>
+        <div ngbDropdownMenu aria-labelledby="extensionDropdown">
+          <button id="create_member_button"
+                  *ngIf="canAddExtension"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createMember()"
+                  translate>Create member</button>
+          <button id="import_members_button"
+                  *ngIf="canAddExtension"
+                  class="dropdown-item"
+                  (click)="importMembers()"
+                  translate>Import members</button>
+          <button id="delete_extension_button"
+                  *ngIf="canDelete"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="delete()"
+                  translate>Delete extension</button>
+        </div>
+      </div>
+
+      <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+        <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
+        <div ngbDropdownMenu aria-labelledby="exportDropdown">
+          <a id="codelist_export_excel_link" href="{{extension.url}}/?format=excel"
+             target="_blank"
+             class="dropdown-item" translate>Export Excel</a>
+          <a id="codelist_export_csv_link" href="{{extension.url}}/members/?format=csv"
+             target="_blank"
+             class="dropdown-item" translate>Export CSV</a>
+        </div>
+      </div>
+
+      <app-content-language [languageCodes]="extension.parentCodeScheme.languageCodes"></app-content-language>
     </div>
   </div>
 
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(extension.parentCodeScheme.codeRegistry.route)">{{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span translate>Registry</span><span>: </span><span class="routedLink"
+                                                            (click)="navigateToRoute(extension.parentCodeScheme.codeRegistry.route)">{{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span  translate>Codescheme</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span translate>Codescheme</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
       </div>
     </div>
   </div>

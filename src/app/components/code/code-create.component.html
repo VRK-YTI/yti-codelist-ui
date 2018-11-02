@@ -6,9 +6,11 @@
 
   <app-back-button [id]="'code_create_back_button'" (back)="back()"></app-back-button>
 
-  <div class="row">
-    <div class="col-12">
-      <h1 class="float-left" translate>Create code</h1>
+  <div class="main">
+    <div>
+      <h1 translate>Create code</h1>
+    </div>
+    <div class="float-right">
       <app-content-language [languageCodes]="codeScheme.languageCodes"></app-content-language>
     </div>
   </div>

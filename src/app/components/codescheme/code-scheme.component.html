@@ -6,86 +6,88 @@
 
   <app-back-button [id]="'codelist_back_button'" (back)="back()"></app-back-button>
 
-  <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService, true)}}</h1>
-
-  <div class="row">
-    <div class="col-12">
-      <app-status class="float-left" [status]="codeScheme.status"></app-status>
-
-      <div class="float-right">
-
-        <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="codeSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
-          <div ngbDropdownMenu aria-labelledby="codeSchemeDropdown">
-            <button id="create_code_button"
-                    *ngIf="canAddCode"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createCode()"
-                    translate>Create code</button>
-            <button id="import_codes_button"
-                    *ngIf="canAddCode"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="importCodes()"
-                    translate>Import codes</button>
-            <button id="clone_codelist_button"
-                    *ngIf="canCreateANewVersionFromCodeScheme"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createANewVersionFromThisCodeScheme()"
-                    translate>Create a new version</button>
-            <button id="clone_codelist_from_file_button"
-                    *ngIf="canCreateANewVersionFromCodeScheme && showUnfinishedFeature"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createANewVersionOfThisCodeSchemeFromFile()"
-                    translate>Create a new version from file</button>
-            <button id="attach_variant_button"
-                    *ngIf="canAttachOrDetachAVariant"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="openVariantSearchModal()"
-                    translate>Attach variant to code list</button>
-            <button id="create_extension_calculationhierarchy_button"
-                    *ngIf="canAddExtension"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createExtension('calculationHierarchy')"
-                    translate>Create calculation hierarchy</button>
-            <button id="create_extension_definitionhierarchy_button"
-                    *ngIf="canAddExtension"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="createExtension('definitionHierarchy')"
-                    translate>Create definition hierarchy</button>
-            <button id="import_extensions_button"
-                    *ngIf="canAddExtension"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="importExtensions()"
-                    translate>Import extensions</button>
-            <button id="delete_codelist_button"
-                    *ngIf="canDeleteCodeScheme"
-                    type="button"
-                    class="dropdown-item"
-                    (click)="delete()"
-                    translate>Delete code list</button>
-          </div>
-        </div>
-
-        <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
-          <div ngbDropdownMenu aria-labelledby="exportDropdown">
-            <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank"
-               class="dropdown-item" translate>Export Excel</a>
-            <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank"
-               class="dropdown-item" translate>Export CSV</a>
-          </div>
-        </div>
-
-        <app-content-language [languageCodes]="contentLanguages"></app-content-language>
+  <div class="main">
+    <div>
+      <div class="d-inline-block">
+        <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService, true)}}</h1>
       </div>
+      <div class="d-inline-block ml-5 align-top mt-2">
+        <app-status class="float-left" [status]="codeScheme.status"></app-status>
+      </div>
+    </div>
+
+    <div class="float-right">
+      <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+        <button class="btn btn-action" id="codeSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
+        <div ngbDropdownMenu aria-labelledby="codeSchemeDropdown">
+          <button id="create_code_button"
+                  *ngIf="canAddCode"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createCode()"
+                  translate>Create code</button>
+          <button id="import_codes_button"
+                  *ngIf="canAddCode"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="importCodes()"
+                  translate>Import codes</button>
+          <button id="clone_codelist_button"
+                  *ngIf="canCreateANewVersionFromCodeScheme"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createANewVersionFromThisCodeScheme()"
+                  translate>Create a new version</button>
+          <button id="clone_codelist_from_file_button"
+                  *ngIf="canCreateANewVersionFromCodeScheme && showUnfinishedFeature"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createANewVersionOfThisCodeSchemeFromFile()"
+                  translate>Create a new version from file</button>
+          <button id="attach_variant_button"
+                  *ngIf="canAttachOrDetachAVariant"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="openVariantSearchModal()"
+                  translate>Attach variant to code list</button>
+          <button id="create_extension_calculationhierarchy_button"
+                  *ngIf="canAddExtension"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createExtension('calculationHierarchy')"
+                  translate>Create calculation hierarchy</button>
+          <button id="create_extension_definitionhierarchy_button"
+                  *ngIf="canAddExtension"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createExtension('definitionHierarchy')"
+                  translate>Create definition hierarchy</button>
+          <button id="import_extensions_button"
+                  *ngIf="canAddExtension"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="importExtensions()"
+                  translate>Import extensions</button>
+          <button id="delete_codelist_button"
+                  *ngIf="canDeleteCodeScheme"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="delete()"
+                  translate>Delete code list</button>
+        </div>
+      </div>
+
+      <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+        <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
+        <div ngbDropdownMenu aria-labelledby="exportDropdown">
+          <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank"
+             class="dropdown-item" translate>Export Excel</a>
+          <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank"
+             class="dropdown-item" translate>Export CSV</a>
+        </div>
+      </div>
+
+      <app-content-language [languageCodes]="contentLanguages"></app-content-language>
     </div>
   </div>
 

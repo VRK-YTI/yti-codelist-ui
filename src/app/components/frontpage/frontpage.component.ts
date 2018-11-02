@@ -78,6 +78,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.locationService.atFrontPage();
+
     if (this.configurationService.defaultStatus) {
       this.status$.next(this.configurationService.defaultStatus as Status);
     }
@@ -205,11 +207,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   importCodeScheme() {
     this.router.navigate(['importandcreatecodescheme']);
-  }
-
-  viewCodeScheme(codeScheme: CodeScheme) {
-    console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from registry: ' + codeScheme.codeRegistry.codeValue);
-    this.router.navigate(codeScheme.route);
   }
 
   ngOnDestroy(): void {

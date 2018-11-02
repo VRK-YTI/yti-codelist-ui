@@ -40,7 +40,12 @@ export class RegistriesComponent implements OnInit {
   }
 
   createRegistry() {
-    this.router.navigate(['createregistry']);  }
+    this.router.navigate(['createregistry']);
+  }
+
+  codeRegistryIdentity(index: number, item: CodeRegistry) {
+    return item.id;
+  }
 
   back() {
     this.router.navigate(['frontpage']);

@@ -1,14 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {ResolveEnd, Route, Router, RouterModule, Routes, UrlSegment, UrlSegmentGroup} from '@angular/router';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { ResolveEnd, Route, Router, RouterModule, Routes, UrlSegment, UrlSegmentGroup } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {
-  MissingTranslationHandler,
-  MissingTranslationHandlerParams,
-  TranslateLoader,
-  TranslateModule
-} from '@ngx-translate/core';
+import { MissingTranslationHandler, MissingTranslationHandlerParams, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './components/app.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { LanguageService } from './services/language.service';
@@ -39,10 +34,7 @@ import { LinkCreateModalComponent, LinkCreateModalService } from './components/c
 import { LinkShowModalComponent, LinkShowModalService } from './components/codescheme/link-show-modal.component';
 import { PropertyTypeSelectComponent } from './components/codescheme/property-type-select.component';
 import { CodeSchemeImportAndCreateComponent } from './components/codescheme/code-scheme-import-and-create.component';
-import {
-  CodeSchemeImportModalComponent,
-  CodeSchemeImportModalService
-} from './components/codescheme/code-scheme-import-modal.component';
+import { CodeSchemeImportModalComponent, CodeSchemeImportModalService } from './components/codescheme/code-scheme-import-modal.component';
 import {
   CodeSchemeCodesImportModalComponent,
   CodeSchemeCodesImportModalService
@@ -57,10 +49,7 @@ import { ExternalReferencesInputComponent } from './components/form/external-ref
 import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
 import { InfodomainsInputComponent } from './components/form/infodomains-input.component';
-import {
-  SearchLinkedCodeModalComponent,
-  SearchLinkedCodeModalService
-} from './components/form/search-linked-code-modal.component';
+import { SearchLinkedCodeModalComponent, SearchLinkedCodeModalService } from './components/form/search-linked-code-modal.component';
 import { RegistryInputComponent } from './components/form/coderegistry-input.component';
 import { DateRangeInputComponent } from './components/form/date-range-input.component';
 import { CodeListErrorModalService } from './components/common/error-modal.service';
@@ -82,20 +71,11 @@ import { ExtensionMembersComponent } from './components/extension/extension-memb
 import { MemberInformationComponent } from './components/member/member-information.component';
 import { MemberCreateComponent } from './components/member/member-create.component';
 import { ExtensionListitemComponent } from './components/extension/extension-listitem.component';
-import {
-  MembersImportModalService,
-  MembersImportModalComponent
-} from './components/member/member-import-modal.component';
-import {
-  ExtensionsImportModalComponent,
-  ExtensionImportModalService
-} from './components/extension/extension-import-modal.component';
+import { MembersImportModalComponent, MembersImportModalService } from './components/member/member-import-modal.component';
+import { ExtensionImportModalService, ExtensionsImportModalComponent } from './components/extension/extension-import-modal.component';
 import { MemberListitemComponent } from './components/member/member-listitem.component';
 import { MemberComponent } from './components/member/member.component';
-import {
-  SearchLinkedMemberModalComponent,
-  SearchLinkedMemberModalService
-} from './components/form/search-linked-member-modal.component';
+import { SearchLinkedMemberModalComponent, SearchLinkedMemberModalService } from './components/form/search-linked-member-modal.component';
 import { MemberInputComponent } from './components/form/member-input.component';
 import { LogoComponent } from './components/navigation/logo.component';
 import { RegistryListitemComponent } from './components/registry/registry-listitem';
@@ -124,7 +104,7 @@ import {
 } from './components/form/search-linked-code-scheme-modal.component';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import {RefreshComponent} from './components/refresh.component';
+import { RefreshComponent } from './components/refresh.component';
 import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
 import { HierarchyMemberComponent } from './components/member/hierarchy-member.component';
 import { SuggestConceptModalComponent, SuggestConceptModalService } from './components/terminology-integration/suggest-concept';
@@ -155,23 +135,23 @@ const localizations: { [lang: string]: any } = {
 };
 
 const appRoutes: Routes = [
-  {path: '', component: FrontpageComponent, pathMatch: 'full'},
-  {path: 'frontpage', redirectTo: '/', pathMatch: 'full'},
-  {path: 'createcode', component: CodeCreateComponent, pathMatch: 'full'},
-  {path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full'},
-  {path: 'createextension', component: ExtensionCreateComponent, pathMatch: 'full'},
-  {path: 'createmember', component: MemberCreateComponent, pathMatch: 'full'},
-  {path: 'createregistry', component: RegistryCreateComponent, pathMatch: 'full'},
-  {path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full'},
-  {path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'member', component: MemberComponent, pathMatch: 'full', canDeactivate: [EditGuard]},
-  {path: 'styles', component: StyleTestComponent},
-  {path: 'userDetails', component: UserDetailsComponent},
-  {path: 'information', component: InformationAboutServiceComponent},
-  {path: 'registries', component: RegistriesComponent, pathMatch: 'full'},
-  {path: 'registry', component: RegistryComponent, pathMatch: 'full'},
+  { path: '', component: FrontpageComponent, pathMatch: 'full' },
+  { path: 'frontpage', redirectTo: '/', pathMatch: 'full' },
+  { path: 'createcode', component: CodeCreateComponent, pathMatch: 'full' },
+  { path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full' },
+  { path: 'createextension', component: ExtensionCreateComponent, pathMatch: 'full' },
+  { path: 'createmember', component: MemberCreateComponent, pathMatch: 'full' },
+  { path: 'createregistry', component: RegistryCreateComponent, pathMatch: 'full' },
+  { path: 'importandcreatecodescheme', component: CodeSchemeImportAndCreateComponent, pathMatch: 'full' },
+  { path: 'codescheme', component: CodeSchemeComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
+  { path: 'code', component: CodeComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
+  { path: 'extension', component: ExtensionComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
+  { path: 'member', component: MemberComponent, pathMatch: 'full', canDeactivate: [EditGuard] },
+  { path: 'styles', component: StyleTestComponent },
+  { path: 'userDetails', component: UserDetailsComponent },
+  { path: 'information', component: InformationAboutServiceComponent },
+  { path: 'registries', component: RegistriesComponent, pathMatch: 'full' },
+  { path: 'registry', component: RegistryComponent, pathMatch: 'full' },
   // NOTE: If createRefreshRouteMatcher(['re']) starts to work after angular upgrade, then switch to that.
   { matcher: refreshRouteMatcher, component: RefreshComponent }
 ];
@@ -185,6 +165,10 @@ export function refreshRouteMatcher(segments: UrlSegment[], group: UrlSegmentGro
   return {
     consumed: []
   };
+}
+
+export function initApp(configurationService: ConfigurationService) {
+  return () => configurationService.fetchConfiguration();
 }
 
 export function resolveAuthenticatedUserEndpoint() {
@@ -320,8 +304,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     ClipboardModule
   ],
   providers: [
-    {provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint},
-    {provide: LOCALIZER, useExisting: LanguageService},
+    { provide: APP_INITIALIZER, useFactory: initApp, deps: [ConfigurationService], multi: true },
+    { provide: AUTHENTICATED_USER_ENDPOINT, useFactory: resolveAuthenticatedUserEndpoint },
+    { provide: LOCALIZER, useExisting: LanguageService },
     LanguageService,
     LocationService,
     DataService,
@@ -347,8 +332,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeschemeVariantModalService,
     SuggestConceptModalService,
     EditableService,
-    NgbActiveModal,
-    ConfigurationService
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })

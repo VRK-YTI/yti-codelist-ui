@@ -1,14 +1,7 @@
 <form [formGroup]="codeForm" #form="ngForm">
 
   <div class="row">
-    <div class="col-12">
-      <app-editable-buttons [form]="form"
-                            [entity]="code"></app-editable-buttons>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-8 col-md-10">
+    <div class="col-10">
       <app-literal [label]="'Code list' | translate"
                    [value]="code.codeScheme.getDisplayName(languageService)"
                    [infoText]="'INFO_TEXT_CODE_CODELIST_NAME'"></app-literal>
@@ -105,6 +98,11 @@
                                      [languageCodes]="code.codeScheme.languageCodes"
                                      [infoText]="'INFO_TEXT_CODE_EXTERNAL_REFERENCES'"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
+    </div>
+
+    <div class="col-2">
+      <app-editable-buttons [form]="form"
+                            [entity]="code"></app-editable-buttons>
     </div>
   </div>
 

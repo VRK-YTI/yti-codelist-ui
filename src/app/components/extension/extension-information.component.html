@@ -6,14 +6,7 @@
   <form [formGroup]="extensionForm" #form="ngForm">
 
     <div class="row">
-      <div class="col-12">
-        <app-editable-buttons [form]="form"
-                              [entity]="extension"></app-editable-buttons>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-10">
         <app-literal *ngIf="this.extension.parentCodeScheme"
                      [label]="'Code list' | translate"
                      [value]="extension.parentCodeScheme.getDisplayName(languageService)"
@@ -55,6 +48,11 @@
         <app-literal [label]="'Last modification' | translate"
                      [value]="extension.modifiedDisplayValue"
                      [infoText]="'INFO_TEXT_EXTENSION_LAST_MODIFICATION'"></app-literal>
+      </div>
+
+      <div class="col-2">
+        <app-editable-buttons [form]="form"
+                              [entity]="extension"></app-editable-buttons>
       </div>
     </div>
   </form>

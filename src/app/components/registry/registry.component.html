@@ -4,13 +4,11 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'registry_back_button'" (back)="back()"></app-back-button>
-
   <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>
 
-  <div class="row" *ngIf="codeRegistry.definition | translateValue">
+  <div class="row" *ngIf="codeRegistry.description | translateValue">
     <div class="col-12">
-      <p class="definition text-content-wrap">{{codeRegistry.definition | translateValue}}</p>
+      <p class="description text-content-wrap">{{codeRegistry.description | translateValue}}</p>
     </div>
   </div>
 
@@ -42,9 +40,9 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="codeRegistry.definition | translateValue">
+  <div class="row" *ngIf="codeRegistry.description | translateValue">
     <div class="col-12">
-      <p class="description text-content-wrap">{{codeRegistry.definition | translateValue}}</p>
+      <p class="description text-content-wrap">{{codeRegistry.description | translateValue}}</p>
     </div>
   </div>
 

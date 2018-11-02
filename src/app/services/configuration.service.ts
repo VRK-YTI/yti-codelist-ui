@@ -10,11 +10,16 @@ export class ConfigurationService {
   configuration: ServiceConfiguration;
 
   constructor(private dataService: DataService) {
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.configuration = configuration;
-    });
   }
+
+  fetchConfiguration(): Promise<ServiceConfiguration> {
+    const promise = this.dataService.getServiceConfiguration().toPromise().then(configuration => {
+      this.configuration = configuration;
+      return configuration;
+    });
+    return promise;
+  }
+
 
   get loading(): boolean {
 

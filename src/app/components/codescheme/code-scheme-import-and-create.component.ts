@@ -20,10 +20,6 @@ export class CodeSchemeImportAndCreateComponent implements OnInit {
     this.locationService.atCodeSchemeImportAndCreatePage();
   }
 
-  back() {
-    this.router.navigate(['frontpage']);
-  }
-
   importFromFile() {
     console.log('Importing code list from file!');
     this.codeSchemeImportModalService.open(false, null);

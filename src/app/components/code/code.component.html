@@ -6,13 +6,17 @@
 
   <app-back-button [id]="'code_back_button'" (back)="back()"></app-back-button>
 
-  <h1 *ngIf="code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}} - {{code.prefLabel | translateValue}}</h1>
-  <h1 *ngIf="!code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}}</h1>
-
-  <div class="row">
-    <div class="col-12">
-      <app-status class="float-left" [status]="code.status"></app-status>
-
+  <div class="main">
+    <div>
+      <div class="d-inline-block">
+        <h1 *ngIf="code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}} - {{code.prefLabel | translateValue}}</h1>
+        <h1 *ngIf="!code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}}</h1>
+      </div>
+      <div class="d-inline-block">
+        <app-status class="float-left" [status]="code.status"></app-status>
+      </div>
+    </div>
+    <div>
       <div class="float-right">
         <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
           <button class="btn btn-action" id="codeDropdown" ngbDropdownToggle translate>Choose action</button>

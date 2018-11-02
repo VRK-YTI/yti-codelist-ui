@@ -1,43 +1,27 @@
 import { Component } from '@angular/core';
 import { LocationService } from '../services/location.service';
 import { Router } from '@angular/router';
-import { ConfigurationService } from '../services/configuration.service';
+import { Subject } from 'rxjs';
+import { Location } from 'yti-common-ui/types/location';
 
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
-  template: `
-    <div *ngIf="loading">
-      <app-ajax-loading-indicator></app-ajax-loading-indicator>
-    </div>
-    <div *ngIf="!loading">
-      <ng-template ngbModalContainer></ng-template>
-      <app-navigation-bar></app-navigation-bar>
-      <div class="container-fluid">
-        <app-breadcrumb [location]="location" [linkActive]="true" [refreshPath]="['re']"></app-breadcrumb>
-        <router-outlet></router-outlet>
-      </div>
-      <app-footer [title]="'Reference Data' | translate"
-                  (informationClick)="navigateToInformation()"></app-footer>
-    </div>
-  `
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
 
   constructor(private locationService: LocationService,
-              private router: Router,
-              private configurationService: ConfigurationService) {
+              private router: Router) {
   }
 
-  get loading() {
-    return this.configurationService.loading;
-  }
+  get location(): Subject<Location[]> {
 
-  get location() {
     return this.locationService.location;
   }
 
   navigateToInformation() {
+
     this.router.navigate(['/information']);
   }
 }
