@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme-versions',
@@ -11,18 +12,11 @@ export class CodeSchemeVersionsComponent {
 
   @Input() codeScheme: CodeScheme;
 
-  env: string;
-
-  constructor(private dataService: DataService) {
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
+  constructor(private dataService: DataService,
+              private configurationService: ConfigurationService) {
   }
 
   getVersionUri(versionUri: string) {
-    if (this.env !== 'prod') {
-      return versionUri + '?env=' + this.env;
-    }
-    return versionUri;
+    return this.configurationService.getUriWithEnv(versionUri);
   }
 }

@@ -3,6 +3,7 @@ import { Language, LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { LoginModalService } from 'yti-common-ui/components/login-modal.component';
 import { DataService } from '../../services/data.service';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -19,25 +20,14 @@ export class NavigationBarComponent {
 
   fakeableUsers: { email: string, firstName: string, lastName: string }[] = [];
 
-  groupManagementUrl: string;
-  terminologyUrl: string;
-  dataModelUrl: string;
-  env: string;
-
   constructor(public languageService: LanguageService,
               private userService: UserService,
               private loginModal: LoginModalService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              public configurationService: ConfigurationService) {
 
     dataService.getFakeableUsers().subscribe(users => {
       this.fakeableUsers = users;
-    });
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.groupManagementUrl = configuration.groupManagementConfig.url;
-      this.terminologyUrl = configuration.terminologyConfig.url;
-      this.dataModelUrl = configuration.dataModelConfig.url;
-      this.env = configuration.env;
     });
   }
 
@@ -96,7 +86,7 @@ export class NavigationBarComponent {
   }
 
   get environmentIdentifier() {
-    return this.env ? this.env !== 'prod' ? ' - ' + this.env.toUpperCase() : '' : '';
+    const env: string = this.configurationService.env;
+    return env ? env !== 'prod' ? ' - ' + env.toUpperCase() : '' : '';
   }
-
 }

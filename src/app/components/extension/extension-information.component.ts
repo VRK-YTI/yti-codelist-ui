@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Extension } from '../../entities/extension';
 import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-extension-information',
@@ -21,7 +22,6 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   @Input() extension: Extension;
 
   codeSchemes: CodeScheme[];
-  env: string;
 
   extensionForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -37,13 +37,10 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
               private route: ActivatedRoute,
               private locationService: LocationService,
               private editableService: EditableService,
-              public languageService: LanguageService) {
+              public languageService: LanguageService,
+              private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-
-    this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -97,13 +94,10 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   }
 
   get loading(): boolean {
-    return this.extension == null || this.env == null;
+    return this.extension == null;
   }
 
   getExtensionUri() {
-    if (this.env !== 'prod') {
-      return this.extension.uri + '?env=' + this.env;
-    }
-    return this.extension.uri;
+    return this.configurationService.getUriWithEnv(this.extension.uri);
   }
 }

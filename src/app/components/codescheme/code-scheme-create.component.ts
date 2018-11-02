@@ -21,6 +21,7 @@ import { flatMap, map, tap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Organization } from '../../entities/organization';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -31,7 +32,6 @@ import { Organization } from '../../entities/organization';
 export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   codeRegistriesLoaded = false;
-  env: string;
   uuidOfOriginalCodeSchemeIfCloning: string;
   pageTitle = 'Create code list';
   cloning = false;
@@ -67,7 +67,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private location: Location,
               private languageService: LanguageService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -75,10 +76,6 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
-    this.dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
 
     this.dataService.getLanguageCodes(this.languageService.language).subscribe(languageCodes => {
       this.allLanguageCodes = languageCodes;
@@ -170,12 +167,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
-  }
-
   get loading(): boolean {
-    return !this.codeRegistriesLoaded || !this.env || !this.allLanguageCodes;
+    return !this.codeRegistriesLoaded || !this.allLanguageCodes;
   }
 
   back() {

@@ -16,6 +16,7 @@ import { flatMap, tap } from 'rxjs/operators';
 import { MembersImportModalService } from '../member/member-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
 import { MemberSimple } from '../../entities/member-simple';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-extension',
@@ -29,7 +30,6 @@ export class ExtensionComponent implements OnInit, EditingComponent {
 
   extension: Extension;
   members: MemberSimple[];
-  env: string;
   deleting: boolean;
 
   constructor(private userService: UserService,
@@ -42,13 +42,10 @@ export class ExtensionComponent implements OnInit, EditingComponent {
               private confirmationModalService: CodeListConfirmationModalService,
               private extensionMembersImportModalService: MembersImportModalService,
               private errorModalService: CodeListErrorModalService,
-              private authorizationManager: AuthorizationManager) {
+              private authorizationManager: AuthorizationManager,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -191,9 +188,5 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     } else {
       return save();
     }
-  }
-
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
   }
 }

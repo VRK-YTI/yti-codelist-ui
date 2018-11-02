@@ -9,6 +9,7 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { FormControl, FormGroup } from '@angular/forms';
 import { requiredList } from 'yti-common-ui/utils/validator';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-registry-information',
@@ -18,7 +19,6 @@ import { requiredList } from 'yti-common-ui/utils/validator';
 export class RegistryInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeRegistry: CodeRegistry;
-  env: string;
 
   codeRegistryForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -33,13 +33,10 @@ export class RegistryInformationComponent implements OnChanges, OnDestroy {
               private router: Router,
               private errorModalService: CodeListErrorModalService,
               private editableService: EditableService,
-              public languageService: LanguageService) {
+              public languageService: LanguageService,
+              private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,7 +48,7 @@ export class RegistryInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
-    const {organizations, ...rest} = this.codeRegistry;
+    const { organizations, ...rest } = this.codeRegistry;
 
     this.codeRegistryForm.reset({
       ...rest,
@@ -59,14 +56,7 @@ export class RegistryInformationComponent implements OnChanges, OnDestroy {
     });
   }
 
-  get loading() {
-    return this.env == null;
-  }
-
   getRegistryUri() {
-    if (this.env !== 'prod') {
-      return this.codeRegistry.uri + '?env=' + this.env;
-    }
-    return this.codeRegistry.uri;
+    return this.configurationService.getUriWithEnv(this.codeRegistry.uri);
   }
 }

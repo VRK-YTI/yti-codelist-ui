@@ -15,6 +15,7 @@ import { TerminologyIntegrationModalService } from '../terminology-integration/t
 import { Concept } from '../../entities/concept';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodePlain } from '../../entities/code-simple';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -27,7 +28,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   @Output() change = new EventEmitter<CodePlain[]>();
 
   infoDomains: Code[];
-  env: string;
 
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -56,16 +56,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
               public languageService: LanguageService,
-              private terminologyIntegrationModalService: TerminologyIntegrationModalService) {
+              private terminologyIntegrationModalService: TerminologyIntegrationModalService,
+              private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
     this.languageChangeSubscription = this.codeSchemeForm.controls['languageCodes'].valueChanges
       .subscribe(data => this.updateLanguages(data));
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -94,10 +91,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   ngOnDestroy() {
     this.cancelSubscription.unsubscribe();
     this.languageChangeSubscription.unsubscribe();
-  }
-
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
   }
 
   get editing() {
@@ -137,19 +130,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getCodeSchemeUri() {
-    if (this.env !== 'prod') {
-      return this.codeScheme.uri + '?env=' + this.env;
-    }
-    return this.codeScheme.uri;
+    return this.configurationService.getUriWithEnv(this.codeScheme.uri);
   }
 
   getConceptUri() {
     const conceptUri = this.codeScheme.conceptUriInVocabularies;
     if (conceptUri != null && conceptUri.length > 0) {
-      if (this.env !== 'prod') {
-        return conceptUri + '?env=' + this.env;
-      }
-      return conceptUri;
+      return this.configurationService.getUriWithEnv(conceptUri);
     }
     return null;
   }

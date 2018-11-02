@@ -16,6 +16,7 @@ import { ExternalReference } from '../../entities/external-reference';
 import { map, tap, flatMap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-create',
@@ -26,7 +27,6 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 export class CodeCreateComponent implements OnInit, AfterViewInit {
 
   codeScheme: CodeScheme;
-  env: string;
 
   codeForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid], this.codeValueExistsValidator()),
@@ -47,15 +47,12 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
               private editableService: EditableService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -152,9 +149,5 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.codeForm.patchValue({prefLabel: concept.prefLabel});
     this.codeForm.patchValue({definition: concept.definition});
     this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
-  }
-
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
   }
 }

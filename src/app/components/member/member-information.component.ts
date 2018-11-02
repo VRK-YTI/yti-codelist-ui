@@ -15,6 +15,7 @@ import { validDateRange } from '../../utils/date';
 import { Code } from '../../entities/code';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-member-information',
@@ -26,7 +27,6 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   @Input() currentMember: Member;
 
   extension: Extension;
-  env: string;
 
   cancelSubscription: Subscription;
 
@@ -46,13 +46,10 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
               private userService: UserService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              public languageService: LanguageService) {
+              public languageService: LanguageService,
+              private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -133,7 +130,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   get loading(): boolean {
 
-    return this.extension == null || this.currentMember == null || this.env == null;
+    return this.extension == null || this.currentMember == null;
   }
 
   canSave() {
@@ -159,10 +156,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     const code: Code = this.memberForm.controls['code'].value;
     if (code) {
-      if (this.env !== 'prod') {
-        return code.uri + '?env=' + this.env;
-      }
-      return code.uri;
+      return this.configurationService.getUriWithEnv(code.uri);
     }
     return null;
   }
@@ -173,10 +167,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     if (code) {
       const conceptUri: string = code.conceptUriInVocabularies;
       if (conceptUri) {
-        if (this.env !== 'prod') {
-          return conceptUri + '?env=' + this.env;
-        }
-        return conceptUri;
+        return this.configurationService.getUriWithEnv(conceptUri);
       }
     }
     return null;
@@ -184,10 +175,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   getMemberUri() {
 
-    if (this.env !== 'prod') {
-      return this.currentMember.uri + '?env=' + this.env;
-    }
-    return this.currentMember.uri;
+    return this.configurationService.getUriWithEnv(this.currentMember.uri);
   }
 
   isUnaryOperatorPatternValid(control: AbstractControl) {

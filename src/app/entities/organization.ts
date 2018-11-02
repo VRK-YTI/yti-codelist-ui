@@ -1,6 +1,6 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { OrganizationType } from '../services/api-schema';
-import { labelNameToResourceIdIdentifier } from '../../../node_modules/yti-common-ui/utils/resource';
+import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 
 export class Organization {
 

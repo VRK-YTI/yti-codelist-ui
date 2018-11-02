@@ -14,6 +14,7 @@ import { map, tap, flatMap } from 'rxjs/operators';
 import { PropertyType } from '../../entities/property-type';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-extension-create',
@@ -24,7 +25,6 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 export class ExtensionCreateComponent implements OnInit {
 
   codeScheme: CodeScheme;
-  env: string;
   codeSchemes: CodeScheme[];
   propertyType: PropertyType;
   title: string;
@@ -43,15 +43,12 @@ export class ExtensionCreateComponent implements OnInit {
               private editableService: EditableService,
               private location: Location,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
     this.editableService.edit();
-
-    dataService.getServiceConfiguration().subscribe(configuration => {
-      this.env = configuration.env;
-    });
   }
 
   ngOnInit() {
@@ -85,12 +82,8 @@ export class ExtensionCreateComponent implements OnInit {
     }
   }
 
-  get showUnfinishedFeature() {
-    return this.env === 'dev' || this.env === 'local';
-  }
-
   get loading(): boolean {
-    return !this.env || !this.codeScheme || !this.propertyType;
+    return !this.codeScheme || !this.propertyType;
   }
 
   back() {
