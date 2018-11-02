@@ -20,7 +20,6 @@ export class ConfigurationService {
     return promise;
   }
 
-
   get loading(): boolean {
 
     return this.configuration == null;
