@@ -4,30 +4,25 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>
+  <app-back-button [id]="'registry_back_button'" (back)="back()"></app-back-button>
 
-  <div class="row" *ngIf="codeRegistry.description | translateValue">
-    <div class="col-12">
-      <p class="description text-content-wrap">{{codeRegistry.description | translateValue}}</p>
+  <div class="main">
+    <div>
+      <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12">
-      <div class="float-right">
-        <div *ngIf='this.canDelete' ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
-          <button class="btn btn-action" id="registryDropdown" ngbDropdownToggle translate>Choose action</button>
-          <div ngbDropdownMenu aria-labelledby="registryDropdown">
-            <button id="delete_registry_button"
-                    *ngIf='this.canDelete'
-                    type="button"
-                    class="dropdown-item"
-                    (click)="delete()"
-                    translate>Delete registry</button>
-          </div>
+    <div class="float-right">
+      <div *ngIf='this.canDelete' ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
+        <button class="btn btn-action" id="registryDropdown" ngbDropdownToggle translate>Choose action</button>
+        <div ngbDropdownMenu aria-labelledby="registryDropdown">
+          <button id="delete_registry_button"
+                  *ngIf='this.canDelete'
+                  type="button"
+                  class="dropdown-item"
+                  (click)="delete()"
+                  translate>Delete registry</button>
         </div>
-        <app-content-language></app-content-language>
       </div>
+      <app-content-language></app-content-language>
     </div>
   </div>
 
