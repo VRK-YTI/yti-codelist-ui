@@ -4,6 +4,8 @@
 
 <div *ngIf="!loading" class="content-box">
 
+  <app-back-button [id]="'extension_back_button'" (back)="back()"></app-back-button>
+
   <div class="main">
     <div>
       <div class="d-inline-block">
