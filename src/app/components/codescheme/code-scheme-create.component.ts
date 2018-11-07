@@ -192,18 +192,26 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     };
 
     if (this.cloning) {
-      console.log('Cloning CodeScheme');
-      return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning, newVersionEmpty)
-        .pipe(tap(createdCodeScheme => {
-          console.log('Saved cloned CodeScheme');
-          this.router.navigate([
-            'codescheme',
-            {
-              registryCode: codeRegistry.codeValue,
-              schemeCode: codeScheme.codeValue
-            }
-          ]);
-        }));
+      const save = () => {
+        console.log('Cloning CodeScheme');
+        return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning, newVersionEmpty)
+          .pipe(tap(createdCodeScheme => {
+            console.log('Saved cloned CodeScheme');
+            this.router.navigate([
+              'codescheme',
+              {
+                registryCode: codeRegistry.codeValue,
+                schemeCode: codeScheme.codeValue
+              }
+            ]);
+          }));
+      };
+
+      if (this.codeSchemeForm.controls['newVersionEmpty'].value === 'true') {
+        return from (this.confirmationModalService.openCreateNewCodeSchemeVersionAsEmpty()).pipe(flatMap(save));
+      } else {
+        return save();
+      }
     } else {
       const save = () => {
         console.log('Saving new CodeScheme');
@@ -253,13 +261,5 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
     this.codeSchemeForm.patchValue({ definition: concept.definition });
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
-  }
-
-  areYouSureToCreateEmpty() {
-    this.confirmationModalService.openCreateNewCodeSchemeVersionAsEmpty().then( () => {
-      // do nothing if "yes" is clicked, default value of newVersionEmpty is already true
-    }, () => {
-      this.codeSchemeForm.patchValue({ newVersionEmpty: 'false' });
-    } )
   }
 }
