@@ -973,6 +973,9 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
 msgstr ""
 
+msgid "ERR_MSG_USER_ROW_MISSING_HREF"
+msgstr ""
+
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr ""
 
