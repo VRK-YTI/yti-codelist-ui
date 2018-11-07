@@ -658,6 +658,17 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new Member(data))));
   }
 
+  externalReferenceExists(registryCodeValue: string, schemeCodeValue: string, href: string): Observable<boolean> {
+
+    const encodedHref = encodeURIComponent(href);
+
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${externalReferences}/?href=app-external-references-input${encodedHref}`, { observe: 'response' })
+      .pipe(
+        map(res => res.status === 200),
+        catchError(err => of(false))
+      );
+  }
+
   registryCodeValueExists(registryCodeValue: string): Observable<boolean> {
 
     return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}`, { observe: 'response' })

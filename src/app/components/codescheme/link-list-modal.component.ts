@@ -10,6 +10,7 @@ import { PropertyType } from '../../entities/property-type';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-link-list-modal',
@@ -19,7 +20,7 @@ import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.componen
 })
 export class LinkListModalComponent implements OnInit {
 
-  @Input() codeSchemeId: string;
+  @Input() codeScheme: CodeScheme;
   @Input() restrictExternalReferenceIds: string[];
   @Input() languageCodes: CodePlain[];
   @Input() propertyType: PropertyType;
@@ -68,7 +69,7 @@ export class LinkListModalComponent implements OnInit {
 
   create() {
     this.hidden = true;
-    this.linkCreateModalService.open(this.languageCodes, this.selectedPropertyType)
+    this.linkCreateModalService.open(this.codeScheme, this.languageCodes, this.selectedPropertyType)
       .then(externalReference => this.modal.close(externalReference), reasonToClose => this.modal.dismiss(reasonToClose));
   }
 
@@ -109,10 +110,10 @@ export class LinkListModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(codeSchemeId: string, externalReferences: ExternalReference[], languageCodes: CodePlain[], propertyType: PropertyType, propertyTypes: PropertyType[]): Promise<ExternalReference> {
+  public open(codeScheme: CodeScheme, externalReferences: ExternalReference[], languageCodes: CodePlain[], propertyType: PropertyType, propertyTypes: PropertyType[]): Promise<ExternalReference> {
     const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as LinkListModalComponent;
-    instance.codeSchemeId = codeSchemeId;
+    instance.codeScheme = codeScheme;
     instance.externalReferences = externalReferences;
     instance.languageCodes = languageCodes;
     instance.propertyType = propertyType;

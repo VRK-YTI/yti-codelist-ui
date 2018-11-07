@@ -14,6 +14,7 @@ import { DataService } from '../../services/data.service';
 import { PropertyType } from '../../entities/property-type';
 import { LinkCreateModalService } from '../codescheme/link-create-modal.component';
 import { Subscription } from 'rxjs';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-external-references-input',
@@ -78,7 +79,7 @@ import { Subscription } from 'rxjs';
 export class ExternalReferencesInputComponent implements ControlValueAccessor, OnInit, OnDestroy {
 
   @Input() label: string;
-  @Input() codeSchemeId: string;
+  @Input() codeScheme: CodeScheme;
   @Input() infoText: string;
   @Input() restrict = false;
   @Input() required = false;
@@ -134,28 +135,34 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
 
   addLink(propertyType: PropertyType) {
 
-    this.loading = true;
+    if (this.codeScheme) {
+      this.loading = true;
 
-    this.dataService.getExternalReferences(this.codeSchemeId).subscribe(extReferences => {
-      
-      const restrictIds = this.externalReferences.map(link => link.id);
-      const otherExternalReferences = extReferences.filter(externalReference => restrictIds.indexOf(externalReference.id) === -1);
-      const externalReferencesOfThisType = otherExternalReferences.filter(extRef => extRef.propertyType!.id === propertyType.id);
-      const externalReferencesOfThisTypeFound = externalReferencesOfThisType.length > 0;      
+      this.dataService.getExternalReferences(this.codeScheme.id).subscribe(extReferences => {
 
-      this.loading = false;
+        const restrictIds = this.externalReferences.map(link => link.id);
+        const otherExternalReferences = extReferences.filter(externalReference => restrictIds.indexOf(externalReference.id) === -1);
+        const externalReferencesOfThisType = otherExternalReferences.filter(extRef => extRef.propertyType!.id === propertyType.id);
+        const externalReferencesOfThisTypeFound = externalReferencesOfThisType.length > 0;
 
-      if (externalReferencesOfThisTypeFound) {
-        this.linkListModalService.open(this.codeSchemeId, otherExternalReferences, this.languageCodes, propertyType, this.propertyTypes)
-        .then(link => this.externalReferences.push(link), ignoreModalClose);
-      } else {
-        this.linkCreateModalService.open(this.languageCodes, propertyType)
+        this.loading = false;
+
+        if (externalReferencesOfThisTypeFound) {
+          this.linkListModalService.open(this.codeScheme, otherExternalReferences, this.languageCodes, propertyType, this.propertyTypes)
+            .then(link => this.externalReferences.push(link), ignoreModalClose);
+        } else {
+          this.linkCreateModalService.open(this.codeScheme, this.languageCodes, propertyType)
+            .then(link => {
+              this.externalReferences.push(link);
+            }, ignoreModalClose);
+        }
+      });
+    } else {
+      this.linkCreateModalService.open(this.codeScheme, this.languageCodes, propertyType)
         .then(link => {
           this.externalReferences.push(link);
         }, ignoreModalClose);
-      }
-
-    });
+    }
   }
 
   editExternalReference(externalReference: ExternalReference) {

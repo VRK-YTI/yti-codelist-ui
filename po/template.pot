@@ -4,9 +4,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Reference Data"
-msgstr ""
-
 msgid "All link types"
 msgstr ""
 
@@ -113,6 +110,9 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
+msgstr ""
+
+msgid "Reference Data"
 msgstr ""
 
 msgid "LABEL_TEXT_CODE_VALUE"
@@ -1096,10 +1096,10 @@ msgstr ""
 msgid "Are you sure you want to create the version as empty?"
 msgstr ""
 
-msgid "invalidDate"
+msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "invalidDate"
 msgstr ""
 
 msgid "registryCodeValueExists"
@@ -1111,7 +1111,10 @@ msgstr ""
 msgid "codeValueExists"
 msgstr ""
 
-msgid "extensionCodeValueExists"
+msgid "invalidDateRange"
+msgstr ""
+
+msgid "externalReferenceExists"
 msgstr ""
 
 msgid "codeValueValidationError"

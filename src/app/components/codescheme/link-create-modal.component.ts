@@ -1,32 +1,52 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Injectable, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
 import { ModalService } from '../../services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
+import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup } from '@angular/forms';
+import { map } from 'rxjs/operators';
+import { CodeScheme } from '../../entities/code-scheme';
+import { ExternalReferenceType } from '../../services/api-schema';
+import { DataService } from '../../services/data.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-link-create-modal',
   templateUrl: './link-create-modal.component.html',
   providers: [EditableService]
 })
-export class LinkCreateModalComponent implements OnInit {
+export class LinkCreateModalComponent implements OnInit, AfterViewInit {
 
   @Input() languageCodes: CodePlain[];
   @Input() propertyType: PropertyType | null;
+  @Input() codeScheme: CodeScheme;
 
-  externalReference = new ExternalReference();
+  externalReferenceForm = new FormGroup({
+    title: new FormControl({}),
+    description: new FormControl({}),
+    href: new FormControl(''),
+    propertyType: new FormControl('')
+  });
 
   constructor(private editableService: EditableService,
-              private modal: NgbActiveModal) {
+              private modal: NgbActiveModal,
+              private dataService: DataService) {
 
     this.editableService.edit();
   }
 
   ngOnInit() {
     if (this.propertyType) {
-      this.externalReference.propertyType = this.propertyType;
+      this.externalReferenceForm.controls['propertyType'].setValue(this.propertyType);
+    }
+    this.externalReferenceForm.updateValueAndValidity();
+  }
+
+  ngAfterViewInit() {
+    if (this.codeScheme && this.codeScheme.id) {
+      this.externalReferenceForm.controls['href'].setAsyncValidators(this.externalReferenceExistsValidator.bind(this));
     }
   }
 
@@ -35,7 +55,34 @@ export class LinkCreateModalComponent implements OnInit {
   }
 
   add() {
-    this.modal.close(this.externalReference);
+    const externalReferenceType: ExternalReferenceType = <ExternalReferenceType> {
+      id: '',
+      url: '',
+      global: false,
+      title: this.externalReferenceForm.controls['title'].value,
+      description: this.externalReferenceForm.controls['description'].value,
+      propertyType: this.externalReferenceForm.controls['propertyType'].value,
+      href: this.externalReferenceForm.controls['href'].value
+    };
+    const externalReference: ExternalReference = new ExternalReference(externalReferenceType);
+    this.modal.close(externalReference);
+  }
+
+  externalReferenceExistsValidator(): Observable<any> {
+    console.log('validating with codescheme!');
+    const schemeCodeValue = this.codeScheme.codeValue;
+    console.log('schemeCodeValue: ' + schemeCodeValue);
+    const registryCodeValue = this.codeScheme.codeRegistry.codeValue;
+    console.log('registryCodeValue: ' + registryCodeValue);
+    const externalReferenceHref = this.externalReferenceForm.controls['href'].value;
+    console.log('externalReferenceHref: ' + externalReferenceHref);
+    const validationError = {
+      externalReferenceExists: {
+        valid: false
+      }
+    };
+    return this.dataService.externalReferenceExists(registryCodeValue, schemeCodeValue, externalReferenceHref)
+        .pipe(map(exists => exists ? validationError : null));
   }
 }
 
@@ -45,9 +92,10 @@ export class LinkCreateModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(languageCodes: CodePlain[], propertyType: PropertyType | null): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkCreateModalComponent, {size: 'sm'});
+  public open(codeScheme: CodeScheme, languageCodes: CodePlain[], propertyType: PropertyType | null): Promise<ExternalReference> {
+    const modalRef = this.modalService.open(LinkCreateModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as LinkCreateModalComponent;
+    instance.codeScheme = codeScheme;
     instance.languageCodes = languageCodes;
     instance.propertyType = propertyType;
     return modalRef.result;

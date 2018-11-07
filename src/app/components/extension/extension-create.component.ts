@@ -14,7 +14,6 @@ import { map, tap, flatMap } from 'rxjs/operators';
 import { PropertyType } from '../../entities/property-type';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-extension-create',
@@ -43,8 +42,7 @@ export class ExtensionCreateComponent implements OnInit {
               private editableService: EditableService,
               private location: Location,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService,
-              private configurationService: ConfigurationService) {
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());

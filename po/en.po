@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-26 16:32+0300\n"
+"PO-Revision-Date: 2018-11-07 14:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -12,9 +12,6 @@ msgstr ""
 "X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Reference Data"
-msgstr ""
 
 msgid "All link types"
 msgstr ""
@@ -122,6 +119,9 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
+msgstr ""
+
+msgid "Reference Data"
 msgstr ""
 
 msgid "LABEL_TEXT_CODE_VALUE"
@@ -1221,16 +1221,14 @@ msgid "SUGGEST CONCEPT MODAL QUESTION"
 msgstr ""
 "Do you want to suggest concept {{concept}} to vocabulary {{vocabulary}}?"
 
-#, fuzzy
-#| msgid "Choose how to create the new version"
 msgid "Are you sure you want to create the version as empty?"
 msgstr "The content imported to the new version"
 
+msgid "extensionCodeValueExists"
+msgstr "Extension value is already in use in this code list."
+
 msgid "invalidDate"
 msgstr "Invalid date"
-
-msgid "invalidDateRange"
-msgstr "Invalid date range"
 
 msgid "registryCodeValueExists"
 msgstr "Registry code value is already in use."
@@ -1241,8 +1239,11 @@ msgstr "Code list value is already in use in this registry."
 msgid "codeValueExists"
 msgstr "Code value is already in use."
 
-msgid "extensionCodeValueExists"
-msgstr "Extension value is already in use in this code list."
+msgid "invalidDateRange"
+msgstr "Invalid date range"
+
+msgid "externalReferenceExists"
+msgstr "Link is already in use in this code list."
 
 msgid "codeValueValidationError"
 msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"

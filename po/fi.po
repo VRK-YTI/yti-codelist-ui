@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-10-26 16:29+0300\n"
+"PO-Revision-Date: 2018-11-07 14:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -12,9 +12,6 @@ msgstr ""
 "X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgid "Reference Data"
-msgstr "Koodistot"
 
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
@@ -123,6 +120,9 @@ msgstr "Kaikki organisaatiot"
 
 msgid "All vocabularies"
 msgstr "Kaikki sanastot"
+
+msgid "Reference Data"
+msgstr "Koodistot"
 
 msgid "LABEL_TEXT_CODE_VALUE"
 msgstr "Koodin arvo"
@@ -1222,11 +1222,11 @@ msgstr "Haluatko ehdottaa käsitettä {{concept}} sanastoon {{vocabulary}}? "
 msgid "Are you sure you want to create the version as empty?"
 msgstr "Oletko varma, että haluat luoda uuden  version tyhjänä?"
 
+msgid "extensionCodeValueExists"
+msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
-
-msgid "invalidDateRange"
-msgstr "Virheellinen päivämääräväli"
 
 msgid "registryCodeValueExists"
 msgstr "Rekisterin tunnus on jo käytössä."
@@ -1237,8 +1237,11 @@ msgstr "Koodiston tunnus on jo käytössä tässä rekisterissä."
 msgid "codeValueExists"
 msgstr "Tunnus on jo käytössä."
 
-msgid "extensionCodeValueExists"
-msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
+msgid "invalidDateRange"
+msgstr "Virheellinen päivämääräväli"
+
+msgid "externalReferenceExists"
+msgstr "Linkki on jo käytössä tässä koodistossa."
 
 msgid "codeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"

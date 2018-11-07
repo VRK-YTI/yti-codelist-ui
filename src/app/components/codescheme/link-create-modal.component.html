@@ -10,35 +10,30 @@
 
       <app-content-language [languageCodes]="languageCodes" class="float-right mb-2"></app-content-language>
 
-      <form #form="ngForm">
+      <form [formGroup]="externalReferenceForm" #form="ngForm">
 
         <app-localizable-input [id]="'link_title_input'"
                                [label]="'Link title' | translate"
-                               [name]="'title'"
                                [infoText]="'INFO_TEXT_LINK_TITLE'"
-                               [(ngModel)]="externalReference.title"></app-localizable-input>
+                               [formControlName]="'title'"></app-localizable-input>
 
         <app-localizable-textarea [id]="'link_description_textarea'"
                                   [label]="'Description' | translate"
-                                  [name]="'description'"
                                   [infoText]="'INFO_TEXT_LINK_DESCRIPTION'"
-                                  [(ngModel)]="externalReference.description"></app-localizable-textarea>
+                                  [formControlName]="'description'"></app-localizable-textarea>
 
         <app-literal-input [id]="'link_url_input'"
                            [label]="'URL' | translate"
-                           [name]="'href'"
                            [required]="true"
                            required
                            [infoText]="'INFO_TEXT_LINK_URL'"
-                           [(ngModel)]="externalReference.href"></app-literal-input>
+                           [formControlName]="'href'"></app-literal-input>
 
         <app-property-type-select id="propertytype_select"
-                                  [name]="'propertyType'"
                                   [label]="'Link type' | translate"
                                   [context]="'ExternalReference'"
                                   [infoText]="'INFO_TEXT_LINK_TYPE'"
-                                  [(ngModel)]="externalReference.propertyType"></app-property-type-select>
-
+                                  [formControlName]="'propertyType'"></app-property-type-select>
       </form>
     </div>
   </div>
