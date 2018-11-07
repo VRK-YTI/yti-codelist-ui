@@ -16,7 +16,7 @@ export class CodeSchemeVariantMothersComponent {
               private configurationService: ConfigurationService) {
   }
 
-  getVariantUri(variantUri: string) {
+  getVariantUri(variantUri: string): string | null {
     return this.configurationService.getUriWithEnv(variantUri);
   }
 }

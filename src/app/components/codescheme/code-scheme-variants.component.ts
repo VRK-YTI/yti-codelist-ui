@@ -38,7 +38,7 @@ export class CodeSchemeVariantsComponent {
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 
-  getVariantUri(variantUri: string) {
-    this.configurationService.getUriWithEnv(variantUri);
+  getVariantUri(variantUri: string): string | null {
+    return this.configurationService.getUriWithEnv(variantUri);
   }
 }
