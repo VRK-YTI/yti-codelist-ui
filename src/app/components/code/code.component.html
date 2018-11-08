@@ -12,7 +12,7 @@
         <h1 *ngIf="code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}} - {{code.prefLabel | translateValue}}</h1>
         <h1 *ngIf="!code.hasPrefLabel()" class="text-content-wrap">{{code.codeValue}}</h1>
       </div>
-      <div class="d-inline-block">
+      <div class="d-inline-block ml-5 align-top mt-2">
         <app-status class="float-left" [status]="code.status"></app-status>
       </div>
     </div>
