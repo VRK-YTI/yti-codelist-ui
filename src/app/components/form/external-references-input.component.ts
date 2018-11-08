@@ -135,7 +135,7 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
 
   addLink(propertyType: PropertyType) {
 
-    if (this.codeScheme) {
+    if (this.codeScheme && this.codeScheme.id) {
       this.loading = true;
 
       this.dataService.getExternalReferences(this.codeScheme.id).subscribe(extReferences => {

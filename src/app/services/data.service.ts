@@ -662,7 +662,7 @@ export class DataService {
 
     const encodedHref = encodeURIComponent(href);
 
-    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${externalReferences}/?href=app-external-references-input${encodedHref}`, { observe: 'response' })
+    return this.http.head(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${externalReferences}/?href=${encodedHref}`, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
