@@ -69,13 +69,9 @@ export class LinkCreateModalComponent implements OnInit, AfterViewInit {
   }
 
   externalReferenceExistsValidator(): Observable<any> {
-    console.log('validating with codescheme!');
     const schemeCodeValue = this.codeScheme.codeValue;
-    console.log('schemeCodeValue: ' + schemeCodeValue);
     const registryCodeValue = this.codeScheme.codeRegistry.codeValue;
-    console.log('registryCodeValue: ' + registryCodeValue);
     const externalReferenceHref = this.externalReferenceForm.controls['href'].value;
-    console.log('externalReferenceHref: ' + externalReferenceHref);
     const validationError = {
       externalReferenceExists: {
         valid: false
