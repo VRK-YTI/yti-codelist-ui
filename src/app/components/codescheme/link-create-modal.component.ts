@@ -5,12 +5,12 @@ import { EditableService } from '../../services/editable.service';
 import { ModalService } from '../../services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
-import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ExternalReferenceType } from '../../services/api-schema';
 import { DataService } from '../../services/data.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-link-create-modal',
@@ -76,7 +76,7 @@ export class LinkCreateModalComponent implements OnInit, AfterViewInit {
       }
     };
     return this.dataService.externalReferenceExists(registryCodeValue, schemeCodeValue, externalReferenceHref)
-        .pipe(map(exists => exists ? validationError : null));
+      .pipe(map(exists => exists ? validationError : null));
   }
 }
 
