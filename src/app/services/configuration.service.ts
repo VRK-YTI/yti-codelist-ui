@@ -13,11 +13,10 @@ export class ConfigurationService {
   }
 
   fetchConfiguration(): Promise<ServiceConfiguration> {
-    const promise = this.dataService.getServiceConfiguration().toPromise().then(configuration => {
+    return this.dataService.getServiceConfiguration().toPromise().then(configuration => {
       this.configuration = configuration;
       return configuration;
     });
-    return promise;
   }
 
   get loading(): boolean {
