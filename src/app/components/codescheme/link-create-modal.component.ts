@@ -56,8 +56,6 @@ export class LinkCreateModalComponent implements OnInit, AfterViewInit {
 
   add() {
     const externalReferenceType: ExternalReferenceType = <ExternalReferenceType> {
-      id: '',
-      url: '',
       global: false,
       title: this.externalReferenceForm.controls['title'].value,
       description: this.externalReferenceForm.controls['description'].value,
