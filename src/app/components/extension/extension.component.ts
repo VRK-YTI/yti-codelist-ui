@@ -95,10 +95,6 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     }
   }
 
-  back() {
-    this.router.navigate(this.extension.parentCodeScheme.route);
-  }
-
   isEditing(): boolean {
     return this.editableService.editing;
   }

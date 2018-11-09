@@ -88,11 +88,6 @@ export class MemberComponent implements OnInit, EditingComponent {
     }
   }
 
-  back() {
-
-    this.router.navigate(this.extension.route);
-  }
-
   isEditing(): boolean {
 
     return this.editableService.editing;

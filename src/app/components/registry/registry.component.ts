@@ -75,10 +75,6 @@ export class RegistryComponent implements OnInit, EditingComponent {
     }
   }
 
-  back() {
-    this.router.navigate(['registries']);
-  }
-
   isEditing(): boolean {
     return this.editableService.editing;
   }

@@ -15,13 +15,8 @@ export class CodeSchemeImportAndCreateComponent implements OnInit {
               private locationService: LocationService) {
   }
 
-
   ngOnInit() {
     this.locationService.atCodeSchemeImportAndCreatePage();
-  }
-
-  back() {
-    this.router.navigate(['frontpage']);
   }
 
   importFromFile() {

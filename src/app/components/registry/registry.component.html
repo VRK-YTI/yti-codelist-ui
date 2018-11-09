@@ -4,8 +4,6 @@
 
 <div *ngIf="!loading" class="content-box">
 
-  <app-back-button [id]="'registry_back_button'" (back)="back()"></app-back-button>
-
   <div class="main">
     <div>
       <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>

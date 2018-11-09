@@ -128,10 +128,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     }
   }
 
-  back() {
-    this.router.navigate(['frontpage']);
-  }
-
   isEditing(): boolean {
     return this.editableService.editing;
   }

@@ -21,7 +21,6 @@ import { flatMap, map, tap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Organization } from '../../entities/organization';
-import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -67,8 +66,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private location: Location,
               private languageService: LanguageService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService,
-              private configurationService: ConfigurationService) {
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -208,7 +206,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       };
 
       if (this.codeSchemeForm.controls['newVersionEmpty'].value === 'true') {
-        return from (this.confirmationModalService.openCreateNewCodeSchemeVersionAsEmpty()).pipe(flatMap(save));
+        return from(this.confirmationModalService.openCreateNewCodeSchemeVersionAsEmpty()).pipe(flatMap(save));
       } else {
         return save();
       }

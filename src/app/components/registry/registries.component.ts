@@ -46,8 +46,4 @@ export class RegistriesComponent implements OnInit {
   codeRegistryIdentity(index: number, item: CodeRegistry) {
     return item.id;
   }
-
-  back() {
-    this.router.navigate(['frontpage']);
-  }
 }

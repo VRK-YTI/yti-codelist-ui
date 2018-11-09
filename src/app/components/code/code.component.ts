@@ -81,10 +81,6 @@ export class CodeComponent implements OnInit, EditingComponent {
     }
   }
 
-  back() {
-    this.router.navigate(this.code.codeScheme.route);
-  }
-
   isEditing(): boolean {
     return this.editableService.editing;
   }
