@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-07 16:52+0200\n"
+"PO-Revision-Date: 2018-11-09 09:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -828,10 +828,8 @@ msgstr ""
 "extension members to the new version or whether you want to create a new "
 "blank version without them."
 
-msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
-msgstr ""
-"Broader code references a codevalue that does not exist with code value "
-"{{ identifier }}, failing."
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgstr "Broader code references codevalue of the code itself, failing."
 
 msgid "Front page"
 msgstr ""
@@ -1019,11 +1017,13 @@ msgstr "Error parsing CSV file."
 msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
 msgstr "Duplicate header value found, failing."
 
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr ""
+"Broader code references a codevalue that does not exist with code value "
+"{{ identifier }}, failing."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
-msgstr "Broader code references codevalue of the code itself, failing."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
 msgstr "Invalid STATUS value defined in data."
@@ -1094,6 +1094,9 @@ msgstr "Code list linked to extension not found."
 
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to extension not found."
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
+msgstr "PropertyType linked to externalreference not found."
 
 msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
