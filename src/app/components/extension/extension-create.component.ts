@@ -90,13 +90,14 @@ export class ExtensionCreateComponent implements OnInit {
 
   save(formData: any): Observable<any> {
 
-    const { validity, ...rest } = formData;
+    const { validity, codeSchemes, ...rest } = formData;
 
     const extension: ExtensionType = <ExtensionType> {
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
-      propertyType: this.propertyType.serialize()
+      propertyType: this.propertyType.serialize(),
+      codeSchemes: codeSchemes.map((cs: CodeScheme) => cs.serialize())
     };
 
     const save = () => {
