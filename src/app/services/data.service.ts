@@ -633,12 +633,12 @@ export class DataService {
       `${membersIntakeBasePath}/${memberToSave.id}`, memberToSave);
   }
 
-  createMember(extension: MemberType,
+  createMember(member: MemberType,
                registryCodeValue: string,
                schemeCodeValue: string,
                extensionCodeValue: string): Observable<Member> {
 
-    return this.createMembers([extension], registryCodeValue, schemeCodeValue, extensionCodeValue).pipe(map(createdMembers => {
+    return this.createMembers([member], registryCodeValue, schemeCodeValue, extensionCodeValue).pipe(map(createdMembers => {
       if (createdMembers.length !== 1) {
         throw new Error('Exactly one member needs to be created');
       } else {
@@ -647,14 +647,14 @@ export class DataService {
     }));
   }
 
-  createMembers(extensionList: MemberType[],
+  createMembers(memberList: MemberType[],
                 registryCodeValue: string,
                 schemeCodeValue: string,
                 extensionCodeValue: string): Observable<Member[]> {
 
     return this.http.post<WithResults<MemberType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/` +
       `${extensions}/${extensionCodeValue}/${members}/`,
-      extensionList)
+      memberList)
       .pipe(map(res => res.results.map(data => new Member(data))));
   }
 

@@ -75,14 +75,14 @@ export class MemberCreateComponent implements OnInit {
 
     console.log('Saving new Member');
 
-    const { code, currentExtension, unaryOperator, comparisonOperator, validity, ...rest } = formData;
+    const { code, unaryOperator, comparisonOperator, validity, ...rest } = formData;
 
     const member: MemberType = <MemberType> {
       ...rest,
-      code: code,
+      code: code.serialize(),
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
-      extension: currentExtension
+      extension: this.extension.serialize()
     };
 
     const memberValues: MemberValueType[] = [];
