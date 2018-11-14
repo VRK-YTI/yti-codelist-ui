@@ -429,10 +429,11 @@ export class DataService {
 
     const params = {
       'format': format,
-      'originalCodeSchemeIdIfCreatingNewVersion': originalCodeSchemeIdIfCreatingNewVersion
+      'originalCodeSchemeIdIfCreatingNewVersion': originalCodeSchemeIdIfCreatingNewVersion,
+      'newVersionOfCodeScheme': String(newVersion)
     };
 
-    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${newVersion}`, formData, { params })
+    return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`, formData, { params })
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
