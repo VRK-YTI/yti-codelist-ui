@@ -56,12 +56,12 @@
     </div>
 
     <div class="pb-2" *ngIf="!loading && (debouncedSearch$ | async)">
-      <p translate style="padding-top: 10px"  *ngIf="showUnfinishedFeature">Concept suggestion instruction text</p>
+      <p translate style="padding-top: 10px">Concept suggestion instruction text</p>
 
       <dl>
         <dd>
           <div>
-            <button id="open_terminology_modal_button_for_concept_suggestion" *ngIf="showUnfinishedFeature"
+            <button id="open_terminology_modal_button_for_concept_suggestion"
                     type="button"
                     class="btn btn-sm btn-secondary-action mt-2"
                     (click)="suggestAConcept()" [disabled]="!canSuggest()" translate>Suggest the concept to Controlled Vocabularies</button>
