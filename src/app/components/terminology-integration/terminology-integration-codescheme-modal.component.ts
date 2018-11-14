@@ -169,9 +169,6 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     }, ignoreModalClose);
   }
 
-  get showUnfinishedFeature(): boolean {
-    return this.configurationService.showUnfinishedFeature;
-  }
 }
 
 @Injectable()
