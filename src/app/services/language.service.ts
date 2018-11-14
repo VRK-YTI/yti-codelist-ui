@@ -61,7 +61,12 @@ export class LanguageService implements Localizer {
       return primaryLocalization;
     } else {
 
-      // FIXME: dummy fallback
+      const fallbackValue = this.checkForFallbackLanguages(localizable);
+
+      if (fallbackValue != null) {
+        return fallbackValue;
+      }
+
       for (const [language, value] of Object.entries(localizable)) {
         if (value) {
           return `${value} (${language})`;
@@ -70,5 +75,30 @@ export class LanguageService implements Localizer {
 
       return '';
     }
+  }
+
+  checkForFallbackLanguages(localizable: Localizable): string | null {
+    const fallbackLanguages: string[] = ['en', 'fi', 'sv'];
+
+    let fallback: string | null = null;
+
+    fallbackLanguages.forEach(language => {
+      if (this.hasLocalizationForLanguage(localizable, language)) {
+        fallback = this.fallbackLocalization(localizable, language);
+        return;
+      }
+    });
+
+    return fallback;
+  }
+
+  hasLocalizationForLanguage(localizable: Localizable, language: string) {
+    const value: string = localizable[language];
+    return value != null && value !== '';
+  }
+
+  fallbackLocalization(localizable: Localizable, language: string) {
+    const value: string = localizable[language];
+    return `${value} (${language})`;
   }
 }
