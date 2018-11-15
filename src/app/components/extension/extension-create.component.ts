@@ -62,6 +62,9 @@ export class ExtensionCreateComponent implements OnInit {
 
     this.dataService.getPropertyType(propertyTypeLocalName).subscribe(propertyType => {
       this.propertyType = propertyType;
+      if (this.propertyType.context === 'InlineExtension') {
+        this.extensionForm.controls['codeValue'].setValue(this.propertyType.localName);
+      }
     });
 
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
@@ -75,8 +78,14 @@ export class ExtensionCreateComponent implements OnInit {
       this.title = 'Create calculation hierarchy';
     } else if (propertyTypeLocalName === 'definitionHierarchy') {
       this.title = 'Create definition hierarchy';
+    } else if (propertyTypeLocalName === 'dpmMetric') {
+      this.title = 'Create DPM metric';
+    } else if (propertyTypeLocalName === 'dpmExplicitDomain') {
+      this.title = 'Create DPM explicit domain';
+    } else if (propertyTypeLocalName === 'dpmDimension') {
+      this.title = 'Create DPM dimension';
     } else {
-      this.title = 'Create member';
+      this.title = 'Create extension';
     }
   }
 
@@ -134,5 +143,13 @@ export class ExtensionCreateComponent implements OnInit {
       return this.dataService.extensionCodeValueExists(registryCodeValue, schemeCodeValue, extensionCodeValue)
         .pipe(map(exists => exists ? validationError : null));
     };
+  }
+
+  get allowCodeSchemes(): boolean {
+    return  this.propertyType.context === 'Extension';
+  }
+
+  get isInlineExtension(): boolean {
+    return this.propertyType.context === 'InlineExtension';
   }
 }

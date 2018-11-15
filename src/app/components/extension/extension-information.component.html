@@ -25,7 +25,8 @@
                      [value]="extension.propertyType.prefLabel | translateValue:false"
                      [infoText]="'INFO_TEXT_EXTENSION_TYPE'"></app-literal>
 
-        <app-code-scheme-input id="extension_code_scheme_input"
+        <app-code-scheme-input *ngIf="allowCodeSchemes"
+                               id="extension_code_scheme_input"
                                [label]="'Code list' | translate"
                                [parentCodeScheme]="extension.parentCodeScheme"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>

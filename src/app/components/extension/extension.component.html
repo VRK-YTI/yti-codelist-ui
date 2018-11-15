@@ -67,7 +67,8 @@
   </div>
 
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="extension_members_tab">
+    <ngb-tab *ngIf="showMembersTab"
+             id="extension_members_tab">
       <ng-template ngbTabTitle>
         <span translate>MEMBERS</span>
       </ng-template>

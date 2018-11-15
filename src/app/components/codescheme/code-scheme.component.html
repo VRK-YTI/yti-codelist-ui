@@ -49,17 +49,35 @@
                   (click)="openVariantSearchModal()"
                   translate>Attach variant to code list</button>
           <button id="create_extension_calculationhierarchy_button"
-                  *ngIf="canAddExtension"
+                  *ngIf="canAddExtensionWithType('calculationHierarchy')"
                   type="button"
                   class="dropdown-item"
                   (click)="createExtension('calculationHierarchy')"
                   translate>Create calculation hierarchy</button>
           <button id="create_extension_definitionhierarchy_button"
-                  *ngIf="canAddExtension"
+                  *ngIf="canAddExtensionWithType('definitionHierarchy')"
                   type="button"
                   class="dropdown-item"
                   (click)="createExtension('definitionHierarchy')"
                   translate>Create definition hierarchy</button>
+          <button id="create_extension_dpmmetric_button"
+                  *ngIf="canAddExtensionWithType('dpmMetric')"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createExtension('dpmMetric')"
+                  translate>Create DPM metric</button>
+          <button id="create_extension_dpmexplicitdomain_button"
+                  *ngIf="canAddExtensionWithType('dpmExplicitDomain')"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="canAddExtensionWithType('dpmExplicitDomain')"
+                  translate>Create DPM explicit domain</button>
+          <button id="create_extension_dpmdimension_button"
+                  *ngIf="canAddExtensionWithType('dpmDimension')"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createExtension('dpmDimension')"
+                  translate>Create DPM dimension</button>
           <button id="import_extensions_button"
                   *ngIf="canAddExtension"
                   type="button"

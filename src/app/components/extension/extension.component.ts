@@ -185,4 +185,9 @@ export class ExtensionComponent implements OnInit, EditingComponent {
       return save();
     }
   }
+
+  get showMembersTab() {
+    const propertyTypeLocalName: string = this.extension.propertyType.context;
+    return propertyTypeLocalName === 'Extension';
+  }
 }

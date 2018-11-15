@@ -21,6 +21,25 @@
       </ng-template>
     </ngb-tab>
 
+    <ngb-tab *ngIf="hasInlineExtensions"
+             id="codelist_inlineextensions_tab">
+      <ng-template ngbTabTitle>
+        <span translate>INLINE EXTENSIONS</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <div id="codelist_inlineextension_list_div" class="col-md-12">
+          <ul id="codelist_inlineextension_regular">
+            <li *ngFor="let extension of inlineExtensions">
+              <div id="{{extension.codeValue}}_codelist_inlineextension_listitem">
+                <app-extension-listitem [extension]="extension"></app-extension-listitem>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+    </ngb-tab>
+
   </ngb-tabset>
 
 </div>

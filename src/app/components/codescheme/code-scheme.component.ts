@@ -17,12 +17,13 @@ import { ExtensionImportModalService } from '../extension/extension-import-modal
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
-import { tap, flatMap } from 'rxjs/operators';
-import { Observable, from } from 'rxjs';
+import { flatMap, tap } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { changeToRestrictedStatus } from '../../utils/status-check';
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
 import { ConfigurationService } from '../../services/configuration.service';
+import { ExtensionSimple } from '../../entities/extension-simple';
 
 @Component({
   selector: 'app-code-scheme',
@@ -248,6 +249,33 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   get canAddExtension(): boolean {
     return this.configurationService.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  canAddExtensionWithType(propertyTypeLocalName: string): boolean {
+    if (this.isInlineExtension(propertyTypeLocalName) && this.hasExtension(propertyTypeLocalName)) {
+      return false;
+    }
+    return this.canAddExtension;
+  }
+
+  isInlineExtension(propertyTypeLocalName: string): boolean {
+    const inlineExtensionLocalNames: string[] = ['dpmMetric', 'dpmDimension', 'dpmExplicitDomain'];
+    for (const extensionPropertyTypeLocalName of inlineExtensionLocalNames) {
+      if (propertyTypeLocalName === extensionPropertyTypeLocalName) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  hasExtension(propertyTypeLocalName: string): boolean {
+    const extensions: ExtensionSimple[] = this.codeScheme.extensions ? this.codeScheme.extensions : [];
+    for (const extension of extensions) {
+      if (extension.propertyType.localName === propertyTypeLocalName) {
+        return true;
+      }
+    }
+    return false;
   }
 
   get canCreateANewVersionFromCodeScheme(): boolean {

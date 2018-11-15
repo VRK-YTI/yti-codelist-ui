@@ -100,4 +100,8 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   getExtensionUri() {
     return this.configurationService.getUriWithEnv(this.extension.uri);
   }
+
+  get allowCodeSchemes(): boolean {
+    return  this.extension.propertyType.context === 'Extension';
+  }
 }

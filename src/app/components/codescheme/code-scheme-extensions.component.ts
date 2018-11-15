@@ -27,6 +27,15 @@ export class CodeSchemeExtensionsComponent {
   }
 
   get extensionsByType(): PropertyTypeExtensions[] {
-    return groupByType(this.translateService, this.extensions);
+    const filteredExtensions: Extension[] = this.extensions.filter(es => es.propertyType.context === 'Extension')
+    return groupByType(this.translateService, filteredExtensions);
+  }
+
+  get inlineExtensions(): Extension[] {
+    return this.extensions.filter(es => es.propertyType.context === 'InlineExtension');
+  }
+
+  get hasInlineExtensions(): boolean {
+    return this.inlineExtensions != null;
   }
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-15 08:53+0200\n"
+"PO-Revision-Date: 2018-11-15 13:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -250,6 +250,9 @@ msgstr "Luo uusi versio nykyisen aineiston pohjalta"
 msgid "Create a new blank version without the existing content"
 msgstr "Luo uusi versio tyhjänä ilman nykyisiä aineistoja"
 
+msgid "INLINE EXTENSIONS"
+msgstr "INLINE LAAJENNUKSET"
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -306,14 +309,20 @@ msgstr "Luo uusi versio tiedostosta"
 msgid "Attach variant to code list"
 msgstr "Liitä koodistoon variantti"
 
-msgid "Create DPM metric"
-msgstr "Luo DPM metriikka"
-
 msgid "Create calculation hierarchy"
 msgstr "Luo laskentahierarkia"
 
 msgid "Create definition hierarchy"
 msgstr "Luo määrityshierarkia"
+
+msgid "Create DPM metric"
+msgstr "Luo DPM metric"
+
+msgid "Create DPM explicit domain"
+msgstr "Luo DPM explicit domain"
+
+msgid "Create DPM dimension"
+msgstr "Luo DPM dimension"
 
 msgid "Import extensions"
 msgstr "Tuo laajennuksia"
@@ -841,8 +850,10 @@ msgstr ""
 "laajennukset ja laajennuksen jäsenet vai luoda koodiston uuden version "
 "tyhjänä."
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
-msgstr "Koodin order-sarakkeen kentistä löytyi samoja arvoja."
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgstr ""
+"Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen "
+"liitettyihin koodistoihin."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1079,13 +1090,11 @@ msgstr "Aineistossa puuttuu arvo sarakkeesta HREF riviltä {{ identifier }}."
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr "Jäseneen liitettyä koodia ei ole olemassa."
 
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr "Koodin order-sarakkeen kentistä löytyi samoja arvoja."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
-msgstr ""
-"Jäseneen liitetty koodi ei kuulu tähän koodistoon tai laajennukseen "
-"liitettyihin koodistoihin."
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Jäsenten maksimi hierarkkinen taso ylittyi."
@@ -1320,6 +1329,9 @@ msgstr "Haluatko ehdottaa käsitettä {{concept}} sanastoon {{vocabulary}}? "
 
 msgid "Are you sure you want to create the version as empty?"
 msgstr "Oletko varma, että haluat luoda uuden  version tyhjänä?"
+
+msgid "Create extension"
+msgstr "Luo laajennus"
 
 msgid "extensionCodeValueExists"
 msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."

@@ -25,6 +25,7 @@
       <div class="col-lg-8 col-md-10">
         <app-literal-input [id]="'extension_codevalue_input'"
                            [label]="'LABEL_TEXT_CREATE_EXTENSION_ID' | translate"
+                           [restrict]="isInlineExtension"
                            [required]="true"
                            [infoText]="'INFO_TEXT_CREATE_EXTENSION_ID'"
                            [formControlName]="'codeValue'"></app-literal-input>
@@ -42,7 +43,8 @@
                      [value]="propertyType.prefLabel | translateValue:true"
                      [infoText]="'INFO_TEXT_EXTENSION_TYPE'"></app-literal>
 
-        <app-code-scheme-input id="extension_code_scheme_input"
+        <app-code-scheme-input *ngIf="allowCodeSchemes"
+                               id="extension_code_scheme_input"
                                [label]="'Code list' | translate"
                                [parentCodeScheme]="codeScheme"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>

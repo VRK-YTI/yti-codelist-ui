@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-15 08:47+0200\n"
+"PO-Revision-Date: 2018-11-15 13:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -250,6 +250,9 @@ msgstr ""
 msgid "Create a new blank version without the existing content"
 msgstr ""
 
+msgid "INLINE EXTENSIONS"
+msgstr "Extension code value"
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -299,13 +302,19 @@ msgstr ""
 msgid "Attach variant to code list"
 msgstr ""
 
-msgid "Create DPM metric"
-msgstr ""
-
 msgid "Create calculation hierarchy"
 msgstr ""
 
 msgid "Create definition hierarchy"
+msgstr ""
+
+msgid "Create DPM metric"
+msgstr ""
+
+msgid "Create DPM explicit domain"
+msgstr ""
+
+msgid "Create DPM dimension"
 msgstr ""
 
 msgid "Import extensions"
@@ -831,8 +840,10 @@ msgstr ""
 "extension members to the new version or whether you want to create a new "
 "blank version without them."
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
-msgstr "Code order has duplicate values."
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgstr ""
+"Code linked to member does not belong to parent code list or to any related "
+"code lists."
 
 msgid "Front page"
 msgstr ""
@@ -1078,13 +1089,11 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr "Code linked to member does not exist."
 
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr "Code order has duplicate values."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
-msgstr ""
-"Code linked to member does not belong to parent code list or to any related "
-"code lists."
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for members."
@@ -1324,6 +1333,9 @@ msgstr ""
 
 msgid "Are you sure you want to create the version as empty?"
 msgstr "The content imported to the new version"
+
+msgid "Create extension"
+msgstr ""
 
 msgid "extensionCodeValueExists"
 msgstr "Extension value is already in use in this code list."

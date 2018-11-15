@@ -241,6 +241,9 @@ msgstr ""
 msgid "Create a new blank version without the existing content"
 msgstr ""
 
+msgid "INLINE EXTENSIONS"
+msgstr ""
+
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
 "detailed guide and information about using code list files from"
@@ -290,13 +293,19 @@ msgstr ""
 msgid "Attach variant to code list"
 msgstr ""
 
-msgid "Create DPM metric"
-msgstr ""
-
 msgid "Create calculation hierarchy"
 msgstr ""
 
 msgid "Create definition hierarchy"
+msgstr ""
+
+msgid "Create DPM metric"
+msgstr ""
+
+msgid "Create DPM explicit domain"
+msgstr ""
+
+msgid "Create DPM dimension"
 msgstr ""
 
 msgid "Import extensions"
@@ -755,7 +764,7 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 
 msgid "Front page"
@@ -982,10 +991,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
@@ -1193,6 +1202,9 @@ msgid "SUGGEST CONCEPT MODAL QUESTION"
 msgstr ""
 
 msgid "Are you sure you want to create the version as empty?"
+msgstr ""
+
+msgid "Create extension"
 msgstr ""
 
 msgid "extensionCodeValueExists"
