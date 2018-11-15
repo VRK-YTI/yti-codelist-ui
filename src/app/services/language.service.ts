@@ -78,18 +78,16 @@ export class LanguageService implements Localizer {
   }
 
   checkForFallbackLanguages(localizable: Localizable): string | null {
+
     const fallbackLanguages: string[] = ['en', 'fi', 'sv'];
 
-    let fallback: string | null = null;
-
-    fallbackLanguages.forEach(language => {
+    for (const language of fallbackLanguages) {
       if (this.hasLocalizationForLanguage(localizable, language)) {
-        fallback = this.fallbackLocalization(localizable, language);
-        return;
+        return this.fallbackLocalization(localizable, language);
       }
-    });
+    }
 
-    return fallback;
+    return null;
   }
 
   hasLocalizationForLanguage(localizable: Localizable, language: string) {
