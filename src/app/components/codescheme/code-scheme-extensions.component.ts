@@ -36,6 +36,7 @@ export class CodeSchemeExtensionsComponent {
   }
 
   get hasInlineExtensions(): boolean {
-    return this.inlineExtensions != null;
+    const extensions = this.inlineExtensions;
+    return extensions != null && extensions.length > 0;
   }
 }

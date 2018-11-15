@@ -764,6 +764,9 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
+msgid "INFO_TEXT_INLINEEXTENSIONS"
+msgstr ""
+
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 
