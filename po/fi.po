@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-09 09:59+0200\n"
+"PO-Revision-Date: 2018-11-15 08:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -305,6 +305,9 @@ msgstr "Luo uusi versio tiedostosta"
 
 msgid "Attach variant to code list"
 msgstr "Liitä koodistoon variantti"
+
+msgid "Create DPM metric"
+msgstr "Luo DPM metriikka"
 
 msgid "Create calculation hierarchy"
 msgstr "Luo laskentahierarkia"
@@ -838,8 +841,8 @@ msgstr ""
 "laajennukset ja laajennuksen jäsenet vai luoda koodiston uuden version "
 "tyhjänä."
 
-msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
-msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr "Koodin order-sarakkeen kentistä löytyi samoja arvoja."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1026,8 +1029,8 @@ msgstr ""
 "Aineistossa olevaa BROADER-sarakkeen koodia ei löydy tunnuksella "
 "{{ identifier }}."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
 msgstr "Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu. "
@@ -1076,8 +1079,8 @@ msgstr "Aineistossa puuttuu arvo sarakkeesta HREF riviltä {{ identifier }}."
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr "Jäseneen liitettyä koodia ei ole olemassa."
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
-msgstr "Koodin order-sarakkeen kentistä löytyi samoja arvoja."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
@@ -1161,6 +1164,96 @@ msgstr ""
 
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr "Tiedostossa saa olla vain yksi koodisto."
+
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Rekisteriä ei löydy."
+
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Koodistoa ei löydy."
+
+msgid "ERR_MSG_USER_CODE_NOT_FOUND"
+msgstr "Koodia ei löydy."
+
+msgid "ERR_MSG_USER_JSON_PARSING_ERROR"
+msgstr "JSON parsinnassa tapahtui virhe."
+
+msgid "ERR_MSG_USER_JSON_PAYLOAD_EMPTY"
+msgstr "JSON datan sisältö on tyhjä."
+
+msgid "ERR_MSG_USER_INVALID_FORMAT"
+msgstr "Formaattia ei tueta."
+
+msgid "ERR_MSG_USER_EXTENSION_SHEET_NOT_FOUND"
+msgstr "Laajennusten välilehteä ei löydy."
+
+msgid "ERR_MSG_USER_ERROR_DECODING_STRING"
+msgstr "Virhe merkkijonon URL dekoodaukessa."
+
+msgid "ERR_MSG_USER_ERROR_ENCODING_STRING"
+msgstr "Virhe merkkijonon URL enkoodauksessa."
+
+msgid "ERR_MSG_USER_EXTENSION_NOT_FOUND"
+msgstr "Laajennusta ei löydy."
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_FOUND"
+msgstr "Aineiston tyypitystä ei löydy."
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_NOT_FOUND"
+msgstr "Linkkiä ei löydy."
+
+msgid "ERR_MSG_USER_CODESCHEME_CODEREGISTRY_DOES_NOT_MATCH"
+msgstr "Koodiston rekisteri ei täsää."
+
+msgid "ERR_MSG_USER_CODE_CODESCHEME_DOES_NOT_MATCH"
+msgstr "Koodin koodisto ei täsmää."
+
+msgid "ERR_MSG_USER_EXTENSION_PARENTCODESCHEME_DOES_NOT_MATCH"
+msgstr "Laajennukseen liitetty päätason koodisto ei täsmää."
+
+msgid "ERR_MSG_USER_MEMBER_EXTENSION_DOES_NOT_MATCH"
+msgstr "Jäseneen liittyvä laajennus ei täsmää."
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_PARSING_FAILED"
+msgstr "Virhe parsittaessa aineiston tyypitystä."
+
+msgid "ERR_MSG_USER_MEMBER_PARSING_FAILED"
+msgstr "Virhe parsittaessa jäseniä datasta."
+
+msgid "ERR_MSG_USER_VALUETYPE_PARSING_FAILED"
+msgstr "Virhe parsittaessa arvon tyypitystä."
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_PARSING_FAILED"
+msgstr "Virhe parsittaessa linkkiä datasta."
+
+msgid "ERR_MSG_USER_EXTENSION_PARSING_FAILED"
+msgstr "Virhe parsittaessa laajennusta datasta."
+
+msgid "ERR_MSG_USER_CODESCHEME_PARSING_FAILED"
+msgstr "Virhe parsittaessa koodistoa datasta."
+
+msgid "ERR_MSG_USER_CODEREGISTRY_PARSING_FAILED"
+msgstr "Virhe parsittaessa rekisteriä datasta."
+
+msgid "ERR_MSG_USER_CODE_PARSING_FAILED"
+msgstr "Virhe parsittaessa koodia datasta."
+
+msgid "ERR_MSG_USER_MEMBER_RELATION_SET_TO_ITSELF"
+msgstr "Jäsenen ylätason jäsenen määritys itseen ei ole sallittua."
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_SET"
+msgstr "Jäsenen koodia ei ole asetettu."
+
+msgid "ERR_MSG_USER_MEMBERS_ARE_EMPTY"
+msgstr "Jäsenet ovat tyhjiä."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_VALUETYPE_NOT_SET"
+msgstr "Jäseen arvon tyyppiä ei ole määritetty."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
+msgstr "Jäsenen arvo löytyi jo tälle tyypille."
+
+msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
+msgstr "Jäsenen ID ei täsmää."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"

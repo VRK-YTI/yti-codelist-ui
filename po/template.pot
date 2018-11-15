@@ -290,6 +290,9 @@ msgstr ""
 msgid "Attach variant to code list"
 msgstr ""
 
+msgid "Create DPM metric"
+msgstr ""
+
 msgid "Create calculation hierarchy"
 msgstr ""
 
@@ -752,7 +755,7 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
-msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr ""
 
 msgid "Front page"
@@ -934,7 +937,7 @@ msgstr ""
 msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr ""
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
@@ -979,7 +982,7 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr ""
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
@@ -1046,6 +1049,96 @@ msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODE_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_JSON_PARSING_ERROR"
+msgstr ""
+
+msgid "ERR_MSG_USER_JSON_PAYLOAD_EMPTY"
+msgstr ""
+
+msgid "ERR_MSG_USER_INVALID_FORMAT"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_SHEET_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_ERROR_DECODING_STRING"
+msgstr ""
+
+msgid "ERR_MSG_USER_ERROR_ENCODING_STRING"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODESCHEME_CODEREGISTRY_DOES_NOT_MATCH"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODE_CODESCHEME_DOES_NOT_MATCH"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_PARENTCODESCHEME_DOES_NOT_MATCH"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_EXTENSION_DOES_NOT_MATCH"
+msgstr ""
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_VALUETYPE_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_EXTENSION_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODESCHEME_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODEREGISTRY_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_CODE_PARSING_FAILED"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_RELATION_SET_TO_ITSELF"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_SET"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBERS_ARE_EMPTY"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBERVALUE_VALUETYPE_NOT_SET"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"
