@@ -82,7 +82,7 @@ export class MemberCreateComponent implements OnInit {
       code: code.serialize(),
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
-      relatedMember: relatedMember.serialize(),
+      relatedMember: relatedMember ? relatedMember.serialize() : undefined,
       extension: this.extension.serialize()
     };
 
