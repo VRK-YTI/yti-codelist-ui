@@ -38,11 +38,11 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
           <div class="content-box">
             <div class="search-results">
               <div class="search-result"
-                   *ngFor="let extension of searchResults$ | async; let last = last"
-                   (click)="select(extension)">
+                   *ngFor="let member of searchResults$ | async; let last = last"
+                   (click)="select(member)">
                 <div class="content" [class.last]="last">                  
                   <span class="title"
-                        [innerHTML]="extension.getDisplayName(languageService, translateService, useUILanguage)">
+                        [innerHTML]="member.getDisplayName(languageService, translateService, useUILanguage)">
                   </span>
                 </div>
               </div>
@@ -88,11 +88,11 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
     this.searchResults$ = combineLatest(this.members$, concat(initialSearch, debouncedSearch))
       .pipe(
         tap(() => this.loading = false),
-        map(([extensions, search]) => {
-          return extensions.filter(extension => {
-            const label = extension.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
+        map(([members, search]) => {
+          return members.filter(member => {
+            const label = member.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
             const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-            const isNotRestricted = !contains(this.restricts, extension.id);
+            const isNotRestricted = !contains(this.restricts, member.id);
             return searchMatches && isNotRestricted;
           });
         })
@@ -129,7 +129,7 @@ export class SearchLinkedMemberModalService {
   open(members$: Observable<Member[]>,
        titleLabel: string,
        searchLabel: string,
-       restrictExtensionIds: string[],
+       restrictedMemberIds: string[],
        useUILanguage: boolean = false): Promise<Member> {
 
     const modalRef = this.modalService.open(SearchLinkedMemberModalComponent, { size: 'sm' });
@@ -137,7 +137,7 @@ export class SearchLinkedMemberModalService {
     instance.members$ = members$;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
-    instance.restricts = restrictExtensionIds;
+    instance.restricts = restrictedMemberIds;
     instance.useUILanguage = useUILanguage;
     return modalRef.result;
   }
