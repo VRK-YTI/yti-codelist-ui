@@ -94,7 +94,7 @@ export class MemberInputComponent implements ControlValueAccessor {
       titleLabel,
       searchlabel,
       [this.currentMember ? this.currentMember.id : ''],
-      true)
+      false)
       .then(extension => addToControl(this.control, extension), ignoreModalClose);
   }
 
