@@ -251,7 +251,7 @@ msgid "Create a new blank version without the existing content"
 msgstr ""
 
 msgid "INLINE EXTENSIONS"
-msgstr "Extension code value"
+msgstr ""
 
 msgid ""
 "Import code list by uploading a CSV- or Excel formatted file. Look up more "
