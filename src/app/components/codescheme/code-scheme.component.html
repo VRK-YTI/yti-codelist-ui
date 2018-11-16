@@ -78,6 +78,12 @@
                   class="dropdown-item"
                   (click)="createExtension('dpmDimension')"
                   translate>Create DPM dimension</button>
+          <button id="create_extension_dpmdtypeddomain_button"
+                  *ngIf="canAddExtensionWithType('dpmTypedDomain')"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createExtension('dpmTypedDomain')"
+                  translate>Create DPM typed domain</button>
           <button id="import_extensions_button"
                   *ngIf="canAddExtension"
                   type="button"

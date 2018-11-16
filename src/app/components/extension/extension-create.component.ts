@@ -85,6 +85,8 @@ export class ExtensionCreateComponent implements OnInit {
       this.title = 'Create DPM explicit domain';
     } else if (propertyTypeLocalName === 'dpmDimension') {
       this.title = 'Create DPM dimension';
+    } else if (propertyTypeLocalName === 'dpmTypedDomain') {
+      this.title = 'Create DPM typed domain';
     } else {
       this.title = 'Create extension';
     }

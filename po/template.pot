@@ -308,6 +308,9 @@ msgstr ""
 msgid "Create DPM dimension"
 msgstr ""
 
+msgid "Create DPM typed domain"
+msgstr ""
+
 msgid "Import extensions"
 msgstr ""
 
