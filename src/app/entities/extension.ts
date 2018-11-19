@@ -139,6 +139,8 @@ export function mapLocalNameToLabel(translateService: TranslateService, property
     return translateService.instant('CALCULATIONHIERARCHIES');
   } else if (propertyType.localName === 'definitionHierarchy') {
     return translateService.instant('DEFINITIONHIERARCHIES');
+  } else if (propertyType.localName === 'crossReferenceList') {
+    return translateService.instant('CROSSREFERENCELISTS');
   } else {
     return propertyType.localName;
   }

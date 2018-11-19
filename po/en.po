@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-16 11:00+0200\n"
+"PO-Revision-Date: 2018-11-19 15:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -306,6 +306,9 @@ msgid "Create calculation hierarchy"
 msgstr ""
 
 msgid "Create definition hierarchy"
+msgstr ""
+
+msgid "Create cross-reference list"
 msgstr ""
 
 msgid "Create DPM metric"
@@ -843,10 +846,8 @@ msgstr ""
 "extension members to the new version or whether you want to create a new "
 "blank version without them."
 
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
-msgstr ""
-"Code linked to member does not belong to parent code list or to any related "
-"code lists."
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr "Code order has duplicate values."
 
 msgid "Front page"
 msgstr ""
@@ -924,6 +925,11 @@ msgstr ""
 
 msgid "DEFINITIONHIERARCHIES"
 msgstr ""
+
+#, fuzzy
+#| msgid "CROSSREFERENCELIST"
+msgid "CROSSREFERENCELISTS"
+msgstr "Cross-reference Lists"
 
 msgid "ADMIN"
 msgstr "Admin"
@@ -1092,11 +1098,13 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr "Code linked to member does not exist."
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
-msgstr "Code order has duplicate values."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgstr ""
+"Code linked to member does not belong to parent code list or to any related "
+"code lists."
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for members."

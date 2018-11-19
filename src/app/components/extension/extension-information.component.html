@@ -29,6 +29,7 @@
                                id="extension_code_scheme_input"
                                [label]="'Code list' | translate"
                                [parentCodeScheme]="extension.parentCodeScheme"
+                               [limitNumberOfCodeSchemes]="maxNrOfCodeSchemes"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>
 
         <app-status-input id="extension_status_input"

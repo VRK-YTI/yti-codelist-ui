@@ -28,6 +28,8 @@ export class ExtensionCreateComponent implements OnInit {
   propertyType: PropertyType;
   title: string;
 
+  maxNrOfCodeSchemes = 1000000; // read: unlimited number of codeschemes
+
   extensionForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
     prefLabel: new FormControl({}),
@@ -62,6 +64,9 @@ export class ExtensionCreateComponent implements OnInit {
 
     this.dataService.getPropertyType(propertyTypeLocalName).subscribe(propertyType => {
       this.propertyType = propertyType;
+      if (this.propertyType.localName === 'crossReferenceList') {
+        this.maxNrOfCodeSchemes = 2;
+      }
       if (this.propertyType.context === 'InlineExtension') {
         this.extensionForm.controls['codeValue'].setValue(this.propertyType.localName);
         this.extensionForm.controls['prefLabel'].setValue(this.propertyType.prefLabel);
@@ -79,6 +84,8 @@ export class ExtensionCreateComponent implements OnInit {
       this.title = 'Create calculation hierarchy';
     } else if (propertyTypeLocalName === 'definitionHierarchy') {
       this.title = 'Create definition hierarchy';
+    } else if (propertyTypeLocalName === 'crossReferenceList') {
+      this.title = 'Create cross-reference list';
     } else if (propertyTypeLocalName === 'dpmMetric') {
       this.title = 'Create DPM metric';
     } else if (propertyTypeLocalName === 'dpmExplicitDomain') {

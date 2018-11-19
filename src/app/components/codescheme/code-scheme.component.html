@@ -49,17 +49,23 @@
                   (click)="openVariantSearchModal()"
                   translate>Attach variant to code list</button>
           <button id="create_extension_calculationhierarchy_button"
-                  *ngIf="canAddExtensionWithType('calculationHierarchy')"
+                  *ngIf="canAddExtension"
                   type="button"
                   class="dropdown-item"
                   (click)="createExtension('calculationHierarchy')"
                   translate>Create calculation hierarchy</button>
           <button id="create_extension_definitionhierarchy_button"
-                  *ngIf="canAddExtensionWithType('definitionHierarchy')"
+                  *ngIf="canAddExtension"
                   type="button"
                   class="dropdown-item"
                   (click)="createExtension('definitionHierarchy')"
                   translate>Create definition hierarchy</button>
+          <button id="create_extension_cross-reference-list_button"
+                  *ngIf="canAddExtension"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createExtension('crossReferenceList')"
+                  translate>Create cross-reference list</button>
           <button id="create_extension_dpmmetric_button"
                   *ngIf="canAddExtensionWithType('dpmMetric')"
                   type="button"

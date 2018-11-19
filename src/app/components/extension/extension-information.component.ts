@@ -32,6 +32,8 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
 
   cancelSubscription: Subscription;
 
+  maxNrOfCodeSchemes = 1000000; // read: unlimited number of codeschemes
+
   constructor(private userService: UserService,
               private dataService: DataService,
               private route: ActivatedRoute,
@@ -57,7 +59,14 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
       this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
         this.extension = extension;
         this.locationService.atExtensionPage(extension);
+
+
       });
+    } else {
+      console.log(this.extension.propertyType.localName , 'this.extension.propertyType.localName');
+      if (this.extension.propertyType.localName === 'crossReferenceList') {
+        this.maxNrOfCodeSchemes = 2;
+      }
     }
   }
 

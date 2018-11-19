@@ -299,6 +299,9 @@ msgstr ""
 msgid "Create definition hierarchy"
 msgstr ""
 
+msgid "Create cross-reference list"
+msgstr ""
+
 msgid "Create DPM metric"
 msgstr ""
 
@@ -767,7 +770,7 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr ""
 
 msgid "Front page"
@@ -845,6 +848,9 @@ msgid "CALCULATIONHIERARCHIES"
 msgstr ""
 
 msgid "DEFINITIONHIERARCHIES"
+msgstr ""
+
+msgid "CROSSREFERENCELISTS"
 msgstr ""
 
 msgid "ADMIN"
@@ -994,10 +1000,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr ""
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"

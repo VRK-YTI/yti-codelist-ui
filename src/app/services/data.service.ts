@@ -537,6 +537,22 @@ export class DataService {
       .pipe(map(res => res.results.map((data: MemberType) => new Member(data))));
   }
 
+  getMembersWithoutParents(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Member[]> {
+
+    console.log('execing getMembersWithParents');
+    const params = {
+      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,valueType,memberValue'
+    };
+
+    return this.http.get<WithResults<MemberType>>(
+      `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${extensions}/` +
+      `${extensionCodeValue}/${members}/`,
+      { params })
+      .pipe(
+        map(res => res.results.map((data: MemberType) => new Member(data))
+          .filter(member => member.relatedMember === undefined)));
+  }
+
   saveExtension(extensionToSave: ExtensionType): Observable<ApiResponseType> {
 
     console.log('Saving Extension in dataservice');
