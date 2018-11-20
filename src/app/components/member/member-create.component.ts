@@ -15,6 +15,7 @@ import { Code } from '../../entities/code';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { ConfigurationService } from '../../services/configuration.service';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-member-create',
@@ -30,6 +31,12 @@ export class MemberCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     unaryOperator: new FormControl('', [this.isUnaryOperatorPatternValid.bind(this)]),
     comparisonOperator: new FormControl('', [this.isComparisonOperatorPatternValid.bind(this)]),
+    dpmDataType: new FormControl(''),
+    dpmDomainReference: new FormControl(''),
+    dpmHierarchyReference: new FormControl(''),
+    dpmBalanceType: new FormControl(''),
+    dpmFlowType: new FormControl(''),
+    dpmMemberXBRLCodePrefix: new FormControl(''),
     code: new FormControl(null, Validators.required),
     relatedMember: new FormControl(null),
     validity: new FormControl({ start: null, end: null }, validDateRange)
@@ -71,11 +78,26 @@ export class MemberCreateComponent implements OnInit {
     this.router.navigate(this.extension.route);
   }
 
+  addMemberValueToMemberValueList(memberValues: MemberValueType[], value: string, type: string) {
+    if (value) {
+      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName(type);
+      if (valueType) {
+        const memberData: MemberValueType = <MemberValueType> {
+          id: undefined,
+          value: value,
+          valueType: valueType.serialize()
+        };
+        const memberValue: MemberValue = new MemberValue(memberData);
+        memberValues.push(memberValue.serialize());
+      }
+    }
+  }
+
   save(formData: any): Observable<any> {
 
     console.log('Saving new Member');
 
-    const { code, relatedMember, unaryOperator, comparisonOperator, validity, ...rest } = formData;
+    const { code, relatedMember, unaryOperator, comparisonOperator, dpmDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, validity, ...rest } = formData;
 
     const member: MemberType = <MemberType> {
       ...rest,
@@ -88,35 +110,15 @@ export class MemberCreateComponent implements OnInit {
 
     const memberValues: MemberValueType[] = [];
 
-    if (unaryOperator) {
-      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
-      if (valueType) {
-        const memberData: MemberValueType = <MemberValueType> {
-          id: undefined,
-          value: unaryOperator,
-          valueType: valueType.serialize(),
-          created: undefined,
-          modified: undefined
-        };
-        const memberValue: MemberValue = new MemberValue(memberData);
-        memberValues.push(memberValue.serialize());
-      }
-    }
-
-    if (comparisonOperator) {
-      const valueType: ValueType | null = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
-      if (valueType) {
-        const memberData: MemberValueType = <MemberValueType> {
-          id: undefined,
-          value: comparisonOperator,
-          valueType: valueType.serialize(),
-          created: undefined,
-          modified: undefined
-        };
-        const memberValue: MemberValue = new MemberValue(memberData);
-        memberValues.push(memberValue.serialize());
-      }
-    }
+    // TODO: Make this more dynamic!
+    this.addMemberValueToMemberValueList(memberValues, unaryOperator, 'unaryOperator');
+    this.addMemberValueToMemberValueList(memberValues, comparisonOperator, 'comparisonOperator');
+    this.addMemberValueToMemberValueList(memberValues, dpmDataType, 'dpmDataType');
+    this.addMemberValueToMemberValueList(memberValues, dpmDomainReference, 'dpmDomainReference');
+    this.addMemberValueToMemberValueList(memberValues, dpmHierarchyReference, 'dpmHierarchyReference');
+    this.addMemberValueToMemberValueList(memberValues, dpmBalanceType, 'dpmBalanceType');
+    this.addMemberValueToMemberValueList(memberValues, dpmFlowType, 'dpmFlowType');
+    this.addMemberValueToMemberValueList(memberValues, dpmMemberXBRLCodePrefix, 'dpmMemberXBRLCodePrefix');
 
     member.memberValues = memberValues;
 
@@ -200,5 +202,14 @@ export class MemberCreateComponent implements OnInit {
       return null;
     }
     return null;
+  }
+
+  get isInlineExtension(): boolean {
+    return this.extension.propertyType.context === 'InlineExtension';
+  }
+
+  get valueTypes(): ValueType[] {
+    return this.extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item =>
+      item.prefLabel ? item.prefLabel : {}));
   }
 }

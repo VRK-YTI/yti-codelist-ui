@@ -11,6 +11,7 @@ import { PropertyType } from './property-type';
 import { contains, groupBy, index } from 'yti-common-ui/utils/array';
 import { requireDefined } from 'yti-common-ui/utils/object';
 import { TranslateService } from '@ngx-translate/core';
+import { MemberSimple } from './member-simple';
 
 export class Extension implements EditableEntity {
 
@@ -26,6 +27,7 @@ export class Extension implements EditableEntity {
   codeSchemes: CodeScheme[] = [];
   prefLabel: Localizable;
   modified: Moment | null = null;
+  members: MemberSimple[] = [];
 
   constructor(data: ExtensionType) {
     this.id = data.id;
@@ -47,7 +49,12 @@ export class Extension implements EditableEntity {
       this.endDate = parseDate(data.endDate);
     }
     this.codeSchemes = (data.codeSchemes || []).map(cs => new CodeScheme(cs));
-    this.parentCodeScheme = new CodeScheme(data.parentCodeScheme);
+    if (data.parentCodeScheme) {
+      this.parentCodeScheme = new CodeScheme(data.parentCodeScheme);
+    }
+    if (data.members) {
+      this.members = data.members.map(member => new MemberSimple(member));
+    }
   }
 
   get modifiedDisplayValue(): string {
@@ -100,7 +107,7 @@ export class Extension implements EditableEntity {
       status: this.status,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate),
-      parentCodeScheme: this.parentCodeScheme.serialize(),
+      parentCodeScheme: this.parentCodeScheme ? this.parentCodeScheme.serialize() : undefined,
       codeSchemes: this.codeSchemes.map(cs => cs.serialize())
     };
   }

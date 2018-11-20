@@ -16,6 +16,7 @@ import { Code } from '../../entities/code';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { ConfigurationService } from '../../services/configuration.service';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-member-information',
@@ -34,6 +35,12 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     prefLabel: new FormControl({}),
     unaryOperator: new FormControl('', [this.isUnaryOperatorPatternValid.bind(this)]),
     comparisonOperator: new FormControl('', [this.isComparisonOperatorPatternValid.bind(this)]),
+    dpmDataType: new FormControl(''),
+    dpmDomainReference: new FormControl(''),
+    dpmHierarchyReference: new FormControl(''),
+    dpmBalanceType: new FormControl(''),
+    dpmFlowType: new FormControl(''),
+    dpmMemberXBRLCodePrefix: new FormControl(''),
     code: new FormControl(null, Validators.required),
     relatedMember: new FormControl(null),
     validity: new FormControl(null, validDateRange)
@@ -96,11 +103,23 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     const unaryOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'unaryOperator');
     const comparisonOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'comparisonOperator');
+    const dpmDataType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmDataType');
+    const dpmDomainReference: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmDomainReference');
+    const dpmHierarchyReference: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmHierarchyReference');
+    const dpmBalanceType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmBalanceType');
+    const dpmFlowType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmFlowType');
+    const dpmMemberXBRLCodePrefix: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmMemberXBRLCodePrefix');
 
     this.memberForm.reset({
       ...rest,
       unaryOperator: unaryOperator,
       comparisonOperator: comparisonOperator,
+      dpmDataType: dpmDataType,
+      dpmDomainReference: dpmDomainReference,
+      dpmHierarchyReference: dpmHierarchyReference,
+      dpmBalanceType: dpmBalanceType,
+      dpmFlowType: dpmFlowType,
+      dpmMemberXBRLCodePrefix: dpmMemberXBRLCodePrefix,
       validity: { start: startDate, end: endDate }
     });
   }
@@ -202,5 +221,14 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
       return null;
     }
     return null;
+  }
+
+  get isInlineExtension(): boolean {
+    return this.extension.propertyType.context === 'InlineExtension';
+  }
+
+  get valueTypes(): ValueType[] {
+    return this.extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item =>
+      item.prefLabel ? item.prefLabel : {}));
   }
 }

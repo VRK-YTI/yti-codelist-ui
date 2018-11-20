@@ -77,6 +77,7 @@ export interface CodeType extends BaseResourceType {
   hierarchyLevel?: number;
   conceptUriInVocabularies: string;
   order?: string;
+  inlineExtensions?: ExtensionType[];
 }
 
 export interface ConceptType {
@@ -159,9 +160,10 @@ export interface ExtensionType {
   status: Status;
   startDate?: string;
   endDate?: string;
-  parentCodeScheme: CodeSchemeType;
+  parentCodeScheme?: CodeSchemeType;
   codeSchemes?: CodeSchemeType[];
   description?: Localizable;
+  members?: MemberSimpleType[];
 }
 
 export interface ExtensionSimpleType {

@@ -311,7 +311,7 @@ export class DataService {
   getCodes(registryCodeValue: string, schemeCodeValue: string, language: string): Observable<Code[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType');
+      .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType,extension');
 
     if (language) {
       params = params.append('language', language);
@@ -324,7 +324,7 @@ export class DataService {
   getCode(registryCodeValue: string, schemeCodeValue: string, codeCodeValue: string): Observable<Code> {
 
     const params = {
-      'expand': 'codeScheme,codeRegistry,externalReference,propertyType,organization,valueType'
+      'expand': 'codeScheme,codeRegistry,externalReference,propertyType,organization,valueType,extension,member,memberValue'
     };
 
     const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
@@ -555,14 +555,18 @@ export class DataService {
 
   saveExtension(extensionToSave: ExtensionType): Observable<ApiResponseType> {
 
-    console.log('Saving Extension in dataservice');
-    console.log(extensionToSave);
-    const registryCodeValue = extensionToSave.parentCodeScheme.codeRegistry.codeValue;
-    const codeSchemeCodeValue = extensionToSave.parentCodeScheme.codeValue;
+    if (extensionToSave.parentCodeScheme) {
+      console.log('Saving Extension in dataservice');
+      console.log(extensionToSave);
+      const registryCodeValue = extensionToSave.parentCodeScheme.codeRegistry.codeValue;
+      const codeSchemeCodeValue = extensionToSave.parentCodeScheme.codeValue;
 
-    return this.http.post<ApiResponseType>(
-      `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/` +
-      `${extensions}/${extensionToSave.codeValue}/`, extensionToSave);
+      return this.http.post<ApiResponseType>(
+        `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/` +
+        `${extensions}/${extensionToSave.codeValue}/`, extensionToSave);
+    } else {
+      throw new Error('Extension does not have parentcodescheme mapped, failing!');
+    }
   }
 
   uploadExtensions(registryCodeValue: string, schemeCodeValue: string, file: File, format: string): Observable<Extension[]> {

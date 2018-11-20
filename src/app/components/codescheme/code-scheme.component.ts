@@ -259,7 +259,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   isInlineExtension(propertyTypeLocalName: string): boolean {
-    const inlineExtensionLocalNames: string[] = ['dpmMetric', 'dpmDimension', 'dpmExplicitDomain'];
+    const inlineExtensionLocalNames: string[] = ['dpmMetric', 'dpmDimension', 'dpmExplicitDomain', 'dpmTypedDomain'];
     for (const extensionPropertyTypeLocalName of inlineExtensionLocalNames) {
       if (propertyTypeLocalName === extensionPropertyTypeLocalName) {
         return true;

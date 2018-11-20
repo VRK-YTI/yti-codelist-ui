@@ -3,14 +3,14 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators }
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { Status, restrictedStatuses } from 'yti-common-ui/entities/status';
+import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { ExtensionType } from '../../services/api-schema';
-import { Observable, from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
 import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
-import { map, tap, flatMap } from 'rxjs/operators';
+import { flatMap, map, tap } from 'rxjs/operators';
 import { PropertyType } from '../../entities/property-type';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
@@ -62,6 +62,14 @@ export class ExtensionCreateComponent implements OnInit {
       throw new Error(`Illegal route, registry: '${registryCode}', scheme: '${schemeCode}', propertyTypeLocalName: '${propertyTypeLocalName}'`);
     }
 
+    this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+      this.locationService.atExtensionCreatePage(this.codeScheme, this.title);
+      this.loadPropertyType(propertyTypeLocalName);
+    });
+  }
+
+  loadPropertyType(propertyTypeLocalName: string) {
     this.dataService.getPropertyType(propertyTypeLocalName).subscribe(propertyType => {
       this.propertyType = propertyType;
       if (this.propertyType.localName === 'crossReferenceList') {
@@ -71,11 +79,6 @@ export class ExtensionCreateComponent implements OnInit {
         this.extensionForm.controls['codeValue'].setValue(this.propertyType.localName);
         this.extensionForm.controls['prefLabel'].setValue(this.propertyType.prefLabel);
       }
-    });
-
-    this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
-      this.codeScheme = codeScheme;
-      this.locationService.atExtensionCreatePage(this.codeScheme, this.title);
     });
   }
 
@@ -156,7 +159,7 @@ export class ExtensionCreateComponent implements OnInit {
   }
 
   get allowCodeSchemes(): boolean {
-    return  this.propertyType.context === 'Extension';
+    return this.propertyType.context === 'Extension';
   }
 
   get isInlineExtension(): boolean {

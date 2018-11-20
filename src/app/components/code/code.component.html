@@ -62,7 +62,9 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-information [code]="code"></app-code-information>
+        <app-code-information [code]="code"
+                              [codeScheme]="codeScheme">
+        </app-code-information>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

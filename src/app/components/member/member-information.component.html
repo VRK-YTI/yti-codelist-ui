@@ -17,7 +17,7 @@
                                [label]="'Member name' | translate"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 
-        <div *ngFor="let valueType of extension.propertyType.valueTypes">
+        <div *ngFor="let valueType of valueTypes">
           <app-literal-input [id]="'member_membervalue_' + valueType.localName + '_input'"
                              [label]="valueType.prefLabel | translateValue"
                              [required]="valueType.required"
@@ -46,6 +46,7 @@
                         [formControlName]="'code'"></app-code-input>
 
         <app-member-input id="member_relatedmember_input"
+                          *ngIf="!isInlineExtension"
                           [label]="'Broader member' | translate"
                           [extension]="currentMember.extension"
                           [currentMember]="currentMember"

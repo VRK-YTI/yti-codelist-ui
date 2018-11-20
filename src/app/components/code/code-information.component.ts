@@ -13,6 +13,9 @@ import { TerminologyIntegrationModalService } from '../terminology-integration/t
 import { Concept } from '../../entities/concept';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ConfigurationService } from '../../services/configuration.service';
+import { ExtensionSimple } from '../../entities/extension-simple';
+import { MemberValue } from '../../entities/member-value';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-code-information',
@@ -22,6 +25,7 @@ import { ConfigurationService } from '../../services/configuration.service';
 export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() code: Code;
+  @Input() codeScheme: CodeScheme;
 
   cancelSubscription: Subscription;
 
@@ -34,6 +38,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     broaderCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
+    inlineExtensions: new FormControl(),
     conceptUriInVocabularies: new FormControl('')
   });
 
@@ -53,12 +58,13 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   reset() {
-    const {externalReferences, startDate, endDate, ...rest} = this.code;
+    const { externalReferences, inlineExtensions, startDate, endDate, ...rest } = this.code;
 
     this.codeForm.reset({
       ...rest,
-      validity: {start: startDate, end: endDate},
-      externalReferences: externalReferences.map(link => link.clone())
+      validity: { start: startDate, end: endDate },
+      externalReferences: externalReferences.map(link => link.clone()),
+      inlineExtensions: inlineExtensions.map(ie => ie.clone())
     });
   }
 
@@ -88,8 +94,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   openTerminologyModal() {
-    this.terminologyIntegrationModalService.open(true, 'code').
-    then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
+    this.terminologyIntegrationModalService.open(true, 'code').then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {
@@ -100,11 +105,11 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   putConceptStuffInPlace(concept: Concept) {
     this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
       .then(() => {
-        this.codeForm.patchValue({prefLabel: concept.prefLabel});
-        this.codeForm.patchValue({definition: concept.definition});
+        this.codeForm.patchValue({ prefLabel: concept.prefLabel });
+        this.codeForm.patchValue({ definition: concept.definition });
       }, ignoreModalClose);
     this.code.conceptUriInVocabularies = concept.uri;
-    this.codeForm.patchValue({conceptUriInVocabularies: concept.uri});
+    this.codeForm.patchValue({ conceptUriInVocabularies: concept.uri });
   }
 
   getCodeUri() {
@@ -117,5 +122,28 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
       return this.configurationService.getUriWithEnv(conceptUri);
     }
     return null;
+  }
+
+  get inlineExtensions(): ExtensionSimple[] {
+    return this.codeScheme.extensions.filter(extension => extension.propertyType.context === 'InlineExtension').sort(comparingLocalizable<ExtensionSimple>(this.languageService, item =>
+      item.prefLabel ? item.prefLabel : {}));
+  }
+
+  memberValuesForInlineExtension(type: string): MemberValue[] | null {
+    if (this.code.inlineExtensions) {
+      for (const extension of this.code.inlineExtensions) {
+        if (extension.propertyType.localName === type) {
+          if (extension.members && extension.members.length === 1) {
+            return extension.members[0].memberValues;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  get hasInlineExtensions(): boolean {
+    const extensions = this.inlineExtensions;
+    return extensions != null && extensions.length > 0;
   }
 }

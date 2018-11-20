@@ -156,49 +156,38 @@ export class MemberComponent implements OnInit, EditingComponent {
     return memberValue;
   }
 
-  save(formData: any): Observable<any> {
-
-    // TODO: Refactor this hacking so that memberValues are handled dynamically as a list in a dedicated formControl and component.
-
-    const { validity, unaryOperator, comparisonOperator, ...rest } = formData;
-    const updatedMember = this.member.clone();
-
-    const updatedUnaryOperator = unaryOperator;
-    const unaryValueType = this.extension.propertyType.valueTypeForLocalName('unaryOperator');
-    const updatedComparisonOperator = comparisonOperator;
-    const comparisonValueType = this.extension.propertyType.valueTypeForLocalName('comparisonOperator');
-
-    const updatedMemberValues: MemberValue[] = [];
-
-    if (updatedUnaryOperator && unaryValueType) {
+  addMemberValueToMemberValueList(memberValues: MemberValue[], value: string, type: string) {
+    const valueType = this.extension.propertyType.valueTypeForLocalName(type);
+    if (value && valueType) {
       const data: MemberValueType = <MemberValueType> {
-        value: updatedUnaryOperator,
-        valueType: unaryValueType
+        value: value,
+        valueType: valueType
       };
-      const existingMemberValue = this.findIdFromMembersForValueType(unaryValueType);
-      if (existingMemberValue) {
-      }
+      const existingMemberValue = this.findIdFromMembersForValueType(valueType);
       if (existingMemberValue) {
         data.id = existingMemberValue.id;
       }
       const unaryOperatorMemberValue: MemberValue = new MemberValue(data);
-      updatedMemberValues.push(unaryOperatorMemberValue);
+      memberValues.push(unaryOperatorMemberValue);
     }
+  }
 
-    if (updatedComparisonOperator && comparisonValueType) {
-      const data: MemberValueType = <MemberValueType> {
-        value: updatedComparisonOperator,
-        valueType: comparisonValueType
-      };
-      const existingMemberValue = this.findIdFromMembersForValueType(comparisonValueType);
-      if (existingMemberValue) {
-      }
-      if (existingMemberValue) {
-        data.id = existingMemberValue.id;
-      }
-      const comparisonOperatorMemberValue: MemberValue = new MemberValue(data);
-      updatedMemberValues.push(comparisonOperatorMemberValue);
-    }
+  save(formData: any): Observable<any> {
+
+    // TODO: Refactor this hacking so that memberValues are handled dynamically as a list in a dedicated formControl and component.
+    const { validity, unaryOperator, comparisonOperator, dpmDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, ...rest } = formData;
+    const updatedMember = this.member.clone();
+
+    const updatedMemberValues: MemberValue[] = [];
+
+    this.addMemberValueToMemberValueList(updatedMemberValues, unaryOperator, 'unaryOperator');
+    this.addMemberValueToMemberValueList(updatedMemberValues, comparisonOperator, 'comparisonOperator');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmDataType, 'dpmDataType');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmDomainReference, 'dpmDomainReference');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmHierarchyReference, 'dpmHierarchyReference');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmBalanceType, 'dpmBalanceType');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmFlowType, 'dpmFlowType');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmMemberXBRLCodePrefix, 'dpmMemberXBRLCodePrefix');
 
     updatedMember.memberValues = updatedMemberValues;
 

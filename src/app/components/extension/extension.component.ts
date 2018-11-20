@@ -151,10 +151,6 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted;
   }
 
-  get isSuperUser() {
-    return this.userService.user.superuser;
-  }
-
   navigateToRoute(route: any[]) {
     this.router.navigate(route);
   }
@@ -186,8 +182,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     }
   }
 
-  get showMembersTab() {
-    const propertyTypeLocalName: string = this.extension.propertyType.context;
-    return propertyTypeLocalName === 'Extension';
+  get showMembersTab(): boolean {
+    return true;
   }
 }

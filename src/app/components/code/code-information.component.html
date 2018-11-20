@@ -98,6 +98,14 @@
                                      [languageCodes]="code.codeScheme.languageCodes"
                                      [infoText]="'INFO_TEXT_CODE_EXTERNAL_REFERENCES'"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
+
+      <div *ngFor="let extension of inlineExtensions">
+        <app-inline-extensions-input [id]="'code_inline_extensions'"
+                                     [label]="extension.getDisplayName(languageService)"
+                                     [extension]="extension"
+                                     [memberValues]="memberValuesForInlineExtension(extension.propertyType.localName)">
+        </app-inline-extensions-input>
+      </div>
     </div>
 
     <div class="col-2">

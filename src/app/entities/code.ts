@@ -11,6 +11,7 @@ import { CodeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
+import { Extension } from './extension';
 
 export class Code extends AbstractResource implements EditableEntity {
 
@@ -22,12 +23,13 @@ export class Code extends AbstractResource implements EditableEntity {
   description: Localizable = {};
   definition: Localizable = {};
   externalReferences: ExternalReference[] = [];
-  broaderCode: CodePlain|null = null;
+  broaderCode: CodePlain | null = null;
   hierarchyLevel: number;
   expanded: boolean;
   conceptUriInVocabularies: string;
   modified: Moment | null = null;
   order: string;
+  inlineExtensions: Extension[] = [];
 
   constructor(data: CodeType) {
     super(data);
@@ -61,6 +63,9 @@ export class Code extends AbstractResource implements EditableEntity {
     }
     if (data.broaderCode) {
       this.broaderCode = new CodePlain(data.broaderCode);
+    }
+    if (data.inlineExtensions) {
+      this.inlineExtensions = data.inlineExtensions.map(ie => new Extension(ie));
     }
   }
 
@@ -134,7 +139,8 @@ export class Code extends AbstractResource implements EditableEntity {
       broaderCode: this.broaderCode ? this.broaderCode.serialize() : undefined,
       hierarchyLevel: this.hierarchyLevel,
       conceptUriInVocabularies: this.conceptUriInVocabularies,
-      order: this.order
+      order: this.order,
+      inlineExtensions: this.inlineExtensions.map(ie => ie.serialize())
     };
   }
 

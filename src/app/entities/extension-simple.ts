@@ -85,10 +85,6 @@ export class ExtensionSimple {
     return displayName ? displayName : this.codeValue;
   }
 
-  hasPrefLabel() {
-    return hasLocalization(this.prefLabel);
-  }
-
   clone(): ExtensionSimple {
     return new ExtensionSimple(this.serialize());
   }
