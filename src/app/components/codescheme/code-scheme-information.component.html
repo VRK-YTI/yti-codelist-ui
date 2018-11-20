@@ -23,13 +23,13 @@
         </dd>
       </dl>
 
-      <div *ngIf="!editing && codeScheme.conceptUriInVocabularies != null && codeScheme.conceptUriInVocabularies.length > 0">
+      <div *ngIf="!editing && codeScheme.conceptUriInVocabularies && codeScheme.conceptUriInVocabularies.length > 0">
         <app-clipboard [label]="'Vocabularies URI' | translate"
                        [showAsLink]="true"
                        [value]="getConceptUri()"
                        [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-clipboard>
       </div>
-      <div *ngIf="editing && codeScheme.conceptUriInVocabularies != null && codeScheme.conceptUriInVocabularies.length > 0">
+      <div *ngIf="editing && codeScheme.conceptUriInVocabularies && codeScheme.conceptUriInVocabularies.length > 0">
         <dl>
           <dt>
             <label>{{'Vocabularies URI' | translate}}</label>
