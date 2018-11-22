@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
 import { Location } from 'yti-common-ui/types/location';
 import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
 import { CodeRegistry } from '../entities/code-registry';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigurationService } from './configuration.service';
+import { Title } from '@angular/platform-browser';
 
 const frontPage = { localizationKey: 'Front page', route: [''] };
 const informationAboutServicePage = { localizationKey: 'Information about the service', route: ['information'] };
@@ -18,6 +21,16 @@ const createRegistryPage = { localizationKey: 'Create registry', route: ['create
 
 @Injectable()
 export class LocationService {
+
+  private titleTranslationSubscription: Subscription;
+
+  constructor(private translateService: TranslateService,
+              private configurationService: ConfigurationService,
+              private titleService: Title) {
+    this.titleTranslationSubscription = this.translateService.stream('Reference Data').subscribe(value => {
+      this.titleService.setTitle(this.configurationService.getEnvironmentIdentifier('prefix') + value);
+    })
+  }
 
   location = new Subject<Location[]>();
 
