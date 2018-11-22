@@ -63,7 +63,6 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
 
       });
     } else {
-      console.log(this.extension.propertyType.localName , 'this.extension.propertyType.localName');
       if (this.extension.propertyType.localName === 'crossReferenceList') {
         this.maxNrOfCodeSchemes = 2;
       }

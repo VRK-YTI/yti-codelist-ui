@@ -18,11 +18,9 @@ export class RegistryCodeSchemesComponent {
   constructor(private dataService: DataService,
               private router: Router,
               public languageService: LanguageService) {
-    console.log('RegistryCodeSchemesComponent constructor');
   }
 
   viewCodeScheme(codeScheme: CodeScheme) {
-    console.log('Viewing codescheme: ' + codeScheme.codeValue + ' from registry: ' + codeScheme.codeRegistry.codeValue);
     this.router.navigate(codeScheme.route);
   }
 }

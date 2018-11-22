@@ -45,14 +45,12 @@ export class CodeSchemeCodesImportModalComponent {
     } else {
       this.file = undefined;
     }
-    console.log(this.file);
   }
 
   uploadCodesFile() {
     if (!this.file) {
       throw new Error('File must be set');
     }
-    console.log('uploadCodesFile');
     if (this.file !== undefined) {
       this.uploading = true;
 

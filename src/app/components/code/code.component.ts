@@ -147,7 +147,6 @@ export class CodeComponent implements OnInit, EditingComponent {
     });
 
     const save = () => {
-      console.log('Store Code changes to server!');
       return this.dataService.saveCode(updatedCode.serialize()).pipe(tap(() => this.ngOnInit()));
     };
 

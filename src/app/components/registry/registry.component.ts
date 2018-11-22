@@ -108,8 +108,6 @@ export class RegistryComponent implements OnInit, EditingComponent {
 
   save(formData: any): Observable<any> {
 
-    console.log('Store CodeRegistry changes to server!');
-
     const {...rest} = formData;
     const updatedCodeRegistry = this.codeRegistry.clone();
 
@@ -121,7 +119,6 @@ export class RegistryComponent implements OnInit, EditingComponent {
   }
 
   viewCodeRegistry(codeRegistry: CodeRegistry) {
-    console.log('Viewing codeRegistry: ' + codeRegistry.codeValue);
     this.router.navigate(codeRegistry.route);
   }
 }

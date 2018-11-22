@@ -89,11 +89,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     };
 
     const save = () => {
-      console.log('Saving new Code');
       return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
         .pipe(tap(createdCode => {
-          console.log('Saved new Code');
-          console.log('Saved code route: ' + createdCode.route);
           this.router.navigate(createdCode.route);
         }));
     };

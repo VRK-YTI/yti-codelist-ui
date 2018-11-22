@@ -191,10 +191,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     if (this.cloning) {
       const save = () => {
-        console.log('Cloning CodeScheme');
         return this.dataService.cloneCodeScheme(codeScheme, codeRegistry.codeValue, this.uuidOfOriginalCodeSchemeIfCloning, newVersionEmpty)
           .pipe(tap(createdCodeScheme => {
-            console.log('Saved cloned CodeScheme');
             this.router.navigate([
               'codescheme',
               {
@@ -212,10 +210,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       }
     } else {
       const save = () => {
-        console.log('Saving new CodeScheme');
         return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
           .pipe(tap(createdCodeScheme => {
-            console.log('Saved new CodeScheme');
             this.router.navigate(createdCodeScheme.route);
           }));
       };

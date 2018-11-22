@@ -20,12 +20,10 @@ export class CodeSchemeImportAndCreateComponent implements OnInit {
   }
 
   importFromFile() {
-    console.log('Importing code list from file!');
     this.codeSchemeImportModalService.open(false, null);
   }
 
   createNewCodeScheme() {
-    console.log('Create new code list clicked!');
     this.router.navigate(['createcodescheme']);
   }
 }

@@ -123,10 +123,8 @@ export class ExtensionCreateComponent implements OnInit {
     };
 
     const save = () => {
-      console.log('Saving new Extension');
       return this.dataService.createExtension(extension, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
         .pipe(tap(createdExtension => {
-          console.log('Saved new Extension');
           this.router.navigate(createdExtension.route);
         }));
     };

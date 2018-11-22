@@ -65,7 +65,6 @@ export class HierarchyCodeComponent {
   }
 
   viewCode(code: CodePlain) {
-    console.log('View code: ' + code.codeValue);
     this.router.navigate([
       'code',
       {

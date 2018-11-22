@@ -57,7 +57,6 @@ export class MemberCreateComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('MemberCreateComponent onInit');
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
     const extensionCodeValue = this.route.snapshot.params.extensionCode;
@@ -95,8 +94,6 @@ export class MemberCreateComponent implements OnInit {
 
   save(formData: any): Observable<any> {
 
-    console.log('Saving new Member');
-
     const { code, relatedMember, unaryOperator, comparisonOperator, dpmDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, validity, ...rest } = formData;
 
     const member: MemberType = <MemberType> {
@@ -127,7 +124,6 @@ export class MemberCreateComponent implements OnInit {
       this.extension.parentCodeScheme.codeValue,
       this.extension.codeValue)
       .pipe(tap(createdMember => {
-        console.log('Saved new Member');
         this.router.navigate(createdMember.route);
       }));
   }

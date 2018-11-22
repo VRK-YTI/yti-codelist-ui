@@ -175,7 +175,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     });
 
     const save = () => {
-      console.log('Store CodeScheme changes to server!');
       return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).pipe(tap(() => this.ngOnInit()));
     };
 
@@ -201,7 +200,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   createExtension(propertyTypeLocalName: string) {
 
-    console.log('Create extension clicked with type: ' + propertyTypeLocalName);
     this.router.navigate(
       ['createextension',
         {
@@ -297,12 +295,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   createANewVersionFromThisCodeScheme() {
-    console.log('Copy codescheme clicked!');
     this.router.navigate(['createcodescheme'], { queryParams: { 'originalCodeSchemeId': this.codeScheme.id } });
   }
 
   createANewVersionOfThisCodeSchemeFromFile() {
-    console.log('creating a new version of codescheme from file!');
     this.codeSchemeImportModalService.open(true, this.codeScheme);
   }
 

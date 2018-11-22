@@ -59,7 +59,6 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
     } else {
       this.file = undefined;
     }
-    console.log(this.file);
   }
 
   uploadFile() {
@@ -67,7 +66,6 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
     if (!this.file || !this.codeRegistry) {
       throw new Error('File and code registry must be set');
     }
-    console.log('uploadFile');
 
     this.uploading = true;
     let okToImportFromVersionPerspective = true;

@@ -12,7 +12,6 @@ export function assertValid(value: Moment): Moment {
   if (value.isValid()) {
     return value;
   } else {
-    console.log(value);
     throw new Error('Not a valid moment object');
   }
 }

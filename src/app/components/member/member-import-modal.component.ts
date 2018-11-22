@@ -45,14 +45,12 @@ export class MembersImportModalComponent {
     } else {
       this.file = undefined;
     }
-    console.log(this.file);
   }
 
   uploadExtensionsFile() {
     if (!this.file) {
       throw new Error('File must be set');
     }
-    console.log('uploadExtensionsFile');
     if (this.file !== undefined) {
       this.uploading = true;
 

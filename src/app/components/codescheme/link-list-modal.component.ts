@@ -63,7 +63,6 @@ export class LinkListModalComponent implements OnInit {
   }
 
   select() {
-    console.log('Selected value: ' + this.selectedExternalReference.href);
     this.modal.close(this.selectedExternalReference);
   }
 

@@ -122,7 +122,6 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   createMember() {
-    console.log('Member create clicked.');
     this.router.navigate(
       ['createmember',
         {
@@ -171,7 +170,6 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     });
 
     const save = () => {
-      console.log('Store Extension changes to server!');
       return this.dataService.saveExtension(updatedExtension.serialize()).pipe(tap(() => this.ngOnInit()));
     };
 

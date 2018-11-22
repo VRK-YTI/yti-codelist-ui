@@ -25,7 +25,6 @@ export class RegistryListitemComponent {
   }
 
   viewCodeRegistry(codeRegistry: CodeRegistry) {
-    console.log('View codeRegistry: ' + this.codeRegistry.codeValue);
     this.router.navigate(codeRegistry.route);
   }
 

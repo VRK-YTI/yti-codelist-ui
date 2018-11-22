@@ -51,8 +51,6 @@ export class RegistryCreateComponent implements OnInit {
 
   save(formData: any): Observable<any> {
 
-    console.log('Saving new Registry');
-
     const { organizations, ...rest } = formData;
 
     const codeRegistry: CodeRegistryType = <CodeRegistryType> {
@@ -60,10 +58,8 @@ export class RegistryCreateComponent implements OnInit {
       organizations: organizations.map((organization: Organization) => organization.serialize())
     };
 
-    console.log('Saving new Registry');
     return this.dataService.createRegistry(codeRegistry)
       .pipe(tap(createdRegistry => {
-        console.log('Saved new Registry');
         this.router.navigate(createdRegistry.route);
       }));
   }

@@ -158,8 +158,6 @@ export class DataService {
 
   saveCodeRegistry(codeRegistryToSave: CodeRegistryType): Observable<ApiResponseType> {
 
-    console.log('saving registry in dataservice');
-    console.log(codeRegistryToSave);
     const registryCode = codeRegistryToSave.codeValue;
 
     return this.http.post<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/`, codeRegistryToSave);
@@ -410,7 +408,6 @@ export class DataService {
 
   validateNewCodeSchemeVersionCreationThruFile(registryCode: string, file: File, format: string): Observable<HttpResponse<Object>> {
 
-    console.log('validating');
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
 
@@ -539,7 +536,6 @@ export class DataService {
 
   getMembersWithoutParents(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Member[]> {
 
-    console.log('execing getMembersWithParents');
     const params = {
       'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,valueType,memberValue'
     };
@@ -556,8 +552,6 @@ export class DataService {
   saveExtension(extensionToSave: ExtensionType): Observable<ApiResponseType> {
 
     if (extensionToSave.parentCodeScheme) {
-      console.log('Saving Extension in dataservice');
-      console.log(extensionToSave);
       const registryCodeValue = extensionToSave.parentCodeScheme.codeRegistry.codeValue;
       const codeSchemeCodeValue = extensionToSave.parentCodeScheme.codeValue;
 
@@ -751,7 +745,6 @@ export class DataService {
   }
 
   suggestAConcept(suggeztion: string, definition: string, vocabularyId: string, contentLanguage: string): Observable<Concept[]> {
-    console.log('in dataservice', suggeztion, definition);
     return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}/vocabulary/${vocabularyId}/language/${contentLanguage}/suggestion/${suggeztion}`, definition)
       .pipe(map(res => res.results.map((data: ConceptType) => new Concept(data))));
   }

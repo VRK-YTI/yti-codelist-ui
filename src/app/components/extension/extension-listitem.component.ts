@@ -27,7 +27,6 @@ export class ExtensionListitemComponent {
   }
 
   viewExtension(extension: Extension) {
-    console.log('View extension: ' + extension.codeValue);
     this.router.navigate([
       'extension',
       {

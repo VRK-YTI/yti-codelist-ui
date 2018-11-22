@@ -71,7 +71,6 @@ export class HierarchyMemberComponent {
   }
 
   viewMember() {
-    console.log('View member: ' + this.member.id);
     this.router.navigate([
       'member',
       {
