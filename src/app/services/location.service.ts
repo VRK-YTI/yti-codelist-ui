@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
@@ -20,7 +20,7 @@ const createMemberPage = { localizationKey: 'Create member', route: ['creatememb
 const createRegistryPage = { localizationKey: 'Create registry', route: ['createregistry'] };
 
 @Injectable()
-export class LocationService {
+export class LocationService implements OnDestroy {
 
   private titleTranslationSubscription: Subscription;
 
@@ -29,7 +29,11 @@ export class LocationService {
               private titleService: Title) {
     this.titleTranslationSubscription = this.translateService.stream('Reference Data').subscribe(value => {
       this.titleService.setTitle(this.configurationService.getEnvironmentIdentifier('prefix') + value);
-    })
+    });
+  }
+
+  ngOnDestroy() {
+    this.titleTranslationSubscription.unsubscribe();
   }
 
   location = new Subject<Location[]>();
