@@ -250,15 +250,15 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   canAddExtensionWithType(propertyTypeLocalName: string): boolean {
-    if (this.isInlineExtension(propertyTypeLocalName) && this.hasExtension(propertyTypeLocalName)) {
+    if (this.isCodeExtension(propertyTypeLocalName) && this.hasExtension(propertyTypeLocalName)) {
       return false;
     }
     return this.canAddExtension;
   }
 
-  isInlineExtension(propertyTypeLocalName: string): boolean {
-    const inlineExtensionLocalNames: string[] = ['dpmMetric', 'dpmDimension', 'dpmExplicitDomain', 'dpmTypedDomain'];
-    for (const extensionPropertyTypeLocalName of inlineExtensionLocalNames) {
+  isCodeExtension(propertyTypeLocalName: string): boolean {
+    const codeExtensionLocalNames: string[] = ['dpmMetric', 'dpmDimension', 'dpmExplicitDomain', 'dpmTypedDomain'];
+    for (const extensionPropertyTypeLocalName of codeExtensionLocalNames) {
       if (propertyTypeLocalName === extensionPropertyTypeLocalName) {
         return true;
       }

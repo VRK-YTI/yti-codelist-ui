@@ -21,17 +21,17 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="hasInlineExtensions"
-             id="codelist_inlineextensions_tab">
+    <ngb-tab *ngIf="hasCodeExtensions"
+             id="codelist_codeextensions_tab">
       <ng-template ngbTabTitle>
         <span translate>CODE EXTENSIONS</span>
       </ng-template>
 
       <ng-template ngbTabContent>
-        <div id="codelist_inlineextension_list_div" class="col-md-12">
-          <ul id="codelist_inlineextension_regular">
-            <li *ngFor="let extension of inlineExtensions">
-              <div id="{{extension.codeValue}}_codelist_inlineextension_listitem">
+        <div id="codelist_codeextension_list_div" class="col-md-12">
+          <ul id="codelist_codeextension_regular">
+            <li *ngFor="let extension of codeExtensions">
+              <div id="{{extension.codeValue}}_codelist_codeextension_listitem">
                 <app-extension-listitem [extension]="extension"></app-extension-listitem>
               </div>
             </li>

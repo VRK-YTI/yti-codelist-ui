@@ -25,7 +25,7 @@
       <div class="col-lg-8 col-md-10">
         <app-literal-input [id]="'extension_codevalue_input'"
                            [label]="'LABEL_TEXT_CREATE_EXTENSION_ID' | translate"
-                           [restrict]="isInlineExtension"
+                           [restrict]="isCodeExtension"
                            [required]="true"
                            [infoText]="'INFO_TEXT_CREATE_EXTENSION_ID'"
                            [formControlName]="'codeValue'"></app-literal-input>
@@ -36,7 +36,7 @@
 
         <app-localizable-input [id]="'extension_name_input'"
                                [label]="'Extension name' | translate"
-                               [restrict]="isInlineExtension"
+                               [restrict]="isCodeExtension"
                                [infoText]="'INFO_TEXT_EXTENSION_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
 

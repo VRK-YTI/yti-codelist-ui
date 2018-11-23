@@ -77,7 +77,7 @@ export interface CodeType extends BaseResourceType {
   hierarchyLevel?: number;
   conceptUriInVocabularies: string;
   order?: string;
-  inlineExtensions?: ExtensionType[];
+  codeExtensions?: ExtensionType[];
 }
 
 export interface ConceptType {

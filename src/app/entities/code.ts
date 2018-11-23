@@ -29,7 +29,7 @@ export class Code extends AbstractResource implements EditableEntity {
   conceptUriInVocabularies: string;
   modified: Moment | null = null;
   order: string;
-  inlineExtensions: Extension[] = [];
+  codeExtensions: Extension[] = [];
 
   constructor(data: CodeType) {
     super(data);
@@ -64,8 +64,8 @@ export class Code extends AbstractResource implements EditableEntity {
     if (data.broaderCode) {
       this.broaderCode = new CodePlain(data.broaderCode);
     }
-    if (data.inlineExtensions) {
-      this.inlineExtensions = data.inlineExtensions.map(ie => new Extension(ie));
+    if (data.codeExtensions) {
+      this.codeExtensions = data.codeExtensions.map(ie => new Extension(ie));
     }
   }
 
@@ -140,7 +140,7 @@ export class Code extends AbstractResource implements EditableEntity {
       hierarchyLevel: this.hierarchyLevel,
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       order: this.order,
-      inlineExtensions: this.inlineExtensions.map(ie => ie.serialize())
+      codeExtensions: this.codeExtensions.map(ie => ie.serialize())
     };
   }
 

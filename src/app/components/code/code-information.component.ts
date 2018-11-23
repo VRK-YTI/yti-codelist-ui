@@ -38,7 +38,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     broaderCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
-    inlineExtensions: new FormControl(),
+    codeExtensions: new FormControl(),
     conceptUriInVocabularies: new FormControl('')
   });
 
@@ -58,13 +58,13 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   reset() {
-    const { externalReferences, inlineExtensions, startDate, endDate, ...rest } = this.code;
+    const { externalReferences, codeExtensions, startDate, endDate, ...rest } = this.code;
 
     this.codeForm.reset({
       ...rest,
       validity: { start: startDate, end: endDate },
       externalReferences: externalReferences.map(link => link.clone()),
-      inlineExtensions: inlineExtensions.map(ie => ie.clone())
+      codeExtensions: codeExtensions.map(ie => ie.clone())
     });
   }
 
@@ -124,14 +124,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     return null;
   }
 
-  get inlineExtensions(): ExtensionSimple[] {
-    return this.codeScheme.extensions.filter(extension => extension.propertyType.context === 'InlineExtension').sort(comparingLocalizable<ExtensionSimple>(this.languageService, item =>
+  get codeExtensions(): ExtensionSimple[] {
+    return this.codeScheme.extensions.filter(extension => extension.propertyType.context === 'CodeExtension').sort(comparingLocalizable<ExtensionSimple>(this.languageService, item =>
       item.prefLabel ? item.prefLabel : {}));
   }
 
-  memberValuesForInlineExtension(type: string): MemberValue[] | null {
-    if (this.code.inlineExtensions) {
-      for (const extension of this.code.inlineExtensions) {
+  memberValuesForCodeExtension(type: string): MemberValue[] | null {
+    if (this.code.codeExtensions) {
+      for (const extension of this.code.codeExtensions) {
         if (extension.propertyType.localName === type) {
           if (extension.members && extension.members.length === 1) {
             return extension.members[0].memberValues;
@@ -142,8 +142,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     return null;
   }
 
-  get hasInlineExtensions(): boolean {
-    const extensions = this.inlineExtensions;
+  get hasCodeExtensions(): boolean {
+    const extensions = this.codeExtensions;
     return extensions != null && extensions.length > 0;
   }
 }

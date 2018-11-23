@@ -31,12 +31,12 @@ export class CodeSchemeExtensionsComponent {
     return groupByType(this.translateService, filteredExtensions);
   }
 
-  get inlineExtensions(): Extension[] {
-    return this.extensions.filter(es => es.propertyType.context === 'InlineExtension');
+  get codeExtensions(): Extension[] {
+    return this.extensions.filter(es => es.propertyType.context === 'CodeExtension');
   }
 
-  get hasInlineExtensions(): boolean {
-    const extensions = this.inlineExtensions;
+  get hasCodeExtensions(): boolean {
+    const extensions = this.codeExtensions;
     return extensions != null && extensions.length > 0;
   }
 }

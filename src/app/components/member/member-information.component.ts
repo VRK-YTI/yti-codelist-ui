@@ -223,8 +223,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     return null;
   }
 
-  get isInlineExtension(): boolean {
-    return this.extension.propertyType.context === 'InlineExtension';
+  get isCodeExtension(): boolean {
+    return this.extension.propertyType.context === 'CodeExtension';
   }
 
   get valueTypes(): ValueType[] {

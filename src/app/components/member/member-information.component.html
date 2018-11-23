@@ -46,7 +46,7 @@
                         [formControlName]="'code'"></app-code-input>
 
         <app-member-input id="member_relatedmember_input"
-                          *ngIf="!isInlineExtension"
+                          *ngIf="!isCodeExtension"
                           [label]="'Broader member' | translate"
                           [extension]="currentMember.extension"
                           [currentMember]="currentMember"

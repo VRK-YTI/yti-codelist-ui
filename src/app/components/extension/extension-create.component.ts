@@ -75,7 +75,7 @@ export class ExtensionCreateComponent implements OnInit {
       if (this.propertyType.localName === 'crossReferenceList') {
         this.maxNrOfCodeSchemes = 2;
       }
-      if (this.propertyType.context === 'InlineExtension') {
+      if (this.propertyType.context === 'CodeExtension') {
         this.extensionForm.controls['codeValue'].setValue(this.propertyType.localName);
         this.extensionForm.controls['prefLabel'].setValue(this.propertyType.prefLabel);
       }
@@ -160,7 +160,7 @@ export class ExtensionCreateComponent implements OnInit {
     return this.propertyType.context === 'Extension';
   }
 
-  get isInlineExtension(): boolean {
-    return this.propertyType.context === 'InlineExtension';
+  get isCodeExtension(): boolean {
+    return this.propertyType.context === 'CodeExtension';
   }
 }

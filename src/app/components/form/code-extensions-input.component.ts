@@ -8,19 +8,19 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-inline-extensions-input',
+  selector: 'app-code-extensions-input',
   template: `
     <dt>
       <label>{{label}}</label>
     </dt>
     <div *ngFor="let valueType of valueTypes">
-      <app-literal [id]="'code_inline_membervalue_' + extension.codeValue + '_' + valueType.localName + ' _input'"
+      <app-literal [id]="'code_codeextension_membervalue_' + extension.codeValue + '_' + valueType.localName + ' _input'"
                    [label]="valueType.prefLabel | translateValue"
                    [value]="getMemberValueForValueType(valueType.localName)"></app-literal>
     </div>
   `
 })
-export class InlineExtensionsInputComponent implements ControlValueAccessor {
+export class CodeExtensionsInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() extension: Extension;
