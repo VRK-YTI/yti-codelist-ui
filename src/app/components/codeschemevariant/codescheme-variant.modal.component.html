@@ -31,16 +31,16 @@
              [id]="codeScheme.idIdentifier + '_variant_link'"
              (click)="select(codeScheme)">
           <div class="content" [class.last]="last">
-            <span class="title">{{codeScheme.prefLabel | translateValue}}</span>
-            <span class="body">{{codeScheme.definition | translateValue}}</span>
+            <span class="title">{{codeScheme.prefLabel | translateValue:false}}</span>
+            <span class="body">{{codeScheme.definition | translateValue:false}}</span>
             <div class="origin">
-              <span class="float-left">{{codeScheme.prefLabel | translateValue}}</span>
+              <span class="float-left">{{codeScheme.prefLabel | translateValue:false}}</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults()">
+      <div class="no-results" *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults()">
         <p translate>No search results</p>
       </div>
 
