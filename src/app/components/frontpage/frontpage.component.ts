@@ -6,7 +6,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { CodeRegistry } from '../../entities/code-registry';
 import { InfoDomain } from '../../entities/info-domain';
 import { Organization } from '../../entities/organization';
-import { allStatuses, Status } from 'yti-common-ui/entities/status';
+import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
 import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { LanguageService } from '../../services/language.service';
@@ -113,7 +113,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
           c.value ? c.value.prefLabel : {}));
       }));
 
-    this.statusOptions = [null, ...allStatuses].map(status => ({
+    this.statusOptions = [null, ...selectableStatuses].map(status => ({
       value: status,
       name: () => this.translateService.instant(status ? status : 'All statuses'),
       idIdentifier: () => status ? status : 'all_selected'
