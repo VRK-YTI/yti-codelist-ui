@@ -61,7 +61,7 @@ export class RegistryInputComponent implements ControlValueAccessor, OnInit {
         { value: null, name: () => this.translateService.instant('No registry'), idIdentifier: () => 'all_selected' },
         ...codeRegistries.map(reg => ({
             value: reg,
-            name: () => this.languageService.translate(reg.prefLabel, true),
+            name: () => this.languageService.translate(reg.prefLabel, false),
             idIdentifier: () => reg.codeValue
         }))
       ];
