@@ -241,7 +241,7 @@ msgstr ""
 msgid "Create a new blank version without the existing content"
 msgstr ""
 
-msgid "INLINE EXTENSIONS"
+msgid "CODE EXTENSIONS"
 msgstr ""
 
 msgid ""
