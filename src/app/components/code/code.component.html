@@ -50,7 +50,12 @@
 
   <div class="row" *ngIf="code.description | translateValue">
     <div class="col-12">
-      <p class="description text-content-wrap">{{code.description | translateValue}}</p>
+      <div class="content-description-container" [ngClass]="{'expand': showFullDescription}">
+        <span class="description">{{code.description | translateValue: false}}</span>
+        <div class="limiter-container">
+          <div class="description-limiter" (click)="toggleFullDescription()"></div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -42,6 +42,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   forbiddenVariantSearchResultIds: string[] = [];
   deleting = false;
   languageCodes: CodePlain[] | null;
+  showFullDescription = false;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -354,5 +355,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   get showUnfinishedFeature(): boolean {
     return this.configurationService.showUnfinishedFeature;
+  }
+
+  toggleFullDescription() {
+    this.showFullDescription = !this.showFullDescription;
   }
 }
