@@ -37,10 +37,10 @@
              [id]="concept.getIdIdentifier(languageService) + '_concept_link'"
              (click)="select(concept)">
           <div class="content" [class.last]="last">
-            <span class="title">{{concept.prefLabel | translateValue}}</span>
-            <span class="body">{{concept.definition | translateValue}}</span>
+            <span class="title">{{concept.prefLabel | translateValue:false}}</span>
+            <span class="body">{{concept.definition | translateValue:false}}</span>
             <div class="origin">
-              <span class="float-left">{{concept.vocabularyPrefLabel | translateValue}}</span>
+              <span class="float-left">{{concept.vocabularyPrefLabel | translateValue:false}}</span>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
                     class="btn btn-sm btn-secondary-action mt-2"
                     (click)="suggestAConcept()" [disabled]="!canSuggest()" translate>Suggest the concept to Controlled Vocabularies</button>
             &nbsp;
-            <button id="cancel_modal_button"
+            <button id="cancel_modal_button_inline"
                     type="button"
                     class="btn btn-sm btn-secondary-action mt-2"
                     (click)="cancel()">{{cancelText | translate}}</button>

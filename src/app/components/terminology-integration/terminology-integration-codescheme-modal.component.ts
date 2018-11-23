@@ -14,7 +14,6 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { ConfigurationService } from '../../services/configuration.service';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -52,8 +51,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
               private translateService: TranslateService,
               private codeListErrorModalService: CodeListErrorModalService,
               private codeListConfirmationModalService: CodeListConfirmationModalService,
-              private suggestConceptModalService: SuggestConceptModalService,
-              private configurationService: ConfigurationService) {
+              private suggestConceptModalService: SuggestConceptModalService) {
   }
 
   ngOnInit() {
@@ -79,7 +77,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     this.dataService.getVocabularies().subscribe(vocabularies => {
       this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
           value: voc,
-          name: () => voc ? this.languageService.translate(voc.prefLabel, true)
+          name: () => voc ? this.languageService.translate(voc.prefLabel, false)
             : this.translateService.instant('All vocabularies'),
           idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
             : 'all_selected'
