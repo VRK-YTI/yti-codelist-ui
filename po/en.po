@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-19 15:54+0200\n"
+"PO-Revision-Date: 2018-11-23 08:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -921,13 +921,11 @@ msgid "DETACH VARIANT?"
 msgstr "Remove the link between variant and this code list?"
 
 msgid "CALCULATIONHIERARCHIES"
-msgstr ""
+msgstr "CALCULATION HIERARCHIES"
 
 msgid "DEFINITIONHIERARCHIES"
-msgstr ""
+msgstr "DEFINITION HIERARCHIES"
 
-#, fuzzy
-#| msgid "CROSSREFERENCELIST"
 msgid "CROSSREFERENCELISTS"
 msgstr "Cross-reference Lists"
 
