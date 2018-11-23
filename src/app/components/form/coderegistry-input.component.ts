@@ -32,6 +32,7 @@ export class RegistryInputComponent implements ControlValueAccessor, OnInit {
 
   @Input() label: string;
   @Input() required = false;
+  @Input() useUILanguage = false;
   @Output() loaded = new EventEmitter();
 
   control = new FormControl();
@@ -61,7 +62,7 @@ export class RegistryInputComponent implements ControlValueAccessor, OnInit {
         { value: null, name: () => this.translateService.instant('No registry'), idIdentifier: () => 'all_selected' },
         ...codeRegistries.map(reg => ({
             value: reg,
-            name: () => this.languageService.translate(reg.prefLabel, false),
+            name: () => this.languageService.translate(reg.prefLabel, this.useUILanguage),
             idIdentifier: () => reg.codeValue
         }))
       ];
