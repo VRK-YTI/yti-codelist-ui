@@ -57,11 +57,18 @@
   <div class="row metabar">
     <div class="col-12">
       <div class="metaitem">
-        <span translate>Registry</span><span>: </span><span class="routedLink"
-                                                            (click)="navigateToRoute(extension.parentCodeScheme.codeRegistry.route)">{{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span translate>Registry</span><span>: </span>
+        <span class="routedLink"
+              (click)="navigateToRoute(extension.parentCodeScheme.codeRegistry.route)">{{extension.parentCodeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
-        <span translate>Codescheme</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
+        <span translate>Code list</span><span>: </span>
+        <span class="routedLink"
+              (click)="navigateToRoute(extension.parentCodeScheme.route)">{{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
+      </div>
+      <div class="metaitem" *ngIf="extension.parentCodeScheme.organizations.length > 0">
+        <span translate>Organization</span><span>: </span>
+        <span *ngFor="let organization of extension.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
       </div>
     </div>
   </div>

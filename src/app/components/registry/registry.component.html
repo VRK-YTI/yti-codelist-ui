@@ -28,7 +28,7 @@
     <div class="col-12">
       <div class="metaitem" *ngIf="codeRegistry.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+        <span *ngFor="let organization of codeRegistry.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
       </div>
     </div>
   </div>
