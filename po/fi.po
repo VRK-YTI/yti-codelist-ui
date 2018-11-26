@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-26 14:44+0200\n"
+"PO-Revision-Date: 2018-11-26 14:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -438,9 +438,6 @@ msgstr "Tuo jäseniä"
 msgid "Delete extension"
 msgstr "Poista laajennus"
 
-msgid "Codescheme"
-msgstr "Koodisto"
-
 msgid "MEMBERS"
 msgstr "JÄSENET"
 
@@ -464,7 +461,7 @@ msgstr ""
 msgid "Extend search to codes"
 msgstr "Kohdista haku myös koodeihin"
 
-msgid "Filter with infodomain"
+msgid "Filter with information domain"
 msgstr "Rajaa tietoalueella"
 
 msgid "Filter results"

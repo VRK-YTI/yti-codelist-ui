@@ -422,9 +422,6 @@ msgstr ""
 msgid "Delete extension"
 msgstr ""
 
-msgid "Codescheme"
-msgstr ""
-
 msgid "MEMBERS"
 msgstr ""
 
@@ -443,7 +440,7 @@ msgstr ""
 msgid "Extend search to codes"
 msgstr ""
 
-msgid "Filter with infodomain"
+msgid "Filter with information domain"
 msgstr ""
 
 msgid "Filter results"
