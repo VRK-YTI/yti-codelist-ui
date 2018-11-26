@@ -127,7 +127,7 @@
       </div>
       <div class="metaitem" *ngIf="codeScheme.infoDomains.length > 0">
         <span translate>InfoDomain</span><span>: </span>
-        <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.infoDomains; let last = last">{{infoDomain.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+        <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.infoDomains">{{infoDomain.prefLabel | translateValue:true}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
