@@ -108,7 +108,8 @@ export class Extension implements EditableEntity {
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate),
       parentCodeScheme: this.parentCodeScheme ? this.parentCodeScheme.serialize() : undefined,
-      codeSchemes: this.codeSchemes.map(cs => cs.serialize())
+      codeSchemes: this.codeSchemes.map(cs => cs.serialize()),
+      members: this.members ? this.members.map(member => member.serialize()) : undefined
     };
   }
 

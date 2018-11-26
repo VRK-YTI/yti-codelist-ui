@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
-import { CodeType } from '../../services/api-schema';
+import { CodeType, ExtensionType, MemberSimpleType, MemberValueType } from '../../services/api-schema';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { from, Observable } from 'rxjs';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
@@ -16,6 +16,14 @@ import { ExternalReference } from '../../entities/external-reference';
 import { flatMap, map, tap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { ExtensionSimple } from '../../entities/extension-simple';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { LanguageService } from '../../services/language.service';
+import { Extension } from '../../entities/extension';
+import { MemberSimple } from '../../entities/member-simple';
+import { MemberValue } from '../../entities/member-value';
+import { PropertyType } from '../../entities/property-type';
+import { ValueType } from '../../entities/value-type';
 
 @Component({
   selector: 'app-code-create',
@@ -37,7 +45,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     broaderCode: new FormControl(null),
     validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status),
-    conceptUriInVocabularies: new FormControl('')
+    conceptUriInVocabularies: new FormControl(''),
+    codeExtensions: new FormArray([])
   });
 
   constructor(private dataService: DataService,
@@ -46,7 +55,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
               private editableService: EditableService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private languageService: LanguageService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -64,6 +74,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
       this.locationService.atCodeCreatePage(this.codeScheme);
+
+      this.initCodeExtensions();
     });
   }
 
@@ -79,7 +91,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
 
   save(formData: any): Observable<any> {
 
-    const { validity, externalReferences, ...rest } = formData;
+    const { validity, externalReferences, codeExtensions, ...rest } = formData;
 
     const code: CodeType = <CodeType> {
       ...rest,
@@ -87,6 +99,12 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
       endDate: formatDate(validity.end),
       externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
     };
+
+    const extensions: Extension[] | null = this.constructExtensions(codeExtensions);
+
+    if (extensions) {
+      code.codeExtensions = extensions.map(extension => extension.serialize());
+    }
 
     const save = () => {
       return this.dataService.createCode(code, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
@@ -143,5 +161,148 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     this.codeForm.patchValue({ prefLabel: concept.prefLabel });
     this.codeForm.patchValue({ definition: concept.definition });
     this.codeForm.patchValue({ conceptUriInVocabularies: concept.uri });
+  }
+
+  get codeExtensionsFormArray(): FormArray {
+    return this.codeForm.get('codeExtensions') as FormArray;
+  }
+
+  get codeExtensions(): ExtensionSimple[] {
+    return this.codeScheme.extensions.filter(extension => extension.propertyType.context === 'CodeExtension').sort(comparingLocalizable<ExtensionSimple>(this.languageService, item =>
+      item.prefLabel ? item.prefLabel : {}));
+  }
+
+  getExtensionDisplayName(extensionId: string): string {
+    const extension: ExtensionSimple | null = this.getExtension(extensionId);
+    if (extension) {
+      return extension.getDisplayName(this.languageService);
+    }
+    return '';
+  }
+
+  getExtension(extensionId: string): ExtensionSimple | null {
+    for (const extension of this.codeScheme.extensions) {
+      if (extension.id === extensionId) {
+        return extension;
+      }
+    }
+    return null;
+  }
+
+  initCodeExtensions() {
+    this.codeExtensionsFormArray.controls = [];
+    const codeExtensions: ExtensionSimple[] = this.codeScheme.extensions.filter(extension => extension.propertyType.localName === 'CodeExtension');
+    if (codeExtensions) {
+      this.codeExtensions.forEach(codeExtension => {
+        this.codeExtensionsFormArray.push(this.initExtension(codeExtension));
+      });
+    }
+  }
+
+  initExtension(extension: ExtensionSimple): FormGroup {
+    return new FormGroup({
+      id: new FormControl(extension.id),
+      uri: new FormControl(extension.uri),
+      url: new FormControl(extension.url),
+      codeValue: new FormControl(extension.codeValue),
+      status: new FormControl(extension.status),
+      prefLabel: new FormControl(extension.prefLabel),
+      propertyType: new FormControl(extension.propertyType),
+      members: this.initMembers(extension)
+    })
+  }
+
+  initMembers(extension: ExtensionSimple): FormArray {
+    const membersArray: FormArray = new FormArray([]);
+    membersArray.push(this.initMember(extension));
+    return membersArray;
+  }
+
+  initMember(extension: ExtensionSimple): FormGroup {
+    return new FormGroup({
+      id: new FormControl(null),
+      url: new FormControl(null),
+      uri: new FormControl(null),
+      memberValues: this.initMemberValues(extension)
+    });
+  }
+
+  initMemberValues(extension: ExtensionSimple): FormArray {
+    const memberValuesFormArray: FormArray = new FormArray([]);
+    const valueTypes: ValueType[] = extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+    if (valueTypes) {
+      valueTypes.forEach(valueType => {
+        const memberValueGroup: FormGroup = new FormGroup({
+          valueType: new FormControl(valueType),
+          value: new FormControl('')
+        });
+        memberValuesFormArray.push(memberValueGroup);
+      })
+    }
+    return memberValuesFormArray;
+  }
+
+  constructExtensions(extensionsArray: Array<Extension>): Extension[] | null {
+
+    const extensions: Extension[] = [];
+
+    extensionsArray.forEach((extension: Extension) => {
+      const extensionType: ExtensionType = <ExtensionType> {
+        id: extension.id,
+        uri: extension.uri,
+        url: extension.url,
+        codeValue: extension.codeValue,
+        status: extension.status,
+        propertyType: extension.propertyType as PropertyType,
+        members: this.constructMembers(extension.members)
+      };
+      extensions.push(new Extension(extensionType));
+    });
+
+    if (extensions.length > 0) {
+      return extensions;
+    }
+
+    return null;
+  }
+
+  constructMembers(membersArray: Array<MemberSimple>): MemberSimpleType[] | null {
+
+    const members: MemberSimpleType[] = [];
+
+    membersArray.forEach(member => {
+      const memberType: MemberSimpleType = <MemberSimpleType> {
+        id: member.id,
+        uri: member.uri,
+        url: member.url,
+        memberValues: this.constructMemberValues(member.memberValues)
+      };
+      members.push(memberType);
+    });
+
+    if (members.length > 0) {
+      return members;
+    }
+
+    return null;
+  }
+
+  constructMemberValues(memberValuesArray: Array<MemberValue>): MemberValueType[] | null {
+
+    const memberValues: MemberValueType[] = [];
+
+    memberValuesArray.forEach(memberValue => {
+      const memberValueType: MemberValueType = <MemberValueType> {
+        id: memberValue.id,
+        value: memberValue.value,
+        valueType: memberValue.valueType as ValueType
+      };
+      memberValues.push(memberValueType);
+    });
+
+    if (memberValues.length > 0) {
+      return memberValues;
+    }
+    return null;
   }
 }

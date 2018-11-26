@@ -208,7 +208,7 @@ export interface MemberSimpleType {
   order?: string;
   created?: string;
   modified?: string;
-  code: CodePlainType;
+  code?: CodePlainType;
   relatedMember?: MemberSimpleType;
   startDate?: string;
   endDate?: string;

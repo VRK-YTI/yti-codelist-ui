@@ -6,15 +6,21 @@ import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
 import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { Observable, from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { LanguageService } from '../../services/language.service';
-import { tap, flatMap } from 'rxjs/operators';
+import { flatMap, tap } from 'rxjs/operators';
 import { changeToRestrictedStatus } from '../../utils/status-check';
+import { Extension } from '../../entities/extension';
+import { ExtensionType, MemberSimpleType, MemberValueType } from '../../services/api-schema';
+import { PropertyType } from '../../entities/property-type';
+import { MemberSimple } from '../../entities/member-simple';
+import { MemberValue } from '../../entities/member-value';
+import { ValueType } from '../../entities/value-type';
 
 @Component({
   selector: 'app-code',
@@ -97,10 +103,10 @@ export class CodeComponent implements OnInit, EditingComponent {
   get canDelete() {
     return this.userService.user.superuser ||
       (this.authorizationManager.canDelete(this.codeScheme) &&
-      (this.codeScheme.status === 'INCOMPLETE' ||
-        this.codeScheme.status === 'DRAFT' ||
-        this.codeScheme.status === 'SUGGESTED' ||
-        this.codeScheme.status === 'SUBMITTED'));
+        (this.codeScheme.status === 'INCOMPLETE' ||
+          this.codeScheme.status === 'DRAFT' ||
+          this.codeScheme.status === 'SUGGESTED' ||
+          this.codeScheme.status === 'SUBMITTED'));
   }
 
   get isSuperUser() {
@@ -136,15 +142,86 @@ export class CodeComponent implements OnInit, EditingComponent {
     this.editableService.cancel();
   }
 
+  constructExtensions(extensionsArray: Array<Extension>): Extension[] | null {
+
+    const extensions: Extension[] = [];
+
+    extensionsArray.forEach((extension: Extension) => {
+      const extensionType: ExtensionType = <ExtensionType> {
+        id: extension.id,
+        uri: extension.uri,
+        url: extension.url,
+        codeValue: extension.codeValue,
+        status: extension.status,
+        propertyType: extension.propertyType as PropertyType,
+        members: this.constructMembers(extension.members)
+      };
+      extensions.push(new Extension(extensionType));
+    });
+
+    if (extensions.length > 0) {
+      return extensions;
+    }
+
+    return null;
+  }
+
+  constructMembers(membersArray: Array<MemberSimple>): MemberSimpleType[] | null {
+
+    const members: MemberSimpleType[] = [];
+
+    const codePlainType = this.code.serializeToPlainType();
+
+    membersArray.forEach(member => {
+      const memberType: MemberSimpleType = <MemberSimpleType> {
+        id: member.id,
+        uri: member.uri,
+        url: member.url,
+        code: codePlainType,
+        memberValues: this.constructMemberValues(member.memberValues)
+      };
+      members.push(memberType);
+    });
+
+    if (members.length > 0) {
+      return members;
+    }
+
+    return null;
+  }
+
+  constructMemberValues(memberValuesArray: Array<MemberValue>): MemberValueType[] | null {
+
+    const memberValues: MemberValueType[] = [];
+
+    memberValuesArray.forEach(memberValue => {
+      const memberValueType: MemberValueType = <MemberValueType> {
+        id: memberValue.id,
+        value: memberValue.value,
+        valueType: memberValue.valueType as ValueType
+      };
+      memberValues.push(memberValueType);
+    });
+
+    if (memberValues.length > 0) {
+      return memberValues;
+    }
+    return null;
+  }
+
   save(formData: any): Observable<any> {
 
-    const {validity, ...rest} = formData;
+    const { validity, codeExtensions, ...rest } = formData;
+
     const updatedCode = this.code.clone();
+
+    const extensions: Extension[] | null = this.constructExtensions(codeExtensions);
 
     Object.assign(updatedCode, {
       ...rest,
       startDate: validity.start,
-      endDate: validity.end
+      endDate: validity.end,
+      codeExtensions: extensions
     });
 
     const save = () => {

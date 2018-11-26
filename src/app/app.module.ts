@@ -110,6 +110,7 @@ import { HierarchyMemberComponent } from './components/member/hierarchy-member.c
 import { SuggestConceptModalComponent, SuggestConceptModalService } from './components/terminology-integration/suggest-concept';
 import { ConfigurationService } from './services/configuration.service';
 import { CodeExtensionsInputComponent } from './components/form/code-extensions-input.component';
+import { CodeExtensionMemberValuesInputComponent } from './components/form/code-extension-member-values-input.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -268,7 +269,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     RefreshComponent,
     HierarchyMemberComponent,
     SuggestConceptModalComponent,
-    CodeExtensionsInputComponent
+    CodeExtensionsInputComponent,
+    CodeExtensionMemberValuesInputComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,

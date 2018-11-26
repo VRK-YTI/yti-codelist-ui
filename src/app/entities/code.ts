@@ -7,7 +7,7 @@ import { EditableEntity } from './editable-entity';
 import { ExternalReference } from './external-reference';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { CodeType } from '../services/api-schema';
+import { CodePlainType, CodeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
@@ -140,7 +140,20 @@ export class Code extends AbstractResource implements EditableEntity {
       hierarchyLevel: this.hierarchyLevel,
       conceptUriInVocabularies: this.conceptUriInVocabularies,
       order: this.order,
-      codeExtensions: this.codeExtensions.map(ie => ie.serialize())
+      codeExtensions: this.codeExtensions ? this.codeExtensions.map(ie => ie.serialize()) : undefined
+    };
+  }
+
+  serializeToPlainType(): CodePlainType {
+    return {
+      id: this.id,
+      uri: this.uri,
+      url: this.url,
+      codeValue: this.codeValue,
+      prefLabel: {...this.prefLabel},
+      status: this.status,
+      broaderCode: this.broaderCode ? this.broaderCode.serialize() : undefined,
+      hierarchyLevel: this.hierarchyLevel
     };
   }
 

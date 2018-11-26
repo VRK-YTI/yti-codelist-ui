@@ -59,7 +59,7 @@ export class MemberSimple {
       prefLabel: { ...this.prefLabel },
       modified: formatDateTime(this.modified),
       order: this.order,
-      code: this.code.serialize(),
+      code: this.code ? this.code.serialize() : undefined,
       relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate),

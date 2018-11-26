@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Code } from '../../entities/code';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -16,6 +16,11 @@ import { ConfigurationService } from '../../services/configuration.service';
 import { ExtensionSimple } from '../../entities/extension-simple';
 import { MemberValue } from '../../entities/member-value';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { Extension } from '../../entities/extension';
+import { MemberSimple } from '../../entities/member-simple';
+import { CodePlain } from '../../entities/code-simple';
+import { CodePlainType } from '../../services/api-schema';
+import { ValueType } from '../../entities/value-type';
 
 @Component({
   selector: 'app-code-information',
@@ -38,7 +43,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     broaderCode: new FormControl(null),
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
-    codeExtensions: new FormControl(),
+    codeExtensions: new FormArray([]),
     conceptUriInVocabularies: new FormControl('')
   });
 
@@ -64,8 +69,9 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
       ...rest,
       validity: { start: startDate, end: endDate },
       externalReferences: externalReferences.map(link => link.clone()),
-      codeExtensions: codeExtensions.map(ie => ie.clone())
     });
+
+    this.initCodeExtensions();
   }
 
   get editing() {
@@ -124,26 +130,116 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     return null;
   }
 
+  get codeExtensionsFormArray(): FormArray {
+    return this.codeForm.get('codeExtensions') as FormArray;
+  }
+
   get codeExtensions(): ExtensionSimple[] {
     return this.codeScheme.extensions.filter(extension => extension.propertyType.context === 'CodeExtension').sort(comparingLocalizable<ExtensionSimple>(this.languageService, item =>
       item.prefLabel ? item.prefLabel : {}));
   }
 
-  memberValuesForCodeExtension(type: string): MemberValue[] | null {
+  getExtensionDisplayName(extensionId: string): string {
+    const extension: Extension | null = this.getExtension(extensionId);
+    if (extension) {
+      return extension.getDisplayName(this.languageService);
+    }
+    return '';
+  }
+
+  getExtension(extensionId: string): Extension | null {
+    for (const extension of this.code.codeExtensions) {
+      if (extension.id === extensionId) {
+        return extension;
+      }
+    }
+    return null;
+  }
+
+  initCodeExtensions() {
+    this.codeExtensionsFormArray.controls = [];
     if (this.code.codeExtensions) {
-      for (const extension of this.code.codeExtensions) {
-        if (extension.propertyType.localName === type) {
-          if (extension.members && extension.members.length === 1) {
-            return extension.members[0].memberValues;
-          }
+      this.code.codeExtensions.forEach(codeExtension => {
+        this.codeExtensionsFormArray.push(this.initExtension(codeExtension));
+      });
+    }
+  }
+
+  initExtension(extension: Extension): FormGroup {
+    return new FormGroup({
+      id: new FormControl(extension.id),
+      uri: new FormControl(extension.uri),
+      url: new FormControl(extension.url),
+      codeValue: new FormControl(extension.codeValue),
+      status: new FormControl(extension.status),
+      prefLabel: new FormControl(extension.prefLabel),
+      propertyType: new FormControl(extension.propertyType),
+      members: this.initMembers(extension)
+    })
+  }
+
+  initMembers(extension: Extension): FormArray {
+    const membersArray: FormArray = new FormArray([]);
+    membersArray.push(this.initMember(extension));
+    return membersArray;
+  }
+
+  initMember(extension: Extension): FormGroup {
+    const codePlainType: CodePlainType = this.code.serializeToPlainType();
+    const codePlain: CodePlain = new CodePlain(codePlainType);
+    const member: MemberSimple | null = this.getMemberForExtension(extension);
+    return new FormGroup({
+      id: new FormControl(member ? member.id : null),
+      url: new FormControl(member ? member.url : null),
+      uri: new FormControl(member ? member.uri : null),
+      code: new FormControl(codePlain),
+      memberValues: this.initMemberValues(extension)
+    });
+  }
+
+  initMemberValues(extension: Extension): FormArray {
+    const memberValuesFormArray: FormArray = new FormArray([]);
+    const valueTypes: ValueType[] = extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+    if (valueTypes) {
+      valueTypes.forEach(valueType => {
+        const existingMemberValue: MemberValue | null = this.getMemberValueForValueType(extension, valueType.localName);
+        const memberValueGroup: FormGroup = new FormGroup({
+          valueType: new FormControl(valueType),
+          value:  new FormControl(existingMemberValue ? existingMemberValue.value : '')
+        });
+        memberValuesFormArray.push(memberValueGroup);
+      })
+    }
+    return memberValuesFormArray;
+  }
+
+  getMemberForExtension(extension: Extension): MemberSimple | null {
+    for (const codeExtension of this.code.codeExtensions) {
+      if (codeExtension.id === extension.id) {
+        if (codeExtension.members && codeExtension.members.length > 0) {
+          return codeExtension.members[0];
         }
       }
     }
     return null;
   }
 
-  get hasCodeExtensions(): boolean {
-    const extensions = this.codeExtensions;
-    return extensions != null && extensions.length > 0;
+  getMemberValueForValueType(extension: Extension,
+                             valueTypeLocalName: string): MemberValue | null {
+    for (const codeExtension of this.code.codeExtensions) {
+      if (codeExtension.id === extension.id) {
+        if (codeExtension.members && codeExtension.members.length > 0) {
+          const member: MemberSimple = codeExtension.members[0];
+          if (member.memberValues && member.memberValues.length > 0) {
+            for (const memberValue of member.memberValues) {
+              if (memberValue.valueType.localName === valueTypeLocalName) {
+                return memberValue;
+              }
+            }
+          }
+        }
+      }
+    }
+    return null;
   }
 }

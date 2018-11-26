@@ -102,6 +102,16 @@
                                        [languageCodes]="codeScheme.languageCodes"
                                        [infoText]="'INFO_TEXT_CODE_EXTERNAL_REFERENCES'"
                                        [formControlName]="'externalReferences'"></app-external-references-input>
+
+        <div>
+          <div *ngFor="let extension of codeExtensionsFormArray.controls as FormArray; let i=index">
+            <app-code-extension-membervalues-input [id]="'code_inline_extensions'"
+                                                   [label]="getExtensionDisplayName(extension.value.id)"
+                                                   [extension]="getExtension(extension.value.id)"
+                                                   [extensionGroup]="extension">
+            </app-code-extension-membervalues-input>
+          </div>
+        </div>
       </div>
     </div>
   </form>
