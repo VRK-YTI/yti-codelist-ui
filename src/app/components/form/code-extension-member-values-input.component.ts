@@ -6,9 +6,10 @@ import { ExtensionSimple } from '../../entities/extension-simple';
 
 @Component({
   selector: 'app-code-extension-membervalues-input',
+  styleUrls: ['./code-extension-member-values-input.component.scss'],
   template: `
     <dt>
-      <label>{{extension.getDisplayName(languageService)}}</label>
+      <label class="extension-heading">{{extension.getDisplayName(languageService)}}</label>
     </dt>
     <div>
       <div [formGroup]="extensionGroup">
