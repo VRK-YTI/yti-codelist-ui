@@ -9,7 +9,7 @@ import { MemberSimple } from '../../entities/member-simple';
   styleUrls: ['./crossreferencelist-member.component.scss'],
   template: `    
     <div [id]="getIdIdentifier() + '_view_extension'" class="member">
-      <span class="membertitle leftside" (click)="viewMember(member.id)">{{member.getDisplayName(languageService, translateService)}}</span> <span class="membertitle rightside" (click)="viewMember(member.relatedMember.id)">{{member.relatedMember?.getDisplayName(languageService, translateService)}}</span>
+      <span class="membertitle leftside" (click)="viewMember(member.id)">{{member.getDisplayName(languageService, translateService)}}</span> <span class="membertitle rightside" (click)="viewMember(member.relatedMember?.id)">{{member.relatedMember?.getDisplayName(languageService, translateService)}}</span>
     </div>
   `
 })
