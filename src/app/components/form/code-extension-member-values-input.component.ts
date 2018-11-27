@@ -21,6 +21,7 @@ import { ExtensionSimple } from '../../entities/extension-simple';
                   [id]="'code_inline_membervalue_' + extension.codeValue + '_' + memberValue.value.valueType.localName + ' _input'"
                   [label]="memberValue.value.valueType.prefLabel | translateValue"
                   [required]="memberValue.value.valueType.required"
+                  [showEmptyValue]="true"
                   [formControlName]="'value'"></app-literal-input>
               </div>
             </div>

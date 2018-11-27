@@ -20,7 +20,7 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
                  [formControl]="control" />
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
-        <div class="text-content-wrap" *ngIf="!editing">{{control.value}}</div>
+        <div class="text-content-wrap" *ngIf="!editing">{{value}}</div>
       </dd>
     </dl>
   `
@@ -32,6 +32,7 @@ export class LiteralInputComponent implements ControlValueAccessor {
   @Input() id: string;
   @Input() required = false;
   @Input() infoText: string;
+  @Input() showEmptyValue = false;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};
@@ -47,16 +48,20 @@ export class LiteralInputComponent implements ControlValueAccessor {
     }
   }
 
+  get value(): string {
+    const value = this.control.value;
+    if (this.showEmptyValue && (!value || value === '')) {
+      return '-';
+    }
+    return value;
+  }
+
   get valid() {
     return !this.parentControl || this.parentControl.valid;
   }
 
-  get pending() {
-    return !this.parentControl || this.parentControl.pending;
-  }
-
   get show() {
-    return this.editing || this.control.value;
+    return this.editing || this.control.value || (this.showEmptyValue && !this.control.value);
   }
 
   get editing() {

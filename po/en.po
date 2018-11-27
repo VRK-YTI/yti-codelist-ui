@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-27 10:24+0200\n"
+"PO-Revision-Date: 2018-11-27 13:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -43,10 +43,10 @@ msgstr ""
 msgid "Add code list"
 msgstr ""
 
-msgid "Choose code list"
+msgid "Search code list"
 msgstr ""
 
-msgid "Search code list"
+msgid "Choose code list"
 msgstr ""
 
 msgid "No registry"
@@ -143,6 +143,9 @@ msgid "Short name"
 msgstr ""
 
 msgid "Broader code"
+msgstr ""
+
+msgid "Sub code list"
 msgstr ""
 
 msgid "Validity"
@@ -405,9 +408,6 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
-msgid "LABEL_TEXT_EXTENSION_ID"
-msgstr "Extension code value"
-
 msgid "Search for member"
 msgstr ""
 
@@ -422,6 +422,9 @@ msgstr ""
 
 msgid "This extension does not have any members yet."
 msgstr ""
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr "Extension code value"
 
 msgid "Create member"
 msgstr ""
@@ -1282,6 +1285,9 @@ msgstr "Member ID mismatch."
 msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
 msgstr ""
 "Code extension members are not allowed to contain relations to other members."
+
+msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
+msgstr "Sub code list not found."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""

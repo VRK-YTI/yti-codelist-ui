@@ -7,66 +7,59 @@ import { TranslateService } from '@ngx-translate/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { LanguageService } from '../../services/language.service';
 import { SearchLinkedCodeSchemeModalService } from './search-linked-code-scheme-modal.component';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
-function addToControl<T>(control: FormControl, itemToAdd: T) {
+function addToControl<T>(control: FormControl, item: T) {
 
-  const previous = control.value as T[];
-  control.setValue([...previous, itemToAdd]);
+  control.setValue(item);
 }
 
-function removeFromControl<T>(control: FormControl, itemToRemove: T) {
+function removeFromControl<T>(control: FormControl) {
 
-  const previous = control.value as T[];
-  control.setValue(previous.filter(item => item !== itemToRemove));
+  control.setValue(null);
 }
 
 @Component({
-  selector: 'app-code-scheme-input',
+  selector: 'app-code-scheme-single-input',
   template: `
-    <dl *ngIf="editing || codeSchemes.length > 0">
+    <dl *ngIf="editing || codeScheme">
       <dt>
         <label>{{label}}</label>
-        <app-information-symbol [infoText]="'INFO_TEXT_INFODOMAIN'"></app-information-symbol>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
         <div *ngIf="!editing">
-          <div *ngFor="let codeScheme of codeSchemes">
-            <span>{{codeScheme.getLongDisplayName(languageService, false)}}</span>
-          </div>
+          <span>{{codeScheme.getLongDisplayName(languageService, false)}}</span>
         </div>
         <div *ngIf="editing">
-          <div *ngFor="let codeScheme of codeSchemes">
+          <div *ngIf="codeScheme">
             <a class="removal-X">
               <i [id]="'remove_' + codeScheme.codeValue + '_code_scheme_link'"
                  class="fa fa-times"
-                 (click)="removeCodeScheme(codeScheme)"></i>
+                 (click)="removeCodeScheme()"></i>
             </a>
             <span>{{codeScheme.getLongDisplayName(languageService, false)}}</span>
           </div>
           <app-error-messages id="codeschemes_error_messages" [control]="parentControl"></app-error-messages>
         </div>
 
-        <button id="add_codelist_button"
+        <button *ngIf="editing"
+                id="add_codelist_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
-                *ngIf="editing"
-                [disabled]="codeSchemes.length >= limitNumberOfCodeSchemes"
-                (click)="addCodeScheme()" translate>Add code list</button>
+                (click)="selectCodeScheme()" translate>Choose code list</button>
       </dd>
     </dl>
   `
 })
-export class CodeSchemeInputComponent implements ControlValueAccessor {
+export class CodeSchemeSingleInputComponent implements ControlValueAccessor {
 
   @Input() label: string;
   @Input() required = false;
   @Input() infoText: string;
-  @Input() parentCodeScheme: CodeScheme;
-  @Input() limitNumberOfCodeSchemes = 1000000; // normally there is no limit, but crossReferenceList has max value of 2.
+  @Input() restricts: string[];
 
-  control = new FormControl([]);
+  control = new FormControl(null);
 
   private propagateChange: (fn: any) => void = () => {};
   private propagateTouched: (fn: any) => void = () => {};
@@ -85,25 +78,20 @@ export class CodeSchemeInputComponent implements ControlValueAccessor {
     }
   }
 
-  get codeSchemes(): CodeScheme[] {
-    return (this.control.value as CodeScheme[]).sort(comparingLocalizable<CodeScheme>(
-      this.languageService, (codeScheme: CodeScheme) => codeScheme.prefLabel));
-
+  get codeScheme(): CodeScheme {
+    return (this.control.value as CodeScheme);
   }
 
-  addCodeScheme() {
-    const titleLabel = this.translateService.instant('Add code list');
+  selectCodeScheme() {
+    const titleLabel = this.translateService.instant('Choose code list');
     const searchlabel = this.translateService.instant('Search code list');
-    const restrictIds = this.codeSchemes.map(codeScheme => codeScheme.id);
-    if (this.parentCodeScheme) {
-      restrictIds.push(this.parentCodeScheme.id);
-    }
-    this.searchLinkedCodeSchemeModalService.open(titleLabel, searchlabel, restrictIds, true)
+
+    this.searchLinkedCodeSchemeModalService.open(titleLabel, searchlabel, this.restricts, false)
       .then((codeScheme: CodeScheme) => addToControl(this.control, codeScheme), ignoreModalClose);
   }
 
-  removeCodeScheme(codeScheme: CodeScheme) {
-    removeFromControl(this.control, codeScheme);
+  removeCodeScheme() {
+    removeFromControl(this.control);
   }
 
   get editing() {

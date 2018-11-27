@@ -34,10 +34,10 @@ msgstr ""
 msgid "Add code list"
 msgstr ""
 
-msgid "Choose code list"
+msgid "Search code list"
 msgstr ""
 
-msgid "Search code list"
+msgid "Choose code list"
 msgstr ""
 
 msgid "No registry"
@@ -134,6 +134,9 @@ msgid "Short name"
 msgstr ""
 
 msgid "Broader code"
+msgstr ""
+
+msgid "Sub code list"
 msgstr ""
 
 msgid "Validity"
@@ -1166,6 +1169,9 @@ msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
+msgstr ""
+
+msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

@@ -46,7 +46,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
     validity: new FormControl({ start: null, end: null }, validDateRange),
     status: new FormControl('DRAFT' as Status),
     conceptUriInVocabularies: new FormControl(''),
-    codeExtensions: new FormArray([])
+    codeExtensions: new FormArray([]),
+    subCodeScheme: new FormControl(null)
   });
 
   constructor(private dataService: DataService,

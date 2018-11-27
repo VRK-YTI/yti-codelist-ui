@@ -78,6 +78,7 @@ export interface CodeType extends BaseResourceType {
   conceptUriInVocabularies: string;
   order?: string;
   codeExtensions?: ExtensionType[];
+  subCodeScheme?: CodeSchemeType;
 }
 
 export interface ConceptType {

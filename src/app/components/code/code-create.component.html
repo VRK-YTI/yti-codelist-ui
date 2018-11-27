@@ -91,6 +91,12 @@
                         [infoText]="'INFO_TEXT_BROADER_CODE'"
                         [formControlName]="'broaderCode'"></app-code-input>
 
+        <app-code-scheme-single-input id="subcodescheme_input"
+                                      [label]="'Sub code list' | translate"
+                                      [restricts]="[codeScheme.id]"
+                                      [infoText]="'INFO_TEXT_SUBCODESCHEME'"
+                                      [formControlName]="'subCodeScheme'"></app-code-scheme-single-input>
+
         <app-date-range-input id="code_validity_input"
                               [label]="'Validity' | translate"
                               [infoText]="'INFO_TEXT_CODE_VALIDITY'"
