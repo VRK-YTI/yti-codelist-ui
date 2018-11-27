@@ -438,6 +438,12 @@ msgstr "Tuo jäseniä"
 msgid "Delete extension"
 msgstr "Poista laajennus"
 
+msgid "Export Cross-Reference List Excel"
+msgstr "Lataa Koodiliitos Excel"
+
+msgid "Export Cross-Reference List CSV"
+msgstr "Lataa Koodiliitos CSV"
+
 msgid "MEMBERS"
 msgstr "JÄSENET"
 

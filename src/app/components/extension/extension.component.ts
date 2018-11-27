@@ -184,4 +184,8 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     const propertyTypeLocalName: string = this.extension.propertyType.context;
     return propertyTypeLocalName === 'Extension';
   }
+
+  get showCrossReferenceExportFunctions(): boolean {
+    return this.extension.propertyType.localName === 'crossReferenceList';
+  }
 }

@@ -422,6 +422,12 @@ msgstr ""
 msgid "Delete extension"
 msgstr ""
 
+msgid "Export Cross-Reference List Excel"
+msgstr ""
+
+msgid "Export Cross-Reference List CSV"
+msgstr ""
+
 msgid "MEMBERS"
 msgstr ""
 

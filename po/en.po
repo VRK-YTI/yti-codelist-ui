@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-26 14:47+0200\n"
+"PO-Revision-Date: 2018-11-26 13:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -430,6 +430,12 @@ msgid "Import members"
 msgstr ""
 
 msgid "Delete extension"
+msgstr ""
+
+msgid "Export Cross-Reference List Excel"
+msgstr ""
+
+msgid "Export Cross-Reference List CSV"
 msgstr ""
 
 msgid "MEMBERS"
