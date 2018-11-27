@@ -134,7 +134,7 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   }
 
   get showMenu(): boolean {
-    return this.canAddExtension || this.canDelete;
+    return this.canAddMember || this.canDelete;
   }
 
   get canDelete() {
@@ -146,8 +146,8 @@ export class ExtensionComponent implements OnInit, EditingComponent {
           this.extension.parentCodeScheme.status === 'SUBMITTED'));
   }
 
-  get canAddExtension(): boolean {
-    return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted;
+  get canAddMember(): boolean {
+    return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted && this.extension.propertyType.context === 'Extension';
   }
 
   navigateToRoute(route: any[]) {

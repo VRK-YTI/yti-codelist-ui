@@ -19,13 +19,13 @@
         <button class="btn btn-action" id="extensionDropdown" ngbDropdownToggle translate>Choose action</button>
         <div ngbDropdownMenu aria-labelledby="extensionDropdown">
           <button id="create_member_button"
-                  *ngIf="canAddExtension"
+                  *ngIf="canAddMember"
                   type="button"
                   class="dropdown-item"
                   (click)="createMember()"
                   translate>Create member</button>
           <button id="import_members_button"
-                  *ngIf="canAddExtension"
+                  *ngIf="canAddMember"
                   class="dropdown-item"
                   (click)="importMembers()"
                   translate>Import members</button>
