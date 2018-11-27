@@ -773,7 +773,7 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
-msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 
 msgid "Front page"
@@ -1003,10 +1003,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
@@ -1160,6 +1160,9 @@ msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"
