@@ -111,6 +111,8 @@ import { SuggestConceptModalComponent, SuggestConceptModalService } from './comp
 import { ConfigurationService } from './services/configuration.service';
 import { CodeExtensionsInputComponent } from './components/form/code-extensions-input.component';
 import { CodeExtensionMemberValuesInputComponent } from './components/form/code-extension-member-values-input.component';
+import { ExtensionCrossreferencelistComponent } from './components/extension/extension-crossreferencelist.component';
+import { CrossReferenceListMemberComponent } from './components/member/crossreferencelist-member.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -270,7 +272,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     HierarchyMemberComponent,
     SuggestConceptModalComponent,
     CodeExtensionsInputComponent,
-    CodeExtensionMemberValuesInputComponent
+    CodeExtensionMemberValuesInputComponent,
+    ExtensionCrossreferencelistComponent,
+    CrossReferenceListMemberComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,

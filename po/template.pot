@@ -395,9 +395,6 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
-msgid "LABEL_TEXT_EXTENSION_ID"
-msgstr ""
-
 msgid "Search for member"
 msgstr ""
 
@@ -413,6 +410,9 @@ msgstr ""
 msgid "This extension does not have any members yet."
 msgstr ""
 
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr ""
+
 msgid "Create member"
 msgstr ""
 
@@ -426,6 +426,9 @@ msgid "Export Cross-Reference List Excel"
 msgstr ""
 
 msgid "Export Cross-Reference List CSV"
+msgstr ""
+
+msgid "CROSS-REFERENCE LIST"
 msgstr ""
 
 msgid "MEMBERS"

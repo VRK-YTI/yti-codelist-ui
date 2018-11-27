@@ -82,6 +82,18 @@
   </div>
 
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
+    <ngb-tab *ngIf="showCrossReferenceListTab"
+             id="extension_crossreferencelist_tab">
+      <ng-template ngbTabTitle>
+        <span translate>CROSS-REFERENCE LIST</span>
+      </ng-template>
+
+      <ng-template ngbTabContent>
+        <app-extension-crossreferencelist [members]="members"
+                               [extension]="extension"></app-extension-crossreferencelist>
+      </ng-template>
+    </ngb-tab>
+
     <ngb-tab *ngIf="showMembersTab"
              id="extension_members_tab">
       <ng-template ngbTabTitle>

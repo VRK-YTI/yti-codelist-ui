@@ -188,4 +188,8 @@ export class ExtensionComponent implements OnInit, EditingComponent {
   get showCrossReferenceExportFunctions(): boolean {
     return this.extension.propertyType.localName === 'crossReferenceList';
   }
+
+  get showCrossReferenceListTab(): boolean {
+    return this.extension.propertyType.localName === 'crossReferenceList';
+  }
 }

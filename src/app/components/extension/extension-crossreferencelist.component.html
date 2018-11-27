@@ -1,0 +1,48 @@
+<div class="row" *ngIf="members.length > 0">
+  <div class="col-md-4">
+    <div class="input-group input-group-lg input-group-search">
+      <input class="form-control"
+             id="search_member_box_input"
+             type="text"
+             [(ngModel)]="searchTerm"
+             placeholder="{{'Search for member' | translate}}"/>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4" *ngIf="members.length > 0">
+  <div class="col-12 search-text">
+    <span *ngIf="emptySearch" translate>Search did not find any members.</span>
+    <span *ngIf="numberOfMembers == 1"><b>1</b> {{'member' | translate}}</span>
+    <span *ngIf="numberOfMembers > 1"><b>{{numberOfMembers}}</b> {{'members' | translate}}</span>
+  </div>
+</div>
+
+<div class="extensions row">
+  <div id="extension_members_div" class="col-md-12">
+    <ul *ngIf="members.length <= 500" id="extension_members_regular">
+      <li *ngFor="let member of listedMembers; trackBy: memberIdentity">
+        <app-crossreferencelist-member [members]="members"
+                              [member]="member"
+                              [codeRegistryCodeValue]="extension.parentCodeScheme.codeRegistry.codeValue"
+                              [codeSchemeCodeValue]="extension.parentCodeScheme.codeValue"
+                              [extensionCodeValue]="extension.codeValue"
+                              [ignoreHierarchy]="searchTermHasValue()"></app-crossreferencelist-member>
+      </li>
+    </ul>
+    <ul *ngIf="members.length > 500" class="hugelist" id="extension_members_huge">
+      <li *lazyFor="let member of listedMembers, withHeight 65">
+        <app-crossreferencelist-member [members]="members"
+                              [member]="member"
+                              [codeRegistryCodeValue]="extension.parentCodeScheme.codeRegistry.codeValue"
+                              [codeSchemeCodeValue]="extension.parentCodeScheme.codeValue"
+                              [extensionCodeValue]="extension.codeValue"
+                              [ignoreHierarchy]="searchTermHasValue()"></app-crossreferencelist-member>
+      </li>
+    </ul>
+  </div>
+
+  <div class="emptyMembers" *ngIf="members.length === 0">
+    <span translate>This extension does not have any members yet.</span>
+  </div>
+</div>
