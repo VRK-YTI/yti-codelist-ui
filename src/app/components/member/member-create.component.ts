@@ -31,7 +31,8 @@ export class MemberCreateComponent implements OnInit {
     prefLabel: new FormControl({}),
     unaryOperator: new FormControl('', [this.isUnaryOperatorPatternValid.bind(this)]),
     comparisonOperator: new FormControl('', [this.isComparisonOperatorPatternValid.bind(this)]),
-    dpmDataType: new FormControl(''),
+    dpmDomainDataType: new FormControl(''),
+    dpmMetricDataType: new FormControl(''),
     dpmDomainReference: new FormControl(''),
     dpmHierarchyReference: new FormControl(''),
     dpmBalanceType: new FormControl(''),
@@ -94,7 +95,7 @@ export class MemberCreateComponent implements OnInit {
 
   save(formData: any): Observable<any> {
 
-    const { code, relatedMember, unaryOperator, comparisonOperator, dpmDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, validity, ...rest } = formData;
+    const { code, relatedMember, unaryOperator, comparisonOperator, dpmDomainDataType, dpmMetricDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, validity, ...rest } = formData;
 
     const member: MemberType = <MemberType> {
       ...rest,
@@ -110,7 +111,8 @@ export class MemberCreateComponent implements OnInit {
     // TODO: Make this more dynamic!
     this.addMemberValueToMemberValueList(memberValues, unaryOperator, 'unaryOperator');
     this.addMemberValueToMemberValueList(memberValues, comparisonOperator, 'comparisonOperator');
-    this.addMemberValueToMemberValueList(memberValues, dpmDataType, 'dpmDataType');
+    this.addMemberValueToMemberValueList(memberValues, dpmDomainDataType, 'dpmDomainDataType');
+    this.addMemberValueToMemberValueList(memberValues, dpmMetricDataType, 'dpmMetricDataType');
     this.addMemberValueToMemberValueList(memberValues, dpmDomainReference, 'dpmDomainReference');
     this.addMemberValueToMemberValueList(memberValues, dpmHierarchyReference, 'dpmHierarchyReference');
     this.addMemberValueToMemberValueList(memberValues, dpmBalanceType, 'dpmBalanceType');

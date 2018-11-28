@@ -779,7 +779,10 @@ msgstr ""
 msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgid "INFO_TEXT_SUBCODESCHEME"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
 msgid "Front page"
@@ -1012,10 +1015,10 @@ msgstr ""
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
@@ -1172,6 +1175,9 @@ msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
 msgstr ""
 
 msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
+msgstr ""
+
+msgid "ERR_MSG_USER_SUBCODESCHEME_SAME_AS_CODE_CODESCHEME"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

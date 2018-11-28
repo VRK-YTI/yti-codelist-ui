@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-27 13:08+0200\n"
+"PO-Revision-Date: 2018-11-28 10:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -855,10 +855,11 @@ msgstr ""
 "extension members to the new version or whether you want to create a new "
 "blank version without them."
 
-msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
-msgstr ""
-"Code linked to member does not belong to parent code list or to any related "
-"code lists."
+msgid "INFO_TEXT_SUBCODESCHEME"
+msgstr "External code list that relates to this code"
+
+msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Maximum hierarchies reached for members."
 
 msgid "Front page"
 msgstr ""
@@ -1110,11 +1111,13 @@ msgstr "Code linked to member does not exist."
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr "Code order has duplicate values."
 
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgstr ""
+"Code linked to member does not belong to parent code list or to any related "
+"code lists."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Maximum hierarchies reached for members."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Member value is not set or it’s empty."
@@ -1288,6 +1291,9 @@ msgstr ""
 
 msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
 msgstr "Sub code list not found."
+
+msgid "ERR_MSG_USER_SUBCODESCHEME_SAME_AS_CODE_CODESCHEME"
+msgstr "Sub code list is linked to the same code list as code."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""

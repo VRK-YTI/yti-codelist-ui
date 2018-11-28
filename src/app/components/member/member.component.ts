@@ -175,14 +175,15 @@ export class MemberComponent implements OnInit, EditingComponent {
   save(formData: any): Observable<any> {
 
     // TODO: Refactor this hacking so that memberValues are handled dynamically as a list in a dedicated formControl and component.
-    const { validity, unaryOperator, comparisonOperator, dpmDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, ...rest } = formData;
+    const { validity, unaryOperator, comparisonOperator, dpmDomainDataType, dpmMetricDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, ...rest } = formData;
     const updatedMember = this.member.clone();
 
     const updatedMemberValues: MemberValue[] = [];
 
     this.addMemberValueToMemberValueList(updatedMemberValues, unaryOperator, 'unaryOperator');
     this.addMemberValueToMemberValueList(updatedMemberValues, comparisonOperator, 'comparisonOperator');
-    this.addMemberValueToMemberValueList(updatedMemberValues, dpmDataType, 'dpmDataType');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmDomainDataType, 'dpmDomainDataType');
+    this.addMemberValueToMemberValueList(updatedMemberValues, dpmMetricDataType, 'dpmMetricDataType');
     this.addMemberValueToMemberValueList(updatedMemberValues, dpmDomainReference, 'dpmDomainReference');
     this.addMemberValueToMemberValueList(updatedMemberValues, dpmHierarchyReference, 'dpmHierarchyReference');
     this.addMemberValueToMemberValueList(updatedMemberValues, dpmBalanceType, 'dpmBalanceType');

@@ -35,7 +35,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     prefLabel: new FormControl({}),
     unaryOperator: new FormControl('', [this.isUnaryOperatorPatternValid.bind(this)]),
     comparisonOperator: new FormControl('', [this.isComparisonOperatorPatternValid.bind(this)]),
-    dpmDataType: new FormControl(''),
+    dpmDomainDataType: new FormControl(''),
+    dpmMetricDataType: new FormControl(''),
     dpmDomainReference: new FormControl(''),
     dpmHierarchyReference: new FormControl(''),
     dpmBalanceType: new FormControl(''),
@@ -103,7 +104,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
     const unaryOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'unaryOperator');
     const comparisonOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'comparisonOperator');
-    const dpmDataType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmDataType');
+    const dpmDomainDataType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmDomainDataType');
+    const dpmMetricDataType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmMetricDataType');
     const dpmDomainReference: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmDomainReference');
     const dpmHierarchyReference: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmHierarchyReference');
     const dpmBalanceType: string | undefined = this.getValueFromMemberValues(memberValues, 'dpmBalanceType');
@@ -114,7 +116,8 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
       ...rest,
       unaryOperator: unaryOperator,
       comparisonOperator: comparisonOperator,
-      dpmDataType: dpmDataType,
+      dpmDomainDataType: dpmDomainDataType,
+      dpmMetricDataType: dpmMetricDataType,
       dpmDomainReference: dpmDomainReference,
       dpmHierarchyReference: dpmHierarchyReference,
       dpmBalanceType: dpmBalanceType,
