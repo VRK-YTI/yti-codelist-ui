@@ -48,11 +48,11 @@
              target="_blank"
              class="dropdown-item" translate>Export CSV</a>
           <a id="codelist_export_cross_reference_excel_link" href="{{extension.url}}/?format=excel&crossreferencelist=true"
-             *ngIf="showCrossReferenceExportFunctions"
+             *ngIf="showCrossReferenceExportFunctions && showUnfinishedFeature"
              target="_blank"
              class="dropdown-item" translate>Export Cross-Reference List Excel</a>
           <a id="codelist_export_cross_reference_csv_link" href="{{extension.url}}/members/?format=csv&crossreferencelist=true"
-             *ngIf="showCrossReferenceExportFunctions"
+             *ngIf="showCrossReferenceExportFunctions && showUnfinishedFeature"
              target="_blank"
              class="dropdown-item" translate>Export Cross-Reference List CSV</a>
         </div>
@@ -82,7 +82,7 @@
   </div>
 
   <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab *ngIf="showCrossReferenceListTab"
+    <ngb-tab *ngIf="showCrossReferenceListTab && showUnfinishedFeature"
              id="extension_crossreferencelist_tab">
       <ng-template ngbTabTitle>
         <span translate>CROSS-REFERENCE LIST</span>

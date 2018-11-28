@@ -61,7 +61,7 @@
                   (click)="createExtension('definitionHierarchy')"
                   translate>Create definition hierarchy</button>
           <button id="create_extension_cross-reference-list_button"
-                  *ngIf="canAddExtension"
+                  *ngIf="showUnfinishedFeature && canAddExtension"
                   type="button"
                   class="dropdown-item"
                   (click)="createExtension('crossReferenceList')"
