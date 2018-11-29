@@ -1180,6 +1180,9 @@ msgstr ""
 msgid "ERR_MSG_USER_SUBCODESCHEME_SAME_AS_CODE_CODESCHEME"
 msgstr ""
 
+msgid "ERR_MSG_USER_MISSING_HEADER_MEMBERVALUE"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
