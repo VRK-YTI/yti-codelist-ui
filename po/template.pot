@@ -100,6 +100,9 @@ msgstr ""
 msgid "Code list"
 msgstr ""
 
+msgid "Filter results"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
@@ -453,9 +456,6 @@ msgid "Extend search to codes"
 msgstr ""
 
 msgid "Filter with information domain"
-msgstr ""
-
-msgid "Filter results"
 msgstr ""
 
 msgid "Search did not find any code lists."

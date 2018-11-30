@@ -80,6 +80,7 @@
           <app-member-input *ngIf="!isCodeExtension"
                             id="member_relatedmember_input"
                             [label]="'Broader member' | translate"
+                            [codeSchemes]="this.allCodeSchemes"
                             [extension]="extension"
                             [formControlName]="'relatedMember'"></app-member-input>
 

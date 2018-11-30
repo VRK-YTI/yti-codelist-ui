@@ -10,6 +10,7 @@ import { Member } from '../../entities/member';
 import { LanguageService } from '../../services/language.service';
 import { MemberSimple } from '../../entities/member-simple';
 import { Observable } from 'rxjs';
+import { CodeScheme } from '../../entities/code-scheme';
 
 function addToControl<T>(control: FormControl, item: T) {
 
@@ -59,6 +60,8 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
   @Input() extension: Extension;
   @Input() currentMember: Member;
   @Input() required = false;
+  @Input() codeSchemes: CodeScheme[];
+
   control = new FormControl(null);
 
   membersToInspect: Observable<Member[]>;
@@ -102,7 +105,7 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
 
       this.membersToInspect.subscribe(membersArray => {
         const someChildOfTheCurrentMember = membersArray.filter( member => {
-          return member.relatedMember !== undefined && member.relatedMember.id === this.currentMember.id;
+          return member.relatedMember !== undefined && this.currentMember !== undefined && member.relatedMember.id === this.currentMember.id;
         })[0]; // NOTE! We are only interested to see if even one child exists, thus we take the first one
         if (someChildOfTheCurrentMember === undefined) {
           this.addMemberButtonMustBeDisabled = false; // if no children exist, OK to add parent
@@ -146,6 +149,7 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
       members,
       titleLabel,
       searchlabel,
+      this.codeSchemes,
       [this.currentMember ? this.currentMember.id : ''],
       false)
       .then(extension => addToControl(this.control, extension), ignoreModalClose);

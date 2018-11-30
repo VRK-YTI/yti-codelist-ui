@@ -7,6 +7,9 @@ import { ModalService } from '../../services/modal.service';
 import { Member } from '../../entities/member';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
+import { CodeScheme } from '../../entities/code-scheme';
+import { Code } from '../../entities/code';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-search-linked-member-modal',
@@ -20,6 +23,33 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
     </div>
     <div class="modal-body full-height">
 
+      <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
+        <div class="col-12">
+          <div ngbDropdown class="d-inline-block">
+            <dl>
+              <dt>
+                <label for="code_scheme_dropdown_button" translate>Code list</label>
+              </dt>
+              <dd>
+                <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
+                  <span translate *ngIf="!selectedCodeScheme">Filter results</span>
+                  <span *ngIf="selectedCodeScheme">{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
+                  <div *ngFor="let codeScheme of codeSchemes">
+                    <button id="codescheme_{{codeScheme.id}}_dropdown_button"
+                            (click)="selectCodeScheme(codeScheme)"
+                            class="dropdown-item"
+                            [class.active]="selectedCodeScheme === codeScheme">
+                      {{codeScheme.getLongDisplayName(languageService, false)}}</button>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      
       <div class="row mb-2">
         <div class="col-12">
 
@@ -40,9 +70,9 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
               <div class="search-result"
                    *ngFor="let member of searchResults$ | async; let last = last"
                    (click)="select(member)">
-                <div class="content" [class.last]="last">                  
+                <div class="content" [class.last]="last">
                   <span class="title"
-                        [innerHTML]="member.getDisplayName(languageService, translateService, useUILanguage)">
+                        [innerHTML]="member.getDisplayNameWithCodeValue(languageService, translateService, useUILanguage)">
                   </span>
                 </div>
               </div>
@@ -67,17 +97,20 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
   @Input() restricts: string[];
   @Input() titleLabel: string;
   @Input() searchLabel: string;
+  @Input() codes$: Observable<Code[]>;
+  @Input() codeSchemes: CodeScheme[];
   @Input() members$: Observable<Member[]>;
   @Input() useUILanguage: boolean;
 
+  selectedCodeScheme: CodeScheme;
   searchResults$: Observable<Member[]>;
-
   search$ = new BehaviorSubject('');
   loading = false;
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
-              public translateService: TranslateService) {
+              public translateService: TranslateService,
+              public dataService: DataService) {
   }
 
   ngOnInit() {
@@ -118,6 +151,41 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
   cancel() {
     this.modal.dismiss('cancel');
   }
+
+  selectCodeScheme(codeScheme: CodeScheme) {
+    this.selectedCodeScheme = codeScheme;
+    this.updateCodes();
+  }
+
+  filterMembers() {
+    const initialSearch = this.search$.pipe(take(1));
+    const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
+    const codeValueOfSelectedCodeScheme = this.selectedCodeScheme.codeValue;
+
+    this.searchResults$ = combineLatest(this.members$, concat(initialSearch, debouncedSearch), codeValueOfSelectedCodeScheme)
+      .pipe(
+        tap(() => this.loading = false),
+        map(([members, search]) => {
+          return members.filter(member => {
+            const label = member.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
+            const codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember = member.code.codeScheme.codeValue;
+            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const codeSchemeMatches = codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember === codeValueOfSelectedCodeScheme;
+            const isNotRestricted = !contains(this.restricts, member.id);
+            return searchMatches && isNotRestricted && codeSchemeMatches;
+          });
+        })
+      );
+  }
+
+  updateCodes() {
+    this.codes$ = this.dataService.getCodes(
+      this.selectedCodeScheme.codeRegistry.codeValue,
+      this.selectedCodeScheme.codeValue,
+      this.languageService.language);
+    this.filterMembers();
+  }
+
 }
 
 @Injectable()
@@ -129,14 +197,15 @@ export class SearchLinkedMemberModalService {
   open(members$: Observable<Member[]>,
        titleLabel: string,
        searchLabel: string,
+       codeSchemes: CodeScheme[],
        restrictedMemberIds: string[],
        useUILanguage: boolean = false): Promise<Member> {
-
     const modalRef = this.modalService.open(SearchLinkedMemberModalComponent, { size: 'sm' });
     const instance = modalRef.componentInstance as SearchLinkedMemberModalComponent;
     instance.members$ = members$;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;
+    instance.codeSchemes = codeSchemes;
     instance.restricts = restrictedMemberIds;
     instance.useUILanguage = useUILanguage;
     return modalRef.result;

@@ -66,7 +66,7 @@ import { DataService } from '../../services/data.service';
                    *ngFor="let code of searchResults$ | async; let last = last"
                    (click)="select(code)">
                 <div class="content" [class.last]="last">
-                  <span class="title" [innerHTML]="code.getDisplayName(languageService, useUILanguage)"></span>
+                  <span class="title" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
                 </div>
               </div>
             </div>

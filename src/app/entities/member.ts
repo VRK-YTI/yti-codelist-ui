@@ -163,6 +163,12 @@ export class Member implements EditableEntity {
     return displayName;
   }
 
+  getDisplayNameWithCodeValue(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
+    let displayName = this.getDisplayName(localizer, translater, useUILanguage);
+    displayName = this.code.codeValue + ' - ' + displayName;
+    return displayName;
+  }
+
   getDisplayNameWithExtension(extension: Extension,
                               localizer: Localizer,
                               translater: TranslateService,
