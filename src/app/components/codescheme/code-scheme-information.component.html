@@ -24,10 +24,10 @@
       </dl>
 
       <div *ngIf="!editing && codeScheme.conceptUriInVocabularies && codeScheme.conceptUriInVocabularies.length > 0">
-        <app-clipboard [label]="'Vocabularies URI' | translate"
+        <app-inline-clipboard [label]="'Vocabularies URI' | translate"
                        [showAsLink]="true"
                        [value]="getConceptUri()"
-                       [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-clipboard>
+                       [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-inline-clipboard>
       </div>
       <div *ngIf="editing && codeScheme.conceptUriInVocabularies && codeScheme.conceptUriInVocabularies.length > 0">
         <dl>
@@ -123,10 +123,10 @@
                             [infoText]="'INFO_TEXT_CODELIST_VALIDITY'"
                             [formControlName]="'validity'"></app-date-range-input>
 
-      <app-clipboard [label]="'URI' | translate"
+      <app-inline-clipboard [label]="'URI' | translate"
                      [value]="getCodeSchemeUri()"
                      [showAsLink]="false"
-                     [infoText]="'INFO_TEXT_URI'"></app-clipboard>
+                     [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
 
       <app-literal [label]="'Last modification' | translate"
                    [value]="codeScheme.modifiedDisplayValue"

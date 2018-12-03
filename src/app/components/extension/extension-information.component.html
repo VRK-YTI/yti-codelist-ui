@@ -42,10 +42,10 @@
                               [infoText]="'INFO_TEXT_EXTENSION_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
-        <app-clipboard [label]="'URI' | translate"
+        <app-inline-clipboard [label]="'URI' | translate"
                        [value]="getExtensionUri()"
                        [showAsLink]="false"
-                       [infoText]="'INFO_TEXT_URI'"></app-clipboard>
+                       [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
 
         <app-literal [label]="'Last modification' | translate"
                      [value]="extension.modifiedDisplayValue"

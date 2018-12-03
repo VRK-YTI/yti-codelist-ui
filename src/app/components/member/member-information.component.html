@@ -24,19 +24,19 @@
                              [formControlName]="valueType.localName"></app-literal-input>
         </div>
 
-        <app-clipboard *ngIf="getCodeUri()"
+        <app-inline-clipboard *ngIf="getCodeUri()"
                        id="member_code_uri"
                        [label]="'Code URI' | translate"
                        [value]="getCodeUri()"
                        [showAsLink]="false"
-                       [infoText]="'INFO_TEXT_CODE_URI'"></app-clipboard>
+                       [infoText]="'INFO_TEXT_CODE_URI'"></app-inline-clipboard>
 
-        <app-clipboard *ngIf="getCodeConceptUri()"
+        <app-inline-clipboard *ngIf="getCodeConceptUri()"
                        id="member_code_terminology_uri"
                        [label]="'Code vocabularies URI' | translate"
                        [value]="getCodeConceptUri()"
                        [showAsLink]="false"
-                       [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-clipboard>
+                       [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-inline-clipboard>
 
         <app-code-input id="member_code_input"
                         [label]="'Code' | translate"
@@ -58,11 +58,11 @@
                               [infoText]="'INFO_TEXT_MEMBER_VALIDITY'"
                               [formControlName]="'validity'"></app-date-range-input>
 
-        <app-clipboard id="member_uri"
+        <app-inline-clipboard id="member_uri"
                        [label]="'URI' | translate"
                        [value]="getMemberUri()"
                        [showAsLink]="false"
-                       [infoText]="'INFO_TEXT_URI'"></app-clipboard>
+                       [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
 
         <app-literal [label]="'Last modification' | translate"
                      [value]="currentMember.modifiedDisplayValue"></app-literal>
