@@ -28,7 +28,6 @@ export class ExtensionCreateComponent implements OnInit {
   propertyType: PropertyType;
   title: string;
 
-  maxNrOfCodeSchemes = 1000000; // read: unlimited number of codeschemes ( and in some cases this will get limited to 2 )
   autoCreateMembers = false; // if the extension is of type Cross-Reference List, and this is true, a member will get autocreated for every code of every codescheme
 
   extensionForm = new FormGroup({
@@ -73,9 +72,6 @@ export class ExtensionCreateComponent implements OnInit {
   loadPropertyType(propertyTypeLocalName: string) {
     this.dataService.getPropertyType(propertyTypeLocalName).subscribe(propertyType => {
       this.propertyType = propertyType;
-      if (this.propertyType.localName === 'crossReferenceList') {
-        this.maxNrOfCodeSchemes = 2;
-      }
       if (this.propertyType.context === 'CodeExtension') {
         this.extensionForm.controls['codeValue'].setValue(this.propertyType.localName);
         this.extensionForm.controls['prefLabel'].setValue(this.propertyType.prefLabel);
