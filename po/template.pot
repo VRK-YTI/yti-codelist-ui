@@ -401,6 +401,15 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
+msgid "Automatically create a member for each code"
+msgstr ""
+
+msgid "This extension does not have any members yet."
+msgstr ""
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr ""
+
 msgid "Search for member"
 msgstr ""
 
@@ -411,12 +420,6 @@ msgid "members"
 msgstr ""
 
 msgid "Search did not find any members."
-msgstr ""
-
-msgid "This extension does not have any members yet."
-msgstr ""
-
-msgid "LABEL_TEXT_EXTENSION_ID"
 msgstr ""
 
 msgid "Create member"

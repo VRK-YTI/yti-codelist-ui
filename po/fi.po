@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-29 14:27+0200\n"
+"PO-Revision-Date: 2018-12-03 15:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -108,6 +108,9 @@ msgstr "Etsi organisaatio"
 
 msgid "Code list"
 msgstr "Koodisto"
+
+msgid "Filter results"
+msgstr "Rajaa hakutuloksia"
 
 msgid "Status"
 msgstr "Tila"
@@ -414,6 +417,15 @@ msgstr "Laajennuksen nimi"
 msgid "Extension type"
 msgstr "Laajennuksen tyyppi"
 
+msgid "Automatically create a member for each code"
+msgstr "Luo automaattisesti jäsenet kaikille koodeille,"
+
+msgid "This extension does not have any members yet."
+msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr "Laajennuksen tunnus"
+
 msgid "Search for member"
 msgstr "Hae jäsentä"
 
@@ -425,12 +437,6 @@ msgstr "jäsentä"
 
 msgid "Search did not find any members."
 msgstr "Haulla ei löytynyt yhtään jäsentä."
-
-msgid "This extension does not have any members yet."
-msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
-
-msgid "LABEL_TEXT_EXTENSION_ID"
-msgstr "Laajennuksen tunnus"
 
 msgid "Create member"
 msgstr "Luo jäsen"
@@ -475,9 +481,6 @@ msgstr "Kohdista haku myös koodeihin"
 
 msgid "Filter with information domain"
 msgstr "Rajaa tietoalueella"
-
-msgid "Filter results"
-msgstr "Rajaa hakutuloksia"
 
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."

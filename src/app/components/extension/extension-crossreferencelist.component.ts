@@ -52,18 +52,6 @@ export class ExtensionCrossreferencelistComponent {
     return this.members.filter(member => contains(relatedMemberIds, member.id));
   }
 
-  get childMembers() {
-    return this.members.filter(member => contains(this.parentMembers.map(mem => mem.relatedMember!.id), member.id));
-  }
-
-  get numberOfMembers() {
-    return this.searchTermHasValue ? this.filteredMembers.length : this.members.length;
-  }
-
-  get emptySearch() {
-    return this.searchTerm && this.listedMembers.length === 0;
-  }
-
   searchTermHasValue() {
     return this.searchTerm ? true : false;
   }

@@ -20,23 +20,23 @@
     <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_SEARCH'"></app-information-symbol>
   </div>
   <div class="row">
-    <div class="col-md-6 mb-3">
-      <div class="input-group input-group-lg input-group-search">
-        <input class="form-control"
-               #schemeSearch
-               id="search_box_input"
-               type="text"
-               [(ngModel)]="searchTerm"
-               placeholder="{{'Search term' | translate}}"/>
-      </div>
-    </div>
-    <div class="col-md-4" style="line-height: 45px">
-      <div class="checkbox">
-        <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
-        <label for="search_code_details_checkbox" translate>Extend search to codes</label>
-      </div>
+  <div class="col-md-6 mb-3">
+    <div class="input-group input-group-lg input-group-search">
+      <input class="form-control"
+             #schemeSearch
+             id="search_box_input"
+             type="text"
+             [(ngModel)]="searchTerm"
+             placeholder="{{'Search term' | translate}}"/>
     </div>
   </div>
+  <div class="col-md-4" style="line-height: 45px">
+    <div class="checkbox">
+      <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
+      <label for="search_code_details_checkbox" translate>Extend search to codes</label>
+    </div>
+  </div>
+</div>
 
   <div class="row">
     <div class="col-md-4">

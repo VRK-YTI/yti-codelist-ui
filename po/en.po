@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-29 14:27+0200\n"
+"PO-Revision-Date: 2018-12-03 15:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -107,6 +107,9 @@ msgid "Search organization"
 msgstr ""
 
 msgid "Code list"
+msgstr ""
+
+msgid "Filter results"
 msgstr ""
 
 msgid "Status"
@@ -408,6 +411,15 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
+msgid "Automatically create a member for each code"
+msgstr ""
+
+msgid "This extension does not have any members yet."
+msgstr ""
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr "Extension code value"
+
 msgid "Search for member"
 msgstr ""
 
@@ -419,12 +431,6 @@ msgstr ""
 
 msgid "Search did not find any members."
 msgstr ""
-
-msgid "This extension does not have any members yet."
-msgstr ""
-
-msgid "LABEL_TEXT_EXTENSION_ID"
-msgstr "Extension code value"
 
 msgid "Create member"
 msgstr ""
@@ -468,9 +474,6 @@ msgid "Extend search to codes"
 msgstr ""
 
 msgid "Filter with information domain"
-msgstr ""
-
-msgid "Filter results"
 msgstr ""
 
 msgid "Search did not find any code lists."

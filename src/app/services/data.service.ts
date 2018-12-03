@@ -579,8 +579,9 @@ export class DataService {
 
   createExtension(extensionToCreate: ExtensionType,
                   registryCodeValue: string,
-                  codeSchemeCodeValue: string): Observable<Extension> {
-    return this.createExtensions([extensionToCreate], registryCodeValue, codeSchemeCodeValue).pipe(map(createdExtensions => {
+                  codeSchemeCodeValue: string,
+                  autoCreateMembers: boolean): Observable<Extension> {
+    return this.createExtensions([extensionToCreate], registryCodeValue, codeSchemeCodeValue, autoCreateMembers).pipe(map(createdExtensions => {
       if (createdExtensions.length !== 1) {
         throw new Error('Exactly one extension needs to be created');
       } else {
@@ -591,10 +592,17 @@ export class DataService {
 
   createExtensions(extensionList: ExtensionType[],
                    registryCodeValue: string,
-                   codeSchemeCodeValue: string): Observable<Extension[]> {
+                   codeSchemeCodeValue: string,
+                   autoCreateMembers: boolean): Observable<Extension[]> {
+
+    const params = {
+      'autoCreateMembers': String(autoCreateMembers)
+    };
+
 
     return this.http.post<WithResults<ExtensionType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensions}`,
-      extensionList)
+      extensionList,
+      {params})
       .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 

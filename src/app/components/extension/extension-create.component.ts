@@ -28,7 +28,8 @@ export class ExtensionCreateComponent implements OnInit {
   propertyType: PropertyType;
   title: string;
 
-  maxNrOfCodeSchemes = 1000000; // read: unlimited number of codeschemes
+  maxNrOfCodeSchemes = 1000000; // read: unlimited number of codeschemes ( and in some cases this will get limited to 2 )
+  autoCreateMembers = false; // if the extension is of type Cross-Reference List, and this is true, a member will get autocreated for every code of every codescheme
 
   extensionForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
@@ -123,7 +124,7 @@ export class ExtensionCreateComponent implements OnInit {
     };
 
     const save = () => {
-      return this.dataService.createExtension(extension, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue)
+      return this.dataService.createExtension(extension, this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue, this.autoCreateMembers)
         .pipe(tap(createdExtension => {
           this.router.navigate(createdExtension.route);
         }));
@@ -162,5 +163,9 @@ export class ExtensionCreateComponent implements OnInit {
 
   get isCodeExtension(): boolean {
     return this.propertyType.context === 'CodeExtension';
+  }
+
+  toggleAutoCreateMembers() {
+    this.autoCreateMembers = !this.autoCreateMembers;
   }
 }
