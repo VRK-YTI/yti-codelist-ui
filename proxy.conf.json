@@ -1,14 +1,20 @@
 {
   "/codelist-intake/*": {
     "target": "http://localhost:9602",
-    "secure": false
+    "secure": false,
+    "proxyTimeout": 1800000,
+    "timeout": 1800000
   },
   "/codelist-api/*": {
     "target": "http://localhost:9601",
-    "secure": false
+    "secure": false,
+    "proxyTimeout": 1800000,
+    "timeout": 1800000
   },
   "/terminology/*": {
     "target": "http://localhost:8001",
-    "secure": false
+    "secure": false,
+    "proxyTimeout": 1800000,
+    "timeout": 1800000
   }
 }
