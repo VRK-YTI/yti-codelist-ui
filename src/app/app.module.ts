@@ -112,7 +112,6 @@ import { ConfigurationService } from './services/configuration.service';
 import { CodeExtensionsInputComponent } from './components/form/code-extensions-input.component';
 import { CodeExtensionMemberValuesInputComponent } from './components/form/code-extension-member-values-input.component';
 import { ExtensionCrossreferencelistComponent } from './components/extension/extension-crossreferencelist.component';
-import { CrossReferenceListMemberComponent } from './components/member/crossreferencelist-member.component';
 import { CodeSchemeSingleInputComponent } from './components/form/code-scheme-single-input.component';
 
 function removeEmptyValues(obj: {}) {
@@ -275,7 +274,6 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeExtensionsInputComponent,
     CodeExtensionMemberValuesInputComponent,
     ExtensionCrossreferencelistComponent,
-    CrossReferenceListMemberComponent,
     CodeSchemeSingleInputComponent
   ],
   entryComponents: [ // needed for modal components

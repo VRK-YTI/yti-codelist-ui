@@ -1,28 +1,35 @@
 <div class="extensions row">
   <div id="extension_members_div" class="col-md-12">
-    <ul *ngIf="members.length <= 500" id="extension_members_regular">
-      <li *ngFor="let member of listedMembers; trackBy: memberIdentity">
-        <app-crossreferencelist-member [members]="members"
-                              [member]="member"
-                              [codeRegistryCodeValue]="extension.parentCodeScheme.codeRegistry.codeValue"
-                              [codeSchemeCodeValue]="extension.parentCodeScheme.codeValue"
-                              [extensionCodeValue]="extension.codeValue"
-                              [ignoreHierarchy]="searchTermHasValue()"></app-crossreferencelist-member>
-      </li>
-    </ul>
-    <ul *ngIf="members.length > 500" class="hugelist" id="extension_members_huge">
-      <li *lazyFor="let member of listedMembers, withHeight 65">
-        <app-crossreferencelist-member [members]="members"
-                              [member]="member"
-                              [codeRegistryCodeValue]="extension.parentCodeScheme.codeRegistry.codeValue"
-                              [codeSchemeCodeValue]="extension.parentCodeScheme.codeValue"
-                              [extensionCodeValue]="extension.codeValue"
-                              [ignoreHierarchy]="searchTermHasValue()"></app-crossreferencelist-member>
-      </li>
-    </ul>
+    <table class="table" *ngIf="members.length <= 500" id="extension_members_regular">
+      <tr *ngFor="let member of listedMembers; trackBy: memberIdentity">
+        <td [id]="member.id + '_view_member'" class="" style="white-space: nowrap;  font-size:large">
+          <a href="{{configurationService.getUriWithEnv(member.code.uri)}}" target="_blank">
+            {{member.getDisplayName(languageService, translateService) }}
+          </a>
+        </td>
+        <td [id]="member.relatedMember.id + '_view_related_member'" class="" style="width: 99%; font-size:large">
+          <a href="{{configurationService.getUriWithEnv(member.relatedMember.code.uri)}}" target="_blank">
+            {{member.relatedMember.getDisplayName(languageService, translateService) }}
+          </a>
+        </td>
+    </table>
+    <table class="table" *ngIf="members.length > 500" class="hugelist" id="extension_members_huge">
+      <tr *lazyFor="let member of listedMembers, withHeight 65">
+        <td [id]="member.id + '_view_member'" class="" style="white-space: nowrap;  font-size:large">
+          <a href="{{configurationService.getUriWithEnv(member.code.uri)}}" target="_blank">
+            {{member.getDisplayName(languageService, translateService) }}
+          </a>
+        </td>
+        <td [id]="member.relatedMember.id + '_view_related_member'" class="" style="width: 99%; font-size:large">
+          <a href="{{configurationService.getUriWithEnv(member.relatedMember.code.uri)}}" target="_blank">
+            {{member.relatedMember.getDisplayName(languageService, translateService) }}
+          </a>
+        </td>
+      </tr>
+    </table>
   </div>
 
-  <div class="emptyMembers" *ngIf="members.length === 0">
-    <span translate>This extension does not have any members yet.</span>
+  <div class="emptyMembers" *ngIf="parentMembers.length === 0">
+    <span translate>This extension does not have any cross references yet.</span>
   </div>
 </div>

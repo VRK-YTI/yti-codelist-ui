@@ -4,6 +4,10 @@ import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
+import { Router } from '@angular/router';
+import { LanguageService } from '../../services/language.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-extension-crossreferencelist',
@@ -17,7 +21,10 @@ export class ExtensionCrossreferencelistComponent {
 
   searchTerm = '';
 
-  constructor() {
+  constructor(private router: Router,
+              public languageService: LanguageService,
+              public translateService: TranslateService,
+              private configurationService: ConfigurationService) {
   }
 
   memberIdentity(index: number, item: MemberSimple) {
@@ -50,9 +57,5 @@ export class ExtensionCrossreferencelistComponent {
     const relatedMemberIds = childMembers.map(member => member.relatedMember!.id);
 
     return this.members.filter(member => contains(relatedMemberIds, member.id));
-  }
-
-  searchTermHasValue() {
-    return this.searchTerm ? true : false;
   }
 }

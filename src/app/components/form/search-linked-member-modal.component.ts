@@ -36,6 +36,11 @@ import { DataService } from '../../services/data.service';
                   <span *ngIf="selectedCodeScheme">{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
                 </button>
                 <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
+                    <button id="codescheme_allcodeschemes_dropdown_button"
+                            (click)="deSelectCodeScheme()"
+                            class="dropdown-item"
+                            [class.active]="selectedCodeScheme === null">
+                      All codeschemes</button>
                   <div *ngFor="let codeScheme of codeSchemes">
                     <button id="codescheme_{{codeScheme.id}}_dropdown_button"
                             (click)="selectCodeScheme(codeScheme)"
@@ -102,7 +107,7 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
   @Input() members$: Observable<Member[]>;
   @Input() useUILanguage: boolean;
 
-  selectedCodeScheme: CodeScheme;
+  selectedCodeScheme: CodeScheme | null;
   searchResults$: Observable<Member[]>;
   search$ = new BehaviorSubject('');
   loading = false;
@@ -154,35 +159,55 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
 
   selectCodeScheme(codeScheme: CodeScheme) {
     this.selectedCodeScheme = codeScheme;
-    this.updateCodes();
+    this.updateMembers();
+  }
+
+  deSelectCodeScheme(codeScheme: CodeScheme) {
+    this.selectedCodeScheme = null;
+    this.updateMembers();
   }
 
   filterMembers() {
     const initialSearch = this.search$.pipe(take(1));
     const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
-    const codeValueOfSelectedCodeScheme = this.selectedCodeScheme.codeValue;
 
-    this.searchResults$ = combineLatest(this.members$, concat(initialSearch, debouncedSearch), codeValueOfSelectedCodeScheme)
-      .pipe(
-        tap(() => this.loading = false),
-        map(([members, search]) => {
-          return members.filter(member => {
-            const label = member.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
-            const codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember = member.code.codeScheme.codeValue;
-            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-            const codeSchemeMatches = codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember === codeValueOfSelectedCodeScheme;
-            const isNotRestricted = !contains(this.restricts, member.id);
-            return searchMatches && isNotRestricted && codeSchemeMatches;
-          });
-        })
-      );
+    if (this.selectedCodeScheme) {
+      const codeValueOfSelectedCodeScheme = this.selectedCodeScheme.codeValue;
+
+      this.searchResults$ = combineLatest(this.members$, concat(initialSearch, debouncedSearch), codeValueOfSelectedCodeScheme)
+        .pipe(
+          tap(() => this.loading = false),
+          map(([members, search]) => {
+            return members.filter(member => {
+              const label = member.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
+              const codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember = member.code.codeScheme.codeValue;
+              const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+              const codeSchemeMatches = codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember === codeValueOfSelectedCodeScheme;
+              const isNotRestricted = !contains(this.restricts, member.id);
+              return searchMatches && isNotRestricted && codeSchemeMatches;
+            });
+          })
+        );
+    } else {
+      this.searchResults$ = combineLatest(this.members$, concat(initialSearch, debouncedSearch))
+        .pipe(
+          tap(() => this.loading = false),
+          map(([members, search]) => {
+            return members.filter(member => {
+              const label = member.getDisplayName(this.languageService, this.translateService, this.useUILanguage);
+              const codeValueOfTheCodeSchemeOfTheCodeOfTheCurrentMember = member.code.codeScheme.codeValue;
+              const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+              const isNotRestricted = !contains(this.restricts, member.id);
+              return searchMatches && isNotRestricted;
+            });
+          })
+        );
+    }
+
+
   }
 
-  updateCodes() {
-    this.codes$ = this.dataService.getCodes(
-      this.selectedCodeScheme.codeRegistry.codeValue,
-      this.selectedCodeScheme.codeValue,
-      this.languageService.language);
+  updateMembers() {
     this.filterMembers();
   }
 

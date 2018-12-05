@@ -52,7 +52,6 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                 type="button"
                 class="btn btn-sm btn-action mt-2"
                 *ngIf="editing"
-                [disabled]="codeSchemes.length >= limitNumberOfCodeSchemes"
                 (click)="addCodeScheme()" translate>Add code list</button>
       </dd>
     </dl>
@@ -64,7 +63,6 @@ export class CodeSchemeInputComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() infoText: string;
   @Input() parentCodeScheme: CodeScheme;
-  @Input() limitNumberOfCodeSchemes = 1000000; // normally there is no limit, but crossReferenceList has max value of 2.
 
   control = new FormControl([]);
 
