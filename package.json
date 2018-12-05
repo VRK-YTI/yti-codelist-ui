@@ -33,11 +33,11 @@
     "core-js": "^2.5.4",
     "material-design-icons": "^3.0.1",
     "moment": "^2.21.0",
-    "ngx-clipboard": "11.1.7",
+    "ngx-clipboard": "^11.1.9",
     "ngx-infinite-scroll": "6.0.1",
     "rxjs": "^6.0.0",
     "simple-line-icons": "^2.4.1",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#a8776018daa4d8188a2974c5b414f1eb33855187",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#3fd2a8827eb4f0dfd48fbdb39f87e2f4fabc2c2c",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

@@ -61,8 +61,6 @@ import {
 import { EditableService } from './services/editable.service';
 import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
 import { CodeInputComponent } from './components/form/code-input.component';
-import { ClipboardComponent } from './components/form/clipboard';
-import { ClipboardModule } from 'ngx-clipboard';
 import { CodeSchemeExtensionsComponent } from './components/codescheme/code-scheme-extensions.component';
 import { ExtensionCreateComponent } from './components/extension/extension-create.component';
 import { ExtensionComponent } from './components/extension/extension.component';
@@ -113,6 +111,8 @@ import { CodeExtensionsInputComponent } from './components/form/code-extensions-
 import { CodeExtensionMemberValuesInputComponent } from './components/form/code-extension-member-values-input.component';
 import { ExtensionCrossreferencelistComponent } from './components/extension/extension-crossreferencelist.component';
 import { CodeSchemeSingleInputComponent } from './components/form/code-scheme-single-input.component';
+import { InlineClipboardComponent } from './components/form/inline-clipboard';
+import { ClipboardModule } from 'ngx-clipboard';
 
 function removeEmptyValues(obj: {}) {
 
@@ -203,7 +203,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeComponent,
     CodeComponent,
     CodeCreateComponent,
-    ClipboardComponent,
+    InlineClipboardComponent,
     ContentLanguageComponent,
     CodeSchemeCodesComponent,
     ExtensionComponent,

@@ -124,6 +124,8 @@ img.svg-icon {
   }
 
   &.expand {
+    /* max-height value fit-content is not widely supported, none will do as a backup */
+    max-height: none;
     max-height: fit-content;
 
     .description-limiter {
