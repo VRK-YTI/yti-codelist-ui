@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-12-03 15:28+0200\n"
+"PO-Revision-Date: 2018-12-07 15:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -24,12 +24,6 @@ msgstr "Valitse"
 
 msgid "Create new"
 msgstr "Luo uusi"
-
-msgid "Copy value to clipboard"
-msgstr "Kopioi {{value}} leikepöydälle"
-
-msgid "Copied to clipboard"
-msgstr "Kopioitu leikepöydälle"
 
 msgid "Select code"
 msgstr "Valitse koodi"
@@ -78,6 +72,12 @@ msgstr "Valitse tietoalue"
 
 msgid "Search information domain"
 msgstr "Hae tietoaluetta"
+
+msgid "Copy value to clipboard"
+msgstr "Kopioi {{value}} leikepöydälle"
+
+msgid "Copied to clipboard"
+msgstr "Kopioitu leikepöydälle"
 
 msgid "Add language code"
 msgstr "Lisää kielikoodi"
@@ -420,8 +420,8 @@ msgstr "Laajennuksen tyyppi"
 msgid "Automatically create a member for each code"
 msgstr "Luo automaattisesti jäsenet kaikille koodeille,"
 
-msgid "This extension does not have any members yet."
-msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
+msgid "This extension does not have any cross references yet."
+msgstr "Tällä laajennuksella ei ole vielä yhtään koodiliitosta."
 
 msgid "LABEL_TEXT_EXTENSION_ID"
 msgstr "Laajennuksen tunnus"
@@ -437,6 +437,9 @@ msgstr "jäsentä"
 
 msgid "Search did not find any members."
 msgstr "Haulla ei löytynyt yhtään jäsentä."
+
+msgid "This extension does not have any members yet."
+msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
 
 msgid "Create member"
 msgstr "Luo jäsen"

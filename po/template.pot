@@ -16,12 +16,6 @@ msgstr ""
 msgid "Create new"
 msgstr ""
 
-msgid "Copy value to clipboard"
-msgstr ""
-
-msgid "Copied to clipboard"
-msgstr ""
-
 msgid "Select code"
 msgstr ""
 
@@ -68,6 +62,12 @@ msgid "Choose information domain"
 msgstr ""
 
 msgid "Search information domain"
+msgstr ""
+
+msgid "Copy value to clipboard"
+msgstr ""
+
+msgid "Copied to clipboard"
 msgstr ""
 
 msgid "Add language code"
@@ -404,7 +404,7 @@ msgstr ""
 msgid "Automatically create a member for each code"
 msgstr ""
 
-msgid "This extension does not have any members yet."
+msgid "This extension does not have any cross references yet."
 msgstr ""
 
 msgid "LABEL_TEXT_EXTENSION_ID"
@@ -420,6 +420,9 @@ msgid "members"
 msgstr ""
 
 msgid "Search did not find any members."
+msgstr ""
+
+msgid "This extension does not have any members yet."
 msgstr ""
 
 msgid "Create member"
