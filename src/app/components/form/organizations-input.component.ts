@@ -2,7 +2,7 @@ import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -88,7 +88,7 @@ export class OrganizationsInputComponent implements ControlValueAccessor {
   }
 
   get selectableOrganizations(): Organization[] {
-    return (this.control.value as Organization[]).sort(comparingPrimitive<Organization>(organization => organization.id));
+    return (this.control.value as Organization[]).sort(comparingLocalizable<Organization>(this.languageService, organization => organization.prefLabel ? organization.prefLabel : {}));
   }
 
   addOrganization() {
