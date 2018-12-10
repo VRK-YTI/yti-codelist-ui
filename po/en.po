@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-12-07 15:48+0200\n"
+"PO-Revision-Date: 2018-12-10 14:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -864,8 +864,8 @@ msgstr ""
 msgid "INFO_TEXT_SUBCODESCHEME"
 msgstr "External code list that relates to this code"
 
-msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Maximum hierarchies reached for members."
+msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
+msgstr "Member value is not set or it’s empty."
 
 msgid "Front page"
 msgstr ""
@@ -1122,11 +1122,11 @@ msgstr ""
 "Code linked to member does not belong to parent code list or to any related "
 "code lists."
 
+msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Maximum hierarchies reached for members."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
-msgstr "Member value is not set or it’s empty."
 
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr "Code list linked to extension not found."
@@ -1303,6 +1303,9 @@ msgstr "Sub code list is linked to the same code list as code."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_MEMBERVALUE"
 msgstr "The data is missing a column with the header {{ identifier }}."
+
+msgid "ERR_MSG_USER_MULTIPLE_CODEEXTENSIONS_FOUND_WITH_SAME_TYPE"
+msgstr "Data contains multiple same type code extensions."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
