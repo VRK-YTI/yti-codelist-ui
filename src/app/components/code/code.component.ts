@@ -21,6 +21,7 @@ import { PropertyType } from '../../entities/property-type';
 import { MemberSimple } from '../../entities/member-simple';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
+import { formatDate } from '../../utils/date';
 
 @Component({
   selector: 'app-code',
@@ -177,6 +178,8 @@ export class CodeComponent implements OnInit, EditingComponent {
         id: member.id,
         uri: member.uri,
         url: member.url,
+        startDate: formatDate(member.startDate),
+        endDate: formatDate(member.endDate),
         code: codePlainType,
         memberValues: this.constructMemberValues(member.memberValues)
       };

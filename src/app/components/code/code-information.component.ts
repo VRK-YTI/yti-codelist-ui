@@ -193,6 +193,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
       id: new FormControl(member ? member.id : null),
       url: new FormControl(member ? member.url : null),
       uri: new FormControl(member ? member.uri : null),
+      startDate: new FormControl(member ? member.startDate : null),
+      endDate: new FormControl(member ? member.endDate : null),
       code: new FormControl(codePlain),
       memberValues: this.initMemberValues(extension)
     });
@@ -206,7 +208,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
         const existingMemberValue: MemberValue | null = this.getMemberValueForValueType(extension, valueType.localName);
         const memberValueGroup: FormGroup = new FormGroup({
           valueType: new FormControl(valueType),
-          value:  new FormControl(existingMemberValue ? existingMemberValue.value : '')
+          value: new FormControl(existingMemberValue ? existingMemberValue.value : '')
         });
         memberValuesFormArray.push(memberValueGroup);
       })
