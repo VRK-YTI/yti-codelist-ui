@@ -340,9 +340,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
           const theEnd = this.chosenVariant.endDate ? this.chosenVariant.endDate.toISOString(true) : undefined;
           this.codeScheme.variantsOfThisCodeScheme.push(
             new CodeSchemeListItem({
-              id: this.chosenVariant.id, prefLabel: this.chosenVariant.prefLabel,
-              uri: this.chosenVariant.uri, startDate: theStart,
-              endDate: theEnd, status: this.chosenVariant.status
+              id: this.chosenVariant.id,
+              prefLabel: this.chosenVariant.prefLabel,
+              codeValue: this.chosenVariant.codeValue,
+              uri: this.chosenVariant.uri,
+              startDate: theStart,
+              endDate: theEnd,
+              status: this.chosenVariant.status
             })
           );
         }
