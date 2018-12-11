@@ -1,4 +1,4 @@
-import {Localizable} from 'yti-common-ui/types/localization';
+import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import {CodeSchemeListItemType} from '../services/api-schema';
 import {Moment} from 'moment';
 import {parseDate, formatDisplayDateRange, formatDate} from '../utils/date';
@@ -6,6 +6,7 @@ import {parseDate, formatDisplayDateRange, formatDate} from '../utils/date';
 export class CodeSchemeListItem {
   id: string;
   prefLabel: Localizable;
+  codeValue: string;
   uri: string;
   startDate: Moment|null = null;
   endDate: Moment|null = null;
@@ -15,6 +16,7 @@ export class CodeSchemeListItem {
     if (data) {
       this.id = data.id;
       this.prefLabel = data.prefLabel;
+      this.codeValue = data.codeValue;
       this.uri = data.uri;
       if (data.startDate) {
         try {
@@ -40,10 +42,16 @@ export class CodeSchemeListItem {
     return formatDisplayDateRange(this.startDate, this.endDate);
   }
 
+  getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
+    const displayName = localizer.translate(this.prefLabel, useUILanguage);
+    return displayName ? displayName : this.codeValue;
+  }
+
   serialize(): CodeSchemeListItemType {
     return {
       id: this.id,
       prefLabel: this.prefLabel,
+      codeValue: this.codeValue,
       uri: this.uri,
       startDate: formatDate(this.startDate),
       endDate: formatDate(this.endDate),

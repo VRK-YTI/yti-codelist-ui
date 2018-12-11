@@ -218,6 +218,7 @@ export interface MemberSimpleType {
 export interface CodeSchemeListItemType {
   id: string;
   prefLabel: Localizable;
+  codeValue: string;
   uri: string;
   startDate?: string;
   endDate?: string;

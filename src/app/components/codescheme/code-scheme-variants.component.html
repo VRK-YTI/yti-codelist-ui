@@ -10,7 +10,7 @@
   <tbody>
   <tr *ngFor="let variant of codeScheme.variantsOfThisCodeScheme">
     <td scope="row" width="30%">{{variant.validityDateRange}}</td>
-    <td width="30%"><a href="{{getVariantUri(variant.uri)}}" target="_blank">{{variant.prefLabel | translateValue:false }}</a></td>
+    <td width="30%"><a href="{{getVariantUri(variant.uri)}}" target="_blank">{{ getVariantDisplayName(variant) }}</a></td>
     <td width="30%"><app-status class="float-left" [status]="variant.status"></app-status></td>
 
     <td *ngIf="canAttachOrDetachAVariant()" width="10%">

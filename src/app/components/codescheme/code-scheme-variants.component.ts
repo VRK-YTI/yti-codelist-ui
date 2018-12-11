@@ -6,6 +6,7 @@ import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ConfigurationService } from '../../services/configuration.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-code-scheme-variants',
@@ -17,7 +18,8 @@ export class CodeSchemeVariantsComponent {
   @Input() codeScheme: CodeScheme;
   @Output() detachVariantRequest = new EventEmitter<CodeSchemeListItem>();
 
-  constructor(private dataService: DataService,
+  constructor(private languageService: LanguageService,
+              private dataService: DataService,
               private confirmationModalService: CodeListConfirmationModalService,
               private authorizationManager: AuthorizationManager,
               private configurationService: ConfigurationService) {
@@ -40,5 +42,9 @@ export class CodeSchemeVariantsComponent {
 
   getVariantUri(variantUri: string): string | null {
     return this.configurationService.getUriWithEnv(variantUri);
+  }
+
+  getVariantDisplayName(variant: CodeSchemeListItem): string {
+    return variant.getDisplayName(this.languageService, false);
   }
 }
