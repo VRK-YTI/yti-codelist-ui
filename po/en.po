@@ -411,7 +411,7 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
-msgid "Automatically create a member for each code"
+msgid "Automatically create a member for each code."
 msgstr ""
 
 msgid "This extension does not have any cross references yet."

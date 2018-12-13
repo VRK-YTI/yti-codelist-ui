@@ -417,8 +417,8 @@ msgstr "Laajennuksen nimi"
 msgid "Extension type"
 msgstr "Laajennuksen tyyppi"
 
-msgid "Automatically create a member for each code"
-msgstr "Luo automaattisesti jäsenet kaikille koodeille,"
+msgid "Automatically create a member for each code."
+msgstr "Luo automaattisesti jäsenet kaikille koodeille."
 
 msgid "This extension does not have any cross references yet."
 msgstr "Tällä laajennuksella ei ole vielä yhtään koodiliitosta."
