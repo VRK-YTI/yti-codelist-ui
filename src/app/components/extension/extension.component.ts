@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
@@ -24,7 +24,7 @@ import { ConfigurationService } from '../../services/configuration.service';
   styleUrls: ['./extension.component.scss'],
   providers: [EditableService],
 })
-export class ExtensionComponent implements OnInit, EditingComponent {
+export class ExtensionComponent implements OnInit, EditingComponent, AfterViewInit {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
@@ -67,6 +67,15 @@ export class ExtensionComponent implements OnInit, EditingComponent {
     this.dataService.getSimpleMembers(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(members => {
       this.members = members;
     });
+  }
+
+  ngAfterViewInit() {
+    const newlyCreatedExtension = this.route.snapshot.queryParamMap.get('newlyCreatedExtension');
+    if (newlyCreatedExtension) {
+      setTimeout(() => {
+        this.tabSet.activeId = 'extension_members_tab';
+      }, 500); // the timeout is needed in order for the tabs to have time to come into existence, such is life, deal with it
+    }
   }
 
   refreshExtensions() {
