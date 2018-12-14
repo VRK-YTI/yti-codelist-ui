@@ -168,7 +168,7 @@ export class Member implements EditableEntity {
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
     }
-    let displayName = this.code.codeValue + ' - ' + codeTitle;
+    const displayName = this.code.codeValue + ' - ' + codeTitle;
     return displayName;
   }
 
