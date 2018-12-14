@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-12-14 10:25+0200\n"
+"PO-Revision-Date: 2018-12-14 14:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -601,8 +601,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
-msgstr "Linkit"
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgstr "Koodin voimassaolon päättymispäivämäärä"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -741,6 +741,12 @@ msgstr "Koodiin liitetyn käsitteen pysyvä tunniste ja verkko-osoite."
 msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
 
+msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
+msgstr "Linkit"
+
+msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
+msgstr "Koodin voimassaolon alkamispäivämäärä"
+
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Tieto siitä, mihin tietoalueeseen koodisto liittyy. Koodisto voi kuulua "
@@ -748,12 +754,6 @@ msgstr ""
 "luokitusta. Samaa tietoalueluokitusta käytetään Koodistot-työkalun lisäksi "
 "myös Sanastot- ja Tietomallit-työkaluissa. Tietoaluetta käytetään etusivun "
 "haussa rajaamaan hakutuloksia."
-
-msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
-msgstr "Koodin voimassaolon alkamispäivämäärä"
-
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
-msgstr "Koodin voimassaolon päättymispäivämäärä"
 
 msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
@@ -869,6 +869,21 @@ msgstr ""
 
 msgid "INFO_TEXT_SUBCODESCHEME"
 msgstr "Koodiin liittyvä ulkoinen koodisto"
+
+msgid "INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER"
+msgstr ""
+"Valitse tälle jäsenelle liittyvä koodi tähän laajennukseen kytketyistä "
+"koodistoista."
+
+msgid "INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE"
+msgstr ""
+"Valitse koodiliitoksen toinen osapuoli. Mikäli valintaa ei voi tehdä, tälle "
+"jäsenelle on jo olemassa liitos."
+
+msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
+msgstr ""
+"Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee "
+"jäsenten välisen hiearkian."
 
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."

@@ -28,6 +28,7 @@ function removeFromControl<T>(control: FormControl) {
     <dl *ngIf="editing || member">
       <dt>
         <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
@@ -61,6 +62,7 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
   @Input() currentMember: Member;
   @Input() required = false;
   @Input() codeSchemes: CodeScheme[];
+  @Input() infoText: string;
 
   control = new FormControl(null);
 

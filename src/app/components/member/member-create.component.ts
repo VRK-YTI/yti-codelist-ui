@@ -222,4 +222,12 @@ export class MemberCreateComponent implements OnInit {
       return 'Broader member';
     }
   }
+
+  get infoTextForHierarchicalParentInfoButtonBased(): string {
+    if (this.extension.propertyType.localName === 'crossReferenceList') {
+      return 'INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE';
+    } else {
+      return 'INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER';
+    }
+  }
 }

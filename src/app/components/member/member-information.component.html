@@ -43,7 +43,8 @@
                         [codeSchemes]="this.allCodeSchemes"
                         [required]="true"
                         [showDetailLabel]="showCodeDetailLabel"
-                        [formControlName]="'code'"></app-code-input>
+                        [formControlName]="'code'"
+                        [infoText]="'INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER'"></app-code-input>
 
         <app-member-input id="member_relatedmember_input"
                           *ngIf="!isCodeExtension"
@@ -51,7 +52,8 @@
                           [codeSchemes]="this.allCodeSchemes"
                           [extension]="currentMember.extension"
                           [currentMember]="currentMember"
-                          [formControlName]="'relatedMember'"></app-member-input>
+                          [formControlName]="'relatedMember'"
+                          [infoText]="infoTextForHierarchicalParentInfoButtonBased"></app-member-input>
 
         <app-date-range-input id="member_validity_input"
                               [label]="'Validity' | translate"
