@@ -234,4 +234,16 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     return this.extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item =>
       item.prefLabel ? item.prefLabel : {}));
   }
+
+  currentExtensionIsACrossReferenceList(): boolean {
+    return this.extension.propertyType.localName === 'crossReferenceList';
+  }
+
+  get labelForTheHiearchicalBroaderCodeChoice(): string {
+    if (this.currentExtensionIsACrossReferenceList()) {
+      return 'Cross-reference code';
+    } else {
+      return 'Broader member';
+    }
+  }
 }

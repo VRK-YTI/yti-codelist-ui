@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-12-10 14:47+0200\n"
+"PO-Revision-Date: 2018-12-14 10:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -497,9 +497,6 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-msgid "Broader member"
-msgstr ""
-
 msgid "Delete member"
 msgstr ""
 
@@ -864,8 +861,8 @@ msgstr ""
 msgid "INFO_TEXT_SUBCODESCHEME"
 msgstr "External code list that relates to this code"
 
-msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
-msgstr "Member value is not set or it’s empty."
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
+msgstr "Code list linked to extension not found."
 
 msgid "Front page"
 msgstr ""
@@ -1125,11 +1122,11 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for members."
 
+msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
+msgstr "Member value is not set or it’s empty."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
-msgstr "Code list linked to extension not found."
 
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
 msgstr "PropertyType linked to extension not found."
@@ -1378,6 +1375,12 @@ msgid "Are you sure you want to create the version as empty?"
 msgstr "The content imported to the new version"
 
 msgid "Create extension"
+msgstr ""
+
+msgid "Cross-reference code"
+msgstr ""
+
+msgid "Broader member"
 msgstr ""
 
 msgid "extensionCodeValueExists"

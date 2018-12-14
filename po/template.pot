@@ -482,9 +482,6 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-msgid "Broader member"
-msgstr ""
-
 msgid "Delete member"
 msgstr ""
 
@@ -788,7 +785,7 @@ msgstr ""
 msgid "INFO_TEXT_SUBCODESCHEME"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr ""
 
 msgid "Front page"
@@ -1027,10 +1024,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
@@ -1247,6 +1244,12 @@ msgid "Are you sure you want to create the version as empty?"
 msgstr ""
 
 msgid "Create extension"
+msgstr ""
+
+msgid "Cross-reference code"
+msgstr ""
+
+msgid "Broader member"
 msgstr ""
 
 msgid "extensionCodeValueExists"

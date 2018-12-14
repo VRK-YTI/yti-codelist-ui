@@ -47,7 +47,7 @@
 
         <app-member-input id="member_relatedmember_input"
                           *ngIf="!isCodeExtension"
-                          [label]="'Broader member' | translate"
+                          [label]="labelForTheHiearchicalBroaderCodeChoice | translate"
                           [codeSchemes]="this.allCodeSchemes"
                           [extension]="currentMember.extension"
                           [currentMember]="currentMember"
