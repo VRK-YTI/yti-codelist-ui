@@ -73,7 +73,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     const newlyCreatedExtension = this.route.snapshot.queryParamMap.get('newlyCreatedExtension');
     if (newlyCreatedExtension) {
       setTimeout(() => {
-        this.tabSet.activeId = 'extension_members_tab';
+        this.tabSet.select('extension_members_tab');
       }, 500); // the timeout is needed in order for the tabs to have time to come into existence, such is life, deal with it
     }
   }
