@@ -21,6 +21,7 @@ import { MemberSimple } from '../../entities/member-simple';
 import { CodePlain } from '../../entities/code-simple';
 import { CodePlainType } from '../../services/api-schema';
 import { ValueType } from '../../entities/value-type';
+import { MemberValueValidators } from '../form/member-value-validators';
 
 @Component({
   selector: 'app-code-information',
@@ -208,7 +209,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
         const existingMemberValue: MemberValue | null = this.getMemberValueForValueType(extension, valueType.localName);
         const memberValueGroup: FormGroup = new FormGroup({
           valueType: new FormControl(valueType),
-          value: new FormControl(existingMemberValue ? existingMemberValue.value : '')
+          value: new FormControl(existingMemberValue ? existingMemberValue.value : '', MemberValueValidators.validateMemberValueAgainstRegexpAndRequired(valueType))
         });
         memberValuesFormArray.push(memberValueGroup);
       })

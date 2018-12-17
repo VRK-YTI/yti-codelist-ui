@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <div *ngIf="isVisible()">
       <ul class="errors">
-        <li [id]="i + '_' + id" *ngFor="let errorKey of errorKeys; let i = index">{{errorKey | translate}}</li>
+        <li [id]="i + '_' + id" *ngFor="let errorKey of errorKeys; let i = index" translate [translateParams]="translateParams(errorKey)">{{errorKey}}</li>
       </ul>      
     </div>
   `
@@ -19,6 +19,18 @@ export class ErrorMessagesComponent {
 
   isVisible() {
     return this.control && !this.control.valid;
+  }
+
+  translateParams(errorKey: string): any {
+    const errors = this.control.errors;
+    if (errors) {
+      const error = errors[errorKey];
+      if (error) {
+        return error;
+      }
+      return null;
+    }
+    return null;
   }
 
   get errorKeys() {
