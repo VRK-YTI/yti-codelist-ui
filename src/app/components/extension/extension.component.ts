@@ -31,6 +31,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   extension: Extension;
   members: MemberSimple[];
   deleting: boolean;
+  initialTabId: string|undefined = undefined;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -72,9 +73,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   ngAfterViewInit() {
     const newlyCreatedExtension = this.route.snapshot.queryParamMap.get('newlyCreatedExtension');
     if (newlyCreatedExtension) {
-      setTimeout(() => {
-        this.tabSet.select('extension_members_tab');
-      }, 500); // the timeout is needed in order for the tabs to have time to come into existence, such is life, deal with it
+      this.initialTabId = 'extension_members_tab';
     }
   }
 

@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
+  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)" [activeId]="initialTabId">
     <ngb-tab *ngIf="showCrossReferenceListTab && showUnfinishedFeature"
              id="extension_crossreferencelist_tab">
       <ng-template ngbTabTitle>
