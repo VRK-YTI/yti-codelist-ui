@@ -24,6 +24,7 @@ import { MemberSimple } from '../../entities/member-simple';
 import { MemberValue } from '../../entities/member-value';
 import { PropertyType } from '../../entities/property-type';
 import { ValueType } from '../../entities/value-type';
+import { MemberValueValidators } from '../form/member-value-validators';
 
 @Component({
   selector: 'app-code-create',
@@ -235,7 +236,7 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
       valueTypes.forEach(valueType => {
         const memberValueGroup: FormGroup = new FormGroup({
           valueType: new FormControl(valueType),
-          value: new FormControl('')
+          value: new FormControl('', MemberValueValidators.validateMemberValueAgainstRegexpAndRequired(valueType))
         });
         memberValuesFormArray.push(memberValueGroup);
       })

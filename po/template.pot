@@ -1261,7 +1261,7 @@ msgstr ""
 msgid "Broader member"
 msgstr ""
 
-msgid "extensionCodeValueExists"
+msgid "externalReferenceExists"
 msgstr ""
 
 msgid "invalidDate"
@@ -1276,10 +1276,10 @@ msgstr ""
 msgid "codeValueExists"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "externalReferenceExists"
+msgid "invalidDateRange"
 msgstr ""
 
 msgid "codeValueValidationError"
@@ -1292,4 +1292,10 @@ msgid "memberValueUnaryOperatorRegexpValidationError"
 msgstr ""
 
 msgid "memberValueComparisonOperatorRegexpValidationError"
+msgstr ""
+
+msgid "memberValueValidatorError"
+msgstr ""
+
+msgid "memberValueRequired"
 msgstr ""
