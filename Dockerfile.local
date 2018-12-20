@@ -27,7 +27,7 @@ ADD . /app
 RUN ["cp", "-a", "/tmp/node_modules", "/app/"]
 
 # Add nginx config
-ADD nginx.conf /etc/nginx/nginx-docker-local.conf
+ADD nginx-docker-local.conf /etc/nginx/nginx.conf
 
 # Build the dist dir containing the static files
 WORKDIR /app
