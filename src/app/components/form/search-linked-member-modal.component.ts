@@ -40,7 +40,8 @@ import { DataService } from '../../services/data.service';
                             (click)="deSelectCodeScheme()"
                             class="dropdown-item"
                             [class.active]="selectedCodeScheme === null">
-                      All codeschemes</button>
+                      <span translate>All codeschemes</span>
+                    </button>
                   <div *ngFor="let codeScheme of codeSchemes">
                     <button id="codescheme_{{codeScheme.id}}_dropdown_button"
                             (click)="selectCodeScheme(codeScheme)"

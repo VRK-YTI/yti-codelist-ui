@@ -106,6 +106,9 @@ msgstr ""
 msgid "Filter results"
 msgstr ""
 
+msgid "All codeschemes"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
