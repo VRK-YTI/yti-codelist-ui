@@ -17,6 +17,7 @@ import { MembersImportModalService } from '../member/member-import-modal.compone
 import { changeToRestrictedStatus } from '../../utils/status-check';
 import { MemberSimple } from '../../entities/member-simple';
 import { ConfigurationService } from '../../services/configuration.service';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-extension',
@@ -71,8 +72,8 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   }
 
   ngAfterViewInit() {
-    const newlyCreatedExtension = this.route.snapshot.queryParamMap.get('newlyCreatedExtension');
-    if (newlyCreatedExtension) {
+    const goToMembersTab = this.route.snapshot.queryParamMap.get('goToMembersTab');
+    if (goToMembersTab) {
       this.initialTabId = 'extension_members_tab';
     }
   }
@@ -139,6 +140,23 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
         }
       ]
     );
+  }
+
+  createMissingMembers() {
+    const codeSchemes: CodeScheme[] = this.extension.codeSchemes;
+    if (!codeSchemes.find(cs => cs.id === this.extension.parentCodeScheme.id)) {
+      codeSchemes.push(this.extension.parentCodeScheme);
+    }
+
+    this.confirmationModalService.openCreateMissingExtensionMembers(codeSchemes).then(() => {
+      this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
+                                            this.extension.parentCodeScheme.id,
+                                            this.extension.codeValue).subscribe(next => {
+        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true } }));
+      }, error => {
+        this.errorModalService.openSubmitError(error);
+      })
+    }, ignoreModalClose);
   }
 
   get showMenu(): boolean {

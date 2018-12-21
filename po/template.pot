@@ -52,6 +52,9 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+msgid "{{errorKey}}"
+msgstr ""
+
 msgid "Add link"
 msgstr ""
 
@@ -428,6 +431,9 @@ msgstr ""
 msgid "Create member"
 msgstr ""
 
+msgid "Create missing members for the extension"
+msgstr ""
+
 msgid "Import members"
 msgstr ""
 
@@ -794,7 +800,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
 msgstr ""
 
 msgid "Front page"
@@ -1036,10 +1042,10 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
@@ -1259,6 +1265,12 @@ msgid "Cross-reference code"
 msgstr ""
 
 msgid "Broader member"
+msgstr ""
+
+msgid "CREATE MISSING MEMBERS MODAL TITLE"
+msgstr ""
+
+msgid "CREATE MISSING MEMBERS MODAL BODY TEXT"
 msgstr ""
 
 msgid "externalReferenceExists"

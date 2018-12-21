@@ -1,5 +1,6 @@
 import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { Injectable } from '@angular/core';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Injectable()
 export class CodeListConfirmationModalService {
@@ -60,5 +61,11 @@ export class CodeListConfirmationModalService {
 
   openCreateNewCodeSchemeVersionAsEmpty() {
     return this.confirmationModalService.open('Are you sure you want to create the version as empty?', undefined,  '');
+  }
+
+  openCreateMissingExtensionMembers(codeSchemes: CodeScheme[]) {
+    const nonTranslatableBodyParagraphs: string[] = codeSchemes.map(cs => cs.uri);
+    const bodyParagraphs = new Array('CREATE MISSING MEMBERS MODAL BODY TEXT');
+    return this.confirmationModalService.openWithNonTranslatableContentAlsoPresent('CREATE MISSING MEMBERS MODAL TITLE', nonTranslatableBodyParagraphs, undefined, ...bodyParagraphs);
   }
 }

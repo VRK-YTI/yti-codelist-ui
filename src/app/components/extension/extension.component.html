@@ -24,6 +24,12 @@
                   class="dropdown-item"
                   (click)="createMember()"
                   translate>Create member</button>
+          <button id="create_missing_members_button"
+                  *ngIf="canAddMember"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="createMissingMembers()"
+                  translate>Create missing members for the extension</button>
           <button id="import_members_button"
                   *ngIf="canAddMember"
                   class="dropdown-item"

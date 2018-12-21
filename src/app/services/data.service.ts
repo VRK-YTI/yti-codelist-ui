@@ -681,6 +681,17 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new Member(data))));
   }
 
+  createMissingMembers(registryCodeValue: string,
+                       codeSchemeId: string,
+                       extensionCodeValue: string): Observable<Member[]> {
+
+    const theUrl = `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeId}/` +
+      `${extensions}/${extensionCodeValue}/${members}/createmissing/`;
+
+    return this.http.post<WithResults<MemberType>>(theUrl, null)
+      .pipe(map(res => res.results.map(data => new Member(data))));
+  }
+
   externalReferenceExists(registryCodeValue: string, schemeCodeValue: string, href: string): Observable<boolean> {
 
     const encodedHref = encodeURIComponent(href);

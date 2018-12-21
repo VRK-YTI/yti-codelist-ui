@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-12-17 08:49+0200\n"
+"PO-Revision-Date: 2018-12-19 09:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -60,6 +60,9 @@ msgstr "Peruuta"
 
 msgid "Edit"
 msgstr "Muokkaa"
+
+msgid "{{errorKey}}"
+msgstr ""
 
 msgid "Add link"
 msgstr "Lisää linkki"
@@ -443,6 +446,9 @@ msgstr "Tällä laajennuksella ei ole yhtään jäsentä."
 
 msgid "Create member"
 msgstr "Luo jäsen"
+
+msgid "Create missing members for the extension"
+msgstr "Luo laajennukselle puuttuvat jäsenet"
 
 msgid "Import members"
 msgstr "Tuo jäseniä"
@@ -885,8 +891,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee "
 "jäsenten välisen hiearkian."
 
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
-msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
+msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1140,11 +1146,11 @@ msgstr "Jäsenten maksimi hierarkkinen taso ylittyi."
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Jäsenen arvoa ei ole määritetty, tai se on tyhjä."
 
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
+msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
-msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
 
 msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
 msgstr "Linkkiin liitettyä tyypitystä ei ole olemassa."
@@ -1391,6 +1397,14 @@ msgstr "Liitettävä koodi"
 
 msgid "Broader member"
 msgstr "Hierarkkinen yläjäsen"
+
+msgid "CREATE MISSING MEMBERS MODAL TITLE"
+msgstr "Luo puuttuvat jäsenet"
+
+msgid "CREATE MISSING MEMBERS MODAL BODY TEXT"
+msgstr ""
+"Tämä toiminto luo puuttuvat jäsenet tähän laajennukseen. Puuttuvat jäsenet "
+"luodaan seuraavien koodistojen koodeista, mikäli koodille ei jo jäsentä ole."
 
 msgid "externalReferenceExists"
 msgstr "Linkki on jo käytössä tässä koodistossa."
