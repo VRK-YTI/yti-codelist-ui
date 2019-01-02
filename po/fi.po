@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-12-21 09:54+0200\n"
+"PO-Revision-Date: 2019-01-02 12:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -894,8 +894,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee "
 "jäsenten välisen hiearkian."
 
-msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
-msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
+msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1135,6 +1135,10 @@ msgstr "Aineistossa puuttuu arvo sarakkeesta HREF riviltä {{ identifier }}."
 msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
 msgstr "Jäseneen liitettyä koodia ei ole olemassa."
 
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND_WITH_IDENTIFIER"
+msgstr ""
+"Jäseneen liitettyä koodia ei ole olemassa tunnisteella: {{ identifier }}"
+
 msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
 msgstr "Koodin order-sarakkeen kentistä löytyi samoja arvoja."
 
@@ -1149,11 +1153,11 @@ msgstr "Jäsenten maksimi hierarkkinen taso ylittyi."
 msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
 msgstr "Jäsenen arvoa ei ole määritetty, tai se on tyhjä."
 
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
-msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
+msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
 
 msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
 msgstr "Linkkiin liitettyä tyypitystä ei ole olemassa."
