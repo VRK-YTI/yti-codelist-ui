@@ -93,13 +93,14 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
 
   save(formData: any): Observable<any> {
 
-    const { validity, externalReferences, broaderCode, codeExtensions, ...rest } = formData;
+    const { validity, externalReferences, subCodeScheme, broaderCode, codeExtensions, ...rest } = formData;
 
     const code: CodeType = <CodeType> {
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
       broaderCode: broaderCode != null ? broaderCode.serialize() : null,
+      subCodeScheme: subCodeScheme != null ? subCodeScheme.serialize() : null,
       externalReferences: externalReferences.map((er: ExternalReference) => er.serialize())
     };
 
