@@ -96,27 +96,32 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
 
   ngAfterViewInit() {
 
+    this.membersToInspect = this.dataService.getMembers(
+      this.extension.parentCodeScheme.codeRegistry.codeValue,
+      this.extension.parentCodeScheme.codeValue,
+      this.extension.codeValue);
+
     // If this is a Cross-Reference List, the hierachy must never exceed 2 levels. Thus, if current member has children,
     // we disable adding a parent to the current one.
     if (this.extension.propertyType.localName === 'crossReferenceList') {
-
-      this.membersToInspect = this.dataService.getMembers(
-        this.extension.parentCodeScheme.codeRegistry.codeValue,
-        this.extension.parentCodeScheme.codeValue,
-        this.extension.codeValue);
-
       this.membersToInspect.subscribe(membersArray => {
         const someChildOfTheCurrentMember = membersArray.filter( member => {
           return member.relatedMember !== undefined && this.currentMember !== undefined && member.relatedMember.id === this.currentMember.id;
         })[0]; // NOTE! We are only interested to see if even one child exists, thus we take the first one
-        if (someChildOfTheCurrentMember === undefined) {
-          this.addMemberButtonMustBeDisabled = false; // if no children exist, OK to add parent
+        if (someChildOfTheCurrentMember === undefined && membersArray.length > 0) {
+          this.addMemberButtonMustBeDisabled = false; // if no children exist, OK to add parent (and there needs to SOME members to add, otherwise pointless and confusing)
         } else {
           this.addMemberButtonMustBeDisabled = true;
         }
       });
     } else {
-      this.addMemberButtonMustBeDisabled = false;
+      this.membersToInspect.subscribe(membersArray => {
+        if (membersArray.length > 0) {
+          this.addMemberButtonMustBeDisabled = false; // if there are members which can be added, show the button
+        } else {
+          this.addMemberButtonMustBeDisabled = true; // if there are no members to add, hide the button to avoid confusion
+        }
+      });
     }
   }
 
