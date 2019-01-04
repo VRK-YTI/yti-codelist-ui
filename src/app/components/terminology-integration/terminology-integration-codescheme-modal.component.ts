@@ -14,6 +14,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
+import { Status, allStatuses } from 'yti-common-ui/entities/status';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -33,6 +34,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary | null>(null);
+  statusOptions: FilterOptions<Status>;
+  status$ = new BehaviorSubject<Status | null>(null);
   loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -56,14 +59,14 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   ngOnInit() {
 
-    combineLatest(this.vocabulary$, this.debouncedSearch$)
-      .subscribe(([vocabulary, search]) => {
+    combineLatest(this.vocabulary$, this.debouncedSearch$, this.status$)
+      .subscribe(([vocabulary, search, status]) => {
 
         if (!search) {
           this.searchResults = [];
         } else {
           this.loading = true;
-          this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null).subscribe(concepts => {
+          this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null).subscribe(concepts => {
               this.loading = false;
               this.searchResults = concepts;
             },
@@ -89,6 +92,15 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         { value: null, name: () => this.translateService.instant('All vocabularies') }];
       this.codeListErrorModalService.openSubmitError(error);
     });
+
+    this.statusOptions = [null, ...allStatuses].map(theStatus => ({
+        value: theStatus,
+        name: () => theStatus ? this.translateService.instant(theStatus)
+          : this.translateService.instant('All statuses'),
+        idIdentifier: () => theStatus ? theStatus
+          : 'all_selected'
+      })
+    );
 
     if (this.targetEntityKind === 'code') {
       if (!this.updatingExistingEntity) {

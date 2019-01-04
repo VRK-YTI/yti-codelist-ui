@@ -89,6 +89,7 @@ export interface ConceptType {
   vocabularyPrefLabel: Localizable;
   vocabularyId: string;
   uri: string;
+  status: string;
 }
 
 export interface ConceptSuggestionType {

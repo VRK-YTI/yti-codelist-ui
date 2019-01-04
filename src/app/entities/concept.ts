@@ -10,15 +10,16 @@ export class Concept {
   definition: Localizable;
   prefLabel: Localizable;
   vocabularyPrefLabel: Localizable;
+  status: string;
 
   constructor(data: ConceptType) {
-
     this.uri = data.uri;
     this.id = data.id;
     this.vocabularyId = data.vocabularyId;
     this.definition = data.definition;
     this.prefLabel = data.prefLabel;
     this.vocabularyPrefLabel = data.vocabularyPrefLabel;
+    this.status = data.status;
   }
 
   getIdIdentifier(localizer: Localizer): string {
@@ -34,7 +35,8 @@ export class Concept {
       prefLabel: this.prefLabel,
       vocabularyPrefLabel: this.vocabularyPrefLabel,
       definition: this.definition,
-      uri: this.uri
+      uri: this.uri,
+      status: this.status
     };
   }
 }

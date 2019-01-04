@@ -12,9 +12,9 @@ import {
   CodeSchemeType,
   CodeType,
   ConceptType,
-  InfoDomainType,
   ExtensionType,
   ExternalReferenceType,
+  InfoDomainType,
   MemberSimpleType,
   MemberType,
   PropertyTypeType,
@@ -466,11 +466,16 @@ export class DataService {
       .pipe(map(response => response.results.map((data: VocabularyType) => new Vocabulary(data))));
   }
 
-  getConcepts(searchTerm: string, vocab: string | null): Observable<Concept[]> {
+  getConcepts(searchTerm: string, vocab: string | null, status: string | null): Observable<Concept[]> {
 
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-
-    return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab || '0'}`)
+    let params = null;
+    if (status != null) {
+      params = new HttpParams().append('status', status);
+    } else {
+      params = new HttpParams();
+    }
+    return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab || '0'}`, { params })
       .pipe(map(response => response.results.map((data: ConceptType) => new Concept(data))));
   }
 
@@ -602,7 +607,7 @@ export class DataService {
 
     return this.http.post<WithResults<ExtensionType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${codeSchemeCodeValue}/${extensions}`,
       extensionList,
-      {params})
+      { params })
       .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 
