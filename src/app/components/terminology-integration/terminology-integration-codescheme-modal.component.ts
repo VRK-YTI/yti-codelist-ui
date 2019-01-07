@@ -68,7 +68,11 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           this.loading = true;
           this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null).subscribe(concepts => {
               this.loading = false;
-              this.searchResults = concepts;
+              this.searchResults = concepts.sort((a , b) => {
+                if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
+                if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+                return 0;
+              });
             },
             error => {
               this.loading = false;
