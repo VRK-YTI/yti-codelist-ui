@@ -82,7 +82,14 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
       });
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
-      this.vocabularyOptions = [null, ...vocabularies].map(voc => ({
+
+      const vocabulariesSorted = vocabularies.sort((a , b) => {
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+        return 0;
+      });
+
+      this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
           value: voc,
           name: () => voc ? this.languageService.translate(voc.prefLabel, false)
             : this.translateService.instant('All vocabularies'),
