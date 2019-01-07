@@ -105,6 +105,7 @@ export interface VocabularyType {
 
   id: string;
   prefLabel: Localizable;
+  status: string;
 }
 
 export interface ExternalReferenceType {
