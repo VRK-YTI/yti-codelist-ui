@@ -4,8 +4,8 @@ import { Moment } from 'moment';
 import { MemberSimpleType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
-import { CodePlain } from './code-simple';
 import { MemberValue } from './member-value';
+import { CodePlainWithCodeScheme } from './code-simple-with-codescheme';
 
 export class MemberSimple {
 
@@ -14,7 +14,7 @@ export class MemberSimple {
   url: string;
   order?: string;
   modified: Moment | null = null;
-  code: CodePlain;
+  code: CodePlainWithCodeScheme;
   relatedMember?: MemberSimple;
   prefLabel: Localizable;
   startDate: Moment | null = null;
@@ -33,7 +33,7 @@ export class MemberSimple {
       this.modified = parseDateTime(data.modified);
     }
     if (data.code) {
-      this.code = new CodePlain(data.code);
+      this.code = new CodePlainWithCodeScheme(data.code);
     }
     if (data.relatedMember) {
       this.relatedMember = new MemberSimple(data.relatedMember);
@@ -94,6 +94,16 @@ export class MemberSimple {
       codeTitle = this.code ? this.code.codeValue : null;
     }
 
+    let codeSchemeTitle = this.code.codeScheme ? localizer.translate(this.code.codeScheme.prefLabel, useUILanguage) : null;
+    if (!codeSchemeTitle) {
+      codeSchemeTitle = this.code.codeScheme.codeValue ? this.code.codeScheme.codeValue : null;
+    }
+
+    let codeRegistryTitle = this.code.codeScheme.codeRegistry ? localizer.translate(this.code.codeScheme.codeRegistry.prefLabel, useUILanguage) : null;
+    if (!codeRegistryTitle) {
+      codeRegistryTitle = this.code.codeScheme.codeRegistry.codeValue ? this.code.codeScheme.codeRegistry.codeValue : null;
+    }
+
     const unaryOperator = this.getMemberValueForLocalName('unaryOperator');
     const comparisonOperator = this.getMemberValueForLocalName('comparisonOperator');
 
@@ -112,6 +122,22 @@ export class MemberSimple {
         displayName = `${displayName} · ${codeTitle}`
       } else {
         displayName = `${displayName} ${codeTitle}`
+      }
+    }
+
+    if (codeSchemeTitle) {
+      if (codeTitle) {
+        displayName = `${displayName} · ${codeSchemeTitle}`
+      } else {
+        displayName = `${displayName} ${codeSchemeTitle}`
+      }
+    }
+
+    if (codeRegistryTitle) {
+      if (codeSchemeTitle) {
+        displayName = `${displayName} · ${codeRegistryTitle}`
+      } else {
+        displayName = `${displayName} ${codeRegistryTitle}`
       }
     }
 

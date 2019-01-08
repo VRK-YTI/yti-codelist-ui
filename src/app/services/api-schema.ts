@@ -62,6 +62,11 @@ export interface CodePlainType extends BaseResourceType {
   hierarchyLevel?: number;
 }
 
+export interface CodePlainWithCodeSchemeType extends CodePlainType {
+
+  codeScheme: CodeSchemeType;
+}
+
 export interface CodeType extends BaseResourceType {
 
   modified?: string;
@@ -211,7 +216,7 @@ export interface MemberSimpleType {
   order?: string;
   created?: string;
   modified?: string;
-  code?: CodePlainType;
+  code?: CodePlainWithCodeSchemeType;
   relatedMember?: MemberSimpleType;
   startDate?: string;
   endDate?: string;

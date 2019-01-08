@@ -4,12 +4,12 @@
       <tr *ngFor="let member of listedMembers; trackBy: memberIdentity">
         <td [id]="member.id + '_view_member'" class="" style="white-space: nowrap;  font-size:large">
           <a href="{{configurationService.getUriWithEnv(member.code.uri)}}" target="_blank">
-            {{member.getDisplayNameWithCodeValue(languageService, translateService) }}
+            {{member.getDisplayName(languageService, translateService) }}
           </a>
         </td>
         <td [id]="member.relatedMember.id + '_view_related_member'" class="" style="width: 99%; font-size:large">
           <a href="{{configurationService.getUriWithEnv(member.relatedMember.code.uri)}}" target="_blank">
-            {{member.relatedMember.getDisplayNameWithCodeValue(languageService, translateService) }}
+            {{member.relatedMember.getDisplayName(languageService, translateService) }}
           </a>
         </td>
     </table>
@@ -17,12 +17,12 @@
       <tr *lazyFor="let member of listedMembers, withHeight 65">
         <td [id]="member.id + '_view_member'" class="" style="white-space: nowrap;  font-size:large">
           <a href="{{configurationService.getUriWithEnv(member.code.uri)}}" target="_blank">
-            {{member.getDisplayNameWithCodeValue(languageService, translateService) }}
+            {{member.getDisplayName(languageService, translateService) }}
           </a>
         </td>
         <td [id]="member.relatedMember.id + '_view_related_member'" class="" style="width: 99%; font-size:large">
           <a href="{{configurationService.getUriWithEnv(member.relatedMember.code.uri)}}" target="_blank">
-            {{member.relatedMember.getDisplayNameWithCodeValue(languageService, translateService) }}
+            {{member.relatedMember.getDisplayName(languageService, translateService) }}
           </a>
         </td>
       </tr>

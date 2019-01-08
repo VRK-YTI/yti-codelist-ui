@@ -516,7 +516,7 @@ export class DataService {
   getSimpleMembers(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<MemberSimple[]> {
 
     const params = {
-      'expand': 'code,memberValue,valueType'
+      'expand': 'code,memberValue,valueType,codeScheme,codeRegistry'
     };
 
     return this.http.get<WithResults<MemberSimpleType>>(
