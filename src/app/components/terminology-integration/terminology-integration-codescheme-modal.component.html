@@ -24,14 +24,13 @@
       </div>
     </div>
 
-    <div class="pb-2">
-      <app-filter-dropdown id="vocabulary_selection_dropdown"
+    <div style="padding-bottom: 8px">
+      <app-filter-dropdown class="d-inline-block" style="padding-right: 5px"
+                           id="vocabulary_selection_dropdown"
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
-    </div>
-
-    <div class="pb-2">
-      <app-filter-dropdown id="status_selection_dropdown"
+      <app-filter-dropdown class="d-inline-block"
+                           id="status_selection_dropdown"
                            [filterSubject]="status$"
                            [options]="statusOptions"></app-filter-dropdown>
     </div>
