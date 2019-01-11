@@ -64,7 +64,7 @@ export interface CodePlainType extends BaseResourceType {
 
 export interface CodePlainWithCodeSchemeType extends CodePlainType {
 
-  codeScheme: CodeSchemeType;
+  codeScheme?: CodeSchemeType;
 }
 
 export interface CodeType extends BaseResourceType {

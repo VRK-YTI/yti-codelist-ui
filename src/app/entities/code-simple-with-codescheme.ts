@@ -4,12 +4,14 @@ import { CodePlain } from './code-simple';
 
 export class CodePlainWithCodeScheme extends CodePlain {
 
-  codeScheme: CodeScheme;
+  codeScheme?: CodeScheme;
 
   constructor(data: CodePlainWithCodeSchemeType) {
     super(data);
 
-    this.codeScheme = new CodeScheme(data.codeScheme);
+    if (data.codeScheme) {
+      this.codeScheme = new CodeScheme(data.codeScheme);
+    }
   }
 
   serialize(): CodePlainWithCodeSchemeType {
@@ -22,7 +24,7 @@ export class CodePlainWithCodeScheme extends CodePlain {
       status: this.status,
       broaderCode: this.broaderCode ? this.broaderCode.serialize() : undefined,
       hierarchyLevel: this.hierarchyLevel,
-      codeScheme: this.codeScheme.serialize()
+      codeScheme: this.codeScheme ? this.codeScheme.serialize() : undefined
     };
   }
 

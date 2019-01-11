@@ -96,12 +96,12 @@ export class MemberSimple {
 
     let codeSchemeTitle = this.code.codeScheme ? localizer.translate(this.code.codeScheme.prefLabel, useUILanguage) : null;
     if (!codeSchemeTitle) {
-      codeSchemeTitle = this.code.codeScheme.codeValue ? this.code.codeScheme.codeValue : null;
+      codeSchemeTitle = this.code.codeScheme ? ( this.code.codeScheme.codeValue ? this.code.codeScheme.codeValue : null ) : null;
     }
 
-    let codeRegistryTitle = this.code.codeScheme.codeRegistry ? localizer.translate(this.code.codeScheme.codeRegistry.prefLabel, useUILanguage) : null;
+    let codeRegistryTitle = this.code.codeScheme ? ( this.code.codeScheme.codeRegistry ? localizer.translate(this.code.codeScheme.codeRegistry.prefLabel, useUILanguage) : null ) : null;
     if (!codeRegistryTitle) {
-      codeRegistryTitle = this.code.codeScheme.codeRegistry.codeValue ? this.code.codeScheme.codeRegistry.codeValue : null;
+      codeRegistryTitle = this.code.codeScheme ? ( this.code.codeScheme.codeRegistry.codeValue ? this.code.codeScheme.codeRegistry.codeValue : null ) : null;
     }
 
     const unaryOperator = this.getMemberValueForLocalName('unaryOperator');
