@@ -91,7 +91,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
       this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
           value: voc,
-          name: () => voc ? this.languageService.translate(voc.prefLabel, false) + ' (' + ( voc.status ? this.translateService.instant(voc.status) + ') ' : '')
+          name: () => voc ? this.languageService.translate(voc.prefLabel, false) + ( voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
             : this.translateService.instant('All vocabularies'),
           idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
             : 'all_selected'
