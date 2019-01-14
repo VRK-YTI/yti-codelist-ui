@@ -121,6 +121,9 @@ msgstr ""
 msgid "All vocabularies"
 msgstr ""
 
+msgid "All statuses"
+msgstr ""
+
 msgid "Reference Data"
 msgstr ""
 
@@ -566,6 +569,9 @@ msgstr ""
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
+msgid "Please type at least 2 characters"
+msgstr ""
+
 msgid "Concept suggestion instruction text"
 msgstr ""
 
@@ -828,9 +834,6 @@ msgid "INCOMPLETE"
 msgstr ""
 
 msgid "required"
-msgstr ""
-
-msgid "All statuses"
 msgstr ""
 
 msgid "Member"

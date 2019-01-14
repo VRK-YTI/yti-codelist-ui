@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-01-07 15:25+0200\n"
+"PO-Revision-Date: 2019-01-14 09:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -129,6 +129,9 @@ msgstr "Kaikki organisaatiot"
 
 msgid "All vocabularies"
 msgstr "Kaikki sanastot"
+
+msgid "All statuses"
+msgstr "Kaikki tilat"
 
 msgid "Reference Data"
 msgstr "Koodistot"
@@ -587,6 +590,9 @@ msgstr ""
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
+msgid "Please type at least 2 characters"
+msgstr "Syötä vähintään 2 merkkiä"
+
 msgid "Concept suggestion instruction text"
 msgstr ""
 "Jos käsitettä ei löydy, ehdota sitä Sanastot-työkaluun. Valitse sanasto, "
@@ -920,9 +926,6 @@ msgstr "Keskeneräinen"
 
 msgid "required"
 msgstr "Pakollinen syöte"
-
-msgid "All statuses"
-msgstr "Kaikki tilat"
 
 msgid "Member"
 msgstr "Jäsen"

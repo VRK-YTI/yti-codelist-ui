@@ -52,8 +52,12 @@
         </div>
       </div>
 
-      <div *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults()">
+      <div *ngIf="!loading && (debouncedSearch$ | async) && !hasSearchResults() && search.length > 1 ">
         <p translate style="padding: 10px">No search results</p>
+      </div>
+
+      <div *ngIf="!loading && search.length <= 1">
+        <p translate style="padding: 10px">Please type at least 2 characters</p>
       </div>
 
       <div *ngIf="loading">

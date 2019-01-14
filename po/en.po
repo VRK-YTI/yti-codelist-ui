@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-01-07 15:24+0200\n"
+"PO-Revision-Date: 2019-01-14 09:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -128,6 +128,9 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All vocabularies"
+msgstr ""
+
+msgid "All statuses"
 msgstr ""
 
 msgid "Reference Data"
@@ -581,6 +584,9 @@ msgstr "Search the variant"
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
+msgid "Please type at least 2 characters"
+msgstr ""
+
 msgid "Concept suggestion instruction text"
 msgstr ""
 "If the proper concept does not exist, please suggest it to Controlled "
@@ -909,9 +915,6 @@ msgstr "Incomplete"
 
 msgid "required"
 msgstr "Required"
-
-msgid "All statuses"
-msgstr ""
 
 msgid "Member"
 msgstr ""
