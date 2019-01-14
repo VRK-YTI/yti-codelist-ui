@@ -36,7 +36,6 @@ export class CodeComponent implements OnInit, EditingComponent {
   code: Code;
   codeScheme: CodeScheme;
   deleting: boolean;
-  showFullDescription = false;
 
   constructor(public languageService: LanguageService,
               private userService: UserService,
@@ -236,9 +235,5 @@ export class CodeComponent implements OnInit, EditingComponent {
     } else {
       return save();
     }
-  }
-
-  toggleFullDescription() {
-    this.showFullDescription = !this.showFullDescription;
   }
 }

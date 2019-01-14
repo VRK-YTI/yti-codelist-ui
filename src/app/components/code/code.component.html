@@ -53,14 +53,9 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="code.description | translateValue">
+  <div class="row content-description-container" *ngIf="code.description | translateValue as descriptionText">
     <div class="col-12">
-      <div class="content-description-container" [ngClass]="{'expand': showFullDescription}">
-        <span class="description">{{code.description | translateValue: false}}</span>
-        <div class="limiter-container">
-          <div class="description-limiter" (click)="toggleFullDescription()"></div>
-        </div>
-      </div>
+      <app-expandable-text [text]="descriptionText"></app-expandable-text>
     </div>
   </div>
 

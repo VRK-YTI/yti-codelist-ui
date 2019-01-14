@@ -26,7 +26,6 @@ export class RegistryComponent implements OnInit, EditingComponent {
 
   codeRegistry: CodeRegistry;
   codeSchemes: CodeScheme[];
-  showFullDescription = false;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -117,9 +116,5 @@ export class RegistryComponent implements OnInit, EditingComponent {
     });
 
     return this.dataService.saveCodeRegistry(updatedCodeRegistry.serialize()).pipe(tap(() => this.ngOnInit()));
-  }
-
-  toggleFullDescription() {
-    this.showFullDescription = !this.showFullDescription;
   }
 }
