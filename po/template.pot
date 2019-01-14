@@ -569,9 +569,6 @@ msgstr ""
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
-msgid "Please type at least 2 characters"
-msgstr ""
-
 msgid "Concept suggestion instruction text"
 msgstr ""
 

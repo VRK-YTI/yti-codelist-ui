@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-01-14 09:54+0200\n"
+"PO-Revision-Date: 2019-01-14 11:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -582,9 +582,6 @@ msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr "Search the variant"
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
-msgstr ""
-
-msgid "Please type at least 2 characters"
 msgstr ""
 
 msgid "Concept suggestion instruction text"

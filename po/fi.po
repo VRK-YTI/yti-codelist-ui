@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-01-14 09:54+0200\n"
+"PO-Revision-Date: 2019-01-14 11:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -589,9 +589,6 @@ msgstr ""
 
 msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
-
-msgid "Please type at least 2 characters"
-msgstr "Syötä vähintään 2 merkkiä"
 
 msgid "Concept suggestion instruction text"
 msgstr ""
@@ -1459,3 +1456,6 @@ msgstr ""
 
 msgid "memberValueRequired"
 msgstr "Jäsenen arvo on pakollinen syöte."
+
+#~ msgid "Please type at least 2 characters"
+#~ msgstr "Syötä vähintään 2 merkkiä"
