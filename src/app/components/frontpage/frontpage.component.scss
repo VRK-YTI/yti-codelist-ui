@@ -1,34 +1,5 @@
 @import '~yti-common-ui/theme/variables';
 
-app-filter-dropdown {
-  padding-right: 10px;
-}
-
-.code-scheme {
-
-  display: inline-block;
-  width: 100%;
-  padding: 5px 10px 5px 5px;
-  cursor: pointer;
-  border-left: $active-indicator-width solid $white;
-
-  &:hover {
-    border-left: $active-indicator-width solid $primary;
-  }
-
-  .name {
-    color: $primary;
-    font-weight: 600;
-    float: left;
-  }
-
-  .organization {
-    float: right;
-    clear: right;
-    color: $dark;
-  }
-}
-
 .checkbox {
 
   input {

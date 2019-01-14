@@ -64,8 +64,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   private subscriptionToClean: Subscription[] = [];
 
-  fullDescription: { [key: string]: boolean } = {};
-
   constructor(private dataService: DataService,
               private router: Router,
               public languageService: LanguageService,
@@ -75,6 +73,18 @@ export class FrontpageComponent implements OnInit, OnDestroy {
               private configurationService: ConfigurationService) {
 
     locationService.atFrontPage();
+  }
+
+  get searchTerm(): string {
+    return this.searchTerm$.getValue();
+  }
+
+  set searchTerm(value: string) {
+    this.searchTerm$.next(value);
+  }
+
+  get loading(): boolean {
+    return this.infoDomains == null || this.filteredCodeSchemes == null;
   }
 
   ngOnInit() {
@@ -193,18 +203,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     this.searchCodes$.next(this.searchCodesValue);
   }
 
-  get searchTerm(): string {
-    return this.searchTerm$.getValue();
-  }
-
-  set searchTerm(value: string) {
-    this.searchTerm$.next(value);
-  }
-
-  get loading(): boolean {
-    return this.infoDomains == null || this.filteredCodeSchemes == null;
-  }
-
   importCodeScheme() {
     this.router.navigate(['importandcreatecodescheme']);
   }
@@ -215,13 +213,5 @@ export class FrontpageComponent implements OnInit, OnDestroy {
 
   canCreateCodeScheme() {
     return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
-  }
-
-  toggleFullDescription(codeSchemeId: string) {
-    if (this.fullDescription[codeSchemeId]) {
-      delete this.fullDescription[codeSchemeId];
-    } else {
-      this.fullDescription[codeSchemeId] = true;
-    }
   }
 }
