@@ -86,57 +86,5 @@ img.svg-icon {
 }
 
 .content-description-container {
-  position: relative;
-  line-height: 1.5em;
-  max-height: 7em;
-  overflow: hidden;
-
-  .description {
-    display: block;
-    position: relative;
-    margin-top: 1em;
-    margin-bottom: 0.3em;
-    z-index: 1;
-    text-align: left;
-
-    &:empty {
-      display: none;
-    }
-  }
-
-  .limiter-container {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    min-height: 7em;
-    width: 100%;
-  }
-
-  .description-limiter {
-    z-index: 2;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 0));
-    position: absolute;
-    height: 1.5em;
-    width: 100%;
-    top: 5.5em;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  &.expand {
-    /* max-height value fit-content is not widely supported, none will do as a backup */
-    max-height: none;
-    max-height: fit-content;
-
-    .description-limiter {
-      top: auto;
-      width: 2em;
-      height: 3px;
-      bottom: 0px;
-      left: calc(50% - 1em);
-      background: $black;
-      border-radius: 2px;
-    }
-  }
+  margin-top: 1em;
 }
-

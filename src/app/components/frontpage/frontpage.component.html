@@ -20,23 +20,23 @@
     <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_SEARCH'"></app-information-symbol>
   </div>
   <div class="row">
-  <div class="col-md-6 mb-3">
-    <div class="input-group input-group-lg input-group-search">
-      <input class="form-control"
-             #schemeSearch
-             id="search_box_input"
-             type="text"
-             [(ngModel)]="searchTerm"
-             placeholder="{{'Search term' | translate}}"/>
+    <div class="col-md-6 mb-3">
+      <div class="input-group input-group-lg input-group-search">
+        <input class="form-control"
+               #schemeSearch
+               id="search_box_input"
+               type="text"
+               [(ngModel)]="searchTerm"
+               placeholder="{{'Search term' | translate}}"/>
+      </div>
+    </div>
+    <div class="col-md-4" style="line-height: 45px">
+      <div class="checkbox">
+        <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
+        <label for="search_code_details_checkbox" translate>Extend search to codes</label>
+      </div>
     </div>
   </div>
-  <div class="col-md-4" style="line-height: 45px">
-    <div class="checkbox">
-      <input id="search_code_details_checkbox" type="checkbox" (click)="toggleSearchCodes()">
-      <label for="search_code_details_checkbox" translate>Extend search to codes</label>
-    </div>
-  </div>
-</div>
 
   <div class="row">
     <div class="col-md-4">
@@ -55,9 +55,9 @@
                [class.active]="isInfoDomainSelected(infoDomain.entity)"
                [id]="infoDomain.entity.codeValue + '_infodomain_filter_link'"
                (click)="toggleInfoDomain(infoDomain.entity)">
-              <img [src]="groupIconSrc(infoDomain.entity.codeValue)" >
-              <span class="name" style="vertical-align: middle;">{{infoDomain.entity.prefLabel | translateValue:true }}</span>
-              <span class="count">({{infoDomain.count}})</span>
+            <img [src]="groupIconSrc(infoDomain.entity.codeValue)">
+            <span class="name" style="vertical-align: middle;">{{infoDomain.entity.prefLabel | translateValue:true }}</span>
+            <span class="count">({{infoDomain.count}})</span>
           </div>
         </div>
       </div>
@@ -76,18 +76,17 @@
                   translate>Filter results</span>
             <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_RESULTS'"></app-information-symbol>
 
-            <app-filter-dropdown class="d-inline-block"
-                                 style="padding-left: 0.6em"
+            <app-filter-dropdown class="d-inline-block ml-2"
                                  id="organization_filter_dropdown"
                                  [filterSubject]="organization$"
                                  [options]="organizationOptions"></app-filter-dropdown>
 
-            <app-filter-dropdown class="d-inline-block"
+            <app-filter-dropdown class="d-inline-block ml-2"
                                  id="registry_filter_dropdown"
                                  [filterSubject]="registry$"
                                  [options]="registryOptions"></app-filter-dropdown>
 
-            <app-filter-dropdown class="d-inline-block"
+            <app-filter-dropdown class="d-inline-block ml-2"
                                  id="status_filter_dropdown"
                                  [filterSubject]="status$"
                                  [options]="statusOptions"></app-filter-dropdown>
@@ -111,24 +110,21 @@
 
               <a class="name" [routerLink]="codeScheme.route">{{codeScheme.getDisplayName(languageService, true)}}</a>
 
-                <div class="description-container" [ngClass]="{'expand': fullDescription[codeScheme.id]}">
-                  <span class="description">{{codeScheme.description | translateValue: true}}</span>
-                  <div class="limiter-container">
-                    <div class="description-limiter" (click)="toggleFullDescription(codeScheme.id)"></div>
-                  </div>
-                </div>
+              <div *ngIf="codeScheme.description | translateValue: true as descriptionText" class="description-component-container">
+                <app-expandable-text [text]="descriptionText"></app-expandable-text>
+              </div>
 
-                <span class="information-domains">
-                    <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.getDisplayInfoDomainListing(languageService, true)">
-                      {{infoDomain}}
-                    </span>
-                  </span>
+              <span class="information-domains">
+                <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.getDisplayInfoDomainListing(languageService, true)">
+                  {{infoDomain}}
+                </span>
+              </span>
 
-                <ul class="organizations dot-separated-list">
-                  <li class="organization" *ngFor="let org of codeScheme.organizations">
-                    {{org.prefLabel | translateValue:true}}
-                  </li>
-                </ul>
+              <ul class="organizations dot-separated-list">
+                <li class="organization" *ngFor="let org of codeScheme.organizations">
+                  {{org.prefLabel | translateValue:true}}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
