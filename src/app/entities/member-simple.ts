@@ -87,8 +87,7 @@ export class MemberSimple {
   }
 
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
-    const extensionTitle = localizer.translate(this.prefLabel, useUILanguage);
-
+    const memberTitle = localizer.translate(this.prefLabel, useUILanguage);
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
@@ -113,12 +112,12 @@ export class MemberSimple {
       displayName = `${unaryOperator}`;
     }
 
-    if (extensionTitle) {
-      displayName = `${displayName} ${extensionTitle}`
+    if (memberTitle) {
+      displayName = `${displayName} ${memberTitle}`
     }
 
     if (codeTitle) {
-      if (extensionTitle) {
+      if (memberTitle) {
         displayName = `${displayName} · ${codeTitle}`
       } else {
         displayName = `${displayName} ${codeTitle}`
