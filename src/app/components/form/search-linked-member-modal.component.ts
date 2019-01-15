@@ -78,7 +78,7 @@ import { DataService } from '../../services/data.service';
                    (click)="select(member)">
                 <div class="content" [class.last]="last">
                   <span class="title"
-                        [innerHTML]="member.getDisplayNameWithCodeValue(languageService, translateService, useUILanguage)">
+                        [innerHTML]="member.getDisplayName(languageService, translateService, useUILanguage)">
                   </span>
                 </div>
               </div>
