@@ -85,7 +85,7 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
               public translateService: TranslateService,
               public languageService: LanguageService,
               private dataService: DataService,
-              private searchLinkedExtensionModalService: SearchLinkedMemberModalService) {
+              private searchLinkedMemberModalService: SearchLinkedMemberModalService) {
 
     this.control.valueChanges.subscribe(x => this.propagateChange(x));
 
@@ -152,7 +152,7 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
     }
 
 
-    this.searchLinkedExtensionModalService.open(
+    this.searchLinkedMemberModalService.open(
       members,
       titleLabel,
       searchlabel,

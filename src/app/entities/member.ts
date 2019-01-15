@@ -125,6 +125,8 @@ export class Member implements EditableEntity {
   getDisplayName(localizer: Localizer, translater: TranslateService, useUILanguage: boolean = false): string {
     const memberTitle = localizer.translate(this.prefLabel, useUILanguage);
 
+    console.log('aaaaaaa MEMBER SE ON');
+    console.log(memberTitle);
     let codeTitle = this.code ? localizer.translate(this.code.prefLabel, useUILanguage) : null;
     if (!codeTitle) {
       codeTitle = this.code ? this.code.codeValue : null;
