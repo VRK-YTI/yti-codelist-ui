@@ -20,16 +20,18 @@ import { debounceTime, flatMap, map, skip, take, tap } from 'rxjs/operators';
 import { ObservableInput } from 'rxjs/internal/types';
 import { getInformationDomainSvgIcon } from 'yti-common-ui/utils/icons';
 import { ConfigurationService } from '../../services/configuration.service';
+import { PropertyType } from '../../entities/property-type';
 
 // XXX: fixes problem with type definition having strongly typed parameters ending with 6
-function myCombineLatest<T, T2, T3, T4, T5, T6, T7>(v1: ObservableInput<T>,
+function myCombineLatest<T, T2, T3, T4, T5, T6, T7, T8>(v1: ObservableInput<T>,
                                                     v2: ObservableInput<T2>,
                                                     v3: ObservableInput<T3>,
                                                     v4: ObservableInput<T4>,
                                                     v5: ObservableInput<T5>,
                                                     v6: ObservableInput<T6>,
-                                                    v7: ObservableInput<T7>): Observable<[T, T2, T3, T4, T5, T6, T7]> {
-  return combineLatest(v1, v2, v3, v4, v5, v6, v7);
+                                                    v7: ObservableInput<T7>,
+                                                    v8: ObservableInput<T8>): Observable<[T, T2, T3, T4, T5, T6, T7, T8]> {
+  return combineLatest(v1, v2, v3, v4, v5, v6, v7, v8);
 }
 
 @Component({
@@ -44,6 +46,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   statusOptions: FilterOptions<Status>;
   registryOptions: FilterOptions<CodeRegistry>;
   organizationOptions: FilterOptions<Organization>;
+  extensionPropertyTypeOptions: FilterOptions<PropertyType>;
 
   infoDomains: { entity: InfoDomain, count: number }[];
   infoDomainsWithAtLeastOneEntry: { entity: InfoDomain, count: number }[];
@@ -53,6 +56,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   infoDomain$ = new BehaviorSubject<InfoDomain | null>(null);
   status$ = new BehaviorSubject<Status | null>(null);
   organization$ = new BehaviorSubject<Organization | null>(null);
+  extensionPropetyType$ = new BehaviorSubject<PropertyType | null>(null);
 
   filteredCodeSchemes: CodeScheme[];
 
@@ -63,6 +67,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   groupIconSrc = getInformationDomainSvgIcon;
 
   private subscriptionToClean: Subscription[] = [];
+
+  private extensionPropertyTypes: PropertyType[] = [];
 
   constructor(private dataService: DataService,
               private router: Router,
@@ -129,11 +135,24 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       idIdentifier: () => status ? status : 'all_selected'
     }));
 
+    this.dataService.getPropertyTypes('Extension', this.languageService.language).subscribe(propertyTypes => {
+      this.extensionPropertyTypeOptions = [null, ...propertyTypes].map(propertyType => ({
+        value: propertyType,
+        name: () => propertyType ? this.languageService.translate(propertyType.prefLabel, true)
+          : this.translateService.instant('All extensionPropertyTypes'),
+        idIdentifier: () => propertyType ? propertyType.idIdentifier : 'all_selected'
+      }));
+      });
+
     const initialSearchTerm = this.searchTerm$.pipe(take(1));
     const debouncedSearchTerm = this.searchTerm$.pipe(skip(1), debounceTime(500));
     const searchTerm$ = concat(initialSearchTerm, debouncedSearchTerm);
 
     const infoDomains$ = this.dataService.getInfoDomains(this.languageService.language);
+
+    function extensionPropertyTypeMatches(propertyType: PropertyType | null, codeScheme: CodeScheme) {
+      return !propertyType || codeScheme.extensions.find(extension => extension.propertyType.localName === propertyType.localName );
+    }
 
     function statusMatches(status: Status | null, codeScheme: CodeScheme) {
       return !status || codeScheme.status === status;
@@ -149,10 +168,10 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     }
 
     myCombineLatest(searchTerm$, this.infoDomain$, this.status$, this.registry$, this.organization$,
-      this.searchCodes$, this.languageService.language$)
+      this.extensionPropetyType$, this.searchCodes$, this.languageService.language$)
       .pipe(
         tap(() => this.searchInProgress = true),
-        flatMap(([searchTerm, infoDomain, status, registry, organization, searchCodes, language]) => {
+        flatMap(([searchTerm, infoDomain, status, registry, organization, extensionPropertyType, searchCodes, language]) => {
 
           const infoDomainCode = infoDomain ? infoDomain.codeValue : null;
           const organizationId = organization ? organization.id : null;
@@ -161,7 +180,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
           return this.dataService.searchCodeSchemes(searchTerm, infoDomainCode, organizationId, sortMode, searchCodes, language)
             .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
               statusMatches(status, codeScheme) &&
-              registryMatches(registry, codeScheme))
+              registryMatches(registry, codeScheme) &&
+              extensionPropertyTypeMatches(extensionPropertyType, codeScheme))
             ));
         }),
         tap(() => this.searchInProgress = false)
@@ -169,8 +189,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .subscribe(results => this.filteredCodeSchemes = results);
 
     myCombineLatest(infoDomains$, searchTerm$, this.status$, this.registry$, this.organization$,
-      this.searchCodes$, this.languageService.language$)
-      .subscribe(([infoDomains, searchTerm, status, registry, organization, searchCodes, language]) => {
+      this.extensionPropetyType$, this.searchCodes$, this.languageService.language$)
+      .subscribe(([infoDomains, searchTerm, status, registry, organization, extensionPropertyType, searchCodes, language]) => {
         infoDomains.sort(comparingLocalizable<InfoDomain>(this.languageService, infoDomain => infoDomain.prefLabel));
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configurationService.codeSchemeSortMode ? this.configurationService.codeSchemeSortMode : null;
@@ -178,7 +198,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, language)
           .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
-            registryMatches(registry, codeScheme))
+            registryMatches(registry, codeScheme) &&
+            extensionPropertyTypeMatches(extensionPropertyType, codeScheme))
           ))
           .subscribe(codeSchemes => {
             this.infoDomains = infoDomains.map((infoDomain: InfoDomain) => ({
