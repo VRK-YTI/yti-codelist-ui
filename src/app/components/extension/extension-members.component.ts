@@ -4,7 +4,6 @@ import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
-import { LoadingIndicatorService } from './loading-indicator.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,15 +21,7 @@ export class ExtensionMembersComponent {
   loadingAnnouncementSubscription: Subscription;
   loading = false;
 
-  constructor(private loadingIndicatorService: LoadingIndicatorService) {
-    this.loadingAnnouncementSubscription = loadingIndicatorService.loadingStarted$.subscribe(
-      whatever => {
-        this.loading = true;
-      });
-    this.loadingAnnouncementSubscription = loadingIndicatorService.loadingFinished$.subscribe(
-      whatever => {
-        this.loading = false;
-      });
+  constructor() {
   }
 
   memberIdentity(index: number, item: MemberSimple) {

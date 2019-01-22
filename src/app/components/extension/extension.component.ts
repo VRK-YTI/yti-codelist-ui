@@ -18,13 +18,13 @@ import { changeToRestrictedStatus } from '../../utils/status-check';
 import { MemberSimple } from '../../entities/member-simple';
 import { ConfigurationService } from '../../services/configuration.service';
 import { CodeScheme } from '../../entities/code-scheme';
-import { LoadingIndicatorService } from './loading-indicator.service';
+import { AlertModalService } from '../common/alert-modal.service';
 
 @Component({
   selector: 'app-extension',
   templateUrl: './extension.component.html',
   styleUrls: ['./extension.component.scss'],
-  providers: [EditableService, LoadingIndicatorService],
+  providers: [EditableService],
 })
 export class ExtensionComponent implements OnInit, EditingComponent, AfterViewInit {
 
@@ -48,7 +48,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
               private configurationService: ConfigurationService,
-              private loadingIndicatorService: LoadingIndicatorService) {
+              private alertModalService: AlertModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -153,11 +153,11 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     }
 
     this.confirmationModalService.openCreateMissingExtensionMembers(codeSchemes).then(() => {
-      this.loadingIndicatorService.announceLoadingStarted('irrelevantMessage');
+      const modalRef = this.alertModalService.open('Please wait. This could take a while...');
       this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
                                             this.extension.parentCodeScheme.id,
                                             this.extension.codeValue).subscribe(next => {
-        this.loadingIndicatorService.announceLoadingFinished('irrelevantMessage');
+        modalRef.close();
         this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': next.length } }));
       }, error => {
         this.errorModalService.openSubmitError(error);

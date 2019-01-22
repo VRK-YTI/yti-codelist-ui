@@ -113,6 +113,7 @@ import { ExtensionCrossreferencelistComponent } from './components/extension/ext
 import { CodeSchemeSingleInputComponent } from './components/form/code-scheme-single-input.component';
 import { InlineClipboardComponent } from './components/form/inline-clipboard';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AlertModalComponent, AlertModalService } from './components/common/alert-modal.service';
 
 function removeEmptyValues(obj: {}) {
 
@@ -274,7 +275,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeExtensionsInputComponent,
     CodeExtensionMemberValuesInputComponent,
     ExtensionCrossreferencelistComponent,
-    CodeSchemeSingleInputComponent
+    CodeSchemeSingleInputComponent,
+    AlertModalComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -291,7 +293,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedMemberModalComponent,
     TerminologyIntegrationCodeschemeModalComponent,
     CodeschemeVariantModalComponent,
-    SuggestConceptModalComponent
+    SuggestConceptModalComponent,
+    AlertModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -340,7 +343,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeschemeVariantModalService,
     SuggestConceptModalService,
     EditableService,
-    NgbActiveModal
+    NgbActiveModal,
+    AlertModalService
   ],
   bootstrap: [AppComponent]
 })
