@@ -14,6 +14,7 @@ export class ExtensionMembersComponent {
 
   @Input() members: MemberSimple[];
   @Input() extension: Extension;
+  @Input() nrOfCreatedMissingMembers: string;
 
   searchTerm = '';
 
@@ -114,5 +115,9 @@ export class ExtensionMembersComponent {
 
   allowExpandAllAndCollapseAll() {
     return this.hasHierarchy && this.members.length <= 500;
+  }
+
+  get howManyMissingMembersGotCreated() {
+    return this.nrOfCreatedMissingMembers;
   }
 }

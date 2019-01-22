@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-01-16 14:41+0200\n"
+"PO-Revision-Date: 2019-01-22 07:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -439,6 +439,15 @@ msgid "member"
 msgstr ""
 
 msgid "members"
+msgstr ""
+
+msgid " No new members created. All codes already have a corresponding member."
+msgstr ""
+
+msgid " missing member created."
+msgstr ""
+
+msgid " missing members created."
 msgstr ""
 
 msgid "Search did not find any members."

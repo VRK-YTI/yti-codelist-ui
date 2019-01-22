@@ -16,6 +16,12 @@
     <span *ngIf="numberOfMembers == 1"><b>1</b> {{'member' | translate}}</span>
     <span *ngIf="numberOfMembers > 1"><b>{{numberOfMembers}}</b> {{'members' | translate}}</span>
   </div>
+  <div class="col-12 search-text">
+    <span *ngIf="howManyMissingMembersGotCreated === '0'">{{' No new members created. All codes already have a corresponding member.' | translate}}</span>
+    <span *ngIf="howManyMissingMembersGotCreated === '1'"><b>{{ howManyMissingMembersGotCreated }}</b> {{' missing member created.' | translate}}</span>
+    <span *ngIf="howManyMissingMembersGotCreated !== '0' && howManyMissingMembersGotCreated !== '1' && howManyMissingMembersGotCreated">
+      <b>{{ howManyMissingMembersGotCreated }}</b> {{' missing members created.' | translate}}</span>
+  </div>
 </div>
 
 <div class="extensions row">

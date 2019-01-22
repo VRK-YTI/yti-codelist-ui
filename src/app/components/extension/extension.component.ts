@@ -33,6 +33,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   members: MemberSimple[];
   deleting: boolean;
   initialTabId: string|undefined = undefined;
+  numberOfMissingMembersThatGotCreated: string|null = null;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -74,6 +75,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   ngAfterViewInit() {
     const goToMembersTab = this.route.snapshot.queryParamMap.get('goToMembersTab');
     if (goToMembersTab) {
+      this.numberOfMissingMembersThatGotCreated = this.route.snapshot.queryParamMap.get('created');
       this.initialTabId = 'extension_members_tab';
     }
   }
@@ -152,7 +154,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
                                             this.extension.parentCodeScheme.id,
                                             this.extension.codeValue).subscribe(next => {
-        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true } }));
+        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': next.length } }));
       }, error => {
         this.errorModalService.openSubmitError(error);
       })
