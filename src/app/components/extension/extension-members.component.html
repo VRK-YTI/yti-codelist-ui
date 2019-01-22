@@ -1,3 +1,4 @@
+<div *ngIf="!loading">
 <div class="row" *ngIf="members.length > 0">
   <div class="col-md-4">
     <div class="input-group input-group-lg input-group-search">
@@ -68,4 +69,8 @@
   <div class="emptyMembers" *ngIf="members.length === 0">
     <span translate>This extension does not have any members yet.</span>
   </div>
+</div>
+</div>
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
 </div>

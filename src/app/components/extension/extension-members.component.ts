@@ -4,6 +4,8 @@ import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
+import { LoadingIndicatorService } from './loading-indicator.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-extension-members',
@@ -17,8 +19,18 @@ export class ExtensionMembersComponent {
   @Input() nrOfCreatedMissingMembers: string;
 
   searchTerm = '';
+  loadingAnnouncementSubscription: Subscription;
+  loading = false;
 
-  constructor() {
+  constructor(private loadingIndicatorService: LoadingIndicatorService) {
+    this.loadingAnnouncementSubscription = loadingIndicatorService.loadingStarted$.subscribe(
+      whatever => {
+        this.loading = true;
+      });
+    this.loadingAnnouncementSubscription = loadingIndicatorService.loadingFinished$.subscribe(
+      whatever => {
+        this.loading = false;
+      });
   }
 
   memberIdentity(index: number, item: MemberSimple) {
@@ -27,7 +39,7 @@ export class ExtensionMembersComponent {
 
   getIdIdentifier(extension: Member) {
     return `${this.extension.parentCodeScheme.codeRegistry.codeValue}_${this.extension.parentCodeScheme.codeValue}_` +
-    `${this.extension.codeValue}_${extension.id}`;
+      `${this.extension.codeValue}_${extension.id}`;
   }
 
   get listedMembers() {

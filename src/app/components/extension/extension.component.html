@@ -106,7 +106,7 @@
         <span translate>MEMBERS</span>
       </ng-template>
 
-      <ng-template ngbTabContent>
+      <ng-template ngbTabContent *ngIf="!loading">
         <app-extension-members [members]="members"
                                [extension]="extension"
                                [nrOfCreatedMissingMembers]="numberOfMissingMembersThatGotCreated"></app-extension-members>
