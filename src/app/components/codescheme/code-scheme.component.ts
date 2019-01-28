@@ -246,7 +246,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canAddExtension(): boolean {
-    return this.configurationService.showUnfinishedFeature && this.authorizationManager.canEdit(this.codeScheme);
+    return this.authorizationManager.canEdit(this.codeScheme);
   }
 
   canAddExtensionWithType(propertyTypeLocalName: string): boolean {
