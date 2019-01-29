@@ -19,6 +19,9 @@ msgstr ""
 msgid "{{title}}"
 msgstr ""
 
+msgid " missing members created."
+msgstr ""
+
 msgid "Select code"
 msgstr ""
 
@@ -110,6 +113,9 @@ msgid "Filter results"
 msgstr ""
 
 msgid "All codeschemes"
+msgstr ""
+
+msgid "No choosable members"
 msgstr ""
 
 msgid "Status"
@@ -438,9 +444,6 @@ msgid " No new members created. All codes already have a corresponding member."
 msgstr ""
 
 msgid " missing member created."
-msgstr ""
-
-msgid " missing members created."
 msgstr ""
 
 msgid "Search did not find any members."
@@ -1297,7 +1300,7 @@ msgstr ""
 msgid "Please wait. This could take a while..."
 msgstr ""
 
-msgid "No choosable members"
+msgid "missing members created."
 msgstr ""
 
 msgid "externalReferenceExists"

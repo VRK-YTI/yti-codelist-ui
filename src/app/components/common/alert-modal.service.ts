@@ -23,16 +23,19 @@ export class AlertModalService {
     <div class="modal-header modal-header-warning">
       <h4 class="modal-title">
         <span translate>{{title}}</span>
+        <a><i id="close_confirmation_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
       </h4>
     </div>
     <div class="modal-body">
-      <app-ajax-loading-indicator></app-ajax-loading-indicator>
+      <app-ajax-loading-indicator *ngIf="message === undefined"></app-ajax-loading-indicator>
+      <span *ngIf="message !== undefined">{{message}}</span>
     </div>
   `
 })
 export class AlertModalComponent {
 
   @Input() title: string;
+  @Input() message: string;
 
   constructor(private modal: NgbActiveModal) {
   }

@@ -19,6 +19,7 @@ import { MemberSimple } from '../../entities/member-simple';
 import { ConfigurationService } from '../../services/configuration.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { AlertModalService } from '../common/alert-modal.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-extension',
@@ -41,6 +42,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
+              private translateService: TranslateService,
               public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
@@ -157,8 +159,9 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
                                             this.extension.parentCodeScheme.id,
                                             this.extension.codeValue).subscribe(next => {
-        modalRef.close();
-        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': next.length } }));
+        let nrOfCreatedMembers = next.length;
+        modalRef.message = "" + nrOfCreatedMembers + this.translateService.instant(" missing members created.");
+        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': nrOfCreatedMembers } }));
       }, error => {
         this.errorModalService.openSubmitError(error);
       })
