@@ -72,9 +72,9 @@ import { DataService } from '../../services/data.service';
       <div class="row full-height">
         <div class="col-12">
           <div class="content-box">
-            <div class="search-results">
+            <div class="search-results" *ngIf="searchResults$ | async as results">
               <div class="search-result"
-                   *ngFor="let member of searchResults$ | async; let last = last"
+                   *ngFor="let member of results; let last = last"
                    (click)="select(member)">
                 <div class="content" [class.last]="last">
                   <span class="title"
@@ -82,6 +82,7 @@ import { DataService } from '../../services/data.service';
                   </span>
                 </div>
               </div>
+              <div *ngIf="results.length === 0"><div class="search-result"><div class="content last"><span class="title" translate>No choosable members</span></div></div></div>
             </div>
           </div>
         </div>
