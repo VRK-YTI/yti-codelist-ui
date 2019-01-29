@@ -61,7 +61,7 @@
                   (click)="createExtension('definitionHierarchy')"
                   translate>Create definition hierarchy</button>
           <button id="create_extension_cross-reference-list_button"
-                  *ngIf="showUnfinishedFeature && canAddExtension"
+                  *ngIf="canAddExtension"
                   type="button"
                   class="dropdown-item"
                   (click)="createExtension('crossReferenceList')"
@@ -164,7 +164,7 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab *ngIf="showUnfinishedFeature && extensions.length > 0" id="codelist_extensions_tab">
+    <ngb-tab *ngIf="extensions.length > 0" id="codelist_extensions_tab">
       <ng-template ngbTabTitle>
         <span translate>EXTENSIONS</span>
       </ng-template>
