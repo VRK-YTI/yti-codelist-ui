@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-01-29 13:46+0200\n"
+"PO-Revision-Date: 2019-01-30 09:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -27,6 +27,15 @@ msgstr "Luo uusi"
 
 msgid "{{title}}"
 msgstr ""
+
+msgid " No new members created. All codes already have a corresponding member."
+msgstr "Uusia jäseniä ei luotu. Kaikilla koodeilla on jo vastaava jäsen."
+
+msgid " missing member created."
+msgstr " puuttunut jäsen luotu."
+
+msgid " missing members created."
+msgstr " puuttunutta jäsentä luotu."
 
 msgid "Select code"
 msgstr "Valitse koodi"
@@ -120,6 +129,9 @@ msgstr "Rajaa hakutuloksia"
 
 msgid "All codeschemes"
 msgstr "Kaikki koodistot"
+
+msgid "No choosable members"
+msgstr "Ei valittavia jäseniä"
 
 msgid "Status"
 msgstr "Tila"
@@ -449,15 +461,6 @@ msgstr "jäsen"
 
 msgid "members"
 msgstr "jäsentä"
-
-msgid " No new members created. All codes already have a corresponding member."
-msgstr "Uusia jäseniä ei luotu. Kaikilla koodeilla on jo vastaava jäsen."
-
-msgid " missing member created."
-msgstr " puuttunut jäsen luotu."
-
-msgid " missing members created."
-msgstr " puuttunutta jäsentä luotu."
 
 msgid "Search did not find any members."
 msgstr "Haulla ei löytynyt yhtään jäsentä."
@@ -912,8 +915,10 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee "
 "jäsenten välisen hiearkian."
 
-msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
-msgstr "Linkkiin liitettyä tyypitystä ei ole olemassa."
+msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
+msgstr ""
+"Laajennukseen on liitetty sama koodi useammin kuin kerran, käytä UUID:tä "
+"viitteenä."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1174,13 +1179,11 @@ msgstr "Laajennukseen liitettyä koodistoa ei ole olemassa."
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
 msgstr "Laajennukseen liitettyä tyypitystä ei ole olemassa."
 
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
+msgstr "Linkkiin liitettyä tyypitystä ei ole olemassa."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
-msgstr ""
-"Laajennukseen on liitetty sama koodi useammin kuin kerran, käytä UUID:tä "
-"viitteenä."
 
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
 msgstr ""
@@ -1211,6 +1214,9 @@ msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
 "Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa "
 "resursseissa: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Tätä koodistoa ei voi poistaa."
@@ -1432,8 +1438,10 @@ msgid "Please wait. This could take a while..."
 msgstr ""
 "Ole hyvä ja odota. Mahdollisesti pitkäkestoinen prosessointi käynnissä."
 
-msgid "No choosable members"
-msgstr "Ei valittavia jäseniä"
+#, fuzzy
+#| msgid " missing members created."
+msgid "missing members created."
+msgstr " puuttunutta jäsentä luotu."
 
 msgid "externalReferenceExists"
 msgstr "Linkki on jo käytössä tässä koodistossa."
