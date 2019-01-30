@@ -159,8 +159,18 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
                                             this.extension.parentCodeScheme.id,
                                             this.extension.codeValue).subscribe(next => {
-        let nrOfCreatedMembers = next.length;
-        modalRef.message = "" + nrOfCreatedMembers + this.translateService.instant(" missing members created.");
+        const nrOfCreatedMembers: number = next.length;
+        let messagePart = '';
+        if (nrOfCreatedMembers === 0) {
+          messagePart = this.translateService.instant(' No new members created. All codes already have a corresponding member.');
+          modalRef.message = messagePart;
+        } else if (nrOfCreatedMembers === 1) {
+          messagePart = this.translateService.instant(' missing member created.');
+          modalRef.message = '' + nrOfCreatedMembers + messagePart;
+        } else {
+          messagePart = this.translateService.instant(' missing members created.');
+          modalRef.message = '' + nrOfCreatedMembers + messagePart;
+        }
         this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': nrOfCreatedMembers } }));
       }, error => {
         this.errorModalService.openSubmitError(error);

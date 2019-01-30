@@ -19,6 +19,12 @@ msgstr ""
 msgid "{{title}}"
 msgstr ""
 
+msgid " No new members created. All codes already have a corresponding member."
+msgstr ""
+
+msgid " missing member created."
+msgstr ""
+
 msgid " missing members created."
 msgstr ""
 
@@ -438,12 +444,6 @@ msgid "member"
 msgstr ""
 
 msgid "members"
-msgstr ""
-
-msgid " No new members created. All codes already have a corresponding member."
-msgstr ""
-
-msgid " missing member created."
 msgstr ""
 
 msgid "Search did not find any members."
