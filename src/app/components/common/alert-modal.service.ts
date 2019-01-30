@@ -23,7 +23,7 @@ export class AlertModalService {
     <div class="modal-header modal-header-warning">
       <h4 class="modal-title">
         <span translate>{{title}}</span>
-        <a><i id="close_confirmation_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
+        <a><i id="close_alert_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
       </h4>
     </div>
     <div class="modal-body">
