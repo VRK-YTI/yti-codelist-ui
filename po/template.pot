@@ -1231,6 +1231,9 @@ msgstr ""
 msgid "ERR_MSG_USER_MULTIPLE_CODEEXTENSIONS_FOUND_WITH_SAME_TYPE"
 msgstr ""
 
+msgid "ERR_MSG_USER_CODESCHEME_DEFAULTCODE_NOT_FOUND"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
