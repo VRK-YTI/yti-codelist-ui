@@ -76,25 +76,23 @@
                   translate>Filter results</span>
             <app-information-symbol [infoText]="'INFO_TEXT_FRONTPAGE_FILTER_RESULTS'"></app-information-symbol>
 
-            <app-filter-dropdown class="d-inline-block ml-2"
-                                 id="organization_filter_dropdown"
-                                 [filterSubject]="organization$"
-                                 [options]="organizationOptions"></app-filter-dropdown>
+            <div class="result-list-filter-dropdowns">
+              <app-filter-dropdown id="organization_filter_dropdown"
+                                   [filterSubject]="organization$"
+                                   [options]="organizationOptions"></app-filter-dropdown>
 
-            <app-filter-dropdown class="d-inline-block ml-2"
-                                 id="registry_filter_dropdown"
-                                 [filterSubject]="registry$"
-                                 [options]="registryOptions"></app-filter-dropdown>
+              <app-filter-dropdown id="registry_filter_dropdown"
+                                   [filterSubject]="registry$"
+                                   [options]="registryOptions"></app-filter-dropdown>
 
-            <app-filter-dropdown class="d-inline-block ml-2"
-                                 id="status_filter_dropdown"
-                                 [filterSubject]="status$"
-                                 [options]="statusOptions"></app-filter-dropdown>
+              <app-filter-dropdown id="status_filter_dropdown"
+                                   [filterSubject]="status$"
+                                   [options]="statusOptions"></app-filter-dropdown>
 
-            <app-filter-dropdown class="d-inline-block ml-2"
-                                 id="propertytype_filter_dropdown"
-                                 [filterSubject]="extensionPropetyType$"
-                                 [options]="extensionPropertyTypeOptions"></app-filter-dropdown>
+              <app-filter-dropdown id="propertytype_filter_dropdown"
+                                   [filterSubject]="extensionPropetyType$"
+                                   [options]="extensionPropertyTypeOptions"></app-filter-dropdown>
+            </div>
           </div>
         </div>
 
