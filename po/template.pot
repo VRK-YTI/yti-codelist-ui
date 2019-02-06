@@ -121,7 +121,7 @@ msgstr ""
 msgid "All codeschemes"
 msgstr ""
 
-msgid "No choosable members"
+msgid "There are no members to select from"
 msgstr ""
 
 msgid "Status"

@@ -82,7 +82,7 @@ import { DataService } from '../../services/data.service';
                   </span>
                 </div>
               </div>
-              <div *ngIf="results.length === 0"><div class="search-result"><div class="content last"><span class="title" translate>No choosable members</span></div></div></div>
+              <div *ngIf="results.length === 0"><div><div class="content last"><span class="title" translate style="padding-left: 5px; padding-top: 5px">There are no members to select from</span></div></div></div>
             </div>
           </div>
         </div>
