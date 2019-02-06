@@ -488,7 +488,13 @@ msgstr ""
 msgid "Frontpage long description"
 msgstr ""
 
-msgid "Extend search to codes"
+msgid "Extend search to"
+msgstr ""
+
+msgid "to_codes"
+msgstr ""
+
+msgid "to_extensions"
 msgstr ""
 
 msgid "Filter with information domain"

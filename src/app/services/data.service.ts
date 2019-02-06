@@ -184,11 +184,12 @@ export class DataService {
   }
 
   searchCodeSchemes(searchTerm: string | null, infoDomain: string | null, organization: string | null,
-                    sortMode: string | null, searchCodes: boolean | false, language: string | null): Observable<CodeScheme[]> {
+                    sortMode: string | null, searchCodes: boolean | false, searchExtensions: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
       .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType')
-      .append('searchCodes', searchCodes.toString());
+      .append('searchCodes', searchCodes.toString())
+      .append('searchExtensions', searchExtensions.toString());
 
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
     if (userOrganizations.length > 0) {

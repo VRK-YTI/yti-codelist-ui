@@ -23,15 +23,16 @@ import { ConfigurationService } from '../../services/configuration.service';
 import { PropertyType } from '../../entities/property-type';
 
 // XXX: fixes problem with type definition having strongly typed parameters ending with 6
-function myCombineLatest<T, T2, T3, T4, T5, T6, T7, T8>(v1: ObservableInput<T>,
-                                                    v2: ObservableInput<T2>,
-                                                    v3: ObservableInput<T3>,
-                                                    v4: ObservableInput<T4>,
-                                                    v5: ObservableInput<T5>,
-                                                    v6: ObservableInput<T6>,
-                                                    v7: ObservableInput<T7>,
-                                                    v8: ObservableInput<T8>): Observable<[T, T2, T3, T4, T5, T6, T7, T8]> {
-  return combineLatest(v1, v2, v3, v4, v5, v6, v7, v8);
+function myCombineLatest<T, T2, T3, T4, T5, T6, T7, T8, T9>(v1: ObservableInput<T>,
+                                                            v2: ObservableInput<T2>,
+                                                            v3: ObservableInput<T3>,
+                                                            v4: ObservableInput<T4>,
+                                                            v5: ObservableInput<T5>,
+                                                            v6: ObservableInput<T6>,
+                                                            v7: ObservableInput<T7>,
+                                                            v8: ObservableInput<T8>,
+                                                            v9: ObservableInput<T9>): Observable<[T, T2, T3, T4, T5, T6, T7, T8, T9]> {
+  return combineLatest(v1, v2, v3, v4, v5, v6, v7, v8, v9);
 }
 
 @Component({
@@ -63,6 +64,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   searchInProgress = true;
   searchCodesValue = false;
   searchCodes$ = new BehaviorSubject(this.searchCodesValue);
+  searchExtensionsValue = false;
+  searchExtensions$ = new BehaviorSubject(this.searchExtensionsValue);
 
   groupIconSrc = getInformationDomainSvgIcon;
 
@@ -142,7 +145,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
           : this.translateService.instant('All extensionPropertyTypes'),
         idIdentifier: () => propertyType ? propertyType.idIdentifier : 'all_selected'
       }));
-      });
+    });
 
     const initialSearchTerm = this.searchTerm$.pipe(take(1));
     const debouncedSearchTerm = this.searchTerm$.pipe(skip(1), debounceTime(500));
@@ -151,7 +154,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     const infoDomains$ = this.dataService.getInfoDomains(this.languageService.language);
 
     function extensionPropertyTypeMatches(propertyType: PropertyType | null, codeScheme: CodeScheme) {
-      return !propertyType || codeScheme.extensions.find(extension => extension.propertyType.localName === propertyType.localName );
+      return !propertyType || codeScheme.extensions.find(extension => extension.propertyType.localName === propertyType.localName);
     }
 
     function statusMatches(status: Status | null, codeScheme: CodeScheme) {
@@ -168,16 +171,16 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     }
 
     myCombineLatest(searchTerm$, this.infoDomain$, this.status$, this.registry$, this.organization$,
-      this.extensionPropetyType$, this.searchCodes$, this.languageService.language$)
+      this.extensionPropetyType$, this.searchCodes$, this.searchExtensions$, this.languageService.language$)
       .pipe(
         tap(() => this.searchInProgress = true),
-        flatMap(([searchTerm, infoDomain, status, registry, organization, extensionPropertyType, searchCodes, language]) => {
+        flatMap(([searchTerm, infoDomain, status, registry, organization, extensionPropertyType, searchCodes, searchExtensions, language]) => {
 
           const infoDomainCode = infoDomain ? infoDomain.codeValue : null;
           const organizationId = organization ? organization.id : null;
           const sortMode = this.configurationService.codeSchemeSortMode || null;
 
-          return this.dataService.searchCodeSchemes(searchTerm, infoDomainCode, organizationId, sortMode, searchCodes, language)
+          return this.dataService.searchCodeSchemes(searchTerm, infoDomainCode, organizationId, sortMode, searchCodes, searchExtensions, language)
             .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
               statusMatches(status, codeScheme) &&
               registryMatches(registry, codeScheme) &&
@@ -189,13 +192,13 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .subscribe(results => this.filteredCodeSchemes = results);
 
     myCombineLatest(infoDomains$, searchTerm$, this.status$, this.registry$, this.organization$,
-      this.extensionPropetyType$, this.searchCodes$, this.languageService.language$)
-      .subscribe(([infoDomains, searchTerm, status, registry, organization, extensionPropertyType, searchCodes, language]) => {
+      this.extensionPropetyType$, this.searchCodes$, this.searchExtensions$, this.languageService.language$)
+      .subscribe(([infoDomains, searchTerm, status, registry, organization, extensionPropertyType, searchCodes, searchExtensions, language]) => {
         infoDomains.sort(comparingLocalizable<InfoDomain>(this.languageService, infoDomain => infoDomain.prefLabel));
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configurationService.codeSchemeSortMode ? this.configurationService.codeSchemeSortMode : null;
 
-        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, language)
+        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, searchExtensions, language)
           .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registryMatches(registry, codeScheme) &&
@@ -222,6 +225,11 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   toggleSearchCodes() {
     this.searchCodesValue = !this.searchCodesValue;
     this.searchCodes$.next(this.searchCodesValue);
+  }
+
+  toggleSearchExtensions() {
+    this.searchExtensionsValue = !this.searchExtensionsValue;
+    this.searchExtensions$.next(this.searchExtensionsValue);
   }
 
   importCodeScheme() {
