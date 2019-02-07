@@ -47,7 +47,7 @@ export class CodeschemeVariantModalComponent implements OnInit, AfterViewInit {
         this.searchResults = [];
       } else {
         this.loading = true;
-        this.dataService.searchCodeSchemes(search, null, null, null, false, false, null).subscribe(codeSchemes => {
+        this.dataService.searchCodeSchemes(search, null,null, null, null, false, false, null).subscribe(codeSchemes => {
             this.loading = false;
             this.searchResults = codeSchemes.filter(cs =>
               !anyMatching(this.forbiddenVariantSearchResultIds, forbiddenId => cs.id === forbiddenId));

@@ -183,7 +183,7 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
-  searchCodeSchemes(searchTerm: string | null, infoDomain: string | null, organization: string | null,
+  searchCodeSchemes(searchTerm: string | null, extensionPropertyType: string | null, infoDomain: string | null, organization: string | null,
                     sortMode: string | null, searchCodes: boolean | false, searchExtensions: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
@@ -194,6 +194,10 @@ export class DataService {
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
     if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
+    }
+
+    if (extensionPropertyType) {
+      params = params.append('extensionPropertyType', extensionPropertyType);
     }
 
     if (language) {

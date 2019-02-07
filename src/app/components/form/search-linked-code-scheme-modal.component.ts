@@ -82,7 +82,7 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
     const initialSearch = this.search$.pipe(take(1));
     const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
 
-    this.codeSchemes$ = this.dataService.searchCodeSchemes(null, null, null, null, false, false, this.languageService.language);
+    this.codeSchemes$ = this.dataService.searchCodeSchemes(null, null, null, null, null, false, false, this.languageService.language);
 
     this.searchResults$ = combineLatest(this.codeSchemes$, concat(initialSearch, debouncedSearch))
       .pipe(

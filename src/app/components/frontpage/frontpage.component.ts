@@ -179,8 +179,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
           const infoDomainCode = infoDomain ? infoDomain.codeValue : null;
           const organizationId = organization ? organization.id : null;
           const sortMode = this.configurationService.codeSchemeSortMode || null;
+          const extensionPropertyTypeLocalName = extensionPropertyType != null ? extensionPropertyType.localName : null;
 
-          return this.dataService.searchCodeSchemes(searchTerm, infoDomainCode, organizationId, sortMode, searchCodes, searchExtensions, language)
+          return this.dataService.searchCodeSchemes(searchTerm, extensionPropertyTypeLocalName, infoDomainCode, organizationId, sortMode, searchCodes, searchExtensions, language)
             .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
               statusMatches(status, codeScheme) &&
               registryMatches(registry, codeScheme) &&
@@ -197,8 +198,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         infoDomains.sort(comparingLocalizable<InfoDomain>(this.languageService, infoDomain => infoDomain.prefLabel));
         const organizationId = organization ? organization.id : null;
         const sortMode = this.configurationService.codeSchemeSortMode ? this.configurationService.codeSchemeSortMode : null;
+        const extensionPropertyTypeLocalName = extensionPropertyType != null ? extensionPropertyType.localName : null;
 
-        this.dataService.searchCodeSchemes(searchTerm, null, organizationId, sortMode, searchCodes, searchExtensions, language)
+        this.dataService.searchCodeSchemes(searchTerm, extensionPropertyTypeLocalName, null, organizationId, sortMode, searchCodes, searchExtensions, language)
           .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
             statusMatches(status, codeScheme) &&
             registryMatches(registry, codeScheme) &&
