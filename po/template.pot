@@ -178,7 +178,7 @@ msgstr ""
 msgid "Create code"
 msgstr ""
 
-msgid "Get concept from Controlled Vocabularies"
+msgid "Get concept from Terminologies"
 msgstr ""
 
 msgid "URI"
@@ -536,7 +536,7 @@ msgstr ""
 msgid "Registries"
 msgstr ""
 
-msgid "Suomi.fi Controlled Vocabularies"
+msgid "Suomi.fi Terminologies"
 msgstr ""
 
 msgid "Suomi.fi Data Vocabularies"
@@ -581,7 +581,7 @@ msgstr ""
 msgid "Concept definition"
 msgstr ""
 
-msgid "Suggest the concept to Controlled Vocabularies"
+msgid "Suggest the concept to Terminologies"
 msgstr ""
 
 msgid "Search for concept"
