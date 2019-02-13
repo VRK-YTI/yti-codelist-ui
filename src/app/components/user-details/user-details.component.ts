@@ -113,7 +113,7 @@ export class UserDetailsComponent implements OnDestroy  {
       return {
         value: org,
         name: () => org ? this.languageService.translate(org.prefLabel, true)
-                        : this.translateService.instant('Choose organization'),
+                        : this.translateService.instant('Select organization'),
         idIdentifier: () => org ? labelNameToResourceIdIdentifier(this.languageService.translate(org.prefLabel, true)) : 'all_selected'
       };
     });

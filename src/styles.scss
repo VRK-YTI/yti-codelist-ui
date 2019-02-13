@@ -39,12 +39,21 @@ nav.navbar {
 }
 
 .metabar {
-  padding: 0px 10px 0px 0;
+  padding: 0 10px 0 0;
+  margin-bottom: 0.5rem;
+
+  .metastatus {
+    display: inline-block;
+    padding: 0 15px 0 0;
+    float: left;
+    clear: right;
+    font-weight: 400;
+  }
 
   .metaitem {
     display: inline-block;
     color: $blue;
-    padding: 0px 15px 0px 0;
+    padding: 0 15px 0 0;
     font-size: small;
   }
 }
@@ -81,6 +90,7 @@ img.svg-icon {
 }
 
 .main {
+  line-height: 1.5;
   display: flex;
   justify-content: space-between;
 }

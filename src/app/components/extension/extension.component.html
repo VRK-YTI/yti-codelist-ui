@@ -9,9 +9,6 @@
       <div class="d-inline-block">
         <h1 class="text-content-wrap">{{extension.getDisplayName(languageService)}}</h1>
       </div>
-      <div class="d-inline-block ml-5 align-top mt-2">
-        <app-status class="float-left" [status]="extension.status"></app-status>
-      </div>
     </div>
 
     <div>
@@ -70,6 +67,9 @@
 
   <div class="row metabar">
     <div class="col-12">
+      <div class="metastatus">
+        <app-status [status]="extension.status"></app-status>
+      </div>
       <div class="metaitem">
         <span translate>Registry</span><span>: </span>
         <span class="routedLink"

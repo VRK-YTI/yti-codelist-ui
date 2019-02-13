@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-02-08 16:57+0200\n"
+"PO-Revision-Date: 2019-02-13 12:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -40,20 +40,17 @@ msgstr " puuttunutta jäsentä luotu."
 msgid "Select code"
 msgstr "Valitse koodi"
 
-msgid "Choose code"
-msgstr "Valitse koodi"
-
 msgid "Search code"
 msgstr "Hae koodia"
 
 msgid "Add code list"
 msgstr "Lisää koodisto"
 
+msgid "Select code list"
+msgstr "Valitse koodisto"
+
 msgid "Search code list"
 msgstr "Hae koodistoa"
-
-msgid "Choose code list"
-msgstr "Valitse koodisto"
 
 msgid "No registry"
 msgstr "Ei rekisteriä"
@@ -82,7 +79,7 @@ msgstr "Lisää linkki"
 msgid "Add information domain"
 msgstr "Lisää tietoalue"
 
-msgid "Choose information domain"
+msgid "Select information domain"
 msgstr "Valitse tietoalue"
 
 msgid "Search information domain"
@@ -97,7 +94,7 @@ msgstr "Kopioitu leikepöydälle"
 msgid "Add language code"
 msgstr "Lisää kielikoodi"
 
-msgid "Choose language code"
+msgid "Select language code"
 msgstr "Valitse kielikoodi"
 
 msgid "Search language code"
@@ -106,16 +103,13 @@ msgstr "Hae kielikoodia"
 msgid "Select member"
 msgstr "Valitse jäsen"
 
-msgid "Choose member"
-msgstr "Valitse jäsen"
-
 msgid "Search member"
 msgstr "Hae jäsentä"
 
 msgid "Add organization"
 msgstr "Valitse organisaatio"
 
-msgid "Choose organization"
+msgid "Select organization"
 msgstr "Valitse organisaatio"
 
 msgid "Search organization"
@@ -274,7 +268,7 @@ msgstr "Sitovuustaso"
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Choose how to create the new version"
+msgid "The content imported to the new version"
 msgstr "Uuteen versioon tuotavat aineistot"
 
 msgid "Create a new version with the existing content"
@@ -1494,4 +1488,3 @@ msgstr ""
 
 msgid "memberValueRequired"
 msgstr "Jäsenen arvo on pakollinen syöte."
-F

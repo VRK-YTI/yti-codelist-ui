@@ -97,7 +97,7 @@ export class InfodomainsInputComponent implements ControlValueAccessor, OnDestro
   }
 
   addInfoDomain() {
-    const titleLabel = this.translateService.instant('Choose information domain');
+    const titleLabel = this.translateService.instant('Select information domain');
     const searchlabel = this.translateService.instant('Search information domain');
     const restrictIds = this.infoDomains.map(infoDomain => infoDomain.id);
 

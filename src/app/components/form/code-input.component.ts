@@ -86,7 +86,7 @@ export class CodeInputComponent implements ControlValueAccessor {
   }
 
   selectCode() {
-    const titleLabel = this.translateService.instant('Choose code');
+    const titleLabel = this.translateService.instant('Select code');
     const searchlabel = this.translateService.instant('Search code');
 
     this.searchLinkedCodeModalService.openWithCodeSchemes(this.codeSchemes, titleLabel, searchlabel, this.restricts, false)

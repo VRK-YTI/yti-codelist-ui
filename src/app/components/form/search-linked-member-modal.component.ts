@@ -36,12 +36,12 @@ import { DataService } from '../../services/data.service';
                   <span *ngIf="selectedCodeScheme">{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
                 </button>
                 <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
-                    <button id="codescheme_allcodeschemes_dropdown_button"
-                            (click)="deSelectCodeScheme()"
-                            class="dropdown-item"
-                            [class.active]="selectedCodeScheme === null">
-                      <span translate>All codeschemes</span>
-                    </button>
+                  <button id="codescheme_allcodeschemes_dropdown_button"
+                          (click)="deSelectCodeScheme()"
+                          class="dropdown-item"
+                          [class.active]="selectedCodeScheme === null">
+                    <span translate>All codeschemes</span>
+                  </button>
                   <div *ngFor="let codeScheme of codeSchemes">
                     <button id="codescheme_{{codeScheme.id}}_dropdown_button"
                             (click)="selectCodeScheme(codeScheme)"
@@ -55,7 +55,7 @@ import { DataService } from '../../services/data.service';
           </div>
         </div>
       </div>
-      
+
       <div class="row mb-2">
         <div class="col-12">
 
@@ -82,7 +82,11 @@ import { DataService } from '../../services/data.service';
                   </span>
                 </div>
               </div>
-              <div *ngIf="results.length === 0"><div><div class="content last"><span class="title" translate style="padding-left: 5px; padding-top: 5px">There are no members to select from</span></div></div></div>
+              <div *ngIf="results.length === 0">
+                <div>
+                  <div class="no-results content last"><span translate>There are no members to select from</span></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

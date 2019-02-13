@@ -47,7 +47,7 @@ function removeFromControl<T>(control: FormControl) {
                 id="add_codelist_button"
                 type="button"
                 class="btn btn-sm btn-action mt-2"
-                (click)="selectCodeScheme()" translate>Choose code list</button>
+                (click)="selectCodeScheme()" translate>Select code list</button>
       </dd>
     </dl>
   `
@@ -83,7 +83,7 @@ export class CodeSchemeSingleInputComponent implements ControlValueAccessor {
   }
 
   selectCodeScheme() {
-    const titleLabel = this.translateService.instant('Choose code list');
+    const titleLabel = this.translateService.instant('Select code list');
     const searchlabel = this.translateService.instant('Search code list');
 
     this.searchLinkedCodeSchemeModalService.open(titleLabel, searchlabel, this.restricts, false)

@@ -92,7 +92,7 @@ export class OrganizationsInputComponent implements ControlValueAccessor {
   }
 
   addOrganization() {
-    const titleLabel = this.translateService.instant('Choose organization');
+    const titleLabel = this.translateService.instant('Select organization');
     const searchlabel = this.translateService.instant('Search organization');
     const restrictIds = this.selectableOrganizations.map(organization => organization.id);
 

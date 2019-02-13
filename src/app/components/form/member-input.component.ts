@@ -130,7 +130,7 @@ export class MemberInputComponent implements ControlValueAccessor, AfterViewInit
   }
 
   selectMember() {
-    const titleLabel = this.translateService.instant('Choose member');
+    const titleLabel = this.translateService.instant('Select member');
     const searchlabel = this.translateService.instant('Search member');
 
     let members;

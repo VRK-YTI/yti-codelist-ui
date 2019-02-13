@@ -104,7 +104,7 @@ export class LanguageCodesInputComponent implements ControlValueAccessor, OnDest
   }
 
   addLanguageCode() {
-    const titleLabel = this.translateService.instant('Choose language code');
+    const titleLabel = this.translateService.instant('Select language code');
     const searchlabel = this.translateService.instant('Search language code');
     const restrictIds = this.selectedLanguageCodes.map(languageCode => languageCode.id);
 

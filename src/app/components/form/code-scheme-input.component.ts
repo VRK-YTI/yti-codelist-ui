@@ -90,7 +90,7 @@ export class CodeSchemeInputComponent implements ControlValueAccessor {
   }
 
   addCodeScheme() {
-    const titleLabel = this.translateService.instant('Add code list');
+    const titleLabel = this.translateService.instant('Select code list');
     const searchlabel = this.translateService.instant('Search code list');
     const restrictIds = this.codeSchemes.map(codeScheme => codeScheme.id);
     if (this.parentCodeScheme) {

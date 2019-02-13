@@ -31,19 +31,16 @@ msgstr ""
 msgid "Select code"
 msgstr ""
 
-msgid "Choose code"
-msgstr ""
-
 msgid "Search code"
 msgstr ""
 
 msgid "Add code list"
 msgstr ""
 
-msgid "Search code list"
+msgid "Select code list"
 msgstr ""
 
-msgid "Choose code list"
+msgid "Search code list"
 msgstr ""
 
 msgid "No registry"
@@ -73,7 +70,7 @@ msgstr ""
 msgid "Add information domain"
 msgstr ""
 
-msgid "Choose information domain"
+msgid "Select information domain"
 msgstr ""
 
 msgid "Search information domain"
@@ -88,7 +85,7 @@ msgstr ""
 msgid "Add language code"
 msgstr ""
 
-msgid "Choose language code"
+msgid "Select language code"
 msgstr ""
 
 msgid "Search language code"
@@ -97,16 +94,13 @@ msgstr ""
 msgid "Select member"
 msgstr ""
 
-msgid "Choose member"
-msgstr ""
-
 msgid "Search member"
 msgstr ""
 
 msgid "Add organization"
 msgstr ""
 
-msgid "Choose organization"
+msgid "Select organization"
 msgstr ""
 
 msgid "Search organization"
@@ -265,7 +259,7 @@ msgstr ""
 msgid "{{pageTitle}}"
 msgstr ""
 
-msgid "Choose how to create the new version"
+msgid "The content imported to the new version"
 msgstr ""
 
 msgid "Create a new version with the existing content"
