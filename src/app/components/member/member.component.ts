@@ -158,7 +158,7 @@ export class MemberComponent implements OnInit, EditingComponent {
 
   addMemberValueToMemberValueList(memberValues: MemberValue[], value: string, type: string) {
     const valueType = this.extension.propertyType.valueTypeForLocalName(type);
-    if (value && valueType) {
+    if (valueType) {
       const data: MemberValueType = <MemberValueType> {
         value: value,
         valueType: valueType
