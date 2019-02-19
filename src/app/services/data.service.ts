@@ -187,7 +187,7 @@ export class DataService {
                     sortMode: string | null, searchCodes: boolean | false, searchExtensions: boolean | false, language: string | null): Observable<CodeScheme[]> {
 
     let params = new HttpParams()
-      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType')
+      .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType,searchHit')
       .append('searchCodes', searchCodes.toString())
       .append('searchExtensions', searchExtensions.toString());
 
@@ -661,7 +661,6 @@ export class DataService {
   }
 
   saveMember(memberToSave: MemberType): Observable<ApiResponseType> {
-
     return this.http.post<ApiResponseType>(
       `${membersIntakeBasePath}/${memberToSave.id}`, memberToSave);
   }

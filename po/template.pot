@@ -824,7 +824,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
+msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "Front page"
@@ -1075,13 +1075,13 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_UUID"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
@@ -1307,6 +1307,12 @@ msgid "Please wait. This could take a while..."
 msgstr ""
 
 msgid "missing members created."
+msgstr ""
+
+msgid "extension"
+msgstr ""
+
+msgid "Searchhits:"
 msgstr ""
 
 msgid "externalReferenceExists"

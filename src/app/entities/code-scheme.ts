@@ -14,6 +14,7 @@ import { CodePlain } from './code-simple';
 import { ExtensionSimple } from './extension-simple';
 import { CodeSchemeListItem } from './code-scheme-list-item';
 import { Organization } from './organization';
+import { SearchHit } from './search-hit';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -42,6 +43,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   lastCodeschemeId: string | null = null;
   allVersions: CodeSchemeListItem[] = [];
   organizations: Organization[];
+  searchHits: SearchHit[];
+  searchHitsMax5: SearchHit[];
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -93,6 +96,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       this.lastCodeschemeId = data.lastCodeschemeId;
     }
     this.organizations = (data.organizations || []).map(o => new Organization(o));
+    this.searchHits = (data.searchHits || []).map(sh => new SearchHit(sh));
+    this.searchHitsMax5 = this.searchHits.slice(0, 5);
   }
 
   get modifiedDisplayValue(): string {
@@ -183,7 +188,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       prevCodeschemeId: this.prevCodeschemeId,
       lastCodeschemeId: this.lastCodeschemeId,
       allVersions: this.allVersions.map(li => li.serialize()),
-      organizations: this.organizations.map(o => o.serialize())
+      organizations: this.organizations.map(o => o.serialize()),
+      searchHits: this.searchHits.map(sh => sh.serialize())
     };
   }
 

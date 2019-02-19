@@ -53,6 +53,7 @@ export interface CodeSchemeType extends BaseResourceType {
   prevCodeschemeId: string | null;
   lastCodeschemeId: string | null;
   organizations: OrganizationType[];
+  searchHits: SearchHitType[];
 }
 
 export interface CodePlainType extends BaseResourceType {
@@ -250,4 +251,11 @@ export interface MemberValueType {
   valueType: ValueTypeType;
   created?: string;
   modified?: string;
+}
+
+export interface SearchHitType {
+
+  type: string;
+  prefLabel: Localizable;
+  uri: string;
 }

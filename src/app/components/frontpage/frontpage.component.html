@@ -132,6 +132,15 @@
                   {{org.prefLabel | translateValue:true}}
                 </li>
               </ul>
+
+              <span class="organization" *ngIf="codeScheme.searchHitsMax5.length > 0" translate>Searchhits:</span>
+
+              <ul class="organizations dot-separated-list">
+                <li class="organization" *ngFor="let sh of codeScheme.searchHitsMax5">
+                   <a href="{{sh.uri}}">{{sh.type | translate}}: {{sh.prefLabel | translateValue}}</a>
+                </li>
+              </ul>
+
             </div>
           </div>
         </div>
