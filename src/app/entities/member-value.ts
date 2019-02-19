@@ -32,7 +32,7 @@ export class MemberValue {
   serialize(): MemberValueType {
     return {
       id: this.id,
-      value: this.value,
+      value: this.value || '',
       created: formatDateTime(this.created),
       modified: formatDateTime(this.modified),
       valueType: this.valueType.serialize()
