@@ -18,7 +18,7 @@ import { ExtensionSimple } from '../../entities/extension-simple';
             <div formArrayName="memberValues" *ngFor="let memberValue of getMemberValuesArray(i).controls; let j = index">
               <div [formGroupName]="j">
                 <app-literal-input
-                  [id]="'code_inline_membervalue_' + extension.codeValue + '_' + memberValue.value.valueType.localName + ' _input'"
+                  [id]="'code_inline_membervalue_' + extension.codeValue + '_' + memberValue.value.valueType.localName + '_input'"
                   [label]="memberValue.value.valueType.prefLabel | translateValue"
                   [required]="memberValue.value.valueType.required"
                   [showEmptyValue]="true"
