@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-02-19 15:51+0200\n"
+"PO-Revision-Date: 2019-02-20 13:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -277,6 +277,9 @@ msgstr ""
 msgid "Create a new blank version without the existing content"
 msgstr ""
 
+msgid "Create the new codelist as cumulative"
+msgstr ""
+
 msgid "CODE EXTENSIONS"
 msgstr ""
 
@@ -510,6 +513,9 @@ msgid "Filter with information domain"
 msgstr ""
 
 msgid "Search did not find any code lists."
+msgstr ""
+
+msgid "Searchhits:"
 msgstr ""
 
 msgid "Extension"
@@ -1449,9 +1455,6 @@ msgid "missing members created."
 msgstr ""
 
 msgid "extension"
-msgstr ""
-
-msgid "Searchhits:"
 msgstr ""
 
 msgid "externalReferenceExists"

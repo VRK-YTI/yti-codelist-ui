@@ -268,6 +268,9 @@ msgstr ""
 msgid "Create a new blank version without the existing content"
 msgstr ""
 
+msgid "Create the new codelist as cumulative"
+msgstr ""
+
 msgid "CODE EXTENSIONS"
 msgstr ""
 
@@ -495,6 +498,9 @@ msgid "Filter with information domain"
 msgstr ""
 
 msgid "Search did not find any code lists."
+msgstr ""
+
+msgid "Searchhits:"
 msgstr ""
 
 msgid "Extension"
@@ -1310,9 +1316,6 @@ msgid "missing members created."
 msgstr ""
 
 msgid "extension"
-msgstr ""
-
-msgid "Searchhits:"
 msgstr ""
 
 msgid "externalReferenceExists"

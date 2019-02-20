@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-02-19 15:48+0200\n"
+"PO-Revision-Date: 2019-02-20 13:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -277,6 +277,9 @@ msgstr "Luo uusi versio nykyisen aineiston pohjalta"
 msgid "Create a new blank version without the existing content"
 msgstr "Luo uusi versio tyhjänä ilman nykyisiä aineistoja"
 
+msgid "Create the new codelist as cumulative"
+msgstr "Luo uusi koodisto kumulatiivisena"
+
 msgid "CODE EXTENSIONS"
 msgstr "KOODILAAJENNUKSET"
 
@@ -517,6 +520,9 @@ msgstr "Rajaa tietoalueella"
 
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
+
+msgid "Searchhits:"
+msgstr "Hakuosumat:"
 
 msgid "Extension"
 msgstr "Laajennus"
@@ -1447,9 +1453,6 @@ msgstr " puuttunutta jäsentä luotu."
 
 msgid "extension"
 msgstr "laajennus"
-
-msgid "Searchhits:"
-msgstr "Hakuosumat:"
 
 msgid "externalReferenceExists"
 msgstr "Linkki on jo käytössä tässä koodistossa."
