@@ -54,6 +54,7 @@ export interface CodeSchemeType extends BaseResourceType {
   lastCodeschemeId: string | null;
   organizations: OrganizationType[];
   searchHits: SearchHitType[];
+  cumulative: boolean;
 }
 
 export interface CodePlainType extends BaseResourceType {

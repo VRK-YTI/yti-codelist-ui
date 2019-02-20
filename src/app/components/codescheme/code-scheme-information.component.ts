@@ -140,4 +140,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     }
     return null;
   }
+
+  get showUnfinishedFeature(): boolean {
+    return this.configurationService.showUnfinishedFeature;
+  }
 }

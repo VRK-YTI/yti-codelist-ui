@@ -56,6 +56,19 @@
           </div>
           <br/>
         </ng-container>
+        <ng-container *ngIf="!cloning && showUnfinishedFeature">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input id="create_new_codescheme_as_cumulative" (click)="toggleCumulative()"
+                     class="form-check-input"
+                     type="checkbox"
+                     value="false"
+                     formControlName="cumulative">
+              <span translate>Create the new codelist as cumulative</span>
+            </label>
+          </div>
+          <br/>
+        </ng-container>
 
         <app-literal-input [id]="'codelist_value_input'"
                            [label]="'Code list ID' | translate"

@@ -57,6 +57,10 @@
                                [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
                                [formControlName]="'organizations'"></app-organizations-input>
 
+      <app-literal *ngIf="codeScheme.cumulative && showUnfinishedFeature"
+                   [label]="'Cumulative code list' | translate"
+                   [infoText]="'INFO_TEXT_CUMULATIVE'"></app-literal>
+
       <app-infodomains-input id="data_infodomains_input"
                                  [label]="'InfoDomain' | translate"
                                  [required]="true"

@@ -45,6 +45,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   organizations: Organization[];
   searchHits: SearchHit[];
   searchHitsMax5: SearchHit[];
+  cumulative: boolean;
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -98,6 +99,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.organizations = (data.organizations || []).map(o => new Organization(o));
     this.searchHits = (data.searchHits || []).map(sh => new SearchHit(sh));
     this.searchHitsMax5 = this.searchHits.slice(0, 5);
+    this.cumulative = data.cumulative;
   }
 
   get modifiedDisplayValue(): string {
@@ -158,6 +160,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   }
 
   serialize(): CodeSchemeType {
+
+    console.log('when sei start this.cumulative is ', this.cumulative);
     return {
       id: this.id,
       uri: this.uri,
@@ -189,7 +193,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       lastCodeschemeId: this.lastCodeschemeId,
       allVersions: this.allVersions.map(li => li.serialize()),
       organizations: this.organizations.map(o => o.serialize()),
-      searchHits: this.searchHits.map(sh => sh.serialize())
+      searchHits: this.searchHits.map(sh => sh.serialize()),
+      cumulative: this.cumulative
     };
   }
 

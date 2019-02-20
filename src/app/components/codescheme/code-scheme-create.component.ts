@@ -21,6 +21,7 @@ import { flatMap, map, tap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Organization } from '../../entities/organization';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -55,7 +56,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     status: new FormControl('DRAFT' as Status),
     codeRegistry: new FormControl(null, Validators.required),
     conceptUriInVocabularies: new FormControl(''),
-    organizations: new FormControl([], [requiredList])
+    organizations: new FormControl([], [requiredList]),
+    cumulative: new FormControl(),
   }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
@@ -66,7 +68,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private location: Location,
               private languageService: LanguageService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private configurationService: ConfigurationService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -106,6 +109,10 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
           this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
           this.codeSchemeForm.patchValue({ organizations: originalCodeScheme.organizations });
+          this.codeSchemeForm.patchValue({ cumulative: originalCodeScheme.cumulative });
+          if (originalCodeScheme.cumulative === true) {
+            // TODO somehow make the UI element unchangeable, has to always be true if previous version was too
+          }
           this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
             const allInfoDomains = next2;
             const infoDomainsToCopy: CodePlain[] = [];
@@ -255,5 +262,9 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
     this.codeSchemeForm.patchValue({ definition: concept.definition });
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
+  }
+
+  get showUnfinishedFeature(): boolean {
+    return this.configurationService.showUnfinishedFeature;
   }
 }
