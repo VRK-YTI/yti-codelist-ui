@@ -110,7 +110,7 @@ export class LinkListModalService {
   }
 
   public open(codeScheme: CodeScheme, externalReferences: ExternalReference[], languageCodes: CodePlain[], propertyType: PropertyType, propertyTypes: PropertyType[]): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(LinkListModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as LinkListModalComponent;
     instance.codeScheme = codeScheme;
     instance.externalReferences = externalReferences;

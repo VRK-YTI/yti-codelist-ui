@@ -31,7 +31,7 @@ export class LinkShowModalService {
   }
 
   public open(externalReference: ExternalReference, languageCodes: CodePlain[]): void {
-    const modalRef = this.modalService.open(LinkShowModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(LinkShowModalComponent, {size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as LinkShowModalComponent;
     instance.externalReference = externalReference;
     instance.languageCodes = languageCodes;

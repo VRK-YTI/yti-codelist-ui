@@ -60,7 +60,7 @@ export class LinkEditModalService {
   }
 
   public open(externalReference: ExternalReference, languageCodes: CodePlain[]): void {
-    const modalRef = this.modalService.open(LinkEditModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(LinkEditModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as LinkEditModalComponent;
     instance.link = externalReference;
     instance.languageCodes = languageCodes;

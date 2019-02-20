@@ -96,7 +96,7 @@ export class CodeschemeVariantModalService {
   }
 
   public open(forbiddenVariantSearchResultIds: string[]): Promise<CodeScheme> {
-    const modalRef = this.modalService.open(CodeschemeVariantModalComponent, { size: 'lg' });
+    const modalRef = this.modalService.open(CodeschemeVariantModalComponent, { size: 'lg', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as CodeschemeVariantModalComponent;
     instance.forbiddenVariantSearchResultIds = forbiddenVariantSearchResultIds;
     return modalRef.result;

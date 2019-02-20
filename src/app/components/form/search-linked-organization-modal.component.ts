@@ -127,7 +127,7 @@ export class SearchLinkedOrganizationModalService {
        restrictOrganizationIds: string[],
        useUILanguage: boolean = false): Promise<Organization> {
 
-    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(SearchLinkedOrganizationModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SearchLinkedOrganizationModalComponent;
     instance.organizations$ = organizations$;
     instance.titleLabel = titleLabel;

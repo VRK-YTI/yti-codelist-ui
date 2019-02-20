@@ -137,7 +137,7 @@ export class CodeSchemeImportModalService {
   }
 
   public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIfCreatingNewVersion: CodeScheme|null): void {
-    const modalRef = this.modalService.open(CodeSchemeImportModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(CodeSchemeImportModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as CodeSchemeImportModalComponent;
     instance.creatingNewCodeSchemeVersion = creatingNewCodeSchemeVersion;
     instance.originalCodeSchemeIfCreatingNewVersion = originalCodeSchemeIfCreatingNewVersion;

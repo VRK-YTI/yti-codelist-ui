@@ -174,7 +174,6 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     const vocabularyName: string = vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
 
     const conceptName: Localizable = { [this.languageService.language]: this.search$.getValue() };
-
     this.suggestConceptModalService.open(conceptName).then((result) => {
       const suggestionNameLocalized: string = this.languageService.translate(result[0], true);
       const suggestionDefinitionLocalized: string = this.languageService.translate(result[1], true);
@@ -199,7 +198,7 @@ export class TerminologyIntegrationModalService {
   }
 
   public open(updatingExistingEntity: boolean, targetEntityKind: string): Promise<Concept> {
-    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, { size: 'lg' });
+    const modalRef = this.modalService.open(TerminologyIntegrationCodeschemeModalComponent, { size: 'lg', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as TerminologyIntegrationCodeschemeModalComponent;
     instance.updatingExistingEntity = updatingExistingEntity;
     instance.targetEntityKind = targetEntityKind;

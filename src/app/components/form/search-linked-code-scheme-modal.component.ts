@@ -130,7 +130,7 @@ export class SearchLinkedCodeSchemeModalService {
        restrictCodeIds: string[],
        useUILanguage: boolean = false): Promise<CodeScheme> {
 
-    const modalRef = this.modalService.open(SearchLinkedCodeSchemeModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(SearchLinkedCodeSchemeModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SearchLinkedCodeSchemeModalComponent;
     instance.titleLabel = titleLabel;
     instance.searchLabel = searchLabel;

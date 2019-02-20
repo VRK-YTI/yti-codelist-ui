@@ -231,7 +231,7 @@ export class SearchLinkedMemberModalService {
        codeSchemes: CodeScheme[],
        restrictedMemberIds: string[],
        useUILanguage: boolean = false): Promise<Member> {
-    const modalRef = this.modalService.open(SearchLinkedMemberModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(SearchLinkedMemberModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SearchLinkedMemberModalComponent;
     instance.members$ = members$;
     instance.titleLabel = titleLabel;

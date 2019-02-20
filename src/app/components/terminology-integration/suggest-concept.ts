@@ -62,7 +62,7 @@ export class SuggestConceptModalService {
   }
 
   public open(conceptName: Localizable): Promise<Localizable[]> {
-    const modalRef = this.modalService.open(SuggestConceptModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(SuggestConceptModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SuggestConceptModalComponent;
     instance.conceptNameIncomiming = conceptName;
     return modalRef.result;

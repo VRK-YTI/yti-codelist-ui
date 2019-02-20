@@ -87,7 +87,7 @@ export class LinkCreateModalService {
   }
 
   public open(codeScheme: CodeScheme, languageCodes: CodePlain[], propertyType: PropertyType | null): Promise<ExternalReference> {
-    const modalRef = this.modalService.open(LinkCreateModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(LinkCreateModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as LinkCreateModalComponent;
     instance.codeScheme = codeScheme;
     instance.languageCodes = languageCodes;

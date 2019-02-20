@@ -74,7 +74,7 @@ export class ExtensionImportModalService {
   }
 
   public open(codeScheme: CodeScheme): Promise<boolean> {
-    const modalRef = this.modalService.open(ExtensionsImportModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(ExtensionsImportModalComponent, {size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as ExtensionsImportModalComponent;
     instance.codeScheme = codeScheme;
     return modalRef.result;

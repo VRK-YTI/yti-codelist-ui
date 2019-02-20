@@ -77,7 +77,7 @@ export class MembersImportModalService {
   }
 
   public open(extension: Extension): Promise<boolean> {
-    const modalRef = this.modalService.open(MembersImportModalComponent, {size: 'sm'});
+    const modalRef = this.modalService.open(MembersImportModalComponent, {size: 'sm', backdrop: 'static', keyboard: false});
     const instance = modalRef.componentInstance as MembersImportModalComponent;
     instance.extension = extension;
     return modalRef.result;

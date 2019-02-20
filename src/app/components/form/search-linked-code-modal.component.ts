@@ -178,7 +178,7 @@ export class SearchLinkedCodeModalService {
                 restrictCodeIds: string[],
                 useUILanguage: boolean = false): Promise<Code> {
 
-    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
     instance.codes$ = codes$;
     instance.titleLabel = titleLabel;
@@ -194,7 +194,7 @@ export class SearchLinkedCodeModalService {
                       restrictCodeIds: string[],
                       useUILanguage: boolean = false): Promise<Code> {
 
-    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm' });
+    const modalRef = this.modalService.open(SearchLinkedCodeModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SearchLinkedCodeModalComponent;
     instance.codeSchemes = codeSchemes;
     instance.titleLabel = titleLabel;
