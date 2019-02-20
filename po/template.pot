@@ -305,6 +305,9 @@ msgstr ""
 msgid "Import code list"
 msgstr ""
 
+msgid "Cumulative code list"
+msgstr ""
+
 msgid "Default code"
 msgstr ""
 
@@ -821,6 +824,9 @@ msgstr ""
 msgid "INFO_TEXT_SUBCODESCHEME"
 msgstr ""
 
+msgid "INFO_TEXT_CUMULATIVE"
+msgstr ""
+
 msgid "INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER"
 msgstr ""
 
@@ -830,7 +836,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
 
 msgid "Front page"
@@ -1087,10 +1093,10 @@ msgstr ""
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"

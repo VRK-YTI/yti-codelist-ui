@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-02-20 13:54+0200\n"
+"PO-Revision-Date: 2019-02-20 16:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -312,6 +312,9 @@ msgid "Registry for the code list"
 msgstr ""
 
 msgid "Import code list"
+msgstr ""
+
+msgid "Cumulative code list"
 msgstr ""
 
 msgid "Default code"
@@ -898,6 +901,11 @@ msgstr ""
 msgid "INFO_TEXT_SUBCODESCHEME"
 msgstr "External code list that relates to this code"
 
+msgid "INFO_TEXT_CUMULATIVE"
+msgstr ""
+"A cumulative code list does not allow deletion of codes from any of the "
+"versions."
+
 msgid "INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER"
 msgstr "Choose the code for this member from the Code lists of this extension."
 
@@ -911,10 +919,9 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will "
 "define the hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
-"Cyclic dependency in member linking. Please ensure that the chained members "
-"are not linked to each in a cyclic manner."
+"Extension cannot be linked to the same code list which it is attached to."
 
 msgid "Front page"
 msgstr ""
@@ -1196,12 +1203,13 @@ msgstr ""
 "Registry contains code lists. Please remove code lists first before deleting "
 "registry."
 
+msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+"Cyclic dependency in member linking. Please ensure that the chained members "
+"are not linked to each in a cyclic manner."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
-msgstr ""
-"Extension cannot be linked to the same code list which it is attached to."
 
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr "PropertyType cannot be changed when editing extension."
