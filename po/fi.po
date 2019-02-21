@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-02-20 16:43+0200\n"
+"PO-Revision-Date: 2019-02-21 11:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1242,6 +1242,9 @@ msgstr "Tätä koodistoa ei voi poistaa."
 
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Tätä koodia ei voi poistaa."
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Koodien maksimi hierarkkinen taso ylittyi."
