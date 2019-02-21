@@ -36,6 +36,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   pageTitle = 'Create code list';
   cloning = false;
   allLanguageCodes: CodePlain[];
+  originalCodeScheme: CodeScheme;
 
   codeSchemeForm = new FormGroup({
     newVersionEmpty: new FormControl('false', Validators.required),
@@ -90,6 +91,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
         this.codeRegistriesLoaded = true; // when cloning, no registries are needed, need to fake loading is ready
         this.dataService.getCodeSchemeWithUuid(this.uuidOfOriginalCodeSchemeIfCloning).subscribe(next => {
           const originalCodeScheme: CodeScheme = next;
+          this.originalCodeScheme = next;
           this.codeSchemeForm.patchValue({ prefLabel: originalCodeScheme.prefLabel });
           this.codeSchemeForm.patchValue({ codeValue: originalCodeScheme.codeValue });
           this.codeSchemeForm.patchValue({ description: originalCodeScheme.description });
@@ -109,9 +111,11 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
           this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
           this.codeSchemeForm.patchValue({ organizations: originalCodeScheme.organizations });
-          this.codeSchemeForm.patchValue({ cumulative: originalCodeScheme.cumulative });
           if (originalCodeScheme.cumulative === true) {
-            // TODO somehow make the UI element unchangeable, has to always be true if previous version was too
+            this.codeSchemeForm.patchValue({ cumulative: true });
+            this.codeSchemeForm.patchValue({ newVersionEmpty: false }); // when cloning a cumulative codelist, never allow empty. The choice is hidden in UI as well.
+          } else {
+            this.codeSchemeForm.patchValue({ cumulative: false });
           }
           this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
             const allInfoDomains = next2;

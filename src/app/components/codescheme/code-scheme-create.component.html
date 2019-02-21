@@ -27,7 +27,7 @@
                               [formControlName]="'codeRegistry'"></app-registry-input>
         </ng-container>
 
-        <ng-container *ngIf="cloning">
+        <ng-container *ngIf="cloning && !originalCodeScheme.cumulative">
           <dl style="margin-bottom: 0px">
             <dt>
               <label translate>The content imported to the new version</label>
@@ -56,10 +56,10 @@
           </div>
           <br/>
         </ng-container>
-        <ng-container *ngIf="!cloning && showUnfinishedFeature">
+        <ng-container *ngIf="showUnfinishedFeature && (!originalCodeScheme || !originalCodeScheme.cumulative)">
           <div class="form-check">
             <label class="form-check-label">
-              <input id="create_new_codescheme_as_cumulative" (click)="toggleCumulative()"
+              <input id="create_new_codescheme_as_cumulative"
                      class="form-check-input"
                      type="checkbox"
                      value="false"
