@@ -6,7 +6,8 @@ export interface ApiResponseType {
   meta: {
     message: string,
     code: number,
-    entityIdentifier?: string
+    entityIdentifier?: string,
+    nonTranslatableMessage?: string
   };
 }
 
