@@ -27,7 +27,7 @@
                               [formControlName]="'codeRegistry'"></app-registry-input>
         </ng-container>
 
-        <ng-container *ngIf="cloning && !originalCodeScheme.cumulative">
+        <ng-container *ngIf="cloning && originalCodeScheme && !originalCodeScheme.cumulative">
           <dl style="margin-bottom: 0px">
             <dt>
               <label translate>The content imported to the new version</label>

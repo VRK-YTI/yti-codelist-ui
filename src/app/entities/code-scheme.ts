@@ -160,8 +160,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   }
 
   serialize(): CodeSchemeType {
-
-    console.log('when sei start this.cumulative is ', this.cumulative);
+    
     return {
       id: this.id,
       uri: this.uri,
