@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-04 14:45+0200\n"
+"PO-Revision-Date: 2019-03-05 14:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -315,6 +315,9 @@ msgid "Import code list"
 msgstr ""
 
 msgid "Cumulative code list"
+msgstr ""
+
+msgid "cumulative"
 msgstr ""
 
 msgid "Default code"
@@ -887,6 +890,12 @@ msgstr ""
 "A cumulative code list does not allow deletion of codes from any of the versions. The "
 "existence of codes is guaranteed from one version to the next."
 
+msgid "INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE"
+msgstr ""
+"A cumulative code list does not allow deletion of codes from any of the versions. The "
+"existence of codes is guaranteed from one version to the next. If a code list is marked "
+"as cumulative, it or any of it's future versions can never be marked as non-cumulative."
+
 msgid "INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER"
 msgstr "Choose the code for this member from the Code lists of this extension."
 
@@ -900,8 +909,10 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
-msgstr "PropertyType cannot be changed when editing extension."
+msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgstr ""
+"Code list did not have any organizations linked to it. Please add at least one "
+"organization and try again."
 
 msgid "Front page"
 msgstr ""
@@ -1173,13 +1184,11 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr "Extension cannot be linked to the same code list which it is attached to."
 
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
+msgstr "PropertyType cannot be changed when editing extension."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
-msgstr ""
-"Code list did not have any organizations linked to it. Please add at least one "
-"organization and try again."
 
 msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
 msgstr ""
@@ -1429,6 +1438,12 @@ msgstr ""
 
 msgid "extension"
 msgstr ""
+
+msgid "truecumulative"
+msgstr "Yes"
+
+msgid "falsecumulative"
+msgstr "No"
 
 msgid "externalReferenceExists"
 msgstr "Link is already in use in this code list."

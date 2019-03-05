@@ -28,6 +28,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   @Output() change = new EventEmitter<CodePlain[]>();
 
   infoDomains: Code[];
+  previousCodeScheme: CodeScheme;
+  codelistMarkedAsCumulative: boolean;
 
   codeSchemeForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -45,7 +47,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     validity: new FormControl(null, validDateRange),
     status: new FormControl(),
     conceptUriInVocabularies: new FormControl(''),
-    organizations: new FormControl([], [requiredList])
+    organizations: new FormControl([], [requiredList]),
+    cumulative: new FormControl()
   });
 
   cancelSubscription: Subscription;
@@ -74,6 +77,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   private reset() {
+
+    if (this.codeScheme.prevCodeschemeId) {
+      this.dataService.getCodeSchemeWithUuid(this.codeScheme.prevCodeschemeId).subscribe(next => {
+        this.previousCodeScheme = next;
+      })
+    }
+
     const { externalReferences, infoDomains, defaultCode, startDate, endDate, organizations, ...rest } = this.codeScheme;
 
     infoDomains.sort(comparingLocalizable<Code>(this.languageService, infoDomain => infoDomain.prefLabel));
@@ -143,5 +153,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   get showUnfinishedFeature(): boolean {
     return this.configurationService.showUnfinishedFeature;
+  }
+
+  toggleMarkCodelistAsCumulative() {
+    this.codelistMarkedAsCumulative = !this.codelistMarkedAsCumulative;
+    this.codeSchemeForm.patchValue({ cumulative: this.codelistMarkedAsCumulative });
   }
 }

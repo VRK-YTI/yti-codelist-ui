@@ -308,6 +308,9 @@ msgstr ""
 msgid "Cumulative code list"
 msgstr ""
 
+msgid "cumulative"
+msgstr ""
+
 msgid "Default code"
 msgstr ""
 
@@ -830,6 +833,9 @@ msgstr ""
 msgid "INFO_TEXT_CUMULATIVE_CREATION_PAGE"
 msgstr ""
 
+msgid "INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE"
+msgstr ""
+
 msgid "INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER"
 msgstr ""
 
@@ -839,7 +845,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
+msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
 msgstr ""
 
 msgid "Front page"
@@ -1102,10 +1108,10 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
@@ -1333,6 +1339,12 @@ msgid "missing members created."
 msgstr ""
 
 msgid "extension"
+msgstr ""
+
+msgid "truecumulative"
+msgstr ""
+
+msgid "falsecumulative"
 msgstr ""
 
 msgid "externalReferenceExists"
