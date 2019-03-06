@@ -3,7 +3,7 @@
   <ngb-tabset #secondaryTabSet="ngbTabset" class="col-md-12 exttabs">
 
     <ngb-tab *ngFor="let propertyExtensions of extensionsByType"
-             id="codelist_extension_{{ propertyExtensions.label | translateValue }}_tab">
+             id="codelist_extension_{{ propertyExtensions.label }}_tab">
       <ng-template ngbTabTitle>
         <span>{{propertyExtensions.label}}</span>
       </ng-template>

@@ -139,17 +139,5 @@ export function groupByType(translateService: TranslateService, exts: Extension[
   const mapNormalizedType = (pt: PropertyType) => requireDefined(propertyTypesByName.get(pt.localName));
 
   return Array.from(groupBy(exts, es => mapNormalizedType(requireDefined(es.propertyType))))
-    .map(([propertyType, extensions]) => ({ label: mapLocalNameToLabel(translateService, propertyType), extensions: extensions }));
-}
-
-export function mapLocalNameToLabel(translateService: TranslateService, propertyType: PropertyType): string {
-  if (propertyType.localName === 'calculationHierarchy') {
-    return translateService.instant('CALCULATIONHIERARCHIES');
-  } else if (propertyType.localName === 'definitionHierarchy') {
-    return translateService.instant('DEFINITIONHIERARCHIES');
-  } else if (propertyType.localName === 'crossReferenceList') {
-    return translateService.instant('CROSSREFERENCELISTS');
-  } else {
-    return propertyType.localName;
-  }
+    .map(([propertyType, extensions]) => ({ label: propertyType.localName, extensions: extensions }));
 }
