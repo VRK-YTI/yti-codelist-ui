@@ -11,7 +11,7 @@
 
   <div class="modal-sections">
 
-    <div class="pb-2">
+    <div class="fixed-height-section pb-2">
       <p translate>{{terminologyIntegrationModalInstructionText}}</p>
 
       <div class="input-group input-group-lg input-group-search">
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div style="padding-bottom: 8px">
+    <div class="fixed-height-section pb-2">
       <app-filter-dropdown class="d-inline-block" style="padding-right: 5px"
                            id="vocabulary_selection_dropdown"
                            [filterSubject]="vocabulary$"

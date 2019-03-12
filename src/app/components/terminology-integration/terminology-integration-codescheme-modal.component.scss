@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  .fixed-height-section {
+    flex: 0 0 auto;
+  }
 }
 
 .scrolling-full-height {
