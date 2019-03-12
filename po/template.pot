@@ -1263,6 +1263,9 @@ msgid ""
 "CODE_LIST"
 msgstr ""
 
+msgid "ERR_MSG_USER_MEMBER_LINKED_FROM_ANOTHER_EXTENSION"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
