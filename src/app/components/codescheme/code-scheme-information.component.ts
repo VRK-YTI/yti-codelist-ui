@@ -25,7 +25,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
   @Input() codeScheme: CodeScheme;
   @Input() languageCodes: CodePlain[];
-  @Output() change = new EventEmitter<CodePlain[]>();
+  @Output() changeLanguage = new EventEmitter<CodePlain[]>();
 
   infoDomains: Code[];
   previousCodeScheme: CodeScheme;
@@ -73,7 +73,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   }
 
   updateLanguages(codes: CodePlain[]) {
-    this.change.emit(codes);
+    this.changeLanguage.emit(codes);
   }
 
   private reset() {

@@ -353,7 +353,12 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   changeLanguages(codes: CodePlain[]) {
-    this.languageCodes = codes;
+    setTimeout(this.changeLanguagesAfterTimeout(codes), 0 );
+  }
+
+  //timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
+  changeLanguagesAfterTimeout(codes: CodePlain[]) {
+    this.languageCodes = codes
   }
 
   get showUnfinishedFeature(): boolean {
