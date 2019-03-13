@@ -845,7 +845,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
 msgstr ""
 
 msgid "Front page"
@@ -1111,10 +1111,10 @@ msgstr ""
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
@@ -1264,6 +1264,9 @@ msgid ""
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_LINKED_FROM_ANOTHER_EXTENSION"
+msgstr ""
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-12 14:39+0200\n"
+"PO-Revision-Date: 2019-03-13 11:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -933,10 +933,10 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
 msgstr ""
-"Koodistoon ei ole kytketty yhtään organisaatiota. Lisää vähintään yksi organisaatio ja "
-"kokeile uudelleen."
+"Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä "
+"seuraavissa resursseissa: {{ identifier }}"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1206,13 +1206,13 @@ msgstr "Laajennukseen ei voi liittää sitä koodistoa, jonka alaisuudessa se on
 msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
 msgstr "Laajennuksen tyyppiä ei voi vaihtaa muokkauksessa."
 
+msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgstr ""
+"Koodistoon ei ole kytketty yhtään organisaatiota. Lisää vähintään yksi organisaatio ja "
+"kokeile uudelleen."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
-msgstr ""
-"Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä "
-"seuraavissa resursseissa: {{ identifier }}"
 
 msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
@@ -1368,6 +1368,9 @@ msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_LINKED_FROM_ANOTHER_EXTENSION"
 msgstr "Jäsenen linkityksessä käytetty jäsen ei ole samasta laajennuksesta."
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
+msgstr "Jäsentä ei löydy UUID:llä: {{identifier}}"
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
