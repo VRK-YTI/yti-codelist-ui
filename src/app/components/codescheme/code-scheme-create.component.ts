@@ -69,8 +69,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private location: Location,
               private languageService: LanguageService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService,
-              private configurationService: ConfigurationService) {
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -266,9 +265,5 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
     this.codeSchemeForm.patchValue({ definition: concept.definition });
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
-  }
-
-  get showUnfinishedFeature(): boolean {
-    return this.configurationService.showUnfinishedFeature;
   }
 }

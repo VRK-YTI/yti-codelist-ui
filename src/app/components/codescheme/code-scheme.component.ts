@@ -56,8 +56,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private authorizationManager: AuthorizationManager,
               private codeschemeVariantModalService: CodeschemeVariantModalService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
-              private codeSchemeImportModalService: CodeSchemeImportModalService,
-              private configurationService: ConfigurationService) {
+              private codeSchemeImportModalService: CodeSchemeImportModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -359,9 +358,5 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   //timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
   changeLanguagesAfterTimeout(codes: CodePlain[]) {
     this.languageCodes = codes
-  }
-
-  get showUnfinishedFeature(): boolean {
-    return this.configurationService.showUnfinishedFeature;
   }
 }

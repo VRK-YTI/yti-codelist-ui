@@ -151,10 +151,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     return null;
   }
 
-  get showUnfinishedFeature(): boolean {
-    return this.configurationService.showUnfinishedFeature;
-  }
-
   toggleMarkCodelistAsCumulative() {
     this.codelistMarkedAsCumulative = !this.codelistMarkedAsCumulative;
     this.codeSchemeForm.patchValue({ cumulative: this.codelistMarkedAsCumulative });

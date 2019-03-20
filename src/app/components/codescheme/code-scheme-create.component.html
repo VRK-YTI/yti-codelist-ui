@@ -56,7 +56,7 @@
           </div>
           <br/>
         </ng-container>
-        <ng-container *ngIf="showUnfinishedFeature && (!originalCodeScheme || !originalCodeScheme.cumulative)">
+        <ng-container *ngIf="!originalCodeScheme || !originalCodeScheme.cumulative">
           <div class="form-check">
             <label class="form-check-label">
               <input id="create_new_codescheme_as_cumulative"

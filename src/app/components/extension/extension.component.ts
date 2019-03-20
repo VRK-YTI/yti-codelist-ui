@@ -237,8 +237,4 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   get showCrossReferenceListTab(): boolean {
     return this.extension.propertyType.localName === 'crossReferenceList';
   }
-
-  get showUnfinishedFeature(): boolean {
-    return this.configurationService.showUnfinishedFeature;
-  }
 }

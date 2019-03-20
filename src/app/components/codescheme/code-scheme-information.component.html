@@ -57,15 +57,14 @@
                                [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
                                [formControlName]="'organizations'"></app-organizations-input>
 
-      <app-literal *ngIf="!editing && showUnfinishedFeature"
+      <app-literal *ngIf="!editing"
                    [label]="'Cumulative code list' | translate"
                    [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"
                    [value]="codeScheme.cumulative + 'cumulative' | translate"></app-literal>
 
       <dl *ngIf="((!previousCodeScheme && !codeScheme.cumulative) ||
                                 (previousCodeScheme && !previousCodeScheme.cumulative && !codeScheme.cumulative))
-                                  && editing
-                                  && showUnfinishedFeature">
+                                  && editing">
         <dt>
           <label for="mark_codelist_cumulative_checkbox" translate>Cumulative code list</label>
           <app-information-symbol [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"></app-information-symbol>
