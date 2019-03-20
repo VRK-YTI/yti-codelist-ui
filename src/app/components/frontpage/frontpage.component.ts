@@ -245,4 +245,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   canCreateCodeScheme() {
     return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
   }
+
+  get showUnfinishedFeature(): boolean {
+    return this.configurationService.showUnfinishedFeature;
+  }
 }
