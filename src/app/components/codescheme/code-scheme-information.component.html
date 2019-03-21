@@ -62,6 +62,7 @@
                    [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"
                    [value]="codeScheme.cumulative + 'cumulative' | translate"></app-literal>
 
+      <div style="line-height: 25px">
       <dl *ngIf="((!previousCodeScheme && !codeScheme.cumulative) ||
                                 (previousCodeScheme && !previousCodeScheme.cumulative && !codeScheme.cumulative))
                                   && editing">
@@ -70,9 +71,10 @@
           <app-information-symbol [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"></app-information-symbol>
         </dt>
           <dd>
-            <input id="mark_codelist_cumulative_checkbox" type="checkbox" (click)="toggleMarkCodelistAsCumulative()" /> <label translate>Cumulative code list</label>
+            <input id="mark_codelist_cumulative_checkbox" type="checkbox" (click)="toggleMarkCodelistAsCumulative()" />&nbsp;<label style="vertical-align:2px" translate>Cumulative code list</label>
           </dd>
       </dl>
+      </div>
 
       <app-infodomains-input id="data_infodomains_input"
                                  [label]="'InfoDomain' | translate"
