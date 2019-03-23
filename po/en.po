@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-13 11:27+0200\n"
+"PO-Revision-Date: 2019-03-23 09:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -129,6 +129,12 @@ msgstr ""
 
 msgid "Status"
 msgstr ""
+
+msgid "theCodes"
+msgstr "Codes"
+
+msgid "theExtensions"
+msgstr "Extensions"
 
 msgid "All registries"
 msgstr ""
@@ -497,6 +503,9 @@ msgstr ""
 msgid "search results"
 msgstr ""
 
+msgid "extension"
+msgstr ""
+
 msgid "Frontpage long description"
 msgstr ""
 "The Reference Data tool is a technical platform for collecting and sharing common public "
@@ -521,7 +530,7 @@ msgid "Search did not find any code lists."
 msgstr ""
 
 msgid "Searchhits:"
-msgstr ""
+msgstr "Search hits:"
 
 msgid "Extension"
 msgstr ""
@@ -909,10 +918,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
-msgstr ""
-"Cannot delete code list as it or its codes are in use in the following resources: "
-"{{ identifier }}"
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
+msgstr "Cannot delete code as it is in use in the following resources: {{ identifier }}"
 
 msgid "Front page"
 msgstr ""
@@ -1192,11 +1199,13 @@ msgstr ""
 "Code list did not have any organizations linked to it. Please add at least one "
 "organization and try again."
 
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgstr ""
+"Cannot delete code list as it or its codes are in use in the following resources: "
+"{{ identifier }}"
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
-msgstr "Cannot delete code as it is in use in the following resources: {{ identifier }}"
 
 msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
 msgstr "Cannot delete code as it is the default code of the code list."
@@ -1440,9 +1449,6 @@ msgid "Please wait. This could take a while..."
 msgstr ""
 
 msgid "missing members created."
-msgstr ""
-
-msgid "extension"
 msgstr ""
 
 msgid "truecumulative"

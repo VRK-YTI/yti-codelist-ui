@@ -43,8 +43,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   lastCodeschemeId: string | null = null;
   allVersions: CodeSchemeListItem[] = [];
   organizations: Organization[];
-  searchHits: SearchHit[];
-  searchHitsMax5: SearchHit[];
+  searchHitsOfTheTypeCode: SearchHit[];
+  searchHitsOfTheTypeExtension: SearchHit[];
   cumulative: boolean;
 
   constructor(data: CodeSchemeType) {
@@ -97,8 +97,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       this.lastCodeschemeId = data.lastCodeschemeId;
     }
     this.organizations = (data.organizations || []).map(o => new Organization(o));
-    this.searchHits = (data.searchHits || []).map(sh => new SearchHit(sh));
-    this.searchHitsMax5 = this.searchHits.slice(0, 5);
+    this.searchHitsOfTheTypeCode = (data.searchHits || []).map(sh => new SearchHit(sh)).filter(sh => sh.type === 'code');
+    this.searchHitsOfTheTypeExtension = (data.searchHits || []).map(sh => new SearchHit(sh)).filter(sh => sh.type === 'extension');
     this.cumulative = data.cumulative;
   }
 
@@ -151,6 +151,14 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return results;
   }
 
+  get searchHitsMax5OfTheTypeCode() {
+    return this.searchHitsOfTheTypeCode.slice(0, 5);
+  }
+
+  get searchHitsMax5OfTheTypeExtension() {
+    return this.searchHitsOfTheTypeExtension.slice(0, 5);
+  }
+
   allowOrganizationEdit(): boolean {
     return true;
   }
@@ -192,7 +200,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       lastCodeschemeId: this.lastCodeschemeId,
       allVersions: this.allVersions.map(li => li.serialize()),
       organizations: this.organizations.map(o => o.serialize()),
-      searchHits: this.searchHits.map(sh => sh.serialize()),
+      searchHits: [], // this is not really a part of codescheme, never getting stored, so lets send nothing
       cumulative: this.cumulative
     };
   }

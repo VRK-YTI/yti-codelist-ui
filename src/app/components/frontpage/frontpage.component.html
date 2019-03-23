@@ -133,13 +133,18 @@
                 </li>
               </ul>
 
-              <span class="organization" *ngIf="showUnfinishedFeature && codeScheme.searchHitsMax5.length > 0" translate>Searchhits:</span>
+              <span class="badge badge-success" *ngIf="showUnfinishedFeature && (codeScheme.searchHitsMax5OfTheTypeCode.length > 0 ||
+                codeScheme.searchHitsMax5OfTheTypeExtension.length > 0)" translate>Searchhits:</span>
 
-              <ul class="organizations dot-separated-list" *ngIf="showUnfinishedFeature">
-                <li class="organization" *ngFor="let sh of codeScheme.searchHitsMax5">
-                   <a href="{{sh.uri}}">{{sh.type | translate}}: {{sh.prefLabel | translateValue}}</a>
-                </li>
-              </ul>
+              <div *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeCode.length > 0">
+                <app-searchhits-list [searchHitsCodes5]="codeScheme.searchHitsMax5OfTheTypeCode"
+                                     [searchHitsCodesAll]="codeScheme.searchHitsOfTheTypeCode"></app-searchhits-list>
+              </div>
+
+              <div *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeExtension.length > 0">
+                <app-searchhits-list [searchHitsExtensions5]="codeScheme.searchHitsMax5OfTheTypeExtension"
+                                     [searchHitsExtensionsAll]="codeScheme.searchHitsOfTheTypeExtension"></app-searchhits-list>
+              </div>
 
             </div>
           </div>

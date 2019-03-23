@@ -121,6 +121,12 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+msgid "theCodes"
+msgstr ""
+
+msgid "theExtensions"
+msgstr ""
+
 msgid "All registries"
 msgstr ""
 
@@ -488,6 +494,9 @@ msgstr ""
 msgid "search results"
 msgstr ""
 
+msgid "extension"
+msgstr ""
+
 msgid "Frontpage long description"
 msgstr ""
 
@@ -845,7 +854,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
 
 msgid "Front page"
@@ -1114,10 +1123,10 @@ msgstr ""
 msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
@@ -1342,9 +1351,6 @@ msgid "Please wait. This could take a while..."
 msgstr ""
 
 msgid "missing members created."
-msgstr ""
-
-msgid "extension"
 msgstr ""
 
 msgid "truecumulative"

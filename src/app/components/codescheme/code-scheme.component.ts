@@ -355,7 +355,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     setTimeout(this.changeLanguagesAfterTimeout(codes), 0 );
   }
 
-  //timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
+  // timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
   changeLanguagesAfterTimeout(codes: CodePlain[]) {
     this.languageCodes = codes
   }

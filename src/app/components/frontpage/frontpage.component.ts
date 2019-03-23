@@ -249,4 +249,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   get showUnfinishedFeature(): boolean {
     return this.configurationService.showUnfinishedFeature;
   }
+
+  getUriWithEnv(uri: string): string|null {
+    return this.configurationService.getUriWithEnv(uri);
+  }
 }

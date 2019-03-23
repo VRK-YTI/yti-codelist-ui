@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-13 11:27+0200\n"
+"PO-Revision-Date: 2019-03-23 08:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -129,6 +129,12 @@ msgstr "Ei jäseniä valittavaksi."
 
 msgid "Status"
 msgstr "Tila"
+
+msgid "theCodes"
+msgstr "Koodit"
+
+msgid "theExtensions"
+msgstr "Laajennukset"
 
 msgid "All registries"
 msgstr "Kaikki rekisterit"
@@ -505,6 +511,9 @@ msgstr "hakutulos"
 
 msgid "search results"
 msgstr "hakutulosta"
+
+msgid "extension"
+msgstr "laajennus"
 
 msgid "Frontpage long description"
 msgstr ""
@@ -933,10 +942,10 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
-"Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä "
-"seuraavissa resursseissa: {{ identifier }}"
+"Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: "
+"{{ identifier }}"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1211,13 +1220,13 @@ msgstr ""
 "Koodistoon ei ole kytketty yhtään organisaatiota. Lisää vähintään yksi organisaatio ja "
 "kokeile uudelleen."
 
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgstr ""
+"Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä "
+"seuraavissa resursseissa: {{ identifier }}"
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
-msgstr ""
-"Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: "
-"{{ identifier }}"
 
 msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
 msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
@@ -1459,9 +1468,6 @@ msgstr "Ole hyvä ja odota. Mahdollisesti pitkäkestoinen prosessointi käynniss
 
 msgid "missing members created."
 msgstr " puuttunutta jäsentä luotu."
-
-msgid "extension"
-msgstr "laajennus"
 
 msgid "truecumulative"
 msgstr "Kyllä"
