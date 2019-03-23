@@ -6,11 +6,17 @@ export class SearchHit {
   type: string;
   prefLabel: Localizable = {};
   uri: string;
+  entityCodeValue: string;
+  codeSchemeCodeValue: string;
+  codeRegistryCodeValue: string;
 
   constructor(data: SearchHitType) {
     this.type = data.type;
     this.prefLabel = data.prefLabel || {};
     this.uri = data.uri;
+    this.entityCodeValue = data.entityCodeValue; // Code, Extension etc. codeValue
+    this.codeSchemeCodeValue = data.codeSchemeCodeValue;
+    this.codeRegistryCodeValue = data.codeRegistryCodeValue;
   }
 
   get idIdentifier(): string {
@@ -21,7 +27,10 @@ export class SearchHit {
     return {
       type: this.type,
       prefLabel: { ...this.prefLabel },
-      uri: this.uri
+      uri: this.uri,
+      entityCodeValue: this.entityCodeValue,
+      codeSchemeCodeValue: this.codeSchemeCodeValue,
+      codeRegistryCodeValue: this.codeRegistryCodeValue
     };
   }
 

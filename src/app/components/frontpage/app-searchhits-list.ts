@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SearchHit } from '../../entities/search-hit';
 import { ConfigurationService } from '../../services/configuration.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchhits-list',
@@ -12,7 +13,7 @@ import { ConfigurationService } from '../../services/configuration.service';
         <span class="badge badge-info">{{'theCodes' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsCodes5 && searchHitsCodes5.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsCodes5">
-            <a href="#">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
           </li>
           <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
             <a (click)="onClickCodes($event)">...</a>
@@ -24,7 +25,7 @@ import { ConfigurationService } from '../../services/configuration.service';
         <span class="badge badge-info">{{'theCodes' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsCodesAll">
-            <a href="#">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
           </li>
           <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
             <a (click)="onClickCodes($event)">...</a>
@@ -40,7 +41,7 @@ import { ConfigurationService } from '../../services/configuration.service';
         <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensions5 && searchHitsExtensions5.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsExtensions5">
-            <a href="#">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
           </li>
           <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
             <a (click)="onClickExtensions($event)">...</a>
@@ -52,7 +53,7 @@ import { ConfigurationService } from '../../services/configuration.service';
         <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsExtensionsAll">
-            <a href="#">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
           </li>
           <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
             <a (click)="onClickExtensions($event)">...</a>
@@ -75,9 +76,10 @@ export class SearchHitsListComponent {
    * preventDefault). This should enable use inside clickable greater containers. However, there may be side effects, so default is false.
    * Use only when needed.
    */
-  @Input() captureClick: boolean = false;
+  @Input() captureClick = false;
 
-  constructor(private configurationService: ConfigurationService) {
+  constructor(private configurationService: ConfigurationService,
+              private router: Router) {
   }
 
   onClickCodes($event: MouseEvent) {
@@ -98,5 +100,35 @@ export class SearchHitsListComponent {
 
   getUriWithEnv(uri: string): string | null {
     return this.configurationService.getUriWithEnv(uri);
+  }
+
+  getRouteToCode(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string): any[] {
+    return [
+      'code',
+      {
+        registryCode: codeRegistryCodeValue,
+        schemeCode: codeSchemeCodeValue,
+        codeCode: entityCodeValue
+      }
+    ];
+  }
+
+  getRouteToExtension(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string): any[] {
+    return [
+      'extension',
+      {
+        registryCode: codeRegistryCodeValue,
+        schemeCode: codeSchemeCodeValue,
+        extensionCode: entityCodeValue
+      }
+    ];
+  }
+
+  navigateToCode(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
+    this.router.navigate(this.getRouteToCode(entityCodeValue, codeSchemeCodeValue, codeRegistryCodeValue));
+  }
+
+  navigateToExtension(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
+    this.router.navigate(this.getRouteToExtension(entityCodeValue, codeSchemeCodeValue, codeRegistryCodeValue));
   }
 }

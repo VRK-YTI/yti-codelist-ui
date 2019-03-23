@@ -260,4 +260,7 @@ export interface SearchHitType {
   type: string;
   prefLabel: Localizable;
   uri: string;
+  entityCodeValue: string;
+  codeSchemeCodeValue: string;
+  codeRegistryCodeValue: string;
 }
