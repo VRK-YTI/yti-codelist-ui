@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-23 08:49+0200\n"
+"PO-Revision-Date: 2019-03-25 12:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -377,8 +377,8 @@ msgstr "Luo DPM typed domain"
 msgid "Import extensions"
 msgstr "Tuo laajennuksia"
 
-msgid "Delete code list"
-msgstr "Poista koodisto"
+msgid "{{deleteCodeSchemeButtonTitle}}"
+msgstr ""
 
 msgid "Export"
 msgstr "Lataa"
@@ -511,9 +511,6 @@ msgstr "hakutulos"
 
 msgid "search results"
 msgstr "hakutulosta"
-
-msgid "extension"
-msgstr "laajennus"
 
 msgid "Frontpage long description"
 msgstr ""
@@ -942,10 +939,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
-msgstr ""
-"Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: "
-"{{ identifier }}"
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1225,11 +1220,13 @@ msgstr ""
 "Koodistoa ei voi poistaa, koska joko koodisto tai sen koodit on linkitettynä käytössä "
 "seuraavissa resursseissa: {{ identifier }}"
 
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
+msgstr ""
+"Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: "
+"{{ identifier }}"
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
-msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Tätä koodistoa ei voi poistaa."
@@ -1469,11 +1466,20 @@ msgstr "Ole hyvä ja odota. Mahdollisesti pitkäkestoinen prosessointi käynniss
 msgid "missing members created."
 msgstr " puuttunutta jäsentä luotu."
 
+msgid "extension"
+msgstr "laajennus"
+
 msgid "truecumulative"
 msgstr "Kyllä"
 
 msgid "falsecumulative"
 msgstr "Ei"
+
+msgid "Delete code list version"
+msgstr "Poista koodiston versio"
+
+msgid "Delete code list"
+msgstr "Poista koodisto"
 
 msgid "externalReferenceExists"
 msgstr "Linkki on jo käytössä tässä koodistossa."

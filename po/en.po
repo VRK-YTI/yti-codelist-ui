@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-25 12:42+0200\n"
+"PO-Revision-Date: 2019-03-25 13:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -368,7 +368,7 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
-msgid "Delete code list"
+msgid "{{deleteCodeSchemeButtonTitle}}"
 msgstr ""
 
 msgid "Export"
@@ -501,9 +501,6 @@ msgid "search result"
 msgstr ""
 
 msgid "search results"
-msgstr ""
-
-msgid "extension"
 msgstr ""
 
 msgid "Frontpage long description"
@@ -918,8 +915,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
-msgstr "Cannot delete code as it is in use in the following resources: {{ identifier }}"
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgstr "Cannot delete code as it is the default code of the code list."
 
 msgid "Front page"
 msgstr ""
@@ -1204,11 +1201,11 @@ msgstr ""
 "Cannot delete code list as it or its codes are in use in the following resources: "
 "{{ identifier }}"
 
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
+msgstr "Cannot delete code as it is in use in the following resources: {{ identifier }}"
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
-msgstr "Cannot delete code as it is the default code of the code list."
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code list."
@@ -1451,11 +1448,20 @@ msgstr ""
 msgid "missing members created."
 msgstr ""
 
+msgid "extension"
+msgstr ""
+
 msgid "truecumulative"
 msgstr "Yes"
 
 msgid "falsecumulative"
 msgstr "No"
+
+msgid "Delete code list version"
+msgstr ""
+
+msgid "Delete code list"
+msgstr ""
 
 msgid "externalReferenceExists"
 msgstr "Link is already in use in this code list."

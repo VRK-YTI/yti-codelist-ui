@@ -42,6 +42,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   forbiddenVariantSearchResultIds: string[] = [];
   deleting = false;
   languageCodes: CodePlain[] | null;
+  deleteCodeSchemeButtonTitle = 'Delete code list';
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -75,6 +76,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.codeScheme.variantsOfThisCodeScheme.sort(comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
         item.prefLabel ? item.prefLabel : {}));
       this.locationService.atCodeSchemePage(codeScheme);
+      if (this.codeScheme.allVersions.length > 0) {
+        this.deleteCodeSchemeButtonTitle = 'Delete code list version';
+      }
     });
 
     this.dataService.getPlainCodes(registryCodeValue, schemeCodeValue).subscribe(codes => {

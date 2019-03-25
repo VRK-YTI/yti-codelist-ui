@@ -359,7 +359,7 @@ msgstr ""
 msgid "Import extensions"
 msgstr ""
 
-msgid "Delete code list"
+msgid "{{deleteCodeSchemeButtonTitle}}"
 msgstr ""
 
 msgid "Export"
@@ -492,9 +492,6 @@ msgid "search result"
 msgstr ""
 
 msgid "search results"
-msgstr ""
-
-msgid "extension"
 msgstr ""
 
 msgid "Frontpage long description"
@@ -854,7 +851,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
 msgstr ""
 
 msgid "Front page"
@@ -1126,10 +1123,10 @@ msgstr ""
 msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
@@ -1353,10 +1350,19 @@ msgstr ""
 msgid "missing members created."
 msgstr ""
 
+msgid "extension"
+msgstr ""
+
 msgid "truecumulative"
 msgstr ""
 
 msgid "falsecumulative"
+msgstr ""
+
+msgid "Delete code list version"
+msgstr ""
+
+msgid "Delete code list"
 msgstr ""
 
 msgid "externalReferenceExists"
