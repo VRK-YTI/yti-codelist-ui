@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theCodes' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsCodes5 && searchHitsCodes5.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsCodes5">
-            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
           </li>
           <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
             <a (click)="onClickCodes($event)">...</a>
@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theCodes' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsCodesAll">
-            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
           </li>
           <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
             <a (click)="onClickCodes($event)">...</a>
@@ -41,7 +41,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensions5 && searchHitsExtensions5.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsExtensions5">
-            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
           </li>
           <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
             <a (click)="onClickExtensions($event)">...</a>
@@ -53,7 +53,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsExtensionsAll">
-            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue}}</a>
+            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
           </li>
           <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
             <a (click)="onClickExtensions($event)">...</a>
