@@ -93,6 +93,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   refreshCodes() {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
+      if (codes.length > 0) {
+        this.tabSet.activeId = 'codelist_codes_tab';
+      }
     });
   }
 
