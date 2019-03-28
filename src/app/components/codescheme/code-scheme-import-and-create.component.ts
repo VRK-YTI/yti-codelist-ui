@@ -20,7 +20,7 @@ export class CodeSchemeImportAndCreateComponent implements OnInit {
   }
 
   importFromFile() {
-    this.codeSchemeImportModalService.open(false, null);
+    this.codeSchemeImportModalService.open(false, false, null);
   }
 
   createNewCodeScheme() {

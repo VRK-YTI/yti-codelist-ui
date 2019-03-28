@@ -305,7 +305,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   createANewVersionOfThisCodeSchemeFromFile() {
-    this.codeSchemeImportModalService.open(true, this.codeScheme);
+    this.codeSchemeImportModalService.open(true, false, this.codeScheme);
+  }
+
+  updateCodeSchemeFromFile() {
+    this.codeSchemeImportModalService.open(false, true, this.codeScheme)
+      .then(codeScheme => this.router.navigate(['re'], { skipLocationChange: true }))
+        .then(() => this.router.navigate(this.codeScheme.route));
   }
 
   reloadCodeScheme() {

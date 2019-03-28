@@ -39,6 +39,11 @@
                   class="dropdown-item"
                   (click)="createANewVersionOfThisCodeSchemeFromFile()"
                   translate>Create a new version from file</button>
+          <button id="update_codelist_from_file_button"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="updateCodeSchemeFromFile()"
+                  translate>Update code list</button>
           <button id="attach_variant_button"
                   *ngIf="canAttachOrDetachAVariant"
                   type="button"

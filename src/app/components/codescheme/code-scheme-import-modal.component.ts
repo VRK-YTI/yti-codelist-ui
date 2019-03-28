@@ -21,7 +21,8 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
   uploading = false;
   codeRegistriesLoaded = false;
   creatingNewCodeSchemeVersion = false;
-  originalCodeSchemeIfCreatingNewVersion: CodeScheme | null;
+  originalCodeScheme: CodeScheme | null;
+  updatingExistingCodeScheme = false;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -33,8 +34,8 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    if (this.creatingNewCodeSchemeVersion && this.originalCodeSchemeIfCreatingNewVersion != null) {
-      this.codeRegistry = this.originalCodeSchemeIfCreatingNewVersion.codeRegistry;
+    if ((this.creatingNewCodeSchemeVersion || this.updatingExistingCodeScheme) && this.originalCodeScheme != null) {
+      this.codeRegistry = this.originalCodeScheme.codeRegistry;
     }
     this.codeRegistriesLoaded = true;
   }
@@ -77,8 +78,8 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
         if (this.creatingNewCodeSchemeVersion && !validationPassedForNewCodeVersionCreation) {
           okToImportFromVersionPerspective = false;
         }
-        if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective && this.originalCodeSchemeIfCreatingNewVersion != null) {
-          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeSchemeIfCreatingNewVersion.id).subscribe(codeSchemes => {
+        if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective && this.originalCodeScheme != null) {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeScheme.id).subscribe(codeSchemes => {
             if (this.creatingNewCodeSchemeVersion) {
               this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(codeSchemes[0].route));
               this.modal.close(false);
@@ -136,10 +137,12 @@ export class CodeSchemeImportModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(creatingNewCodeSchemeVersion: boolean = false, originalCodeSchemeIfCreatingNewVersion: CodeScheme|null): void {
+  public open(creatingNewCodeSchemeVersion: boolean = false, updatingExistingCodeScheme: boolean = false, originalCodeScheme: CodeScheme|null): Promise<CodeScheme> {
     const modalRef = this.modalService.open(CodeSchemeImportModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as CodeSchemeImportModalComponent;
     instance.creatingNewCodeSchemeVersion = creatingNewCodeSchemeVersion;
-    instance.originalCodeSchemeIfCreatingNewVersion = originalCodeSchemeIfCreatingNewVersion;
+    instance.updatingExistingCodeScheme = updatingExistingCodeScheme;
+    instance.originalCodeScheme = originalCodeScheme;
+    return modalRef.result;
   }
 }

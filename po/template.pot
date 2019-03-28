@@ -332,6 +332,9 @@ msgstr ""
 msgid "Create a new version from file"
 msgstr ""
 
+msgid "Update code list"
+msgstr ""
+
 msgid "Attach variant to code list"
 msgstr ""
 
