@@ -32,8 +32,13 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   @Input() updatingExistingEntity = true;
   @Input() targetEntityKind: string; // code or codescheme
 
-  vocabularyOptions: FilterOptions<Vocabulary>;
-  vocabulary$ = new BehaviorSubject<Vocabulary | null>(null);
+  // vocabularyOptions: FilterOptions<Vocabulary>; TODO tässä vielä näkyy vanhaa tapaa tavallaan (ehkä) selventämässä (ja siis tähän sijoitukset myös alempana)
+  vocabularyOptionsForNgSelect: Array<any>;
+  vocabulary$ = new BehaviorSubject<Vocabulary | null | undefined>(null);
+  vocabulariesSortedGlobal = Array<Vocabulary>();
+  chosenVocabularyId: string;
+  chosenVocabularyPrefLabel: Localizable | null;
+  chosenVocabularyStatus: string | null;
   statusOptions: FilterOptions<Status>;
   status$ = new BehaviorSubject<Status | null>(null);
   loading = false;
@@ -59,7 +64,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   ngOnInit() {
 
-    combineLatest(this.vocabulary$, this.debouncedSearch$, this.status$)
+    combineLatest(this.vocabulary$ , this.debouncedSearch$, this.status$)
       .subscribe(([vocabulary, search, status]) => {
 
         if (!search) {
@@ -89,18 +94,32 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         return 0;
       });
 
-      this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
+      this.vocabulariesSortedGlobal = vocabulariesSorted;
+      /*this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
           value: voc,
           name: () => voc ? this.languageService.translate(voc.prefLabel, false) + ( voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
             : this.translateService.instant('All vocabularies'),
           idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
             : 'all_selected'
         })
+      );*/
+
+      this.vocabularyOptionsForNgSelect = vocabulariesSorted.map(voc => ({
+          label: voc ? this.languageService.translate(voc.prefLabel, false) + ( voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
+            : this.translateService.instant('All vocabularies'),
+          value: voc ? voc.id : 'all_selected'
+        })
       );
 
     }, error => {
-      this.vocabularyOptions = [
-        { value: null, name: () => this.translateService.instant('All vocabularies') }];
+/*      this.vocabularyOptions = [
+        { value: null, name: () => this.translateService.instant('All vocabularies') }];*/
+
+      this.vocabularyOptionsForNgSelect = [{
+          label: this.translateService.instant('All vocabularies'),
+          value: 'all_selected'
+        }];
+
       this.codeListErrorModalService.openSubmitError(error);
     });
 
@@ -138,6 +157,25 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     this.searchInput.nativeElement.focus();
   }
 
+  handleVocabularySelection(value: any) {
+    if ((value && value.value === 'all_selected') || !value) {
+      this.chosenVocabularyId = '';
+      this.chosenVocabularyPrefLabel = null;
+      this.chosenVocabularyStatus = null;
+    } else if (value) {
+      this.chosenVocabularyId = value.value;
+      this.chosenVocabularyPrefLabel = value.label;
+      this.chosenVocabularyStatus = value.status;
+    }
+
+    const localChosenVocabularyId = this.chosenVocabularyId; // the find method below  seems to require this
+    const theChosenVocabulary = this.vocabulariesSortedGlobal.find(function(element) {
+      return element.id === localChosenVocabularyId;
+    });
+
+    this.vocabulary$.next(theChosenVocabulary);
+  }
+
   hasSearchResults() {
     return this.searchResults.length > 0;
   }
@@ -163,14 +201,14 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   }
 
   canSuggest() {
-    const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
+    const vocabulary: Vocabulary | null | undefined = this.vocabulary$.getValue();
     const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
     return vocabularyId !== '' && this.search$.getValue() !== '';
   }
 
   suggestAConcept(localizer: Localizer) {
 
-    const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
+    const vocabulary: Vocabulary | null | undefined = this.vocabulary$.getValue();
     const vocabularyName: string = vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
 
     const conceptName: Localizable = { [this.languageService.language]: this.search$.getValue() };

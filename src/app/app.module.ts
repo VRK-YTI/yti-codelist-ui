@@ -114,7 +114,7 @@ import { CodeSchemeSingleInputComponent } from './components/form/code-scheme-si
 import { InlineClipboardComponent } from './components/form/inline-clipboard';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AlertModalComponent, AlertModalService } from './components/common/alert-modal.service';
-// import { SelectModule } from 'ng2-select'; TODO this will possibly get cleared after some more experimentation
+import { NgSelectModule } from '@ng-select/ng-select';
 import { SearchHitsListComponent } from './components/frontpage/app-searchhits-list';
 
 function removeEmptyValues(obj: {}) {
@@ -315,8 +315,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     }),
     YtiCommonModule,
     LazyForModule,
-    ClipboardModule
-    // ,SelectModule
+    ClipboardModule,
+    NgSelectModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: initApp, deps: [ConfigurationService], multi: true },

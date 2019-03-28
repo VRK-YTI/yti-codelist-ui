@@ -8,7 +8,6 @@
 </div>
 
 <div class="modal-body full-height">
-
   <div class="modal-sections">
 
     <div class="fixed-height-section pb-2">
@@ -25,14 +24,24 @@
     </div>
 
     <div class="fixed-height-section pb-2">
+      <!--
       <app-filter-dropdown class="d-inline-block" style="padding-right: 5px"
                            id="vocabulary_selection_dropdown"
                            [filterSubject]="vocabulary$"
-                           [options]="vocabularyOptions"></app-filter-dropdown>
+                           [options]="vocabularyOptions"></app-filter-dropdown> -->
       <app-filter-dropdown class="d-inline-block"
                            id="status_selection_dropdown"
                            [filterSubject]="status$"
                            [options]="statusOptions"></app-filter-dropdown>
+
+      <!-- TODO uusi komponentti pitää myös sijoitella oikein  -->
+      <ng-select [items]="vocabularyOptionsForNgSelect"
+                 [selectOnTab]="true"
+                 bindValue="value"
+                 class="custom"
+                 (change)="handleVocabularySelection($event)">
+      </ng-select>
+
     </div>
 
     <div class="content-box scrolling-full-height">

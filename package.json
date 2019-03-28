@@ -25,6 +25,7 @@
     "@angular/router": "^6.1.0",
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "@ng-bootstrap/ng-bootstrap": "2.2.2",
+    "@ng-select/ng-select": "^2.16.2",
     "@ngx-translate/core": "^10.0.2",
     "@types/source-map": "^0.5.7",
     "angular-lazy-for": "https://github.com/skunkbadger/angular-lazy-for",
@@ -37,7 +38,7 @@
     "ngx-infinite-scroll": "6.0.1",
     "rxjs": "^6.0.0",
     "simple-line-icons": "^2.4.1",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#f4d023bed806180a892257e0ca070f3a622d4199",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#b4710500c5ac6ec6b9ce3bd2517fa294d9c4a938",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
