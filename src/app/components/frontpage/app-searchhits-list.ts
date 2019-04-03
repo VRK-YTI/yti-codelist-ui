@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { SearchHit } from '../../entities/search-hit';
 import { ConfigurationService } from '../../services/configuration.service';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-searchhits-list',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theCodes' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsCodes5 && searchHitsCodes5.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsCodes5">
-            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
+            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
           </li>
           <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
             <a (click)="onClickCodes($event)">...</a>
@@ -25,7 +26,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theCodes' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsCodesAll">
-            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
+            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
           </li>
           <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
             <a (click)="onClickCodes($event)">...</a>
@@ -41,7 +42,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensions5 && searchHitsExtensions5.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsExtensions5">
-            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
+            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
           </li>
           <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
             <a (click)="onClickExtensions($event)">...</a>
@@ -53,7 +54,7 @@ import { Router } from '@angular/router';
         <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
         <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
           <li class="organization" *ngFor="let sh of searchHitsExtensionsAll">
-            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{sh.prefLabel | translateValue:true}}</a>
+            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
           </li>
           <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
             <a (click)="onClickExtensions($event)">...</a>
@@ -79,7 +80,8 @@ export class SearchHitsListComponent {
   @Input() captureClick = false;
 
   constructor(private configurationService: ConfigurationService,
-              private router: Router) {
+              private router: Router,
+              public languageService: LanguageService) {
   }
 
   onClickCodes($event: MouseEvent) {
@@ -130,5 +132,9 @@ export class SearchHitsListComponent {
 
   navigateToExtension(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
     this.router.navigate(this.getRouteToExtension(entityCodeValue, codeSchemeCodeValue, codeRegistryCodeValue));
+  }
+
+  getSearchHitLabelForScreen(searchHit: SearchHit): string {
+    return Object.keys(searchHit.prefLabel).length > 0 ? this.languageService.translate(searchHit.prefLabel) : searchHit.entityCodeValue;
   }
 }
