@@ -135,6 +135,6 @@ export class SearchHitsListComponent {
   }
 
   getSearchHitLabelForScreen(searchHit: SearchHit): string {
-    return Object.keys(searchHit.prefLabel).length > 0 ? this.languageService.translate(searchHit.prefLabel) : searchHit.entityCodeValue;
+    return Object.keys(searchHit.prefLabel).length > 0 ? this.languageService.translate(searchHit.prefLabel, true) : searchHit.entityCodeValue;
   }
 }
