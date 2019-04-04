@@ -1278,6 +1278,11 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
 msgstr ""
 
+msgid ""
+"ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_"
+"CODESCHEME"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 

@@ -110,23 +110,46 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
         this.errorModalService.openSubmitError(error);
       });
     } else {
-      if (this.file != null && this.codeRegistry != null) {
-        this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, '').subscribe(codeSchemes => {
-          if (codeSchemes.length === 1) {
-            this.router.navigate(codeSchemes[0].route);
-            this.modal.close(false);
-          } else if (codeSchemes.length > 1) {
-            this.router.navigate(['frontpage']);
-            this.modal.close(false);
-          }
-        }, error => {
-          this.uploading = false;
-          this.errorModalService.openSubmitError(error);
-        });
-      } else {
+
+      if (this.updatingExistingCodeScheme) {
+        if (this.file != null && this.codeRegistry != null && this.originalCodeScheme != null) {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeScheme.id).subscribe(codeSchemes => {
+            if (codeSchemes.length === 1) {
+              this.router.navigate(codeSchemes[0].route);
+              this.modal.close(false);
+            } else if (codeSchemes.length > 1) {
+              this.router.navigate(['frontpage']);
+              this.modal.close(false);
+            }
+          }, error => {
+            this.uploading = false;
+            this.errorModalService.openSubmitError(error);
+          });
+        } else {
           this.uploading = false;
           this.errorModalService.openSubmitError('UNSUITABLE DATA!');
+        }
+      } else {
+        if (this.file != null && this.codeRegistry != null) {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, '').subscribe(codeSchemes => {
+            if (codeSchemes.length === 1) {
+              this.router.navigate(codeSchemes[0].route);
+              this.modal.close(false);
+            } else if (codeSchemes.length > 1) {
+              this.router.navigate(['frontpage']);
+              this.modal.close(false);
+            }
+          }, error => {
+            this.uploading = false;
+            this.errorModalService.openSubmitError(error);
+          });
+        } else {
+          this.uploading = false;
+          this.errorModalService.openSubmitError('UNSUITABLE DATA!');
+        }
       }
+
+
     }
   }
 }

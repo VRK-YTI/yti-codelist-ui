@@ -424,14 +424,14 @@ export class DataService {
 
   }
 
-  uploadCodeSchemes(registryCode: string, file: File, format: string, newVersion: boolean = false, originalCodeSchemeIdIfCreatingNewVersion: string): Observable<CodeScheme[]> {
+  uploadCodeSchemes(registryCode: string, file: File, format: string, newVersion: boolean = false, originalCodeSchemeId: string): Observable<CodeScheme[]> {
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
 
     const params = {
       'format': format,
-      'originalCodeSchemeIdIfCreatingNewVersion': originalCodeSchemeIdIfCreatingNewVersion,
+      'originalCodeSchemeId': originalCodeSchemeId,
       'newVersionOfCodeScheme': String(newVersion)
     };
 

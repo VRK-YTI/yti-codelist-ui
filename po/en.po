@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-03-28 07:52+0200\n"
+"PO-Revision-Date: 2019-04-04 08:23+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1359,6 +1359,9 @@ msgstr "Linked member is not from the same extension."
 
 msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
 msgstr "Member not found with UUID: {{identifier}}"
+
+msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_CODESCHEME"
+msgstr "The code list in the file is not the same one as the target of the update."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
