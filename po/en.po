@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-04 08:23+0300\n"
+"PO-Revision-Date: 2019-04-05 09:40+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -918,8 +918,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
-msgstr "Cannot delete code as it is the default code of the code list."
+msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr "Cannot delete this code list."
 
 msgid "Front page"
 msgstr ""
@@ -1207,11 +1207,11 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
 msgstr "Cannot delete code as it is in use in the following resources: {{ identifier }}"
 
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgstr "Cannot delete code as it is the default code of the code list."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
-msgstr "Cannot delete this code list."
 
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code."
@@ -1362,6 +1362,9 @@ msgstr "Member not found with UUID: {{identifier}}"
 
 msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_CODESCHEME"
 msgstr "The code list in the file is not the same one as the target of the update."
+
+msgid "ERR_MSG_USER_ORDER_INVALID_VALUE"
+msgstr "Defective value in ORDER column on the row {{ identifier }}."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
