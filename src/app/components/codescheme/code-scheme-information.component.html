@@ -57,7 +57,7 @@
                                [infoText]="'INFO_TEXT_CODELIST_ORGANIZATION'"
                                [formControlName]="'organizations'"></app-organizations-input>
 
-      <app-literal *ngIf="!editing"
+      <app-literal *ngIf="!editing || (editing && codeScheme.cumulative)"
                    [label]="'Cumulative code list' | translate"
                    [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"
                    [value]="codeScheme.cumulative + 'cumulative' | translate"></app-literal>
