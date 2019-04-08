@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-05 09:41+0300\n"
+"PO-Revision-Date: 2019-04-08 14:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1385,7 +1385,7 @@ msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_COD
 msgstr "Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto."
 
 msgid "ERR_MSG_USER_ORDER_INVALID_VALUE"
-msgstr "ORDER-sarakkeessa on viallinen arvo rivillä {{ identifier }}."
+msgstr "ORDER-sarakkeen arvo ei ole sallittu rivillä {{ identifier }}."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
