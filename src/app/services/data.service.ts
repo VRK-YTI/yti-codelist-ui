@@ -424,7 +424,7 @@ export class DataService {
 
   }
 
-  uploadCodeSchemes(registryCode: string, file: File, format: string, newVersion: boolean = false, originalCodeSchemeId: string): Observable<CodeScheme[]> {
+  uploadCodeSchemes(registryCode: string, file: File, format: string, newVersion: boolean = false, originalCodeSchemeId: string, updatingExistingCodeScheme: boolean): Observable<CodeScheme[]> {
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -432,7 +432,8 @@ export class DataService {
     const params = {
       'format': format,
       'originalCodeSchemeId': originalCodeSchemeId,
-      'newVersionOfCodeScheme': String(newVersion)
+      'newVersionOfCodeScheme': String(newVersion),
+      'updatingExistingCodeScheme': String(updatingExistingCodeScheme)
     };
 
     return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/`, formData, { params })

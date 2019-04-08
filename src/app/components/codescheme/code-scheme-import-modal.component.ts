@@ -79,7 +79,7 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
           okToImportFromVersionPerspective = false;
         }
         if (this.file != null && this.codeRegistry != null && okToImportFromVersionPerspective && this.originalCodeScheme != null) {
-          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeScheme.id).subscribe(codeSchemes => {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeScheme.id, this.creatingNewCodeSchemeVersion).subscribe(codeSchemes => {
             if (this.creatingNewCodeSchemeVersion) {
               this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(codeSchemes[0].route));
               this.modal.close(false);
@@ -113,7 +113,7 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
 
       if (this.updatingExistingCodeScheme) {
         if (this.file != null && this.codeRegistry != null && this.originalCodeScheme != null) {
-          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeScheme.id).subscribe(codeSchemes => {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, this.originalCodeScheme.id, this.updatingExistingCodeScheme).subscribe(codeSchemes => {
             if (codeSchemes.length === 1) {
               this.router.navigate(codeSchemes[0].route);
               this.modal.close(false);
@@ -131,7 +131,7 @@ export class CodeSchemeImportModalComponent implements AfterContentInit {
         }
       } else {
         if (this.file != null && this.codeRegistry != null) {
-          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, '').subscribe(codeSchemes => {
+          this.dataService.uploadCodeSchemes(this.codeRegistry.codeValue, this.file, this.format, this.creatingNewCodeSchemeVersion, '', this.updatingExistingCodeScheme).subscribe(codeSchemes => {
             if (codeSchemes.length === 1) {
               this.router.navigate(codeSchemes[0].route);
               this.modal.close(false);
