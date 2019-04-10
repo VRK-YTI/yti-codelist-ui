@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-10 10:54+0300\n"
+"PO-Revision-Date: 2019-04-10 11:43+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -940,8 +940,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
-msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
+msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr "Tätä koodistoa ei voi poistaa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1229,11 +1229,11 @@ msgstr ""
 "Koodia ei voi poistaa, koska se on linkitettynä käytössä seuraavissa resursseissa: "
 "{{ identifier }}"
 
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
-msgstr "Tätä koodistoa ei voi poistaa."
 
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Tätä koodia ei voi poistaa."
@@ -1387,6 +1387,11 @@ msgstr "Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto."
 
 msgid "ERR_MSG_USER_ORDER_INVALID_VALUE"
 msgstr "ORDER-sarakkeen arvo ei ole sallittu rivillä {{ identifier }}."
+
+msgid "ERR_MSG_USER_EMPTY_EXCEL"
+msgstr ""
+"Excel-tiedosto on tyhjä. Varmista, että tietosisältö on määritelty oikein ja yritä "
+"uudelleen."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
