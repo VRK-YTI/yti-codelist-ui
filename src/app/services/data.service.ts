@@ -475,13 +475,8 @@ export class DataService {
   getConcepts(searchTerm: string, vocab: string | null, status: string | null): Observable<Concept[]> {
 
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-    let params = null;
-    if (status != null) {
-      params = new HttpParams().append('status', status);
-    } else {
-      params = new HttpParams();
-    }
-    return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/${searchterm}/${encodedSearchTerm}/${vocabulary}/${vocab || '0'}`, { params })
+    const params = new HttpParams().append('status', status ? status : '').append('vocabularyId', vocab ? vocab : '0').append('searchTerm', searchTerm);
+    return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/`, { params })
       .pipe(map(response => response.results.map((data: ConceptType) => new Concept(data))));
   }
 
