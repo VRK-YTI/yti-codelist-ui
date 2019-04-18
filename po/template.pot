@@ -1292,6 +1292,9 @@ msgstr ""
 msgid "ERR_MSG_USER_EMPTY_EXCEL"
 msgstr ""
 
+msgid "ERR_MSG_USER_CODE_EXTENSION_MULTIPLE_MEMBERS"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
