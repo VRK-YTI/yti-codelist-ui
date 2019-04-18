@@ -72,7 +72,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
         `scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
 
-    this.dataService.getMember(memberId).subscribe(extension => {
+    this.dataService.getMember(memberId, extensionCodeValue).subscribe(extension => {
       this.currentMember = extension;
       this.locationService.atMemberPage(extension);
     });

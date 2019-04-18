@@ -60,9 +60,10 @@ export class MemberComponent implements OnInit, EditingComponent {
         `scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
 
-    this.dataService.getMember(memberId).subscribe(extension => {
-      this.member = extension;
-      this.locationService.atMemberPage(extension);
+    this.dataService.getMember(memberId, extensionCodeValue).subscribe(member => {
+      this.member = member;
+      this.locationService.atMemberPage(member);
+      console.log(member);
     });
 
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {

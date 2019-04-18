@@ -502,10 +502,11 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new Extension(data))));
   }
 
-  getMember(memberId: string): Observable<Member> {
+  getMember(memberId: string, extensionCodeValue: string): Observable<Member> {
 
     const params = {
-      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,valueType,memberValue'
+      'expand': 'extension,codeRegistry,organization,code,externalReference,propertyType,codeScheme,code,valueType,memberValue',
+      'extensionCodeValue': extensionCodeValue
     };
 
     return this.http.get<MemberType>(
