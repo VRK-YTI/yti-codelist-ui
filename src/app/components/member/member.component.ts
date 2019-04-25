@@ -63,7 +63,6 @@ export class MemberComponent implements OnInit, EditingComponent {
     this.dataService.getMember(memberId, extensionCodeValue).subscribe(member => {
       this.member = member;
       this.locationService.atMemberPage(member);
-      console.log(member);
     });
 
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
