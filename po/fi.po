@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-18 12:24+0300\n"
+"PO-Revision-Date: 2019-04-26 10:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -940,8 +940,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
-msgstr "Tätä koodistoa ei voi poistaa."
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Tätä koodia ei voi poistaa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1232,11 +1232,11 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
 msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
 
+msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr "Tätä koodistoa ei voi poistaa."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
-msgstr "Tätä koodia ei voi poistaa."
 
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
@@ -1395,6 +1395,13 @@ msgstr ""
 
 msgid "ERR_MSG_USER_CODE_EXTENSION_MULTIPLE_MEMBERS"
 msgstr "Koodilaajennuksella ei voi olla useita jäseniä samalla koodilla."
+
+msgid "ERR_MSG_USER_DUPLICATE_SEQUENCE_IDS_IN_FILE"
+msgstr ""
+"SEQUENCE_ID-kolumnissa esiintyvät seuraavat arvot useammin kuin kerran: {{identifier}}."
+
+msgid "ERR_MSG_USER_SEQUENCE_ID_INVALID_VALUE"
+msgstr "SEQUENCE_ID-sarakkeen arvo ei ole sallittu rivillä {{ identifier }}."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
