@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-26 10:59+0300\n"
+"PO-Revision-Date: 2019-04-30 14:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -383,6 +383,12 @@ msgstr ""
 msgid "Export CSV"
 msgstr ""
 
+msgid "Export JSON"
+msgstr ""
+
+msgid "Show JSON"
+msgstr ""
+
 msgid "CODES"
 msgstr ""
 
@@ -645,10 +651,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
-msgstr ""
-"Language code of the code lists. The selected languages control which languages your "
-"content is localized in."
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgstr "Validity end date. The date on which the resource is no longer effective or valid."
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -717,6 +721,12 @@ msgstr "The period in which the code is valid"
 msgid "INFO_TEXT_URI"
 msgstr "Permanent web address of the code list."
 
+msgid "INFO_TEXT_URI_MEMBER"
+msgstr "Permanent web address of the member"
+
+msgid "INFO_TEXT_URI_EXTENSION"
+msgstr "Permanent web address of the extension"
+
 msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
 msgstr "Last edit time. Date code list metadata was last changed."
 
@@ -772,9 +782,6 @@ msgstr "Links"
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr "Validity start date. The date on which the resource is effective or valid."
 
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
-msgstr "Validity end date. The date on which the resource is no longer effective or valid."
-
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Information domain that the code list is classified into. Information domain "
@@ -782,6 +789,11 @@ msgstr ""
 "of public services. Each resource (code list or classification, data model or "
 "terminology) is classified into at least one information domain. The information domain "
 "may be used to filter the search results."
+
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Language code of the code lists. The selected languages control which languages your "
+"content is localized in."
 
 msgid "INFO_TEXT_LINK_TITLE"
 msgstr "Info text coming soon..."
@@ -918,8 +930,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
-msgstr "Cannot delete this code."
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Cannot delete this code because it is part of a cumulative code list."
 
 msgid "Front page"
 msgstr ""
@@ -1216,11 +1228,11 @@ msgstr "Cannot delete code as it is the default code of the code list."
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code list."
 
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Cannot delete this code."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Cannot delete this code because it is part of a cumulative code list."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for codes."

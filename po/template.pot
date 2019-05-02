@@ -635,7 +635,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -692,6 +692,12 @@ msgstr ""
 msgid "INFO_TEXT_URI"
 msgstr ""
 
+msgid "INFO_TEXT_URI_MEMBER"
+msgstr ""
+
+msgid "INFO_TEXT_URI_EXTENSION"
+msgstr ""
+
 msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
 msgstr ""
 
@@ -743,10 +749,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_TITLE"
