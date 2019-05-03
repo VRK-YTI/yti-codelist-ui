@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-30 14:09+0300\n"
+"PO-Revision-Date: 2019-05-03 14:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -958,8 +958,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Tätä koodia ei voi poistaa."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1072,6 +1072,10 @@ msgstr "Aineistossa puuttuu arvo sarakkeesta CODEVALUE riviltä {{ identifier }}
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr "Aineistossa puuttuu arvo sarakkeesta STATUS riviltä {{ identifier }}."
 
+msgid "ERR_MSG_USER_ROW_MISSING_PREFLABEL_VALUE"
+msgstr ""
+"Aineistossa puuttuu pakollinen arvo PREFLABEL_<kielilyhenne> riviltä {{ identifier }}."
+
 msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
 msgstr "Aineistosta puuttuu sarake otsikolla EXTENSIONVALUE."
 
@@ -1083,6 +1087,9 @@ msgstr "Aineistosta puuttuu sarake otsikolla CODE."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "Aineistosta puuttuu sarake otsikolla CODEVALUE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PREFLABEL"
+msgstr "Aineistosta puuttuu sarake otsikolla PREFLABEL_<kielilyhenne>."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_ORGANIZATION"
 msgstr "Aineistosta puuttuu sarake otsikolla ORGANIZATION."
@@ -1253,11 +1260,11 @@ msgstr "Koodia ei voi poistaa, koska se on koodiston vakiokoodi."
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Tätä koodistoa ei voi poistaa."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
-msgstr "Tätä koodia ei voi poistaa."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Koodien maksimi hierarkkinen taso ylittyi."
@@ -1524,8 +1531,8 @@ msgstr "Poista koodiston versio"
 msgid "Delete code list"
 msgstr "Poista koodisto"
 
-msgid "externalReferenceExists"
-msgstr "Linkki on jo käytössä tässä koodistossa."
+msgid "codeValueValidationError"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
@@ -1542,11 +1549,11 @@ msgstr "Tunnus on jo käytössä."
 msgid "extensionCodeValueExists"
 msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
 
+msgid "externalReferenceExists"
+msgstr "Linkki on jo käytössä tässä koodistossa."
+
 msgid "invalidDateRange"
 msgstr "Virheellinen päivämääräväli"
-
-msgid "codeValueValidationError"
-msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-.+*#&"
@@ -1565,3 +1572,6 @@ msgstr ""
 
 msgid "memberValueRequired"
 msgstr "Jäsenen arvo on pakollinen syöte."
+
+msgid "localizableValueRequired"
+msgstr "Pakollinen syöte"

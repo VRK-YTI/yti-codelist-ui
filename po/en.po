@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-04-30 14:10+0300\n"
+"PO-Revision-Date: 2019-05-03 14:59+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -930,8 +930,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Cannot delete this code because it is part of a cumulative code list."
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Cannot delete this code."
 
 msgid "Front page"
 msgstr ""
@@ -1045,6 +1045,11 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr "Row number {{ identifier }} in the data is missing the value in the column STATUS."
 
+msgid "ERR_MSG_USER_ROW_MISSING_PREFLABEL_VALUE"
+msgstr ""
+"Row number {{ identifier }} in the data is missing a value in the column "
+"PREFLABEL_<languagecode>."
+
 msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
 msgstr "The data is missing a column with the header EXTENSIONVALUE."
 
@@ -1056,6 +1061,9 @@ msgstr "The data is missing a column with the header CODE."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
 msgstr "The data is missing a column with the header CODEVALUE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PREFLABEL"
+msgstr "The data is missing a column with the header PREFLABEL_<languagecode>."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_ORGANIZATION"
 msgstr "The data is missing a column with the header ORGANIZATION."
@@ -1228,11 +1236,11 @@ msgstr "Cannot delete code as it is the default code of the code list."
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code list."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
-msgstr "Cannot delete this code."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Cannot delete this code because it is part of a cumulative code list."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for codes."
@@ -1500,8 +1508,8 @@ msgstr ""
 msgid "Delete code list"
 msgstr ""
 
-msgid "externalReferenceExists"
-msgstr "Link is already in use in this code list."
+msgid "codeValueValidationError"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
 
 msgid "invalidDate"
 msgstr "Invalid date"
@@ -1518,11 +1526,11 @@ msgstr "Code value is already in use."
 msgid "extensionCodeValueExists"
 msgstr "Extension value is already in use in this code list."
 
+msgid "externalReferenceExists"
+msgstr "Link is already in use in this code list."
+
 msgid "invalidDateRange"
 msgstr "Invalid date range"
-
-msgid "codeValueValidationError"
-msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-.+*#&"
@@ -1539,3 +1547,6 @@ msgstr "Member value contains illegal characters. Validation rule is: {{ value }
 
 msgid "memberValueRequired"
 msgstr "Member value is a required input."
+
+msgid "localizableValueRequired"
+msgstr "Required"

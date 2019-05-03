@@ -866,7 +866,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr ""
 
 msgid "Front page"
@@ -982,6 +982,9 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
 msgstr ""
 
+msgid "ERR_MSG_USER_ROW_MISSING_PREFLABEL_VALUE"
+msgstr ""
+
 msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
 msgstr ""
 
@@ -992,6 +995,9 @@ msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
+msgstr ""
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PREFLABEL"
 msgstr ""
 
 msgid "ERR_MSG_USER_MISSING_HEADER_ORGANIZATION"
@@ -1150,10 +1156,10 @@ msgstr ""
 msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
@@ -1403,7 +1409,7 @@ msgstr ""
 msgid "Delete code list"
 msgstr ""
 
-msgid "externalReferenceExists"
+msgid "codeValueValidationError"
 msgstr ""
 
 msgid "invalidDate"
@@ -1421,10 +1427,10 @@ msgstr ""
 msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "externalReferenceExists"
 msgstr ""
 
-msgid "codeValueValidationError"
+msgid "invalidDateRange"
 msgstr ""
 
 msgid "codeCodeValueValidationError"
@@ -1440,4 +1446,7 @@ msgid "memberValueValidatorError"
 msgstr ""
 
 msgid "memberValueRequired"
+msgstr ""
+
+msgid "localizableValueRequired"
 msgstr ""
