@@ -135,34 +135,27 @@ export class ExternalReferencesInputComponent implements ControlValueAccessor, O
 
   addLink(propertyType: PropertyType) {
 
-    if (this.codeScheme && this.codeScheme.id) {
-      this.loading = true;
+    this.loading = true;
 
-      this.dataService.getExternalReferences(this.codeScheme.id).subscribe(extReferences => {
+    this.dataService.getExternalReferences(this.codeScheme ? this.codeScheme.id : undefined).subscribe(extReferences => {
 
-        const restrictIds = this.externalReferences.map(link => link.id);
-        const otherExternalReferences = extReferences.filter(externalReference => restrictIds.indexOf(externalReference.id) === -1);
-        const externalReferencesOfThisType = otherExternalReferences.filter(extRef => extRef.propertyType!.id === propertyType.id);
-        const externalReferencesOfThisTypeFound = externalReferencesOfThisType.length > 0;
+      const restrictIds = this.externalReferences.map(link => link.id);
+      const otherExternalReferences = extReferences.filter(externalReference => restrictIds.indexOf(externalReference.id) === -1);
+      const externalReferencesOfThisType = otherExternalReferences.filter(extRef => extRef.propertyType!.id === propertyType.id);
+      const externalReferencesOfThisTypeFound = externalReferencesOfThisType.length > 0;
 
-        this.loading = false;
+      this.loading = false;
 
-        if (externalReferencesOfThisTypeFound) {
-          this.linkListModalService.open(this.codeScheme, otherExternalReferences, this.languageCodes, propertyType, this.propertyTypes)
-            .then(link => this.externalReferences.push(link), ignoreModalClose);
-        } else {
-          this.linkCreateModalService.open(this.codeScheme, this.languageCodes, propertyType)
-            .then(link => {
-              this.externalReferences.push(link);
-            }, ignoreModalClose);
-        }
-      });
-    } else {
-      this.linkCreateModalService.open(this.codeScheme, this.languageCodes, propertyType)
-        .then(link => {
-          this.externalReferences.push(link);
-        }, ignoreModalClose);
-    }
+      if (externalReferencesOfThisTypeFound) {
+        this.linkListModalService.open(this.codeScheme, otherExternalReferences, this.languageCodes, propertyType, this.propertyTypes)
+          .then(link => this.externalReferences.push(link), ignoreModalClose);
+      } else {
+        this.linkCreateModalService.open(this.codeScheme, this.languageCodes, propertyType)
+          .then(link => {
+            this.externalReferences.push(link);
+          }, ignoreModalClose);
+      }
+    });
   }
 
   editExternalReference(externalReference: ExternalReference) {

@@ -27,7 +27,7 @@ export class LinkListModalComponent implements OnInit {
   @Input() propertyTypes: PropertyType[];
   @Input() externalReferences: ExternalReference[];
   
-  selectedExternalReference: ExternalReference;
+  selectedExternalReference: ExternalReference | undefined;
   filteredExternalReferences: ExternalReference[];
   
   selectedPropertyType$ = new BehaviorSubject<PropertyType|null>(null);
@@ -73,7 +73,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   canSelect() {
-    return this.selectedExternalReference != null;
+    return this.selectedExternalReference != undefined;
   }
 
   get externalReferencesByType(): PropertyTypeExternalReferences[] {
