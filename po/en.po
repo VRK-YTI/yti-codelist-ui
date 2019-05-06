@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-06 11:13+0300\n"
+"PO-Revision-Date: 2019-05-06 14:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -930,8 +930,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Maximum hierarchies reached for codes."
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr "Member value is not valid."
 
 msgid "Front page"
 msgstr ""
@@ -1235,16 +1235,16 @@ msgstr "Cannot delete this code."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr "Cannot delete this code because it is part of a cumulative code list."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Maximum hierarchies reached for codes."
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 "Cyclic dependency in code linking. Please ensure that the chained codes are not linked "
 "to each in a cyclic manner."
 
-msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
-msgstr "Member value is not valid."
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
 msgstr "Member value is not valid on row {{ identifier }}."
@@ -1275,8 +1275,20 @@ msgstr "JSON payload is empty."
 msgid "ERR_MSG_USER_INVALID_FORMAT"
 msgstr "Format not supported."
 
-msgid "ERR_MSG_USER_EXTENSION_SHEET_NOT_FOUND"
-msgstr "Extension sheet not found in data."
+msgid "ERR_MSG_USER_EXTENSIONS_SHEET_NOT_FOUND"
+msgstr "Extensions sheet not found in data with identifier: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODES_SHEET_NOT_FOUND"
+msgstr "Codes sheet not found in data with identifier: {{ identifier }}"
+
+msgid "ERR_MSG_USER_LINKS_SHEET_NOT_FOUND"
+msgstr "Links sheet not found in data with identifier: {{ identifier }}"
+
+msgid "ERR_MSG_USER_MEMBERS_SHEET_NOT_FOUND"
+msgstr "Members sheet not found in data with identifier: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODESCHEMES_SHEET_NOT_FOUND"
+msgstr "CodeSchemes sheet not found in data."
 
 msgid "ERR_MSG_USER_ERROR_DECODING_STRING"
 msgstr "Error decoding URL encoded string."

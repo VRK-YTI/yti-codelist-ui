@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-06 11:14+0300\n"
+"PO-Revision-Date: 2019-05-06 15:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -958,8 +958,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Koodien maksimi hierarkkinen taso ylittyi."
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr "Jäsenen arvo ei ole sallittu."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1260,16 +1260,16 @@ msgstr "Tätä koodia ei voi poistaa."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Koodien maksimi hierarkkinen taso ylittyi."
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 "Koodien linkityksessä syklinen ongelma. Tarkista, että koodin hierarkia-ketjussa ei ole "
 "rinnakkaisia viitteitä koodien välillä."
 
-msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
-msgstr "Jäsenen arvo ei ole sallittu."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
 msgstr "Jäsenen arvo ei ole sallittu rivillä {{ identifier }}."
@@ -1300,8 +1300,20 @@ msgstr "JSON datan sisältö on tyhjä."
 msgid "ERR_MSG_USER_INVALID_FORMAT"
 msgstr "Formaattia ei tueta."
 
-msgid "ERR_MSG_USER_EXTENSION_SHEET_NOT_FOUND"
-msgstr "Laajennusten välilehteä ei löydy."
+msgid "ERR_MSG_USER_EXTENSIONS_SHEET_NOT_FOUND"
+msgstr "Laajennusten välilehteä ei löydy tunnisteella: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODES_SHEET_NOT_FOUND"
+msgstr "Koodit välilehteä ei löydy tunnisteella: {{ identifier }}"
+
+msgid "ERR_MSG_USER_LINKS_SHEET_NOT_FOUND"
+msgstr "Linkit välilehteä ei löydy tunnisteella: {{ identifier }}"
+
+msgid "ERR_MSG_USER_MEMBERS_SHEET_NOT_FOUND"
+msgstr "Jäsenet välilehteä ei löydy tunnisteella: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODESCHEMES_SHEET_NOT_FOUND"
+msgstr "Koodistot välilehteä ei löydy tunnisteella: CodeSchemes"
 
 msgid "ERR_MSG_USER_ERROR_DECODING_STRING"
 msgstr "Virhe merkkijonon URL dekoodaukessa."
