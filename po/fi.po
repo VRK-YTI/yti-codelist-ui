@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-06 09:47+0300\n"
+"PO-Revision-Date: 2019-05-06 11:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -958,8 +958,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Koodien maksimi hierarkkinen taso ylittyi."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1257,11 +1257,11 @@ msgstr "Tätä koodistoa ei voi poistaa."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Tätä koodia ei voi poistaa."
 
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Koodien maksimi hierarkkinen taso ylittyi."
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
@@ -1400,6 +1400,9 @@ msgstr "Jäsenen linkityksessä käytetty jäsen ei ole samasta laajennuksesta."
 
 msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
 msgstr "Jäsentä ei löydy UUID:llä: {{identifier}}"
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_SEQUENCE_ID"
+msgstr "Jäsentä ei löydy sequence id:llä: {{identifier}}"
 
 msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_CODESCHEME"
 msgstr "Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto."
