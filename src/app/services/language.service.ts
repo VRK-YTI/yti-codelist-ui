@@ -99,4 +99,20 @@ export class LanguageService implements Localizer {
     const value: string = localizable[language];
     return `${value} (${language})`;
   }
+
+  isLocalizableEmpty(localizable: Localizable): boolean {
+
+    if (!localizable) {
+      return true;
+    }
+
+    for (const prop in localizable) {
+      if (localizable.hasOwnProperty(prop)) {
+        return false;
+      }
+    }
+
+    return JSON.stringify(localizable) === JSON.stringify({});
+  }
+
 }
