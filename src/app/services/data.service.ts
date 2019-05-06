@@ -254,7 +254,7 @@ export class DataService {
       .pipe(map(res => res.results.map((data: InfoDomainType) => new InfoDomain(data))));
   }
 
-  getInfoDomainsAsCodes(language: string): Observable<Code[]> {
+  getInfoDomainsAsCodes(language: string | undefined): Observable<Code[]> {
 
     let params = new HttpParams()
       .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType')
@@ -288,7 +288,7 @@ export class DataService {
       .pipe(map(res => new CodeScheme(res)));
   }
 
-  getExternalReferences(codeSchemeId: string): Observable<ExternalReference[]> {
+  getExternalReferences(codeSchemeId: string | undefined): Observable<ExternalReference[]> {
 
     let params = new HttpParams()
       .append('expand', 'propertyType');
@@ -311,7 +311,7 @@ export class DataService {
     return this.getCodes('interoperabilityplatform', 'languagecodes', language);
   }
 
-  getCodes(registryCodeValue: string, schemeCodeValue: string, language: string): Observable<Code[]> {
+  getCodes(registryCodeValue: string, schemeCodeValue: string, language: string | undefined): Observable<Code[]> {
 
     let params = new HttpParams()
       .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType,extension');
