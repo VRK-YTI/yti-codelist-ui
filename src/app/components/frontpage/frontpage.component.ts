@@ -113,7 +113,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     this.dataService.getCodeRegistries().subscribe(registries => {
       this.registryOptions = [null, ...registries].map(registry => ({
         value: registry,
-        name: () => registry ? this.languageService.translate(registry.prefLabel, true)
+        name: () => registry ? !this.languageService.isLocalizableEmpty(registry.prefLabel) ? this.languageService.translate(registry.prefLabel, true) : registry.codeValue
           : this.translateService.instant('All registries'),
         idIdentifier: () => registry ? registry.codeValue : 'all_selected'
       }));
