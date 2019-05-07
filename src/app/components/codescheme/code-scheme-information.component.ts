@@ -27,7 +27,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   @Input() languageCodes: CodePlain[];
   @Output() changeLanguage = new EventEmitter<CodePlain[]>();
 
-  infoDomains: Code[];
   previousCodeScheme: CodeScheme;
   codelistMarkedAsCumulative: boolean;
 
@@ -154,5 +153,10 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   toggleMarkCodelistAsCumulative() {
     this.codelistMarkedAsCumulative = !this.codelistMarkedAsCumulative;
     this.codeSchemeForm.patchValue({ cumulative: this.codelistMarkedAsCumulative });
+  }
+
+  getCodeRegistryName(): string {
+    return !this.languageService.isLocalizableEmpty(this.codeScheme.codeRegistry.prefLabel) ?
+      this.languageService.translate(this.codeScheme.codeRegistry.prefLabel, false) : this.codeScheme.codeRegistry.codeValue
   }
 }

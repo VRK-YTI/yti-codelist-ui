@@ -48,7 +48,7 @@
 
       <app-literal *ngIf="codeScheme.codeRegistry"
                    [label]="'Registry' | translate"
-                   [value]="codeScheme.codeRegistry.prefLabel | translateValue"
+                   [value]="getCodeRegistryName()"
                    [infoText]="'INFO_TEXT_CODE_REGISTRY'"></app-literal>
 
       <app-organizations-input id="registry_organizations_input"
