@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-06 09:47+0300\n"
+"PO-Revision-Date: 2019-05-06 13:15+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -149,6 +149,9 @@ msgid "All vocabularies"
 msgstr ""
 
 msgid "All statuses"
+msgstr ""
+
+msgid "All languages"
 msgstr ""
 
 msgid "Reference Data"

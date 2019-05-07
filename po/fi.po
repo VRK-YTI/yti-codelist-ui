@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-06 09:47+0300\n"
+"PO-Revision-Date: 2019-05-06 13:15+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -150,6 +150,9 @@ msgstr "Kaikki sanastot"
 
 msgid "All statuses"
 msgstr "Kaikki tilat"
+
+msgid "All languages"
+msgstr "Kaikki kielet"
 
 msgid "Reference Data"
 msgstr "Koodistot"

@@ -472,10 +472,9 @@ export class DataService {
       .pipe(map(response => response.results.map((data: VocabularyType) => new Vocabulary(data))));
   }
 
-  getConcepts(searchTerm: string, vocab: string | null, status: string | null): Observable<Concept[]> {
-
+  getConcepts(searchTerm: string, vocab: string | null, status: string | null, language: string | null): Observable<Concept[]> {
     const encodedSearchTerm = encodeURIComponent(searchTerm);
-    const params = new HttpParams().append('status', status ? status : '').append('vocabularyId', vocab ? vocab : '0').append('searchTerm', searchTerm);
+    const params = new HttpParams().append('language', language ? language : '').append('status', status ? status : '').append('vocabularyId', vocab ? vocab : '0').append('searchTerm', searchTerm);
     return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/`, { params })
       .pipe(map(response => response.results.map((data: ConceptType) => new Concept(data))));
   }
