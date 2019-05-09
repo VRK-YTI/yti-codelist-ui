@@ -1556,9 +1556,3 @@ msgstr "Member value contains illegal characters. Validation rule is: {{ value }
 
 msgid "memberValueRequired"
 msgstr "Member value is a required input."
-
-#~ msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_SEQUENCE_ID"
-#~ msgstr "Member not found with sequence id: {{identifier}}"
-
-#~ msgid "ERR_MSG_USER_SEQUENCE_ID_INVALID_VALUE"
-#~ msgstr "Invalid SEQUENCE_ID value defined on row {{ identifier }}."

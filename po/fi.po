@@ -1581,9 +1581,3 @@ msgstr ""
 
 msgid "memberValueRequired"
 msgstr "Jäsenen arvo on pakollinen syöte."
-
-#~ msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_SEQUENCE_ID"
-#~ msgstr "Jäsentä ei löydy sequence id:llä: {{identifier}}"
-
-#~ msgid "ERR_MSG_USER_SEQUENCE_ID_INVALID_VALUE"
-#~ msgstr "SEQUENCE_ID-sarakkeen arvo ei ole sallittu rivillä {{ identifier }}."
