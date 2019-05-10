@@ -116,6 +116,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { AlertModalComponent, AlertModalService } from './components/common/alert-modal.service';
 // import { SelectModule } from 'ng2-select'; TODO this will possibly get cleared after some more experimentation
 import { SearchHitsListComponent } from './components/frontpage/app-searchhits-list';
+import { LocalizableInputWithLangauageIndicatorComponent } from './components/form/localizable-input-with-langauage-indicator.component';
+import { LocalizableTextareaWithLanguageIndicatorComponent } from './components/form/localizable-textarea-with-language-indicator';
 
 function removeEmptyValues(obj: {}) {
 
@@ -234,6 +236,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     MembersImportModalComponent,
     ExtensionsImportModalComponent,
     LocalizableInputComponent,
+    LocalizableInputWithLangauageIndicatorComponent,
+    LocalizableTextareaWithLanguageIndicatorComponent,
     LocalizableTextareaComponent,
     LiteralInputComponent,
     LiteralComponent,
