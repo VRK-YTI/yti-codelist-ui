@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-09 12:53+0300\n"
+"PO-Revision-Date: 2019-05-13 09:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -491,6 +491,12 @@ msgstr ""
 msgid "Delete extension"
 msgstr ""
 
+msgid "Export members Excel"
+msgstr ""
+
+msgid "Export members CSV"
+msgstr ""
+
 msgid "Export Cross-Reference List Excel"
 msgstr ""
 
@@ -552,6 +558,9 @@ msgstr ""
 
 msgid "Code"
 msgstr ""
+
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr "You can use this feature to update the data returned by Export Members feature."
 
 msgid "Delete member"
 msgstr ""
@@ -651,8 +660,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
-msgstr "Validity end date. The date on which the resource is no longer effective or valid."
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Language code of the code lists. The selected languages control which languages your "
+"content is localized in."
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -782,6 +793,9 @@ msgstr "Links"
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr "Validity start date. The date on which the resource is effective or valid."
 
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgstr "Validity end date. The date on which the resource is no longer effective or valid."
+
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Information domain that the code list is classified into. Information domain "
@@ -789,11 +803,6 @@ msgstr ""
 "of public services. Each resource (code list or classification, data model or "
 "terminology) is classified into at least one information domain. The information domain "
 "may be used to filter the search results."
-
-msgid "INFO_TEXT_LANGUAGE_CODE"
-msgstr ""
-"Language code of the code lists. The selected languages control which languages your "
-"content is localized in."
 
 msgid "INFO_TEXT_LINK_TITLE"
 msgstr "Info text coming soon..."
