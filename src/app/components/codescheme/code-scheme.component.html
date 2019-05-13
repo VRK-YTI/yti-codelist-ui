@@ -111,17 +111,19 @@
         <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
         <div ngbDropdownMenu aria-labelledby="exportDropdown">
           <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank"
-             class="dropdown-item" translate>Export Excel</a>
-          <a id="codelist_export_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank"
-             class="dropdown-item" translate>Export CSV</a>
+             class="dropdown-item" translate>Export codelist Excel</a>
+          <a id="codelist_export_codes_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank"
+             class="dropdown-item" translate>Export codes CSV</a>
+          <a id="codelist_export_codes_excel_link" href='{{codeScheme.url}}/codes/?format=excel' target="_blank"
+             class="dropdown-item" translate>Export codes Excel</a>
           <a id="codelist_export_json_inline_link"
              href='{{codeScheme.url}}/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=true&pretty'
              target="_blank"
-             class="dropdown-item" translate>Export JSON</a>
+             class="dropdown-item" translate>Export codelist JSON</a>
           <a id="codelist_export_json_as_file_link"
              href='{{codeScheme.url}}/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty'
              target="_blank"
-             class="dropdown-item" translate>Show JSON</a>
+             class="dropdown-item" translate>Show codelist JSON</a>
         </div>
       </div>
 

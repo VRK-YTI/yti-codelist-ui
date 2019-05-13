@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-09 12:53+0300\n"
+"PO-Revision-Date: 2019-05-13 11:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -384,17 +384,20 @@ msgstr ""
 msgid "Export"
 msgstr "Lataa"
 
-msgid "Export Excel"
-msgstr "Lataa Excel"
+msgid "Export codelist Excel"
+msgstr "Lataa koodisto Excel"
 
-msgid "Export CSV"
-msgstr "Lataa CSV"
+msgid "Export codes CSV"
+msgstr "Lataa koodit CSV"
 
-msgid "Export JSON"
-msgstr "Lataa JSON"
+msgid "Export codes Excel"
+msgstr "Lataa koodit Excel"
 
-msgid "Show JSON"
-msgstr "Näytä JSON"
+msgid "Export codelist JSON"
+msgstr "Lataa koodisto JSON"
+
+msgid "Show codelist JSON"
+msgstr "Näytä koodisto JSON"
 
 msgid "CODES"
 msgstr "KOODIT"
@@ -497,6 +500,12 @@ msgstr "Tuo jäseniä"
 
 msgid "Delete extension"
 msgstr "Poista laajennus"
+
+msgid "Export Excel"
+msgstr "Lataa Excel"
+
+msgid "Export CSV"
+msgstr "Lataa CSV"
 
 msgid "Export Cross-Reference List Excel"
 msgstr "Lataa Koodiliitos Excel"
@@ -1539,6 +1548,12 @@ msgstr "Poista koodiston versio"
 
 msgid "Delete code list"
 msgstr "Poista koodisto"
+
+msgid "Export JSON"
+msgstr "Lataa JSON"
+
+msgid "Show JSON"
+msgstr "Näytä JSON"
 
 msgid "externalReferenceExists"
 msgstr "Linkki on jo käytössä tässä koodistossa."

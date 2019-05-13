@@ -368,16 +368,19 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-msgid "Export Excel"
+msgid "Export codelist Excel"
 msgstr ""
 
-msgid "Export CSV"
+msgid "Export codes CSV"
 msgstr ""
 
-msgid "Export JSON"
+msgid "Export codes Excel"
 msgstr ""
 
-msgid "Show JSON"
+msgid "Export codelist JSON"
+msgstr ""
+
+msgid "Show codelist JSON"
 msgstr ""
 
 msgid "CODES"
@@ -480,6 +483,12 @@ msgid "Import members"
 msgstr ""
 
 msgid "Delete extension"
+msgstr ""
+
+msgid "Export Excel"
+msgstr ""
+
+msgid "Export CSV"
 msgstr ""
 
 msgid "Export Cross-Reference List Excel"
@@ -1416,6 +1425,12 @@ msgid "Delete code list version"
 msgstr ""
 
 msgid "Delete code list"
+msgstr ""
+
+msgid "Export JSON"
+msgstr ""
+
+msgid "Show JSON"
 msgstr ""
 
 msgid "externalReferenceExists"
