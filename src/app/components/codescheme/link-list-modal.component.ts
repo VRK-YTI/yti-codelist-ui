@@ -73,7 +73,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   canSelect() {
-    return this.selectedExternalReference != undefined;
+    return this.selectedExternalReference !== undefined;
   }
 
   get externalReferencesByType(): PropertyTypeExternalReferences[] {
