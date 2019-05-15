@@ -105,8 +105,7 @@ export class CodeComponent implements OnInit, EditingComponent {
       (this.authorizationManager.canDelete(this.codeScheme) &&
         (this.codeScheme.status === 'INCOMPLETE' ||
           this.codeScheme.status === 'DRAFT' ||
-          this.codeScheme.status === 'SUGGESTED' ||
-          this.codeScheme.status === 'SUBMITTED'));
+          this.codeScheme.status === 'SUGGESTED'));
   }
 
   get isSuperUser() {

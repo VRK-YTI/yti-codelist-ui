@@ -109,8 +109,7 @@ export class MemberComponent implements OnInit, EditingComponent {
       (this.authorizationManager.canDelete(this.extension.parentCodeScheme) &&
         (this.extension.status === 'INCOMPLETE' ||
           this.extension.status === 'DRAFT' ||
-          this.extension.status === 'SUGGESTED' ||
-          this.extension.status === 'SUBMITTED'));
+          this.extension.status === 'SUGGESTED'));
   }
 
   get isSuperUser() {

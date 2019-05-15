@@ -187,8 +187,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       (this.authorizationManager.canDelete(this.extension.parentCodeScheme) &&
         (this.extension.parentCodeScheme.status === 'INCOMPLETE' ||
           this.extension.parentCodeScheme.status === 'DRAFT' ||
-          this.extension.parentCodeScheme.status === 'SUGGESTED' ||
-          this.extension.parentCodeScheme.status === 'SUBMITTED'));
+          this.extension.parentCodeScheme.status === 'SUGGESTED'));
   }
 
   get canAddMember(): boolean {
