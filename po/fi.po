@@ -953,16 +953,16 @@ msgstr ""
 
 msgid "INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE"
 msgstr ""
-"Valitse koodiliitoksen toinen osapuoli. Mikäli valintaa ei voi tehdä, tälle jäsenelle on "
-"jo olemassa liitos."
+"Valitse koodiliitoksen toinen osapuoli. Mikäli valintaa ei voi tehdä, tähän jäseneen on "
+"jo viitattu toisesta jäsenestä. Viittauksen voi tehdä vain yhteen suuntaan."
 
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr "Jäsenen arvo ei ole sallittu."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1267,8 +1267,8 @@ msgstr "Tätä koodistoa ei voi poistaa."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Tätä koodia ei voi poistaa."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Koodien maksimi hierarkkinen taso ylittyi."
@@ -1278,8 +1278,8 @@ msgstr ""
 "Koodien linkityksessä syklinen ongelma. Tarkista, että koodin hierarkia-ketjussa ei ole "
 "rinnakkaisia viitteitä koodien välillä."
 
-msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
-msgstr "Jäsenen arvo ei ole sallittu."
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
 msgstr "Jäsenen arvo ei ole sallittu rivillä {{ identifier }}."
@@ -1516,7 +1516,7 @@ msgid "Create extension"
 msgstr "Luo laajennus"
 
 msgid "Cross-reference code"
-msgstr "Liitettävä koodi"
+msgstr "Liittyvä jäsen"
 
 msgid "Broader member"
 msgstr "Hierarkkinen yläjäsen"

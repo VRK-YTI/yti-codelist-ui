@@ -925,16 +925,16 @@ msgstr "Choose the code for this member from the Code lists of this extension."
 
 msgid "INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE"
 msgstr ""
-"Choose the other party of the Cross-reference. If the choice is not active, a Cross-"
-"reference already exists for the member."
+"Choose the other member of the Cross-reference. If the choice is not active, a Cross-"
+"reference already exists for the member. Cross-reference can be made only one way."
 
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Cannot delete this code because it is part of a cumulative code list."
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr "Member value is not valid."
 
 msgid "Front page"
 msgstr ""
@@ -1244,8 +1244,8 @@ msgstr "Cannot delete this code list."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Cannot delete this code because it is part of a cumulative code list."
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for codes."
@@ -1255,8 +1255,8 @@ msgstr ""
 "Cyclic dependency in code linking. Please ensure that the chained codes are not linked "
 "to each in a cyclic manner."
 
-msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
-msgstr "Member value is not valid."
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
 msgstr "Member value is not valid on row {{ identifier }}."
@@ -1493,7 +1493,7 @@ msgid "Create extension"
 msgstr ""
 
 msgid "Cross-reference code"
-msgstr ""
+msgstr "Member for cross-reference"
 
 msgid "Broader member"
 msgstr ""
