@@ -6,10 +6,10 @@
                    [value]="codeScheme.codeValue"
                    [infoText]="'INFO_TEXT_CODELIST_CODE_VALUE'"></app-literal>
 
-      <app-localizable-input [id]="'codelist_name_input'"
+      <app-localizable-input-with-language-indicator [id]="'codelist_name_input'"
                              [label]="'Code list name' | translate"
                              [infoText]="'INFO_TEXT_CODELIST_NAME'"
-                             [formControlName]="'prefLabel'"></app-localizable-input>
+                             [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
       <dl *ngIf="editing">
         <dd>
@@ -98,20 +98,20 @@
                         [restrict]="restricted"
                         [infoText]="'INFO_TEXT_CODELIST_STATUS'"></app-status-input>
 
-      <app-localizable-textarea [id]="'codelist_description_textarea'"
+      <app-localizable-textarea-with-language-indicator [id]="'codelist_description_textarea'"
                                 [label]="'Description' | translate"
                                 [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
-                                [formControlName]="'description'"></app-localizable-textarea>
+                                [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
 
-      <app-localizable-textarea [id]="'codelist_definition_textarea'"
+      <app-localizable-textarea-with-language-indicator [id]="'codelist_definition_textarea'"
                                 [label]="'Definition' | translate"
                                 [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
-                                [formControlName]="'definition'"></app-localizable-textarea>
+                                [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
 
-      <app-localizable-textarea [id]="'codelist_changenote_textarea'"
+      <app-localizable-textarea-with-language-indicator [id]="'codelist_changenote_textarea'"
                                 [label]="'Change note' | translate"
                                 [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
-                                [formControlName]="'changeNote'"></app-localizable-textarea>
+                                [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator>
 
       <app-literal-input [id]="'codelist_version_input'"
                          [label]="'Version' | translate"

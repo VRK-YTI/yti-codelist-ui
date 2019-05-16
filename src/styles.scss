@@ -98,3 +98,16 @@ img.svg-icon {
 .content-description-container {
   margin-top: 1em;
 }
+
+div.language {
+  font-weight: bold;
+  border-radius: 2px;
+  float: left;
+  color: $white;
+  background-color: $primary;
+  width: $language-width;
+  height: $language-height;
+  display: inline-block;
+  text-align: center;
+  line-height: $language-height;
+}
