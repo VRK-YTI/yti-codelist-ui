@@ -15,6 +15,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { Status, allStatuses } from 'yti-common-ui/entities/status';
+import { Code } from '../../entities/code';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -36,6 +37,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   vocabulary$ = new BehaviorSubject<Vocabulary | null>(null);
   statusOptions: FilterOptions<Status>;
   status$ = new BehaviorSubject<Status | null>(null);
+  languageOptions: FilterOptions<Code>;
+  language$ = new BehaviorSubject<Code | null>(null);
+  // allLanguagesAsCodes: Code[] = [];
   loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -59,14 +63,19 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   ngOnInit() {
 
-    combineLatest(this.vocabulary$, this.debouncedSearch$, this.status$)
-      .subscribe(([vocabulary, search, status]) => {
-
+    combineLatest(this.vocabulary$, this.debouncedSearch$, this.status$, this.language$)
+      .subscribe(([vocabulary, search, status, language]) => {
         if (!search) {
           this.searchResults = [];
         } else {
           this.loading = true;
-          this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null).subscribe(concepts => {
+
+          let languageCode: string|null = language ? language.codeValue.substring(0, language.codeValue.lastIndexOf('-')) : null;
+          if (languageCode === null || languageCode.length === 0) {
+            languageCode = language ? language.codeValue.substring(0, 2) : null;
+          }
+
+          this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
               this.loading = false;
               this.searchResults = concepts.sort((a , b) => {
                 if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
@@ -112,6 +121,25 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           : 'all_selected'
       })
     );
+
+    this.dataService.getLanguageCodes(this.languageService.language).subscribe(allLanguages => {
+
+      const languagesSorted = allLanguages.sort((a , b) => {
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+        return 0;
+      });
+
+      this.languageOptions = [null, ...languagesSorted].map(theLanguage => ({
+        value: theLanguage,
+        name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
+        idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
+      }));
+    }, error => {
+      this.languageOptions = [
+        { value: null, name: () => this.translateService.instant('All languages') }];
+      this.codeListErrorModalService.openSubmitError(error);
+    });
 
     if (this.targetEntityKind === 'code') {
       if (!this.updatingExistingEntity) {

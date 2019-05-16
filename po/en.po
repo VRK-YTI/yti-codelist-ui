@@ -151,6 +151,9 @@ msgstr ""
 msgid "All statuses"
 msgstr ""
 
+msgid "All languages"
+msgstr ""
+
 msgid "Reference Data"
 msgstr ""
 
@@ -930,10 +933,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
-msgstr ""
-"Cyclic dependency in code linking. Please ensure that the chained codes are not linked "
-"to each in a cyclic manner."
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr "Cannot delete this code because it is part of a cumulative code list."
 
 msgid "Front page"
 msgstr ""
@@ -1243,14 +1244,16 @@ msgstr "Cannot delete this code list."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
 msgstr "Cannot delete this code."
 
-msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
-msgstr "Cannot delete this code because it is part of a cumulative code list."
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr "Maximum hierarchies reached for codes."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+"Cyclic dependency in code linking. Please ensure that the chained codes are not linked "
+"to each in a cyclic manner."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr "Member value is not valid."
@@ -1525,8 +1528,8 @@ msgstr ""
 msgid "Delete code list"
 msgstr ""
 
-msgid "codeValueValidationError"
-msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
+msgid "externalReferenceExists"
+msgstr "Link is already in use in this code list."
 
 msgid "invalidDate"
 msgstr "Invalid date"
@@ -1543,11 +1546,11 @@ msgstr "Code value is already in use."
 msgid "extensionCodeValueExists"
 msgstr "Extension value is already in use in this code list."
 
-msgid "externalReferenceExists"
-msgstr "Link is already in use in this code list."
-
 msgid "invalidDateRange"
 msgstr "Invalid date range"
+
+msgid "codeValueValidationError"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-.+*#&"

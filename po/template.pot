@@ -142,6 +142,9 @@ msgstr ""
 msgid "All statuses"
 msgstr ""
 
+msgid "All languages"
+msgstr ""
+
 msgid "Reference Data"
 msgstr ""
 
