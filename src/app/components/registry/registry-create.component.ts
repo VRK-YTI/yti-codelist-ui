@@ -11,6 +11,7 @@ import { LocationService } from '../../services/location.service';
 import { Organization } from '../../entities/organization';
 import { map, tap } from 'rxjs/operators';
 import { requiredList } from 'yti-common-ui/utils/validator';
+import { nonEmptyLocalizableValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-registry-create',
@@ -22,7 +23,7 @@ export class RegistryCreateComponent implements OnInit {
 
   codeRegistryForm = new FormGroup({
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
-    prefLabel: new FormControl({}),
+    prefLabel: new FormControl({}, nonEmptyLocalizableValidator),
     description: new FormControl({}),
     organizations: new FormControl([], [requiredList])
   }, null, this.codeValueExistsValidator());

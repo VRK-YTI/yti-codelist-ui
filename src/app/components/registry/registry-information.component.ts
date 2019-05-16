@@ -10,6 +10,7 @@ import { CodeRegistry } from '../../entities/code-registry';
 import { FormControl, FormGroup } from '@angular/forms';
 import { requiredList } from 'yti-common-ui/utils/validator';
 import { ConfigurationService } from '../../services/configuration.service';
+import { nonEmptyLocalizableValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-code-registry-information',
@@ -21,7 +22,7 @@ export class RegistryInformationComponent implements OnChanges, OnDestroy {
   @Input() codeRegistry: CodeRegistry;
 
   codeRegistryForm = new FormGroup({
-    prefLabel: new FormControl({}),
+    prefLabel: new FormControl({}, nonEmptyLocalizableValidator),
     description: new FormControl({}),
     organizations: new FormControl([], [requiredList])
   });

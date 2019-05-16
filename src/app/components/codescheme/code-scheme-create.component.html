@@ -83,8 +83,12 @@
 
         <app-localizable-input [id]="'codelist_name_input'"
                                [label]="'Code list name' | translate"
+                               [required]="true"
                                [infoText]="'INFO_TEXT_CODELIST_NAME'"
                                [formControlName]="'prefLabel'"></app-localizable-input>
+        <div class="form-group">
+          <app-error-messages id="code_preflabel_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
+        </div>
 
         <dl>
           <dd>

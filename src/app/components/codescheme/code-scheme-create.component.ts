@@ -21,7 +21,7 @@ import { flatMap, map, tap } from 'rxjs/operators';
 import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Organization } from '../../entities/organization';
-import { ConfigurationService } from '../../services/configuration.service';
+import { nonEmptyLocalizableValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -41,7 +41,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   codeSchemeForm = new FormGroup({
     newVersionEmpty: new FormControl('false', Validators.required),
     codeValue: new FormControl('', [Validators.required, this.isCodeValuePatternValid]),
-    prefLabel: new FormControl({}),
+    prefLabel: new FormControl({}, nonEmptyLocalizableValidator),
     description: new FormControl({}),
     definition: new FormControl({}),
     changeNote: new FormControl({}),

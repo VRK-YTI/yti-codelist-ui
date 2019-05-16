@@ -16,6 +16,7 @@ import { Concept } from '../../entities/concept';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodePlain } from '../../entities/code-simple';
 import { ConfigurationService } from '../../services/configuration.service';
+import { nonEmptyLocalizableValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -31,7 +32,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   codelistMarkedAsCumulative: boolean;
 
   codeSchemeForm = new FormGroup({
-    prefLabel: new FormControl({}),
+    prefLabel: new FormControl({}, nonEmptyLocalizableValidator),
     description: new FormControl({}),
     changeNote: new FormControl({}),
     definition: new FormControl({}),
