@@ -494,12 +494,6 @@ msgstr ""
 msgid "Export members CSV"
 msgstr ""
 
-msgid "Export Excel"
-msgstr ""
-
-msgid "Export CSV"
-msgstr ""
-
 msgid "Export Cross-Reference List Excel"
 msgstr ""
 
@@ -656,7 +650,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -770,10 +764,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_TITLE"
@@ -887,7 +881,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "Front page"
@@ -1186,10 +1180,10 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
@@ -1355,6 +1349,9 @@ msgstr ""
 msgid "ERR_MSG_USER_MEMBER_ID_INVALID_VALUE"
 msgstr ""
 
+msgid "ERR_MSG_USER_BAD_LANGUAGECODE"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
@@ -1451,7 +1448,7 @@ msgstr ""
 msgid "Show JSON"
 msgstr ""
 
-msgid "externalReferenceExists"
+msgid "codeValueValidationError"
 msgstr ""
 
 msgid "invalidDate"
@@ -1469,10 +1466,10 @@ msgstr ""
 msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "externalReferenceExists"
 msgstr ""
 
-msgid "codeValueValidationError"
+msgid "invalidDateRange"
 msgstr ""
 
 msgid "codeCodeValueValidationError"
