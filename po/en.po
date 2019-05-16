@@ -494,6 +494,12 @@ msgstr ""
 msgid "Delete extension"
 msgstr ""
 
+msgid "Export members Excel"
+msgstr ""
+
+msgid "Export members CSV"
+msgstr ""
+
 msgid "Export Cross-Reference List Excel"
 msgstr ""
 
@@ -555,6 +561,9 @@ msgstr ""
 
 msgid "Code"
 msgstr ""
+
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr "You can use this feature to update the data returned by Export Members feature."
 
 msgid "Delete member"
 msgstr ""

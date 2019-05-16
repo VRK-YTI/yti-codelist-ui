@@ -485,6 +485,12 @@ msgstr ""
 msgid "Delete extension"
 msgstr ""
 
+msgid "Export members Excel"
+msgstr ""
+
+msgid "Export members CSV"
+msgstr ""
+
 msgid "Export Cross-Reference List Excel"
 msgstr ""
 
@@ -540,6 +546,9 @@ msgid "Code vocabularies URI"
 msgstr ""
 
 msgid "Code"
+msgstr ""
+
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
 msgstr ""
 
 msgid "Delete member"
@@ -638,7 +647,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -752,10 +761,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_TITLE"

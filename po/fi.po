@@ -501,6 +501,12 @@ msgstr "Tuo jäseniä"
 msgid "Delete extension"
 msgstr "Poista laajennus"
 
+msgid "Export members Excel"
+msgstr "Lataa jäsenet Excel"
+
+msgid "Export members CSV"
+msgstr "Lataa jäsenet CSV"
+
 msgid "Export Cross-Reference List Excel"
 msgstr "Lataa Koodiliitos Excel"
 
@@ -562,6 +568,10 @@ msgstr "Koodin käsitteen URI Sanastot-työkalussa"
 
 msgid "Code"
 msgstr "Koodi"
+
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr ""
+"Tällä toiminnolla voit päivittää \"Lataa Jäsenet\"-toiminnon palauttaman aineiston."
 
 msgid "Delete member"
 msgstr "Poista jäsen"

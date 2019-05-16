@@ -44,12 +44,12 @@
       <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
         <div ngbDropdownMenu aria-labelledby="exportDropdown">
-          <a id="codelist_export_excel_link" href="{{extension.url}}/?format=excel"
+          <a id="codelist_export_excel_link" href="{{extension.url}}/members/?format=excel"
              target="_blank"
-             class="dropdown-item" translate>Export Excel</a>
+             class="dropdown-item" translate>Export members Excel</a>
           <a id="codelist_export_csv_link" href="{{extension.url}}/members/?format=csv"
              target="_blank"
-             class="dropdown-item" translate>Export CSV</a>
+             class="dropdown-item" translate>Export members CSV</a>
           <a id="codelist_export_cross_reference_excel_link" href="{{extension.url}}/?format=excel&crossreferencelist=true"
              *ngIf="showCrossReferenceExportFunctions"
              target="_blank"
