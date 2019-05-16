@@ -371,16 +371,19 @@ msgstr ""
 msgid "Export"
 msgstr ""
 
-msgid "Export Excel"
+msgid "Export codelist Excel"
 msgstr ""
 
-msgid "Export CSV"
+msgid "Export codes CSV"
 msgstr ""
 
-msgid "Export JSON"
+msgid "Export codes Excel"
 msgstr ""
 
-msgid "Show JSON"
+msgid "Export codelist JSON"
+msgstr ""
+
+msgid "Show codelist JSON"
 msgstr ""
 
 msgid "CODES"
@@ -489,6 +492,12 @@ msgid "Export members Excel"
 msgstr ""
 
 msgid "Export members CSV"
+msgstr ""
+
+msgid "Export Excel"
+msgstr ""
+
+msgid "Export CSV"
 msgstr ""
 
 msgid "Export Cross-Reference List Excel"
@@ -647,7 +656,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -761,10 +770,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_TITLE"
@@ -878,7 +887,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr ""
 
 msgid "Front page"
@@ -1174,13 +1183,13 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
-msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
@@ -1436,7 +1445,13 @@ msgstr ""
 msgid "Delete code list"
 msgstr ""
 
-msgid "codeValueValidationError"
+msgid "Export JSON"
+msgstr ""
+
+msgid "Show JSON"
+msgstr ""
+
+msgid "externalReferenceExists"
 msgstr ""
 
 msgid "invalidDate"
@@ -1454,10 +1469,10 @@ msgstr ""
 msgid "extensionCodeValueExists"
 msgstr ""
 
-msgid "externalReferenceExists"
+msgid "invalidDateRange"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "codeValueValidationError"
 msgstr ""
 
 msgid "codeCodeValueValidationError"
