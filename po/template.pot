@@ -211,6 +211,9 @@ msgstr ""
 msgid "Import codes to code list"
 msgstr ""
 
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr ""
+
 msgid "File format"
 msgstr ""
 
@@ -372,6 +375,9 @@ msgid "Export"
 msgstr ""
 
 msgid "Export codelist Excel"
+msgstr ""
+
+msgid "Export codelist CSV"
 msgstr ""
 
 msgid "Export codes CSV"
@@ -551,9 +557,6 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
-msgstr ""
-
 msgid "Delete member"
 msgstr ""
 
@@ -650,7 +653,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
+msgid "INFO_TEXT_LINK_TITLE"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -767,10 +770,10 @@ msgstr ""
 msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
-msgid "INFO_TEXT_LINK_TITLE"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_DESCRIPTION"
@@ -879,6 +882,12 @@ msgid "INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE"
 msgstr ""
 
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
+msgstr ""
+
+msgid "INFO_TEXT_IMPORT_CODES_MODAL_HELP_TEXT"
+msgstr ""
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"

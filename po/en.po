@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-17 13:54+0300\n"
+"PO-Revision-Date: 2019-05-17 14:17+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -220,6 +220,9 @@ msgstr ""
 msgid "Import codes to code list"
 msgstr ""
 
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr "You can use this feature to update the data returned by Export members feature."
+
 msgid "File format"
 msgstr ""
 
@@ -382,6 +385,9 @@ msgstr ""
 
 msgid "Export codelist Excel"
 msgstr "Export code list Excel"
+
+msgid "Export codelist CSV"
+msgstr "Export code list CSV"
 
 msgid "Export codes CSV"
 msgstr ""
@@ -565,9 +571,6 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
-msgstr "You can use this feature to update the data returned by Export Members feature."
-
 msgid "Delete member"
 msgstr ""
 
@@ -666,10 +669,8 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
-msgstr ""
-"Language code of the code lists. The selected languages control which languages your "
-"content is localized in."
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr "Info text coming soon..."
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
@@ -802,6 +803,11 @@ msgstr "Validity start date. The date on which the resource is effective or vali
 msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr "Validity end date. The date on which the resource is no longer effective or valid."
 
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Language code of the code lists. The selected languages control which languages your "
+"content is localized in."
+
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Information domain that the code list is classified into. Information domain "
@@ -809,9 +815,6 @@ msgstr ""
 "of public services. Each resource (code list or classification, data model or "
 "terminology) is classified into at least one information domain. The information domain "
 "may be used to filter the search results."
-
-msgid "INFO_TEXT_LINK_TITLE"
-msgstr "Info text coming soon..."
 
 msgid "INFO_TEXT_LINK_DESCRIPTION"
 msgstr "Info text coming soon..."
@@ -944,6 +947,12 @@ msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
+
+msgid "INFO_TEXT_IMPORT_CODES_MODAL_HELP_TEXT"
+msgstr "You can use this feature to update the data returned by Export codes feature."
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgstr "You can use this feature to update the data returned by Export code list feature."
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""

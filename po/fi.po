@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-16 16:19+0300\n"
+"PO-Revision-Date: 2019-05-17 14:16+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -220,6 +220,10 @@ msgstr "TIEDOT"
 msgid "Import codes to code list"
 msgstr "Tuo koodeja koodistoon"
 
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr ""
+"Tällä toiminnolla voit päivittää \"Lataa jäsenet\"-toiminnon palauttaman aineiston."
+
 msgid "File format"
 msgstr "Valitse tiedoston muoto"
 
@@ -389,6 +393,9 @@ msgstr "Lataa"
 
 msgid "Export codelist Excel"
 msgstr "Lataa koodisto Excel"
+
+msgid "Export codelist CSV"
+msgstr "Lataa koodisto CSV"
 
 msgid "Export codes CSV"
 msgstr "Lataa koodit CSV"
@@ -572,10 +579,6 @@ msgstr "Koodin käsitteen URI Sanastot-työkalussa"
 msgid "Code"
 msgstr "Koodi"
 
-msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
-msgstr ""
-"Tällä toiminnolla voit päivittää \"Lataa Jäsenet\"-toiminnon palauttaman aineiston."
-
 msgid "Delete member"
 msgstr "Poista jäsen"
 
@@ -674,10 +677,8 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_LANGUAGE_CODE"
-msgstr ""
-"Koodiston kielikoodi-valinnat. Koodistoon valitut kielikoodit määrittelevät millä "
-"kielillä voit lokalisoilla koodiston sisällön."
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr "Infoteksti tulossa..."
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -831,15 +832,17 @@ msgstr "Koodin voimassaolon alkamispäivämäärä"
 msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
 msgstr "Koodin voimassaolon päättymispäivämäärä"
 
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Koodiston kielikoodi-valinnat. Koodistoon valitut kielikoodit määrittelevät millä "
+"kielillä voit lokalisoilla koodiston sisällön."
+
 msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 "Tieto siitä, mihin tietoalueeseen koodisto liittyy. Koodisto voi kuulua useaan "
 "tietoalueeseen. Tietoalueluokituksena käytetään Julkisten palvelujen luokitusta. Samaa "
 "tietoalueluokitusta käytetään Koodistot-työkalun lisäksi myös Sanastot- ja Tietomallit-"
 "työkaluissa. Tietoaluetta käytetään etusivun haussa rajaamaan hakutuloksia."
-
-msgid "INFO_TEXT_LINK_TITLE"
-msgstr "Infoteksti tulossa..."
 
 msgid "INFO_TEXT_LINK_DESCRIPTION"
 msgstr "Infoteksti tulossa..."
@@ -973,6 +976,13 @@ msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
+
+msgid "INFO_TEXT_IMPORT_CODES_MODAL_HELP_TEXT"
+msgstr "Tällä toiminnolla voit päivittää \"Lataa koodit\"-toiminnon palauttaman aineiston."
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgstr ""
+"Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
 
 msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
