@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-16 16:19+0300\n"
+"PO-Revision-Date: 2019-05-17 13:54+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -287,7 +287,7 @@ msgid "Create a new blank version without the existing content"
 msgstr ""
 
 msgid "Create the new codelist as cumulative"
-msgstr ""
+msgstr "Create the new code list as cumulative"
 
 msgid "CODE EXTENSIONS"
 msgstr ""
@@ -381,7 +381,7 @@ msgid "Export"
 msgstr ""
 
 msgid "Export codelist Excel"
-msgstr ""
+msgstr "Export code list Excel"
 
 msgid "Export codes CSV"
 msgstr ""
@@ -390,10 +390,10 @@ msgid "Export codes Excel"
 msgstr ""
 
 msgid "Export codelist JSON"
-msgstr ""
+msgstr "Export code list JSON"
 
 msgid "Show codelist JSON"
-msgstr ""
+msgstr "Show code list JSON"
 
 msgid "CODES"
 msgstr ""
@@ -892,7 +892,7 @@ msgstr ""
 "list is the type of the possible extension of a code list."
 
 msgid "INFO_TEXT_BROADER_CODE"
-msgstr "Code list's code that defines the hierarchy of the codelist."
+msgstr "Code list's code that defines the hierarchy of the code list."
 
 msgid "INFO_TEXT_MEMBER_VALIDITY"
 msgstr "The period in which the member is valid"
