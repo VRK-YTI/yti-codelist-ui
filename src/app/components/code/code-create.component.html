@@ -33,10 +33,10 @@
                            [infoText]="'INFO_TEXT_CODE_VALUE'"
                            [formControlName]="'codeValue'"></app-literal-input>
 
-        <app-localizable-input [id]="'code_name_input'"
+        <app-localizable-input-with-language-indicator [id]="'code_name_input'"
                                [label]="'Code name' | translate"
                                [infoText]="'INFO_TEXT_CODE_NAME'"
-                               [formControlName]="'prefLabel'"></app-localizable-input>
+                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
         <dl>
           <dd>
@@ -69,15 +69,15 @@
                           [formControlName]="'status'"
                           [infoText]="'INFO_TEXT_CODE_STATUS'"></app-status-input>
 
-        <app-localizable-textarea [id]="'code_description_textarea'"
+        <app-localizable-textarea-with-language-indicator [id]="'code_description_textarea'"
                                   [label]="'Description' | translate"
                                   [infoText]="'INFO_TEXT_CODE_DESCRIPTION'"
-                                  [formControlName]="'description'"></app-localizable-textarea>
+                                  [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
 
-        <app-localizable-textarea [id]="'code_definition_textarea'"
+        <app-localizable-textarea-with-language-indicator [id]="'code_definition_textarea'"
                                   [label]="'Definition' | translate"
                                   [infoText]="'INFO_TEXT_CODE_DEFINITION'"
-                                  [formControlName]="'definition'"></app-localizable-textarea>
+                                  [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
 
         <app-literal-input [id]="'code_shortname_input'"
                            [label]="'Short name' | translate"
