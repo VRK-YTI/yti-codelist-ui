@@ -32,7 +32,9 @@ export class Member implements EditableEntity {
     this.id = data.id;
     this.url = data.url;
     this.uri = data.uri;
-    this.order = data.order;
+    if (data.order) {
+      this.order = data.order;
+    }
     this.memberValues = (data.memberValues || []).map(mv => new MemberValue(mv));
     if (data.modified) {
       this.modified = parseDateTime(data.modified);
@@ -96,7 +98,7 @@ export class Member implements EditableEntity {
       prefLabel: { ...this.prefLabel },
       created: formatDateTime(this.modified),
       modified: formatDateTime(this.modified),
-      order: this.order,
+      order: this.order ? this.order : undefined,
       extension: this.extension.serialize(),
       relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
       code: this.code.serialize(),

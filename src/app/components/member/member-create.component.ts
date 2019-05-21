@@ -26,6 +26,7 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 export class MemberCreateComponent implements OnInit {
 
   extension: Extension;
+  codeScheme: CodeScheme;
 
   memberForm = new FormGroup({
     prefLabel: new FormControl({}),
@@ -66,6 +67,10 @@ export class MemberCreateComponent implements OnInit {
       throw new Error(
         `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
+
+    this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+    });
 
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
       this.extension = extension;

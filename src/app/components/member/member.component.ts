@@ -18,6 +18,7 @@ import { tap } from 'rxjs/operators';
 import { MemberValueType } from '../../services/api-schema';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-member',
@@ -31,6 +32,7 @@ export class MemberComponent implements OnInit, EditingComponent {
 
   member: Member;
   extension: Extension;
+  codeScheme: CodeScheme;
   deleting: boolean;
 
   constructor(private userService: UserService,
@@ -65,6 +67,10 @@ export class MemberComponent implements OnInit, EditingComponent {
       this.locationService.atMemberPage(member);
     });
 
+    this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+    });
+
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
       this.extension = extension;
     });
@@ -72,7 +78,7 @@ export class MemberComponent implements OnInit, EditingComponent {
 
   get loading(): boolean {
 
-    return this.member == null || this.extension == null || this.deleting;
+    return this.member == null || this.codeScheme == null || this.extension == null || this.deleting;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
