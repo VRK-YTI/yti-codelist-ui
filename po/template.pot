@@ -211,7 +211,7 @@ msgstr ""
 msgid "Import codes to code list"
 msgstr ""
 
-msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgid "INFO_TEXT_IMPORT_CODES_MODAL_HELP_TEXT"
 msgstr ""
 
 msgid "File format"
@@ -317,6 +317,12 @@ msgstr ""
 msgid "Import code list"
 msgstr ""
 
+msgid "Update code list"
+msgstr ""
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgstr ""
+
 msgid "Cumulative code list"
 msgstr ""
 
@@ -336,9 +342,6 @@ msgid "Create a new version"
 msgstr ""
 
 msgid "Create a new version from file"
-msgstr ""
-
-msgid "Update code list"
 msgstr ""
 
 msgid "Attach variant to code list"
@@ -555,6 +558,9 @@ msgid "Code vocabularies URI"
 msgstr ""
 
 msgid "Code"
+msgstr ""
+
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
 msgstr ""
 
 msgid "Delete member"
@@ -884,13 +890,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "INFO_TEXT_IMPORT_CODES_MODAL_HELP_TEXT"
-msgstr ""
-
-msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
-msgstr ""
-
-msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
 msgstr ""
 
 msgid "Front page"
@@ -1078,6 +1078,9 @@ msgstr ""
 msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
 msgstr ""
 
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE_WITH_IDENTIFIER"
+msgstr ""
+
 msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
 msgstr ""
 
@@ -1186,10 +1189,10 @@ msgstr ""
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgid "SUPERSEDED"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
