@@ -32,6 +32,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   extension: Extension;
+  codeScheme: CodeScheme;
   members: MemberSimple[];
   deleting: boolean;
   initialTabId: string|undefined = undefined;
@@ -66,6 +67,10 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
         `Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}`);
     }
 
+    this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+    })
+
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
       this.extension = extension;
       this.locationService.atExtensionPage(extension);
@@ -94,7 +99,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   }
 
   get loading(): boolean {
-    return this.extension == null || this.members == null || this.deleting;
+    return this.extension == null || this.codeScheme == null || this.members == null || this.deleting;
   }
 
   onTabChange(event: NgbTabChangeEvent) {
