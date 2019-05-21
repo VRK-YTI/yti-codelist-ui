@@ -39,7 +39,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   status$ = new BehaviorSubject<Status | null>(null);
   languageOptions: FilterOptions<Code>;
   language$ = new BehaviorSubject<Code | null>(null);
-  // allLanguagesAsCodes: Code[] = [];
+  allLanguagesAsCodes: Code[] = [];
+  allLanguages: string[] = [];
   loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -98,6 +99,14 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         return 0;
       });
 
+      vocabulariesSorted.forEach( vocabulary => {
+        vocabulary.languages.forEach(language => {
+          if (!this.allLanguages.includes(language, 0)) {
+            this.allLanguages.push(language);
+          }
+        });
+      });
+
       this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
           value: voc,
           name: () => voc ? this.languageService.translate(voc.prefLabel, false) + ( voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
@@ -106,6 +115,31 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
             : 'all_selected'
         })
       );
+
+
+      this.dataService.getLanguageCodes(this.languageService.language).subscribe(allLanguages => {
+
+        let languagesSorted = allLanguages.sort((a , b) => {
+          if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
+          if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+          return 0;
+        });
+
+        languagesSorted = languagesSorted.filter( code => this.allLanguages.includes(code.codeValue));
+
+        this.allLanguagesAsCodes = languagesSorted;
+
+        this.languageOptions = [null, ...languagesSorted].map(theLanguage => ({
+          value: theLanguage,
+          name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
+          idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
+        }));
+      }, error => {
+        this.languageOptions = [
+          { value: null, name: () => this.translateService.instant('All languages') }];
+        this.codeListErrorModalService.openSubmitError(error);
+      });
+
 
     }, error => {
       this.vocabularyOptions = [
@@ -121,25 +155,6 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           : 'all_selected'
       })
     );
-
-    this.dataService.getLanguageCodes(this.languageService.language).subscribe(allLanguages => {
-
-      const languagesSorted = allLanguages.sort((a , b) => {
-        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
-        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
-        return 0;
-      });
-
-      this.languageOptions = [null, ...languagesSorted].map(theLanguage => ({
-        value: theLanguage,
-        name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
-        idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
-      }));
-    }, error => {
-      this.languageOptions = [
-        { value: null, name: () => this.translateService.instant('All languages') }];
-      this.codeListErrorModalService.openSubmitError(error);
-    });
 
     if (this.targetEntityKind === 'code') {
       if (!this.updatingExistingEntity) {
@@ -160,6 +175,28 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
       }
       this.terminologyIntegrationModalInstructionText = 'terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme';
     }
+
+    this.vocabulary$.subscribe( next  => {
+      const chosenVocabulary: Vocabulary|null = next;
+      let chosenVocabularysLanguages: string[] = [];
+      if (chosenVocabulary != null) {
+        chosenVocabularysLanguages = chosenVocabulary.languages;
+      }
+
+      let languagesSorted = this.allLanguagesAsCodes.sort((a , b) => {
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+        return 0;
+      });
+
+      languagesSorted = languagesSorted.filter( code => chosenVocabularysLanguages.includes(code.codeValue));
+
+      this.languageOptions = [null, ...languagesSorted].map(theLanguage => ({
+        value: theLanguage,
+        name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
+        idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
+      }));
+    });
   }
 
   ngAfterViewInit() {
