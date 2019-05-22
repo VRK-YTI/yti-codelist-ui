@@ -89,13 +89,16 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     }
   }
 
-  refreshExtensions() {
+  refreshExtensionsAndCodeScheme() {
     this.dataService.getSimpleMembers(
       this.extension.parentCodeScheme.codeRegistry.codeValue,
       this.extension.parentCodeScheme.codeValue,
       this.extension.codeValue).subscribe(members => {
       this.members = members;
     });
+    this.dataService.getCodeScheme(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+    })
   }
 
   get loading(): boolean {
@@ -136,7 +139,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   importMembers() {
     this.extensionMembersImportModalService.open(this.extension).then(success => {
       if (success) {
-        this.refreshExtensions();
+        this.refreshExtensionsAndCodeScheme();
       }
     }, ignoreModalClose);
   }

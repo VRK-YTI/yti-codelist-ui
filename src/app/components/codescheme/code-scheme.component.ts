@@ -90,19 +90,27 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     });
   }
 
-  refreshCodes() {
+  refreshCodesAndCodeScheme() {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
       if (codes.length > 0) {
         this.tabSet.activeId = 'codelist_codes_tab';
       }
     });
+    this.refreshCodeScheme();
   }
 
-  refreshExtensions() {
+  refreshExtensionsAndCodeScheme() {
     this.dataService.getExtensions(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(extensions => {
       this.extensions = extensions;
     });
+    this.refreshCodeScheme();
+  }
+
+  refreshCodeScheme() {
+    this.dataService.getCodeScheme(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codeScheme => {
+      this.codeScheme = codeScheme;
+    }
   }
 
   get loading(): boolean {
@@ -199,7 +207,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.extensionsImportModalService.open(this.codeScheme).then(success => {
       if (success) {
-        this.refreshExtensions();
+        this.refreshExtensionsAndCodeScheme();
       }
     }, ignoreModalClose);
   }
@@ -221,7 +229,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.codeSchemeCodesImportModalService.open(this.codeScheme).then(success => {
       if (success) {
-        this.refreshCodes();
+        this.refreshCodesAndCodeScheme();
       }
     }, ignoreModalClose);
   }
