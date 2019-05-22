@@ -7,11 +7,13 @@ export class Vocabulary {
   id: string;
   prefLabel: Localizable;
   status: string;
+  languages: string[];
 
   constructor(data: VocabularyType) {
     this.id = data.id;
     this.prefLabel = data.prefLabel;
     this.status = data.status;
+    this.languages = data.languages;
   }
 
   getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {

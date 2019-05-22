@@ -13,9 +13,9 @@
         <app-literal [label]="'Extension' | translate"
                      [value]="extension.getDisplayName(languageService)"></app-literal>
 
-        <app-localizable-input [id]="'member_name_input'"
+        <app-localizable-input-with-language-indicator [id]="'member_name_input'"
                                [label]="'Member name' | translate"
-                               [formControlName]="'prefLabel'"></app-localizable-input>
+                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
         <div *ngFor="let valueType of valueTypes">
           <app-literal-input [id]="'member_membervalue_' + valueType.localName + '_input'"

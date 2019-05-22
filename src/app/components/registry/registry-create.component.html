@@ -25,11 +25,11 @@
           <app-error-messages id="registry_form_error_messages" [control]="codeRegistryForm"></app-error-messages>
         </div>
 
-        <app-localizable-input [id]="'registry_name_input'"
+        <app-localizable-input-with-language-indicator [id]="'registry_name_input'"
                                [label]="'Registry name' | translate"
                                [infoText]="'INFO_TEXT_REGISTRY_NAME'"
                                [required]="true"
-                               [formControlName]="'prefLabel'"></app-localizable-input>
+                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
         <app-organizations-input id="registry_organizations_input"
                                  [label]="'Organization' | translate"
@@ -37,10 +37,10 @@
                                  [infoText]="'INFO_TEXT_REGISTRY_ORGANIZATION'"
                                  [formControlName]="'organizations'"></app-organizations-input>
 
-        <app-localizable-textarea [id]="'registry_description_textarea'"
+        <app-localizable-textarea-with-language-indicator [id]="'registry_description_textarea'"
                                   [label]="'Description' | translate"
                                   [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
-                                  [formControlName]="'description'"></app-localizable-textarea>
+                                  [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
 
       </div>
     </div>
