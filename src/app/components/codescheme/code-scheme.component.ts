@@ -110,7 +110,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   refreshCodeScheme() {
     this.dataService.getCodeScheme(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-    }
+    });
   }
 
   get loading(): boolean {
