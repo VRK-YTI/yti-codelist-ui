@@ -6,6 +6,7 @@ ARG NPMRC
 # Install git
 RUN apk add --update git
 
+#Fetch dependencies
 ADD . /tmp
 WORKDIR /tmp
 RUN echo "$NPMRC" > .npmrc && yarn install && rm -f .npmrc
