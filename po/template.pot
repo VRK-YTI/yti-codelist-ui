@@ -139,10 +139,10 @@ msgstr ""
 msgid "All vocabularies"
 msgstr ""
 
-msgid "All statuses"
+msgid "All languages"
 msgstr ""
 
-msgid "All languages"
+msgid "All statuses"
 msgstr ""
 
 msgid "Reference Data"
@@ -1336,9 +1336,6 @@ msgid "ERR_MSG_USER_MEMBER_LINKED_FROM_ANOTHER_EXTENSION"
 msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
-msgstr ""
-
-msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
 msgstr ""
 
 msgid ""
