@@ -118,6 +118,7 @@ import { AlertModalComponent, AlertModalService } from './components/common/aler
 import { SearchHitsListComponent } from './components/frontpage/app-searchhits-list';
 import { LocalizableInputWithLangauageIndicatorComponent } from './components/form/localizable-input-with-langauage-indicator.component';
 import { LocalizableTextareaWithLanguageIndicatorComponent } from './components/form/localizable-textarea-with-language-indicator';
+import { LocalizableLiteralWithLanguageIndicatorComponent } from './components/form/localizable-literal-with-language-indicator.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -243,6 +244,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LiteralComponent,
     LinkComponent,
     LocalizableLiteralComponent,
+    LocalizableLiteralWithLanguageIndicatorComponent,
     EditableButtonsComponent,
     ErrorMessagesComponent,
     LinkShowModalComponent,

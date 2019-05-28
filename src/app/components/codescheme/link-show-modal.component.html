@@ -16,20 +16,20 @@
         </a>
       </div>
 
-      <app-localizable-literal [label]="'Link title' | translate"
-                               [value]="externalReference.title"></app-localizable-literal>
+      <app-localizable-literal-with-language-indicator [label]="'Link title' | translate"
+                               [value]="externalReference.title"></app-localizable-literal-with-language-indicator>
 
-      <app-localizable-literal [label]="'Description' | translate"
-                               [value]="externalReference.description"></app-localizable-literal>
+      <app-localizable-literal-with-language-indicator [label]="'Description' | translate"
+                               [value]="externalReference.description"></app-localizable-literal-with-language-indicator>
 
       <dt><label translate>URL</label></dt>
       <dd>
         <div class="text-content-wrap"><a id="external_ref_url_link" [href]="externalReference.href" target="_blank">{{externalReference.href}}</a></div>
       </dd>
 
-      <app-localizable-literal *ngIf="externalReference.propertyType != null"
+      <app-localizable-literal-with-language-indicator *ngIf="externalReference.propertyType != null"
                                [label]="'Link type' | translate"
-                               [value]="externalReference.propertyType.prefLabel"></app-localizable-literal>
+                               [value]="externalReference.propertyType.prefLabel"></app-localizable-literal-with-language-indicator>
     </div>
   </div>
 </div>
