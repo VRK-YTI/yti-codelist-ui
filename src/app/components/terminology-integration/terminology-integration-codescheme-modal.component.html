@@ -29,7 +29,7 @@
                            id="vocabulary_selection_dropdown"
                            [filterSubject]="vocabulary$"
                            [options]="vocabularyOptions"></app-filter-dropdown>
-      <app-filter-dropdown class="d-inline-block"
+      <app-filter-dropdown class="d-inline-block" style="padding-right: 5px"
                            id="status_selection_dropdown"
                            [filterSubject]="status$"
                            [options]="statusOptions"></app-filter-dropdown>
@@ -47,10 +47,10 @@
              (click)="select(concept)">
           <div class="content" [class.last]="last">
             <span class="float-right"><app-status class="status" [status]="concept.status"></app-status></span>
-            <span class="title">{{concept.prefLabel | translateValue:false}}</span>
-            <span class="body">{{concept.definition | translateValue:false}}</span>
+            <span class="title">{{concept.prefLabel | translateValue:false:chosenLanguageCodeValue }}</span>
+            <span class="body">{{concept.definition | translateValue:false:chosenLanguageCodeValue}}</span>
             <div class="origin">
-              <span class="float-left">{{concept.vocabularyPrefLabel | translateValue:false}}</span>
+              <span class="float-left">{{concept.vocabularyPrefLabel | translateValue:false:chosenLanguageCodeValue }}</span>
             </div>
           </div>
         </div>

@@ -52,6 +52,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   terminologyIntegrationModalPageTitle: string;
   terminologyIntegrationModalInstructionText: string;
   localizer: Localizer;
+  chosenLanguageCodeValue: string|null;
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
@@ -76,11 +77,15 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
             languageCode = language ? language.codeValue.substring(0, 2) : null;
           }
 
+          this.chosenLanguageCodeValue = languageCode;
+
           this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
               this.loading = false;
+
               this.searchResults = concepts.sort((a , b) => {
-                if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
-                if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+                if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() < this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) { return -1; }
+                if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() > this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) { return 1; }
+
                 return 0;
               });
             },
@@ -233,7 +238,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     return vocabularyId !== '' && this.search$.getValue() !== '';
   }
 
-  suggestAConcept(localizer: Localizer) {
+  suggestAConcept() {
 
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
     const vocabularyName: string = vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';

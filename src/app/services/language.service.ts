@@ -77,6 +77,34 @@ export class LanguageService implements Localizer {
     }
   }
 
+  translateToGivenLanguage(localizable: Localizable, languageToUse: string|null = 'fi'): string {
+
+    if (!localizable || !languageToUse) {
+      return '';
+    }
+
+    const primaryLocalization = localizable[languageToUse];
+
+    if (primaryLocalization) {
+      return primaryLocalization;
+    } else {
+
+      const fallbackValue = this.checkForFallbackLanguages(localizable);
+
+      if (fallbackValue != null) {
+        return fallbackValue;
+      }
+
+      for (const [language, value] of Object.entries(localizable)) {
+        if (value) {
+          return `${value} (${language})`;
+        }
+      }
+
+      return '';
+    }
+  }
+
   checkForFallbackLanguages(localizable: Localizable): string | null {
 
     const fallbackLanguages: string[] = ['en', 'fi', 'sv'];
