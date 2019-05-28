@@ -13,6 +13,8 @@
   </div>
 
   <div class="modal-body">
+    <p translate *ngIf="!updatingExistingCodeScheme">INFO_TEXT_IMPORT_CODELIST_FRONTPAGE_MODAL_HELP_TEXT</p>
+    <p translate *ngIf="updatingExistingCodeScheme">INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT</p>
     <div class="row" *ngIf="!creatingNewCodeSchemeVersion && !updatingExistingCodeScheme">
       <div class="col-md-12">
         <app-registry-input id="codelist_registry_input"
@@ -29,7 +31,6 @@
     </div>
 
     <div ngbDropdown class="d-inline-block">
-      <p translate *ngIf="updatingExistingCodeScheme">INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT</p>
       <dl>
         <dt>
           <label for="file_format_dropdown_button" translate>File format</label>

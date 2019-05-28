@@ -323,6 +323,9 @@ msgstr ""
 msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
 msgstr ""
 
+msgid "INFO_TEXT_IMPORT_CODELIST_FRONTPAGE_MODAL_HELP_TEXT"
+msgstr ""
+
 msgid "Cumulative code list"
 msgstr ""
 

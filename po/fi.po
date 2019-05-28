@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-27 16:55+0300\n"
+"PO-Revision-Date: 2019-05-28 09:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -339,6 +339,11 @@ msgstr "Päivitä koodisto"
 msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
 msgstr ""
 "Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
+
+msgid "INFO_TEXT_IMPORT_CODELIST_FRONTPAGE_MODAL_HELP_TEXT"
+msgstr ""
+"Tällä toiminnolla voit tuoda uuden koodiston tai päivittää \"Lataa koodisto\"-toiminnon "
+"palauttaman aineiston."
 
 msgid "Cumulative code list"
 msgstr "Kumulatiivinen koodisto"
@@ -984,8 +989,10 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Koodien maksimi hierarkkinen taso ylittyi."
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+"Koodien linkityksessä syklinen ongelma. Tarkista, että koodin hierarkia-ketjussa ei ole "
+"rinnakkaisia viitteitä koodien välillä."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1296,13 +1303,11 @@ msgstr "Tätä koodia ei voi poistaa."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr "Tätä koodia ei voi poistaa koska se kuuluu kumulatiiviseen koodistoon."
 
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Koodien maksimi hierarkkinen taso ylittyi."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
-msgstr ""
-"Koodien linkityksessä syklinen ongelma. Tarkista, että koodin hierarkia-ketjussa ei ole "
-"rinnakkaisia viitteitä koodien välillä."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr "Jäsenen arvo ei ole sallittu."
@@ -1422,6 +1427,11 @@ msgstr "Jäsenen ID ei täsmää."
 
 msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
 msgstr "Koodilaajennuksissa ei sallita jäsenten välisiä linkityksiä."
+
+#, fuzzy
+#| msgid "ERR_MSG_USER_MEMBER_RELATION_SET_TO_ITSELF"
+msgid "ERR_MSG_USER_MEMBER_RELATION_ERROR"
+msgstr "Jäsenen ylätason jäsenen määritys itseen ei ole sallittua."
 
 msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
 msgstr "Liittyvää koodistoa ei löydy tunnisteella: {{ identifier }}"
