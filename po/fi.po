@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-21 11:41+0300\n"
+"PO-Revision-Date: 2019-05-27 16:55+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -148,11 +148,11 @@ msgstr "Kaikki koodistotyypit"
 msgid "All vocabularies"
 msgstr "Kaikki sanastot"
 
-msgid "All statuses"
-msgstr "Kaikki tilat"
-
 msgid "All languages"
 msgstr "Kaikki kielet"
+
+msgid "All statuses"
+msgstr "Kaikki tilat"
 
 msgid "Reference Data"
 msgstr "Koodistot"
@@ -1260,8 +1260,8 @@ msgstr "Rekisterillä on koodistoja. Poista koodistot ennen rekisterin poistamis
 
 msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
-"Jäsenten linkityksessä syklinen ongelma. Tarkista, että laajennus-ketjussa ei ole "
-"rinnakkaisia viitteitä jäsenten välillä."
+"Jäsenten linkityksessä syklinen ongelma viitteessä {{ identifier }}. Tarkista, että "
+"laajennus-ketjussa ei ole rinnakkaisia viitteitä jäsenten välillä."
 
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr "Laajennukseen ei voi liittää sitä koodistoa, jonka alaisuudessa se on."
@@ -1449,8 +1449,8 @@ msgstr "Jäsenen linkityksessä käytetty jäsen ei ole samasta laajennuksesta."
 msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
 msgstr "Jäsentä ei löydy UUID:llä: {{identifier}}"
 
-msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
-msgstr "Jäsentä ei löydy tunnisteella: {{identifier}}"
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_URI"
+msgstr "Jäsentä ei löydy URI:lla: {{identifier}}"
 
 msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_CODESCHEME"
 msgstr "Tiedostossa on eri koodisto kuin päivityksen kohteena oleva koodisto."
@@ -1629,3 +1629,6 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
+
+#~ msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
+#~ msgstr "Jäsentä ei löydy tunnisteella: {{identifier}}"

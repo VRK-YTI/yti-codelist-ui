@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-21 11:41+0300\n"
+"PO-Revision-Date: 2019-05-28 09:29+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -148,10 +148,10 @@ msgstr "All types of code lists"
 msgid "All vocabularies"
 msgstr ""
 
-msgid "All statuses"
+msgid "All languages"
 msgstr ""
 
-msgid "All languages"
+msgid "All statuses"
 msgstr ""
 
 msgid "Reference Data"
@@ -954,8 +954,10 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
-msgstr "Maximum hierarchies reached for codes."
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+"Cyclic dependency in code linking. Please ensure that the chained codes are not linked "
+"to each in a cyclic manner."
 
 msgid "Front page"
 msgstr ""
@@ -1237,8 +1239,8 @@ msgstr ""
 
 msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
 msgstr ""
-"Cyclic dependency in member linking. Please ensure that the chained members are not "
-"linked to each in a cyclic manner."
+"Cyclic dependency in member linking relation {{ identifier }}. Please ensure that the "
+"chained members are not linked to each in a cyclic manner."
 
 msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
 msgstr "Extension cannot be linked to the same code list which it is attached to."
@@ -1271,13 +1273,11 @@ msgstr "Cannot delete this code."
 msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
 msgstr "Cannot delete this code because it is part of a cumulative code list."
 
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Maximum hierarchies reached for codes."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
-msgstr ""
-"Cyclic dependency in code linking. Please ensure that the chained codes are not linked "
-"to each in a cyclic manner."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
 msgstr "Member value is not valid."
@@ -1398,6 +1398,9 @@ msgstr "Member ID mismatch."
 msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
 msgstr "Code extension members are not allowed to contain relations to other members."
 
+msgid "ERR_MSG_USER_MEMBER_RELATION_ERROR"
+msgstr "Member relation definition not allowed with value: {{ identifier }}"
+
 msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
 msgstr "Sub code list not found for identifier: {{ identifier }}"
 
@@ -1424,8 +1427,8 @@ msgstr "Linked member is not from the same extension."
 msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
 msgstr "Member not found with UUID: {{identifier}}"
 
-msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
-msgstr "Member not found with identifier: {{identifier}}"
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_URI"
+msgstr "Member not found with URI: {{identifier}}"
 
 msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_CODESCHEME"
 msgstr "The code list in the file is not the same one as the target of the update."
@@ -1603,3 +1606,6 @@ msgstr "Member value is a required input."
 
 msgid "localizableValueRequired"
 msgstr "Required"
+
+#~ msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
+#~ msgstr "Member not found with identifier: {{identifier}}"
