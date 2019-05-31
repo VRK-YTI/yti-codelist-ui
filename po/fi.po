@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-28 09:50+0300\n"
+"PO-Revision-Date: 2019-05-31 09:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -336,14 +336,14 @@ msgstr "Tuo koodisto"
 msgid "Update code list"
 msgstr "Päivitä koodisto"
 
-msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
-msgstr ""
-"Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
-
 msgid "INFO_TEXT_IMPORT_CODELIST_FRONTPAGE_MODAL_HELP_TEXT"
 msgstr ""
 "Tällä toiminnolla voit tuoda uuden koodiston tai päivittää \"Lataa koodisto\"-toiminnon "
 "palauttaman aineiston."
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgstr ""
+"Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
 
 msgid "Cumulative code list"
 msgstr "Kumulatiivinen koodisto"
@@ -1428,10 +1428,11 @@ msgstr "Jäsenen ID ei täsmää."
 msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
 msgstr "Koodilaajennuksissa ei sallita jäsenten välisiä linkityksiä."
 
-#, fuzzy
-#| msgid "ERR_MSG_USER_MEMBER_RELATION_SET_TO_ITSELF"
 msgid "ERR_MSG_USER_MEMBER_RELATION_ERROR"
-msgstr "Jäsenen ylätason jäsenen määritys itseen ei ole sallittua."
+msgstr "Jäsentä ei voitu määrittää tunnisteella: {{identifier}}"
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
+msgstr "Jäsentä ei löydy ID:llä: {{identifier}}"
 
 msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
 msgstr "Liittyvää koodistoa ei löydy tunnisteella: {{ identifier }}"
@@ -1639,6 +1640,3 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
-
-#~ msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
-#~ msgstr "Jäsentä ei löydy tunnisteella: {{identifier}}"

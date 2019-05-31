@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-28 09:50+0300\n"
+"PO-Revision-Date: 2019-05-31 09:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -329,13 +329,13 @@ msgstr ""
 msgid "Update code list"
 msgstr ""
 
-msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
-msgstr "You can use this feature to update the data returned by Export code list feature."
-
 msgid "INFO_TEXT_IMPORT_CODELIST_FRONTPAGE_MODAL_HELP_TEXT"
 msgstr ""
 "You can use this feature to import a new code list or update the data returned by Export "
 "code list feature."
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgstr "You can use this feature to update the data returned by Export code list feature."
 
 msgid "Cumulative code list"
 msgstr ""
@@ -1406,6 +1406,9 @@ msgstr "Code extension members are not allowed to contain relations to other mem
 msgid "ERR_MSG_USER_MEMBER_RELATION_ERROR"
 msgstr "Member relation definition not allowed with value: {{ identifier }}"
 
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
+msgstr "Member not found with ID: {{identifier}}"
+
 msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
 msgstr "Sub code list not found for identifier: {{ identifier }}"
 
@@ -1611,6 +1614,3 @@ msgstr "Member value is a required input."
 
 msgid "localizableValueRequired"
 msgstr "Required"
-
-#~ msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
-#~ msgstr "Member not found with identifier: {{identifier}}"
