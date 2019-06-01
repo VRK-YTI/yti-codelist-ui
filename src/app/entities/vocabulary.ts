@@ -1,6 +1,7 @@
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 import { VocabularyType } from '../services/api-schema';
+import { Code } from './code';
 
 export class Vocabulary {
 
@@ -8,6 +9,7 @@ export class Vocabulary {
   prefLabel: Localizable;
   status: string;
   languages: string[];
+  languageCodes: Code[];
 
   constructor(data: VocabularyType) {
     this.id = data.id;

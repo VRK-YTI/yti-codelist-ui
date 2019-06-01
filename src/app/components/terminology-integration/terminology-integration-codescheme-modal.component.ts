@@ -14,7 +14,7 @@ import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Status, allStatuses } from 'yti-common-ui/entities/status';
+import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
@@ -39,8 +39,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   status$ = new BehaviorSubject<Status | null>(null);
   languageOptions: FilterOptions<Code>;
   language$ = new BehaviorSubject<Code | null>(null);
-  allLanguagesAsCodes: Code[] = [];
-  allLanguages: string[] = [];
+  allLanguagesFromVocabulariesAsStrings: string[] = [];
+  allLanguagesFromVocabulariesAsCodes: Code[] = [];
+  chosenVocabularysLanguagesAsCodes: Code[] = [];
   loading = false;
 
   @ViewChild('searchInput') searchInput: ElementRef;
@@ -52,7 +53,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   terminologyIntegrationModalPageTitle: string;
   terminologyIntegrationModalInstructionText: string;
   localizer: Localizer;
-  chosenLanguageCodeValue: string|null;
+  chosenLanguageCodeValue: string | null;
+  chosenLanguageCode: Code | null;
 
   constructor(private dataService: DataService,
               private modal: NgbActiveModal,
@@ -72,19 +74,24 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
         } else {
           this.loading = true;
 
-          let languageCode: string|null = language ? language.codeValue.substring(0, language.codeValue.lastIndexOf('-')) : null;
+          let languageCode: string | null = language ? language.codeValue.substring(0, language.codeValue.lastIndexOf('-')) : null;
           if (languageCode === null || languageCode.length === 0) {
             languageCode = language ? language.codeValue.substring(0, 2) : null;
           }
 
           this.chosenLanguageCodeValue = languageCode;
+          this.chosenLanguageCode = language;
 
           this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
               this.loading = false;
 
-              this.searchResults = concepts.sort((a , b) => {
-                if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() < this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) { return -1; }
-                if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() > this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) { return 1; }
+              this.searchResults = concepts.sort((a, b) => {
+                if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() < this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) {
+                  return -1;
+                }
+                if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() > this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) {
+                  return 1;
+                }
 
                 return 0;
               });
@@ -97,49 +104,52 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
       });
 
     this.dataService.getVocabularies().subscribe(vocabularies => {
-
-      const vocabulariesSorted = vocabularies.sort((a , b) => {
-        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
-        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+      const vocabulariesSorted = vocabularies.sort((a, b) => {
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) {
+          return -1;
+        }
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) {
+          return 1;
+        }
         return 0;
       });
-
-      vocabulariesSorted.forEach( vocabulary => {
+      vocabulariesSorted.forEach(vocabulary => {
         vocabulary.languages.forEach(language => {
-          if (!this.allLanguages.includes(language, 0)) {
-            this.allLanguages.push(language);
+          if (!this.allLanguagesFromVocabulariesAsStrings.includes(language, 0)) {
+            this.allLanguagesFromVocabulariesAsStrings.push(language);
           }
         });
       });
-
       this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
           value: voc,
-          name: () => voc ? this.languageService.translate(voc.prefLabel, false) + ( voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
+          name: () => voc ? this.languageService.translate(voc.prefLabel, false) + (voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
             : this.translateService.instant('All vocabularies'),
           idIdentifier: () => voc ? voc.getIdIdentifier(this.languageService, true)
             : 'all_selected'
         })
       );
 
-
       this.dataService.getLanguageCodes(this.languageService.language).subscribe(allLanguages => {
 
-        let languagesSorted = allLanguages.sort((a , b) => {
-          if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
-          if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+        const languagesAsCodesSorted = allLanguages.sort((a, b) => {
+          if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) {
+            return -1;
+          }
+          if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) {
+            return 1;
+          }
           return 0;
         });
 
-        languagesSorted = languagesSorted.filter( code => this.allLanguages.includes(code.codeValue));
+        this.allLanguagesFromVocabulariesAsCodes = languagesAsCodesSorted.filter(code => this.allLanguagesFromVocabulariesAsStrings.includes(code.codeValue));
 
-        this.allLanguagesAsCodes = languagesSorted;
-
-        this.languageOptions = [null, ...languagesSorted].map(theLanguage => ({
+        this.languageOptions = [null, ...this.allLanguagesFromVocabulariesAsCodes].map(theLanguage => ({
           value: theLanguage,
           name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
           idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
         }));
       }, error => {
+        console.log(error);
         this.languageOptions = [
           { value: null, name: () => this.translateService.instant('All languages') }];
         this.codeListErrorModalService.openSubmitError(error);
@@ -147,6 +157,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
 
     }, error => {
+      console.log(error);
       this.vocabularyOptions = [
         { value: null, name: () => this.translateService.instant('All vocabularies') }];
       this.codeListErrorModalService.openSubmitError(error);
@@ -181,26 +192,59 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
       this.terminologyIntegrationModalInstructionText = 'terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme';
     }
 
-    this.vocabulary$.subscribe( next  => {
-      const chosenVocabulary: Vocabulary|null = next;
-      let chosenVocabularysLanguages: string[] = [];
+    // When the user changes Vocabulary we only want to show the language options in the dropdown which are inherent to that particular Vocabulary.
+    // ie. if some other Vocabulary contains Spanish terms but the currently selected Vocabulary does not, we will not show Spanish as an option at this time.
+    // Meaning that the list of language dropdown options is dynamically updated every time the user changes the selected Vocabulary.
+    this.vocabulary$.subscribe(next => {
+
+      this.chosenVocabularysLanguagesAsCodes = [];
+      const chosenVocabulary: Vocabulary | null = next;
+      let chosenVocabularysLanguagesAsStrings: string[] = [];
       if (chosenVocabulary != null) {
-        chosenVocabularysLanguages = chosenVocabulary.languages;
+        chosenVocabularysLanguagesAsStrings = chosenVocabulary.languages; // NOTE! The Vocabulary coming from Terminology API only contains strings like "en", "fi", "sv"
       }
 
-      let languagesSorted = this.allLanguagesAsCodes.sort((a , b) => {
-        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) { return -1; }
-        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) { return 1; }
+      const allLanguagesFromVocabulariesAsCodesSorted = this.allLanguagesFromVocabulariesAsCodes.sort((a, b) => {
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() < this.languageService.translate(b.prefLabel, true).toLowerCase()) {
+          return -1;
+        }
+        if (this.languageService.translate(a.prefLabel, true).toLowerCase() > this.languageService.translate(b.prefLabel, true).toLowerCase()) {
+          return 1;
+        }
         return 0;
       });
 
-      languagesSorted = languagesSorted.filter( code => chosenVocabularysLanguages.includes(code.codeValue));
+      allLanguagesFromVocabulariesAsCodesSorted.forEach(lang => {
+        if (chosenVocabularysLanguagesAsStrings.includes(lang.codeValue)) {
+          this.chosenVocabularysLanguagesAsCodes.push(lang);
+        }
+      });
 
-      this.languageOptions = [null, ...languagesSorted].map(theLanguage => ({
-        value: theLanguage,
-        name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
-        idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
-      }));
+      let languageSelectedFromDropdown: Code | null = null;
+      this.language$.subscribe(next2 => {
+        languageSelectedFromDropdown = next2;
+      });
+
+      if (languageSelectedFromDropdown !== null) {
+        if (!this.chosenVocabularysLanguagesAsCodes.includes(languageSelectedFromDropdown)) {
+          this.language$.next(null); // Empty the value from language dropdown if current lang does not exist in the new Vocabulary just selected.
+        }
+      }
+
+      if (chosenVocabulary === null) { // Finally repopulate the language dropdown options according to the situation
+        this.languageOptions = [null, ...this.allLanguagesFromVocabulariesAsCodes].map(theLanguage => ({
+          value: theLanguage,
+          name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
+          idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
+        }));
+      } else {
+        this.languageOptions = [null, ...this.chosenVocabularysLanguagesAsCodes].map(theLanguage => ({
+          value: theLanguage,
+          name: () => theLanguage ? this.languageService.translate(theLanguage.prefLabel, true) : this.translateService.instant('All languages'),
+          idIdentifier: () => theLanguage ? theLanguage.codeValue : 'all_selected'
+        }));
+      }
+
     });
   }
 
