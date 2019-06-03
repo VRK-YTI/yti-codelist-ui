@@ -64,7 +64,7 @@ export class ConfigurationService {
 
   get showUnfinishedFeature(): boolean {
 
-    return this.env === 'dev' || 'awsdev' || this.env === 'local';
+    return this.env === 'dev' || this.env === 'awsdev' || this.env === 'local';
   }
 
   getEnvironmentIdentifier(style?: 'prefix' | 'postfix'): string {
