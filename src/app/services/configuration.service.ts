@@ -69,7 +69,7 @@ export class ConfigurationService {
 
   getEnvironmentIdentifier(style?: 'prefix' | 'postfix'): string {
 
-    if (this.env !== 'prod') {
+    if (this.env && this.env !== 'prod') {
       let identifier;
       if (this.env === 'awsdev') {
         identifier = 'DEV';
