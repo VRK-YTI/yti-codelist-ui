@@ -70,12 +70,7 @@ export class ConfigurationService {
   getEnvironmentIdentifier(style?: 'prefix' | 'postfix'): string {
 
     if (this.env && this.env !== 'prod') {
-      let identifier;
-      if (this.env === 'awsdev') {
-        identifier = 'DEV';
-      } else {
-        identifier = this.env.toUpperCase();
-      }
+      const identifier = this.env.toUpperCase();
       if (!style) {
         return identifier;
       } else if (style === 'prefix') {
