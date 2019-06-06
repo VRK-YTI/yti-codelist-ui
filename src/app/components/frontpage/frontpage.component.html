@@ -143,12 +143,12 @@
                                        [searchHitsCodesAll]="codeScheme.searchHitsOfTheTypeCode"></app-searchhits-list>
                 </div>
 
-                <div *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeExtension.length > 0">
+                <div class="deep-results-section" *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeExtension.length > 0">
                   <app-searchhits-list [totalNrOfSearchHitsExtensions]="codeScheme.totalNrOfSearchHitsExtensions"
                                        [codeScheme]="codeScheme"
                                        [searchTerm]="searchTerm"
                                        [searchHitsExtensionsAll]="codeScheme.searchHitsOfTheTypeExtension"></app-searchhits-list>
-              </div>
+                </div>
 
               </div>
 

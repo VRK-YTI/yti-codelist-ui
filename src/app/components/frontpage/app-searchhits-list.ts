@@ -10,7 +10,7 @@ import { CodeScheme } from '../../entities/code-scheme';
   selector: 'app-searchhits-list',
   styleUrls: ['./searchhits-list.component.scss'],
   template: `    
-      <div class="deep-results-section" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
+      <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
         <div class="deep-results-section-title" >{{'theCodes' | translate}}</div>
         <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
             <a class="deep-results-hit" title="{{allLanguagesLabel(sh.prefLabel)}}" *ngFor="let sh of searchHitsCodesAll" (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span></a>
@@ -18,7 +18,7 @@ import { CodeScheme } from '../../entities/code-scheme';
         </div>
       </div>
       
-      <div class="deep-results-section" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
+      <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
         <div class="deep-results-section-title">{{'theExtensions' | translate}}</div>
         <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
           <a class="deep-results-hit" title="{{allLanguagesLabel(sh.prefLabel)}}" *ngFor="let sh of searchHitsExtensionsAll" (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span></a>
