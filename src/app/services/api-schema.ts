@@ -55,6 +55,9 @@ export interface CodeSchemeType extends BaseResourceType {
   lastCodeschemeId: string | null;
   organizations: OrganizationType[];
   searchHits: SearchHitType[];
+  totalNrOfSearchHitsCodes: number;
+  totalNrOfSearchHitsExtensions: number;
+  // deepSearchHits: DeepSearchHitListCodeType;
   cumulative: boolean;
 }
 
@@ -264,4 +267,10 @@ export interface SearchHitType {
   entityCodeValue: string;
   codeSchemeCodeValue: string;
   codeRegistryCodeValue: string;
+}
+
+export interface DeepSearchHitListCodeType {
+  type: 'CODE';
+  totalHitCount: number;
+  topHits: CodePlainType[];
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
@@ -9,12 +9,23 @@ import { CodePlain } from '../../entities/code-simple';
   templateUrl: './code-scheme-codes.component.html',
   styleUrls: ['./code-scheme-codes.component.scss']
 })
-export class CodeSchemeCodesComponent {
+export class CodeSchemeCodesComponent implements OnChanges {
 
   @Input() codes: CodePlain[];
   @Input() codeScheme: CodeScheme;
+  @Input() prefilledSearchTermForCode: string;
 
   searchTerm = '';
+
+  ngOnChanges(changes: SimpleChanges) {
+    const prefilledSearchTermForCode: SimpleChange = changes.prefilledSearchTermForCode;
+/*    console.log('prev value: ', prefilledSearchTermForCode.previousValue);
+    console.log('got name: ', prefilledSearchTermForCode.currentValue);*/
+    if (prefilledSearchTermForCode.currentValue) {
+      this.searchTerm = prefilledSearchTermForCode.currentValue;
+      console.log('ngOnChanges setting this.searchTerm to : ', prefilledSearchTermForCode.currentValue);
+    }
+  }
 
   constructor() {
   }

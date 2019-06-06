@@ -133,16 +133,52 @@
                 </li>
               </ul>
 
-              <span class="badge badge-success" *ngIf="showUnfinishedFeature && (codeScheme.searchHitsMax5OfTheTypeCode.length > 0 ||
-                codeScheme.searchHitsMax5OfTheTypeExtension.length > 0)" translate>Searchhits:</span>
+              <!--<span class="badge badge-success" *ngIf="showUnfinishedFeature && searchHitsArePresent(codeScheme) &&
+                codeScheme.deepSearchHits.topHits.length > 0" translate>
+                Searchhits:</span>-->
+
+              <!--<span class="deep-results" *ngIf="showUnfinishedFeature && searchHitsArePresent(codeScheme) &&
+                codeScheme.deepSearchHits.topHits.length > 0" translate>
+                Searchhits:</span>-->
+
+              <!--<div *ngIf="showUnfinishedFeature &&  searchHitsArePresent(codeScheme) && codeScheme.deepSearchHits.topHits.length > 0">
+                joo
+                <div class="deep-results">
+                  <div class="deep-results-title" translate>Search results</div>
+                  <div *ngFor="let deepHitList of codeScheme.deepSearchHits[codeScheme.id]" class="deep-results-section">
+                    jaa
+                    <div class="deep-results-section-title" translate>Deep {{deepHitList.type}} hit</div>
+                    <div class="deep-results-section-content">
+                      <a *ngFor="let deepHit of deepHitList" class="deep-results-hit"
+                         [routerLink]="['/concepts', codeScheme.id, 'concept', deepHit.id]" title="{{deepHit.prefLabel}}"
+                         [queryParams]="{'q': searchTerm}"
+                         [innerHTML]="deepHit.prefLabel | translateValue:true"></a>
+                      <a *ngIf="deepHitList.totalHitCount > deepHitList.topHits.length" class="deep-results-show-all"
+                         [routerLink]="['/concepts', codeScheme.id]"
+                         [queryParams]="{'q': searchTerm}">({{'See all results' | translate : {count: deepHitList.totalHitCount} }})</a>
+                    </div>
+                  </div>
+                </div>
+              </div>-->
+
+<!--              <span class="deep-results-section-title" *ngIf="showUnfinishedFeature && (codeScheme.searchHitsOfTheTypeCode > 0 ||
+                codeScheme.searchHitsOfTheTypeExtension> 0)" translate></span>-->
+
+              <span
+                *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeCode.length > 0 || codeScheme.searchHitsOfTheTypeExtension.length > 0 "
+                class="deep-results-section-title" style="font-weight: 600; font-size: 0.86rem; !important margin-bottom: 1px; !important padding-bottom: 1px;" translate>Searchhits</span>
 
               <div *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeCode.length > 0">
-                <app-searchhits-list [searchHitsCodes5]="codeScheme.searchHitsMax5OfTheTypeCode"
+                <app-searchhits-list [totalNrOfSearchHitsCodes]="codeScheme.totalNrOfSearchHitsCodes"
+                                     [codeScheme]="codeScheme"
+                                     [searchTerm]="searchTerm"
                                      [searchHitsCodesAll]="codeScheme.searchHitsOfTheTypeCode"></app-searchhits-list>
               </div>
 
               <div *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeExtension.length > 0">
-                <app-searchhits-list [searchHitsExtensions5]="codeScheme.searchHitsMax5OfTheTypeExtension"
+                <app-searchhits-list [totalNrOfSearchHitsExtensions]="codeScheme.totalNrOfSearchHitsExtensions"
+                                     [codeScheme]="codeScheme"
+                                     [searchTerm]="searchTerm"
                                      [searchHitsExtensionsAll]="codeScheme.searchHitsOfTheTypeExtension"></app-searchhits-list>
               </div>
 

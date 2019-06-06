@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-31 09:34+0300\n"
+"PO-Revision-Date: 2019-06-05 13:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -132,6 +132,9 @@ msgstr ""
 
 msgid "theCodes"
 msgstr "Codes"
+
+msgid "See all results"
+msgstr "See all {{count}} results"
 
 msgid "theExtensions"
 msgstr "Extensions"
@@ -561,8 +564,8 @@ msgstr ""
 msgid "Search did not find any code lists."
 msgstr ""
 
-msgid "Searchhits:"
-msgstr "Search hits:"
+msgid "Searchhits"
+msgstr "Search results"
 
 msgid "Extension"
 msgstr ""
@@ -1553,6 +1556,9 @@ msgstr ""
 
 msgid "extension"
 msgstr ""
+
+msgid "Searchhits:"
+msgstr "Search hits:"
 
 msgid "truecumulative"
 msgstr "Yes"

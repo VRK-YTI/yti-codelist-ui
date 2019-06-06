@@ -7,7 +7,7 @@ import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { CodeSchemeType } from '../services/api-schema';
+import { CodeSchemeType, DeepSearchHitListCodeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
@@ -15,6 +15,7 @@ import { ExtensionSimple } from './extension-simple';
 import { CodeSchemeListItem } from './code-scheme-list-item';
 import { Organization } from './organization';
 import { SearchHit } from './search-hit';
+import { DeepSearchHitListCode } from './deep-search-hit-code-list';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -44,7 +45,10 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   allVersions: CodeSchemeListItem[] = [];
   organizations: Organization[];
   searchHitsOfTheTypeCode: SearchHit[];
+  totalNrOfSearchHitsCodes: number;
+  totalNrOfSearchHitsExtensions: number;
   searchHitsOfTheTypeExtension: SearchHit[];
+  deepSearchHits: DeepSearchHitListCode;
   cumulative: boolean;
 
   constructor(data: CodeSchemeType) {
@@ -99,6 +103,21 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.organizations = (data.organizations || []).map(o => new Organization(o));
     this.searchHitsOfTheTypeCode = (data.searchHits || []).map(sh => new SearchHit(sh)).filter(sh => sh.type === 'code');
     this.searchHitsOfTheTypeExtension = (data.searchHits || []).map(sh => new SearchHit(sh)).filter(sh => sh.type === 'extension');
+    this.totalNrOfSearchHitsCodes = data.totalNrOfSearchHitsCodes;
+    this.totalNrOfSearchHitsExtensions = data.totalNrOfSearchHitsExtensions;
+
+    // console.log('this.searchHitsOfTheTypeCode', this.searchHitsOfTheTypeCode);
+
+/*    if (data.deepSearchHits) {
+      /!*console.log(data.deepSearchHits instanceof Map);
+      console.log(data.deepSearchHits instanceof Array);
+      console.log(data.deepSearchHits instanceof Object);
+      console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX NP POPULEERARA NYT', data.deepSearchHits);*!/
+      // this.deepSearchHits = new DeepSearchHitListCode(data.deepSearchHits);
+      this.deepSearchHits = JSON.parse(JSON.stringify(data.deepSearchHits));
+      // var clone = Object.assign({}, obj);
+      // console.log('JA HETI PERÄÄN this.deepSearchHits', this.deepSearchHits);
+    }*/
     this.cumulative = data.cumulative;
   }
 
@@ -151,12 +170,12 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return results;
   }
 
-  get searchHitsMax5OfTheTypeCode() {
-    return this.searchHitsOfTheTypeCode.slice(0, 5);
+  get searchHitsMax6OfTheTypeCode() {
+    return this.searchHitsOfTheTypeCode.slice(0, 6);
   }
 
-  get searchHitsMax5OfTheTypeExtension() {
-    return this.searchHitsOfTheTypeExtension.slice(0, 5);
+  get searchHitsMax6OfTheTypeExtension() {
+    return this.searchHitsOfTheTypeExtension.slice(0, 6);
   }
 
   allowOrganizationEdit(): boolean {
@@ -201,6 +220,9 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       allVersions: this.allVersions.map(li => li.serialize()),
       organizations: this.organizations.map(o => o.serialize()),
       searchHits: [], // this is not really a part of codescheme, never getting stored, so lets send nothing
+      totalNrOfSearchHitsCodes: this.totalNrOfSearchHitsCodes,
+      totalNrOfSearchHitsExtensions: this.totalNrOfSearchHitsExtensions,
+      // deepSearchHits: {} // this.deepSearchHits.serialize(), // TODO !!! should we put something here or not, if not, what should be the "empty" in this case?
       cumulative: this.cumulative
     };
   }

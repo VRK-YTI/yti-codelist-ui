@@ -43,6 +43,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   deleting = false;
   languageCodes: CodePlain[] | null;
   deleteCodeSchemeButtonTitle = 'Delete code list';
+  prefilledSearchTermForCode: string;
+
+  initialTabId: string|undefined = undefined;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -57,7 +60,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private authorizationManager: AuthorizationManager,
               private codeschemeVariantModalService: CodeschemeVariantModalService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
-              private codeSchemeImportModalService: CodeSchemeImportModalService) {
+              private codeSchemeImportModalService: CodeSchemeImportModalService,
+              private activatedRoute: ActivatedRoute) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -88,7 +92,25 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getExtensions(registryCodeValue, schemeCodeValue).subscribe(extensions => {
       this.extensions = extensions;
     });
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.prefilledSearchTermForCode = params['prefilledSearchTermForCode'];
+      /*if (params['goToExtensionsTab']) {
+        this.tabSet.activeId = 'codelist_extensions_tab';
+      };*/
+    });
+
+
   }
+
+  /*ngAfterViewInit() {
+    const goToMembersTab = this.route.snapshot.queryParamMap.get('goToExtensionsTab');
+    /!*if (goToMembersTab === 'true') { // TODO YTI-421 cleanup, make this work or delete this.
+      this.tabSet.activeId = 'codelist_extensions_tab';
+      this.refreshCodeScheme();
+    }*!/
+
+  }*/
 
   refreshCodesAndCodeScheme() {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {

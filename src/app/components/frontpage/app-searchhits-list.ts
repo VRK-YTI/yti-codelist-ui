@@ -3,75 +3,43 @@ import { SearchHit } from '../../entities/search-hit';
 import { ConfigurationService } from '../../services/configuration.service';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
+import { Localizable } from 'yti-common-ui/types/localization';
+import { CodeScheme } from '../../entities/code-scheme';
 
 @Component({
   selector: 'app-searchhits-list',
   styleUrls: ['./searchhits-list.component.scss'],
   template: `
-    <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
-
-      <div *ngIf="!showFullListOfCodes">
-        <span class="badge badge-info">{{'theCodes' | translate}}:</span>
-        <ul class="organizations dot-separated-list" *ngIf="searchHitsCodes5 && searchHitsCodes5.length > 0">
-          <li class="organization" *ngFor="let sh of searchHitsCodes5">
-            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
-          </li>
-          <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
-            <a (click)="onClickCodes($event)">...</a>
-          </div>
-        </ul>
+    <div class="deep-results" *ngIf="totalNrOfSearchHitsCodes > 0 || totalNrOfSearchHitsExtensions > 0">
+      
+      <div class="deep-results-section" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
+        <div class="deep-results-section-title" >{{'theCodes' | translate}}</div>
+        <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
+            <a style="color:#2a6ebb;" *ngFor="let sh of searchHitsCodesAll" (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span>&nbsp;</a>
+            <a style="color:#2a6ebb;" *ngIf="totalNrOfSearchHitsCodes > 6" (click)="navigateToCodeSchemeFromCode(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsCodes} }})</a>
+        </div>
       </div>
-
-      <div *ngIf="showFullListOfCodes">
-        <span class="badge badge-info">{{'theCodes' | translate}}:</span>
-        <ul class="organizations dot-separated-list" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
-          <li class="organization" *ngFor="let sh of searchHitsCodesAll">
-            <a (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
-          </li>
-          <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 5">
-            <a (click)="onClickCodes($event)">...</a>
-          </div>
-        </ul>
+      
+      <div class="deep-results-section" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
+        <div class="deep-results-section-title">{{'theExtensions' | translate}}</div>
+        <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
+          <a style="color:#2a6ebb;" *ngFor="let sh of searchHitsExtensionsAll" (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span>&nbsp;</a>
+          <a style="color:#2a6ebb;" *ngIf="totalNrOfSearchHitsExtensions > 6" (click)="navigateToCodeSchemeFromExtension(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsExtensions} }})</a>
+        </div>
+        
       </div>
-
-    </div>
-
-    <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
-
-      <div *ngIf="!showFullListOfExtensions">
-        <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
-        <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensions5 && searchHitsExtensions5.length > 0">
-          <li class="organization" *ngFor="let sh of searchHitsExtensions5">
-            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
-          </li>
-          <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
-            <a (click)="onClickExtensions($event)">...</a>
-          </div>
-        </ul>
-      </div>
-
-      <div *ngIf="showFullListOfExtensions">
-        <span class="badge badge-info">{{'theExtensions' | translate}}:</span>
-        <ul class="organizations dot-separated-list" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
-          <li class="organization" *ngFor="let sh of searchHitsExtensionsAll">
-            <a (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)">{{getSearchHitLabelForScreen(sh)}}</a>
-          </li>
-          <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 5">
-            <a (click)="onClickExtensions($event)">...</a>
-          </div>
-        </ul>
-      </div>
-
     </div>
   `
 })
 export class SearchHitsListComponent {
-  showFullListOfCodes = false;
-  showFullListOfExtensions = false;
-  @Input() searchHitsCodes5: SearchHit[];
+
   @Input() searchHitsCodesAll: SearchHit[];
-  @Input() searchHitsExtensions5: SearchHit[];
   @Input() searchHitsExtensionsAll: SearchHit[];
+  @Input() totalNrOfSearchHitsCodes: number;
+  @Input() totalNrOfSearchHitsExtensions: number;
+  @Input() codeScheme: CodeScheme;
+  @Input() searchTerm: string;
+
   /**
    * By setting captureClick to true the mouse click event expanding/collapsing the text will be stopped (stopPropagation and
    * preventDefault). This should enable use inside clickable greater containers. However, there may be side effects, so default is false.
@@ -82,22 +50,6 @@ export class SearchHitsListComponent {
   constructor(private configurationService: ConfigurationService,
               private router: Router,
               public languageService: LanguageService) {
-  }
-
-  onClickCodes($event: MouseEvent) {
-    this.showFullListOfCodes = !this.showFullListOfCodes;
-    if (this.captureClick) {
-      $event.stopPropagation();
-      $event.preventDefault();
-    }
-  }
-
-  onClickExtensions($event: MouseEvent) {
-    this.showFullListOfExtensions = !this.showFullListOfExtensions;
-    if (this.captureClick) {
-      $event.stopPropagation();
-      $event.preventDefault();
-    }
   }
 
   getUriWithEnv(uri: string): string | null {
@@ -126,12 +78,30 @@ export class SearchHitsListComponent {
     ];
   }
 
+  getRouteToCodeScheme(codeSchemeCodeValue: string, codeRegistryCodeValue: string): any[] {
+    return [
+      'codescheme',
+      {
+        registryCode: codeRegistryCodeValue,
+        schemeCode: codeSchemeCodeValue,
+      }
+    ];
+  }
+
   navigateToCode(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
-    this.router.navigate(this.getRouteToCode(entityCodeValue, codeSchemeCodeValue, codeRegistryCodeValue));
+    this.router.navigate(this.getRouteToCode(entityCodeValue.replace('<b>', '').replace('</b>', ''), codeSchemeCodeValue, codeRegistryCodeValue));
   }
 
   navigateToExtension(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
-    this.router.navigate(this.getRouteToExtension(entityCodeValue, codeSchemeCodeValue, codeRegistryCodeValue));
+    this.router.navigate(this.getRouteToExtension(entityCodeValue.replace('<b>', '').replace('</b>', ''), codeSchemeCodeValue, codeRegistryCodeValue));
+  }
+
+  navigateToCodeSchemeFromCode(codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
+    this.router.navigate(this.getRouteToCodeScheme(codeSchemeCodeValue, codeRegistryCodeValue), { queryParams: { 'prefilledSearchTermForCode': this.searchTerm ? this.searchTerm : '' }});
+  }
+
+  navigateToCodeSchemeFromExtension(codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
+    this.router.navigate(this.getRouteToCodeScheme(codeSchemeCodeValue, codeRegistryCodeValue), { queryParams: { 'goToExtensionsTab': true }} );
   }
 
   getSearchHitLabelForScreen(searchHit: SearchHit): string {

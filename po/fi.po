@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-05-31 09:34+0300\n"
+"PO-Revision-Date: 2019-06-05 13:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -132,6 +132,9 @@ msgstr "Tila"
 
 msgid "theCodes"
 msgstr "Koodit"
+
+msgid "See all results"
+msgstr "Katso kaikki {{count}} osumaa"
 
 msgid "theExtensions"
 msgstr "Laajennukset"
@@ -569,8 +572,8 @@ msgstr "Rajaa tietoalueella"
 msgid "Search did not find any code lists."
 msgstr "Haulla ei löytynyt yhtään koodistoa."
 
-msgid "Searchhits:"
-msgstr "Hakuosumat:"
+msgid "Searchhits"
+msgstr "Hakutulokset"
 
 msgid "Extension"
 msgstr "Laajennus"
@@ -1578,6 +1581,9 @@ msgstr " puuttunutta jäsentä luotu."
 msgid "extension"
 msgstr "laajennus"
 
+msgid "Searchhits:"
+msgstr "Hakuosumat:"
+
 msgid "truecumulative"
 msgstr "Kyllä"
 
@@ -1640,3 +1646,6 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
+
+#~ msgid "See all {{totalNrOfSearchHitsCodes}} results"
+#~ msgstr "Näytä kaikki {{ totalNrOfSearchHitsCodes}} tulosta"
