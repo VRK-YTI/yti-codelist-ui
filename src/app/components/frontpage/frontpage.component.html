@@ -135,7 +135,7 @@
 
               <div class="deep-results" *ngIf="showUnfinishedFeature && (codeScheme.searchHitsOfTheTypeCode.length > 0 || codeScheme.searchHitsOfTheTypeExtension.length > 0)">
                 <div class="deep-results-title" translate>Searchhits</div>
-                <div *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeCode.length > 0">
+                <div class="deep-results-section" *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeCode.length > 0">
                   <app-searchhits-list [totalNrOfSearchHitsCodes]="codeScheme.totalNrOfSearchHitsCodes"
                                        [codeScheme]="codeScheme"
                                        [searchTerm]="searchTerm"
