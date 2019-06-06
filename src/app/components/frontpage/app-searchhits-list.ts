@@ -13,18 +13,18 @@ import { CodeScheme } from '../../entities/code-scheme';
     <div class="deep-results" *ngIf="totalNrOfSearchHitsCodes > 0 || totalNrOfSearchHitsExtensions > 0">
       
       <div class="deep-results-section" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
-        <div class="deep-results-section-title" >{{'theCodes' | translate}}</div>
+        <div class="title" >{{'theCodes' | translate}}</div>
         <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
-            <a style="color:#2a6ebb;" *ngFor="let sh of searchHitsCodesAll" (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span>&nbsp;</a>
-            <a style="color:#2a6ebb;" *ngIf="totalNrOfSearchHitsCodes > 6" (click)="navigateToCodeSchemeFromCode(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsCodes} }})</a>
+            <a class="deep-results-hit" *ngFor="let sh of searchHitsCodesAll" (click)="navigateToCode(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span>&nbsp;</a>
+            <a  class="deep-results-show-all" *ngIf="totalNrOfSearchHitsCodes > 6" (click)="navigateToCodeSchemeFromCode(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsCodes} }})</a>
         </div>
       </div>
       
       <div class="deep-results-section" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
-        <div class="deep-results-section-title">{{'theExtensions' | translate}}</div>
+        <div class="title">{{'theExtensions' | translate}}</div>
         <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
-          <a style="color:#2a6ebb;" *ngFor="let sh of searchHitsExtensionsAll" (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span>&nbsp;</a>
-          <a style="color:#2a6ebb;" *ngIf="totalNrOfSearchHitsExtensions > 6" (click)="navigateToCodeSchemeFromExtension(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsExtensions} }})</a>
+          <a class="deep-results-hit" *ngFor="let sh of searchHitsExtensionsAll" (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span>&nbsp;</a>
+          <a  class="deep-results-show-all" *ngIf="totalNrOfSearchHitsExtensions > 6" (click)="navigateToCodeSchemeFromExtension(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsExtensions} }})</a>
         </div>
         
       </div>
