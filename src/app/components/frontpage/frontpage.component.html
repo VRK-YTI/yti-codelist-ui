@@ -117,21 +117,22 @@
 
               <a class="name" [routerLink]="codeScheme.route">{{codeScheme.getDisplayName(languageService, true)}}</a>
 
+              <div class="meta-information-row">
+                <ul class="organizations dot-separated-list">
+                  <li class="organization" *ngFor="let org of codeScheme.organizations">
+                    {{org.prefLabel | translateValue:true}}
+                  </li>
+                </ul>
+                <span class="information-domains">
+                      <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.getDisplayInfoDomainListing(languageService, true)">
+                        {{infoDomain}}
+                      </span>
+                    </span>
+              </div>
+
               <div *ngIf="codeScheme.description | translateValue: true as descriptionText" class="description-component-container">
                 <app-expandable-text [text]="descriptionText"></app-expandable-text>
               </div>
-
-              <span class="information-domains">
-                <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.getDisplayInfoDomainListing(languageService, true)">
-                  {{infoDomain}}
-                </span>
-              </span>
-
-              <ul class="organizations dot-separated-list">
-                <li class="organization" *ngFor="let org of codeScheme.organizations">
-                  {{org.prefLabel | translateValue:true}}
-                </li>
-              </ul>
 
               <div class="deep-results" *ngIf="showUnfinishedFeature && (codeScheme.searchHitsOfTheTypeCode.length > 0 || codeScheme.searchHitsOfTheTypeExtension.length > 0)">
                 <div class="deep-results-title" translate>Searchhits</div>
