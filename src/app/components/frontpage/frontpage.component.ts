@@ -250,10 +250,6 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     return this.authorizationManager.canCreateCodeScheme(this.codeRegistries);
   }
 
-  get showUnfinishedFeature(): boolean {
-    return this.configurationService.showUnfinishedFeature;
-  }
-
   getUriWithEnv(uri: string): string|null {
     return this.configurationService.getUriWithEnv(uri);
   }

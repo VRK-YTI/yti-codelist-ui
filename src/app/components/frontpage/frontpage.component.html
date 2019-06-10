@@ -134,16 +134,16 @@
                 <app-expandable-text [text]="descriptionText"></app-expandable-text>
               </div>
 
-              <div class="deep-results" *ngIf="showUnfinishedFeature && (codeScheme.searchHitsOfTheTypeCode.length > 0 || codeScheme.searchHitsOfTheTypeExtension.length > 0)">
+              <div class="deep-results" *ngIf="codeScheme.searchHitsOfTheTypeCode.length > 0 || codeScheme.searchHitsOfTheTypeExtension.length > 0">
                 <div class="deep-results-title" translate>Searchhits</div>
-                <div class="deep-results-section" *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeCode.length > 0">
+                <div class="deep-results-section" *ngIf="codeScheme.searchHitsOfTheTypeCode.length > 0">
                   <app-searchhits-list [totalNrOfSearchHitsCodes]="codeScheme.totalNrOfSearchHitsCodes"
                                        [codeScheme]="codeScheme"
                                        [searchTerm]="searchTerm"
                                        [searchHitsCodesAll]="codeScheme.searchHitsOfTheTypeCode"></app-searchhits-list>
                 </div>
 
-                <div class="deep-results-section" *ngIf="showUnfinishedFeature && codeScheme.searchHitsOfTheTypeExtension.length > 0">
+                <div class="deep-results-section" *ngIf="codeScheme.searchHitsOfTheTypeExtension.length > 0">
                   <app-searchhits-list [totalNrOfSearchHitsExtensions]="codeScheme.totalNrOfSearchHitsExtensions"
                                        [codeScheme]="codeScheme"
                                        [searchTerm]="searchTerm"
