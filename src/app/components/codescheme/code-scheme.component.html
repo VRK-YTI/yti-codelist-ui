@@ -44,6 +44,11 @@
                   class="dropdown-item"
                   (click)="updateCodeSchemeFromFile()"
                   translate>Update code list</button>
+          <button id="mass_migrate_codelist_codes_statuses_button"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="massMigrateCodeListsCodesStatuses()"
+                  translate>Update code list's codes' statuses</button>
           <button id="attach_variant_button"
                   *ngIf="canAttachOrDetachAVariant"
                   type="button"

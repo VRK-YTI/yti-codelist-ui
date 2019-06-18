@@ -119,6 +119,10 @@ import { SearchHitsListComponent } from './components/frontpage/app-searchhits-l
 import { LocalizableInputWithLangauageIndicatorComponent } from './components/form/localizable-input-with-langauage-indicator.component';
 import { LocalizableTextareaWithLanguageIndicatorComponent } from './components/form/localizable-textarea-with-language-indicator';
 import { LocalizableLiteralWithLanguageIndicatorComponent } from './components/form/localizable-literal-with-language-indicator.component';
+import {
+  CodeSchemeMassMigrateCodeStatusesModalComponent,
+  CodeSchemeMassMigrateCodeStatusesModalService
+} from './components/codescheme/code-scheme-mass-migrate-code-statuses-modal.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -231,6 +235,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeSchemeImportAndCreateComponent,
     CodeInformationComponent,
     CodeSchemeCodesImportModalComponent,
+    CodeSchemeMassMigrateCodeStatusesModalComponent,
     CodeSchemeImportModalComponent,
     CodeSchemeCreateComponent,
     ExtensionCreateComponent,
@@ -290,6 +295,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
     CodeSchemeCodesImportModalComponent,
+    CodeSchemeMassMigrateCodeStatusesModalComponent,
     ExtensionsImportModalComponent,
     MembersImportModalComponent,
     LinkShowModalComponent,
@@ -335,6 +341,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     AuthorizationManager,
     CodeSchemeImportModalService,
     CodeSchemeCodesImportModalService,
+    CodeSchemeMassMigrateCodeStatusesModalService,
     MembersImportModalService,
     ExtensionImportModalService,
     CodeListConfirmationModalService,

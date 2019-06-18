@@ -17,13 +17,13 @@ import { ExtensionImportModalService } from '../extension/extension-import-modal
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
-import { flatMap, tap } from 'rxjs/operators';
+import { catchError, switchMap, tap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
-import { changeToRestrictedStatus } from '../../utils/status-check';
+import { changeToRestrictedStatus, isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo } from '../../utils/status-check';
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
-import { ConfigurationService } from '../../services/configuration.service';
 import { ExtensionSimple } from '../../entities/extension-simple';
+import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
 
 @Component({
   selector: 'app-code-scheme',
@@ -45,7 +45,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   deleteCodeSchemeButtonTitle = 'Delete code list';
   prefilledSearchTermForCode: string;
 
-  initialTabId: string|undefined = undefined;
+  initialTabId: string | undefined = undefined;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -61,6 +61,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private codeschemeVariantModalService: CodeschemeVariantModalService,
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
               private codeSchemeImportModalService: CodeSchemeImportModalService,
+              private codeSchemeMassMigrateCodeStatusesModalService: CodeSchemeMassMigrateCodeStatusesModalService,
               private activatedRoute: ActivatedRoute) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
@@ -210,14 +211,36 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       endDate: validity.end
     });
 
+    let weNeedToAskAboutCodeStatuses: Boolean = false;
+    if (isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo(this.codeScheme.status, updatedCodeScheme.status)) {
+      weNeedToAskAboutCodeStatuses = true;
+    }
+
     const save = () => {
-      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize()).pipe(tap(() => this.ngOnInit()));
+      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'false').pipe(tap(() => this.ngOnInit()));
+    };
+
+    const saveWithCodeStatusChanges = () => {
+      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'true').pipe(tap(() => this.ngOnInit()));
     };
 
     if (changeToRestrictedStatus(this.codeScheme, formData.status)) {
-      return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(flatMap(save));
+      if (weNeedToAskAboutCodeStatuses) {
+        return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(
+          switchMap(ok => from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus()).pipe(
+            switchMap(okok => saveWithCodeStatusChanges()),
+            catchError(rejrej => save()))));
+      } else {
+        return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(switchMap(ok => save()));
+      }
     } else {
-      return save();
+      if (weNeedToAskAboutCodeStatuses) {
+        return from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus()).pipe(
+          switchMap(ok => saveWithCodeStatusChanges()),
+          catchError(rej => save()));
+      } else {
+        return save();
+      }
     }
   }
 
@@ -341,7 +364,13 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   updateCodeSchemeFromFile() {
     this.codeSchemeImportModalService.open(false, true, this.codeScheme)
       .then(codeScheme => this.router.navigate(['re'], { skipLocationChange: true })).catch(reason => undefined)
-        .then(() => this.router.navigate(this.codeScheme.route)).catch(reason => undefined);
+      .then(() => this.router.navigate(this.codeScheme.route)).catch(reason => undefined);
+  }
+
+  massMigrateCodeListsCodesStatuses() {
+    this.codeSchemeMassMigrateCodeStatusesModalService.open(this.codeScheme)
+      .then(codeScheme => this.router.navigate(['re'], { skipLocationChange: true })).catch(reason => undefined)
+      .then(() => this.router.navigate(this.codeScheme.route)).catch(reason => undefined);
   }
 
   reloadCodeScheme() {
@@ -395,7 +424,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   changeLanguages(codes: CodePlain[]) {
-    setTimeout(this.changeLanguagesAfterTimeout(codes), 0 );
+    setTimeout(this.changeLanguagesAfterTimeout(codes), 0);
   }
 
   // timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError

@@ -48,7 +48,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     status: new FormControl(),
     conceptUriInVocabularies: new FormControl(''),
     organizations: new FormControl([], [requiredList]),
-    cumulative: new FormControl()
+    cumulative: new FormControl(),
+    changeCodeStatuses: new FormControl(true)
   });
 
   cancelSubscription: Subscription;
@@ -61,7 +62,6 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
               public languageService: LanguageService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private configurationService: ConfigurationService) {
-
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
 
     this.languageChangeSubscription = this.codeSchemeForm.controls['languageCodes'].valueChanges

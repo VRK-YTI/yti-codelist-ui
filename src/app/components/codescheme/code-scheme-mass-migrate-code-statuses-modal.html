@@ -1,0 +1,36 @@
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div [hidden]="loading">
+  <div class="modal-header">
+    <h4 class="modal-title strong">
+      <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
+      <span translate>Update code list's codes' statuses</span>
+    </h4>
+  </div>
+
+  <div class="modal-body">
+
+    <app-filter-dropdown id="migrate_code_statuses_from_status_input_dropdown"
+                         [options]="fromOptions"
+                         [filterSubject]="fromStatus$"></app-filter-dropdown>
+
+    <br/>
+    <app-filter-dropdown id="migrate_code_statuses_to_status_input_dropdown"
+                         [options]="toOptions"
+                         [filterSubject]="toStatus$"></app-filter-dropdown>
+
+  </div>
+  <div class="modal-footer">
+    <div>
+      <button id="migrate_code_statuses_button"
+              [disabled]="!canSave()"
+              type="button"
+              class="btn btn-action"
+              (click)="saveChanges()"
+              translate>Save</button>
+      <button id="cancel_migrate_code_statuses_button" type="button" class="btn btn-link" (click)="close()" translate>Cancel</button>
+    </div>
+  </div>
+</div>

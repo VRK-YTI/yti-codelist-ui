@@ -68,4 +68,9 @@ export class CodeListConfirmationModalService {
     const bodyParagraphs = new Array('CREATE MISSING MEMBERS MODAL BODY TEXT');
     return this.confirmationModalService.openWithNonTranslatableContentAlsoPresent('CREATE MISSING MEMBERS MODAL TITLE', nonTranslatableBodyParagraphs, undefined, ...bodyParagraphs);
   }
+
+  openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus() {
+    return this.confirmationModalService.open('CHANGE CODE STATUSES TOO?', undefined,
+      '');
+  }
 }

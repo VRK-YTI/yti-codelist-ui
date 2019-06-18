@@ -311,7 +311,7 @@ export class DataService {
     return this.getCodes('interoperabilityplatform', 'languagecodes', language);
   }
 
-  getCodes(registryCodeValue: string, schemeCodeValue: string, language: string | undefined): Observable<Code[]> {
+  getCodes(registryCodeValue: string, schemeCodeValue: string, language: string | undefined): Observable<Code[]> {
 
     let params = new HttpParams()
       .append('expand', 'codeScheme,codeRegistry,externalReference,propertyType,valueType,extension');
@@ -339,7 +339,7 @@ export class DataService {
   }
 
   createCode(code: CodeType, registryCodeValue: string, schemeCodeValue: string): Observable<Code> {
-    return this.createCodes([code], registryCodeValue, schemeCodeValue).pipe(map(createdCodes => {
+    return this.createCodes([code], registryCodeValue, schemeCodeValue, null, null).pipe(map(createdCodes => {
       if (createdCodes.length !== 1) {
         throw new Error('Exactly one code needs to be created');
       } else {
@@ -348,10 +348,15 @@ export class DataService {
     }));
   }
 
-  createCodes(codeList: CodeType[], registryCodeValue: string, schemeCodeValue: string): Observable<Code[]> {
+  createCodes(codeList: CodeType[], registryCodeValue: string, schemeCodeValue: string, initialCodeStatus: string | null, endCodeStatus: string | null): Observable<Code[]> {
+
+    const params = {
+      'initialCodeStatus': initialCodeStatus ? initialCodeStatus : '',
+      'endCodeStatus': endCodeStatus ? endCodeStatus : ''
+    };
 
     return this.http.post<WithResults<CodeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/`,
-      codeList)
+      codeList, { params })
       .pipe(map(res => res.results.map(data => new Code(data))));
   }
 
@@ -398,10 +403,14 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
-  saveCodeScheme(codeSchemeToSave: CodeSchemeType): Observable<ApiResponseType> {
+  saveCodeScheme(codeSchemeToSave: CodeSchemeType, changeCodeStatuses: string): Observable<ApiResponseType> {
     const registryCode = codeSchemeToSave.codeRegistry.codeValue;
 
-    return this.http.post<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeToSave.codeValue}/`, codeSchemeToSave);
+    const params = {
+      'changeCodeStatuses': changeCodeStatuses
+    };
+
+    return this.http.post<ApiResponseType>(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/${codeSchemeToSave.codeValue}/`, codeSchemeToSave, { params });
   }
 
   deleteCodeScheme(theCodeScheme: CodeScheme): Observable<ApiResponseType> {
