@@ -1549,3 +1549,6 @@ msgstr ""
 
 msgid "localizableValueRequired"
 msgstr ""
+
+msgid "Suomi.fi Comments"
+msgstr ""

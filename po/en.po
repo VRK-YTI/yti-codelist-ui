@@ -1653,3 +1653,6 @@ msgstr "Member value is a required input."
 
 msgid "localizableValueRequired"
 msgstr "Required"
+
+msgid "Suomi.fi Comments"
+msgstr ""
