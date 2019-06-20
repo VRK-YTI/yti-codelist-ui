@@ -54,6 +54,11 @@ export class ConfigurationService {
     return this.configuration.dataModelConfig.url;
   }
 
+  get commentsUrl(): string {
+
+    return this.configuration.commentsConfig.url;
+  }
+
   getUriWithEnv(uri: string): string | null {
 
     if (uri && this.env !== 'prod') {

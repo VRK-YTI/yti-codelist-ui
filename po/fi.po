@@ -1683,8 +1683,5 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
 
-#~ msgid "Status changed to {{ identifier }} codes."
-#~ msgstr "Status vaihdettu {{ identifier }} koodiin."
-
-#~ msgid "See all {{totalNrOfSearchHitsCodes}} results"
-#~ msgstr "Näytä kaikki {{ totalNrOfSearchHitsCodes}} tulosta"
+msgid "Suomi.fi Comments"
+msgstr "Suomi.fi-kommentit"

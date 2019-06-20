@@ -57,8 +57,6 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
       this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
         this.extension = extension;
         this.locationService.atExtensionPage(extension);
-
-
       });
     }
   }
@@ -105,5 +103,9 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
 
   get allowCodeSchemes(): boolean {
     return  this.extension.propertyType.context === 'Extension';
+  }
+
+  get isInlineExtension(): boolean {
+    return this.extension.propertyType.context === 'CodeExtension';
   }
 }

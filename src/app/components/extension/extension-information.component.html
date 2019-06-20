@@ -17,9 +17,10 @@
                      [infoText]="'INFO_TEXT_EXTENSION_ID'"></app-literal>
 
         <app-localizable-input-with-language-indicator [id]="'extension_name_input'"
-                               [label]="'Extension name' | translate"
-                               [infoText]="'INFO_TEXT_EXTENSION_NAME'"
-                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+                                                       [restrict]="isInlineExtension"
+                                                       [label]="'Extension name' | translate"
+                                                       [infoText]="'INFO_TEXT_EXTENSION_NAME'"
+                                                       [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
         <app-literal [label]="'Extension type' | translate"
                      [value]="extension.propertyType.prefLabel | translateValue:false"
@@ -42,9 +43,9 @@
                               [formControlName]="'validity'"></app-date-range-input>
 
         <app-inline-clipboard [label]="'URI' | translate"
-                       [value]="getExtensionUri()"
-                       [showAsLink]="false"
-                       [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
+                              [value]="getExtensionUri()"
+                              [showAsLink]="false"
+                              [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
 
         <app-literal [label]="'Last modification' | translate"
                      [value]="extension.modifiedDisplayValue"
