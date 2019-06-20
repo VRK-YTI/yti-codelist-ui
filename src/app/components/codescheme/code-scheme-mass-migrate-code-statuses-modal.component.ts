@@ -8,12 +8,11 @@ import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
-import { Status } from 'yti-common-ui/entities/status';
+import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 import { AlertModalService } from '../common/alert-modal.service';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 
 @Component({
   selector: 'app-code-scheme-mass-migrate-code-statuses-modal',
@@ -35,11 +34,14 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
   fromStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'RETIRED', 'INVALID'] as Status[];
   toStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'RETIRED', 'INVALID'] as Status[];
 
+
   allowedTargetStatusesFrom_INCOMPLETE = ['DRAFT'] as Status[];
   allowedTargetStatusesFrom_DRAFT = ['INCOMPLETE', 'VALID'] as Status[];
   allowedTargetStatusesFrom_VALID = ['RETIRED', 'INVALID'] as Status[];
   allowedTargetStatusesFrom_RETIRED = ['VALID', 'INVALID'] as Status[];
   allowedTargetStatusesFrom_INVALID = ['VALID', 'RETIRED'] as Status[];
+
+  enforceTransitionRulesForSuperUserToo = false;
 
   constructor(private editableService: EditableService,
               private dataService: DataService,
@@ -54,73 +56,8 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
   }
 
   ngOnInit() {
-
-    this.fromOptions = [null, ...this.fromStatuses].map(status => ({
-      value: status,
-      name: () => this.translateService.instant(status ? status : 'Choose starting status'),
-      idIdentifier: () => status ? status : 'all_selected'
-    }));
-
-    this.toOptions = [null, ...this.toStatuses].map(stat => ({
-      value: stat,
-      name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-      idIdentifier: () => stat ? stat : 'all_selected'
-    }));
-
-    this.fromStatus$.subscribe(next => {
-
-      const chosenFromStatus: Status | null = next;
-
-      if (chosenFromStatus === null) {
-
-        this.fromOptions = [null, ...this.fromStatuses].map(status => ({
-          value: status,
-          name: () => this.translateService.instant(status ? status : 'Choose starting status'),
-          idIdentifier: () => status ? status : 'all_selected'
-        }));
-
-        this.toOptions = [null, ...this.toStatuses].map(stat => ({
-          value: stat,
-          name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-          idIdentifier: () => stat ? stat : 'all_selected'
-        }));
-
-        this.toStatus$.next(null);
-
-      } else {
-        if (chosenFromStatus == 'INCOMPLETE') {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_INCOMPLETE].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus == 'DRAFT') {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_DRAFT].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus == 'VALID') {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_VALID].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus == 'RETIRED') {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_RETIRED].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus == 'INVALID') {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_INVALID].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        }
-      }
-    });
+    // this.reset();
+    this.reset();
   }
 
 
@@ -155,17 +92,10 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
   }
 
   onChange(event: EventTarget) {
-    const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
-    const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
-    if (target.files != null) {
-      this.file = target.files[0];
-    } else {
-      this.file = undefined;
-    }
+    // nothing for now
   }
 
   saveChanges() {
-
     if (!this.codeRegistry) {
       throw new Error('Code registry must be set');
     }
@@ -174,15 +104,15 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
 
     this.dataService.createCodes([], this.codeRegistry.codeValue, this.codeScheme.codeValue, this.fromStatus$.value, this.toStatus$.value).subscribe(next => {
       let messagePart = '';
-      let nrOfCodesWithStatusChanged: number = next.length;
+      const nrOfCodesWithStatusChanged: number = next.length;
       if (nrOfCodesWithStatusChanged === 0) {
         messagePart = this.translateService.instant('Status changed to zero codes. No codes with the starting status found.');
       } else if (nrOfCodesWithStatusChanged === 1) {
         messagePart = this.translateService.instant('Status changed to one code.');
         modalRef.message = '' + nrOfCodesWithStatusChanged + messagePart;
       } else {
-        let messagePart1 = this.translateService.instant('Status changed to ');
-        let messagePart2 = this.translateService.instant(' codes.');
+        const messagePart1 = this.translateService.instant('Status changed to ');
+        const messagePart2 = this.translateService.instant(' codes.');
         messagePart = messagePart1 + nrOfCodesWithStatusChanged + messagePart2;
       }
       modalRef.message = messagePart;
@@ -191,7 +121,177 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
       this.uploading = false;
       this.errorModalService.openSubmitError(error);
       modalRef.cancel();
-    }), ignoreModalClose;
+    });
+  }
+
+  toggleEnforceTransitionRulesForSuperUserToo() {
+    this.enforceTransitionRulesForSuperUserToo = !this.enforceTransitionRulesForSuperUserToo;
+    this.reset();
+  }
+
+  reset() {
+
+    console.log('IN RESEP start');
+    this.toStatus$.next(null);
+    this.fromStatus$.next(null);
+
+    if (!this.isSuperUser) {
+
+      this.fromOptions = [null, ...this.fromStatuses].map(status => ({
+        value: status,
+        name: () => this.translateService.instant(status ? status : 'Choose starting status'),
+        idIdentifier: () => status ? status : 'all_selected'
+      }));
+
+      this.toOptions = [null, ...this.toStatuses].map(stat => ({
+        value: stat,
+        name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+        idIdentifier: () => stat ? stat : 'all_selected'
+      }));
+
+      combineLatest(this.fromStatus$, this.toStatus$).subscribe(
+        ([fromStatus, toStatus]) => {
+
+          console.log('in combineLatest after 1st if but before 2nd if, fromStatus, toStatus', fromStatus, toStatus);
+          // handle restrictions to values in dropdowns
+          if (fromStatus === null) {
+            return;
+          } else {
+            const chosenFromStatus: Status | null = fromStatus;
+
+            console.log('in reset, chosenFromStatus', chosenFromStatus);
+
+            if (chosenFromStatus === 'INCOMPLETE') {
+              this.toOptions = [null, ...this.allowedTargetStatusesFrom_INCOMPLETE].map(stat => ({
+                value: stat,
+                name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                idIdentifier: () => stat ? stat : 'all_selected'
+              }));
+            } else if (chosenFromStatus === 'DRAFT') {
+              this.toOptions = [null, ...this.allowedTargetStatusesFrom_DRAFT].map(stat => ({
+                value: stat,
+                name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                idIdentifier: () => stat ? stat : 'all_selected'
+              }));
+            } else if (chosenFromStatus === 'VALID') {
+              this.toOptions = [null, ...this.allowedTargetStatusesFrom_VALID].map(stat => ({
+                value: stat,
+                name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                idIdentifier: () => stat ? stat : 'all_selected'
+              }));
+            } else if (chosenFromStatus === 'RETIRED') {
+              this.toOptions = [null, ...this.allowedTargetStatusesFrom_RETIRED].map(stat => ({
+                value: stat,
+                name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                idIdentifier: () => stat ? stat : 'all_selected'
+              }));
+            } else if (chosenFromStatus === 'INVALID') {
+              this.toOptions = [null, ...this.allowedTargetStatusesFrom_INVALID].map(stat => ({
+                value: stat,
+                name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                idIdentifier: () => stat ? stat : 'all_selected'
+              }));
+            } else if (chosenFromStatus === null) {
+              this.toOptions = [null, ...this.toStatuses].map(stat => ({
+                value: stat,
+                name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                idIdentifier: () => stat ? stat : 'all_selected'
+              }));
+            }
+          }
+        }
+      );
+    } else if (this.isSuperUser) {
+
+      if (this.enforceTransitionRulesForSuperUserToo) {
+
+
+        this.fromOptions = [null, ...this.fromStatuses].map(status => ({
+          value: status,
+          name: () => this.translateService.instant(status ? status : 'Choose starting status'),
+          idIdentifier: () => status ? status : 'all_selected'
+        }));
+
+        this.toOptions = [null, ...this.toStatuses].map(stat => ({
+          value: stat,
+          name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+          idIdentifier: () => stat ? stat : 'all_selected'
+        }));
+
+        combineLatest(this.fromStatus$, this.toStatus$).subscribe(
+          ([fromStatus, toStatus]) => {
+
+            console.log('in combineLatest after 1st if but before 2nd if, fromStatus, toStatus', fromStatus, toStatus);
+            // handle restrictions to values in dropdowns
+            if (fromStatus === null) {
+              return;
+            } else {
+              const chosenFromStatus: Status | null = fromStatus;
+
+              console.log('in reset, chosenFromStatus', chosenFromStatus);
+
+              if (chosenFromStatus === 'INCOMPLETE') {
+                this.toOptions = [null, ...this.allowedTargetStatusesFrom_INCOMPLETE].map(stat => ({
+                  value: stat,
+                  name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                  idIdentifier: () => stat ? stat : 'all_selected'
+                }));
+              } else if (chosenFromStatus === 'DRAFT') {
+                this.toOptions = [null, ...this.allowedTargetStatusesFrom_DRAFT].map(stat => ({
+                  value: stat,
+                  name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                  idIdentifier: () => stat ? stat : 'all_selected'
+                }));
+              } else if (chosenFromStatus === 'VALID') {
+                this.toOptions = [null, ...this.allowedTargetStatusesFrom_VALID].map(stat => ({
+                  value: stat,
+                  name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                  idIdentifier: () => stat ? stat : 'all_selected'
+                }));
+              } else if (chosenFromStatus === 'RETIRED') {
+                this.toOptions = [null, ...this.allowedTargetStatusesFrom_RETIRED].map(stat => ({
+                  value: stat,
+                  name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                  idIdentifier: () => stat ? stat : 'all_selected'
+                }));
+              } else if (chosenFromStatus === 'INVALID') {
+                this.toOptions = [null, ...this.allowedTargetStatusesFrom_INVALID].map(stat => ({
+                  value: stat,
+                  name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                  idIdentifier: () => stat ? stat : 'all_selected'
+                }));
+              } else if (chosenFromStatus === null) {
+                this.toOptions = [null, ...this.toStatuses].map(stat => ({
+                  value: stat,
+                  name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+                  idIdentifier: () => stat ? stat : 'all_selected'
+                }));
+              }
+            }
+          }
+        );
+
+      } else {
+
+        this.fromOptions = [null, ...allStatuses].map(status => ({
+          value: status,
+          name: () => this.translateService.instant(status ? status : 'Choose starting status'),
+          idIdentifier: () => status ? status : 'all_selected'
+        }));
+
+        this.toOptions = [null, ...allStatuses].map(stat => ({
+          value: stat,
+          name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
+          idIdentifier: () => stat ? stat : 'all_selected'
+        }));
+
+      }
+
+    } else {
+      throw new Error("Wrong branch in logic error! Should never end up here.");
+    }
+
+
   }
 }
 

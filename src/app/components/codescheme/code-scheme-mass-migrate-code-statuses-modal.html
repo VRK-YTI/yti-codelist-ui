@@ -11,6 +11,14 @@
   </div>
 
   <div class="modal-body">
+    <div class="row" *ngIf="isSuperUser">
+      <div class="col-md-4" style="line-height: 45px; white-space: nowrap">
+        <div class="checkbox">
+          <input id="enforce_status_transition_rules_checkbox" type="checkbox" (click)="toggleEnforceTransitionRulesForSuperUserToo()">
+          <label style="vertical-align: 5%; padding-left: 5px;" for="enforce_status_transition_rules_checkbox" translate>Enforce status transition rules</label>
+        </div>
+      </div>
+    </div>
 
     <app-filter-dropdown id="migrate_code_statuses_from_status_input_dropdown"
                          [options]="fromOptions"

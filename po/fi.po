@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-14 09:07+0300\n"
+"PO-Revision-Date: 2019-06-20 09:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -373,9 +373,8 @@ msgstr "Vakiokoodi"
 msgid "Update code list's codes' statuses"
 msgstr "Muuta koodien tiloja"
 
-msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
-msgstr ""
-"Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
+msgid "Enforce status transition rules"
+msgstr "Käytä tilasiirtymien validointisääntöjä."
 
 msgid "Name"
 msgstr "Nimi"
@@ -1631,6 +1630,12 @@ msgstr "Lataa JSON"
 
 msgid "Show JSON"
 msgstr "Näytä JSON"
+
+#, fuzzy
+#| msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
+msgstr ""
+"Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
 
 msgid "Choose starting status"
 msgstr "Valitse lähtötila"

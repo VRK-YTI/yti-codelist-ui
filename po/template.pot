@@ -353,7 +353,7 @@ msgstr ""
 msgid "Update code list's codes' statuses"
 msgstr ""
 
-msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
+msgid "Enforce status transition rules"
 msgstr ""
 
 msgid "Name"
@@ -1500,6 +1500,9 @@ msgid "Export JSON"
 msgstr ""
 
 msgid "Show JSON"
+msgstr ""
+
+msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
 msgstr ""
 
 msgid "Choose starting status"
