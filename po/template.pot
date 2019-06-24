@@ -350,6 +350,9 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
+msgid "Change code statuses at the same time"
+msgstr ""
+
 msgid "Update code list's codes' statuses"
 msgstr ""
 
@@ -609,6 +612,9 @@ msgid "Suomi.fi Terminologies"
 msgstr ""
 
 msgid "Suomi.fi Data Vocabularies"
+msgstr ""
+
+msgid "Suomi.fi Comments"
 msgstr ""
 
 msgid "User right management"
@@ -1551,7 +1557,4 @@ msgid "memberValueRequired"
 msgstr ""
 
 msgid "localizableValueRequired"
-msgstr ""
-
-msgid "Suomi.fi Comments"
 msgstr ""

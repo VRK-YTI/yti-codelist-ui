@@ -7,9 +7,9 @@
                    [infoText]="'INFO_TEXT_CODELIST_CODE_VALUE'"></app-literal>
 
       <app-localizable-input-with-language-indicator [id]="'codelist_name_input'"
-                             [label]="'Code list name' | translate"
-                             [infoText]="'INFO_TEXT_CODELIST_NAME'"
-                             [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+                                                     [label]="'Code list name' | translate"
+                                                     [infoText]="'INFO_TEXT_CODELIST_NAME'"
+                                                     [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
       <dl *ngIf="editing">
         <dd>
@@ -25,9 +25,9 @@
 
       <div *ngIf="!editing && codeScheme.conceptUriInVocabularies && codeScheme.conceptUriInVocabularies.length > 0">
         <app-inline-clipboard [label]="'Vocabularies URI' | translate"
-                       [showAsLink]="true"
-                       [value]="getConceptUri()"
-                       [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-inline-clipboard>
+                              [showAsLink]="true"
+                              [value]="getConceptUri()"
+                              [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-inline-clipboard>
       </div>
       <div *ngIf="editing && codeScheme.conceptUriInVocabularies && codeScheme.conceptUriInVocabularies.length > 0">
         <dl>
@@ -63,23 +63,24 @@
                    [value]="codeScheme.cumulative + 'cumulative' | translate"></app-literal>
 
       <div style="line-height: 25px">
-      <dl *ngIf="((!previousCodeScheme && !codeScheme.cumulative) ||
+        <dl *ngIf="((!previousCodeScheme && !codeScheme.cumulative) ||
                                 (previousCodeScheme && !previousCodeScheme.cumulative && !codeScheme.cumulative))
                                   && editing">
-        <dt>
-          <label for="mark_codelist_cumulative_checkbox" translate>Cumulative code list</label>
-          <app-information-symbol [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"></app-information-symbol>
-        </dt>
+          <dt>
+            <label for="mark_codelist_cumulative_checkbox" translate>Cumulative code list</label>
+            <app-information-symbol [infoText]="'INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE'"></app-information-symbol>
+          </dt>
           <dd>
-            <input id="mark_codelist_cumulative_checkbox" type="checkbox" (click)="toggleMarkCodelistAsCumulative()" />&nbsp;<label style="vertical-align:2px" translate>Cumulative code list</label>
+            <input id="mark_codelist_cumulative_checkbox" type="checkbox" (click)="toggleMarkCodelistAsCumulative()"/>&nbsp;<label style="vertical-align:2px" translate>Cumulative
+            code list</label>
           </dd>
-      </dl>
+        </dl>
       </div>
 
       <app-infodomains-input id="data_infodomains_input"
-                                 [label]="'InfoDomain' | translate"
-                                 [required]="true"
-                                 [formControlName]="'infoDomains'"></app-infodomains-input>
+                             [label]="'InfoDomain' | translate"
+                             [required]="true"
+                             [formControlName]="'infoDomains'"></app-infodomains-input>
 
       <app-languagecodes-input [id]="'codelist_languagecode_input'"
                                [label]="'Language code' | translate"
@@ -96,22 +97,32 @@
       <app-status-input id="codelist_status_input"
                         [formControlName]="'status'"
                         [restrict]="restricted"
+                        [isSuperUser]="isSuperUser"
                         [infoText]="'INFO_TEXT_CODELIST_STATUS'"></app-status-input>
 
+      <div class="row" *ngIf="showChangeCodeStatusesCheckbox()">
+        <div class="col-md-4" style="line-height: 45px; white-space: nowrap">
+          <div class="checkbox">
+            <input id="change_code_statuses_too_checkbox" type="checkbox" (click)="toggleChangeCodeStatusesToo()">
+            <label style="vertical-align: 5%; padding-left: 5px;" for="change_code_statuses_too_checkbox" translate>Change code statuses at the same time</label>
+          </div>
+        </div>
+      </div>
+
       <app-localizable-textarea-with-language-indicator [id]="'codelist_description_textarea'"
-                                [label]="'Description' | translate"
-                                [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
-                                [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
+                                                        [label]="'Description' | translate"
+                                                        [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
+                                                        [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
 
       <app-localizable-textarea-with-language-indicator [id]="'codelist_definition_textarea'"
-                                [label]="'Definition' | translate"
-                                [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
-                                [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
+                                                        [label]="'Definition' | translate"
+                                                        [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
+                                                        [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
 
       <app-localizable-textarea-with-language-indicator [id]="'codelist_changenote_textarea'"
-                                [label]="'Change note' | translate"
-                                [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
-                                [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator>
+                                                        [label]="'Change note' | translate"
+                                                        [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
+                                                        [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator>
 
       <app-literal-input [id]="'codelist_version_input'"
                          [label]="'Version' | translate"
@@ -143,9 +154,9 @@
                             [formControlName]="'validity'"></app-date-range-input>
 
       <app-inline-clipboard [label]="'URI' | translate"
-                     [value]="getCodeSchemeUri()"
-                     [showAsLink]="false"
-                     [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
+                            [value]="getCodeSchemeUri()"
+                            [showAsLink]="false"
+                            [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
 
       <app-literal [label]="'Last modification' | translate"
                    [value]="codeScheme.modifiedDisplayValue"

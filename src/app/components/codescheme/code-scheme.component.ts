@@ -47,6 +47,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   initialTabId: string | undefined = undefined;
 
+  changeCodeStatusesAsWellWhenSavingCodeScheme = false;
+
   constructor(private userService: UserService,
               private dataService: DataService,
               private route: ActivatedRoute,
@@ -225,19 +227,17 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     };
 
     if (changeToRestrictedStatus(this.codeScheme, formData.status)) {
-      if (weNeedToAskAboutCodeStatuses) {
+      if (this.changeCodeStatusesAsWellWhenSavingCodeScheme && this.codes.length > 0) {
         return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(
           switchMap(ok => from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus()).pipe(
-            switchMap(okok => saveWithCodeStatusChanges()),
-            catchError(rejrej => save()))));
+            switchMap(okok => saveWithCodeStatusChanges()) )))
       } else {
         return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(switchMap(ok => save()));
       }
     } else {
-      if (weNeedToAskAboutCodeStatuses) {
+      if (this.changeCodeStatusesAsWellWhenSavingCodeScheme && this.codes.length > 0) {
         return from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus()).pipe(
-          switchMap(ok => saveWithCodeStatusChanges()),
-          catchError(rej => save()));
+          switchMap(ok => saveWithCodeStatusChanges()))
       } else {
         return save();
       }
@@ -425,6 +425,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   changeLanguages(codes: CodePlain[]) {
     setTimeout(this.changeLanguagesAfterTimeout(codes), 0);
+  }
+
+  toggleChangeCodeStatusesAsWellWhenSavingCodeScheme(doItOrNot: boolean) {
+      this.changeCodeStatusesAsWellWhenSavingCodeScheme = doItOrNot; // !this.changeCodeStatusesAsWellWhenSavingCodeScheme;
   }
 
   // timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError

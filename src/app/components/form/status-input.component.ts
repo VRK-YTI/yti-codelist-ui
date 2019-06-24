@@ -18,7 +18,8 @@ import { Status } from 'yti-common-ui/entities/status';
         <app-status-dropdown id="status_input_dropdown"
                              *ngIf="editing"
                              [formControl]="control"
-                             [restrict]="restrict"></app-status-dropdown>
+                             [restrict]="restrict"
+                             [isSuperUser]="isSuperUser"></app-status-dropdown>
 
         <app-error-messages id="status_input_error_messages" [control]="parentControl"></app-error-messages>
       </dd>
@@ -30,6 +31,7 @@ export class StatusInputComponent implements ControlValueAccessor {
   @Input() restrict = false;
   @Input() required = false;
   @Input() infoText: string;
+  @Input() isSuperUser = false;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};

@@ -182,7 +182,9 @@
 
       <ng-template ngbTabContent>
         <app-code-scheme-information [codeScheme]="codeScheme"
-                                     (changeLanguage)="changeLanguages($event)"></app-code-scheme-information>
+                                     [codesOfTheCodeScheme]="codes"
+                                     (changeLanguage)="changeLanguages($event)"
+                                     (changeCodeStatusesAsWell)="toggleChangeCodeStatusesAsWellWhenSavingCodeScheme($event)"></app-code-scheme-information>
       </ng-template>
     </ngb-tab>
 

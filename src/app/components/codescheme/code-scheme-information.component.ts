@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -22,11 +22,13 @@ import { nonEmptyLocalizableValidator } from '../../utils/validators';
   selector: 'app-code-scheme-information',
   templateUrl: './code-scheme-information.component.html'
 })
-export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
+export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() codeScheme: CodeScheme;
   @Input() languageCodes: CodePlain[];
+  @Input() codesOfTheCodeScheme: Code[];
   @Output() changeLanguage = new EventEmitter<CodePlain[]>();
+  @Output() changeCodeStatusesAsWell = new EventEmitter<boolean>();
 
   previousCodeScheme: CodeScheme;
   codelistMarkedAsCumulative: boolean;
@@ -49,11 +51,14 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
     conceptUriInVocabularies: new FormControl(''),
     organizations: new FormControl([], [requiredList]),
     cumulative: new FormControl(),
-    changeCodeStatuses: new FormControl(true)
+    changeCodeStatuses: new FormControl(false)
   });
 
   cancelSubscription: Subscription;
   languageChangeSubscription: Subscription;
+
+  statusChanged = false;
+  changeCodeStatusesToo = false;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -66,6 +71,27 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
 
     this.languageChangeSubscription = this.codeSchemeForm.controls['languageCodes'].valueChanges
       .subscribe(data => this.updateLanguages(data));
+  }
+
+  ngOnInit() {
+
+    this.codeSchemeForm.valueChanges.subscribe(next => {
+        const newStatus = next['status'];
+        const newChangeCodeStatuses = next['changeCodeStatuses'];
+
+        if (newStatus && newStatus !== this.codeScheme.status) {
+          this.statusChanged = true;
+        } else {
+          this.statusChanged = false;
+        }
+
+        if (this.statusChanged && newChangeCodeStatuses === true) {
+          this.changeCodeStatusesAsWell.emit(true);
+        } else {
+          this.changeCodeStatusesAsWell.emit(false);
+        }
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -94,8 +120,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
       infoDomains: infoDomains.map(infoDomain => infoDomain.clone()),
       defaultCode: defaultCode,
       validity: { start: startDate, end: endDate },
-      organizations: organizations.map(organization => organization.clone())
+      organizations: organizations.map(organization => organization.clone()),
+      changeCodeStatuses: false
     });
+
+    this.statusChanged = false;
+    this.changeCodeStatusesToo = false;
+
   }
 
   ngOnDestroy() {
@@ -159,5 +190,14 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy {
   getCodeRegistryName(): string {
     return !this.languageService.isLocalizableEmpty(this.codeScheme.codeRegistry.prefLabel) ?
       this.languageService.translate(this.codeScheme.codeRegistry.prefLabel, false) : this.codeScheme.codeRegistry.codeValue
+  }
+
+  toggleChangeCodeStatusesToo() {
+    this.changeCodeStatusesToo = !this.changeCodeStatusesToo;
+    this.codeSchemeForm.patchValue({ changeCodeStatuses: !this.codeSchemeForm.controls['changeCodeStatuses'].value });
+  }
+
+  showChangeCodeStatusesCheckbox(): boolean {
+    return this.editing && this.statusChanged && this.codesOfTheCodeScheme.length > 0;
   }
 }

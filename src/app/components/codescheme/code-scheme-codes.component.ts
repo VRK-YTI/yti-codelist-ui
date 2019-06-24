@@ -19,11 +19,8 @@ export class CodeSchemeCodesComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const prefilledSearchTermForCode: SimpleChange = changes.prefilledSearchTermForCode;
-/*    console.log('prev value: ', prefilledSearchTermForCode.previousValue);
-    console.log('got name: ', prefilledSearchTermForCode.currentValue);*/
     if (prefilledSearchTermForCode.currentValue) {
       this.searchTerm = prefilledSearchTermForCode.currentValue;
-      console.log('ngOnChanges setting this.searchTerm to : ', prefilledSearchTermForCode.currentValue);
     }
   }
 

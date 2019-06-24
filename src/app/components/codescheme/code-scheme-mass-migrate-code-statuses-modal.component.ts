@@ -130,8 +130,6 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
   }
 
   reset() {
-
-    console.log('IN RESEP start');
     this.toStatus$.next(null);
     this.fromStatus$.next(null);
 
@@ -152,14 +150,11 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
       combineLatest(this.fromStatus$, this.toStatus$).subscribe(
         ([fromStatus, toStatus]) => {
 
-          console.log('in combineLatest after 1st if but before 2nd if, fromStatus, toStatus', fromStatus, toStatus);
           // handle restrictions to values in dropdowns
           if (fromStatus === null) {
             return;
           } else {
             const chosenFromStatus: Status | null = fromStatus;
-
-            console.log('in reset, chosenFromStatus', chosenFromStatus);
 
             if (chosenFromStatus === 'INCOMPLETE') {
               this.toOptions = [null, ...this.allowedTargetStatusesFrom_INCOMPLETE].map(stat => ({
@@ -221,14 +216,11 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
         combineLatest(this.fromStatus$, this.toStatus$).subscribe(
           ([fromStatus, toStatus]) => {
 
-            console.log('in combineLatest after 1st if but before 2nd if, fromStatus, toStatus', fromStatus, toStatus);
             // handle restrictions to values in dropdowns
             if (fromStatus === null) {
               return;
             } else {
               const chosenFromStatus: Status | null = fromStatus;
-
-              console.log('in reset, chosenFromStatus', chosenFromStatus);
 
               if (chosenFromStatus === 'INCOMPLETE') {
                 this.toOptions = [null, ...this.allowedTargetStatusesFrom_INCOMPLETE].map(stat => ({
@@ -288,7 +280,7 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
       }
 
     } else {
-      throw new Error("Wrong branch in logic error! Should never end up here.");
+      throw new Error('Wrong branch in logic error! Should never end up here.');
     }
 
 

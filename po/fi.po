@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-20 09:53+0300\n"
+"PO-Revision-Date: 2019-06-24 08:04+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -370,6 +370,9 @@ msgstr "Tiedoston siirtämiseen liittyvä ongelma. Yritä uudelleen."
 msgid "Default code"
 msgstr "Vakiokoodi"
 
+msgid "Change code statuses at the same time"
+msgstr "Vaihda samalla koodien tilat"
+
 msgid "Update code list's codes' statuses"
 msgstr "Muuta koodien tiloja"
 
@@ -636,6 +639,9 @@ msgstr "Suomi.fi-sanastot"
 
 msgid "Suomi.fi Data Vocabularies"
 msgstr "Suomi.fi-tietomallit"
+
+msgid "Suomi.fi Comments"
+msgstr "Suomi.fi-kommentit"
 
 msgid "User right management"
 msgstr "Oikeuksienhallinta"
@@ -1687,6 +1693,3 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
-
-msgid "Suomi.fi Comments"
-msgstr "Suomi.fi-kommentit"
