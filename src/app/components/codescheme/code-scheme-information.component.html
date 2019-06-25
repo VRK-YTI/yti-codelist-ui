@@ -98,6 +98,7 @@
                         [formControlName]="'status'"
                         [restrict]="restricted"
                         [isSuperUser]="isSuperUser"
+                        [originalStatus]="codeScheme.status"
                         [infoText]="'INFO_TEXT_CODELIST_STATUS'"></app-status-input>
 
       <div class="row" *ngIf="showChangeCodeStatusesCheckbox()">
