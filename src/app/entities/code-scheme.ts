@@ -105,19 +105,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.searchHitsOfTheTypeExtension = (data.searchHits || []).map(sh => new SearchHit(sh)).filter(sh => sh.type === 'extension');
     this.totalNrOfSearchHitsCodes = data.totalNrOfSearchHitsCodes;
     this.totalNrOfSearchHitsExtensions = data.totalNrOfSearchHitsExtensions;
-
-    // console.log('this.searchHitsOfTheTypeCode', this.searchHitsOfTheTypeCode);
-
-/*    if (data.deepSearchHits) {
-      /!*console.log(data.deepSearchHits instanceof Map);
-      console.log(data.deepSearchHits instanceof Array);
-      console.log(data.deepSearchHits instanceof Object);
-      console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX NP POPULEERARA NYT', data.deepSearchHits);*!/
-      // this.deepSearchHits = new DeepSearchHitListCode(data.deepSearchHits);
-      this.deepSearchHits = JSON.parse(JSON.stringify(data.deepSearchHits));
-      // var clone = Object.assign({}, obj);
-      // console.log('JA HETI PERÄÄN this.deepSearchHits', this.deepSearchHits);
-    }*/
     this.cumulative = data.cumulative;
   }
 
@@ -222,7 +209,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       searchHits: [], // this is not really a part of codescheme, never getting stored, so lets send nothing
       totalNrOfSearchHitsCodes: this.totalNrOfSearchHitsCodes,
       totalNrOfSearchHitsExtensions: this.totalNrOfSearchHitsExtensions,
-      // deepSearchHits: {} // this.deepSearchHits.serialize(), // TODO !!! should we put something here or not, if not, what should be the "empty" in this case?
       cumulative: this.cumulative
     };
   }

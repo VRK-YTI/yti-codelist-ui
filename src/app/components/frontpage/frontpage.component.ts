@@ -254,19 +254,4 @@ export class FrontpageComponent implements OnInit, OnDestroy {
     return this.configurationService.getUriWithEnv(uri);
   }
 
-  searchHitsArePresent(codeScheme: CodeScheme) {
-    let retVal = false;
-    // console.log('SeaRCH HITS AREREERE PRESNETSTA', codeScheme.codeValue, codeScheme.deepSearchHits);
-    // console.log('should not null codeScheme', codeScheme);
-    // console.log('should not null codeScheme.deepSearchHits', codeScheme.deepSearchHits);
-    if (codeScheme.deepSearchHits) {
-      // console.log('should not null codeScheme.deepSearchHits.topHits', codeScheme.deepSearchHits.topHits);
-      if (codeScheme.deepSearchHits.topHits) {
-        retVal = true;
-      }
-    }
-    // console.log('searchHitsArePresent', retVal);
-    return retVal;
-  }
-
 }
