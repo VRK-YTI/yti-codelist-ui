@@ -7,7 +7,7 @@ import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { CodeSchemeType, DeepSearchHitListCodeType } from '../services/api-schema';
+import { CodeSchemeType } from '../services/api-schema';
 import { contains } from 'yti-common-ui/utils/array';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
@@ -15,7 +15,6 @@ import { ExtensionSimple } from './extension-simple';
 import { CodeSchemeListItem } from './code-scheme-list-item';
 import { Organization } from './organization';
 import { SearchHit } from './search-hit';
-import { DeepSearchHitListCode } from './deep-search-hit-code-list';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -48,7 +47,6 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   totalNrOfSearchHitsCodes: number;
   totalNrOfSearchHitsExtensions: number;
   searchHitsOfTheTypeExtension: SearchHit[];
-  deepSearchHits: DeepSearchHitListCode;
   cumulative: boolean;
 
   constructor(data: CodeSchemeType) {
@@ -174,7 +172,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   }
 
   serialize(): CodeSchemeType {
-    
+
     return {
       id: this.id,
       uri: this.uri,

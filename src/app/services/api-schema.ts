@@ -57,7 +57,6 @@ export interface CodeSchemeType extends BaseResourceType {
   searchHits: SearchHitType[];
   totalNrOfSearchHitsCodes: number;
   totalNrOfSearchHitsExtensions: number;
-  // deepSearchHits: DeepSearchHitListCodeType;
   cumulative: boolean;
 }
 
