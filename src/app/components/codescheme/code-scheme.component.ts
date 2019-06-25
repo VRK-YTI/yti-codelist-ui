@@ -24,6 +24,7 @@ import { changeToRestrictedStatus, isCodeSchemeStatusGettingChangedValidlySoThat
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
 import { ExtensionSimple } from '../../entities/extension-simple';
 import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-code-scheme',
@@ -55,6 +56,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private router: Router,
               private locationService: LocationService,
               public languageService: LanguageService,
+              public translateService: TranslateService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
               private extensionsImportModalService: ExtensionImportModalService,
@@ -226,17 +228,20 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'true').pipe(tap(() => this.ngOnInit()));
     };
 
+    const startStatusLocalized: string = this.translateService.instant(this.codeScheme.status);
+    const endStatusLocalized: string = this.translateService.instant(formData.status);
+
     if (changeToRestrictedStatus(this.codeScheme, formData.status)) {
       if (this.changeCodeStatusesAsWellWhenSavingCodeScheme && this.codes.length > 0) {
         return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(
-          switchMap(ok => from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus()).pipe(
+          switchMap(ok => from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus(startStatusLocalized, endStatusLocalized)).pipe(
             switchMap(okok => saveWithCodeStatusChanges()) )))
       } else {
         return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(switchMap(ok => save()));
       }
     } else {
       if (this.changeCodeStatusesAsWellWhenSavingCodeScheme && this.codes.length > 0) {
-        return from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus()).pipe(
+        return from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus(startStatusLocalized, endStatusLocalized)).pipe(
           switchMap(ok => saveWithCodeStatusChanges()))
       } else {
         return save();

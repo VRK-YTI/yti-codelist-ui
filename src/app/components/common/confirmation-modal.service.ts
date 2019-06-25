@@ -69,8 +69,9 @@ export class CodeListConfirmationModalService {
     return this.confirmationModalService.openWithNonTranslatableContentAlsoPresent('CREATE MISSING MEMBERS MODAL TITLE', nonTranslatableBodyParagraphs, undefined, ...bodyParagraphs);
   }
 
-  openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus() {
-    return this.confirmationModalService.open('CHANGE CODE STATUSES TOO?', undefined,
-      '');
+  openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus(startStatus: string, endStatus: string) {
+    const translateParams = { startStatus: startStatus, endStatus: endStatus };
+    return this.confirmationModalService.open('Change code statuses at the same time?', translateParams,
+      'CHANGE CODE STATUSES TOO?');
   }
 }

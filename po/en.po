@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-24 08:05+0300\n"
+"PO-Revision-Date: 2019-06-25 09:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -361,8 +361,13 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid "Change code statuses at the same time"
+msgid ""
+"Cumulative\r\n"
+"            code list"
 msgstr ""
+
+msgid "Change code statuses at the same time"
+msgstr "Change code statuses with the same current status as well"
 
 msgid "Update code list's codes' statuses"
 msgstr "Update code statuses"
@@ -1546,7 +1551,8 @@ msgstr ""
 "submitted anymore."
 
 msgid "CHANGE CODE STATUSES TOO?"
-msgstr "Should all code statuses with the same status be changed as well?"
+msgstr ""
+"Should all the codes with status {{startStatus}} be changed to status {{endStatus}} ?"
 
 msgid "searchresult"
 msgstr "search result"
@@ -1620,6 +1626,9 @@ msgid "Choose starting status"
 msgstr ""
 
 msgid "Choose target status"
+msgstr ""
+
+msgid "Change code statuses at the same time?"
 msgstr ""
 
 msgid "codeValueValidationError"

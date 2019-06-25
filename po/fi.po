@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-24 08:04+0300\n"
+"PO-Revision-Date: 2019-06-25 09:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -370,8 +370,15 @@ msgstr "Tiedoston siirtämiseen liittyvä ongelma. Yritä uudelleen."
 msgid "Default code"
 msgstr "Vakiokoodi"
 
+#, fuzzy
+#| msgid "Cumulative code list"
+msgid ""
+"Cumulative\r\n"
+"            code list"
+msgstr "Kumulatiivinen koodisto"
+
 msgid "Change code statuses at the same time"
-msgstr "Vaihda samalla koodien tilat"
+msgstr "Vaihda samalla samassa tilassa olevien koodien tilat"
 
 msgid "Update code list's codes' statuses"
 msgstr "Muuta koodien tiloja"
@@ -1573,7 +1580,7 @@ msgstr ""
 
 msgid "CHANGE CODE STATUSES TOO?"
 msgstr ""
-"Muutetaanko myös kaikki samassa tilassa olleet koodit uuteen valittuun koodiston tilaan?"
+"Muutetaanko myös kaikki tilassa {{startStatus}} olleet koodit tilaan {{endStatus}} ?"
 
 msgid "searchresult"
 msgstr "hakutulos"
@@ -1648,6 +1655,9 @@ msgstr "Valitse lähtötila"
 
 msgid "Choose target status"
 msgstr "Valitse kohdetila"
+
+msgid "Change code statuses at the same time?"
+msgstr "Vaihda samalla koodien tilat?"
 
 msgid "codeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
