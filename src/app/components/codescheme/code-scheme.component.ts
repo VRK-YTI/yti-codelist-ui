@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +32,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./code-scheme.component.scss'],
   providers: [EditableService],
 })
-export class CodeSchemeComponent implements OnInit, EditingComponent {
+export class CodeSchemeComponent implements OnInit, EditingComponent, AfterViewChecked {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
@@ -101,15 +101,25 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.activatedRoute.queryParams.subscribe(params => {
       this.prefilledSearchTermForCode = params['prefilledSearchTermForCode'];
     });
+  }
 
-
+  ngAfterViewChecked(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['goToExtensionsTab']) {
+        if (this.tabSet) {
+          setTimeout(() => {
+            this.tabSet.activeId = 'codelist_extensions_tab';
+          }, 0);
+        }
+      }
+    });
   }
 
   refreshCodesAndCodeScheme() {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
       if (codes.length > 0) {
-        this.tabSet.activeId = 'codelist_codes_tab';
+          this.tabSet.activeId = 'codelist_codes_tab';
       }
     });
     this.refreshCodeScheme();
