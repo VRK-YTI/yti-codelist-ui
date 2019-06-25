@@ -100,22 +100,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.prefilledSearchTermForCode = params['prefilledSearchTermForCode'];
-      /*if (params['goToExtensionsTab']) {
-        this.tabSet.activeId = 'codelist_extensions_tab';
-      };*/
     });
 
 
   }
-
-  /*ngAfterViewInit() {
-    const goToMembersTab = this.route.snapshot.queryParamMap.get('goToExtensionsTab');
-    /!*if (goToMembersTab === 'true') { // TODO YTI-421 cleanup, make this work or delete this.
-      this.tabSet.activeId = 'codelist_extensions_tab';
-      this.refreshCodeScheme();
-    }*!/
-
-  }*/
 
   refreshCodesAndCodeScheme() {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
@@ -433,7 +421,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   toggleChangeCodeStatusesAsWellWhenSavingCodeScheme(doItOrNot: boolean) {
-      this.changeCodeStatusesAsWellWhenSavingCodeScheme = doItOrNot; // !this.changeCodeStatusesAsWellWhenSavingCodeScheme;
+      this.changeCodeStatusesAsWellWhenSavingCodeScheme = doItOrNot;
   }
 
   // timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
