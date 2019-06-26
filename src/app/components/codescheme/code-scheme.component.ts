@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { ExtensionImportModalService } from '../extension/extension-import-modal
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
-import { catchError, switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
 import { changeToRestrictedStatus, isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo } from '../../utils/status-check';
@@ -32,7 +32,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./code-scheme.component.scss'],
   providers: [EditableService],
 })
-export class CodeSchemeComponent implements OnInit, EditingComponent, AfterViewChecked {
+export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   @ViewChild('tabSet') tabSet: NgbTabset;
 
@@ -103,23 +103,11 @@ export class CodeSchemeComponent implements OnInit, EditingComponent, AfterViewC
     });
   }
 
-  ngAfterViewChecked(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      if (params['goToExtensionsTab']) {
-        if (this.tabSet) {
-          setTimeout(() => {
-            this.tabSet.activeId = 'codelist_extensions_tab';
-          }, 0);
-        }
-      }
-    });
-  }
-
   refreshCodesAndCodeScheme() {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
       if (codes.length > 0) {
-          this.tabSet.activeId = 'codelist_codes_tab';
+        this.tabSet.activeId = 'codelist_codes_tab';
       }
     });
     this.refreshCodeScheme();
@@ -233,7 +221,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent, AfterViewC
       if (this.changeCodeStatusesAsWellWhenSavingCodeScheme && this.codes.length > 0) {
         return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(
           switchMap(ok => from(this.confirmationModalService.openChangeCodeStatusesAlsoAlongWithTheCodeSchemeStatus(startStatusLocalized, endStatusLocalized)).pipe(
-            switchMap(okok => saveWithCodeStatusChanges()) )))
+            switchMap(okok => saveWithCodeStatusChanges()))))
       } else {
         return from(this.confirmationModalService.openChangeToRestrictedStatus()).pipe(switchMap(ok => save()));
       }
@@ -431,7 +419,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent, AfterViewC
   }
 
   toggleChangeCodeStatusesAsWellWhenSavingCodeScheme(doItOrNot: boolean) {
-      this.changeCodeStatusesAsWellWhenSavingCodeScheme = doItOrNot;
+    this.changeCodeStatusesAsWellWhenSavingCodeScheme = doItOrNot;
   }
 
   // timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
