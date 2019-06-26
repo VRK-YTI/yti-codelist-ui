@@ -16,6 +16,9 @@ msgstr ""
 msgid " codes."
 msgstr ""
 
+msgid "CODE STATUS CHANGES RESULTS"
+msgstr ""
+
 msgid "All link types"
 msgstr ""
 
@@ -925,7 +928,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
 msgstr ""
 
 msgid "Front page"
@@ -1239,10 +1242,10 @@ msgstr ""
 msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"

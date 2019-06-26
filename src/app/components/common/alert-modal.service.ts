@@ -14,6 +14,14 @@ export class AlertModalService {
     return instance;
   }
 
+  openWithMessageAndTitle(title: string, message: string ): AlertModalComponent {
+    const modalRef = this.modalService.open(AlertModalComponent, { size: 'sm', backdrop: 'static', keyboard: false  });
+    const instance = modalRef.componentInstance as AlertModalComponent;
+    instance.title = title;
+    instance.message = message;
+    return instance;
+  }
+
 }
 
 @Component({

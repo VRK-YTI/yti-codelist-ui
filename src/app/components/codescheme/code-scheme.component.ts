@@ -25,6 +25,8 @@ import { CodeSchemeImportModalService } from './code-scheme-import-modal.compone
 import { ExtensionSimple } from '../../entities/extension-simple';
 import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { ApiResponseType } from '../../services/api-schema';
+import { AlertModalService } from '../common/alert-modal.service';
 
 @Component({
   selector: 'app-code-scheme',
@@ -66,7 +68,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
               private codeSchemeCodesImportModalService: CodeSchemeCodesImportModalService,
               private codeSchemeImportModalService: CodeSchemeImportModalService,
               private codeSchemeMassMigrateCodeStatusesModalService: CodeSchemeMassMigrateCodeStatusesModalService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private alertModalService: AlertModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -207,11 +210,28 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     }
 
     const save = () => {
-      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'false').pipe(tap(() => this.ngOnInit()));
+      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'false').pipe(tap(() => {
+        this.ngOnInit()
+      }));
     };
 
     const saveWithCodeStatusChanges = () => {
-      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'true').pipe(tap(() => this.ngOnInit()));
+      return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'true').pipe(tap((value) => {
+        const response: ApiResponseType = value;
+        const nrOfChangedCodes = response.meta.nonTranslatableMessage;
+        const title = 'CODE STATUS CHANGES RESULTS';
+        let message = '';
+        if (nrOfChangedCodes === '0') {
+          message = this.translateService.instant('No codes were found with the starting status. No changes to code statuses.');
+        } else if (nrOfChangedCodes === '1') {
+          message = this.translateService.instant('Status changed to one code.');
+        } else {
+          message = this.translateService.instant('Status changed to ') + nrOfChangedCodes +
+            this.translateService.instant(' codes.');
+        }
+        this.alertModalService.openWithMessageAndTitle(title, message);
+        this.ngOnInit();
+      }));
     };
 
     const startStatusLocalized: string = this.translateService.instant(this.codeScheme.status);

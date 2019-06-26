@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-25 09:02+0300\n"
+"PO-Revision-Date: 2019-06-26 17:03+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Status changed to zero codes. No codes with the starting status found."
+msgid "No codes were found with the starting status. No changes to code statuses."
 msgstr ""
 
 msgid "Status changed to one code."
@@ -24,6 +24,9 @@ msgstr " Status changed to "
 
 msgid " codes."
 msgstr " codes."
+
+msgid "CODE STATUS CHANGES RESULTS"
+msgstr "The result of code status changes"
 
 msgid "All link types"
 msgstr ""
@@ -991,8 +994,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
-msgstr "Only one Code list is permitted in the file."
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Registry is not found."
 
 msgid "Front page"
 msgstr ""
@@ -1327,11 +1330,11 @@ msgstr ""
 "Row number {{ identifier }} in the data is missing a value in one of the required member "
 "value columns."
 
+msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
+msgstr "Only one Code list is permitted in the file."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
-msgstr "Registry is not found."
 
 msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
 msgstr "Code list not found."

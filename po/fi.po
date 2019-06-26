@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-26 11:55+0300\n"
+"PO-Revision-Date: 2019-06-26 17:01+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -24,6 +24,9 @@ msgstr "Tila vaihdettu "
 
 msgid " codes."
 msgstr " koodiin."
+
+msgid "CODE STATUS CHANGES RESULTS"
+msgstr "Koodien tilojen vaihtamisen tulos"
 
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
@@ -1023,8 +1026,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
-msgstr "Tiedostossa saa olla vain yksi koodisto."
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Rekisteriä ei löydy."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1354,11 +1357,11 @@ msgstr ""
 "Aineistossa puuttuu pakollinen arvo jostain jäsenen arvo-sarakkeesta riviltä "
 "{{ identifier }}."
 
+msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
+msgstr "Tiedostossa saa olla vain yksi koodisto."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
-msgstr "Rekisteriä ei löydy."
 
 msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
 msgstr "Koodistoa ei löydy."
