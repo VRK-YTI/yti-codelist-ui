@@ -106,7 +106,7 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
       let messagePart = '';
       const nrOfCodesWithStatusChanged: number = next.length;
       if (nrOfCodesWithStatusChanged === 0) {
-        messagePart = this.translateService.instant('Status changed to zero codes. No codes with the starting status found.');
+        messagePart = this.translateService.instant('No codes were found with the starting status. No changes to code statuses.');
       } else if (nrOfCodesWithStatusChanged === 1) {
         messagePart = this.translateService.instant('Status changed to one code.');
         modalRef.message = '' + nrOfCodesWithStatusChanged + messagePart;
