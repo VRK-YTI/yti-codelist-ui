@@ -19,7 +19,7 @@ export class CodeSchemeCodesComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const prefilledSearchTermForCode: SimpleChange = changes.prefilledSearchTermForCode;
-    if (prefilledSearchTermForCode.currentValue) {
+    if (prefilledSearchTermForCode && prefilledSearchTermForCode.currentValue) {
       this.searchTerm = prefilledSearchTermForCode.currentValue;
     }
   }
