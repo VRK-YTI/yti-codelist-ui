@@ -16,9 +16,6 @@ msgstr ""
 msgid " codes."
 msgstr ""
 
-msgid "CODE STATUS CHANGES RESULTS"
-msgstr ""
-
 msgid "All link types"
 msgstr ""
 
@@ -354,7 +351,7 @@ msgid "Default code"
 msgstr ""
 
 msgid ""
-"Cumulative\r\n"
+"Cumulative\n"
 "            code list"
 msgstr ""
 
@@ -1137,9 +1134,6 @@ msgstr ""
 msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
 msgstr ""
 
-msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
-msgstr ""
-
 msgid "ERR_MSG_INVALID_ID"
 msgstr ""
 
@@ -1526,6 +1520,9 @@ msgid "Choose target status"
 msgstr ""
 
 msgid "Change code statuses at the same time?"
+msgstr ""
+
+msgid "CODE STATUS CHANGES RESULTS"
 msgstr ""
 
 msgid "codeValueValidationError"

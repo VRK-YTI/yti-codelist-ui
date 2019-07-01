@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-06-26 17:01+0300\n"
+"PO-Revision-Date: 2019-07-01 11:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -24,9 +24,6 @@ msgstr "Tila vaihdettu "
 
 msgid " codes."
 msgstr " koodiin."
-
-msgid "CODE STATUS CHANGES RESULTS"
-msgstr "Koodien tilojen vaihtamisen tulos"
 
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
@@ -375,7 +372,7 @@ msgstr "Vakiokoodi"
 #, fuzzy
 #| msgid "Cumulative code list"
 msgid ""
-"Cumulative\r\n"
+"Cumulative\n"
 "            code list"
 msgstr "Kumulatiivinen koodisto"
 
@@ -1234,9 +1231,6 @@ msgstr "Aineiston koodiarvo eroaa rajapinnan polusta, muutosta ei voida tehdä."
 msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
 msgstr "Aineiston tilan muutos ei ole sallittu."
 
-msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
-msgstr "HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu."
-
 msgid "ERR_MSG_INVALID_ID"
 msgstr "Aineistossa oleva ID-sarakkeen arvo ei ole sallittu."
 
@@ -1646,8 +1640,6 @@ msgstr "Lataa JSON"
 msgid "Show JSON"
 msgstr "Näytä JSON"
 
-#, fuzzy
-#| msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
 msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
 msgstr ""
 "Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
@@ -1660,6 +1652,9 @@ msgstr "Valitse kohdetila"
 
 msgid "Change code statuses at the same time?"
 msgstr "Vaihda samalla koodien tilat?"
+
+msgid "CODE STATUS CHANGES RESULTS"
+msgstr "Koodien tilojen vaihtamisen tulos"
 
 msgid "codeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
@@ -1705,7 +1700,3 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
-
-#~ msgid "Status changed to zero codes. No codes with the starting status found."
-#~ msgstr ""
-#~ "Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa."
