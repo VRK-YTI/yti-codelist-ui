@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-01 11:58+0300\n"
+"PO-Revision-Date: 2019-07-01 15:41+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -369,8 +369,6 @@ msgstr "Tiedoston siirtämiseen liittyvä ongelma. Yritä uudelleen."
 msgid "Default code"
 msgstr "Vakiokoodi"
 
-#, fuzzy
-#| msgid "Cumulative code list"
 msgid ""
 "Cumulative\n"
 "            code list"
@@ -1023,8 +1021,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
-msgstr "Koodistoa ei löydy."
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Rekisteriä ei löydy."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1220,7 +1218,10 @@ msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr "BROADER-sarakkeen arvo viittaa koodiin itseensä."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
-msgstr "Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu. "
+msgstr "Aineistossa oleva STATUS-sarakkeen arvo ei ole sallittu: {{ identifier }}"
+
+msgid "ERR_MSG_SUGGESTED_STATUS_NOT_ALLOWED"
+msgstr "Aineiston tilaa ei voida asettaa tilaan SUGGESTED."
 
 msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
 msgstr "Aineistosta löytyi useita rivejä samalla CODEVALUE-arvolla."
@@ -1354,11 +1355,11 @@ msgstr ""
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr "Tiedostossa saa olla vain yksi koodisto."
 
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
-msgstr "Rekisteriä ei löydy."
-
 msgid "SUPERSEDED"
 msgstr "Korvattu"
+
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Koodistoa ei löydy."
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
 msgstr "Koodia ei löydy."

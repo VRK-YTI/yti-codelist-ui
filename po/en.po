@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-01 11:58+0300\n"
+"PO-Revision-Date: 2019-07-01 15:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -991,8 +991,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
-msgstr "Code list not found."
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Registry is not found."
 
 msgid "Front page"
 msgstr ""
@@ -1193,7 +1193,10 @@ msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
 msgstr "Broader code references codevalue of the code itself, failing."
 
 msgid "ERR_MSG_STATUS_NOT_VALID"
-msgstr "Invalid STATUS value defined in data."
+msgstr "Invalid STATUS value defined in data: {{ identifier }}"
+
+msgid "ERR_MSG_SUGGESTED_STATUS_NOT_ALLOWED"
+msgstr "Status SUGGESTED not allowed."
 
 msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
 msgstr "Duplicate CODEVALUE in import data, failing."
@@ -1327,11 +1330,11 @@ msgstr ""
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr "Only one Code list is permitted in the file."
 
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
-msgstr "Registry is not found."
-
 msgid "SUPERSEDED"
 msgstr "Superseded"
+
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Code list not found."
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
 msgstr "Code is not found."
