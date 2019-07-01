@@ -925,7 +925,7 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
 msgstr ""
 
 msgid "Front page"
@@ -1239,10 +1239,10 @@ msgstr ""
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
@@ -1406,6 +1406,9 @@ msgid "ERR_MSG_USER_CODE_STATUS_TRANSITION_WRONG_INITIAL_STATUS"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_STATUS_TRANSITION_WRONG_END_STATUS"
+msgstr ""
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_ALLOWED_FOR_EXTENSION"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"
