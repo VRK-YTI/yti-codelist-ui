@@ -16,8 +16,8 @@
                      [value]="extension.codeValue"
                      [infoText]="'INFO_TEXT_EXTENSION_ID'"></app-literal>
 
-        <app-localizable-input-with-language-indicator [id]="'extension_name_input'"
-                                                       [restrict]="isInlineExtension"
+        <app-localizable-input-with-language-indicator *ngIf="!isCodeExtension"
+                                                       [id]="'extension_name_input'"
                                                        [label]="'Extension name' | translate"
                                                        [infoText]="'INFO_TEXT_EXTENSION_NAME'"
                                                        [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>

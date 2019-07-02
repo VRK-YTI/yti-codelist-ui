@@ -69,7 +69,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
-    })
+    });
 
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
       this.extension = extension;

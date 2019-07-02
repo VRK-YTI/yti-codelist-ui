@@ -31,14 +31,14 @@
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <div class="form-group">
-            <app-error-messages id="extension_form_error_messages" [control]="extensionForm"></app-error-messages>
+          <app-error-messages id="extension_form_error_messages" [control]="extensionForm"></app-error-messages>
         </div>
 
-        <app-localizable-input-with-language-indicator [id]="'extension_name_input'"
-                               [label]="'Extension name' | translate"
-                               [restrict]="isCodeExtension"
-                               [infoText]="'INFO_TEXT_EXTENSION_NAME'"
-                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+        <app-localizable-input-with-language-indicator *ngIf="!isCodeExtension"
+                                                       [id]="'extension_name_input'"
+                                                       [label]="'Extension name' | translate"
+                                                       [infoText]="'INFO_TEXT_EXTENSION_NAME'"
+                                                       [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
         <app-literal [label]="'Extension type' | translate"
                      [value]="propertyType.prefLabel | translateValue:true"

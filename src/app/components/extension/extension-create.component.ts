@@ -74,7 +74,6 @@ export class ExtensionCreateComponent implements OnInit {
       this.propertyType = propertyType;
       if (this.propertyType.context === 'CodeExtension') {
         this.extensionForm.controls['codeValue'].setValue(this.propertyType.localName);
-        this.extensionForm.controls['prefLabel'].setValue(this.propertyType.prefLabel);
       }
     });
   }

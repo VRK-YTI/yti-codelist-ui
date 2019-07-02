@@ -105,7 +105,7 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
     return  this.extension.propertyType.context === 'Extension';
   }
 
-  get isInlineExtension(): boolean {
+  get isCodeExtension(): boolean {
     return this.extension.propertyType.context === 'CodeExtension';
   }
 }
