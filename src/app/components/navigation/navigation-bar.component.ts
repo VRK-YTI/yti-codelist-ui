@@ -66,19 +66,10 @@ export class NavigationBarComponent {
   fakeUser(userEmail: string) {
     const oldEmail = this.user.email;
     if (oldEmail !== userEmail) {
-      this.userService.updateLoggedInUser(userEmail);
-      this.refreshPageOnUserUpdate(userEmail);
-    }
-  }
-
-  refreshPageOnUserUpdate(userEmail: string) {
-    setTimeout(() => {
-      if (this.user.email === userEmail) {
+      this.userService.updateLoggedInUser(userEmail).then(_user => {
         window.location.reload();
-      } else {
-        this.refreshPageOnUserUpdate(userEmail);
-      }
-    }, 500);
+      }).catch(reason => console.error('Fake login failed: ' + reason));
+    }
   }
 
   showGroupManagementUrl() {
