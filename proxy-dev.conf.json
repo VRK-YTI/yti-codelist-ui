@@ -1,11 +1,11 @@
 {
   "/codelist-intake/*": {
-    "target": "https://koodistot-dev.suomi.fi",
+    "target": "https://koodistot.dev.yti.cloud.vrk.fi",
     "changeOrigin": true,
     "secure": false
   },
   "/codelist-api/*": {
-    "target": "https://koodistot-dev.suomi.fi",
+    "target": "https://koodistot.dev.yti.cloud.vrk.fi",
     "changeOrigin": true,
     "secure": false
   }
