@@ -14,19 +14,28 @@ import { Localizable } from 'yti-common-ui/types/localization';
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
       <dd>
-        
         <div *ngIf="editing" class="form-group">
-          <div class="language">{{contentLanguage | uppercase}}</div>
-          <input [id]="id"
-                 type="text"
-                 class="form-control"
-                 style="width: calc(100% - 70px) !important; display: inline-block; margin-left: 10px;"
-                 [ngClass]="{'is-invalid': !valid}"
-                 [ngModel]="value[contentLanguage]" 
-                 (ngModelChange)="onChange($event)" />
+          <div class="language">
+            <span>{{contentLanguage | uppercase}}</span>
+          </div>
+          <div class="languageContent">
+            <input [id]="id"
+                   type="text"
+                   class="form-control"
+                   [ngClass]="{'is-invalid': !valid}"
+                   [ngModel]="value[contentLanguage]"
+                   (ngModelChange)="onChange($event)"/>
+          </div>
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
-        <div class="text-content-wrap" *ngIf="!editing"><div class="language">{{contentLanguage | uppercase}}</div>&nbsp;{{value | translateValue}}</div>
+        <div class="text-content-wrap" *ngIf="!editing">
+          <div class="language">
+            <span>{{contentLanguage | uppercase}}</span>
+          </div>
+          <div class="languageContent">
+            <span>{{value | translateValue}}</span>
+          </div>
+        </div>
       </dd>
     </dl>
   `

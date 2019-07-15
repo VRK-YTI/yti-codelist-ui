@@ -15,17 +15,27 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
       </dt>
       <dd>
         <div *ngIf="editing" class="form-group">
-          <div class="language">{{contentLanguage | uppercase}}</div>
-          <textarea [id]="id"
-                    rows="3"
-                    class="form-control"
-                    style="width: calc(100% - 70px) !important; display: inline-block; margin-left: 10px;"
-                    [ngClass]="{'is-invalid': !valid}"
-                    [ngModel]="value[contentLanguage]" 
-                    (ngModelChange)="onChange($event)"></textarea>
+          <div class="language">
+            <span>{{contentLanguage | uppercase}}</span>
+          </div>
+          <div class="languageContent">
+            <textarea [id]="id"
+                      rows="3"
+                      class="form-control"
+                      [ngClass]="{'is-invalid': !valid}"
+                      [ngModel]="value[contentLanguage]"
+                      (ngModelChange)="onChange($event)"></textarea>
+          </div>
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
-        <div class="text-content-wrap" *ngIf="!editing"><div class="language">{{contentLanguage | uppercase}}</div>&nbsp;{{value | translateValue}}</div>
+        <div class="text-content-wrap" *ngIf="!editing">
+          <div class="language">
+            <span>{{contentLanguage | uppercase}}</span>
+          </div>
+          <div class="languageContent">
+            <span>{{value | translateValue}}</span>
+          </div>
+        </div>
       </dd>
     </dl>
   `

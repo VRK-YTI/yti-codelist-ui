@@ -111,3 +111,9 @@ div.language {
   text-align: center;
   line-height: $language-height;
 }
+
+div.languageContent {
+  width: calc(100% - 75px) !important;
+  display: inline-block;
+  margin-left: 10px;
+}

@@ -2,16 +2,13 @@
   <h4 class="modal-title strong">
     <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
     <span translate>Create new link</span>
+    <app-content-language [languageCodes]="languageCodes" class="float-right mb-3"></app-content-language>
   </h4>
 </div>
 <div class="modal-body">
   <div class="row">
     <div class="col-md-12">
-
-      <app-content-language [languageCodes]="languageCodes" class="float-right mb-2"></app-content-language>
-
       <form [formGroup]="externalReferenceForm" #form="ngForm">
-
         <app-localizable-input-with-language-indicator [id]="'link_title_input'"
                                                        [label]="'Link title' | translate"
                                                        [infoText]="'INFO_TEXT_LINK_TITLE'"
