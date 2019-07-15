@@ -80,7 +80,7 @@ export class SearchHitsListComponent {
       'codescheme',
       {
         registryCode: codeRegistryCodeValue,
-        schemeCode: codeSchemeCodeValue,
+        schemeCode: codeSchemeCodeValue
       }
     ];
   }
@@ -98,7 +98,7 @@ export class SearchHitsListComponent {
   }
 
   navigateToCodeSchemeFromExtension(codeSchemeCodeValue: string, codeRegistryCodeValue: string) {
-    this.router.navigate(this.getRouteToCodeScheme(codeSchemeCodeValue, codeRegistryCodeValue), { queryParams: { 'goToExtensionsTab': true }} );
+    this.router.navigate(this.getRouteToCodeScheme(codeSchemeCodeValue, codeRegistryCodeValue), { queryParams: { 'activeTab': 'codelist_extensions_tab' }} );
   }
 
   getSearchHitLabelForScreen(searchHit: SearchHit): string {

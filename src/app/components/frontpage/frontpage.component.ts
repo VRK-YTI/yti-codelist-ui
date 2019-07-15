@@ -7,7 +7,7 @@ import { CodeRegistry } from '../../entities/code-registry';
 import { InfoDomain } from '../../entities/info-domain';
 import { Organization } from '../../entities/organization';
 import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
-import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable, of, Subscription } from 'rxjs';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,7 +16,7 @@ import { anyMatching } from 'yti-common-ui/utils/array';
 import { Option } from 'yti-common-ui/components/dropdown.component';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
-import { debounceTime, flatMap, map, skip, take, tap } from 'rxjs/operators';
+import { catchError, debounceTime, flatMap, map, skip, take, tap } from 'rxjs/operators';
 import { ObservableInput } from 'rxjs/internal/types';
 import { getInformationDomainSvgIcon } from 'yti-common-ui/utils/icons';
 import { ConfigurationService } from '../../services/configuration.service';
@@ -60,6 +60,8 @@ export class FrontpageComponent implements OnInit, OnDestroy {
   extensionPropetyType$ = new BehaviorSubject<PropertyType | null>(null);
 
   filteredCodeSchemes: CodeScheme[];
+
+  searchError = false;
 
   searchInProgress = true;
   searchCodesValue = false;
@@ -114,7 +116,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       this.registryOptions = [null, ...registries].map(registry => ({
         value: registry,
         name: () => registry ? !this.languageService.isLocalizableEmpty(registry.prefLabel) ? this.languageService.translate(registry.prefLabel, true) : registry.codeValue
-          : this.translateService.instant('All registries'),
+                             : this.translateService.instant('All registries'),
         idIdentifier: () => registry ? registry.codeValue : 'all_selected'
       }));
     });
@@ -124,9 +126,9 @@ export class FrontpageComponent implements OnInit, OnDestroy {
         this.organizationOptions = [null, ...organizations].map(organization => ({
           value: organization,
           name: () => organization ? this.languageService.translate(organization.prefLabel, true)
-            : this.translateService.instant('All organizations'),
+                                   : this.translateService.instant('All organizations'),
           idIdentifier: () => organization ? labelNameToResourceIdIdentifier(this.languageService.translate(organization.prefLabel, true))
-            : 'all_selected'
+                                           : 'all_selected'
         }));
         this.organizationOptions.sort(comparingLocalizable<Option<Organization>>(this.languageService, c =>
           c.value ? c.value.prefLabel : {}));
@@ -142,7 +144,7 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       this.extensionPropertyTypeOptions = [null, ...propertyTypes].map(propertyType => ({
         value: propertyType,
         name: () => propertyType ? this.languageService.translate(propertyType.prefLabel, true)
-          : this.translateService.instant('All extensionPropertyTypes'),
+                                 : this.translateService.instant('All extensionPropertyTypes'),
         idIdentifier: () => propertyType ? propertyType.idIdentifier : 'all_selected'
       }));
     });
@@ -175,20 +177,25 @@ export class FrontpageComponent implements OnInit, OnDestroy {
       .pipe(
         tap(() => this.searchInProgress = true),
         flatMap(([searchTerm, infoDomain, status, registry, organization, extensionPropertyType, searchCodes, searchExtensions, language]) => {
-
+          this.searchError = false;
           const infoDomainCode = infoDomain ? infoDomain.codeValue : null;
           const organizationId = organization ? organization.id : null;
           const sortMode = this.configurationService.codeSchemeSortMode || null;
           const extensionPropertyTypeLocalName = extensionPropertyType != null ? extensionPropertyType.localName : null;
-
           return this.dataService.searchCodeSchemes(searchTerm, extensionPropertyTypeLocalName, infoDomainCode, organizationId, sortMode, searchCodes, searchExtensions, language)
             .pipe(map(codeSchemes => codeSchemes.filter(codeScheme =>
-              statusMatches(status, codeScheme) &&
-              registryMatches(registry, codeScheme) &&
-              extensionPropertyTypeMatches(extensionPropertyType, codeScheme))
-            ));
+                  statusMatches(status, codeScheme) &&
+                  registryMatches(registry, codeScheme) &&
+                  extensionPropertyTypeMatches(extensionPropertyType, codeScheme))),
+              catchError(err => of(false))
+            );
         }),
-        tap(() => this.searchInProgress = false)
+        tap(result => {
+          if (result === false) {
+            this.searchError = true;
+          }
+          this.searchInProgress = false
+        })
       )
       .subscribe(results => this.filteredCodeSchemes = results);
 

@@ -79,6 +79,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
 
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.initialTabId = params['activeTab'];
+    });
+
     if (!registryCodeValue || !schemeCodeValue) {
       throw new Error(`Illegal route, registry: '${registryCodeValue}', scheme: '${schemeCodeValue}'`);
     }

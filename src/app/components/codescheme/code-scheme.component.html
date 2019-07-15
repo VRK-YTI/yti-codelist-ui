@@ -164,7 +164,7 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
+  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)" [activeId]="initialTabId">
     <ngb-tab id="codelist_codes_tabs" *ngIf="codes.length > 0">
       <ng-template ngbTabTitle>
         <span translate>CODES</span>

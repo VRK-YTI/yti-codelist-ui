@@ -26,6 +26,7 @@
                #schemeSearch
                id="search_box_input"
                type="text"
+               [ngClass]="{'is-invalid': searchError}"
                [(ngModel)]="searchTerm"
                placeholder="{{'Search term' | translate}}"/>
       </div>
