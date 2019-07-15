@@ -187,17 +187,21 @@ export class FrontpageComponent implements OnInit, OnDestroy {
                   statusMatches(status, codeScheme) &&
                   registryMatches(registry, codeScheme) &&
                   extensionPropertyTypeMatches(extensionPropertyType, codeScheme))),
-              catchError(err => of(false))
+              catchError(err => of(null))
             );
         }),
-        tap(result => {
-          if (result === false) {
-            this.searchError = true;
-          }
+        tap(() => {
           this.searchInProgress = false
         })
       )
-      .subscribe(results => this.filteredCodeSchemes = results);
+      .subscribe(results => {
+        if (results === null) {
+          this.searchError = true;
+          this.filteredCodeSchemes = [];
+        } else {
+          this.filteredCodeSchemes = results;
+        }
+      });
 
     myCombineLatest(infoDomains$, searchTerm$, this.status$, this.registry$, this.organization$,
       this.extensionPropetyType$, this.searchCodes$, this.searchExtensions$, this.languageService.language$)
