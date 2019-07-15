@@ -13,14 +13,14 @@
       <form [formGroup]="linkForm" #form="ngForm">
 
         <app-localizable-input-with-language-indicator [id]="'link_title_input'"
-                               [label]="'Link title' | translate"
-                               [infoText]="'INFO_TEXT_LINK_TITLE'"
-                               [formControlName]="'title'"></app-localizable-input-with-language-indicator>
+                                                       [label]="'Link title' | translate"
+                                                       [infoText]="'INFO_TEXT_LINK_TITLE'"
+                                                       [formControlName]="'title'"></app-localizable-input-with-language-indicator>
 
         <app-localizable-textarea-with-language-indicator [id]="'link_description_textarea'"
-                                  [label]="'Description' | translate"
-                                  [infoText]="'INFO_TEXT_LINK_DESCRIPTION'"
-                                  [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
+                                                          [label]="'Description' | translate"
+                                                          [infoText]="'INFO_TEXT_LINK_DESCRIPTION'"
+                                                          [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
 
         <app-literal-input [id]="'link_url_input'"
                            [label]="'URL' | translate"
