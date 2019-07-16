@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-01 15:41+0300\n"
+"PO-Revision-Date: 2019-07-16 07:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1021,8 +1021,8 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
-msgstr "Rekisteriä ei löydy."
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Koodistoa ei löydy."
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1142,9 +1142,6 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
 msgstr "Aineistosta puuttuu sarake otsikolla EXTENSIONVALUE."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
-msgstr "Aineistosta puuttuu sarake otsikolla ORDER."
-
 msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
 msgstr "Aineistosta puuttuu sarake otsikolla CODE."
 
@@ -1162,9 +1159,6 @@ msgstr "Aineistosta puuttuu sarake otsikolla STATUS."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr "Aineistossa puuttuu sarake otsikolla PROPERTYTYPE."
-
-msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
-msgstr "Aineistosta puuttuu sarake otsikolla LANGUAGECODE."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr "Aineistossa puuttuu arvo sarakkeesta CODE riviltä {{ identifier }}."
@@ -1195,9 +1189,6 @@ msgstr "Aineistolle annettua tietoaluetta ei löydy."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Olemassaoleva koodiarvo eroaa tuotavasta, muutosta ei voida tehdä."
-
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
-msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
 msgstr "Virhe luettaessa Excel-tiedostoa. Tarkasta tuotavan tiedoston muoto."
@@ -1355,11 +1346,11 @@ msgstr ""
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr "Tiedostossa saa olla vain yksi koodisto."
 
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Rekisteriä ei löydy."
+
 msgid "SUPERSEDED"
 msgstr "Korvattu"
-
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
-msgstr "Koodistoa ei löydy."
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
 msgstr "Koodia ei löydy."
@@ -1450,9 +1441,6 @@ msgstr "Jäsenet ovat tyhjiä."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALUETYPE_NOT_SET"
 msgstr "Jäseen arvon tyyppiä ei ole määritetty."
-
-msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
-msgstr "Jäsenen arvo löytyi jo tälle tyypille."
 
 msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
 msgstr "Jäsenen ID ei täsmää."
@@ -1704,6 +1692,18 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
+
+#~ msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
+#~ msgstr "Aineistosta puuttuu sarake otsikolla ORDER."
+
+#~ msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
+#~ msgstr "Aineistosta puuttuu sarake otsikolla LANGUAGECODE."
+
+#~ msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
+#~ msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
+
+#~ msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
+#~ msgstr "Jäsenen arvo löytyi jo tälle tyypille."
 
 #~ msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
 #~ msgstr "HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-01 15:37+0300\n"
+"PO-Revision-Date: 2019-07-16 07:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -991,8 +991,8 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
-msgstr "Registry is not found."
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Code list not found."
 
 msgid "Front page"
 msgstr ""
@@ -1114,9 +1114,6 @@ msgstr ""
 msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
 msgstr "The data is missing a column with the header EXTENSIONVALUE."
 
-msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
-msgstr "The data is missing a column with the header ORDER."
-
 msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
 msgstr "The data is missing a column with the header CODE."
 
@@ -1134,9 +1131,6 @@ msgstr "The data is missing a column with the header STATUS."
 
 msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
 msgstr "The data is missing a column with the header PROPERTYTYPE."
-
-msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
-msgstr "The data is missing a column with the header LANGUAGECODE."
 
 msgid "ERR_MSG_USER_ROW_MISSING_CODE"
 msgstr "Row number {{ identifier }} in the data is missing a value in the column CODE."
@@ -1168,9 +1162,6 @@ msgstr "Data contains faulty informationdomain."
 
 msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
 msgstr "Existing CODEVALUE differs from input data, change not allowed."
-
-msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
-msgstr "Error parsing Excel file, sheet not found."
 
 msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
 msgstr "Error parsing Excel file."
@@ -1330,11 +1321,11 @@ msgstr ""
 msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
 msgstr "Only one Code list is permitted in the file."
 
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Registry is not found."
+
 msgid "SUPERSEDED"
 msgstr "Superseded"
-
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
-msgstr "Code list not found."
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
 msgstr "Code is not found."
@@ -1425,9 +1416,6 @@ msgstr "Members are empty."
 
 msgid "ERR_MSG_USER_MEMBERVALUE_VALUETYPE_NOT_SET"
 msgstr "Member value value type not set."
-
-msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
-msgstr "Member value already found for given value type."
 
 msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
 msgstr "Member ID mismatch."
@@ -1677,6 +1665,18 @@ msgstr "Member value is a required input."
 
 msgid "localizableValueRequired"
 msgstr "Required"
+
+#~ msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
+#~ msgstr "The data is missing a column with the header ORDER."
+
+#~ msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
+#~ msgstr "The data is missing a column with the header LANGUAGECODE."
+
+#~ msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
+#~ msgstr "Error parsing Excel file, sheet not found."
+
+#~ msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
+#~ msgstr "Member value already found for given value type."
 
 #~ msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
 #~ msgstr "Invalid value in HIERARCHYLEVEL column."
