@@ -37,7 +37,14 @@
                        [showAsLink]="false"
                        [infoText]="'INFO_TEXT_REGISTRY_URI'"></app-inline-clipboard>
 
-        <app-literal [label]="'Last modification' | translate"
+        <app-literal *ngIf="user"
+                     [id]="'coderegistry_user'"
+                     [label]="'Modified by' | translate"
+                     [value]="user.getDisplayName()"
+                     [infoText]="'INFO_TEXT_LAST_MODIFICATION_USER'"></app-literal>
+
+        <app-literal [id]="'coderegistry_last_modification'"
+                     [label]="'Last modification' | translate"
                      [value]="codeRegistry.modifiedDisplayValue"
                      [infoText]="'INFO_TEXT_REGISTRY_LAST_MODIFICATION'"></app-literal>
       </div>

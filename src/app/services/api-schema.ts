@@ -228,6 +228,13 @@ export interface MemberSimpleType {
   endDate?: string;
 }
 
+export interface UserSimpleType {
+
+  id: string;
+  firstName: string;
+  lastName: string;
+}
+
 export interface CodeSchemeListItemType {
   id: string;
   prefLabel: Localizable;

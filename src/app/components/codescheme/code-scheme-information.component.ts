@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { EditableService } from '../../services/editable.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Code } from '../../entities/code';
@@ -17,6 +17,8 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodePlain } from '../../entities/code-simple';
 import { ConfigurationService } from '../../services/configuration.service';
 import { nonEmptyLocalizableValidator } from '../../utils/validators';
+import { UserSimple } from '../../entities/user-simple';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-code-scheme-information',
@@ -54,17 +56,20 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     changeCodeStatuses: new FormControl(false)
   });
 
+  user$ = new BehaviorSubject<UserSimple | null>(null);
+
   cancelSubscription: Subscription;
   languageChangeSubscription: Subscription;
 
   statusChanged = false;
   changeCodeStatusesToo = false;
 
-  constructor(private userService: UserService,
+  constructor(public languageService: LanguageService,
+              private authorizationManager: AuthorizationManager,
+              private userService: UserService,
               private dataService: DataService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              public languageService: LanguageService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private configurationService: ConfigurationService) {
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
@@ -75,15 +80,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   ngOnInit() {
 
+    this.fetchUserInformation();
+
     this.codeSchemeForm.valueChanges.subscribe(next => {
         const newStatus = next['status'];
         const newChangeCodeStatuses = next['changeCodeStatuses'];
 
-        if (newStatus && newStatus !== this.codeScheme.status) {
-          this.statusChanged = true;
-        } else {
-          this.statusChanged = false;
-        }
+        this.statusChanged = newStatus && newStatus !== this.codeScheme.status;
 
         if (this.statusChanged && newChangeCodeStatuses === true) {
           this.changeCodeStatusesAsWell.emit(true);
@@ -95,10 +98,22 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
+    this.fetchUserInformation();
     this.reset();
   }
 
+  fetchUserInformation() {
+
+    if (!this.authorizationManager.user.anonymous) {
+      this.dataService.findUserForCodeScheme(this.codeScheme.id).subscribe(user => {
+        this.user = user;
+      });
+    }
+  }
+
   updateLanguages(codes: CodePlain[]) {
+
     this.changeLanguage.emit(codes);
   }
 
@@ -150,11 +165,13 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   removeConceptUriInVocabularies() {
+
     this.codeScheme.conceptUriInVocabularies = '';
     this.codeSchemeForm.controls['conceptUriInVocabularies'].setValue('');
   }
 
   openTerminologyModal() {
+
     this.terminologyIntegrationModalService.open(true, 'codescheme')
       .then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
@@ -171,10 +188,12 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   getCodeSchemeUri() {
+
     return this.configurationService.getUriWithEnv(this.codeScheme.uri);
   }
 
   getConceptUri() {
+
     const conceptUri = this.codeScheme.conceptUriInVocabularies;
     if (conceptUri != null && conceptUri.length > 0) {
       return this.configurationService.getUriWithEnv(conceptUri);
@@ -183,21 +202,35 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   }
 
   toggleMarkCodelistAsCumulative() {
+
     this.codelistMarkedAsCumulative = !this.codelistMarkedAsCumulative;
     this.codeSchemeForm.patchValue({ cumulative: this.codelistMarkedAsCumulative });
   }
 
   getCodeRegistryName(): string {
+
     return !this.languageService.isLocalizableEmpty(this.codeScheme.codeRegistry.prefLabel) ?
-      this.languageService.translate(this.codeScheme.codeRegistry.prefLabel, false) : this.codeScheme.codeRegistry.codeValue
+           this.languageService.translate(this.codeScheme.codeRegistry.prefLabel, false) : this.codeScheme.codeRegistry.codeValue
   }
 
   toggleChangeCodeStatusesToo() {
+
     this.changeCodeStatusesToo = !this.changeCodeStatusesToo;
     this.codeSchemeForm.patchValue({ changeCodeStatuses: !this.codeSchemeForm.controls['changeCodeStatuses'].value });
   }
 
   showChangeCodeStatusesCheckbox(): boolean {
+
     return this.editing && this.statusChanged && this.codesOfTheCodeScheme.length > 0;
+  }
+
+  get user(): UserSimple | null {
+
+    return this.user$.getValue();
+  }
+
+  set user(value: UserSimple | null) {
+
+    this.user$.next(value);
   }
 }

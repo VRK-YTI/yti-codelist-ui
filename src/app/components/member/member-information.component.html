@@ -50,8 +50,8 @@
                           *ngIf="!isCodeExtension"
                           [label]="labelForTheHiearchicalBroaderCodeChoice | translate"
                           [codeSchemes]="this.allCodeSchemes"
-                          [extension]="currentMember.extension"
-                          [currentMember]="currentMember"
+                          [extension]="member.extension"
+                          [currentMember]="member"
                           [formControlName]="'relatedMember'"
                           [infoText]="infoTextForHierarchicalParentInfoButtonBased"></app-member-input>
 
@@ -66,13 +66,20 @@
                        [showAsLink]="false"
                        [infoText]="'INFO_TEXT_URI_MEMBER'"></app-inline-clipboard>
 
-        <app-literal [label]="'Last modification' | translate"
-                     [value]="currentMember.modifiedDisplayValue"></app-literal>
+        <app-literal *ngIf="user"
+                     [id]="'member_user'"
+                     [label]="'Modified by' | translate"
+                     [value]="user.getDisplayName()"
+                     [infoText]="'INFO_TEXT_LAST_MODIFICATION_USER'"></app-literal>
+
+        <app-literal [id]="'member_last_modification'"
+                     [label]="'Last modification' | translate"
+                     [value]="member.modifiedDisplayValue"></app-literal>
       </div>
 
       <div class="col-2">
         <app-editable-buttons [form]="form"
-                              [entity]="currentMember"></app-editable-buttons>
+                              [entity]="member"></app-editable-buttons>
       </div>
     </div>
 

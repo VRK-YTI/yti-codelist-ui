@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/
 import { Code } from '../../entities/code';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
 import { UserService } from 'yti-common-ui/services/user.service';
@@ -22,6 +22,8 @@ import { CodePlain } from '../../entities/code-simple';
 import { CodePlainType } from '../../services/api-schema';
 import { ValueType } from '../../entities/value-type';
 import { MemberValueValidators } from '../form/member-value-validators';
+import { UserSimple } from '../../entities/user-simple';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-code-information',
@@ -49,11 +51,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     subCodeScheme: new FormControl(null)
   });
 
-  constructor(private dataService: DataService,
+  user$ = new BehaviorSubject<UserSimple | null>(null);
+
+  constructor(public languageService: LanguageService,
+              private authorizationManager: AuthorizationManager,
+              private dataService: DataService,
               private userService: UserService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              public languageService: LanguageService,
               private terminologyIntegrationModalService: TerminologyIntegrationModalService,
               private configurationService: ConfigurationService) {
 
@@ -61,10 +66,22 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
+    this.fetchUserInformation();
     this.reset();
   }
 
+  fetchUserInformation() {
+
+    if (!this.authorizationManager.user.anonymous) {
+      this.dataService.findUserForCode(this.code.id).subscribe(user => {
+        this.user = user;
+      });
+    }
+  }
+
   reset() {
+
     const { externalReferences, codeExtensions, startDate, endDate, ...rest } = this.code;
 
     this.codeForm.reset({
@@ -77,14 +94,17 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get editing() {
+
     return this.editableService.editing;
   }
 
   get isSuperUser() {
+
     return this.userService.user.superuser;
   }
 
   get restricted() {
+
     if (this.isSuperUser) {
       return false;
     }
@@ -92,25 +112,30 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get codeSchemes(): CodeScheme[] {
+
     const codeSchemes: CodeScheme[] = [];
     codeSchemes.push(this.code.codeScheme);
     return codeSchemes;
   }
 
   ngOnDestroy() {
+
     this.cancelSubscription.unsubscribe();
   }
 
   openTerminologyModal() {
+
     this.terminologyIntegrationModalService.open(true, 'code').then(concept => this.putConceptStuffInPlace(concept), ignoreModalClose);
   }
 
   removeConceptUriInVocabularies() {
+
     this.code.conceptUriInVocabularies = '';
     this.codeForm.controls['conceptUriInVocabularies'].setValue('');
   }
 
   putConceptStuffInPlace(concept: Concept) {
+
     this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
       .then(() => {
         this.codeForm.patchValue({ prefLabel: concept.prefLabel });
@@ -121,10 +146,12 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getCodeUri() {
+
     return this.configurationService.getUriWithEnv(this.code.uri);
   }
 
   getConceptUri() {
+
     const conceptUri = this.code.conceptUriInVocabularies;
     if (conceptUri != null && conceptUri.length > 0) {
       return this.configurationService.getUriWithEnv(conceptUri);
@@ -133,15 +160,18 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   get codeExtensionsFormArray(): FormArray {
+
     return this.codeForm.get('codeExtensions') as FormArray;
   }
 
   get codeExtensions(): ExtensionSimple[] {
+
     return this.codeScheme.extensions.filter(extension => extension.propertyType.context === 'CodeExtension').sort(comparingLocalizable<ExtensionSimple>(this.languageService, item =>
       item.prefLabel ? item.prefLabel : {}));
   }
 
   getExtensionDisplayName(extensionId: string): string {
+
     const extension: Extension | null = this.getExtension(extensionId);
     if (extension) {
       return extension.getDisplayName(this.languageService);
@@ -150,6 +180,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getExtension(extensionId: string): Extension | null {
+
     for (const extension of this.code.codeExtensions) {
       if (extension.id === extensionId) {
         return extension;
@@ -159,6 +190,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   initCodeExtensions() {
+
     this.codeExtensionsFormArray.controls = [];
     if (this.code.codeExtensions) {
       this.code.codeExtensions.forEach(codeExtension => {
@@ -168,6 +200,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   initExtension(extension: Extension): FormGroup {
+
     return new FormGroup({
       id: new FormControl(extension.id),
       uri: new FormControl(extension.uri),
@@ -181,12 +214,14 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   initMembers(extension: Extension): FormArray {
+
     const membersArray: FormArray = new FormArray([]);
     membersArray.push(this.initMember(extension));
     return membersArray;
   }
 
   initMember(extension: Extension): FormGroup {
+
     const codePlainType: CodePlainType = this.code.serializeToPlainType();
     const codePlain: CodePlain = new CodePlain(codePlainType);
     const member: MemberSimple | null = this.getMemberForExtension(extension);
@@ -202,6 +237,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   initMemberValues(extension: Extension): FormArray {
+
     const memberValuesFormArray: FormArray = new FormArray([]);
     const valueTypes: ValueType[] = extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
     if (valueTypes) {
@@ -218,6 +254,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   }
 
   getMemberForExtension(extension: Extension): MemberSimple | null {
+
     for (const codeExtension of this.code.codeExtensions) {
       if (codeExtension.id === extension.id) {
         if (codeExtension.members && codeExtension.members.length > 0) {
@@ -230,6 +267,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
   getMemberValueForValueType(extension: Extension,
                              valueTypeLocalName: string): MemberValue | null {
+
     for (const codeExtension of this.code.codeExtensions) {
       if (codeExtension.id === extension.id) {
         if (codeExtension.members && codeExtension.members.length > 0) {
@@ -245,5 +283,15 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
       }
     }
     return null;
+  }
+
+  get user(): UserSimple | null {
+
+    return this.user$.getValue();
+  }
+
+  set user(value: UserSimple | null) {
+
+    this.user$.next(value);
   }
 }

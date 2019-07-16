@@ -202,6 +202,9 @@ msgstr ""
 msgid "URI"
 msgstr ""
 
+msgid "Modified by"
+msgstr ""
+
 msgid "Last modification"
 msgstr ""
 
@@ -758,6 +761,9 @@ msgid "INFO_TEXT_URI_EXTENSION"
 msgstr ""
 
 msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgstr ""
+
+msgid "INFO_TEXT_LAST_MODIFICATION_USER"
 msgstr ""
 
 msgid "INFO_TEXT_EXTERNAL_REFERENCES"

@@ -159,7 +159,14 @@
                             [showAsLink]="false"
                             [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
 
-      <app-literal [label]="'Last modification' | translate"
+      <app-literal *ngIf="user"
+                   [id]="'codelist_user'"
+                   [label]="'Modified by' | translate"
+                   [value]="user.getDisplayName()"
+                   [infoText]="'INFO_TEXT_LAST_MODIFICATION_USER'"></app-literal>
+
+      <app-literal [id]="'codelist_last_modification'"
+                   [label]="'Last modification' | translate"
                    [value]="codeScheme.modifiedDisplayValue"
                    [infoText]="'INFO_TEXT_CODELIST_LAST_MODIFICATION'"></app-literal>
 

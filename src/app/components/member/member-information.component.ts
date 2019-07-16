@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
@@ -17,6 +17,8 @@ import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { ConfigurationService } from '../../services/configuration.service';
 import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { UserSimple } from '../../entities/user-simple';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-member-information',
@@ -25,7 +27,7 @@ import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 })
 export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy {
 
-  @Input() currentMember: Member;
+  @Input() member: Member;
 
   extension: Extension;
 
@@ -47,14 +49,17 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     validity: new FormControl(null, validDateRange)
   });
 
-  constructor(private route: ActivatedRoute,
+  user$ = new BehaviorSubject<UserSimple | null>(null);
+
+  constructor(public languageService: LanguageService,
+              private authorizationManager: AuthorizationManager,
+              private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
               private dataService: DataService,
               private userService: UserService,
               private confirmationModalService: CodeListConfirmationModalService,
               private editableService: EditableService,
-              public languageService: LanguageService,
               private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
@@ -72,9 +77,10 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
         `scheme: '${schemeCodeValue}', extension: '${extensionCodeValue}'`);
     }
 
-    this.dataService.getMember(memberId, extensionCodeValue).subscribe(extension => {
-      this.currentMember = extension;
-      this.locationService.atMemberPage(extension);
+    this.dataService.getMember(memberId, extensionCodeValue).subscribe(member => {
+      this.member = member;
+      this.fetchUserInformation();
+      this.locationService.atMemberPage(member);
     });
 
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
@@ -82,8 +88,18 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     });
   }
 
+  fetchUserInformation() {
+
+    if (!this.authorizationManager.user.anonymous) {
+      this.dataService.findUserForMember(this.member.id).subscribe(user => {
+        this.user = user;
+      });
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
 
+    this.fetchUserInformation();
     this.reset();
   }
 
@@ -100,7 +116,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   reset() {
 
-    const { startDate, endDate, memberValues, ...rest } = this.currentMember;
+    const { startDate, endDate, memberValues, ...rest } = this.member;
 
     const unaryOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'unaryOperator');
     const comparisonOperator: string | undefined = this.getValueFromMemberValues(memberValues, 'comparisonOperator');
@@ -142,7 +158,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
     if (this.isSuperUser) {
       return false;
     }
-    return this.currentMember.extension.restricted;
+    return this.member.extension.restricted;
   }
 
   ngOnDestroy() {
@@ -152,7 +168,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   get loading(): boolean {
 
-    return this.extension == null || this.currentMember == null;
+    return this.extension == null || this.member == null;
   }
 
   canSave() {
@@ -197,7 +213,7 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
 
   getMemberUri() {
 
-    return this.configurationService.getUriWithEnv(this.currentMember.uri);
+    return this.configurationService.getUriWithEnv(this.member.uri);
   }
 
   isUnaryOperatorPatternValid(control: AbstractControl) {
@@ -227,19 +243,23 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   get isCodeExtension(): boolean {
+
     return this.extension.propertyType.context === 'CodeExtension';
   }
 
   get valueTypes(): ValueType[] {
+
     return this.extension.propertyType.valueTypes.sort(comparingLocalizable<ValueType>(this.languageService, item =>
       item.prefLabel ? item.prefLabel : {}));
   }
 
   currentExtensionIsACrossReferenceList(): boolean {
+
     return this.extension.propertyType.localName === 'crossReferenceList';
   }
 
   get labelForTheHiearchicalBroaderCodeChoice(): string {
+
     if (this.currentExtensionIsACrossReferenceList()) {
       return 'Cross-reference code';
     } else {
@@ -248,10 +268,21 @@ export class MemberInformationComponent implements OnInit, OnChanges, OnDestroy 
   }
 
   get infoTextForHierarchicalParentInfoButtonBased(): string {
+
     if (this.extension.propertyType.localName === 'crossReferenceList') {
       return 'INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE';
     } else {
       return 'INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER';
     }
+  }
+
+  get user(): UserSimple | null {
+
+    return this.user$.getValue();
+  }
+
+  set user(value: UserSimple | null) {
+
+    this.user$.next(value);
   }
 }

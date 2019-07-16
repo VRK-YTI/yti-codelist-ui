@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { EditableService } from '../../services/editable.service';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
@@ -11,6 +11,8 @@ import { Extension } from '../../entities/extension';
 import { LocationService } from '../../services/location.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ConfigurationService } from '../../services/configuration.service';
+import { UserSimple } from '../../entities/user-simple';
+import { AuthorizationManager } from '../../services/authorization-manager.service';
 
 @Component({
   selector: 'app-extension-information',
@@ -32,18 +34,22 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
 
   cancelSubscription: Subscription;
 
-  constructor(private userService: UserService,
+  user$ = new BehaviorSubject<UserSimple | null>(null);
+
+  constructor(public languageService: LanguageService,
+              private authorizationManager: AuthorizationManager,
+              private userService: UserService,
               private dataService: DataService,
               private route: ActivatedRoute,
               private locationService: LocationService,
               private editableService: EditableService,
-              public languageService: LanguageService,
               private configurationService: ConfigurationService) {
 
     this.cancelSubscription = editableService.cancel$.subscribe(() => this.reset());
   }
 
   ngOnInit() {
+
     if (!this.extension) {
       const registryCodeValue = this.route.snapshot.params.registryCode;
       const schemeCodeValue = this.route.snapshot.params.schemeCode;
@@ -56,16 +62,22 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
 
       this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
         this.extension = extension;
+        this.fetchUserInformation();
         this.locationService.atExtensionPage(extension);
       });
+    } else {
+      this.fetchUserInformation();
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
+    this.fetchUserInformation();
     this.reset();
   }
 
   private reset() {
+
     const { startDate, endDate, ...rest } = this.extension;
 
     this.extensionForm.reset({
@@ -74,19 +86,32 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
     });
   }
 
+  fetchUserInformation() {
+
+    if (!this.authorizationManager.user.anonymous) {
+      this.dataService.findUserForExtension(this.extension.id).subscribe(user => {
+        this.user = user;
+      });
+    }
+  }
+
   ngOnDestroy() {
+
     this.cancelSubscription.unsubscribe();
   }
 
   get editing() {
+
     return this.editableService.editing;
   }
 
   get isSuperUser() {
+
     return this.userService.user.superuser;
   }
 
   get restricted(): boolean {
+
     if (this.isSuperUser) {
       return false;
     }
@@ -98,14 +123,27 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   }
 
   getExtensionUri() {
+
     return this.configurationService.getUriWithEnv(this.extension.uri);
   }
 
   get allowCodeSchemes(): boolean {
+
     return  this.extension.propertyType.context === 'Extension';
   }
 
   get isCodeExtension(): boolean {
+
     return this.extension.propertyType.context === 'CodeExtension';
+  }
+
+  get user(): UserSimple | null {
+
+    return this.user$.getValue();
+  }
+
+  set user(value: UserSimple | null) {
+
+    this.user$.next(value);
   }
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-16 07:46+0300\n"
+"PO-Revision-Date: 2019-07-16 12:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -209,6 +209,9 @@ msgid "Get concept from Terminologies"
 msgstr ""
 
 msgid "URI"
+msgstr ""
+
+msgid "Modified by"
 msgstr ""
 
 msgid "Last modification"
@@ -790,6 +793,9 @@ msgstr "Permanent web address of the extension"
 
 msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
 msgstr "Last edit time. Date code list metadata was last changed."
+
+msgid "INFO_TEXT_LAST_MODIFICATION_USER"
+msgstr "The last user that has modified the resource."
 
 msgid "INFO_TEXT_EXTERNAL_REFERENCES"
 msgstr "Links"

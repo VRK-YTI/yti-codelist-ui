@@ -18,6 +18,7 @@ import {
   MemberSimpleType,
   MemberType,
   PropertyTypeType,
+  UserSimpleType,
   VocabularyType
 } from './api-schema';
 import { PropertyType } from '../entities/property-type';
@@ -33,6 +34,7 @@ import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
+import { UserSimple } from '../entities/user-simple';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -43,13 +45,14 @@ const version = 'v1';
 const registries = 'coderegistries';
 const configuration = 'configuration';
 const codeSchemes = 'codeschemes';
-const codeScheme = 'codescheme';
 const codes = 'codes';
 const externalReferences = 'externalreferences';
 const infodomains = 'infodomains';
 const propertytypes = 'propertytypes';
 const extensions = 'extensions';
 const members = 'members';
+const users = 'users';
+const user = 'user';
 const organizations = 'organizations';
 const fakeableUsers = 'fakeableUsers';
 const groupmanagement = 'groupmanagement';
@@ -57,14 +60,13 @@ const requests = 'requests';
 const request = 'request';
 const vocabularies = 'vocabularies';
 const concepts = 'concepts';
-const searchterm = 'searchterm';
-const vocabulary = 'vocabulary';
 const suggestion = 'suggestion';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
 const membersBasePath = `/${apiContext}/${api}/${version}/${members}`;
 const membersIntakeBasePath = `/${intakeContext}/${api}/${version}/${members}`;
+const usersIntakeBasePath = `/${intakeContext}/${api}/${version}/${users}`;
 const configurationIntakeBasePath = `/${intakeContext}/${api}/${configuration}`;
 const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
@@ -97,6 +99,7 @@ export class DataService {
   }
 
   getFakeableUsers(): Observable<FakeableUser[]> {
+
     return this.http.get<FakeableUser[]>(fakeableUsersPath);
   }
 
@@ -111,6 +114,7 @@ export class DataService {
   }
 
   getCodeRegistriesForUser(): Observable<CodeRegistry[]> {
+
     return this.getCodeRegistries().pipe(map(r => this.authorizationManager.filterAllowedRegistriesForUser(r)));
   }
 
@@ -141,6 +145,7 @@ export class DataService {
   }
 
   createRegistry(codeRegistryToSave: CodeRegistryType): Observable<CodeRegistry> {
+
     return this.createRegistries([codeRegistryToSave]).pipe(map(createdRegistries => {
       if (createdRegistries.length !== 1) {
         throw new Error('Exactly one registry needs to be created');
@@ -308,6 +313,7 @@ export class DataService {
   }
 
   getLanguageCodes(language: string): Observable<Code[]> {
+
     return this.getCodes('interoperabilityplatform', 'languagecodes', language);
   }
 
@@ -339,6 +345,7 @@ export class DataService {
   }
 
   createCode(code: CodeType, registryCodeValue: string, schemeCodeValue: string): Observable<Code> {
+
     return this.createCodes([code], registryCodeValue, schemeCodeValue, null, null).pipe(map(createdCodes => {
       if (createdCodes.length !== 1) {
         throw new Error('Exactly one code needs to be created');
@@ -381,6 +388,7 @@ export class DataService {
   }
 
   createCodeScheme(codeSchemeToCreate: CodeSchemeType, registryCodeValue: string): Observable<CodeScheme> {
+
     return this.createCodeSchemes([codeSchemeToCreate], registryCodeValue).pipe(map(createdCodeSchemes => {
       if (createdCodeSchemes.length !== 1) {
         throw new Error('Exactly one code scheme needs to be created');
@@ -391,6 +399,7 @@ export class DataService {
   }
 
   cloneCodeScheme(codeSchemeToClone: CodeSchemeType, registryCodeValue: string, originalCodeSchemeUuid: string, newVersionEmpty: boolean): Observable<CodeScheme[]> {
+
     return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/clone/codescheme/${originalCodeSchemeUuid}/newversionempty/${newVersionEmpty}`,
       codeSchemeToClone)
       .pipe(map(res => res.results.map((data: CodeSchemeType) => new CodeScheme(data))));
@@ -404,6 +413,7 @@ export class DataService {
   }
 
   saveCodeScheme(codeSchemeToSave: CodeSchemeType, changeCodeStatuses: string): Observable<ApiResponseType> {
+
     const registryCode = codeSchemeToSave.codeRegistry.codeValue;
 
     const params = {
@@ -429,7 +439,10 @@ export class DataService {
       'format': format
     };
 
-    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/validate`, formData, { params, observe: 'response' });
+    return this.http.post(`${codeRegistriesIntakeBasePath}/${registryCode}/${codeSchemes}/validate`, formData, {
+      params,
+      observe: 'response'
+    });
 
   }
 
@@ -464,25 +477,29 @@ export class DataService {
   }
 
   getServiceConfiguration(): Observable<ServiceConfiguration> {
+
     return this.http.get<ServiceConfiguration>(`${configurationIntakeBasePath}`);
   }
 
   getUserRequests(): Observable<UserRequest[]> {
+
     return this.http.get<WithResults<UserRequest>>(`${groupManagementRequestsBasePath}/`)
       .pipe(map(response => response.results));
   }
 
   sendUserRequest(organizationId: string): Observable<any> {
+
     return this.http.post(`${groupManagementRequestBasePath}/?organizationId=${organizationId}`, null);
   }
 
   getVocabularies(): Observable<Vocabulary[]> {
+
     return this.http.get<WithResults<VocabularyType>>(`${terminologyVocabulariesPath}/`)
       .pipe(map(response => response.results.map((data: VocabularyType) => new Vocabulary(data))));
   }
 
   getConcepts(searchTerm: string, vocab: string | null, status: string | null, language: string | null): Observable<Concept[]> {
-    const encodedSearchTerm = encodeURIComponent(searchTerm);
+
     const params = new HttpParams().append('language', language ? language : '').append('status', status ? status : '').append('vocabularyId', vocab ? vocab : '0').append('searchTerm', searchTerm);
     return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/`, { params })
       .pipe(map(response => response.results.map((data: ConceptType) => new Concept(data))));
@@ -596,6 +613,7 @@ export class DataService {
                   registryCodeValue: string,
                   codeSchemeCodeValue: string,
                   autoCreateMembers: boolean): Observable<Extension> {
+
     return this.createExtensions([extensionToCreate], registryCodeValue, codeSchemeCodeValue, autoCreateMembers).pipe(map(createdExtensions => {
       if (createdExtensions.length !== 1) {
         throw new Error('Exactly one extension needs to be created');
@@ -666,6 +684,7 @@ export class DataService {
   }
 
   saveMember(memberToSave: MemberType): Observable<ApiResponseType> {
+
     return this.http.post<ApiResponseType>(
       `${membersIntakeBasePath}/${memberToSave.id}`, memberToSave);
   }
@@ -770,6 +789,7 @@ export class DataService {
   }
 
   detachAVariantFromCodeScheme(theCodeRegistry: CodeRegistry, idOfVariantToDetach: string, mother: CodeSchemeType): Observable<CodeScheme[]> {
+
     const registryCodeValue = theCodeRegistry.codeValue;
 
     return this.http.post<WithResults<CodeSchemeType>>(`${codeRegistriesIntakeBasePath}/${registryCodeValue}/detachvariant/${idOfVariantToDetach}`,
@@ -778,7 +798,78 @@ export class DataService {
   }
 
   suggestAConcept(suggeztion: string, definition: string, vocabularyId: string, contentLanguage: string): Observable<Concept[]> {
+
     return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}/vocabulary/${vocabularyId}/language/${contentLanguage}/suggestion/${suggeztion}`, definition)
       .pipe(map(res => res.results.map((data: ConceptType) => new Concept(data))));
+  }
+
+  findUserForCodeRegistry(codeRegistryId: string): Observable<UserSimple | null> {
+
+    const params = {
+      'expand': 'user',
+      'codeRegistryId': codeRegistryId
+    };
+
+    return this.http.get<UserSimpleType>(
+      `${usersIntakeBasePath}/${user}`,
+      { params })
+      .pipe(map(res => new UserSimple(res)),
+        catchError(err => of(null)));
+  }
+
+  findUserForCodeScheme(codeSchemeId: string): Observable<UserSimple | null> {
+
+    const params = {
+      'expand': 'user',
+      'codeSchemeId': codeSchemeId
+    };
+
+    return this.http.get<UserSimpleType>(
+      `${usersIntakeBasePath}/${user}`,
+      { params })
+      .pipe(map(res => new UserSimple(res)),
+        catchError(err => of(null)));
+  }
+
+  findUserForCode(codeId: string): Observable<UserSimple | null> {
+
+    const params = {
+      'expand': 'user',
+      'codeId': codeId
+    };
+
+    return this.http.get<UserSimpleType>(
+      `${usersIntakeBasePath}/${user}`,
+      { params })
+      .pipe(map(res => new UserSimple(res)),
+        catchError(err => of(null)));
+  }
+
+  findUserForExtension(extensionId: string): Observable<UserSimple | null> {
+
+    const params = {
+      'expand': 'user',
+      'extensionId': extensionId
+    };
+
+    return this.http.get<UserSimpleType>(
+      `${usersIntakeBasePath}/${user}`,
+      { params })
+      .pipe(map(res => new UserSimple(res)),
+        catchError(err => of(null)));
+  }
+
+  findUserForMember(memberId: string): Observable<UserSimple | null> {
+
+    const params = {
+      'expand': 'user',
+      'memberId': memberId
+    };
+
+    return this.http.get<UserSimpleType>(
+      `${usersIntakeBasePath}/${user}`,
+      { params })
+      .pipe(map(res => new UserSimple(res)),
+        catchError(err => of(null)));
   }
 }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-16 07:46+0300\n"
+"PO-Revision-Date: 2019-07-16 12:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -210,6 +210,9 @@ msgstr "Tuo käsite Suomi.fi-sanastoista"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "Modified by"
+msgstr "Muokkaaja"
 
 msgid "Last modification"
 msgstr "Viimeisin muokkaus"
@@ -815,6 +818,9 @@ msgstr ""
 
 msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
 msgstr "Viimeisin muokkauksen ajanhetki"
+
+msgid "INFO_TEXT_LAST_MODIFICATION_USER"
+msgstr "Viimeisin muokkaaja"
 
 msgid "INFO_TEXT_EXTERNAL_REFERENCES"
 msgstr ""
