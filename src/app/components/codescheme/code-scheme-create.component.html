@@ -3,7 +3,6 @@
 </div>
 
 <div [hidden]="loading" class="content-box">
-
   <div class="main">
     <div>
       <h1 translate>{{pageTitle}}</h1>
@@ -15,7 +14,6 @@
   </div>
 
   <form [formGroup]="codeSchemeForm" #form="ngForm">
-
     <div class="row">
       <div class="col-lg-8 col-md-10">
         <ng-container *ngIf="!cloning">

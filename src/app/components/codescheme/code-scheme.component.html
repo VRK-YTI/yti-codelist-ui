@@ -3,12 +3,9 @@
 </div>
 
 <div *ngIf="!loading" class="content-box">
-
   <div class="main">
     <div>
-      <div>
-        <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService, false)}}</h1>
-      </div>
+      <h1 class="text-content-wrap">{{codeScheme.getDisplayName(languageService, false)}}</h1>
     </div>
 
     <div class="float-right">
@@ -145,15 +142,18 @@
       </div>
       <div class="metaitem">
         <span translate>Registry</span><span>: </span>
-        <span class="routedLink" (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+        <span class="routedLink"
+              (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.infoDomains.length > 0">
         <span translate>InfoDomain</span><span>: </span>
-        <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.infoDomains">{{infoDomain.prefLabel | translateValue:true}}</span>
+        <span class="badge badge-light"
+              *ngFor="let infoDomain of codeScheme.infoDomains">{{infoDomain.prefLabel | translateValue:true}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of codeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
+        <span
+          *ngFor="let organization of codeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
       </div>
     </div>
   </div>
@@ -171,7 +171,8 @@
       </ng-template>
 
       <ng-template ngbTabContent>
-        <app-code-scheme-codes [codes]="codes" [codeScheme]="codeScheme" [prefilledSearchTermForCode]="prefilledSearchTermForCode"></app-code-scheme-codes>
+        <app-code-scheme-codes [codes]="codes" [codeScheme]="codeScheme"
+                               [prefilledSearchTermForCode]="prefilledSearchTermForCode"></app-code-scheme-codes>
       </ng-template>
     </ngb-tab>
 

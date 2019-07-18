@@ -3,11 +3,11 @@
 </div>
 
 <div *ngIf="!loading" class="content-box">
-
   <div class="main">
     <div>
       <h1 class="text-content-wrap">{{member.getDisplayName(languageService, translateService)}}</h1>
     </div>
+
     <div class="float-right">
       <div *ngIf='showMenu' ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="memberDropdown" ngbDropdownToggle translate>Choose action</button>

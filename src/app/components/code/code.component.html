@@ -6,10 +6,9 @@
 
   <div class="main">
     <div>
-      <div>
-        <h1 class="text-content-wrap">{{code.getLongDisplayName(languageService, false)}}</h1>
-      </div>
+      <h1 class="text-content-wrap">{{code.getLongDisplayName(languageService, false)}}</h1>
     </div>
+
     <div>
       <div class="float-right">
         <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
@@ -35,7 +34,8 @@
         <app-status [status]="code.status"></app-status>
       </div>
       <div class="metaitem">
-        <span translate>Registry</span><span>: </span><span class="routedLink" (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
+        <span translate>Registry</span><span>: </span><span class="routedLink"
+                                                            (click)="navigateToRoute(codeScheme.codeRegistry.route)">{{codeScheme.codeRegistry.getDisplayName(languageService)}}</span>
       </div>
       <div class="metaitem">
         <span translate>Code list</span><span>: </span>
@@ -44,11 +44,13 @@
       </div>
       <div class="metaitem" *ngIf="codeScheme.infoDomains.length > 0">
         <span translate>InfoDomain</span><span>: </span>
-        <span class="badge badge-light" *ngFor="let infoDomain of codeScheme.infoDomains">{{infoDomain.prefLabel | translateValue:true}}</span>
+        <span class="badge badge-light"
+              *ngFor="let infoDomain of codeScheme.infoDomains">{{infoDomain.prefLabel | translateValue:true}}</span>
       </div>
       <div class="metaitem" *ngIf="codeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of codeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
+        <span
+          *ngFor="let organization of codeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
       </div>
     </div>
   </div>

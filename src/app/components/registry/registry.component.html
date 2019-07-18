@@ -3,11 +3,11 @@
 </div>
 
 <div *ngIf="!loading" class="content-box">
-
   <div class="main">
     <div>
       <h1 class="text-content-wrap">{{codeRegistry.getDisplayName(languageService)}}</h1>
     </div>
+
     <div class="float-right">
       <div *ngIf='this.canDelete' ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="registryDropdown" ngbDropdownToggle translate>Choose action</button>
@@ -20,6 +20,7 @@
                   translate>Delete registry</button>
         </div>
       </div>
+
       <app-content-language></app-content-language>
     </div>
   </div>
