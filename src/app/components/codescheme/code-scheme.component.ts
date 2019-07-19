@@ -32,7 +32,7 @@ import { AlertModalService } from '../common/alert-modal.service';
   selector: 'app-code-scheme',
   templateUrl: './code-scheme.component.html',
   styleUrls: ['./code-scheme.component.scss'],
-  providers: [EditableService],
+  providers: [EditableService]
 })
 export class CodeSchemeComponent implements OnInit, EditingComponent {
 
