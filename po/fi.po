@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-16 12:47+0300\n"
+"PO-Revision-Date: 2019-08-05 14:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -372,8 +372,12 @@ msgstr "Tiedoston siirtämiseen liittyvä ongelma. Yritä uudelleen."
 msgid "Default code"
 msgstr "Vakiokoodi"
 
+#, fuzzy
+#| msgid ""
+#| "Cumulative\n"
+#| "            code list"
 msgid ""
-"Cumulative\n"
+"Cumulative\r\n"
 "            code list"
 msgstr "Kumulatiivinen koodisto"
 
@@ -448,6 +452,12 @@ msgstr "Lataa koodisto JSON"
 
 msgid "Show codelist JSON"
 msgstr "Näytä koodisto JSON"
+
+msgid "Show JSON enumeration"
+msgstr "Näytä JSON enumeraatio"
+
+msgid "Download JSON enumeration"
+msgstr "Lataa JSON enumeraatio"
 
 msgid "CODES"
 msgstr "KOODIT"

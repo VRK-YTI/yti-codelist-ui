@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-07-16 12:47+0300\n"
+"PO-Revision-Date: 2019-08-05 14:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -365,7 +365,7 @@ msgid "Default code"
 msgstr ""
 
 msgid ""
-"Cumulative\n"
+"Cumulative\r\n"
 "            code list"
 msgstr ""
 
@@ -440,6 +440,12 @@ msgstr "Export code list JSON"
 
 msgid "Show codelist JSON"
 msgstr "Show code list JSON"
+
+msgid "Show JSON enumeration"
+msgstr ""
+
+msgid "Download JSON enumeration"
+msgstr ""
 
 msgid "CODES"
 msgstr ""

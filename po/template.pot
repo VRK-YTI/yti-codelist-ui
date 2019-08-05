@@ -354,7 +354,7 @@ msgid "Default code"
 msgstr ""
 
 msgid ""
-"Cumulative\n"
+"Cumulative\r\n"
 "            code list"
 msgstr ""
 
@@ -428,6 +428,12 @@ msgid "Export codelist JSON"
 msgstr ""
 
 msgid "Show codelist JSON"
+msgstr ""
+
+msgid "Show JSON enumeration"
+msgstr ""
+
+msgid "Download JSON enumeration"
 msgstr ""
 
 msgid "CODES"
