@@ -63,6 +63,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
   statusChanged = false;
   changeCodeStatusesToo = false;
+  freeSuperUserFromStatusTransitionRules = true;
 
   constructor(public languageService: LanguageService,
               private authorizationManager: AuthorizationManager,
@@ -232,5 +233,9 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   set user(value: UserSimple | null) {
 
     this.user$.next(value);
+  }
+
+  toggleEnforceTransitionRulesForSuperUserToo() {
+    this.freeSuperUserFromStatusTransitionRules = !this.freeSuperUserFromStatusTransitionRules;
   }
 }

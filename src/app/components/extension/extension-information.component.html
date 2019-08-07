@@ -32,9 +32,19 @@
                                [parentCodeScheme]="extension.parentCodeScheme"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>
 
+        <div class="row" *ngIf="isSuperUser && editing">
+          <div class="col-md-4" style="line-height: 45px; white-space: nowrap">
+            <div class="checkbox">
+              <input id="enforce_status_transition_rules_checkbox" type="checkbox" (click)="toggleEnforceTransitionRulesForSuperUserToo()">
+              <label style="vertical-align: 5%; padding-left: 5px;" for="enforce_status_transition_rules_checkbox" translate>Enforce status transition rules</label>
+            </div>
+          </div>
+        </div>
+
         <app-status-input id="extension_status_input"
                           [formControlName]="'status'"
-                          [restrict]="restricted"
+                          [originalStatus]="extension.status"
+                          [isSuperUser]="isSuperUser && freeSuperUserFromStatusTransitionRules"
                           [infoText]="'INFO_TEXT_EXTENSION_STATUS'"></app-status-input>
 
         <app-date-range-input id="extension_validity_input"

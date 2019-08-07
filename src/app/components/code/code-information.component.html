@@ -49,9 +49,19 @@
         </dl>
       </div>
 
+      <div class="row" *ngIf="isSuperUser && editing">
+        <div class="col-md-4" style="line-height: 45px; white-space: nowrap">
+          <div class="checkbox">
+            <input id="enforce_status_transition_rules_checkbox" type="checkbox" (click)="toggleEnforceTransitionRulesForSuperUserToo()">
+            <label style="vertical-align: 5%; padding-left: 5px;" for="enforce_status_transition_rules_checkbox" translate>Enforce status transition rules</label>
+          </div>
+        </div>
+      </div>
+
       <app-status-input id="code_status_input"
                         [formControlName]="'status'"
-                        [restrict]="restricted"
+                        [originalStatus]="code.status"
+                        [isSuperUser]="isSuperUser && freeSuperUserFromStatusTransitionRules"
                         [infoText]="'INFO_TEXT_CODE_STATUS'"></app-status-input>
 
       <app-localizable-textarea-with-language-indicator [id]="'code_description_textarea'"

@@ -35,6 +35,7 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   cancelSubscription: Subscription;
 
   user$ = new BehaviorSubject<UserSimple | null>(null);
+  freeSuperUserFromStatusTransitionRules = true;
 
   constructor(public languageService: LanguageService,
               private authorizationManager: AuthorizationManager,
@@ -145,5 +146,9 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
   set user(value: UserSimple | null) {
 
     this.user$.next(value);
+  }
+
+  toggleEnforceTransitionRulesForSuperUserToo() {
+    this.freeSuperUserFromStatusTransitionRules = !this.freeSuperUserFromStatusTransitionRules;
   }
 }

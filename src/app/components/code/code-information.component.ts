@@ -52,6 +52,7 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   });
 
   user$ = new BehaviorSubject<UserSimple | null>(null);
+  freeSuperUserFromStatusTransitionRules = true;
 
   constructor(public languageService: LanguageService,
               private authorizationManager: AuthorizationManager,
@@ -293,5 +294,9 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
   set user(value: UserSimple | null) {
 
     this.user$.next(value);
+  }
+
+  toggleEnforceTransitionRulesForSuperUserToo() {
+    this.freeSuperUserFromStatusTransitionRules = !this.freeSuperUserFromStatusTransitionRules;
   }
 }
