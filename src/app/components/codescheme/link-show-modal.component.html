@@ -1,35 +1,34 @@
 <div class="modal-header">
   <h4 class="modal-title strong">
-    <a><i id="close_modal_link" class="fa fa-times" (click)="close()"></i></a>
+    <a><i id="close_modal_link" class="fa fa-times ml-3" (click)="close()"></i></a>
     <span translate>Show link</span>
+    <app-content-language [languageCodes]="languageCodes" class="float-right mb-2"></app-content-language>
   </h4>
 </div>
 <div class="modal-body">
   <div class="row">
     <div class="col-md-12">
-
-      <app-content-language [languageCodes]="languageCodes" class="float-right mb-2"></app-content-language>
-
       <div *ngIf="externalReference.image" class="mb-4">
         <a id="external_ref_image_link" [href]="externalReference.href" target="_blank">
-            <img class="link-image" [src]="externalReference.image" title="{{externalReference.title | translateValue}}" />
+          <img class="link-image" [src]="externalReference.image" title="{{externalReference.title | translateValue}}"/>
         </a>
       </div>
 
       <app-localizable-literal-with-language-indicator [label]="'Link title' | translate"
-                               [value]="externalReference.title"></app-localizable-literal-with-language-indicator>
+                                                       [value]="externalReference.title"></app-localizable-literal-with-language-indicator>
 
       <app-localizable-literal-with-language-indicator [label]="'Description' | translate"
-                               [value]="externalReference.description"></app-localizable-literal-with-language-indicator>
+                                                       [value]="externalReference.description"></app-localizable-literal-with-language-indicator>
 
       <dt><label translate>URL</label></dt>
       <dd>
-        <div class="text-content-wrap"><a id="external_ref_url_link" [href]="externalReference.href" target="_blank">{{externalReference.href}}</a></div>
+        <div class="text-content-wrap"><a id="external_ref_url_link" [href]="externalReference.href"
+                                          target="_blank">{{externalReference.href}}</a></div>
       </dd>
 
       <app-localizable-literal-with-language-indicator *ngIf="externalReference.propertyType != null"
-                               [label]="'Link type' | translate"
-                               [value]="externalReference.propertyType.prefLabel"></app-localizable-literal-with-language-indicator>
+                                                       [label]="'Link type' | translate"
+                                                       [value]="externalReference.propertyType.prefLabel"></app-localizable-literal-with-language-indicator>
     </div>
   </div>
 </div>

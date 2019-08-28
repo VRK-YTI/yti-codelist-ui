@@ -12,8 +12,14 @@ import { LanguageService } from '../../services/language.service';
         <label>{{label}}</label>
         <app-information-symbol [infoText]="infoText"></app-information-symbol>
       </dt>
-      <div class="language" style="margin-right: 10px">{{contentLanguage | uppercase}}</div>
-      <dd>{{value | translateValue}}</dd>
+      <div class="text-content-wrap">
+        <div class="language">
+          <span>{{contentLanguage | uppercase}}</span>
+        </div>
+        <div class="languageContent">
+          <span>{{value | translateValue}}</span>
+        </div>
+      </div>
     </dl>
   `
 })
