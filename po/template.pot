@@ -31,7 +31,9 @@ msgstr ""
 msgid "{{title}}"
 msgstr ""
 
-msgid " No new members created. All codes already have a corresponding member."
+msgid ""
+"No new members created. All codes have a corresponding member already or "
+"there are no codes in the scope of the extension."
 msgstr ""
 
 msgid " missing member created."
@@ -208,6 +210,9 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
+msgid "Enforce status transition rules"
+msgstr ""
+
 msgid "Choose action"
 msgstr ""
 
@@ -353,18 +358,10 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid ""
-"Cumulative\r\n"
-"            code list"
-msgstr ""
-
 msgid "Change code statuses at the same time"
 msgstr ""
 
 msgid "Update code list's codes' statuses"
-msgstr ""
-
-msgid "Enforce status transition rules"
 msgstr ""
 
 msgid "Name"

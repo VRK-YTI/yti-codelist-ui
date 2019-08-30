@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-08-07 10:19+0300\n"
+"PO-Revision-Date: 2019-08-30 15:48+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -40,8 +40,12 @@ msgstr "Luo uusi"
 msgid "{{title}}"
 msgstr ""
 
-msgid " No new members created. All codes already have a corresponding member."
-msgstr "Uusia jäseniä ei luotu. Kaikilla koodeilla on jo vastaava jäsen."
+msgid ""
+"No new members created. All codes have a corresponding member already or there are no "
+"codes in the scope of the extension."
+msgstr ""
+"Uusia jäseniä ei luotu. Kaikilla koodeilla on jo vastaava jäsen, tai laajennukseen ei "
+"liity yhtään koodia."
 
 msgid " missing member created."
 msgstr " puuttunut jäsen luotu."
@@ -217,6 +221,9 @@ msgstr "Muokkaaja"
 msgid "Last modification"
 msgstr "Viimeisin muokkaus"
 
+msgid "Enforce status transition rules"
+msgstr "Käytä tilasiirtymien validointisääntöjä."
+
 msgid "Choose action"
 msgstr "Valitse toiminto"
 
@@ -372,23 +379,11 @@ msgstr "Tiedoston siirtämiseen liittyvä ongelma. Yritä uudelleen."
 msgid "Default code"
 msgstr "Vakiokoodi"
 
-#, fuzzy
-#| msgid ""
-#| "Cumulative\n"
-#| "            code list"
-msgid ""
-"Cumulative\r\n"
-"            code list"
-msgstr "Kumulatiivinen koodisto"
-
 msgid "Change code statuses at the same time"
 msgstr "Vaihda samalla samassa tilassa olevien koodien tilat"
 
 msgid "Update code list's codes' statuses"
 msgstr "Muuta koodien tiloja"
-
-msgid "Enforce status transition rules"
-msgstr "Käytä tilasiirtymien validointisääntöjä."
 
 msgid "Name"
 msgstr "Nimi"
@@ -1711,22 +1706,3 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
-
-#~ msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
-#~ msgstr "Aineistosta puuttuu sarake otsikolla ORDER."
-
-#~ msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
-#~ msgstr "Aineistosta puuttuu sarake otsikolla LANGUAGECODE."
-
-#~ msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
-#~ msgstr "Virhe luettaessa Excel-tiedostoa. Välilehteä ei löydy."
-
-#~ msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
-#~ msgstr "Jäsenen arvo löytyi jo tälle tyypille."
-
-#~ msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
-#~ msgstr "HIERARCHYLEVEL-sarakkeen arvo ei ole sallittu."
-
-#~ msgid "Status changed to zero codes. No codes with the starting status found."
-#~ msgstr ""
-#~ "Tilaa ei vaihdettu yhteenkään koodiin. Ei löytynyt koodeja vaihdettavassa tilassa."

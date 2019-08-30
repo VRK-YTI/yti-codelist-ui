@@ -170,7 +170,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
         const nrOfCreatedMembers: number = next.length;
         let messagePart = '';
         if (nrOfCreatedMembers === 0) {
-          messagePart = this.translateService.instant(' No new members created. All codes already have a corresponding member.');
+          messagePart = this.translateService.instant('No new members created. All codes have a corresponding member already or there are no codes in the scope of the extension.');
           modalRef.message = messagePart;
         } else if (nrOfCreatedMembers === 1) {
           messagePart = this.translateService.instant(' missing member created.');

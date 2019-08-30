@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-08-07 10:20+0300\n"
+"PO-Revision-Date: 2019-08-30 15:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -40,7 +40,9 @@ msgstr ""
 msgid "{{title}}"
 msgstr ""
 
-msgid " No new members created. All codes already have a corresponding member."
+msgid ""
+"No new members created. All codes have a corresponding member already or there are no "
+"codes in the scope of the extension."
 msgstr ""
 
 msgid " missing member created."
@@ -217,6 +219,9 @@ msgstr ""
 msgid "Last modification"
 msgstr ""
 
+msgid "Enforce status transition rules"
+msgstr ""
+
 msgid "Choose action"
 msgstr ""
 
@@ -364,19 +369,11 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid ""
-"Cumulative\r\n"
-"            code list"
-msgstr ""
-
 msgid "Change code statuses at the same time"
 msgstr "Change code statuses with the same current status as well"
 
 msgid "Update code list's codes' statuses"
 msgstr "Update code statuses"
-
-msgid "Enforce status transition rules"
-msgstr ""
 
 msgid "Name"
 msgstr ""
@@ -1680,18 +1677,3 @@ msgstr "Member value is a required input."
 
 msgid "localizableValueRequired"
 msgstr "Required"
-
-#~ msgid "ERR_MSG_USER_MISSING_HEADER_ORDER"
-#~ msgstr "The data is missing a column with the header ORDER."
-
-#~ msgid "ERR_MSG_USER_MISSING_HEADER_LANGUAGECODE"
-#~ msgstr "The data is missing a column with the header LANGUAGECODE."
-
-#~ msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE_SHEET_NOT_FOUND"
-#~ msgstr "Error parsing Excel file, sheet not found."
-
-#~ msgid "ERR_MSG_USER_MEMBERVALUE_ALREADY_EXISTS_FOR_VALUETYPE"
-#~ msgstr "Member value already found for given value type."
-
-#~ msgid "ERR_MSG_USER_HIERARCHY_LEVEL_INVALID_VALUE"
-#~ msgstr "Invalid value in HIERARCHYLEVEL column."
