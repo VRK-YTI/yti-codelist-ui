@@ -24,8 +24,8 @@ import { Moment } from 'moment';
                    ngbDatepicker
                    #date="ngbDatepicker">
             <button [id]="id + '_toggle_calendar_button'" 
-                    class="input-group-addon icon-calendar" 
-                    (click)="date.toggle()" 
+                    class="input-group-addon icon-calendar calendar-selector"
+                    (click)="date.toggle()"
                     type="button"></button>
           </div>
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>

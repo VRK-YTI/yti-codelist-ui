@@ -117,3 +117,9 @@ div.languageContent {
   display: inline-block;
   margin-left: 10px;
 }
+
+.calendar-selector {
+  background-color: $primary;
+  color: white;
+  cursor: pointer;
+}
