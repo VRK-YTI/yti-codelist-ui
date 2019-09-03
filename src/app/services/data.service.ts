@@ -181,7 +181,7 @@ export class DataService {
       .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType');
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
     if (this.authorizationManager.user.superuser) {
-      params = params.append('includeIncomplete', true);
+      params = params.append('includeIncomplete', 'true');
     } else if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
     }
