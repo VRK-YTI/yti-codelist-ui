@@ -180,7 +180,9 @@ export class DataService {
     let params = new HttpParams()
       .append('expand', 'codeRegistry,externalReference,propertyType,code,organization,extension,valueType');
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
-    if (userOrganizations.length > 0) {
+    if (this.authorizationManager.user.superuser) {
+      params = params.append('includeIncomplete', true);
+    } else if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
     }
 
@@ -197,7 +199,9 @@ export class DataService {
       .append('searchExtensions', searchExtensions.toString());
 
     const userOrganizations = Array.from(this.authorizationManager.user.getOrganizations(['ADMIN', 'CODE_LIST_EDITOR']));
-    if (userOrganizations.length > 0) {
+    if (this.authorizationManager.user.superuser) {
+      params = params.append('includeIncomplete', 'true');
+    } else if (userOrganizations.length > 0) {
       params = params.append('userOrganizations', userOrganizations.join(','));
     }
 
