@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-08-30 15:49+0300\n"
+"PO-Revision-Date: 2019-09-09 13:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -24,6 +24,12 @@ msgstr " Status changed to "
 
 msgid " codes."
 msgstr " codes."
+
+msgid "Choose starting status"
+msgstr ""
+
+msgid "Choose target status"
+msgstr ""
 
 msgid "All link types"
 msgstr ""
@@ -159,6 +165,9 @@ msgstr ""
 msgid "All organizations"
 msgstr ""
 
+msgid "All statuses"
+msgstr ""
+
 msgid "All extensionPropertyTypes"
 msgstr "All types of code lists"
 
@@ -166,9 +175,6 @@ msgid "All vocabularies"
 msgstr ""
 
 msgid "All languages"
-msgstr ""
-
-msgid "All statuses"
 msgstr ""
 
 msgid "Reference Data"
@@ -718,11 +724,16 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LINK_TITLE"
-msgstr "Info text coming soon..."
-
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr "The register to which the Code list belongs"
+
+msgid "INFO_TEXT_INFODOMAIN"
+msgstr ""
+"Information domain that the code list is classified into. Information domain "
+"classification of the Interoperability Platform tools is the same as the Classification "
+"of public services. Each resource (code list or classification, data model or "
+"terminology) is classified into at least one information domain. The information domain "
+"may be used to filter the search results."
 
 msgid "INFO_TEXT_CODELIST_CODE_VALUE"
 msgstr "The technical code or permanent identifier used by the organization."
@@ -862,13 +873,8 @@ msgstr ""
 "Language code of the code lists. The selected languages control which languages your "
 "content is localized in."
 
-msgid "INFO_TEXT_INFODOMAIN"
-msgstr ""
-"Information domain that the code list is classified into. Information domain "
-"classification of the Interoperability Platform tools is the same as the Classification "
-"of public services. Each resource (code list or classification, data model or "
-"terminology) is classified into at least one information domain. The information domain "
-"may be used to filter the search results."
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr "Info text coming soon..."
 
 msgid "INFO_TEXT_LINK_DESCRIPTION"
 msgstr "Info text coming soon..."
@@ -1003,11 +1009,11 @@ msgstr ""
 "Choose the hierarchical parent member for this member. This choice will define the "
 "hierarchical relationship of the members."
 
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
-msgstr "Code list not found."
-
 msgid "Front page"
 msgstr ""
+
+msgid "SUPERSEDED"
+msgstr "Superseded"
 
 msgid "SUBMITTED"
 msgstr "Submitted"
@@ -1336,8 +1342,8 @@ msgstr "Only one Code list is permitted in the file."
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
 msgstr "Registry is not found."
 
-msgid "SUPERSEDED"
-msgstr "Superseded"
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Code list not found."
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
 msgstr "Code is not found."
@@ -1623,23 +1629,17 @@ msgstr ""
 msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
 msgstr "You can use this feature to update the data returned by Export code list feature."
 
-msgid "Choose starting status"
-msgstr ""
-
-msgid "Choose target status"
-msgstr ""
-
 msgid "Change code statuses at the same time?"
 msgstr ""
 
 msgid "CODE STATUS CHANGES RESULTS"
 msgstr "The result of code status changes"
 
-msgid "codeValueValidationError"
-msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
-
 msgid "invalidDate"
 msgstr "Invalid date"
+
+msgid "invalidDateRange"
+msgstr "Invalid date range"
 
 msgid "registryCodeValueExists"
 msgstr "Registry code value is already in use."
@@ -1656,8 +1656,8 @@ msgstr "Extension value is already in use in this code list."
 msgid "externalReferenceExists"
 msgstr "Link is already in use in this code list."
 
-msgid "invalidDateRange"
-msgstr "Invalid date range"
+msgid "codeValueValidationError"
+msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Code value is not valid. Allowed characters are: a-zA-Z0-9_-.+*#&"

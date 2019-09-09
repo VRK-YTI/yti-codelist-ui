@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"MIME-Version: 1.0\n"
+"mime-version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -14,6 +14,12 @@ msgid "Status changed to "
 msgstr ""
 
 msgid " codes."
+msgstr ""
+
+msgid "Choose starting status"
+msgstr ""
+
+msgid "Choose target status"
 msgstr ""
 
 msgid "All link types"
@@ -150,6 +156,9 @@ msgstr ""
 msgid "All organizations"
 msgstr ""
 
+msgid "All statuses"
+msgstr ""
+
 msgid "All extensionPropertyTypes"
 msgstr ""
 
@@ -157,9 +166,6 @@ msgid "All vocabularies"
 msgstr ""
 
 msgid "All languages"
-msgstr ""
-
-msgid "All statuses"
 msgstr ""
 
 msgid "Reference Data"
@@ -700,10 +706,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-msgid "INFO_TEXT_LINK_TITLE"
+msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
 
-msgid "INFO_TEXT_CODE_REGISTRY"
+msgid "INFO_TEXT_INFODOMAIN"
 msgstr ""
 
 msgid "INFO_TEXT_CODELIST_CODE_VALUE"
@@ -823,7 +829,7 @@ msgstr ""
 msgid "INFO_TEXT_LANGUAGE_CODE"
 msgstr ""
 
-msgid "INFO_TEXT_INFODOMAIN"
+msgid "INFO_TEXT_LINK_TITLE"
 msgstr ""
 
 msgid "INFO_TEXT_LINK_DESCRIPTION"
@@ -934,10 +940,10 @@ msgstr ""
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgid "Front page"
 msgstr ""
 
-msgid "Front page"
+msgid "SUPERSEDED"
 msgstr ""
 
 msgid "SUBMITTED"
@@ -1245,7 +1251,7 @@ msgstr ""
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
 msgstr ""
 
-msgid "SUPERSEDED"
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
 msgstr ""
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
@@ -1516,22 +1522,16 @@ msgstr ""
 msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
 msgstr ""
 
-msgid "Choose starting status"
-msgstr ""
-
-msgid "Choose target status"
-msgstr ""
-
 msgid "Change code statuses at the same time?"
 msgstr ""
 
 msgid "CODE STATUS CHANGES RESULTS"
 msgstr ""
 
-msgid "codeValueValidationError"
+msgid "invalidDate"
 msgstr ""
 
-msgid "invalidDate"
+msgid "invalidDateRange"
 msgstr ""
 
 msgid "registryCodeValueExists"
@@ -1549,7 +1549,7 @@ msgstr ""
 msgid "externalReferenceExists"
 msgstr ""
 
-msgid "invalidDateRange"
+msgid "codeValueValidationError"
 msgstr ""
 
 msgid "codeCodeValueValidationError"

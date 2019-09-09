@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-08-30 15:48+0300\n"
+"PO-Revision-Date: 2019-09-09 13:35+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -24,6 +24,12 @@ msgstr "Tila vaihdettu "
 
 msgid " codes."
 msgstr " koodiin."
+
+msgid "Choose starting status"
+msgstr "Valitse lähtötila"
+
+msgid "Choose target status"
+msgstr "Valitse kohdetila"
 
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
@@ -161,6 +167,9 @@ msgstr "Kaikki rekisterit"
 msgid "All organizations"
 msgstr "Kaikki organisaatiot"
 
+msgid "All statuses"
+msgstr "Kaikki tilat"
+
 msgid "All extensionPropertyTypes"
 msgstr "Kaikki koodistotyypit"
 
@@ -169,9 +178,6 @@ msgstr "Kaikki sanastot"
 
 msgid "All languages"
 msgstr "Kaikki kielet"
-
-msgid "All statuses"
-msgstr "Kaikki tilat"
 
 msgid "Reference Data"
 msgstr "Koodistot"
@@ -729,13 +735,17 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 msgid "Send"
 msgstr "Lähetä"
 
-msgid "INFO_TEXT_LINK_TITLE"
-msgstr "Infoteksti tulossa..."
-
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
 "Rekisteri, johon koodisto kuuluu. Jokainen koodisto kuuluu aina johonkin "
 "koodistorekisteriin."
+
+msgid "INFO_TEXT_INFODOMAIN"
+msgstr ""
+"Tieto siitä, mihin tietoalueeseen koodisto liittyy. Koodisto voi kuulua useaan "
+"tietoalueeseen. Tietoalueluokituksena käytetään Julkisten palvelujen luokitusta. Samaa "
+"tietoalueluokitusta käytetään Koodistot-työkalun lisäksi myös Sanastot- ja Tietomallit-"
+"työkaluissa. Tietoaluetta käytetään etusivun haussa rajaamaan hakutuloksia."
 
 msgid "INFO_TEXT_CODELIST_CODE_VALUE"
 msgstr ""
@@ -894,12 +904,8 @@ msgstr ""
 "Koodiston kielikoodi-valinnat. Koodistoon valitut kielikoodit määrittelevät millä "
 "kielillä voit lokalisoilla koodiston sisällön."
 
-msgid "INFO_TEXT_INFODOMAIN"
-msgstr ""
-"Tieto siitä, mihin tietoalueeseen koodisto liittyy. Koodisto voi kuulua useaan "
-"tietoalueeseen. Tietoalueluokituksena käytetään Julkisten palvelujen luokitusta. Samaa "
-"tietoalueluokitusta käytetään Koodistot-työkalun lisäksi myös Sanastot- ja Tietomallit-"
-"työkaluissa. Tietoaluetta käytetään etusivun haussa rajaamaan hakutuloksia."
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr "Infoteksti tulossa..."
 
 msgid "INFO_TEXT_LINK_DESCRIPTION"
 msgstr "Infoteksti tulossa..."
@@ -1035,11 +1041,11 @@ msgstr ""
 "Valitse tälle jäsenelle hierarkkinen yläjäsen. Tämä valinta määrittelee jäsenten välisen "
 "hiearkian."
 
-msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
-msgstr "Koodistoa ei löydy."
-
 msgid "Front page"
 msgstr "Etusivu"
+
+msgid "SUPERSEDED"
+msgstr "Korvattu"
 
 msgid "SUBMITTED"
 msgstr "Odottaa hyväksyntää"
@@ -1363,8 +1369,8 @@ msgstr "Tiedostossa saa olla vain yksi koodisto."
 msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
 msgstr "Rekisteriä ei löydy."
 
-msgid "SUPERSEDED"
-msgstr "Korvattu"
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Koodistoa ei löydy."
 
 msgid "ERR_MSG_USER_CODE_NOT_FOUND"
 msgstr "Koodia ei löydy."
@@ -1650,23 +1656,17 @@ msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
 msgstr ""
 "Tällä toiminnolla voit päivittää \"Lataa koodisto\"-toiminnon palauttaman aineiston."
 
-msgid "Choose starting status"
-msgstr "Valitse lähtötila"
-
-msgid "Choose target status"
-msgstr "Valitse kohdetila"
-
 msgid "Change code statuses at the same time?"
 msgstr "Vaihda samalla koodien tilat?"
 
 msgid "CODE STATUS CHANGES RESULTS"
 msgstr "Koodien tilojen vaihtamisen tulos"
 
-msgid "codeValueValidationError"
-msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
-
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
+
+msgid "invalidDateRange"
+msgstr "Virheellinen päivämääräväli"
 
 msgid "registryCodeValueExists"
 msgstr "Rekisterin tunnus on jo käytössä."
@@ -1683,8 +1683,8 @@ msgstr "Laajennuksen tunnus on jo käytössä tässä koodistossa."
 msgid "externalReferenceExists"
 msgstr "Linkki on jo käytössä tässä koodistossa."
 
-msgid "invalidDateRange"
-msgstr "Virheellinen päivämääräväli"
+msgid "codeValueValidationError"
+msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-"
 
 msgid "codeCodeValueValidationError"
 msgstr "Tunnus on virheellinen. Sallitut merkit ovat: a-zA-Z0-9_-.+*#&"
