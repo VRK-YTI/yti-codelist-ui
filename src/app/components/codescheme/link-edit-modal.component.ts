@@ -5,6 +5,7 @@ import { EditableService } from '../../services/editable.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
+import { httpOrHttpsUrlRegex } from 'yti-common-ui/utils/validator';
 
 @Component({
   selector: 'app-link-edit-modal',
@@ -19,7 +20,7 @@ export class LinkEditModalComponent implements OnInit {
   linkForm = new FormGroup({
     title: new FormControl({}),
     description: new FormControl({}),
-    href: new FormControl('', Validators.required),
+    href: new FormControl('', [Validators.required, Validators.pattern(httpOrHttpsUrlRegex)]),
     propertyType: new FormControl()
   });
 

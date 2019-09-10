@@ -1569,3 +1569,6 @@ msgstr ""
 
 msgid "localizableValueRequired"
 msgstr ""
+
+msgid "pattern"
+msgstr ""

@@ -5,12 +5,13 @@ import { EditableService } from '../../services/editable.service';
 import { ModalService } from '../../services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { CodeScheme } from '../../entities/code-scheme';
 import { ExternalReferenceType } from '../../services/api-schema';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
+import { httpOrHttpsUrlRegex } from 'yti-common-ui/utils/validator';
 
 @Component({
   selector: 'app-link-create-modal',
@@ -26,7 +27,7 @@ export class LinkCreateModalComponent implements OnInit, AfterViewInit {
   externalReferenceForm = new FormGroup({
     title: new FormControl({}),
     description: new FormControl({}),
-    href: new FormControl(''),
+    href: new FormControl('', [Validators.required, Validators.pattern(httpOrHttpsUrlRegex)]),
     propertyType: new FormControl('')
   });
 
