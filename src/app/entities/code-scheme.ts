@@ -112,7 +112,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
 
   get route(): any[] {
     return [
-      'codescheme',
+      '/codescheme',
       {
         registryCode: this.codeRegistry.codeValue,
         schemeCode: this.codeValue

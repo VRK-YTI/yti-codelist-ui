@@ -61,7 +61,7 @@ export class Member implements EditableEntity {
 
   get route(): any[] {
     return [
-      'member',
+      '/member',
       {
         registryCode: this.extension.parentCodeScheme.codeRegistry.codeValue,
         schemeCode: this.extension.parentCodeScheme.codeValue,

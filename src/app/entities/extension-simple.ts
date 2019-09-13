@@ -45,7 +45,7 @@ export class ExtensionSimple {
 
   get route(): any[] {
     return [
-      'extension',
+      '/extension',
       {
         extensionCode: this.codeValue
       }

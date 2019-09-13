@@ -63,7 +63,7 @@ export class Extension implements EditableEntity {
 
   get route(): any[] {
     return [
-      'extension',
+      '/extension',
       {
         registryCode: this.parentCodeScheme.codeRegistry.codeValue,
         schemeCode: this.parentCodeScheme.codeValue,

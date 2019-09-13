@@ -48,7 +48,7 @@ export class CodeRegistry extends AbstractResource implements EditableEntity {
 
   get route(): any[] {
     return [
-      'registry',
+      '/registry',
       {
         registryCode: this.codeValue,
       }
