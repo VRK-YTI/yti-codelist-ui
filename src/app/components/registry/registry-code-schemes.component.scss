@@ -13,24 +13,28 @@
   .codeScheme {
     display: inline-block;
     width: 100%;
-    padding: 5px 10px 5px 5px;
+    padding: 10px 10px 10px 10px;
     cursor: pointer;
     border-left: $active-indicator-width solid $white;
 
-    &:hover {
-      border-left: $active-indicator-width solid $primary;
-    }
-
     .name {
       color: $primary;
-      font-weight: 600;
+      font-weight: 400;
       float: left;
     }
 
     .organization {
+      font-size: medium;
       float: right;
       clear: right;
       color: $dark;
+    }
+
+    .status {
+      margin-top: 0.25rem;
+      font-size: medium;
+      float: right;
+      clear: right;
     }
   }
 

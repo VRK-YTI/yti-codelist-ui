@@ -1,11 +1,15 @@
-<div class="codeSchemes row">
+<div *ngIf="loading">
+  <app-ajax-loading-indicator></app-ajax-loading-indicator>
+</div>
+
+<div *ngIf="!loading" class="codeSchemes row">
   <div id="registry_codelist_list_div" class="col-md-12">
     <ul id="registry_codelist_list_regular">
       <li *ngFor="let codeScheme of codeSchemes">
         <div class="col-12">
           <div class="codeScheme" id="{{codeScheme.idIdentifier + '_codelist_link'}}" (click)="viewCodeScheme(codeScheme)">
             <div class="name">{{codeScheme.getDisplayName(languageService, true)}}</div>
-            <app-status class="float-right" [status]="codeScheme.status"></app-status>
+            <app-status class="status" [status]="codeScheme.status"></app-status>
             <div class="organization">
               <span *ngIf="codeScheme.organizations.length == 0" translate>No organization</span>
               <span *ngIf="codeScheme.organizations.length == 1">{{codeScheme.organizations[0].prefLabel | translateValue:true}}</span>
