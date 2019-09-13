@@ -1,16 +1,8 @@
 <div>
-
   <form [formGroup]="codeRegistryForm" #form="ngForm">
 
     <div class="row">
-      <div class="col-12">
-        <app-editable-buttons [form]="form"
-                              [entity]="codeRegistry"></app-editable-buttons>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-md-10">
         <app-literal [label]="'Registry ID' | translate"
                      [value]="codeRegistry.codeValue"
                      [infoText]="'INFO_TEXT_REGISTRY_VALUE'"></app-literal>
@@ -47,6 +39,11 @@
                      [label]="'Last modification' | translate"
                      [value]="codeRegistry.modifiedDisplayValue"
                      [infoText]="'INFO_TEXT_REGISTRY_LAST_MODIFICATION'"></app-literal>
+      </div>
+
+      <div class="col-2">
+        <app-editable-buttons [form]="form"
+                              [entity]="codeRegistry"></app-editable-buttons>
       </div>
     </div>
   </form>
