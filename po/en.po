@@ -1681,5 +1681,5 @@ msgstr "Member value is a required input."
 msgid "localizableValueRequired"
 msgstr "Required"
 
-#~ msgid "pattern"
-#~ msgstr "Input is invalid"
+msgid "pattern"
+msgstr "Input is not in the required format"

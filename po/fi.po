@@ -1710,5 +1710,5 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
 
-#~ msgid "pattern"
-#~ msgstr "Syöte on epävalidi"
+msgid "pattern"
+msgstr "Syöte ei ole halutussa muodossa"
