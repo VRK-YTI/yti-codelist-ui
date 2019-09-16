@@ -1417,6 +1417,9 @@ msgstr ""
 msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_ALLOWED_FOR_EXTENSION"
 msgstr ""
 
+msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
+msgstr ""
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
@@ -1568,7 +1571,4 @@ msgid "memberValueRequired"
 msgstr ""
 
 msgid "localizableValueRequired"
-msgstr ""
-
-msgid "pattern"
 msgstr ""
