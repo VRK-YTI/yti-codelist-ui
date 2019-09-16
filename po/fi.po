@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-09-16 09:55+0300\n"
+"PO-Revision-Date: 2019-09-16 11:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1131,6 +1131,9 @@ msgstr "Sanastotyöntekijä"
 msgid "CODE_LIST_EDITOR"
 msgstr "Koodistotyöntekijä"
 
+msgid "MEMBER"
+msgstr "Jäsen"
+
 msgid "ERR_MSG_USER_401"
 msgstr "Ei käyttöoikeutta"
 
@@ -1665,6 +1668,9 @@ msgstr "Vaihda samalla koodien tilat?"
 msgid "CODE STATUS CHANGES RESULTS"
 msgstr "Koodien tilojen vaihtamisen tulos"
 
+msgid "pattern"
+msgstr "Syöte ei ole halutussa muodossa"
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
 
@@ -1709,6 +1715,3 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
-
-msgid "pattern"
-msgstr "Syöte ei ole halutussa muodossa"

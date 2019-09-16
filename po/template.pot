@@ -1032,6 +1032,9 @@ msgstr ""
 msgid "CODE_LIST_EDITOR"
 msgstr "The data is missing a column with the header STATUS."
 
+msgid "MEMBER"
+msgstr ""
+
 msgid "ERR_MSG_USER_401"
 msgstr ""
 
@@ -1531,6 +1534,9 @@ msgstr ""
 msgid "CODE STATUS CHANGES RESULTS"
 msgstr ""
 
+msgid "pattern"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
@@ -1571,7 +1577,4 @@ msgid "memberValueRequired"
 msgstr ""
 
 msgid "localizableValueRequired"
-msgstr ""
-
-msgid "pattern"
 msgstr ""
