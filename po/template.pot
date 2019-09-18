@@ -297,6 +297,9 @@ msgstr ""
 msgid "Governance policy"
 msgstr ""
 
+msgid "FeedbackChannel"
+msgstr ""
+
 msgid "{{pageTitle}}"
 msgstr ""
 
@@ -938,6 +941,9 @@ msgid "INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE"
 msgstr ""
 
 msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
+msgstr ""
+
+msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr ""
 
 msgid "Front page"

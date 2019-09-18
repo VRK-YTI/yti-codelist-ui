@@ -59,6 +59,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     conceptUriInVocabularies: new FormControl(''),
     organizations: new FormControl([], [requiredList]),
     cumulative: new FormControl(),
+    feedbackChannel: new FormControl(),
   }, null, this.codeValueExistsValidator());
 
   constructor(private router: Router,
@@ -116,6 +117,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           } else {
             this.codeSchemeForm.patchValue({ cumulative: false });
           }
+          this.codeSchemeForm.patchValue( { feedbackChannel : originalCodeScheme.feedbackChannel })
           this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
             const allInfoDomains = next2;
             const infoDomainsToCopy: CodePlain[] = [];

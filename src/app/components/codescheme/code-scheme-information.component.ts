@@ -53,7 +53,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
     conceptUriInVocabularies: new FormControl(''),
     organizations: new FormControl([], [requiredList]),
     cumulative: new FormControl(),
-    changeCodeStatuses: new FormControl(false)
+    changeCodeStatuses: new FormControl(false),
+    feedbackChannel: new FormControl(),
   });
 
   user$ = new BehaviorSubject<UserSimple | null>(null);

@@ -48,6 +48,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
   totalNrOfSearchHitsExtensions: number;
   searchHitsOfTheTypeExtension: SearchHit[];
   cumulative: boolean;
+  feedbackChannel: string;
 
   constructor(data: CodeSchemeType) {
     super(data);
@@ -104,6 +105,7 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     this.totalNrOfSearchHitsCodes = data.totalNrOfSearchHitsCodes;
     this.totalNrOfSearchHitsExtensions = data.totalNrOfSearchHitsExtensions;
     this.cumulative = data.cumulative;
+    this.feedbackChannel = data.feedbackChannel;
   }
 
   get modifiedDisplayValue(): string {
@@ -207,7 +209,8 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
       searchHits: [], // this is not really a part of codescheme, never getting stored, so lets send nothing
       totalNrOfSearchHitsCodes: this.totalNrOfSearchHitsCodes,
       totalNrOfSearchHitsExtensions: this.totalNrOfSearchHitsExtensions,
-      cumulative: this.cumulative
+      cumulative: this.cumulative,
+      feedbackChannel: this.feedbackChannel
     };
   }
 

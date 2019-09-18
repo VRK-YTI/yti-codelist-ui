@@ -184,6 +184,12 @@
                                      [languageCodes]="codeSchemeForm.controls['languageCodes'].value"
                                      [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
+
+      <app-localizable-textarea-with-language-indicator [id]="'codelist_feedback_channel_textarea'"
+                                                        [label]="'FeedbackChannel' | translate"
+                                                        [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
+                                                        [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator>
+
     </div>
     <div class="col-2">
       <app-editable-buttons [form]="form"

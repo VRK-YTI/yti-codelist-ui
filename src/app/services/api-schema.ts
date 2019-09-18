@@ -58,6 +58,7 @@ export interface CodeSchemeType extends BaseResourceType {
   totalNrOfSearchHitsCodes: number;
   totalNrOfSearchHitsExtensions: number;
   cumulative: boolean;
+  feedbackChannel: string;
 }
 
 export interface CodePlainType extends BaseResourceType {
