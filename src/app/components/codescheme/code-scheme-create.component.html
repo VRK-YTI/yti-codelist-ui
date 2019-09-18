@@ -165,6 +165,7 @@
         <ng-container *ngIf="!cloning">
           <app-status-input id="codelist_status_input"
                             [infoText]="'INFO_TEXT_CODELIST_STATUS'"
+                            [allowOnlyCreationTimeStatuses]="true"
                             [formControlName]="'status'"></app-status-input>
         </ng-container>
 

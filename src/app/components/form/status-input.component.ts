@@ -20,7 +20,8 @@ import { Status } from 'yti-common-ui/entities/status';
                              [formControl]="control"
                              [restrict]="restrict"
                              [isSuperUser]="isSuperUser"
-                             [originalStatus]="originalStatus"></app-status-dropdown>
+                             [originalStatus]="originalStatus"
+                             [allowOnlyCreationTimeStatuses]="allowOnlyCreationTimeStatuses"></app-status-dropdown>
 
         <app-error-messages id="status_input_error_messages" [control]="parentControl"></app-error-messages>
       </dd>
@@ -33,7 +34,8 @@ export class StatusInputComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() infoText: string;
   @Input() isSuperUser = false;
-  @Input() originalStatus: Status|undefined;
+  @Input() originalStatus: Status | undefined;
+  @Input() allowOnlyCreationTimeStatuses = false;
   control = new FormControl();
 
   private propagateChange: (fn: any) => void = () => {};
