@@ -22,6 +22,7 @@ import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Organization } from '../../entities/organization';
 import { nonEmptyLocalizableValidator } from '../../utils/validators';
+import { UserService } from 'yti-common-ui/services/user.service';
 
 @Component({
   selector: 'app-code-scheme-create',
@@ -70,7 +71,8 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
               private location: Location,
               private languageService: LanguageService,
               private locationService: LocationService,
-              private confirmationModalService: CodeListConfirmationModalService) {
+              private confirmationModalService: CodeListConfirmationModalService,
+              private userService: UserService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
     editableService.cancel$.subscribe(() => this.back());
@@ -117,7 +119,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           } else {
             this.codeSchemeForm.patchValue({ cumulative: false });
           }
-          this.codeSchemeForm.patchValue( { feedbackChannel : originalCodeScheme.feedbackChannel })
+          this.codeSchemeForm.patchValue({ feedbackChannel: originalCodeScheme.feedbackChannel })
           this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
             const allInfoDomains = next2;
             const infoDomainsToCopy: CodePlain[] = [];
@@ -189,7 +191,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     const { newVersionEmpty, validity, codeRegistry, defaultCode, infoDomains, languageCodes, externalReferences, organizations, ...rest } = formData;
 
-    const codeScheme: CodeSchemeType = <CodeSchemeType> {
+    const codeScheme: CodeSchemeType = <CodeSchemeType>{
       ...rest,
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
@@ -267,5 +269,9 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
     this.codeSchemeForm.patchValue({ definition: concept.definition });
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
+  }
+
+  get isSuperUser() {
+    return this.userService.user.superuser;
   }
 }
