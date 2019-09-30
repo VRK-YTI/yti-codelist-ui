@@ -7,6 +7,10 @@ import { ModalService } from '../../services/modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
+import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
+import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
+import { TranslateService } from '@ngx-translate/core';
+import { Code } from '../../entities/code';
 
 @Component({
   selector: 'app-search-linked-code-scheme-modal',
@@ -21,7 +25,7 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
     <div class="modal-body full-height">
 
       <div class="row mb-2">
-        <div class="col-12">
+        <div class="col">
 
           <div class="input-group input-group-lg input-group-search">
             <input #searchInput id="search_linked_code-scheme_input" type="text" class="form-control"
@@ -30,6 +34,14 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
           </div>
 
         </div>
+
+        <div class="col">
+          <app-filter-dropdown id="status_filter_dropdown"
+                               [filterSubject]="status$"
+                               [options]="statusOptions"
+                               style="float: right;"></app-filter-dropdown>
+        </div>
+        
       </div>
 
       <div class="row full-height">
@@ -42,6 +54,7 @@ import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
                    (click)="select(codeScheme)">
                 <div class="content" [class.last]="last">
                   <span class="title" [innerHTML]="codeScheme.getDisplayName(languageService, useUILanguage)"></span>
+                  <app-status class="status" [status]="codeScheme.status"></app-status>
                 </div>
               </div>
             </div>
@@ -69,12 +82,15 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   codeSchemes$: Observable<CodeScheme[]>;
   searchResults$: Observable<CodeScheme[]>;
+  statusOptions: FilterOptions<Status>;
 
   search$ = new BehaviorSubject('');
+  status$ = new BehaviorSubject<Status | null>(null);
   loading = false;
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
+              public translateService: TranslateService,
               private dataService: DataService) {
   }
 
@@ -84,15 +100,26 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
     this.codeSchemes$ = this.dataService.searchCodeSchemes(null, null, null, null, null, false, false, this.languageService.language);
 
-    this.searchResults$ = combineLatest(this.codeSchemes$, concat(initialSearch, debouncedSearch))
+    this.statusOptions = [null, ...selectableStatuses].map(status => ({
+      value: status,
+      name: () => this.translateService.instant(status ? status : 'All statuses'),
+      idIdentifier: () => status ? status : 'all_selected'
+    }));
+
+    function statusMatches(status: Status | null, codeScheme: CodeScheme) {
+      return !status || codeScheme.status === status;
+    }
+
+    this.searchResults$ = combineLatest(this.codeSchemes$, concat(initialSearch, debouncedSearch), this.status$)
       .pipe(
         tap(() => this.loading = false),
-        map(([codeSchemes, search]) => {
+        map(([codeSchemes, search, theStatus]) => {
           return codeSchemes.filter(codeScheme => {
             const label = this.languageService.translate(codeScheme.prefLabel, true);
             const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const theStatusMatches = statusMatches(theStatus, codeScheme);
             const isNotRestricted = !contains(this.restricts, codeScheme.id);
-            return searchMatches && isNotRestricted;
+            return searchMatches && isNotRestricted && theStatusMatches;
           });
         })
       );

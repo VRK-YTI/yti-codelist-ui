@@ -8,6 +8,9 @@ import { ModalService } from '../../services/modal.service';
 import { Code } from '../../entities/code';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
+import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
+import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search-linked-code-modal',
@@ -48,12 +51,18 @@ import { DataService } from '../../services/data.service';
       </div>
 
       <div class="row mb-2">
-        <div class="col-12">
+        <div class="col">
           <div class="input-group input-group-lg input-group-search">
-            <input #searchInput id="search_linked_code_input" type="text" class="form-control"
+            <input #searchInput id="search_linked_code_input" type="text" class="form-control" style="width: 75%"
                    [placeholder]="searchLabel"
                    [(ngModel)]="search"/>
           </div>
+        </div>
+        <div class="col">
+          <app-filter-dropdown id="status_filter_dropdown"
+                               [filterSubject]="status$"
+                               [options]="statusOptions"
+                               style="float: right;"></app-filter-dropdown>
         </div>
       </div>
 
@@ -67,6 +76,7 @@ import { DataService } from '../../services/data.service';
                    (click)="select(code)">
                 <div class="content" [class.last]="last">
                   <span class="title" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
+                  <app-status class="status" [status]="code.status"></app-status>
                 </div>
               </div>
             </div>
@@ -96,12 +106,15 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
 
   searchResults$: Observable<Code[]>;
   selectedCodeScheme: CodeScheme;
+  statusOptions: FilterOptions<Status>;
 
   search$ = new BehaviorSubject('');
+  status$ = new BehaviorSubject<Status | null>(null);
   loading = false;
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
+              public translateService: TranslateService,
               private dataService: DataService) {
   }
 
@@ -112,6 +125,13 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
     } else {
       this.filterCodes();
     }
+
+    this.statusOptions = [null, ...selectableStatuses].map(status => ({
+      value: status,
+      name: () => this.translateService.instant(status ? status : 'All statuses'),
+      idIdentifier: () => status ? status : 'all_selected'
+    }));
+
   }
 
   select(code: Code) {
@@ -143,15 +163,20 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
     const initialSearch = this.search$.pipe(take(1));
     const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
 
-    this.searchResults$ = combineLatest(this.codes$, concat(initialSearch, debouncedSearch))
+    function statusMatches(status: Status | null, code: Code) {
+      return !status || code.status === status;
+    }
+
+    this.searchResults$ = combineLatest(this.codes$, concat(initialSearch, debouncedSearch), this.status$)
       .pipe(
         tap(() => this.loading = false),
-        map(([codes, search]) => {
+        map(([codes, search, theStatus]) => {
           return codes.filter(code => {
             const label = this.languageService.translate(code.prefLabel, true);
             const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const theStatusMatches = statusMatches(theStatus, code);
             const isNotRestricted = !contains(this.restricts, code.id);
-            return searchMatches && isNotRestricted;
+            return searchMatches && isNotRestricted && theStatusMatches;
           });
         })
       );
