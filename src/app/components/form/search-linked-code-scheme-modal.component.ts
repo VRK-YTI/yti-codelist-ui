@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
 import { ModalService } from '../../services/modal.service';
@@ -47,16 +47,19 @@ import { Code } from '../../entities/code';
       <div class="row full-height">
         <div class="col-12">
           <div class="content-box">
-            <div class="search-results">
+            <div class="search-results" *ngIf="searchResults.length > 0">
               <div id="{{codeScheme.idIdentifier + '_code_scheme_link'}}"
                    class="search-result"
-                   *ngFor="let codeScheme of searchResults$ | async; let last = last"
+                   *ngFor="let codeScheme of searchResults; let last = last"
                    (click)="select(codeScheme)">
                 <div class="content" [class.last]="last">
                   <span class="title" [innerHTML]="codeScheme.getDisplayName(languageService, useUILanguage)"></span>
                   <app-status class="status" [status]="codeScheme.status"></app-status>
                 </div>
               </div>
+            </div>
+            <div class="search-results" *ngIf="this.searchResults.length == 0">
+              <p translate class="no-results">No search results</p>
             </div>
           </div>
         </div>
@@ -71,7 +74,7 @@ import { Code } from '../../entities/code';
     </div>
   `
 })
-export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnInit {
+export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnInit, OnDestroy {
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
@@ -87,6 +90,8 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
   search$ = new BehaviorSubject('');
   status$ = new BehaviorSubject<Status | null>(null);
   loading = false;
+  searchResults: CodeScheme[] = [];
+  private subscriptionsToClean: Subscription[] = [];
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
@@ -123,6 +128,10 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
           });
         })
       );
+
+    this.subscriptionsToClean.push(this.searchResults$.subscribe(codeSchemes => {
+      this.searchResults = codeSchemes;
+    }));
   }
 
   select(codeScheme: CodeScheme) {
@@ -131,6 +140,10 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   ngAfterViewInit() {
     this.searchInput.nativeElement.focus();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionsToClean.forEach(s => s.unsubscribe());
   }
 
   get search() {

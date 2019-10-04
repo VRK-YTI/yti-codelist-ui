@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Injectable, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
@@ -23,7 +23,6 @@ import { TranslateService } from '@ngx-translate/core';
       </h4>
     </div>
     <div class="modal-body full-height">
-
       <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
         <div class="col-12">
           <div ngbDropdown class="d-inline-block">
@@ -69,10 +68,10 @@ import { TranslateService } from '@ngx-translate/core';
       <div class="row full-height">
         <div class="col-12">
           <div class="content-box">
-            <div class="search-results">
+            <div class="search-results" *ngIf="searchResults.length > 0">
               <div id="{{code.idIdentifier + '_code_link'}}"
                    class="search-result"
-                   *ngFor="let code of searchResults$ | async; let last = last"
+                   *ngFor="let code of searchResults; let last = last"
                    (click)="select(code)">
                 <div class="content" [class.last]="last">
                   <span class="title" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
@@ -80,6 +79,11 @@ import { TranslateService } from '@ngx-translate/core';
                 </div>
               </div>
             </div>
+
+            <div class="search-results" *ngIf="this.searchResults.length == 0">
+              <p translate class="no-results">No search results</p>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -93,7 +97,7 @@ import { TranslateService } from '@ngx-translate/core';
     </div>
   `
 })
-export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
+export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit, OnDestroy {
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
@@ -111,6 +115,8 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
   search$ = new BehaviorSubject('');
   status$ = new BehaviorSubject<Status | null>(null);
   loading = false;
+  searchResults: Code[] = [];
+  private subscriptionsToClean: Subscription[] = [];
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,
@@ -140,6 +146,10 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.searchInput.nativeElement.focus();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionsToClean.forEach(s => s.unsubscribe());
   }
 
   get search() {
@@ -180,6 +190,10 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit {
           });
         })
       );
+
+    this.subscriptionsToClean.push(this.searchResults$.subscribe(codeSchemes => {
+      this.searchResults = codeSchemes;
+    }));
   }
 
   updateCodes() {
