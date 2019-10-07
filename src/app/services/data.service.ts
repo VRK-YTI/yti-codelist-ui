@@ -760,6 +760,13 @@ export class DataService {
 
   codeCodeValueExists(registryCodeValue: string, schemeCodeValue: string, codeCodeValue: string): Observable<boolean> {
 
+    if (codeCodeValue === '.') {
+      codeCodeValue = '__YTI__dot';
+    } else if (codeCodeValue === '..') {
+      codeCodeValue = '__YTI__dotdot';
+    } else if (codeCodeValue === '&') {
+      codeCodeValue = '__YTI__amp';
+    }
     const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
     return this.http.head(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}`, { observe: 'response' })
