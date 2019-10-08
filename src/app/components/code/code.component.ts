@@ -55,17 +55,7 @@ export class CodeComponent implements OnInit, EditingComponent {
 
     const registryCode = this.route.snapshot.params.registryCode;
     const schemeCode = this.route.snapshot.params.schemeCode;
-    let codeCode = this.route.snapshot.params.codeCode;
-
-    if (codeCode === '.') {
-      codeCode = '__YTI__dot';
-    } else if (codeCode === '..') {
-      codeCode = '__YTI__dotdot';
-    } else if (codeCode === '&') {
-      codeCode = '__YTI__amp';
-    }
-
-    console.log('codeCodeValue: ' + codeCode);
+    const codeCode = this.route.snapshot.params.codeCode;
 
     if (!codeCode || !registryCode || !schemeCode) {
       throw new Error(`Illegal route, codeCode: '${codeCode}', registry: '${registryCode}', scheme: '${schemeCode}'`);
