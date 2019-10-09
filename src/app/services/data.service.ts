@@ -340,7 +340,7 @@ export class DataService {
       'expand': 'codeScheme,codeRegistry,externalReference,propertyType,organization,valueType,extension,member,memberValue'
     };
 
-    const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
+    const encodedCodeCodeValue = this.resolveCodeCodeValue(codeCodeValue);
     return this.http.get<CodeType>(
       `${codeRegistriesBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`,
       { params })
@@ -375,7 +375,7 @@ export class DataService {
     const registryCodeValue = code.codeScheme.codeRegistry.codeValue;
     const schemeCodeValue = code.codeScheme.codeValue;
     const codeCodeValue = code.codeValue;
-    const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
+    const encodedCodeCodeValue = this.resolveCodeCodeValue(codeCodeValue);
 
     return this.http.post<ApiResponseType>(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`, code);
@@ -385,7 +385,7 @@ export class DataService {
 
     const registryCodeValue = code.codeScheme.codeRegistry.codeValue;
     const schemeCodeValue = code.codeScheme.codeValue;
-    const encodedCodeCodeValue = encodeURIComponent(code.codeValue);
+    const encodedCodeCodeValue = this.resolveCodeCodeValue(code.codeValue);
 
     return this.http.delete<ApiResponseType>(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}/`);
@@ -760,7 +760,7 @@ export class DataService {
 
   codeCodeValueExists(registryCodeValue: string, schemeCodeValue: string, codeCodeValue: string): Observable<boolean> {
 
-    const encodedCodeCodeValue = encodeURIComponent(codeCodeValue);
+    const encodedCodeCodeValue = this.resolveCodeCodeValue(codeCodeValue);
     return this.http.head(
       `${codeRegistriesIntakeBasePath}/${registryCodeValue}/${codeSchemes}/${schemeCodeValue}/${codes}/${encodedCodeCodeValue}`, { observe: 'response' })
       .pipe(
@@ -875,5 +875,14 @@ export class DataService {
       { params })
       .pipe(map(res => new UserSimple(res)),
         catchError(err => of(null)));
+  }
+
+  resolveCodeCodeValue(codeCodeValue: string): string {
+    if (codeCodeValue === '.') {
+      return 'U+002E';
+    } else if (codeCodeValue === '..') {
+      return 'U+002EU+002E';
+    }
+    return encodeURIComponent(codeCodeValue).replace('#', '%23');
   }
 }
