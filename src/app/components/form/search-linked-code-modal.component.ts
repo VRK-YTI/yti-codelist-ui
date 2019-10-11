@@ -16,85 +16,84 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-search-linked-code-modal',
   styleUrls: ['./search-linked-code-modal.component.scss'],
   template: `
-    <div class="modal-header">
-      <h4 class="modal-title">
-        <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
-        <span>{{titleLabel}}</span>
-      </h4>
-    </div>
-    <div class="modal-body full-height">
-      <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
-        <div class="col-12">
-          <div ngbDropdown class="d-inline-block">
-            <dl>
-              <dt>
-                <label for="code_scheme_dropdown_button" translate>Code list</label>
-              </dt>
-              <dd>
-                <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
-                  <span>{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
-                </button>
-                <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
-                  <div *ngFor="let codeScheme of codeSchemes">
-                    <button id="codescheme_{{codeScheme.id}}_dropdown_button"
-                            (click)="selectCodeScheme(codeScheme)"
-                            class="dropdown-item"
-                            [class.active]="selectedCodeScheme === codeScheme">
-                      {{codeScheme.getLongDisplayName(languageService, false)}}</button>
+      <div class="modal-header">
+          <h4 class="modal-title">
+              <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
+              <span>{{titleLabel}}</span>
+          </h4>
+      </div>
+      <div class="modal-body full-height">
+          <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
+              <div class="col-12">
+                  <div ngbDropdown class="d-inline-block">
+                      <dl>
+                          <dt>
+                              <label for="code_scheme_dropdown_button" translate>Code list</label>
+                          </dt>
+                          <dd>
+                              <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
+                                  <span>{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
+                              </button>
+                              <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
+                                  <div *ngFor="let codeScheme of codeSchemes">
+                                      <button id="codescheme_{{codeScheme.id}}_dropdown_button"
+                                              (click)="selectCodeScheme(codeScheme)"
+                                              class="dropdown-item"
+                                              [class.active]="selectedCodeScheme === codeScheme">
+                                          {{codeScheme.getLongDisplayName(languageService, false)}}</button>
+                                  </div>
+                              </div>
+                          </dd>
+                      </dl>
                   </div>
-                </div>
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mb-2">
-        <div class="col">
-          <div class="input-group input-group-lg input-group-search">
-            <input #searchInput id="search_linked_code_input" type="text" class="form-control" style="width: 75%"
-                   [placeholder]="searchLabel"
-                   [(ngModel)]="search"/>
-          </div>
-        </div>
-        <div class="col">
-          <app-filter-dropdown id="status_filter_dropdown"
-                               [filterSubject]="status$"
-                               [options]="statusOptions"
-                               style="float: right;"></app-filter-dropdown>
-        </div>
-      </div>
-
-      <div class="row full-height">
-        <div class="col-12">
-          <div class="content-box">
-            <div class="search-results" *ngIf="searchResults.length > 0">
-              <div id="{{code.idIdentifier + '_code_link'}}"
-                   class="search-result"
-                   *ngFor="let code of searchResults; let last = last"
-                   (click)="select(code)">
-                <div class="content" [class.last]="last">
-                  <span class="title" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
-                  <app-status class="status" [status]="code.status"></app-status>
-                </div>
               </div>
-            </div>
-
-            <div class="search-results" *ngIf="this.searchResults.length == 0">
-              <p translate class="no-results">No search results</p>
-            </div>
-            
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
 
-      <button id="cancel_modal_button"
-              type="button"
-              class="btn btn-link cancel"
-              (click)="cancel()" translate>Cancel</button>
-    </div>
+          <div class="row mb-2">
+              <div class="col">
+                  <div class="input-group input-group-lg input-group-search">
+                      <input #searchInput id="search_linked_code_input" type="text" class="form-control" style="width: 75%"
+                             [placeholder]="searchLabel"
+                             [(ngModel)]="search"/>
+                  </div>
+              </div>
+              <div class="col">
+                  <app-filter-dropdown id="status_filter_dropdown"
+                                       [filterSubject]="status$"
+                                       [options]="statusOptions"
+                                       [placement]="'bottom-right'"
+                                       style="float: right;"></app-filter-dropdown>
+              </div>
+          </div>
+
+          <div class="row full-height">
+              <div class="col-12">
+                  <div class="content-box">
+                      <div class="search-results" *ngIf="searchResults.length > 0">
+                          <div id="{{code.idIdentifier + '_code_link'}}"
+                               class="search-result"
+                               *ngFor="let code of searchResults; let last = last"
+                               (click)="select(code)">
+                              <div class="content" [class.last]="last">
+                                  <span class="title" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
+                                  <app-status class="status" [status]="code.status"></app-status>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="search-results" *ngIf="this.searchResults.length == 0">
+                          <p translate class="no-results content last">No search results</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+
+          <button id="cancel_modal_button"
+                  type="button"
+                  class="btn btn-link cancel"
+                  (click)="cancel()" translate>Cancel</button>
+      </div>
   `
 })
 export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit, OnDestroy {

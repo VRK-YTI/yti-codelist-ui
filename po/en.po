@@ -144,9 +144,6 @@ msgstr ""
 msgid "All codeschemes"
 msgstr "All Code lists"
 
-msgid "There are no members to select from"
-msgstr ""
-
 msgid "Status"
 msgstr ""
 

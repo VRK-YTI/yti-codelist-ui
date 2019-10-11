@@ -39,6 +39,7 @@ import { Code } from '../../entities/code';
           <app-filter-dropdown id="status_filter_dropdown"
                                [filterSubject]="status$"
                                [options]="statusOptions"
+                               [placement]="'bottom-right'"
                                style="float: right;"></app-filter-dropdown>
         </div>
         
@@ -59,7 +60,7 @@ import { Code } from '../../entities/code';
               </div>
             </div>
             <div class="search-results" *ngIf="this.searchResults.length == 0">
-              <p translate class="no-results">No search results</p>
+              <p translate class="no-results content last">No search results</p>
             </div>
           </div>
         </div>

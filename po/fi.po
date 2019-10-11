@@ -146,9 +146,6 @@ msgstr "Rajaa hakutuloksia"
 msgid "All codeschemes"
 msgstr "Kaikki koodistot"
 
-msgid "There are no members to select from"
-msgstr "Ei jäseniä valittavaksi."
-
 msgid "Status"
 msgstr "Tila"
 

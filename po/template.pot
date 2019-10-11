@@ -129,13 +129,16 @@ msgstr ""
 msgid "Code list"
 msgstr ""
 
+msgid "No search results"
+msgstr ""
+
+msgid "All statuses"
+msgstr ""
+
 msgid "Filter results"
 msgstr ""
 
 msgid "All codeschemes"
-msgstr ""
-
-msgid "There are no members to select from"
 msgstr ""
 
 msgid "Status"
@@ -154,9 +157,6 @@ msgid "All registries"
 msgstr ""
 
 msgid "All organizations"
-msgstr ""
-
-msgid "All statuses"
 msgstr ""
 
 msgid "All extensionPropertyTypes"
@@ -494,9 +494,6 @@ msgid "variantModalPageTitle"
 msgstr ""
 
 msgid "variantModalInstructionText"
-msgstr ""
-
-msgid "No search results"
 msgstr ""
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_ID"

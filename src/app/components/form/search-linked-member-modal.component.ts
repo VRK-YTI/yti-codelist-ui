@@ -84,7 +84,7 @@ import { DataService } from '../../services/data.service';
               </div>
               <div *ngIf="results.length === 0">
                 <div>
-                  <div class="no-results content last"><span translate>There are no members to select from</span></div>
+                  <div class="no-results content last"><span translate>No search results</span></div>
                 </div>
               </div>
             </div>
