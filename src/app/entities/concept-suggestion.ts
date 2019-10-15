@@ -7,21 +7,21 @@ export class ConceptSuggestion {
   prefLabel: Localizable;
   definition: Localizable;
   creator?: string;
-  vocabulary: string; // UUID
+  terminlogyUri: string;
   uri?: string;
 
   constructor(data: ConceptSuggestionType) {
     this.prefLabel = data.prefLabel;
     this.definition = data.definition;
     this.creator = data.creator;
-    this.vocabulary = data.vocabulary;
+    this.terminlogyUri = data.terminologyUri;
     this.uri = data.uri;
   }
 
   getIdIdentifier(localizer: Localizer): string {
-    const vocabularyId = this.vocabulary;
+    const terminologyUri = this.terminlogyUri;
     const prefLabel = localizer.translate(this.prefLabel);
-    return `${labelNameToResourceIdIdentifier(vocabularyId)}_${labelNameToResourceIdIdentifier(prefLabel)}`;
+    return `${labelNameToResourceIdIdentifier(terminologyUri)}_${labelNameToResourceIdIdentifier(prefLabel)}`;
   }
 
   getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
@@ -39,7 +39,7 @@ export class ConceptSuggestion {
       prefLabel: this.prefLabel,
       definition: this.definition,
       creator: this.creator,
-      vocabulary: this.vocabulary,
+      terminologyUri: this.terminlogyUri,
       uri: this.uri
     };
   }

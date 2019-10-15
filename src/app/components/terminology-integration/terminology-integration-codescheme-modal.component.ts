@@ -82,7 +82,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           this.chosenLanguageCodeValue = languageCode;
           this.chosenLanguageCode = language;
 
-          this.dataService.getConcepts(search, vocabulary ? vocabulary.id : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
+          this.dataService.getConcepts(search, vocabulary ? vocabulary.uri : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
               this.loading = false;
 
               this.searchResults = concepts.sort((a, b) => {
@@ -278,8 +278,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   canSuggest() {
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
-    const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
-    return vocabularyId !== '' && this.search$.getValue() !== '';
+    const vocabularyUri: string = vocabulary == null ? '' : vocabulary.uri;
+    return vocabularyUri !== '' && this.search$.getValue() !== '';
   }
 
   suggestAConcept() {
@@ -294,8 +294,8 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
       const resultArray: string[] = [suggestionNameLocalized, suggestionDefinitionLocalized];
       this.codeListConfirmationModalService.openSuggestConcept(resultArray[0], resultArray[1], vocabularyName)
         .then(() => {
-          const vocabularyId: string = vocabulary != null ? vocabulary.id : '';
-          return this.dataService.suggestAConcept(resultArray[0], resultArray[1], vocabularyId, this.languageService.contentLanguage).subscribe(next => {
+          const vocabularyUri: string = vocabulary == null ? '' : vocabulary.uri;
+          return this.dataService.suggestAConcept(resultArray[0], resultArray[1], vocabularyUri, this.languageService.contentLanguage).subscribe(next => {
             const conceptSuggestions: Concept[] = next;
             this.select(next[0]);
           });

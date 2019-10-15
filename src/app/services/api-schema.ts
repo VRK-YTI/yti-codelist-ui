@@ -98,7 +98,7 @@ export interface ConceptType {
   prefLabel: Localizable;
   definition: Localizable;
   vocabularyPrefLabel: Localizable;
-  vocabularyId: string;
+  containerUrl: string;
   uri: string;
   status: string;
 }
@@ -108,14 +108,15 @@ export interface ConceptSuggestionType {
   prefLabel: Localizable;
   definition: Localizable;
   creator?: string;
-  vocabulary: string; // UUID
+  terminologyUri: string;
   uri?: string;
 }
 
 export interface VocabularyType {
 
-  id: string;
+  uri: string;
   prefLabel: Localizable;
+  description: Localizable;
   status: string;
   languages: string[];
 }

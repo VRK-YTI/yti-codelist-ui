@@ -5,16 +5,18 @@ import { Code } from './code';
 
 export class Vocabulary {
 
-  id: string;
+  uri: string;
+  description: Localizable;
   prefLabel: Localizable;
   status: string;
   languages: string[];
   languageCodes: Code[];
 
   constructor(data: VocabularyType) {
-    this.id = data.id;
+    this.uri = data.uri;
     this.prefLabel = data.prefLabel;
     this.status = data.status;
+    this.description = data.description;
     this.languages = data.languages;
   }
 

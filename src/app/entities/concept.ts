@@ -6,7 +6,7 @@ export class Concept {
 
   id: string;
   uri: string;
-  vocabularyId: string;
+  containerUri: string;
   definition: Localizable;
   prefLabel: Localizable;
   vocabularyPrefLabel: Localizable;
@@ -15,7 +15,7 @@ export class Concept {
   constructor(data: ConceptType) {
     this.uri = data.uri;
     this.id = data.id;
-    this.vocabularyId = data.vocabularyId;
+    this.containerUri = data.containerUrl;
     this.definition = data.definition;
     this.prefLabel = data.prefLabel;
     this.vocabularyPrefLabel = data.vocabularyPrefLabel;
@@ -31,7 +31,7 @@ export class Concept {
   serialize(): ConceptType {
     return {
       id: this.id,
-      vocabularyId: this.vocabularyId,
+      containerUrl: this.containerUri,
       prefLabel: this.prefLabel,
       vocabularyPrefLabel: this.vocabularyPrefLabel,
       definition: this.definition,
