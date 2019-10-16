@@ -16,7 +16,7 @@ export class Concept {
     this.uri = data.uri;
     this.id = data.id;
     this.containerUri = data.containerUrl;
-    this.definition = data.definition;
+    this.definition = data.description; // this mismatch in naming is not a mistake. This is due to the integration APIs forcing all objects to have "description".
     this.prefLabel = data.prefLabel;
     this.vocabularyPrefLabel = data.vocabularyPrefLabel;
     this.status = data.status;
@@ -34,7 +34,7 @@ export class Concept {
       containerUrl: this.containerUri,
       prefLabel: this.prefLabel,
       vocabularyPrefLabel: this.vocabularyPrefLabel,
-      definition: this.definition,
+      description: this.definition,
       uri: this.uri,
       status: this.status
     };

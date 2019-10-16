@@ -96,7 +96,7 @@ export interface ConceptType {
 
   id: string;
   prefLabel: Localizable;
-  definition: Localizable;
+  description: Localizable;
   vocabularyPrefLabel: Localizable;
   containerUrl: string;
   uri: string;
