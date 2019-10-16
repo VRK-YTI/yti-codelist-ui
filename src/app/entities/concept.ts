@@ -15,7 +15,7 @@ export class Concept {
   constructor(data: ConceptType) {
     this.uri = data.uri;
     this.id = data.id;
-    this.containerUri = data.containerUrl;
+    this.containerUri = data.container;
     this.definition = data.description; // this mismatch in naming is not a mistake. This is due to the integration APIs forcing all objects to have "description".
     this.prefLabel = data.prefLabel;
     this.vocabularyPrefLabel = data.vocabularyPrefLabel;
@@ -31,7 +31,7 @@ export class Concept {
   serialize(): ConceptType {
     return {
       id: this.id,
-      containerUrl: this.containerUri,
+      container: this.containerUri,
       prefLabel: this.prefLabel,
       vocabularyPrefLabel: this.vocabularyPrefLabel,
       description: this.definition,

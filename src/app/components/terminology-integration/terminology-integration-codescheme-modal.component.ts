@@ -35,6 +35,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
   vocabularyOptions: FilterOptions<Vocabulary>;
   vocabulary$ = new BehaviorSubject<Vocabulary | null>(null);
+  vocabulariesSortedAlphabetically: Vocabulary[] = [];
   statusOptions: FilterOptions<Status>;
   status$ = new BehaviorSubject<Status | null>(null);
   languageOptions: FilterOptions<Code>;
@@ -85,7 +86,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           this.dataService.getConcepts(search, vocabulary ? vocabulary.uri : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
               this.loading = false;
 
-              this.searchResults = concepts.sort((a, b) => {
+              const foundConcepts = concepts.sort((a, b) => {
                 if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() < this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) {
                   return -1;
                 }
@@ -95,6 +96,16 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
                 return 0;
               });
+
+              foundConcepts.forEach( concept => { // The integration API that gives us concepts only has vocabulary's URI anymore so need to manually populate here.
+                this.vocabulariesSortedAlphabetically.forEach( vocab => {
+                  if (vocab.uri === concept.containerUri) {
+                    concept.vocabularyPrefLabel = vocab.prefLabel;
+                  }
+                })
+              });
+
+              this.searchResults = foundConcepts;
             },
             error => {
               this.loading = false;
@@ -120,6 +131,9 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           }
         });
       });
+
+      this.vocabulariesSortedAlphabetically = vocabulariesSorted;
+
       this.vocabularyOptions = [null, ...vocabulariesSorted].map(voc => ({
           value: voc,
           name: () => voc ? this.languageService.translate(voc.prefLabel, false) + (voc.status ? ' (' + this.translateService.instant(voc.status) + ') ' : '')
