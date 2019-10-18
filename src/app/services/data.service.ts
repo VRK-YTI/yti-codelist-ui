@@ -11,6 +11,7 @@ import {
   CodeRegistryType,
   CodeSchemeType,
   CodeType,
+  ConceptResponseType,
   ConceptType,
   ExtensionType,
   ExternalReferenceType,
@@ -35,6 +36,7 @@ import { Member } from '../entities/member';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
 import { UserSimple } from '../entities/user-simple';
+import { ConceptResponse } from '../entities/concept-response';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -61,6 +63,7 @@ const request = 'request';
 const vocabularies = 'vocabularies';
 const concepts = 'concepts';
 const suggestion = 'suggestion';
+const messaging = 'messaging';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -80,6 +83,7 @@ const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyCo
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
 const terminologyConceptsPath = `${terminologyBasePath}/${concepts}`;
 const terminologyConceptSuggestionPath = `${terminologyBasePath}/${suggestion}`;
+const messagingBasePath = `${intakeContext}/${api}/${version}/${messaging}`;
 
 interface FakeableUser {
   email: string;
@@ -502,11 +506,16 @@ export class DataService {
       .pipe(map(response => response.results.map((data: VocabularyType) => new Vocabulary(data))));
   }
 
-  getConcepts(searchTerm: string, containerUri: string | null, status: string | null, language: string | null): Observable<Concept[]> {
+  getConcepts(searchTerm: string, containerUri: string | null, status: string | null, language: string | null): Observable<ConceptResponse> {
 
-    const params = new HttpParams().append('language', language ? language : '').append('status', status ? status : '').append('containerUri', containerUri ? containerUri : '').append('searchTerm', searchTerm);
-    return this.http.get<WithResults<ConceptType>>(`${terminologyConceptsPath}/`, { params })
-      .pipe(map(response => response.results.map((data: ConceptType) => new Concept(data))));
+    const params = new HttpParams()
+      .append('language', language ? language : '')
+      .append('status', status ? status : '')
+      .append('containerUri', containerUri ? containerUri : '')
+      .append('searchTerm', searchTerm)
+      .append('pageSize', '200');
+    return this.http.get<ConceptResponseType>(`${terminologyConceptsPath}/`, { params })
+      .pipe(map(response => new ConceptResponse(response)));
   }
 
   getExtension(registryCodeValue: string, schemeCodeValue: string, extensionCodeValue: string): Observable<Extension> {
@@ -810,7 +819,7 @@ export class DataService {
       'definition': definition
     };
 
-    return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}`, null, { params} )
+    return this.http.post<WithResults<ConceptType>>(`${terminologyConceptSuggestionPath}`, null, { params })
       .pipe(map(res => res.results.map((data: ConceptType) => new Concept(data))));
   }
 

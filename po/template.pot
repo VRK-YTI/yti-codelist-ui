@@ -679,6 +679,12 @@ msgstr ""
 msgid "Search for concept"
 msgstr ""
 
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS_LARGE"
+msgstr ""
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS"
+msgstr ""
+
 msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""
 

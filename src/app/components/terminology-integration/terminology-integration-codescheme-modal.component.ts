@@ -16,6 +16,7 @@ import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
+import { Meta } from '../../entities/meta';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -44,6 +45,7 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
   allLanguagesFromVocabulariesAsCodes: Code[] = [];
   chosenVocabularysLanguagesAsCodes: Code[] = [];
   loading = false;
+  meta: Meta | undefined;
 
   @ViewChild('searchInput') searchInput: ElementRef;
 
@@ -70,10 +72,12 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
 
     combineLatest(this.vocabulary$, this.debouncedSearch$, this.status$, this.language$)
       .subscribe(([vocabulary, search, status, language]) => {
-        if (!search) {
+        if (!search && !vocabulary) {
           this.searchResults = [];
+          this.meta = undefined;
         } else {
           this.loading = true;
+          this.meta = undefined;
 
           let languageCode: string | null = language ? language.codeValue.substring(0, language.codeValue.lastIndexOf('-')) : null;
           if (languageCode === null || languageCode.length === 0) {
@@ -83,10 +87,11 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
           this.chosenLanguageCodeValue = languageCode;
           this.chosenLanguageCode = language;
 
-          this.dataService.getConcepts(search, vocabulary ? vocabulary.uri : null, status ? status.toString() : null, languageCode).subscribe(concepts => {
+          this.dataService.getConcepts(search, vocabulary ? vocabulary.uri : null, status ? status.toString() : null, languageCode).subscribe(conceptsResponse => {
               this.loading = false;
+              this.meta = conceptsResponse.meta;
 
-              const foundConcepts = concepts.sort((a, b) => {
+              const foundConcepts = conceptsResponse.concepts.sort((a, b) => {
                 if (this.languageService.translateToGivenLanguage(a.prefLabel, languageCode).toLowerCase() < this.languageService.translateToGivenLanguage(b.prefLabel, languageCode).toLowerCase()) {
                   return -1;
                 }

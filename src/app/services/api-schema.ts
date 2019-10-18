@@ -3,12 +3,7 @@ import { Status } from 'yti-common-ui/entities/status';
 
 export interface ApiResponseType {
 
-  meta: {
-    message: string,
-    code: number,
-    entityIdentifier?: string,
-    nonTranslatableMessage?: string
-  };
+  meta: MetaType;
 }
 
 export interface BaseResourceType {
@@ -90,6 +85,23 @@ export interface CodeType extends BaseResourceType {
   order?: string;
   codeExtensions?: ExtensionType[];
   subCodeScheme?: CodeSchemeType;
+}
+
+export interface MetaType {
+
+  message: string,
+  code: number,
+  entityIdentifier?: string,
+  nonTranslatableMessage?: string
+  totalResults: number;
+  resultCount: number;
+  from: number;
+}
+
+export interface ConceptResponseType {
+
+  meta: MetaType;
+  results: ConceptType[];
 }
 
 export interface ConceptType {

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-09-20 10:16+0300\n"
+"PO-Revision-Date: 2019-10-18 13:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -140,6 +140,12 @@ msgstr "Etsi organisaatio"
 msgid "Code list"
 msgstr "Koodisto"
 
+msgid "No search results"
+msgstr "Ei hakutuloksia"
+
+msgid "All statuses"
+msgstr "Kaikki tilat"
+
 msgid "Filter results"
 msgstr "Rajaa hakutuloksia"
 
@@ -163,9 +169,6 @@ msgstr "Kaikki rekisterit"
 
 msgid "All organizations"
 msgstr "Kaikki organisaatiot"
-
-msgid "All statuses"
-msgstr "Kaikki tilat"
 
 msgid "All extensionPropertyTypes"
 msgstr "Kaikki koodistotyypit"
@@ -514,9 +517,6 @@ msgstr "Liitä koodistoon variantti"
 msgid "variantModalInstructionText"
 msgstr "Hae liitettävä koodisto Koodistoista"
 
-msgid "No search results"
-msgstr "Ei hakutuloksia"
-
 msgid "LABEL_TEXT_CREATE_EXTENSION_ID"
 msgstr "Laajennuksen tunnus"
 
@@ -705,6 +705,14 @@ msgstr "Ehdota käsitettä Sanastot-työkaluun"
 
 msgid "Search for concept"
 msgstr "Hae käsitettä"
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS_LARGE"
+msgstr ""
+"Hakua vastasi {{ count }} käsitettä, joista näytetään ensimmäiset {{ showCount }} "
+"tulosta. Rajaa hakua saadaksesi tarkempia tuloksia."
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS"
+msgstr "{{ count }} hakutulosta"
 
 msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr ""

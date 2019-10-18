@@ -10,7 +10,6 @@
 <div class="modal-body full-height">
 
   <div class="modal-sections">
-
     <div class="fixed-height-section pb-2">
       <p translate>{{terminologyIntegrationModalInstructionText}}</p>
 
@@ -37,6 +36,18 @@
                            id="language_selection_dropdown"
                            [filterSubject]="language$"
                            [options]="languageOptions"></app-filter-dropdown>
+    </div>
+
+    <div class="pb-2">
+      <span *ngIf="meta != null && meta.totalResults > meta.resultCount" id='search_concept_large_result_text'>{{
+        'CONCEPT_SEARCH_MATCHED_RESULTS_LARGE' |
+        translate : {
+        count: meta.totalResults,
+        showCount: 200
+      } }}</span>
+      <span *ngIf="meta != null && meta.totalResults <= meta.resultCount" id='search_concept_result_text'>{{ 'CONCEPT_SEARCH_MATCHED_RESULTS' | translate : {
+        count: meta.totalResults
+      } }}</span>
     </div>
 
     <div class="content-box scrolling-full-height">

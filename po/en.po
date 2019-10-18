@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-09-23 08:45+0300\n"
+"PO-Revision-Date: 2019-10-18 13:09+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -138,6 +138,12 @@ msgstr ""
 msgid "Code list"
 msgstr ""
 
+msgid "No search results"
+msgstr ""
+
+msgid "All statuses"
+msgstr ""
+
 msgid "Filter results"
 msgstr ""
 
@@ -160,9 +166,6 @@ msgid "All registries"
 msgstr ""
 
 msgid "All organizations"
-msgstr ""
-
-msgid "All statuses"
 msgstr ""
 
 msgid "All extensionPropertyTypes"
@@ -504,9 +507,6 @@ msgstr "Attach a variant to the code list"
 msgid "variantModalInstructionText"
 msgstr "Search for the code list from Refence Data"
 
-msgid "No search results"
-msgstr ""
-
 msgid "LABEL_TEXT_CREATE_EXTENSION_ID"
 msgstr "Extension code value"
 
@@ -694,6 +694,14 @@ msgstr ""
 
 msgid "Search for concept"
 msgstr ""
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS_LARGE"
+msgstr ""
+"Your search matched {{ count }} concepts. First {{ showCount }} results are shown. "
+"Narrow the search to get better results."
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS"
+msgstr "{{ count }} search results"
 
 msgid "{{terminologyIntegrationModalPageTitle}}"
 msgstr "Search the variant"
