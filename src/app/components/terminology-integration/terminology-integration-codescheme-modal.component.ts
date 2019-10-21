@@ -17,6 +17,7 @@ import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { Meta } from '../../entities/meta';
+import { comparingLocalizable, comparingPrimitive } from 'yti-common-ui/utils/comparator';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -109,6 +110,13 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
                   }
                 })
               });
+
+              foundConcepts.sort(comparingPrimitive<Concept>(
+                concept => this.languageService.isLocalizableEmpty(concept.prefLabel))
+                .andThen(comparingPrimitive<Concept>(concept =>
+                  this.languageService.isLocalizableEmpty(concept.prefLabel) ? concept.uri.toLowerCase() : null))
+                .andThen(comparingLocalizable<Concept>(this.languageService,
+                  concept => concept.prefLabel ? concept.prefLabel : {}, true)));
 
               this.searchResults = foundConcepts;
             },
