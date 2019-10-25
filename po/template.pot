@@ -1546,6 +1546,9 @@ msgstr ""
 msgid "pattern"
 msgstr ""
 
+msgid "all_langs"
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 

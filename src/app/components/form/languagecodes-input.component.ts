@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, Optional, Self } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Optional, Output, Self } from '@angular/core';
 import { Code } from '../../entities/code';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
@@ -10,18 +10,6 @@ import { Observable, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from '../../entities/code-simple';
 import { LanguageService } from '../../services/language.service';
-
-function addToControl<T>(control: FormControl, itemToAdd: T) {
-
-  const previous = control.value as T[];
-  control.setValue([...previous, itemToAdd]);
-}
-
-function removeFromControl<T>(control: FormControl, itemToRemove: T) {
-
-  const previous = control.value as T[];
-  control.setValue(previous.filter(item => item !== itemToRemove));
-}
 
 @Component({
   selector: 'app-languagecodes-input',
@@ -71,6 +59,7 @@ export class LanguageCodesInputComponent implements ControlValueAccessor, OnDest
   @Input() label: string;
   @Input() restrict = false;
   @Input() required = false;
+  @Output() updatedListEvent = new EventEmitter<CodePlain[]>();
   control = new FormControl([]);
 
   languageCodes$: Observable<Code[]>;
@@ -110,11 +99,12 @@ export class LanguageCodesInputComponent implements ControlValueAccessor, OnDest
 
     this.searchLinkedCodeModalService.openWithCodes(this.languageCodes, titleLabel, searchlabel, restrictIds, true)
       .then((languageCode: Code) =>
-        addToControl(this.control, languageCode), ignoreModalClose);
+        this.addToControl(this.control, languageCode), ignoreModalClose);
   }
 
   removeLanguageCode(languageCode: CodePlain) {
-    removeFromControl(this.control, languageCode);
+    this.removeFromControl(this.control, languageCode);
+    this.updatedListEvent.emit(this.selectedLanguageCodes.filter( c => c.codeValue !== languageCode.codeValue));
   }
 
   get languageCodes() {
@@ -139,5 +129,18 @@ export class LanguageCodesInputComponent implements ControlValueAccessor, OnDest
 
   ngOnDestroy(): void {
     this.subscriptionsToClean.forEach(s => s.unsubscribe());
+  }
+
+  addToControl<T>(control: FormControl, itemToAdd: T) {
+
+    const previous = control.value as T[];
+    control.setValue([...previous, itemToAdd]);
+    this.updatedListEvent.emit(this.selectedLanguageCodes);
+  }
+
+  removeFromControl<T>(control: FormControl, itemToRemove: T) {
+
+    const previous = control.value as T[];
+    control.setValue(previous.filter(item => item !== itemToRemove));
   }
 }

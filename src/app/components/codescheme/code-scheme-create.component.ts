@@ -37,6 +37,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
   pageTitle = 'Create code list';
   cloning = false;
   allLanguageCodes: CodePlain[];
+  initialLanguageCodes: CodePlain[];
   originalCodeScheme: CodeScheme;
 
   codeSchemeForm = new FormGroup({
@@ -144,6 +145,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
                   languageCodesToCopy.push(potentialLanguageCode);
                 }
               });
+
             });
             if (languageCodesToCopy.length > 0) {
               this.codeSchemeForm.patchValue({ languageCodes: languageCodesToCopy });
@@ -173,6 +175,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       codeValueMatches('en', languageCode)
     );
     this.codeSchemeForm.patchValue({ languageCodes: defaultLanguageCodes });
+    this.initialLanguageCodes = defaultLanguageCodes;
 
     function codeValueMatches(languageCode: string, code: CodePlain) {
       return code.codeValue === languageCode;
@@ -226,6 +229,7 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       const save = () => {
         return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
           .pipe(tap(createdCodeScheme => {
+            console.log('createdCodeScheme', createdCodeScheme);
             this.router.navigate(createdCodeScheme.route);
           }));
       };
@@ -273,5 +277,9 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
   get isSuperUser() {
     return this.userService.user.superuser;
+  }
+
+  handleLanguageCodesChangedEvent(updatedLanguageCodes: CodePlain[]) {
+    this.initialLanguageCodes = updatedLanguageCodes;
   }
 }

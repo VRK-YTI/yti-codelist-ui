@@ -79,11 +79,12 @@
           <app-error-messages id="code_list_form_error_messages" [control]="codeSchemeForm"></app-error-messages>
         </div>
 
-        <app-localizable-input-with-language-indicator [id]="'codelist_name_input'"
-                               [label]="'Code list name' | translate"
-                               [required]="true"
-                               [infoText]="'INFO_TEXT_CODELIST_NAME'"
-                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+        <app-localizable-input-with-language-indicator-for-all-languages [id]="'codelist_name_input'"
+                                                                         [label]="'Code list name' | translate"
+                                                                         [required]="true"
+                                                                         [infoText]="'INFO_TEXT_CODELIST_NAME'"
+                                                                         [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                         [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator-for-all-languages>
         <dl>
           <dd>
             <div>
@@ -125,22 +126,26 @@
         <app-languagecodes-input [id]="'codelist_languagecode_input'"
                                  [label]="'Language code' | translate"
                                  [required]="true"
+                                 (updatedListEvent)="handleLanguageCodesChangedEvent($event)"
                                  [formControlName]="'languageCodes'"></app-languagecodes-input>
 
-        <app-localizable-textarea-with-language-indicator [id]="'codelist_description_textarea'"
-                                  [label]="'Description' | translate"
-                                  [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
-                                  [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
+                                                                            [label]="'Description' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-        <app-localizable-textarea-with-language-indicator [id]="'codelist_definition_textarea'"
-                                  [label]="'Definition' | translate"
-                                  [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
-                                  [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_definition_textarea'"
+                                                                            [label]="'Definition' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-        <app-localizable-textarea-with-language-indicator [id]="'codelist_changenote_textarea'"
-                                  [label]="'Change note' | translate"
-                                  [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
-                                  [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator>
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_changenote_textarea'"
+                                                                            [label]="'Change note' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
         <app-literal-input [id]="'codelist_version_input'"
                            [label]="'Version' | translate"
@@ -182,10 +187,11 @@
                                        [formControlName]="'externalReferences'"
                                        [hidden]="cloning"></app-external-references-input>
 
-        <app-localizable-textarea-with-language-indicator [id]="'codelist_feedback_channel_textarea'"
-                                                          [label]="'FeedbackChannel' | translate"
-                                                          [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
-                                                          [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator>
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_feedback_channel_textarea'"
+                                                                            [label]="'FeedbackChannel' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
       </div>
     </div>

@@ -46,9 +46,10 @@
 
           <app-error-messages id="member_form_error_messages" [control]="memberForm"></app-error-messages>
 
-          <app-localizable-input-with-language-indicator [id]="'member_name_input'"
-                                 [label]="'Member name' | translate"
-                                 [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+          <app-localizable-input-with-language-indicator-for-all-languages [id]="'member_name_input'"
+                                                                           [label]="'Member name' | translate"
+                                                                           [parentElementsLanguageCodes]="extension.parentCodeScheme.languageCodes"
+                                                                           [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator-for-all-languages>
 
           <div *ngFor="let valueType of valueTypes">
             <app-literal-input [id]="'member_membervalue_' + valueType.localName + '_input'"
@@ -58,18 +59,18 @@
           </div>
 
           <app-inline-clipboard *ngIf="getCodeUri()"
-                         id="member_code_uri"
-                         [label]="'Code URI' | translate"
-                         [value]="getCodeUri()"
-                         [showAsLink]="false"
-                         [infoText]="'INFO_TEXT_CODE_URI'"></app-inline-clipboard>
+                                id="member_code_uri"
+                                [label]="'Code URI' | translate"
+                                [value]="getCodeUri()"
+                                [showAsLink]="false"
+                                [infoText]="'INFO_TEXT_CODE_URI'"></app-inline-clipboard>
 
           <app-inline-clipboard *ngIf="getCodeConceptUri()"
-                         id="member_code_terminology_uri"
-                         [label]="'Code vocabularies URI' | translate"
-                         [value]="getCodeConceptUri()"
-                         [showAsLink]="false"
-                         [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-inline-clipboard>
+                                id="member_code_terminology_uri"
+                                [label]="'Code vocabularies URI' | translate"
+                                [value]="getCodeConceptUri()"
+                                [showAsLink]="false"
+                                [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-inline-clipboard>
 
           <app-code-input id="member_code_input"
                           [label]="'Code' | translate"

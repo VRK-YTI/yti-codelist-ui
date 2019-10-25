@@ -239,4 +239,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
   toggleEnforceTransitionRulesForSuperUserToo() {
     this.freeSuperUserFromStatusTransitionRules = !this.freeSuperUserFromStatusTransitionRules;
   }
+
+  handleLanguageCodesChangedEvent(updatedLanguageCodes: CodePlain[]) {
+    this.languageCodes = updatedLanguageCodes;
+  }
 }

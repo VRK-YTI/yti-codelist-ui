@@ -123,6 +123,8 @@ import {
   CodeSchemeMassMigrateCodeStatusesModalComponent,
   CodeSchemeMassMigrateCodeStatusesModalService
 } from './components/codescheme/code-scheme-mass-migrate-code-statuses-modal.component';
+import { LocalizableInputWithLanguageIndicatorForAllLangagesComponent } from './components/form/localizable-input-with-language-indicator-for-all-langages.component';
+import { LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent } from './components/form/localizable-textarea-with-language-indicator-for-all-langages.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -250,6 +252,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LinkComponent,
     LocalizableLiteralComponent,
     LocalizableLiteralWithLanguageIndicatorComponent,
+    LocalizableInputWithLanguageIndicatorForAllLangagesComponent,
+    LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent,
     EditableButtonsComponent,
     ErrorMessagesComponent,
     LinkShowModalComponent,

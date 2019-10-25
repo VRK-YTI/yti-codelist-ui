@@ -55,14 +55,13 @@ export class LanguageService implements Localizer {
       return '';
     }
 
-    const primaryLocalization = localizable[useUILanguage ? this.language : this.contentLanguage];
+    const primaryLocalization = localizable[useUILanguage || this.contentLanguage === 'all' ? this.language : this.contentLanguage];
 
     if (primaryLocalization) {
       return primaryLocalization;
     } else {
 
       const fallbackValue = this.checkForFallbackLanguages(localizable);
-
       if (fallbackValue != null) {
         return fallbackValue;
       }
@@ -72,7 +71,6 @@ export class LanguageService implements Localizer {
           return `${value} (${language})`;
         }
       }
-
       return '';
     }
   }

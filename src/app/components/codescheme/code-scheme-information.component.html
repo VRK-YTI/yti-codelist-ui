@@ -6,10 +6,11 @@
                    [value]="codeScheme.codeValue"
                    [infoText]="'INFO_TEXT_CODELIST_CODE_VALUE'"></app-literal>
 
-      <app-localizable-input-with-language-indicator [id]="'codelist_name_input'"
-                                                     [label]="'Code list name' | translate"
-                                                     [infoText]="'INFO_TEXT_CODELIST_NAME'"
-                                                     [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+      <app-localizable-input-with-language-indicator-for-all-languages [id]="'codelist_name_input'"
+                                                                       [label]="'Code list name' | translate"
+                                                                       [infoText]="'INFO_TEXT_CODELIST_NAME'"
+                                                                       [parentElementsLanguageCodes]="languageCodes"
+                                                                       [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator-for-all-languages>
 
       <dl *ngIf="editing">
         <dd>
@@ -85,6 +86,7 @@
       <app-languagecodes-input [id]="'codelist_languagecode_input'"
                                [label]="'Language code' | translate"
                                [required]="true"
+                               (updatedListEvent)="handleLanguageCodesChangedEvent($event)"
                                [formControlName]="'languageCodes'"></app-languagecodes-input>
 
       <app-code-input id="default_code_input"
@@ -118,20 +120,23 @@
         </div>
       </div>
 
-      <app-localizable-textarea-with-language-indicator [id]="'codelist_description_textarea'"
-                                                        [label]="'Description' | translate"
-                                                        [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
-                                                        [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
+      <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
+                                                                         [label]="'Description' | translate"
+                                                                         [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
+                                                                         [parentElementsLanguageCodes]="languageCodes"
+                                                                         [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-      <app-localizable-textarea-with-language-indicator [id]="'codelist_definition_textarea'"
-                                                        [label]="'Definition' | translate"
-                                                        [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
-                                                        [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
+      <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_definition_textarea'"
+                                                                         [label]="'Definition' | translate"
+                                                                         [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
+                                                                         [parentElementsLanguageCodes]="languageCodes"
+                                                                         [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-      <app-localizable-textarea-with-language-indicator [id]="'codelist_changenote_textarea'"
-                                                        [label]="'Change note' | translate"
-                                                        [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
-                                                        [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator>
+      <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_changenote_textarea'"
+                                                                         [label]="'Change note' | translate"
+                                                                         [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
+                                                                         [parentElementsLanguageCodes]="languageCodes"
+                                                                         [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
       <app-literal-input [id]="'codelist_version_input'"
                          [label]="'Version' | translate"
@@ -185,10 +190,11 @@
                                      [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
                                      [formControlName]="'externalReferences'"></app-external-references-input>
 
-      <app-localizable-textarea-with-language-indicator [id]="'codelist_feedback_channel_textarea'"
+      <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_feedback_channel_textarea'"
                                                         [label]="'FeedbackChannel' | translate"
                                                         [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
-                                                        [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator>
+                                                        [parentElementsLanguageCodes]="languageCodes"
+                                                        [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
     </div>
     <div class="col-2">

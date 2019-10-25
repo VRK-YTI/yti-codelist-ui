@@ -10,10 +10,11 @@
                    [value]="code.codeValue"
                    [infoText]="'INFO_TEXT_CODE_VALUE'"></app-literal>
 
-      <app-localizable-input-with-language-indicator [id]="'code_name_input'"
-                             [label]="'Code name' | translate"
-                             [infoText]="'INFO_TEXT_CODE_NAME'"
-                             [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+      <app-localizable-input-with-language-indicator-for-all-languages [id]="'code_name_input'"
+                                                                       [label]="'Code name' | translate"
+                                                                       [infoText]="'INFO_TEXT_CODE_NAME'"
+                                                                       [parentElementsLanguageCodes]="codeScheme.languageCodes"
+                                                                       [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator-for-all-languages>
 
       <dl *ngIf="editing">
         <dd>
@@ -28,10 +29,10 @@
       </dl>
 
       <app-inline-clipboard *ngIf="!editing && code.conceptUriInVocabularies && code.conceptUriInVocabularies.length > 0"
-                     [label]="'Vocabularies URI' | translate"
-                     [showAsLink]="true"
-                     [value]="getConceptUri()"
-                     [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-inline-clipboard>
+                            [label]="'Vocabularies URI' | translate"
+                            [showAsLink]="true"
+                            [value]="getConceptUri()"
+                            [infoText]="'INFO_TEXT_VOCABULARIES_URI'"></app-inline-clipboard>
       <div *ngIf="editing && code.conceptUriInVocabularies && code.conceptUriInVocabularies.length > 0">
         <dl>
           <dt>
@@ -64,15 +65,17 @@
                         [isSuperUser]="isSuperUser && freeSuperUserFromStatusTransitionRules"
                         [infoText]="'INFO_TEXT_CODE_STATUS'"></app-status-input>
 
-      <app-localizable-textarea-with-language-indicator [id]="'code_description_textarea'"
-                                [label]="'Description' | translate"
-                                [infoText]="'INFO_TEXT_CODE_DESCRIPTION'"
-                                [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
+      <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'code_description_textarea'"
+                                                                          [label]="'Description' | translate"
+                                                                          [infoText]="'INFO_TEXT_CODE_DESCRIPTION'"
+                                                                          [parentElementsLanguageCodes]="codeScheme.languageCodes"
+                                                                          [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-      <app-localizable-textarea-with-language-indicator [id]="'code_definition_textarea'"
-                                [label]="'Definition' | translate"
-                                [infoText]="'INFO_TEXT_CODE_DEFINITION'"
-                                [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator>
+      <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'code_definition_textarea'"
+                                                                          [label]="'Definition' | translate"
+                                                                          [infoText]="'INFO_TEXT_CODE_DEFINITION'"
+                                                                          [parentElementsLanguageCodes]="codeScheme.languageCodes"
+                                                                          [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
       <app-literal-input [id]="'code_shortname_input'"
                          [label]="'Short name' | translate"
@@ -100,9 +103,9 @@
                             [formControlName]="'validity'"></app-date-range-input>
 
       <app-inline-clipboard [label]="'URI' | translate"
-                     [value]="getCodeUri()"
-                     [showAsLink]="false"
-                     [infoText]="'INFO_TEXT_CODE_URI'"></app-inline-clipboard>
+                            [value]="getCodeUri()"
+                            [showAsLink]="false"
+                            [infoText]="'INFO_TEXT_CODE_URI'"></app-inline-clipboard>
 
       <app-literal *ngIf="user"
                    [id]="'code_user'"
