@@ -18,7 +18,8 @@ import {
   InfoDomainType,
   MemberSimpleType,
   MemberType,
-  MessagingUserType, OrganizationType,
+  MessagingUserType,
+  OrganizationType,
   PropertyTypeType,
   UserSimpleType,
   VocabularyType
@@ -941,10 +942,11 @@ export class DataService {
     return this.subscriptionRequest(resourceUri, undefined, ACTION_DELETE);
   }
 
-  getMessagingUserData(): Observable<MessagingUser> {
+  getMessagingUserData(): Observable<MessagingUser | undefined> {
 
     return this.http.get<MessagingUserType>(`${messagingBasePath}/user`)
-      .pipe(map(res => new MessagingUser(res)));
+      .pipe(map(res => new MessagingUser(res)),
+        catchError(err => of(undefined)));
   }
 
   setSubscriptionType(subscriptionType: string): Observable<MessagingUser> {
