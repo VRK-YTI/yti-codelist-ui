@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-10-18 13:09+0300\n"
+"PO-Revision-Date: 2019-10-25 12:38+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -387,6 +387,15 @@ msgstr "Update code statuses"
 msgid "Name"
 msgstr ""
 
+msgid "You will receive an email notification when this resource changes."
+msgstr ""
+
+msgid "Add email subscription"
+msgstr ""
+
+msgid "Remove email subscription"
+msgstr ""
+
 msgid "Import codes"
 msgstr ""
 
@@ -730,6 +739,32 @@ msgid "Send access request"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+msgid ""
+"You have subscribed to be notified via email when the following resources change. To "
+"remove the subscription, click the icon next to the resource."
+msgstr ""
+
+msgid "Email notifications"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Code list resources"
+msgstr ""
+
+msgid "Terminology resources"
+msgstr ""
+
+msgid "Datamodel resources"
+msgstr ""
+
+msgid "Comments resources"
+msgstr ""
+
+msgid "SUBSCRIPTIONS"
 msgstr ""
 
 msgid "INFO_TEXT_CODE_REGISTRY"
@@ -1660,6 +1695,21 @@ msgstr "The result of code status changes"
 
 msgid "pattern"
 msgstr "Input is not in the required format"
+
+msgid "ADD EMAIL SUBSCRIPTION TO RESOURCE REGARDING CHANGES?"
+msgstr ""
+
+msgid "REMOVE EMAIL SUBSCRIPTION TO RESOURCE?"
+msgstr ""
+
+msgid "ARE YOU SURE YOU WANT TO ENABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
+msgstr ""
+
+msgid "ARE YOU SURE YOU WANT TO DISABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
+msgstr ""
+
+msgid "Adding subscription failed."
+msgstr ""
 
 msgid "invalidDate"
 msgstr "Invalid date"

@@ -20,7 +20,10 @@ import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-v
 import { switchMap, tap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
-import { changeToRestrictedStatus, isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo } from '../../utils/status-check';
+import {
+  changeToRestrictedStatus,
+  isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo
+} from '../../utils/status-check';
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
 import { ExtensionSimple } from '../../entities/extension-simple';
 import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
@@ -47,9 +50,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   languageCodes: CodePlain[] | null;
   deleteCodeSchemeButtonTitle = 'Delete code list';
   prefilledSearchTermForCode: string;
-
   initialTabId: string | undefined = undefined;
-
+  hasSubscription: boolean | undefined = undefined;
   changeCodeStatusesAsWellWhenSavingCodeScheme = false;
 
   constructor(private userService: UserService,
@@ -89,6 +91,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
+      this.checkSubscription();
       this.codeScheme.variantsOfThisCodeScheme.sort(comparingLocalizable<CodeSchemeListItem>(this.languageService, item =>
         item.prefLabel ? item.prefLabel : {}));
       this.locationService.atCodeSchemePage(codeScheme);
@@ -108,6 +111,19 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.activatedRoute.queryParams.subscribe(params => {
       this.prefilledSearchTermForCode = params['prefilledSearchTermForCode'];
     });
+  }
+
+  checkSubscription() {
+
+    if (!this.isAnonymous) {
+      this.dataService.getSubscription(this.codeScheme.uri).subscribe(resource => {
+        if (resource) {
+          this.hasSubscription = true;
+        } else {
+          this.hasSubscription = false;
+        }
+      });
+    }
   }
 
   refreshCodesAndCodeScheme() {
@@ -137,7 +153,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.codeScheme == null ||
       this.codes == null ||
       this.extensions == null ||
-      this.deleting;
+      this.deleting ||
+      (!this.isAnonymous && this.hasSubscription == null);
   }
 
   get contentLanguages(): CodePlain[] {
@@ -306,6 +323,36 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     );
   }
 
+  addSubscription() {
+
+    this.confirmationModalService.openAddSubscription()
+      .then(() => {
+        this.dataService.addSubscription(this.codeScheme.uri, 'codelist').subscribe(success => {
+          if (success) {
+            this.hasSubscription = true;
+          } else {
+            this.hasSubscription = false;
+            this.errorModalService.open('Submit error', 'Adding subscription failed.', null);
+          }
+        });
+      }, ignoreModalClose);
+  }
+
+  removeSubscription() {
+
+    this.confirmationModalService.openRemoveSubscription()
+      .then(() => {
+        this.dataService.deleteSubscription(this.codeScheme.uri).subscribe(success => {
+          if (success) {
+            this.hasSubscription = false;
+          } else {
+            this.hasSubscription = true;
+            this.errorModalService.open('Submit error', 'Subscription deletion failed.', null);
+          }
+        });
+      }, ignoreModalClose);
+  }
+
   get showMenu(): boolean {
 
     return this.canDeleteCodeScheme ||
@@ -316,14 +363,17 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canDeleteCodeScheme(): boolean {
+
     return this.authorizationManager.canDeleteCodeScheme(this.codeScheme);
   }
 
   get canAddExtension(): boolean {
+
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 
   canAddExtensionWithType(propertyTypeLocalName: string): boolean {
+
     if (this.isCodeExtension(propertyTypeLocalName) && this.hasExtension(propertyTypeLocalName)) {
       return false;
     }
@@ -331,6 +381,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   isCodeExtension(propertyTypeLocalName: string): boolean {
+
     const codeExtensionLocalNames: string[] = ['dpmMetric', 'dpmDimension', 'dpmExplicitDomain', 'dpmTypedDomain'];
     for (const extensionPropertyTypeLocalName of codeExtensionLocalNames) {
       if (propertyTypeLocalName === extensionPropertyTypeLocalName) {
@@ -341,6 +392,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   hasExtension(propertyTypeLocalName: string): boolean {
+
     const extensions: ExtensionSimple[] = this.codeScheme.extensions ? this.codeScheme.extensions : [];
     for (const extension of extensions) {
       if (extension.propertyType.localName === propertyTypeLocalName) {
@@ -351,38 +403,51 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   get canCreateANewVersionFromCodeScheme(): boolean {
+
     return !this.codeScheme.nextCodeschemeId &&
       this.codeScheme.status === 'VALID' &&
       this.authorizationManager.canEdit(this.codeScheme);
   }
 
   get canAttachOrDetachAVariant(): boolean {
+
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 
   get isSuperUser(): boolean {
+
     return this.userService.user.superuser;
   }
 
   get canAddCode(): boolean {
+
     return this.authorizationManager.canEdit(this.codeScheme) && !this.codeScheme.restricted;
   }
 
+  get isAnonymous(): boolean {
+
+    return this.userService.user.anonymous;
+  }
+
   createANewVersionFromThisCodeScheme() {
+
     this.router.navigate(['createcodescheme'], { queryParams: { 'originalCodeSchemeId': this.codeScheme.id } });
   }
 
   createANewVersionOfThisCodeSchemeFromFile() {
+
     this.codeSchemeImportModalService.open(true, false, this.codeScheme);
   }
 
   updateCodeSchemeFromFile() {
+
     this.codeSchemeImportModalService.open(false, true, this.codeScheme)
       .then(codeScheme => this.router.navigate(['re'], { skipLocationChange: true })).catch(reason => undefined)
       .then(() => this.router.navigate(this.codeScheme.route)).catch(reason => undefined);
   }
 
   massMigrateCodeListsCodesStatuses() {
+
     this.codeSchemeMassMigrateCodeStatusesModalService.open(this.codeScheme)
       .then(codeScheme => this.router.navigate(['re'], { skipLocationChange: true })).catch(reason => undefined)
       .then(() => this.router.navigate(this.codeScheme.route)).catch(reason => undefined);
@@ -402,6 +467,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   openVariantSearchModal() {
+
     this.codeScheme.variantsOfThisCodeScheme.forEach(variant => {
       this.forbiddenVariantSearchResultIds.push(variant.id);
     });
@@ -413,6 +479,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   putChosenVariantStuffInPlace(chosenVariantCodeScheme: CodeScheme) {
+
     this.chosenVariant = chosenVariantCodeScheme;
     if (this.codeScheme.variantsOfThisCodeScheme.filter(variant => (variant.id === this.chosenVariant.id)).length > 0) {
       return; // stop user from attaching the same variant twice (would not mess DB but would mess the UI)
@@ -439,15 +506,18 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   changeLanguages(codes: CodePlain[]) {
+
     setTimeout(this.changeLanguagesAfterTimeout(codes), 0);
   }
 
   toggleChangeCodeStatusesAsWellWhenSavingCodeScheme(doItOrNot: boolean) {
+
     this.changeCodeStatusesAsWellWhenSavingCodeScheme = doItOrNot;
   }
 
   // timeout of one tick (see the caller) added to avoid ExpressionChangedAfterItHasBeenCheckedError
   changeLanguagesAfterTimeout(codes: CodePlain[]) {
+
     this.languageCodes = codes
   }
 }

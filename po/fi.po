@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-10-18 13:09+0300\n"
+"PO-Revision-Date: 2019-10-24 11:17+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -397,6 +397,15 @@ msgstr "Muuta koodien tiloja"
 msgid "Name"
 msgstr "Nimi"
 
+msgid "You will receive an email notification when this resource changes."
+msgstr "Sinulle lähetetään sähköpostia, kun tähän aineistoon tulee muutoksia."
+
+msgid "Add email subscription"
+msgstr "Tilaa sähköposti-ilmoitukset"
+
+msgid "Remove email subscription"
+msgstr "Poista sähköposti-ilmoitukset"
+
 msgid "Import codes"
 msgstr "Tuo koodeja"
 
@@ -742,6 +751,31 @@ msgstr "Lähetä käyttöoikeuspyyntö"
 
 msgid "Send"
 msgstr "Lähetä"
+
+msgid ""
+"You have subscribed to be notified via email when the following resources change. To "
+"remove the subscription, click the icon next to the resource."
+msgstr ""
+"Olet tilannut seuraavien aineistojen muutoksista ilmoitukset sähköpostiisi. Poistaaksesi "
+"ilmoituksen, paina aineiston vieressä olevaa ikonia."
+
+msgid "Email notifications"
+msgstr "Sähköposti-ilmoitukset"
+
+msgid "Daily"
+msgstr "Joka päivä"
+
+msgid "Code list resources"
+msgstr "Koodistoaineistot"
+
+msgid "Terminology resources"
+msgstr "Sanastoaineistot"
+
+msgid "Datamodel resources"
+msgstr "Tietomalliaineistot"
+
+msgid "SUBSCRIPTIONS"
+msgstr "TILAUKSET"
 
 msgid "INFO_TEXT_CODE_REGISTRY"
 msgstr ""
@@ -1688,6 +1722,24 @@ msgstr "Koodien tilojen vaihtamisen tulos"
 msgid "pattern"
 msgstr "Syöte ei ole halutussa muodossa"
 
+msgid "ADD EMAIL SUBSCRIPTION TO RESOURCE REGARDING CHANGES?"
+msgstr "TILAA SÄHKÖPOSTI-ILMOITUKSET AINEISTON MUUTOKSISTA?"
+
+msgid "REMOVE EMAIL SUBSCRIPTION TO RESOURCE?"
+msgstr "POISTETAANKO SÄHKÖPOSTI-TILAUS AINEISTOSTA?"
+
+msgid "ARE YOU SURE YOU WANT TO ENABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
+msgstr ""
+"OLETKO VARMA, ETTÄ HALUAT KYTKEÄ SÄHKÖPOSTIEN VASTAANOTTOON LIITTYVÄN ASETUKSEN POIS "
+"PÄÄLLE?"
+
+msgid "ARE YOU SURE YOU WANT TO DISABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
+msgstr ""
+"OLETKO VARMA, ETTÄ HALUAT KYTKEÄ SÄHKÖPOSTIEN VASTAANOTTOON LIITTYVÄN ASETUKSEN PÄÄLLE?"
+
+msgid "Adding subscription failed."
+msgstr "Ilmoitusten tilaus epäonnistui."
+
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"
 
@@ -1732,3 +1784,7 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
+
+#~ msgid ""
+#~ "You will be sent an e-mail regarding the following resources when they are changed."
+#~ msgstr "Sinulle lähetetään sähköpostia kun seuraaviin aineistoihin tulee muutoksia."

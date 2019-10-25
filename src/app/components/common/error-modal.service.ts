@@ -24,4 +24,9 @@ export class CodeListErrorModalService {
       this.errorModalService.openSubmitError(showDebug ? error : undefined);
     }
   }
+
+  open(title: string, body: string, error?: any) {
+
+    this.errorModalService.open(title, body, error);
+  }
 }

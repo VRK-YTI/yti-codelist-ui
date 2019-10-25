@@ -12,6 +12,18 @@
       <div *ngIf="showMenu" ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="codeSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
         <div ngbDropdownMenu aria-labelledby="codeSchemeDropdown">
+          <button id="add_subscription_button"
+                  *ngIf="!isAnonymous && hasSubscription === false"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="addSubscription()"
+                  translate>Add email subscription</button>
+          <button id="delete_subscription_button"
+                  *ngIf="!isAnonymous && hasSubscription === true"
+                  type="button"
+                  class="dropdown-item"
+                  (click)="removeSubscription()"
+                  translate>Remove email subscription</button>
           <button id="create_code_button"
                   *ngIf="canAddCode"
                   type="button"
@@ -136,6 +148,11 @@
       </div>
 
       <app-content-language [languageCodes]="contentLanguages"></app-content-language>
+
+      <div *ngIf="hasSubscription" class="subscription">
+        <span class="subscription-icon icon-bell"
+              ngbTooltip="{{ 'You will receive an email notification when this resource changes.' | translate }}"></span>
+      </div>
     </div>
   </div>
 

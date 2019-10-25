@@ -74,4 +74,20 @@ export class CodeListConfirmationModalService {
     return this.confirmationModalService.open('Change code statuses at the same time?', translateParams,
       'CHANGE CODE STATUSES TOO?');
   }
+
+  openAddSubscription() {
+    return this.confirmationModalService.open('ADD EMAIL SUBSCRIPTION TO RESOURCE REGARDING CHANGES?', undefined, '');
+  }
+
+  openRemoveSubscription() {
+    return this.confirmationModalService.open('REMOVE EMAIL SUBSCRIPTION TO RESOURCE?', undefined, '');
+  }
+
+  openToggleNotifications(enable: boolean) {
+    if (enable) {
+      return this.confirmationModalService.open('ARE YOU SURE YOU WANT TO ENABLE THE NOTIFICATION EMAIL SUBSCRIPTION?', undefined, '');
+    } else {
+      return this.confirmationModalService.open('ARE YOU SURE YOU WANT TO DISABLE THE NOTIFICATION EMAIL SUBSCRIPTION?', undefined, '');
+    }
+  }
 }

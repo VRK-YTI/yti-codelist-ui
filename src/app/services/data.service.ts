@@ -18,6 +18,7 @@ import {
   InfoDomainType,
   MemberSimpleType,
   MemberType,
+  MessagingUserType, OrganizationType,
   PropertyTypeType,
   UserSimpleType,
   VocabularyType
@@ -36,7 +37,10 @@ import { Member } from '../entities/member';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
 import { UserSimple } from '../entities/user-simple';
+import { MessagingUser } from '../entities/messaging-user';
 import { ConceptResponse } from '../entities/concept-response';
+import { SubscriptionRequest } from '../entities/subscription-request';
+import { SubscriptionTypeRequest } from '../entities/subscription-type-request';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -64,6 +68,10 @@ const vocabularies = 'vocabularies';
 const concepts = 'concepts';
 const suggestion = 'suggestion';
 const messaging = 'messaging';
+
+const ACTION_GET = 'GET';
+const ACTION_ADD = 'ADD';
+const ACTION_DELETE = 'DELETE';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -124,7 +132,7 @@ export class DataService {
 
   getOrganizations(): Observable<Organization[]> {
 
-    return this.http.get<WithResults<Organization>>(organizationsBasePath)
+    return this.http.get<WithResults<OrganizationType>>(organizationsBasePath)
       .pipe(map(res => res.results.map(data => new Organization(data))));
   }
 
@@ -134,7 +142,7 @@ export class DataService {
       onlyOrganizationsWithCodeSchemes: 'true'
     };
 
-    return this.http.get<WithResults<Organization>>(organizationsBasePath, { params })
+    return this.http.get<WithResults<OrganizationType>>(organizationsBasePath, { params })
       .pipe(map(res => res.results.map(data => new Organization(data))));
   }
 
@@ -900,5 +908,51 @@ export class DataService {
       return 'U+002EU+002E';
     }
     return encodeURIComponent(codeCodeValue).replace('#', '%23');
+  }
+
+  subscriptionRequest(resourceUri: string, type: string | undefined, action: string): Observable<boolean> {
+
+    const subscriptionRequest: SubscriptionRequest = new SubscriptionRequest();
+    subscriptionRequest.uri = resourceUri;
+    if (type) {
+      subscriptionRequest.type = type;
+    }
+    subscriptionRequest.action = action;
+
+    return this.http.post(`${messagingBasePath}/subscriptions/`, subscriptionRequest, { observe: 'response' })
+      .pipe(
+        map(res => res.status === 200),
+        catchError(err => of(false))
+      );
+  }
+
+  getSubscription(resourceUri: string): Observable<boolean> {
+
+    return this.subscriptionRequest(resourceUri, undefined, ACTION_GET);
+  }
+
+  addSubscription(resourceUri: string, type: string): Observable<boolean> {
+
+    return this.subscriptionRequest(resourceUri, type, ACTION_ADD);
+  }
+
+  deleteSubscription(resourceUri: string): Observable<boolean> {
+
+    return this.subscriptionRequest(resourceUri, undefined, ACTION_DELETE);
+  }
+
+  getMessagingUserData(): Observable<MessagingUser> {
+
+    return this.http.get<MessagingUserType>(`${messagingBasePath}/user`)
+      .pipe(map(res => new MessagingUser(res)));
+  }
+
+  setSubscriptionType(subscriptionType: string): Observable<MessagingUser> {
+
+    const subscriptionTypeRequest: SubscriptionTypeRequest = new SubscriptionTypeRequest();
+    subscriptionTypeRequest.subscriptionType = subscriptionType;
+
+    return this.http.post<MessagingUserType>(`${messagingBasePath}/user/subscriptiontype`, subscriptionTypeRequest)
+      .pipe(map(res => new MessagingUser(res)));
   }
 }

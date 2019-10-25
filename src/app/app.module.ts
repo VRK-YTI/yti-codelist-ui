@@ -114,7 +114,6 @@ import { CodeSchemeSingleInputComponent } from './components/form/code-scheme-si
 import { InlineClipboardComponent } from './components/form/inline-clipboard';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AlertModalComponent, AlertModalService } from './components/common/alert-modal.service';
-// import { SelectModule } from 'ng2-select'; TODO this will possibly get cleared after some more experimentation
 import { SearchHitsListComponent } from './components/frontpage/app-searchhits-list';
 import { LocalizableInputWithLangauageIndicatorComponent } from './components/form/localizable-input-with-langauage-indicator.component';
 import { LocalizableTextareaWithLanguageIndicatorComponent } from './components/form/localizable-textarea-with-language-indicator';
@@ -125,6 +124,8 @@ import {
 } from './components/codescheme/code-scheme-mass-migrate-code-statuses-modal.component';
 import { LocalizableInputWithLanguageIndicatorForAllLangagesComponent } from './components/form/localizable-input-with-language-indicator-for-all-langages.component';
 import { LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent } from './components/form/localizable-textarea-with-language-indicator-for-all-langages.component';
+import { UserDetailsSubscriptionsComponent } from './components/user-details/user-details-subscriptions.component';
+import { UserDetailsInformationComponent } from './components/user-details/user-details-information.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -263,6 +264,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     PropertyTypeSelectComponent,
     StyleTestComponent,
     UserDetailsComponent,
+    UserDetailsInformationComponent,
+    UserDetailsSubscriptionsComponent,
     InformationAboutServiceComponent,
     ExternalReferencesInputComponent,
     StatusInputComponent,
