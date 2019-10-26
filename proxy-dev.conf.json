@@ -8,5 +8,10 @@
     "target": "https://koodistot.dev.yti.cloud.vrk.fi",
     "changeOrigin": true,
     "secure": false
+  },
+  "/messaging-api/*": {
+    "target": "https://koodistot.dev.yti.cloud.vrk.fi",
+    "changeOrigin": true,
+    "secure": false
   }
 }

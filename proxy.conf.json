@@ -16,5 +16,9 @@
     "secure": false,
     "proxyTimeout": 1800000,
     "timeout": 1800000
+  },
+  "/messaging-api/*": {
+    "target": "http://localhost:9801",
+    "secure": false
   }
 }
