@@ -18,7 +18,6 @@ import {
   InfoDomainType,
   MemberSimpleType,
   MemberType,
-  MessagingUserType,
   OrganizationType,
   PropertyTypeType,
   UserSimpleType,
@@ -38,10 +37,7 @@ import { Member } from '../entities/member';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { MemberSimple } from '../entities/member-simple';
 import { UserSimple } from '../entities/user-simple';
-import { MessagingUser } from '../entities/messaging-user';
 import { ConceptResponse } from '../entities/concept-response';
-import { SubscriptionRequest } from '../entities/subscription-request';
-import { SubscriptionTypeRequest } from '../entities/subscription-type-request';
 
 const intakeContext = 'codelist-intake';
 const apiContext = 'codelist-api';
@@ -59,6 +55,7 @@ const propertytypes = 'propertytypes';
 const extensions = 'extensions';
 const members = 'members';
 const users = 'users';
+const user = 'user';
 const organizations = 'organizations';
 const fakeableUsers = 'fakeableUsers';
 const groupmanagement = 'groupmanagement';
@@ -86,20 +83,6 @@ const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyCo
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
 const terminologyConceptsPath = `${terminologyBasePath}/${concepts}`;
 const terminologyConceptSuggestionPath = `${terminologyBasePath}/${suggestion}`;
-
-const ACTION_GET = 'GET';
-const ACTION_ADD = 'ADD';
-const ACTION_DELETE = 'DELETE';
-const user = 'user';
-const subscriptions = 'subscriptions';
-const subscriptiontype = 'subscriptiontype';
-const messagingApiContext = 'messaging-api';
-const messaging = 'messaging';
-const messagingBaseApiPath = `/${messagingApiContext}/${api}/${version}`;
-// Constants for either application proxy messaging or direct access
-const messagingBasePath = `${intakeContext}/${api}/${version}/${messaging}`;
-const messagingApiBasePath = `${messagingBaseApiPath}`;
-
 
 interface FakeableUser {
   email: string;
@@ -916,52 +899,5 @@ export class DataService {
       return 'U+002EU+002E';
     }
     return encodeURIComponent(codeCodeValue).replace('#', '%23');
-  }
-
-  subscriptionRequest(resourceUri: string, type: string | undefined, action: string): Observable<boolean> {
-
-    const subscriptionRequest: SubscriptionRequest = new SubscriptionRequest();
-    subscriptionRequest.uri = resourceUri;
-    if (type) {
-      subscriptionRequest.type = type;
-    }
-    subscriptionRequest.action = action;
-
-    return this.http.post(`${messagingApiBasePath}/${subscriptions}/`, subscriptionRequest, { observe: 'response' })
-      .pipe(
-        map(res => res.status === 200),
-        catchError(err => of(false))
-      );
-  }
-
-  getSubscription(resourceUri: string): Observable<boolean> {
-
-    return this.subscriptionRequest(resourceUri, undefined, ACTION_GET);
-  }
-
-  addSubscription(resourceUri: string, type: string): Observable<boolean> {
-
-    return this.subscriptionRequest(resourceUri, type, ACTION_ADD);
-  }
-
-  deleteSubscription(resourceUri: string): Observable<boolean> {
-
-    return this.subscriptionRequest(resourceUri, undefined, ACTION_DELETE);
-  }
-
-  getMessagingUserData(): Observable<MessagingUser | undefined> {
-
-    return this.http.get<MessagingUserType>(`${messagingApiBasePath}/${user}`)
-      .pipe(map(res => new MessagingUser(res)),
-        catchError(err => of(undefined)));
-  }
-
-  setSubscriptionType(subscriptionType: string): Observable<MessagingUser> {
-
-    const subscriptionTypeRequest: SubscriptionTypeRequest = new SubscriptionTypeRequest();
-    subscriptionTypeRequest.subscriptionType = subscriptionType;
-
-    return this.http.post<MessagingUserType>(`${messagingApiBasePath}/${user}/${subscriptiontype}`, subscriptionTypeRequest)
-      .pipe(map(res => new MessagingUser(res)));
   }
 }

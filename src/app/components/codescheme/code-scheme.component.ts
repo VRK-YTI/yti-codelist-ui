@@ -30,6 +30,7 @@ import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mas
 import { TranslateService } from '@ngx-translate/core';
 import { ApiResponseType } from '../../services/api-schema';
 import { AlertModalService } from '../common/alert-modal.service';
+import { MessagingService } from '../../services/messaging-service';
 
 @Component({
   selector: 'app-code-scheme',
@@ -56,6 +57,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   constructor(private userService: UserService,
               private dataService: DataService,
+              private messagingService: MessagingService,
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
@@ -116,7 +118,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   checkSubscription() {
 
     if (!this.isAnonymous) {
-      this.dataService.getSubscription(this.codeScheme.uri).subscribe(resource => {
+      this.messagingService.getSubscription(this.codeScheme.uri).subscribe(resource => {
         if (resource) {
           this.hasSubscription = true;
         } else {
@@ -327,7 +329,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.confirmationModalService.openAddSubscription()
       .then(() => {
-        this.dataService.addSubscription(this.codeScheme.uri, 'codelist').subscribe(success => {
+        this.messagingService.addSubscription(this.codeScheme.uri, 'codelist').subscribe(success => {
           if (success) {
             this.hasSubscription = true;
           } else {
@@ -342,7 +344,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
     this.confirmationModalService.openRemoveSubscription()
       .then(() => {
-        this.dataService.deleteSubscription(this.codeScheme.uri).subscribe(success => {
+        this.messagingService.deleteSubscription(this.codeScheme.uri).subscribe(success => {
           if (success) {
             this.hasSubscription = false;
           } else {

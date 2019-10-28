@@ -1,4 +1,4 @@
-export class SubscriptionRequest {
+export class MessagingSubscriptionRequest {
 
   public uri: string;
   public type: string;
