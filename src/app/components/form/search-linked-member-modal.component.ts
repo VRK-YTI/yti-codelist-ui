@@ -179,6 +179,7 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
   filterMembers() {
     const initialSearch = this.search$.pipe(take(1));
     const debouncedSearch = this.search$.pipe(skip(1), debounceTime(500));
+    this.loading = true;
 
     if (this.selectedCodeScheme) {
       const codeValueOfSelectedCodeScheme = this.selectedCodeScheme.codeValue;
