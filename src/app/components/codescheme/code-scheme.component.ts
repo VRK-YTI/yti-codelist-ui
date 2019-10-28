@@ -327,6 +327,21 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     );
   }
 
+  get canSubscribe(): boolean {
+
+    return this.configurationService.isMessagingEnabled && !this.userService.user.anonymous;
+  }
+
+  get canAddSubscription(): boolean {
+
+    return this.canSubscribe && !!this.hasSubscription;
+  }
+
+  get canRemoveSubscription(): boolean {
+
+    return this.canSubscribe && this.hasSubscription === true;
+  }
+
   addSubscription() {
 
     this.confirmationModalService.openAddSubscription()
@@ -363,7 +378,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.canAddExtension ||
       this.canCreateANewVersionFromCodeScheme ||
       this.canAttachOrDetachAVariant ||
-      this.canAddCode;
+      this.canAddCode ||
+      this.canSubscribe
   }
 
   get canDeleteCodeScheme(): boolean {
