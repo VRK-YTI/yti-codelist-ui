@@ -59,7 +59,6 @@ const propertytypes = 'propertytypes';
 const extensions = 'extensions';
 const members = 'members';
 const users = 'users';
-const user = 'user';
 const organizations = 'organizations';
 const fakeableUsers = 'fakeableUsers';
 const groupmanagement = 'groupmanagement';
@@ -68,11 +67,6 @@ const request = 'request';
 const vocabularies = 'vocabularies';
 const concepts = 'concepts';
 const suggestion = 'suggestion';
-const messaging = 'messaging';
-
-const ACTION_GET = 'GET';
-const ACTION_ADD = 'ADD';
-const ACTION_DELETE = 'DELETE';
 
 const codeSchemesBasePath = `/${apiContext}/${api}/${version}/${codeSchemes}`;
 const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
@@ -92,7 +86,20 @@ const terminologyBasePath = `/${intakeContext}/${api}/${version}/${terminologyCo
 const terminologyVocabulariesPath = `${terminologyBasePath}/${vocabularies}`;
 const terminologyConceptsPath = `${terminologyBasePath}/${concepts}`;
 const terminologyConceptSuggestionPath = `${terminologyBasePath}/${suggestion}`;
+
+const ACTION_GET = 'GET';
+const ACTION_ADD = 'ADD';
+const ACTION_DELETE = 'DELETE';
+const user = 'user';
+const subscriptions = 'subscriptions';
+const subscriptiontype = 'subscriptiontype';
+const messagingApiContext = 'messaging-api';
+const messaging = 'messaging';
+const messagingBaseApiPath = `/${messagingApiContext}/${api}/${version}`;
+// Constants for either application proxy messaging or direct access
 const messagingBasePath = `${intakeContext}/${api}/${version}/${messaging}`;
+const messagingApiBasePath = `${messagingBaseApiPath}`;
+
 
 interface FakeableUser {
   email: string;
@@ -920,7 +927,7 @@ export class DataService {
     }
     subscriptionRequest.action = action;
 
-    return this.http.post(`${messagingBasePath}/subscriptions/`, subscriptionRequest, { observe: 'response' })
+    return this.http.post(`${messagingApiBasePath}/${subscriptions}/`, subscriptionRequest, { observe: 'response' })
       .pipe(
         map(res => res.status === 200),
         catchError(err => of(false))
@@ -942,9 +949,9 @@ export class DataService {
     return this.subscriptionRequest(resourceUri, undefined, ACTION_DELETE);
   }
 
-  getMessagingUserData(): Observable<MessagingUser | undefined> {
+  getMessagingUserData(): Observable<MessagingUser | undefined> {
 
-    return this.http.get<MessagingUserType>(`${messagingBasePath}/user`)
+    return this.http.get<MessagingUserType>(`${messagingApiBasePath}/${user}`)
       .pipe(map(res => new MessagingUser(res)),
         catchError(err => of(undefined)));
   }
@@ -954,7 +961,7 @@ export class DataService {
     const subscriptionTypeRequest: SubscriptionTypeRequest = new SubscriptionTypeRequest();
     subscriptionTypeRequest.subscriptionType = subscriptionType;
 
-    return this.http.post<MessagingUserType>(`${messagingBasePath}/user/subscriptiontype`, subscriptionTypeRequest)
+    return this.http.post<MessagingUserType>(`${messagingApiBasePath}/${user}/${subscriptiontype}`, subscriptionTypeRequest)
       .pipe(map(res => new MessagingUser(res)));
   }
 }
