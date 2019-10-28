@@ -80,7 +80,10 @@ import { TranslateService } from '@ngx-translate/core';
                               </div>
                           </div>
                       </div>
-                      <div class="search-results" *ngIf="this.searchResults.length == 0">
+                      <div class="search-results" *ngIf="this.searchResults.length === 0 && loading">
+                          <app-ajax-loading-indicator></app-ajax-loading-indicator>
+                      </div>
+                      <div class="search-results" *ngIf="this.searchResults.length === 0 && !loading">
                           <p translate class="no-results content last">No search results</p>
                       </div>
                   </div>
@@ -113,7 +116,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit, On
 
   search$ = new BehaviorSubject('');
   status$ = new BehaviorSubject<Status | null>(null);
-  loading = false;
+  loading = true;
   searchResults: Code[] = [];
   private subscriptionsToClean: Subscription[] = [];
 

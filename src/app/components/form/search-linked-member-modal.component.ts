@@ -15,90 +15,93 @@ import { DataService } from '../../services/data.service';
   selector: 'app-search-linked-member-modal',
   styleUrls: ['./search-linked-member-modal.component.scss'],
   template: `
-    <div class="modal-header">
-      <h4 class="modal-title">
-        <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
-        <span>{{titleLabel}}</span>
-      </h4>
-    </div>
-    <div class="modal-body full-height">
+      <div class="modal-header">
+          <h4 class="modal-title">
+              <a><i id="close_modal_link" class="fa fa-times" (click)="cancel()"></i></a>
+              <span>{{titleLabel}}</span>
+          </h4>
+      </div>
+      <div class="modal-body full-height">
 
-      <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
-        <div class="col-12">
-          <div ngbDropdown class="d-inline-block">
-            <dl>
-              <dt>
-                <label for="code_scheme_dropdown_button" translate>Code list</label>
-              </dt>
-              <dd>
-                <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
-                  <span translate *ngIf="!selectedCodeScheme">Filter results</span>
-                  <span *ngIf="selectedCodeScheme">{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
-                </button>
-                <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
-                  <button id="codescheme_allcodeschemes_dropdown_button"
-                          (click)="deSelectCodeScheme()"
-                          class="dropdown-item"
-                          [class.active]="selectedCodeScheme === null">
-                    <span translate>All codeschemes</span>
-                  </button>
-                  <div *ngFor="let codeScheme of codeSchemes">
-                    <button id="codescheme_{{codeScheme.id}}_dropdown_button"
-                            (click)="selectCodeScheme(codeScheme)"
-                            class="dropdown-item"
-                            [class.active]="selectedCodeScheme === codeScheme">
-                      {{codeScheme.getLongDisplayName(languageService, false)}}</button>
+          <div *ngIf="codeSchemes != null && codeSchemes.length > 1" class="row mb-2">
+              <div class="col-12">
+                  <div ngbDropdown class="d-inline-block">
+                      <dl>
+                          <dt>
+                              <label for="code_scheme_dropdown_button" translate>Code list</label>
+                          </dt>
+                          <dd>
+                              <button class="btn btn-dropdown" id="code_scheme_dropdown_button" ngbDropdownToggle>
+                                  <span translate *ngIf="!selectedCodeScheme">Filter results</span>
+                                  <span *ngIf="selectedCodeScheme">{{selectedCodeScheme.getLongDisplayName(languageService, false)}}</span>
+                              </button>
+                              <div ngbDropdownMenu aria-labelledby="code_scheme_dropdown_button">
+                                  <button id="codescheme_allcodeschemes_dropdown_button"
+                                          (click)="deSelectCodeScheme()"
+                                          class="dropdown-item"
+                                          [class.active]="selectedCodeScheme === null">
+                                      <span translate>All codeschemes</span>
+                                  </button>
+                                  <div *ngFor="let codeScheme of codeSchemes">
+                                      <button id="codescheme_{{codeScheme.id}}_dropdown_button"
+                                              (click)="selectCodeScheme(codeScheme)"
+                                              class="dropdown-item"
+                                              [class.active]="selectedCodeScheme === codeScheme">
+                                          {{codeScheme.getLongDisplayName(languageService, false)}}</button>
+                                  </div>
+                              </div>
+                          </dd>
+                      </dl>
                   </div>
-                </div>
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mb-2">
-        <div class="col-12">
-
-          <div class="input-group input-group-lg input-group-search">
-            <input #searchInput id="search_linked_member_input"
-                   type="text" class="form-control"
-                   [placeholder]="searchLabel"
-                   [(ngModel)]="search"/>
+              </div>
           </div>
 
-        </div>
-      </div>
+          <div class="row mb-2">
+              <div class="col-12">
 
-      <div class="row full-height">
-        <div class="col-12">
-          <div class="content-box">
-            <div class="search-results" *ngIf="searchResults$ | async as results">
-              <div class="search-result"
-                   *ngFor="let member of results; let last = last"
-                   (click)="select(member)">
-                <div class="content" [class.last]="last">
+                  <div class="input-group input-group-lg input-group-search">
+                      <input #searchInput id="search_linked_member_input"
+                             type="text" class="form-control"
+                             [placeholder]="searchLabel"
+                             [(ngModel)]="search"/>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="row full-height">
+              <div class="col-12">
+                  <div class="content-box">
+                      <div class="search-results" *ngIf="searchResults$ | async as results">
+                          <div class="search-result"
+                               *ngFor="let member of results; let last = last"
+                               (click)="select(member)">
+                              <div class="content" [class.last]="last">
                   <span class="title"
                         [innerHTML]="member.getDisplayName(languageService, translateService, useUILanguage)">
                   </span>
-                </div>
+                              </div>
+                          </div>
+                          <div class="search-results" *ngIf="results.length === 0 && loading">
+                              <app-ajax-loading-indicator></app-ajax-loading-indicator>
+                          </div>
+                          <div *ngIf="results.length === 0 && !loading">
+                              <div>
+                                  <div class="no-results content last"><span translate>No search results</span></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div *ngIf="results.length === 0">
-                <div>
-                  <div class="no-results content last"><span translate>No search results</span></div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
-    <div class="modal-footer">
+      <div class="modal-footer">
 
-      <button id="cancel_modal_button"
-              type="button"
-              class="btn btn-link cancel"
-              (click)="cancel()" translate>Cancel</button>
-    </div>
+          <button id="cancel_modal_button"
+                  type="button"
+                  class="btn btn-link cancel"
+                  (click)="cancel()" translate>Cancel</button>
+      </div>
   `
 })
 export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
@@ -116,7 +119,7 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
   selectedCodeScheme: CodeScheme | null;
   searchResults$: Observable<Member[]>;
   search$ = new BehaviorSubject('');
-  loading = false;
+  loading = true;
 
   constructor(public modal: NgbActiveModal,
               public languageService: LanguageService,

@@ -59,7 +59,10 @@ import { Code } from '../../entities/code';
                 </div>
               </div>
             </div>
-            <div class="search-results" *ngIf="this.searchResults.length == 0">
+            <div class="search-results" *ngIf="this.searchResults.length === 0 && loading">
+                <app-ajax-loading-indicator></app-ajax-loading-indicator>
+            </div>
+            <div class="search-results" *ngIf="this.searchResults.length === 0 && !loading">
               <p translate class="no-results content last">No search results</p>
             </div>
           </div>
@@ -90,7 +93,7 @@ export class SearchLinkedCodeSchemeModalComponent implements AfterViewInit, OnIn
 
   search$ = new BehaviorSubject('');
   status$ = new BehaviorSubject<Status | null>(null);
-  loading = false;
+  loading = true;
   searchResults: CodeScheme[] = [];
   private subscriptionsToClean: Subscription[] = [];
 
