@@ -8,6 +8,7 @@ import { CodeListErrorModalService } from '../common/error-modal.service';
 import { ConfigurationService } from '../../services/configuration.service';
 import { BehaviorSubject } from 'rxjs';
 import { MessagingService } from '../../services/messaging-service';
+import { UserService } from 'yti-common-ui/services/user.service';
 
 @Component({
   selector: 'app-user-details-subscriptions',
@@ -32,13 +33,18 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
   constructor(public languageService: LanguageService,
               private messagingService: MessagingService,
               private configurationService: ConfigurationService,
+              private userService: UserService,
               private confirmationModalService: CodeListConfirmationModalService,
               private errorModalService: CodeListErrorModalService) {
   }
 
   ngOnInit() {
 
-    this.getUserSubscriptionData();
+    if (this.configurationService.isMessagingEnabled && !this.userService.user.anonymous) {
+      this.getUserSubscriptionData();
+    } else {
+      this.loading = false;
+    }
   }
 
   getUserSubscriptionData() {
@@ -129,7 +135,7 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
       }, ignoreModalClose);
   }
 
-  isSubscriptionEnabled(): boolean {
+  get isSubscriptionEnabled(): boolean {
 
     return this.subscriptionType !== 'DISABLED';
   }
