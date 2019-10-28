@@ -13,13 +13,13 @@
         <button class="btn btn-action" id="codeSchemeDropdown" ngbDropdownToggle translate>Choose action</button>
         <div ngbDropdownMenu aria-labelledby="codeSchemeDropdown">
           <button id="add_subscription_button"
-                  *ngIf="!isAnonymous && hasSubscription === false"
+                  *ngIf="isMessagingEnabled && !isAnonymous && hasSubscription === false"
                   type="button"
                   class="dropdown-item"
                   (click)="addSubscription()"
                   translate>Add email subscription</button>
           <button id="delete_subscription_button"
-                  *ngIf="!isAnonymous && hasSubscription === true"
+                  *ngIf="isMessagingEnabled && !isAnonymous && hasSubscription === true"
                   type="button"
                   class="dropdown-item"
                   (click)="removeSubscription()"

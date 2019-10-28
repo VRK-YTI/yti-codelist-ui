@@ -29,6 +29,11 @@ export class ConfigurationService {
     return this.configuration.env;
   }
 
+  get isMessagingEnabled(): boolean {
+
+    return this.configuration.messagingConfig.enabled;
+  }
+
   get codeSchemeSortMode(): string | undefined {
 
     return this.configuration.codeSchemeSortMode;

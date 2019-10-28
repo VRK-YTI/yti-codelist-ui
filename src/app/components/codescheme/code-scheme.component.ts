@@ -31,6 +31,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiResponseType } from '../../services/api-schema';
 import { AlertModalService } from '../common/alert-modal.service';
 import { MessagingService } from '../../services/messaging-service';
+import { ConfigurationService } from '../../services/configuration.service';
 
 @Component({
   selector: 'app-code-scheme',
@@ -58,6 +59,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   constructor(private userService: UserService,
               private dataService: DataService,
               private messagingService: MessagingService,
+              private configurationService: ConfigurationService,
               private route: ActivatedRoute,
               private router: Router,
               private locationService: LocationService,
@@ -117,7 +119,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   checkSubscription() {
 
-    if (!this.isAnonymous) {
+    if (this.isMessagingEnabled && !this.isAnonymous) {
       this.messagingService.getSubscription(this.codeScheme.uri).subscribe(resource => {
         if (resource) {
           this.hasSubscription = true;
@@ -521,5 +523,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   changeLanguagesAfterTimeout(codes: CodePlain[]) {
 
     this.languageCodes = codes
+  }
+
+  isMessagingEnabled(): boolean {
+
+    return this.configurationService.isMessagingEnabled;
   }
 }
