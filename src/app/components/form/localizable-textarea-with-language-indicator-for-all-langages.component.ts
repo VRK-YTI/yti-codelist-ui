@@ -4,8 +4,6 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
 import { Localizable } from 'yti-common-ui/types/localization';
 import { CodePlain } from '../../entities/code-simple';
-import { Extension } from '../../entities/extension';
-import { Code } from '../../entities/code';
 
 @Component({
   selector: 'app-localizable-textarea-with-language-indicator-for-all-languages',
@@ -24,11 +22,11 @@ import { Code } from '../../entities/code';
           </div>
           <div class="languageContent">
             <textarea [id]="id"
-                   type="text"
-                   class="form-control"
-                   [ngClass]="{'is-invalid': !valid}"
-                   [ngModel]="value[contentLanguage]"
-                   (ngModelChange)="onChange($event)">
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{'is-invalid': !valid}"
+                      [ngModel]="value[contentLanguage]"
+                      (ngModelChange)="onChange($event)">
             </textarea>
           </div>
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
@@ -60,21 +58,21 @@ import { Code } from '../../entities/code';
             </div>
             <div class="languageContent">
               <textarea [id]="lang.id"
-                     type="text"
-                     class="form-control"
-                     [ngClass]="{'is-invalid': !valid}"
-                     [ngModel]="value[lang.codeValue]"
-                     (ngModelChange)="onChange($event, lang)">
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{'is-invalid': !valid}"
+                        [ngModel]="value[lang.codeValue]"
+                        (ngModelChange)="onChange($event, lang)">
               </textarea>
             </div>
-            
+
           </div>
-          
-          
+
+
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
         <div class="text-content-wrap" *ngIf="!editing">
-          <div *ngFor="let lang of realLanguageCodes"  class="multi-lang-repeat-textarea">
+          <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">
             <div class="language">
               <span>{{lang.codeValue | uppercase}}</span>
             </div>
@@ -112,17 +110,18 @@ export class LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent imp
 
   ngOnInit() {
 
-    if (this.realLanguageCodes.length === 0 && this.parentElementsLanguageCodes) {
+    if (this.realLanguageCodes && this.realLanguageCodes.length === 0 && this.parentElementsLanguageCodes) {
       this.parentElementsLanguageCodes.forEach(lang => {
         if (lang.codeValue !== 'all') {
           this.realLanguageCodes.push(lang);
         }
       });
-      this.realLanguageCodes.sort((a, b) => a.codeValue < b.codeValue ? -1 : 1 );
+      this.realLanguageCodes.sort((a, b) => a.codeValue < b.codeValue ? -1 : 1);
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
     const langs: SimpleChange = changes.parentElementsLanguageCodes;
     if (langs) {
       this.realLanguageCodes = langs.currentValue;

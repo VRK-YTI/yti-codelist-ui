@@ -1,12 +1,9 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, Optional, Self, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Optional, Self, SimpleChange, SimpleChanges } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
 import { Localizable } from 'yti-common-ui/types/localization';
 import { CodePlain } from '../../entities/code-simple';
-import { Extension } from '../../entities/extension';
-import { Code } from '../../entities/code';
-import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-localizable-input-with-language-indicator-for-all-languages',
@@ -66,14 +63,14 @@ import { comparingPrimitive } from 'yti-common-ui/utils/comparator';
                      [ngModel]="value[lang.codeValue]"
                      (ngModelChange)="onChange($event, lang)"/>
             </div>
-            
+
           </div>
-          
-          
+
+
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
         <div class="text-content-wrap" *ngIf="!editing">
-          <div *ngFor="let lang of realLanguageCodes"  class="multi-lang-repeat-input">
+          <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-input">
             <div class="language">
               <span>{{lang.codeValue | uppercase}}</span>
             </div>
@@ -111,22 +108,22 @@ export class LocalizableInputWithLanguageIndicatorForAllLangagesComponent implem
 
   ngOnInit() {
 
-    if (this.realLanguageCodes.length === 0 && this.parentElementsLanguageCodes) {
+    if (this.realLanguageCodes && this.realLanguageCodes.length === 0 && this.parentElementsLanguageCodes) {
       this.parentElementsLanguageCodes.forEach(lang => {
         if (lang.codeValue !== 'all') {
           this.realLanguageCodes.push(lang);
         }
       });
-      this.realLanguageCodes.sort((a, b) => a.codeValue < b.codeValue ? -1 : 1 );
+      this.realLanguageCodes.sort((a, b) => a.codeValue < b.codeValue ? -1 : 1);
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
-      const langs: SimpleChange = changes.parentElementsLanguageCodes;
-      if (langs) {
-        this.realLanguageCodes = langs.currentValue;
-      }
+    const langs: SimpleChange = changes.parentElementsLanguageCodes;
+    if (langs) {
+      this.realLanguageCodes = langs.currentValue;
+    }
   }
 
   get valid() {
