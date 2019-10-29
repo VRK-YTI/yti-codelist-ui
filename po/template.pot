@@ -1596,6 +1596,9 @@ msgstr ""
 msgid "Adding subscription failed."
 msgstr ""
 
+msgid "Subscription deletion failed."
+msgstr ""
+
 msgid "invalidDate"
 msgstr ""
 
