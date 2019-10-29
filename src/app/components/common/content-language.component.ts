@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Language, LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
 
@@ -53,6 +53,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
 
   @Input() placement = 'bottom-right';
   @Input() languageCodes: CodePlain[];
+  allLangsCodeInitiated = false;
 
   languages = [
     { code: 'fi' as Language, name: 'Suomeksi (FI)' },
@@ -63,18 +64,10 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
   allLangsCode: CodePlain;
 
   ngOnInit() {
-    this.allLangsCode = new CodePlain({
-      id: '',
-      uri: '',
-      url: '',
-      codeValue: 'all',
-      prefLabel: { fi: 'kaikki kielet', en: 'all languages' },
-      status: 'VALID',
-      hierarchyLevel: 1,
-    });
 
-    console.log(this.translateStringToLanguage(this.allLangsCode.codeValue));
-    this.contentLanguage = 'all' as Language;
+    if (!this.contentLanguage) {
+      this.contentLanguage = 'all' as Language;
+    }
   }
 
   translateStringToLanguage(codeValue: string): Language {
@@ -88,7 +81,23 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
     return this.languageCodes && this.languageCodes.length > 0;
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
+
+    const contentLang: SimpleChange = changes.languageCodes;
+
+    if (!this.allLangsCodeInitiated) {
+      this.allLangsCode = new CodePlain({
+        id: '',
+        uri: '',
+        url: '',
+        codeValue: 'all',
+        prefLabel: { fi: 'Sisältö kaikilla kielillä', en: 'Content in all languages' },
+        status: 'VALID',
+        hierarchyLevel: 1,
+      });
+      this.allLangsCodeInitiated = true;
+    }
+
     if (this.hasCustomLanguages) {
       const currentLanguage = this.languageService.contentLanguage;
       if (!this.findLanguage(currentLanguage)) {
@@ -115,10 +124,14 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
 
   refreshLanguages() {
     if (this.hasCustomLanguages) {
-      const uiLanguage: Language = this.languageService.language;
-      const defaultLanguage = this.findLanguage(uiLanguage);
-      if (this.contentLanguage !== 'all') {
-        this.contentLanguage = defaultLanguage ? defaultLanguage.codeValue : this.languageCodes[0].codeValue as Language;
+      let thePreviousContentLanguageIsAlsoAmongTheNextContentLanguages = false;
+      this.languageCodes.forEach( lang => {
+        if (lang.codeValue === this.contentLanguage) {
+          thePreviousContentLanguageIsAlsoAmongTheNextContentLanguages = true;
+        }
+      });
+      if (!thePreviousContentLanguageIsAlsoAmongTheNextContentLanguages) { // if language was "swahili" but the next opened codescheme is "fi, sv, en" we choose "all languages"
+        this.contentLanguage = 'all';
       }
     }
   }
