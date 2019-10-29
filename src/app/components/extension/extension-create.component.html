@@ -35,6 +35,7 @@
 
         <app-localizable-input-with-language-indicator-for-all-languages *ngIf="!isCodeExtension"
                                                                          [id]="'extension_name_input'"
+                                                                         [htmlIdentifierPrefix]="'extension_name_input'"
                                                                          [label]="'Extension name' | translate"
                                                                          [infoText]="'INFO_TEXT_EXTENSION_NAME'"
                                                                          [parentElementsLanguageCodes]="codeScheme.languageCodes"

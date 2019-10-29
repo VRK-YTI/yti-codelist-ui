@@ -47,6 +47,7 @@
           <app-error-messages id="member_form_error_messages" [control]="memberForm"></app-error-messages>
 
           <app-localizable-input-with-language-indicator-for-all-languages [id]="'member_name_input'"
+                                                                           [htmlIdentifierPrefix]="'member_name_input'"
                                                                            [label]="'Member name' | translate"
                                                                            [parentElementsLanguageCodes]="extension.parentCodeScheme.languageCodes"
                                                                            [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator-for-all-languages>

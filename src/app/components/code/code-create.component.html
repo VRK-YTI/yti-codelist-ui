@@ -34,6 +34,7 @@
                            [formControlName]="'codeValue'"></app-literal-input>
 
         <app-localizable-input-with-language-indicator-for-all-languages [id]="'code_name_input'"
+                                                                         [htmlIdentifierPrefix]="'code_name_input'"
                                                                          [label]="'Code name' | translate"
                                                                          [infoText]="'INFO_TEXT_CODE_NAME'"
                                                                          [parentElementsLanguageCodes]="codeScheme.languageCodes"
@@ -71,12 +72,14 @@
                           [infoText]="'INFO_TEXT_CODE_STATUS'"></app-status-input>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'code_description_textarea'"
+                                                                            [htmlIdentifierPrefix]="'code_description_textarea'"
                                                                             [label]="'Description' | translate"
                                                                             [infoText]="'INFO_TEXT_CODE_DESCRIPTION'"
                                                                             [parentElementsLanguageCodes]="codeScheme.languageCodes"
                                                                             [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'code_definition_textarea'"
+                                                                            [htmlIdentifierPrefix]="'code_definition_textarea'"
                                                                             [label]="'Definition' | translate"
                                                                             [infoText]="'INFO_TEXT_CODE_DEFINITION'"
                                                                             [parentElementsLanguageCodes]="codeScheme.languageCodes"

@@ -21,7 +21,7 @@ import { CodePlain } from '../../entities/code-simple';
             <span>{{contentLanguage | uppercase}}</span>
           </div>
           <div class="languageContent">
-            <textarea [id]="id"
+            <textarea [id]="htmlIdentifierPrefix + '_' + contentLanguage"
                       type="text"
                       class="form-control"
                       [ngClass]="{'is-invalid': !valid}"
@@ -57,7 +57,7 @@ import { CodePlain } from '../../entities/code-simple';
               <span>{{lang.codeValue | uppercase}}</span>
             </div>
             <div class="languageContent">
-              <textarea [id]="lang.id"
+              <textarea [id]="htmlIdentifierPrefix + '_' + lang.codeValue"
                         type="text"
                         class="form-control"
                         [ngClass]="{'is-invalid': !valid}"
@@ -91,6 +91,7 @@ export class LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent imp
   @Input() restrict = false;
   @Input() required = false;
   @Input() id: string;
+  @Input() htmlIdentifierPrefix: string;
   @Input() infoText: string;
   @Input() parentElementsLanguageCodes: CodePlain[] = [];
   value: Localizable = {};

@@ -80,6 +80,7 @@
         </div>
 
         <app-localizable-input-with-language-indicator-for-all-languages [id]="'codelist_name_input'"
+                                                                         [htmlIdentifierPrefix]="'codelist_name_input'"
                                                                          [label]="'Code list name' | translate"
                                                                          [required]="true"
                                                                          [infoText]="'INFO_TEXT_CODELIST_NAME'"
@@ -130,18 +131,21 @@
                                  [formControlName]="'languageCodes'"></app-languagecodes-input>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_description_textarea'"
                                                                             [label]="'Description' | translate"
                                                                             [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
                                                                             [parentElementsLanguageCodes]="initialLanguageCodes"
                                                                             [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_definition_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_definition_textarea'"
                                                                             [label]="'Definition' | translate"
                                                                             [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
                                                                             [parentElementsLanguageCodes]="initialLanguageCodes"
                                                                             [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_changenote_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_changenote_textarea'"
                                                                             [label]="'Change note' | translate"
                                                                             [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
                                                                             [parentElementsLanguageCodes]="initialLanguageCodes"
@@ -188,6 +192,7 @@
                                        [hidden]="cloning"></app-external-references-input>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_feedback_channel_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_feedback_channel_textarea'"
                                                                             [label]="'FeedbackChannel' | translate"
                                                                             [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
                                                                             [parentElementsLanguageCodes]="initialLanguageCodes"

@@ -7,6 +7,7 @@
                    [infoText]="'INFO_TEXT_CODELIST_CODE_VALUE'"></app-literal>
 
       <app-localizable-input-with-language-indicator-for-all-languages [id]="'codelist_name_input'"
+                                                                       [htmlIdentifierPrefix]="'codelist_name_input'"
                                                                        [label]="'Code list name' | translate"
                                                                        [infoText]="'INFO_TEXT_CODELIST_NAME'"
                                                                        [parentElementsLanguageCodes]="languageCodes"
@@ -121,22 +122,25 @@
       </div>
 
       <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
-                                                                         [label]="'Description' | translate"
-                                                                         [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
-                                                                         [parentElementsLanguageCodes]="languageCodes"
-                                                                         [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+                                                                          [htmlIdentifierPrefix]="'codelist_description_textarea'"
+                                                                          [label]="'Description' | translate"
+                                                                          [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
+                                                                          [parentElementsLanguageCodes]="languageCodes"
+                                                                          [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
       <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_definition_textarea'"
-                                                                         [label]="'Definition' | translate"
-                                                                         [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
-                                                                         [parentElementsLanguageCodes]="languageCodes"
-                                                                         [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+                                                                          [htmlIdentifierPrefix]="'codelist_definition_textarea'"
+                                                                          [label]="'Definition' | translate"
+                                                                          [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
+                                                                          [parentElementsLanguageCodes]="languageCodes"
+                                                                          [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
       <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_changenote_textarea'"
-                                                                         [label]="'Change note' | translate"
-                                                                         [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
-                                                                         [parentElementsLanguageCodes]="languageCodes"
-                                                                         [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+                                                                          [htmlIdentifierPrefix]="'codelist_changenote_textarea'"
+                                                                          [label]="'Change note' | translate"
+                                                                          [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
+                                                                          [parentElementsLanguageCodes]="languageCodes"
+                                                                          [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
       <app-literal-input [id]="'codelist_version_input'"
                          [label]="'Version' | translate"
@@ -191,10 +195,11 @@
                                      [formControlName]="'externalReferences'"></app-external-references-input>
 
       <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_feedback_channel_textarea'"
-                                                        [label]="'FeedbackChannel' | translate"
-                                                        [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
-                                                        [parentElementsLanguageCodes]="languageCodes"
-                                                        [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+                                                                          [htmlIdentifierPrefix]="'codelist_feedback_channel_textarea'"
+                                                                          [label]="'FeedbackChannel' | translate"
+                                                                          [infoText]="'INFO_TEXT_CODELIST_FEEDBACK_CHANNEL'"
+                                                                          [parentElementsLanguageCodes]="languageCodes"
+                                                                          [formControlName]="'feedbackChannel'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
     </div>
     <div class="col-2">

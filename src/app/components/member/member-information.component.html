@@ -14,6 +14,7 @@
                      [value]="extension.getDisplayName(languageService)"></app-literal>
 
         <app-localizable-input-with-language-indicator-for-all-languages [id]="'member_name_input'"
+                                                                         [htmlIdentifierPrefix]="'member_name_input'"
                                                                          [parentElementsLanguageCodes]="extension.parentCodeScheme.languageCodes"
                                                                          [label]="'Member name' | translate"
                                                                          [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator-for-all-languages>

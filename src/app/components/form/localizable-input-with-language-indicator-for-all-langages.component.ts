@@ -21,7 +21,7 @@ import { CodePlain } from '../../entities/code-simple';
             <span>{{contentLanguage | uppercase}}</span>
           </div>
           <div class="languageContent">
-            <input [id]="id"
+            <input [id]="htmlIdentifierPrefix + '_' + contentLanguage"
                    type="text"
                    class="form-control"
                    [ngClass]="{'is-invalid': !valid}"
@@ -56,7 +56,7 @@ import { CodePlain } from '../../entities/code-simple';
               <span>{{lang.codeValue | uppercase}}</span>
             </div>
             <div class="languageContent">
-              <input [id]="lang.id"
+              <input [id]="htmlIdentifierPrefix + '_' + lang.id"
                      type="text"
                      class="form-control"
                      [ngClass]="{'is-invalid': !valid}"
@@ -89,6 +89,7 @@ export class LocalizableInputWithLanguageIndicatorForAllLangagesComponent implem
   @Input() restrict = false;
   @Input() required = false;
   @Input() id: string;
+  @Input() htmlIdentifierPrefix: string;
   @Input() infoText: string;
   @Input() parentElementsLanguageCodes: CodePlain[] = [];
   value: Localizable = {};
