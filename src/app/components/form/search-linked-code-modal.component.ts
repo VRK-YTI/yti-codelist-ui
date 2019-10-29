@@ -199,6 +199,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit, On
   }
 
   updateCodes() {
+    this.loading = true;
     this.codes$ = this.dataService.getCodes(
       this.selectedCodeScheme.codeRegistry.codeValue,
       this.selectedCodeScheme.codeValue,
