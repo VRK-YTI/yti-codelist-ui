@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-10-28 13:51+0200\n"
+"PO-Revision-Date: 2019-10-29 12:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -1742,6 +1742,9 @@ msgstr ""
 
 msgid "Adding subscription failed."
 msgstr "Ilmoitusten tilaus epäonnistui."
+
+msgid "Subscription deletion failed."
+msgstr "Ilmoitusten poisto epäonnistui."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

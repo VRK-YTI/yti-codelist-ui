@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-10-25 12:38+0300\n"
+"PO-Revision-Date: 2019-10-29 12:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1709,6 +1709,9 @@ msgid "ARE YOU SURE YOU WANT TO DISABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
 msgstr ""
 
 msgid "Adding subscription failed."
+msgstr ""
+
+msgid "Subscription deletion failed."
 msgstr ""
 
 msgid "invalidDate"
