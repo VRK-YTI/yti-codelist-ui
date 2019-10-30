@@ -82,15 +82,16 @@ import { DataService } from '../../services/data.service';
                   </span>
                               </div>
                           </div>
-                          <div class="search-results" *ngIf="results.length === 0 && loading">
-                              <app-ajax-loading-indicator></app-ajax-loading-indicator>
-                          </div>
                           <div class="search-results" *ngIf="results.length === 0 && !loading">
                               <div>
                                   <div class="no-results content last"><span translate>No search results</span></div>
                               </div>
                           </div>
                       </div>
+                      <div class="search-results" *ngIf="loading">
+                          <app-ajax-loading-indicator></app-ajax-loading-indicator>
+                      </div>
+
                   </div>
               </div>
           </div>
