@@ -334,7 +334,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   get canAddSubscription(): boolean {
 
-    return this.canSubscribe && !!this.hasSubscription;
+    return this.canSubscribe && !this.hasSubscription;
   }
 
   get canRemoveSubscription(): boolean {
