@@ -56,14 +56,14 @@ import { CodePlain } from '../../entities/code-simple';
               <span>{{lang.codeValue | uppercase}}</span>
             </div>
             <div class="languageContent">
-              <input [id]="htmlIdentifierPrefix + '_' + lang.id"
+              <input [id]="htmlIdentifierPrefix + '_' + lang.codeValue"
                      type="text"
                      class="form-control"
                      [ngClass]="{'is-invalid': !valid}"
                      [ngModel]="value[lang.codeValue]"
                      (ngModelChange)="onChange($event, lang)"/>
             </div>
-              <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.id+ '_error_messages'" [control]="parentControl"></app-error-messages>
+              <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.codeValue+ '_error_messages'" [control]="parentControl"></app-error-messages>
           </div>
             
         </div>
