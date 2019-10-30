@@ -85,7 +85,7 @@ import { DataService } from '../../services/data.service';
                           <div class="search-results" *ngIf="results.length === 0 && loading">
                               <app-ajax-loading-indicator></app-ajax-loading-indicator>
                           </div>
-                          <div *ngIf="results.length === 0 && !loading">
+                          <div class="search-results" *ngIf="results.length === 0 && !loading">
                               <div>
                                   <div class="no-results content last"><span translate>No search results</span></div>
                               </div>
@@ -218,6 +218,7 @@ export class SearchLinkedMemberModalComponent implements AfterViewInit, OnInit {
   }
 
   updateMembers() {
+    this.loading = true;
     this.filterMembers();
   }
 
