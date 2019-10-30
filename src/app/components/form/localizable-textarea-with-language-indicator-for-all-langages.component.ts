@@ -29,7 +29,7 @@ import { CodePlain } from '../../entities/code-simple';
                       (ngModelChange)="onChange($event)">
             </textarea>
           </div>
-          <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
+          <app-error-messages [id]="htmlIdentifierPrefix + '_' + contentLanguage + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
         <div class="text-content-wrap" *ngIf="!editing">
           <div class="language">
@@ -65,11 +65,10 @@ import { CodePlain } from '../../entities/code-simple';
                         (ngModelChange)="onChange($event, lang)">
               </textarea>
             </div>
-
+              <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.codeValue + '_error_messages'" [control]="parentControl"></app-error-messages>
           </div>
 
-
-          <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
+            
         </div>
         <div class="text-content-wrap" *ngIf="!editing">
           <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">
