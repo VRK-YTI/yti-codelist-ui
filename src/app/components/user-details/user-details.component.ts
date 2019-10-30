@@ -37,7 +37,7 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.configurationService.isMessagingEnabled && !this.userService.user.anonymous) {
+    if (this.configurationService.isMessagingEnabled && this.userService.isLoggedIn()) {
       this.getUserSubscriptionData();
     } else {
       this.loading = false;
