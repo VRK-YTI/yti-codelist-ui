@@ -140,13 +140,15 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
     return this.subscriptionType !== 'DISABLED';
   }
 
-  toggleSubscription() {
+  toggleSubscription(event: Event) {
 
+    event.preventDefault();
     const subscriptionTargetType = this.subscriptionType === 'DAILY' ? 'DISABLED' : 'DAILY';
 
     this.confirmationModalService.openToggleNotifications(subscriptionTargetType === 'DAILY')
       .then(() => {
         this.messagingService.setSubscriptionType(subscriptionTargetType).subscribe(messagingUserData => {
+          console.log('change subscription type to: ' + messagingUserData.subscriptionType);
           this.subscriptionType = messagingUserData.subscriptionType;
         });
       }, ignoreModalClose);
