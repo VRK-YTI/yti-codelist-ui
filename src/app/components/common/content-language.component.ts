@@ -12,14 +12,6 @@ import { CodePlain } from '../../entities/code-simple';
               {{contentLanguage }}</button>
           <div ngbDropdownMenu aria-labelledby="content_language_dropdown_button">
               <div *ngIf="languageCodes && languageCodes.length > 0">
-                  <div *ngFor="let languageCode of languageCodes">
-                      <button id="{{languageCode.codeValue + '_content_lang_dropdown_button'}}"
-                              class="dropdown-item"
-                              type="button"
-                              [class.active]="translateStringToLanguage(languageCode.codeValue) === contentLanguage"
-                              (click)='contentLanguage = translateStringToLanguage(languageCode.codeValue)'>
-                          {{languageCode.prefLabel | translateValue:true}} - ({{languageCode.codeValue}})</button>
-                  </div>
                   <div>
                       <button id="'all_languages_content_lang_dropdown_button'"
                               class="dropdown-item"
@@ -28,21 +20,29 @@ import { CodePlain } from '../../entities/code-simple';
                               (click)='contentLanguage = translateStringToLanguage(allLangsCode.codeValue)'>
                           {{allLangsCode.prefLabel | translateValue:true}}</button>
                   </div>
-              </div>
-              <div *ngIf="!languageCodes || languageCodes.length == 0">
-                  <div *ngFor="let language of languages">
-                      <button id="{{language.code + '_content_lang_dropdown_button'}}"
+                  <div *ngFor="let languageCode of languageCodes">
+                      <button id="{{languageCode.codeValue + '_content_lang_dropdown_button'}}"
                               class="dropdown-item"
                               type="button"
-                              [class.active]="language.code === contentLanguage"
-                              (click)='contentLanguage = translateStringToLanguage(language.code)'>{{language.name}}</button>
+                              [class.active]="translateStringToLanguage(languageCode.codeValue) === contentLanguage"
+                              (click)='contentLanguage = translateStringToLanguage(languageCode.codeValue)'>
+                          {{languageCode.prefLabel | translateValue:true}} - ({{languageCode.codeValue}})</button>
                   </div>
+              </div>
+              <div *ngIf="!languageCodes || languageCodes.length == 0">
                   <div>
                       <button id="'all_languages_content_lang_dropdown_button'"
                               class="dropdown-item"
                               type="button"
                               [class.active]="translateStringToLanguage(allLangsCode.codeValue) === contentLanguage"
                               (click)="contentLanguage = translateStringToLanguage(allLangsCode.codeValue)">{{allLangsCode.prefLabel | translateValue:true}}</button>
+                  </div>
+                  <div *ngFor="let language of languages">
+                      <button id="{{language.code + '_content_lang_dropdown_button'}}"
+                              class="dropdown-item"
+                              type="button"
+                              [class.active]="language.code === contentLanguage"
+                              (click)='contentLanguage = translateStringToLanguage(language.code)'>{{language.name}}</button>
                   </div>
               </div>
           </div>
