@@ -6,13 +6,13 @@ import { CodePlain } from '../../entities/code-simple';
   selector: 'app-content-language',
   template: `
       <div ngbDropdown class="d-inline-block float-right" [placement]="placement">
-          <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle *ngIf="contentLanguage === 'all'">
+          <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle *ngIf="contentLanguage === 'all' && !isSomeRegistryPage">
               {{allLangsCode.prefLabel | translateValue:true }}</button>
           <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle *ngIf="contentLanguage !== 'all'">
               {{contentLanguage }}</button>
           <div ngbDropdownMenu aria-labelledby="content_language_dropdown_button">
               <div *ngIf="languageCodes && languageCodes.length > 0">
-                  <div>
+                  <div *ngIf="!isSomeRegistryPage">
                       <button id="'all_languages_content_lang_dropdown_button'"
                               class="dropdown-item"
                               type="button"
@@ -30,7 +30,7 @@ import { CodePlain } from '../../entities/code-simple';
                   </div>
               </div>
               <div *ngIf="!languageCodes || languageCodes.length == 0">
-                  <div>
+                  <div *ngIf="!isSomeRegistryPage">
                       <button id="'all_languages_content_lang_dropdown_button'"
                               class="dropdown-item"
                               type="button"
@@ -53,6 +53,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
 
   @Input() placement = 'bottom-right';
   @Input() languageCodes: CodePlain[];
+  @Input() isSomeRegistryPage = false;
   allLangsCodeInitiated = false;
 
   languages = [
@@ -98,6 +99,14 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
       this.allLangsCodeInitiated = true;
     }
 
+    if (this.isSomeRegistryPage && this.contentLanguage === 'all')  {
+      this.contentLanguage = this.languageService.language;
+      if (this.languageCodes) {
+        this.languageCodes.filter(code => { code.codeValue !== this.allLangsCode.codeValue});
+      }
+
+    }
+
     if (this.hasCustomLanguages) {
       const currentLanguage = this.languageService.contentLanguage;
       if (!this.findLanguage(currentLanguage)) {
@@ -123,6 +132,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
   }
 
   refreshLanguages() {
+
     if (this.hasCustomLanguages) {
       let thePreviousContentLanguageIsAlsoAmongTheNextContentLanguages = false;
       this.languageCodes.forEach( lang => {
