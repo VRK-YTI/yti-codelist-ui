@@ -69,10 +69,10 @@ import { CodePlain } from '../../entities/code-simple';
         </div>
         <div class="text-content-wrap" *ngIf="!editing">
           <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-input">
-            <div class="language">
+            <div class="language" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
               <span>{{lang.codeValue | uppercase}}</span>
             </div>
-            <div class="languageContent">
+            <div class="languageContent" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
               <span>{{value[lang.codeValue]}}</span>
             </div>
           </div>

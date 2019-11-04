@@ -1596,6 +1596,9 @@ msgstr "Ei sallittu tyypitys laajennus-aineistolle: {{ identifier }}"
 msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
 msgstr "Tuotava aineisto sisältää virheellisiä arvoja linkkien HREF-sarakkeissa."
 
+msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
+msgstr "Kieltä ei voitu poistaa, koska se on käytössä."
+
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
 
