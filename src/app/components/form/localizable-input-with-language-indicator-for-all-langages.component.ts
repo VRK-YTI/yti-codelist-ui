@@ -9,76 +9,76 @@ import { CodePlain } from '../../entities/code-simple';
   selector: 'app-localizable-input-with-language-indicator-for-all-languages',
   styleUrls: ['./localizable-input-with-language-indicator-for-all-langages.component.scss'],
   template: `
-    <dl *ngIf="show && contentLanguage !== 'all'">
-      <dt>
-        <label>{{label}}</label>
-        <app-information-symbol [infoText]="infoText"></app-information-symbol>
-        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
-      </dt>
-      <dd>
-        <div *ngIf="editing" class="form-group">
-          <div class="language">
-            <span>{{contentLanguage | uppercase}}</span>
-          </div>
-          <div class="languageContent">
-            <input [id]="htmlIdentifierPrefix + '_' + contentLanguage"
-                   type="text"
-                   class="form-control"
-                   [ngClass]="{'is-invalid': !valid}"
-                   [ngModel]="value[contentLanguage]"
-                   (ngModelChange)="onChange($event)"/>
-          </div>
-          <app-error-messages [id]="htmlIdentifierPrefix + '_' + contentLanguage + '_error_messages'" [control]="parentControl"></app-error-messages>
-        </div>
-        <div class="text-content-wrap" *ngIf="!editing">
-          <div class="language">
-            <span>{{contentLanguage | uppercase}}</span>
-          </div>
-          <div class="languageContent">
-            <span>{{value | translateValue}}</span>
-          </div>
-        </div>
-      </dd>
-    </dl>
+      <dl *ngIf="show && contentLanguage !== 'all'">
+          <dt>
+              <label>{{label}}</label>
+              <app-information-symbol [infoText]="infoText"></app-information-symbol>
+              <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+          </dt>
+          <dd>
+              <div *ngIf="editing" class="form-group">
+                  <div class="language">
+                      <span>{{contentLanguage | uppercase}}</span>
+                  </div>
+                  <div class="languageContent">
+                      <input [id]="htmlIdentifierPrefix + '_' + contentLanguage"
+                             type="text"
+                             class="form-control"
+                             [ngClass]="{'is-invalid': !valid}"
+                             [ngModel]="value[contentLanguage]"
+                             (ngModelChange)="onChange($event)"/>
+                  </div>
+                  <app-error-messages [id]="htmlIdentifierPrefix + '_' + contentLanguage + '_error_messages'" [control]="parentControl"></app-error-messages>
+              </div>
+              <div class="text-content-wrap" *ngIf="!editing">
+                  <div class="language">
+                      <span>{{contentLanguage | uppercase}}</span>
+                  </div>
+                  <div class="languageContent">
+                      <span>{{value | translateValue}}</span>
+                  </div>
+              </div>
+          </dd>
+      </dl>
 
 
-    <dl *ngIf="show && contentLanguage === 'all'">
-      <dt>
-        <label>{{label}}</label>
-        <app-information-symbol [infoText]="infoText"></app-information-symbol>
-        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
-      </dt>
-      <dd>
-        <div *ngIf="editing" class="form-group">
-          <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-input">
+      <dl *ngIf="show && contentLanguage === 'all'">
+          <dt>
+              <label>{{label}}</label>
+              <app-information-symbol [infoText]="infoText"></app-information-symbol>
+              <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+          </dt>
+          <dd>
+              <div *ngIf="editing" class="form-group">
+                  <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-input">
 
-            <div class="language">
-              <span>{{lang.codeValue | uppercase}}</span>
-            </div>
-            <div class="languageContent">
-              <input [id]="htmlIdentifierPrefix + '_' + lang.codeValue"
-                     type="text"
-                     class="form-control"
-                     [ngClass]="{'is-invalid': !valid}"
-                     [ngModel]="value[lang.codeValue]"
-                     (ngModelChange)="onChange($event, lang)"/>
-            </div>
-              <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.codeValue+ '_error_messages'" [control]="parentControl"></app-error-messages>
-          </div>
-            
-        </div>
-        <div class="text-content-wrap" *ngIf="!editing">
-          <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-input">
-            <div class="language" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
-              <span>{{lang.codeValue | uppercase}}</span>
-            </div>
-            <div class="languageContent" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
-              <span>{{value[lang.codeValue]}}</span>
-            </div>
-          </div>
-        </div>
-      </dd>
-    </dl>
+                      <div class="language">
+                          <span>{{lang.codeValue | uppercase}}</span>
+                      </div>
+                      <div class="languageContent">
+                          <input [id]="htmlIdentifierPrefix + '_' + lang.codeValue"
+                                 type="text"
+                                 class="form-control"
+                                 [ngClass]="{'is-invalid': !valid}"
+                                 [ngModel]="value[lang.codeValue]"
+                                 (ngModelChange)="onChange($event, lang)"/>
+                      </div>
+                      <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.codeValue+ '_error_messages'" [control]="parentControl"></app-error-messages>
+                  </div>
+
+              </div>
+              <div class="text-content-wrap" *ngIf="!editing">
+                  <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-input">
+                      <div class="language" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
+                          <span>{{lang.codeValue | uppercase}}</span>
+                      </div>
+                      <div class="languageContent" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
+                          <span>{{value[lang.codeValue]}}</span>
+                      </div>
+                  </div>
+              </div>
+          </dd>
+      </dl>
   `
 })
 export class LocalizableInputWithLanguageIndicatorForAllLangagesComponent implements ControlValueAccessor, OnInit, OnChanges {
@@ -108,12 +108,24 @@ export class LocalizableInputWithLanguageIndicatorForAllLangagesComponent implem
   ngOnInit() {
 
     if (this.realLanguageCodes && this.realLanguageCodes.length === 0 && this.parentElementsLanguageCodes) {
+
       this.parentElementsLanguageCodes.forEach(lang => {
         if (lang.codeValue !== 'all') {
           this.realLanguageCodes.push(lang);
         }
       });
-      this.realLanguageCodes.sort((a, b) => a.codeValue < b.codeValue ? -1 : 1);
+
+      const tmp: CodePlain[] = this.realLanguageCodes.slice();
+      tmp.sort((a, b) => {
+        if (a.codeValue < b.codeValue) {
+          return -1;
+        }
+        if (a.codeValue > b.codeValue) {
+          return 1;
+        }
+        return 0;
+      });
+      this.realLanguageCodes = tmp;
     }
   }
 
@@ -121,7 +133,17 @@ export class LocalizableInputWithLanguageIndicatorForAllLangagesComponent implem
 
     const langs: SimpleChange = changes.parentElementsLanguageCodes;
     if (langs) {
-      this.realLanguageCodes = langs.currentValue;
+      const tmp: CodePlain[] = langs.currentValue.slice();
+      tmp.sort((a, b) => {
+        if (a.codeValue < b.codeValue) {
+          return -1;
+        }
+        if (a.codeValue > b.codeValue) {
+          return 1;
+        }
+        return 0;
+      });
+      this.realLanguageCodes = tmp;
     }
   }
 

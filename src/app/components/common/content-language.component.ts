@@ -102,7 +102,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
     if (this.isSomeRegistryPage && this.contentLanguage === 'all')  {
       this.contentLanguage = this.languageService.language;
       if (this.languageCodes) {
-        this.languageCodes.filter(code => { code.codeValue !== this.allLangsCode.codeValue});
+        this.languageCodes.filter(code => { return code.codeValue !== this.allLangsCode.codeValue});
       }
 
     }
