@@ -69,6 +69,20 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
     if (!this.contentLanguage) {
       this.contentLanguage = 'all' as Language;
     }
+
+    if (this.languageCodes) {
+      const tmp = this.languageCodes;
+      tmp.sort((a, b) => {
+        if (a.codeValue < b.codeValue) {
+          return -1;
+        }
+        if (a.codeValue > b.codeValue) {
+          return 1;
+        }
+        return 0;
+      });
+      this.languageCodes = tmp;
+    }
   }
 
   translateStringToLanguage(codeValue: string): Language {
@@ -104,7 +118,20 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
       if (this.languageCodes) {
         this.languageCodes.filter(code => { return code.codeValue !== this.allLangsCode.codeValue});
       }
+    }
 
+    if (this.languageCodes) {
+      const tmp = this.languageCodes;
+      tmp.sort((a, b) => {
+        if (a.codeValue < b.codeValue) {
+          return -1;
+        }
+        if (a.codeValue > b.codeValue) {
+          return 1;
+        }
+        return 0;
+      });
+      this.languageCodes = tmp;
     }
 
     if (this.hasCustomLanguages) {
