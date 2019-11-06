@@ -132,7 +132,7 @@ export class LocalizableInputWithLanguageIndicatorForAllLangagesComponent implem
   ngOnChanges(changes: SimpleChanges): void {
 
     const langs: SimpleChange = changes.parentElementsLanguageCodes;
-    if (langs) {
+    if (langs && langs.currentValue) {
       const tmp: CodePlain[] = langs.currentValue.slice();
       tmp.sort((a, b) => {
         if (a.codeValue < b.codeValue) {

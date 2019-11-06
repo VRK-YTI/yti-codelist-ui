@@ -72,7 +72,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
     }
 
     if (this.languageCodes) {
-      const tmp = this.languageCodes;
+      const tmp = this.languageCodes.slice();
       tmp.sort((a, b) => {
         if (a.codeValue < b.codeValue) {
           return -1;
@@ -82,7 +82,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
         }
         return 0;
       });
-      this.actualLanguageCodes = tmp.slice(); // we need a separate variable for the template to behave correctly, cannot just use the @Input languageCodes
+      this.actualLanguageCodes = tmp; // we need a separate variable for the template to behave correctly, cannot just use the @Input languageCodes
     }
   }
 
@@ -122,7 +122,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
     }
 
     if (this.languageCodes) {
-      const tmp = this.languageCodes;
+      const tmp = this.languageCodes.slice();
       tmp.sort((a, b) => {
         if (a.codeValue < b.codeValue) {
           return -1;
@@ -132,7 +132,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
         }
         return 0;
       });
-      this.actualLanguageCodes = tmp.slice(); // we need a separate variable for the template to behave correctly, cannot just use the @Input languageCodes
+      this.actualLanguageCodes = tmp; // we need a separate variable for the template to behave correctly, cannot just use the @Input languageCodes
     }
 
     if (this.hasCustomLanguages) {
