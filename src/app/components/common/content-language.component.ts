@@ -11,7 +11,7 @@ import { CodePlain } from '../../entities/code-simple';
           <button class="btn btn-language" id="content_language_dropdown_button" ngbDropdownToggle *ngIf="contentLanguage !== 'all'">
               {{contentLanguage }}</button>
           <div ngbDropdownMenu aria-labelledby="content_language_dropdown_button">
-              <div *ngIf="languageCodes && languageCodes.length > 0">
+              <div *ngIf="actualLanguageCodes && actualLanguageCodes.length > 0">
                   <div *ngIf="!isSomeRegistryPage">
                       <button id="'all_languages_content_lang_dropdown_button'"
                               class="dropdown-item"
@@ -20,7 +20,7 @@ import { CodePlain } from '../../entities/code-simple';
                               (click)='contentLanguage = translateStringToLanguage(allLangsCode.codeValue)'>
                           {{allLangsCode.prefLabel | translateValue:true}}</button>
                   </div>
-                  <div *ngFor="let languageCode of languageCodes">
+                  <div *ngFor="let languageCode of actualLanguageCodes">
                       <button id="{{languageCode.codeValue + '_content_lang_dropdown_button'}}"
                               class="dropdown-item"
                               type="button"
@@ -29,7 +29,7 @@ import { CodePlain } from '../../entities/code-simple';
                           {{languageCode.prefLabel | translateValue:true}} - ({{languageCode.codeValue}})</button>
                   </div>
               </div>
-              <div *ngIf="!languageCodes || languageCodes.length == 0">
+              <div *ngIf="!actualLanguageCodes || actualLanguageCodes.length == 0">
                   <div *ngIf="!isSomeRegistryPage">
                       <button id="'all_languages_content_lang_dropdown_button'"
                               class="dropdown-item"
@@ -54,6 +54,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
   @Input() placement = 'bottom-right';
   @Input() languageCodes: CodePlain[];
   @Input() isSomeRegistryPage = false;
+  actualLanguageCodes: CodePlain[];
   allLangsCodeInitiated = false;
 
   languages = [
@@ -81,7 +82,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
         }
         return 0;
       });
-      this.languageCodes = tmp;
+      this.actualLanguageCodes = tmp.slice(); // we need a separate variable for the template to behave correctly, cannot just use the @Input languageCodes
     }
   }
 
@@ -113,10 +114,10 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
       this.allLangsCodeInitiated = true;
     }
 
-    if (this.isSomeRegistryPage && this.contentLanguage === 'all')  {
+    if (this.isSomeRegistryPage && this.contentLanguage === 'all') {
       this.contentLanguage = this.languageService.language;
       if (this.languageCodes) {
-        this.languageCodes.filter(code => { return code.codeValue !== this.allLangsCode.codeValue});
+        this.actualLanguageCodes = this.languageCodes.filter(code => code.codeValue !== this.allLangsCode.codeValue).slice();
       }
     }
 
@@ -131,7 +132,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
         }
         return 0;
       });
-      this.languageCodes = tmp;
+      this.actualLanguageCodes = tmp.slice(); // we need a separate variable for the template to behave correctly, cannot just use the @Input languageCodes
     }
 
     if (this.hasCustomLanguages) {
@@ -162,7 +163,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
 
     if (this.hasCustomLanguages) {
       let thePreviousContentLanguageIsAlsoAmongTheNextContentLanguages = false;
-      this.languageCodes.forEach( lang => {
+      this.languageCodes.forEach(lang => {
         if (lang.codeValue === this.contentLanguage) {
           thePreviousContentLanguageIsAlsoAmongTheNextContentLanguages = true;
         }
