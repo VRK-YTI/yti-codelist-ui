@@ -215,7 +215,6 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   }
 
   save(formData: any): Observable<any> {
-    console.log('in extension.component.ts #save method and formData is ', formData);
     const { validity, ...rest } = formData;
     const updatedExtension = this.extension.clone();
 
