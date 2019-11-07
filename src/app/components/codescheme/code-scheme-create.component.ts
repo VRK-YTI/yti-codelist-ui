@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,7 +30,7 @@ import { UserService } from 'yti-common-ui/services/user.service';
   styleUrls: ['./code-scheme-create.component.scss'],
   providers: [EditableService]
 })
-export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
+export class CodeSchemeCreateComponent implements OnInit {
 
   codeRegistriesLoaded = false;
   uuidOfOriginalCodeSchemeIfCloning: string;
@@ -158,17 +158,14 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
           this.locationService.atCodeSchemeCreatePage();
           this.setDefaultLanguageCodes(this.cloning, undefined);
         }
+        if (!this.cloning) {
+          setTimeout(() => {
+            this.openTerminologyModal();
+          });
+        }
       });
 
     });
-  }
-
-  ngAfterViewInit() {
-    if (!this.cloning) {
-      setTimeout(() => {
-        this.openTerminologyModal();
-      });
-    }
   }
 
   setDefaultLanguageCodes(cloning: boolean, originalCodeScheme?: CodeScheme) {
