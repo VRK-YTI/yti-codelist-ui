@@ -13,7 +13,7 @@ import { CodePlain } from '../../entities/code-simple';
           <div ngbDropdownMenu aria-labelledby="content_language_dropdown_button">
               <div *ngIf="actualLanguageCodes && actualLanguageCodes.length > 0">
                   <div *ngIf="!isSomeRegistryPage">
-                      <button id="'all_languages_content_lang_dropdown_button'"
+                      <button id="all_languages_content_lang_dropdown_button"
                               class="dropdown-item"
                               type="button"
                               [class.active]="translateStringToLanguage(allLangsCode.codeValue) === contentLanguage"
@@ -31,7 +31,7 @@ import { CodePlain } from '../../entities/code-simple';
               </div>
               <div *ngIf="!actualLanguageCodes || actualLanguageCodes.length == 0">
                   <div *ngIf="!isSomeRegistryPage">
-                      <button id="'all_languages_content_lang_dropdown_button'"
+                      <button id="all_languages_content_lang_dropdown_button"
                               class="dropdown-item"
                               type="button"
                               [class.active]="translateStringToLanguage(allLangsCode.codeValue) === contentLanguage"
