@@ -84,79 +84,82 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
 
     this.dataService.getLanguageCodes(this.languageService.language).subscribe(languageCodes => {
       this.allLanguageCodes = languageCodes;
-      this.setDefaultLanguageCodes();
-    });
 
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.uuidOfOriginalCodeSchemeIfCloning = params['originalCodeSchemeId'];
-      if (this.uuidOfOriginalCodeSchemeIfCloning) {
-        this.cloning = true;
-        this.codeRegistriesLoaded = true; // when cloning, no registries are needed, need to fake loading is ready
-        this.dataService.getCodeSchemeWithUuid(this.uuidOfOriginalCodeSchemeIfCloning).subscribe(next => {
-          const originalCodeScheme: CodeScheme = next;
-          this.originalCodeScheme = next;
-          this.codeSchemeForm.patchValue({ prefLabel: originalCodeScheme.prefLabel });
-          this.codeSchemeForm.patchValue({ codeValue: originalCodeScheme.codeValue });
-          this.codeSchemeForm.patchValue({ description: originalCodeScheme.description });
-          this.codeSchemeForm.patchValue({ definition: originalCodeScheme.definition });
-          this.codeSchemeForm.patchValue({ changeNote: originalCodeScheme.changeNote });
-          this.codeSchemeForm.patchValue({ version: originalCodeScheme.version });
-          this.codeSchemeForm.patchValue({ source: originalCodeScheme.source });
-          this.codeSchemeForm.patchValue({ legalBase: originalCodeScheme.legalBase });
-          this.codeSchemeForm.patchValue({ governancePolicy: originalCodeScheme.governancePolicy });
-          this.codeSchemeForm.patchValue({
-            validity: {
-              start: originalCodeScheme.startDate,
-              end: originalCodeScheme.endDate
-            }
-          });
-          this.codeSchemeForm.patchValue({ status: originalCodeScheme.status });
-          this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
-          this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
-          this.codeSchemeForm.patchValue({ organizations: originalCodeScheme.organizations });
-          if (originalCodeScheme.cumulative === true) {
-            this.codeSchemeForm.patchValue({ cumulative: true });
-            this.codeSchemeForm.patchValue({ newVersionEmpty: false }); // when cloning a cumulative codelist, never allow empty. The choice is hidden in UI as well.
-          } else {
-            this.codeSchemeForm.patchValue({ cumulative: false });
-          }
-          this.codeSchemeForm.patchValue({ feedbackChannel: originalCodeScheme.feedbackChannel })
-          this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
-            const allInfoDomains = next2;
-            const infoDomainsToCopy: CodePlain[] = [];
-            originalCodeScheme.infoDomains.forEach(function (originalInfoDomain) {
-              allInfoDomains.forEach(function (potentialInfoDomain) {
-                const uriToCompare = potentialInfoDomain.codeScheme.uri + '/code/' + potentialInfoDomain.codeValue;
-                if (uriToCompare === originalInfoDomain.uri) {
-                  infoDomainsToCopy.push(potentialInfoDomain);
-                }
-              });
-            });
-            if (infoDomainsToCopy.length > 0) {
-              this.codeSchemeForm.patchValue({ infoDomains: infoDomainsToCopy });
-            }
-          });
-          this.dataService.getLanguageCodes(this.languageService.language).subscribe(next3 => {
-            const allLanguageCodes = next3;
-            const languageCodesToCopy: CodePlain[] = [];
-            originalCodeScheme.languageCodes.forEach(function (originalLanguageCode) {
-              allLanguageCodes.forEach(function (potentialLanguageCode) {
-                if (originalLanguageCode.codeValue === potentialLanguageCode.codeValue) {
-                  languageCodesToCopy.push(potentialLanguageCode);
-                }
-              });
+      this.activatedRoute.queryParams.subscribe(params => {
+        this.uuidOfOriginalCodeSchemeIfCloning = params['originalCodeSchemeId'];
+        if (this.uuidOfOriginalCodeSchemeIfCloning) {
+          this.cloning = true;
+          this.codeRegistriesLoaded = true; // when cloning, no registries are needed, need to fake loading is ready
+          this.dataService.getCodeSchemeWithUuid(this.uuidOfOriginalCodeSchemeIfCloning).subscribe(next => {
+            const originalCodeScheme: CodeScheme = next;
+            this.originalCodeScheme = next;
 
+            this.dataService.getLanguageCodes(this.languageService.language).subscribe(next3 => {
+              const allLanguageCodes = next3;
+              const languageCodesToCopy: CodePlain[] = [];
+              originalCodeScheme.languageCodes.forEach(function (originalLanguageCode) {
+                allLanguageCodes.forEach(function (potentialLanguageCode) {
+                  if (originalLanguageCode.codeValue === potentialLanguageCode.codeValue) {
+                    languageCodesToCopy.push(potentialLanguageCode);
+                  }
+                });
+
+              });
+              if (languageCodesToCopy.length > 0) {
+                this.codeSchemeForm.patchValue({ languageCodes: languageCodesToCopy });
+              }
             });
-            if (languageCodesToCopy.length > 0) {
-              this.codeSchemeForm.patchValue({ languageCodes: languageCodesToCopy });
+            this.codeSchemeForm.patchValue({ prefLabel: originalCodeScheme.prefLabel });
+            this.codeSchemeForm.patchValue({ codeValue: originalCodeScheme.codeValue });
+            this.codeSchemeForm.patchValue({ description: originalCodeScheme.description });
+            this.codeSchemeForm.patchValue({ definition: originalCodeScheme.definition });
+            this.codeSchemeForm.patchValue({ changeNote: originalCodeScheme.changeNote });
+            this.codeSchemeForm.patchValue({ version: originalCodeScheme.version });
+            this.codeSchemeForm.patchValue({ source: originalCodeScheme.source });
+            this.codeSchemeForm.patchValue({ legalBase: originalCodeScheme.legalBase });
+            this.codeSchemeForm.patchValue({ governancePolicy: originalCodeScheme.governancePolicy });
+            this.codeSchemeForm.patchValue({
+              validity: {
+                start: originalCodeScheme.startDate,
+                end: originalCodeScheme.endDate
+              }
+            });
+            this.codeSchemeForm.patchValue({ status: originalCodeScheme.status });
+            this.codeSchemeForm.patchValue({ conceptUriInVocabularies: originalCodeScheme.conceptUriInVocabularies });
+            this.codeSchemeForm.patchValue({ codeRegistry: originalCodeScheme.codeRegistry }); // when cloning, enforce same registry
+            this.codeSchemeForm.patchValue({ organizations: originalCodeScheme.organizations });
+            if (originalCodeScheme.cumulative === true) {
+              this.codeSchemeForm.patchValue({ cumulative: true });
+              this.codeSchemeForm.patchValue({ newVersionEmpty: false }); // when cloning a cumulative codelist, never allow empty. The choice is hidden in UI as well.
+            } else {
+              this.codeSchemeForm.patchValue({ cumulative: false });
             }
+            this.codeSchemeForm.patchValue({ feedbackChannel: originalCodeScheme.feedbackChannel })
+            this.dataService.getInfoDomainsAsCodes(this.languageService.language).subscribe(next2 => {
+              const allInfoDomains = next2;
+              const infoDomainsToCopy: CodePlain[] = [];
+              originalCodeScheme.infoDomains.forEach(function (originalInfoDomain) {
+                allInfoDomains.forEach(function (potentialInfoDomain) {
+                  const uriToCompare = potentialInfoDomain.codeScheme.uri + '/code/' + potentialInfoDomain.codeValue;
+                  if (uriToCompare === originalInfoDomain.uri) {
+                    infoDomainsToCopy.push(potentialInfoDomain);
+                  }
+                });
+              });
+              if (infoDomainsToCopy.length > 0) {
+                this.codeSchemeForm.patchValue({ infoDomains: infoDomainsToCopy });
+              }
+            });
+            this.locationService.atCreateNewVersionOfCodeSchemePage(originalCodeScheme);
+            this.setDefaultLanguageCodes(this.cloning, originalCodeScheme);
           });
-          this.locationService.atCreateNewVersionOfCodeSchemePage(originalCodeScheme);
-        });
-        this.pageTitle = 'Create a new version';
-      } else {
-        this.locationService.atCodeSchemeCreatePage();
-      }
+          this.pageTitle = 'Create a new version';
+        } else {
+          this.locationService.atCodeSchemeCreatePage();
+          this.setDefaultLanguageCodes(this.cloning, undefined);
+        }
+      });
+
     });
   }
 
@@ -168,12 +171,19 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setDefaultLanguageCodes() {
-    const defaultLanguageCodes: CodePlain[] = this.allLanguageCodes.filter(languageCode =>
-      codeValueMatches('fi', languageCode) ||
-      codeValueMatches('sv', languageCode) ||
-      codeValueMatches('en', languageCode)
-    );
+  setDefaultLanguageCodes(cloning: boolean, originalCodeScheme?: CodeScheme) {
+    let defaultLanguageCodes: CodePlain[];
+
+    if (cloning) {
+      defaultLanguageCodes = originalCodeScheme ? originalCodeScheme.languageCodes : [];
+    } else {
+      defaultLanguageCodes = this.allLanguageCodes.filter(languageCode =>
+        codeValueMatches('fi', languageCode) ||
+        codeValueMatches('sv', languageCode) ||
+        codeValueMatches('en', languageCode)
+      );
+    }
+
     this.codeSchemeForm.patchValue({ languageCodes: defaultLanguageCodes });
     this.initialLanguageCodes = defaultLanguageCodes;
 
@@ -229,7 +239,6 @@ export class CodeSchemeCreateComponent implements OnInit, AfterViewInit {
       const save = () => {
         return this.dataService.createCodeScheme(codeScheme, codeRegistry.codeValue)
           .pipe(tap(createdCodeScheme => {
-            console.log('createdCodeScheme', createdCodeScheme);
             this.router.navigate(createdCodeScheme.route);
           }));
       };
