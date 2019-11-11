@@ -9,18 +9,23 @@ import { CodePlain } from '../../entities/code-simple';
   selector: 'app-localizable-textarea-with-language-indicator-for-all-languages',
   styleUrls: ['./localizable-textarea-with-language-indicator-for-all-langages.component.scss'],
   template: `
-      <dl *ngIf="show && contentLanguage !== 'all'">
-          <dt>
-              <label>{{label}}</label>
-              <app-information-symbol [infoText]="infoText"></app-information-symbol>
-              <app-required-symbol *ngIf="required && editing"></app-required-symbol>
-          </dt>
-          <dd>
-              <div *ngIf="editing" class="form-group">
-                  <div class="language">
-                      <span>{{contentLanguage | uppercase}}</span>
-                  </div>
-                  <div class="languageContent">
+    <dl *ngIf="show && contentLanguage !== 'all'">
+      <dt>
+        <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+      </dt>
+
+      <div *ngIf="htmlIdentifierPrefix === 'codelist_feedback_channel_textarea' ">
+        <span translate>INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL</span>
+      </div>
+
+      <dd>
+        <div *ngIf="editing" class="form-group">
+          <div class="language">
+            <span>{{contentLanguage | uppercase}}</span>
+          </div>
+          <div class="languageContent">
             <textarea [id]="htmlIdentifierPrefix + '_' + contentLanguage"
                       type="text"
                       class="form-control"
@@ -28,35 +33,41 @@ import { CodePlain } from '../../entities/code-simple';
                       [ngModel]="value[contentLanguage]"
                       (ngModelChange)="onChange($event)">
             </textarea>
-                  </div>
-                  <app-error-messages [id]="htmlIdentifierPrefix + '_' + contentLanguage + '_error_messages'" [control]="parentControl"></app-error-messages>
-              </div>
-              <div class="text-content-wrap" *ngIf="!editing">
-                  <div class="language">
-                      <span>{{contentLanguage | uppercase}}</span>
-                  </div>
-                  <div class="languageContent">
-                      <span>{{value | translateValue}}</span>
-                  </div>
-              </div>
-          </dd>
-      </dl>
+          </div>
+          <app-error-messages [id]="htmlIdentifierPrefix + '_' + contentLanguage + '_error_messages'"
+                              [control]="parentControl"></app-error-messages>
+        </div>
+        <div class="text-content-wrap" *ngIf="!editing">
+          <div class="language">
+            <span>{{contentLanguage | uppercase}}</span>
+          </div>
+          <div class="languageContent">
+            <span>{{value | translateValue}}</span>
+          </div>
+        </div>
+      </dd>
+    </dl>
 
 
-      <dl *ngIf="show && contentLanguage === 'all'">
-          <dt>
-              <label>{{label}}</label>
-              <app-information-symbol [infoText]="infoText"></app-information-symbol>
-              <app-required-symbol *ngIf="required && editing"></app-required-symbol>
-          </dt>
-          <dd>
-              <div *ngIf="editing" class="form-group">
-                  <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">
+    <dl *ngIf="show && contentLanguage === 'all'">
+      <dt>
+        <label>{{label}}</label>
+        <app-information-symbol [infoText]="infoText"></app-information-symbol>
+        <app-required-symbol *ngIf="required && editing"></app-required-symbol>
+      </dt>
 
-                      <div class="language">
-                          <span>{{lang.codeValue | uppercase}}</span>
-                      </div>
-                      <div class="languageContent">
+      <div *ngIf="htmlIdentifierPrefix === 'codelist_feedback_channel_textarea' ">
+        <span translate>INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL</span>
+      </div>
+        
+      <dd>
+        <div *ngIf="editing" class="form-group">
+          <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">
+
+            <div class="language">
+              <span>{{lang.codeValue | uppercase}}</span>
+            </div>
+            <div class="languageContent">
               <textarea [id]="htmlIdentifierPrefix + '_' + lang.codeValue"
                         type="text"
                         class="form-control"
@@ -64,24 +75,25 @@ import { CodePlain } from '../../entities/code-simple';
                         [ngModel]="value[lang.codeValue]"
                         (ngModelChange)="onChange($event, lang)">
               </textarea>
-                      </div>
-                      <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.codeValue + '_error_messages'" [control]="parentControl"></app-error-messages>
-                  </div>
+            </div>
+            <app-error-messages [id]="htmlIdentifierPrefix + '_' + lang.codeValue + '_error_messages'"
+                                [control]="parentControl"></app-error-messages>
+          </div>
 
 
-              </div>
-              <div class="text-content-wrap" *ngIf="!editing">
-                  <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">
-                      <div class="language" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
-                          <span>{{lang.codeValue | uppercase}}</span>
-                      </div>
-                      <div class="languageContent" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
-                          <span>{{value[lang.codeValue]}}</span>
-                      </div>
-                  </div>
-              </div>
-          </dd>
-      </dl>
+        </div>
+        <div class="text-content-wrap" *ngIf="!editing">
+          <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">
+            <div class="language" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
+              <span>{{lang.codeValue | uppercase}}</span>
+            </div>
+            <div class="languageContent" *ngIf="!!value[lang.codeValue] && value[lang.codeValue].length > 0">
+              <span>{{value[lang.codeValue]}}</span>
+            </div>
+          </div>
+        </div>
+      </dd>
+    </dl>
   `
 })
 export class LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent implements ControlValueAccessor, OnInit, OnChanges {
