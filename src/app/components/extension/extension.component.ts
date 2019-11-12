@@ -164,6 +164,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
 
     this.confirmationModalService.openCreateMissingExtensionMembers(codeSchemes).then(() => {
       const modalRef = this.alertModalService.open('Please wait. This could take a while...');
+      modalRef.enableClosingActions = false;
       this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
                                             this.extension.parentCodeScheme.id,
                                             this.extension.codeValue).subscribe(next => {
@@ -172,12 +173,18 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
         if (nrOfCreatedMembers === 0) {
           messagePart = this.translateService.instant('No new members created. All codes have a corresponding member already or there are no codes in the scope of the extension.');
           modalRef.message = messagePart;
+          modalRef.enableClosingActions = true;
+          modalRef.showOkButton = true;
         } else if (nrOfCreatedMembers === 1) {
           messagePart = this.translateService.instant(' missing member created.');
           modalRef.message = '' + nrOfCreatedMembers + messagePart;
+          modalRef.enableClosingActions = true;
+          modalRef.showOkButton = true;
         } else {
           messagePart = this.translateService.instant(' missing members created.');
           modalRef.message = '' + nrOfCreatedMembers + messagePart;
+          modalRef.enableClosingActions = true;
+          modalRef.showOkButton = true;
         }
         this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': nrOfCreatedMembers } }));
       }, error => {

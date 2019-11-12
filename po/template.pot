@@ -984,6 +984,9 @@ msgstr ""
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr ""
 
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+
 msgid "Front page"
 msgstr ""
 
