@@ -22,6 +22,9 @@ msgstr ""
 msgid "Choose target status"
 msgstr ""
 
+msgid "The following languages could not be removed due to usage"
+msgstr ""
+
 msgid "All link types"
 msgstr ""
 
@@ -1468,9 +1471,6 @@ msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_ALLOWED_FOR_EXTENSION"
 msgstr ""
 
 msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
-msgstr ""
-
-msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
 msgstr ""
 
 msgid "Do you want to replace the existing values with new ones?"

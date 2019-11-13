@@ -9,13 +9,12 @@ export class CodeListErrorModalService {
   }
 
   openSubmitError(error: any) {
-
     const showDebug = false; // TODO luetaan oikeasti jostain ympäristökonfiguraatiosta
     if (error instanceof HttpErrorResponse) {
       const body = error.error;
       this.errorModalService.openWithOptions({
         title: 'Submit error',
-        body: body.meta.message,
+        body: body.meta ? body.meta.message : body,
         bodyParams: { identifier: body.meta.entityIdentifier },
         nonTranslatableMessage: body.meta.nonTranslatableMessage,
         err: showDebug ? error : undefined,

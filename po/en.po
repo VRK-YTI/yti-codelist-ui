@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-11 09:57+0200\n"
+"PO-Revision-Date: 2019-11-13 10:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -30,6 +30,9 @@ msgstr ""
 
 msgid "Choose target status"
 msgstr ""
+
+msgid "The following languages could not be removed due to usage"
+msgstr "The following languages could not be removed due to usage"
 
 msgid "All link types"
 msgstr ""
@@ -1567,9 +1570,6 @@ msgstr "Defined property type not allowed for extension: {{ identifier }}"
 
 msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
 msgstr "Imported data contains invalid URLs in the HREF columns of External References."
-
-msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
-msgstr "Could not delete language because it is in use."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""

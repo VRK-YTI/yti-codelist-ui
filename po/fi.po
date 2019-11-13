@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-11 09:57+0200\n"
+"PO-Revision-Date: 2019-11-13 10:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -30,6 +30,9 @@ msgstr "Valitse lähtötila"
 
 msgid "Choose target status"
 msgstr "Valitse kohdetila"
+
+msgid "The following languages could not be removed due to usage"
+msgstr "Seuraavia kieliä ei voitu poistaa koska ne ovat käytössä"
 
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
@@ -1598,9 +1601,6 @@ msgstr "Ei sallittu tyypitys laajennus-aineistolle: {{ identifier }}"
 
 msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
 msgstr "Tuotava aineisto sisältää virheellisiä arvoja linkkien HREF-sarakkeissa."
-
-msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
-msgstr "Kieltä ei voitu poistaa, koska se on käytössä."
 
 msgid "Do you want to replace the existing values with new ones?"
 msgstr "Haluatko korvata olemassaolevat arvot uusilla?"
