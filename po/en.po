@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-13 14:38+0200\n"
+"PO-Revision-Date: 2019-11-13 17:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -30,9 +30,6 @@ msgstr ""
 
 msgid "Choose target status"
 msgstr ""
-
-msgid "The following languages could not be removed due to usage"
-msgstr "The following languages could not be removed due to usage"
 
 msgid "All link types"
 msgstr ""
@@ -122,6 +119,11 @@ msgstr ""
 
 msgid "Search language code"
 msgstr ""
+
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+"Please note that the content of this field is public. Don't use personal contact "
+"information!"
 
 msgid "Select member"
 msgstr ""
@@ -799,6 +801,9 @@ msgstr ""
 "Responsible organizations. The organization or legal entity that provides and maintains "
 "the code list."
 
+msgid "INFO_TEXT_EXTENSION_CODE_LISTS"
+msgstr "External code lists that this extension is linked to"
+
 msgid "INFO_TEXT_CODELIST_ORGANIZATION"
 msgstr "Responsible organizations. The organization that owns and maintains the code list."
 
@@ -954,7 +959,7 @@ msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Time registry information was last changed."
 
 msgid "INFO_TEXT_EXTENSION_CODE_LIST"
-msgstr "Code list that this extension is linked"
+msgstr "Code list that this extension is linked to"
 
 msgid "INFO_TEXT_EXTENSION_ID"
 msgstr "Extension code value"
@@ -1061,11 +1066,6 @@ msgstr ""
 
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr "Feedback channel for reference data, e.g. email address."
-
-msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
-msgstr ""
-"Please note that the content of this field is public. Don't use personal contact "
-"information!"
 
 msgid "Front page"
 msgstr ""
@@ -1715,6 +1715,9 @@ msgstr ""
 
 msgid "Subscription deletion failed."
 msgstr ""
+
+msgid "The following languages could not be removed due to usage"
+msgstr "The following languages could not be removed due to usage"
 
 msgid "invalidDate"
 msgstr "Invalid date"

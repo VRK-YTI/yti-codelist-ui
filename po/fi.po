@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-13 14:36+0200\n"
+"PO-Revision-Date: 2019-11-13 17:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -30,9 +30,6 @@ msgstr "Valitse lähtötila"
 
 msgid "Choose target status"
 msgstr "Valitse kohdetila"
-
-msgid "The following languages could not be removed due to usage"
-msgstr "Seuraavia kieliä ei voitu poistaa koska ne ovat käytössä"
 
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
@@ -124,6 +121,11 @@ msgstr "Valitse kielikoodi"
 
 msgid "Search language code"
 msgstr "Hae kielikoodia"
+
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+"Huomaathan, että tämän kentän sisältö on julkista. Älä käytä henkilökohtaisia "
+"yhteystietoja!"
 
 msgid "Select member"
 msgstr "Valitse jäsen"
@@ -813,6 +815,9 @@ msgstr ""
 msgid "INFO_TEXT_ORGANIZATION"
 msgstr "Koodistosta vastaava ja ylläpitävä organisaatio tai organisaatiot"
 
+msgid "INFO_TEXT_EXTENSION_CODE_LISTS"
+msgstr "Ulkoiset koodistot, joihin tämä laajennus on liitetty"
+
 msgid "INFO_TEXT_CODELIST_ORGANIZATION"
 msgstr "Koodistosta vastaava organisaatio tai organisaatiot"
 
@@ -1095,11 +1100,6 @@ msgstr ""
 
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr "Palautekanava koodistolle, esim. sähköpostiosoite."
-
-msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
-msgstr ""
-"Huomaathan, että tämän kentän sisältö on julkista. Älä käytä henkilökohtaisia "
-"yhteystietoja!"
 
 msgid "Front page"
 msgstr "Etusivu"
@@ -1749,6 +1749,9 @@ msgstr "Ilmoitusten tilaus epäonnistui."
 
 msgid "Subscription deletion failed."
 msgstr "Ilmoitusten poisto epäonnistui."
+
+msgid "The following languages could not be removed due to usage"
+msgstr "Seuraavia kieliä ei voitu poistaa koska ne ovat käytössä"
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

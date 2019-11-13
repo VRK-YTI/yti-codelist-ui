@@ -771,6 +771,9 @@ msgstr ""
 msgid "INFO_TEXT_ORGANIZATION"
 msgstr ""
 
+msgid "INFO_TEXT_EXTENSION_CODE_LISTS"
+msgstr ""
+
 msgid "INFO_TEXT_CODELIST_ORGANIZATION"
 msgstr ""
 
