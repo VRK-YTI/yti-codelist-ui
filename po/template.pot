@@ -22,9 +22,6 @@ msgstr ""
 msgid "Choose target status"
 msgstr ""
 
-msgid "The following languages could not be removed due to usage"
-msgstr ""
-
 msgid "All link types"
 msgstr ""
 
@@ -112,6 +109,9 @@ msgid "Select language code"
 msgstr ""
 
 msgid "Search language code"
+msgstr ""
+
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
 msgstr ""
 
 msgid "Select member"
@@ -987,9 +987,6 @@ msgstr ""
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr ""
 
-msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
-msgstr ""
-
 msgid "Front page"
 msgstr ""
 
@@ -1603,6 +1600,9 @@ msgid "Adding subscription failed."
 msgstr ""
 
 msgid "Subscription deletion failed."
+msgstr ""
+
+msgid "The following languages could not be removed due to usage"
 msgstr ""
 
 msgid "invalidDate"
