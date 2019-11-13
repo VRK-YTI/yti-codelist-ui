@@ -153,12 +153,19 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
         if (languagesThatDidNotGetDeletedEvenThoughUserWanted.length > 0) {
           let languages = '';
+          let count = 0;
           languagesThatDidNotGetDeletedEvenThoughUserWanted.forEach( lang => {
             const displayLang = lang.getDisplayName(this.languageService, true);
-            languages = languages + displayLang + ' ';
+            if (count > 0) {
+              languages = languages + ','  + displayLang;
+            } else {
+              languages = languages + displayLang;
+            }
+            count++;
           });
           const title = 'The following languages could not be removed due to usage';
-          this.alertModalService.openWithMessageAndTitle(title, languages);
+          const modalRef = this.alertModalService.openWithMessageAndTitle(title, languages);
+          modalRef.showOkButton = true;
         }
       }
     });
