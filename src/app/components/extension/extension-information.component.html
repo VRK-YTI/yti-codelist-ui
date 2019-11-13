@@ -30,6 +30,7 @@
 
         <app-code-scheme-input *ngIf="allowCodeSchemes"
                                id="extension_code_scheme_input"
+                               [infoText]="'INFO_TEXT_EXTENSION_CODE_LISTS'"
                                [label]="'Code list' | translate"
                                [parentCodeScheme]="extension.parentCodeScheme"
                                [formControlName]="'codeSchemes'"></app-code-scheme-input>

@@ -185,7 +185,7 @@ export class SearchLinkedCodeModalComponent implements AfterViewInit, OnInit, On
         map(([codes, search, theStatus]) => {
           return codes.filter(code => {
             const label = this.languageService.translate(code.prefLabel, true);
-            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            const searchMatches = !search || label.toLowerCase().indexOf(search.toLowerCase()) !== -1 || code.codeValue.toLowerCase().indexOf(search.toLowerCase()) !== -1;
             const theStatusMatches = statusMatches(theStatus, code);
             const isNotRestricted = !contains(this.restricts, code.id);
             return searchMatches && isNotRestricted && theStatusMatches;

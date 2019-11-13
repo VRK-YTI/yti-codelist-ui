@@ -44,6 +44,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   @ViewChild('tabSet') tabSet: NgbTabset;
 
   codeScheme: CodeScheme;
+  previouslySavedCodeScheme: CodeScheme | undefined; // every time we just before saving, CS as it was last read from ES index goes here
   codes: CodePlain[];
   extensions: Extension[];
   chosenVariant: CodeScheme;
@@ -81,7 +82,10 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   ngOnInit() {
+    this.doTheInit();
+  }
 
+  doTheInit(weJustSaved?: boolean, codeSchemeThatWeTriedToSave?: CodeScheme) {
     const registryCodeValue = this.route.snapshot.params.registryCode;
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
 
@@ -101,6 +105,68 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.locationService.atCodeSchemePage(codeScheme);
       if (this.codeScheme.allVersions.length > 0) {
         this.deleteCodeSchemeButtonTitle = 'Delete code list version';
+      }
+
+      if (weJustSaved && codeSchemeThatWeTriedToSave && this.previouslySavedCodeScheme) {
+        const originalCodeSchemeInTheDatabase = this.previouslySavedCodeScheme;
+        const codeSchemeAfterTheUpdate = this.codeScheme;
+        const codeSchemeTheUserTriedToSave = codeSchemeThatWeTriedToSave;
+
+        const languagesThatActuallyGotDeleted: CodePlain[] = [];
+        originalCodeSchemeInTheDatabase.languageCodes.forEach(lang => {
+          let found = false;
+          codeSchemeAfterTheUpdate.languageCodes.forEach(innerLang => {
+            if (lang.codeValue === innerLang.codeValue) {
+              found = true;
+            }
+          });
+          if (!found) {
+            languagesThatActuallyGotDeleted.push(lang);
+          }
+        });
+
+        const languagesThatUserTriedToDelete: CodePlain[] = [];
+        originalCodeSchemeInTheDatabase.languageCodes.forEach(lang => {
+          let found = false;
+          codeSchemeTheUserTriedToSave.languageCodes.forEach(innerLang => {
+            if (lang.codeValue === innerLang.codeValue) {
+              found = true;
+            }
+          });
+          if (!found) {
+            languagesThatUserTriedToDelete.push(lang);
+          }
+        });
+
+        const languagesThatDidNotGetDeletedEvenThoughUserWanted: CodePlain[] = [];
+        languagesThatUserTriedToDelete.forEach(lang => {
+          let found = false;
+          languagesThatActuallyGotDeleted.forEach(innerLang => {
+            if (lang.codeValue === innerLang.codeValue) {
+              found = true;
+            }
+          });
+          if (!found) {
+            languagesThatDidNotGetDeletedEvenThoughUserWanted.push(lang);
+          }
+        });
+
+        if (languagesThatDidNotGetDeletedEvenThoughUserWanted.length > 0) {
+          let languages = '';
+          let count = 0;
+          languagesThatDidNotGetDeletedEvenThoughUserWanted.forEach( lang => {
+            const displayLang = lang.getDisplayName(this.languageService, true);
+            if (count > 0) {
+              languages = languages + ','  + displayLang;
+            } else {
+              languages = languages + displayLang;
+            }
+            count++;
+          });
+          const title = 'The following languages could not be removed due to usage';
+          const modalRef = this.alertModalService.openWithMessageAndTitle(title, languages);
+          modalRef.showOkButton = true;
+        }
       }
     });
 
@@ -223,6 +289,8 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     const { validity, ...rest } = formData;
     const updatedCodeScheme = this.codeScheme.clone();
 
+    const nrOfLangsAtStart = updatedCodeScheme.languageCodes.length;
+
     Object.assign(updatedCodeScheme, {
       ...rest,
       startDate: validity.start,
@@ -235,8 +303,9 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     }
 
     const save = () => {
+      this.previouslySavedCodeScheme = this.codeScheme;
       return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'false').pipe(tap(() => {
-        this.ngOnInit()
+        this.doTheInit(true, updatedCodeScheme);
       }));
     };
 
@@ -255,7 +324,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
             this.translateService.instant(' codes.');
         }
         this.alertModalService.openWithMessageAndTitle(title, message);
-        this.ngOnInit();
+        this.doTheInit(true, updatedCodeScheme);
       }));
     };
 

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-11 09:57+0200\n"
+"PO-Revision-Date: 2019-11-13 17:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -119,6 +119,11 @@ msgstr ""
 
 msgid "Search language code"
 msgstr ""
+
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+"Please note that the content of this field is public. Don't use personal contact "
+"information!"
 
 msgid "Select member"
 msgstr ""
@@ -796,6 +801,9 @@ msgstr ""
 "Responsible organizations. The organization or legal entity that provides and maintains "
 "the code list."
 
+msgid "INFO_TEXT_EXTENSION_CODE_LISTS"
+msgstr "External code lists that this extension is linked to"
+
 msgid "INFO_TEXT_CODELIST_ORGANIZATION"
 msgstr "Responsible organizations. The organization that owns and maintains the code list."
 
@@ -951,7 +959,7 @@ msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
 msgstr "Time registry information was last changed."
 
 msgid "INFO_TEXT_EXTENSION_CODE_LIST"
-msgstr "Code list that this extension is linked"
+msgstr "Code list that this extension is linked to"
 
 msgid "INFO_TEXT_EXTENSION_ID"
 msgstr "Extension code value"
@@ -1058,11 +1066,6 @@ msgstr ""
 
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr "Feedback channel for reference data, e.g. email address."
-
-msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
-msgstr ""
-"Please note that the content of this field is public. Don't use personal contact "
-"information!"
 
 msgid "Front page"
 msgstr ""
@@ -1568,9 +1571,6 @@ msgstr "Defined property type not allowed for extension: {{ identifier }}"
 msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
 msgstr "Imported data contains invalid URLs in the HREF columns of External References."
 
-msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
-msgstr "Could not delete language because it is in use."
-
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
@@ -1608,9 +1608,7 @@ msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Are you sure you want to change the status?"
 
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
-msgstr ""
-"After saving you cannot change the status back to incomplete, draft, suggested or "
-"submitted anymore."
+msgstr "After saving you cannot change the status back to incomplete or draft."
 
 msgid "CHOOSE STATUS?"
 msgstr ""
@@ -1619,7 +1617,7 @@ msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Are you sure you want to choose this status?"
 
 msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
-msgstr "After saving you cannot change the status back to incomplete or draft anymore."
+msgstr "After saving you cannot change the status back to incomplete or draft."
 
 msgid "CHANGE CODE STATUSES TOO?"
 msgstr ""
@@ -1717,6 +1715,9 @@ msgstr ""
 
 msgid "Subscription deletion failed."
 msgstr ""
+
+msgid "The following languages could not be removed due to usage"
+msgstr "The following languages could not be removed due to usage"
 
 msgid "invalidDate"
 msgstr "Invalid date"

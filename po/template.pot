@@ -111,6 +111,9 @@ msgstr ""
 msgid "Search language code"
 msgstr ""
 
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+
 msgid "Select member"
 msgstr ""
 
@@ -768,6 +771,9 @@ msgstr ""
 msgid "INFO_TEXT_ORGANIZATION"
 msgstr ""
 
+msgid "INFO_TEXT_EXTENSION_CODE_LISTS"
+msgstr ""
+
 msgid "INFO_TEXT_CODELIST_ORGANIZATION"
 msgstr ""
 
@@ -982,9 +988,6 @@ msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
 msgstr ""
 
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
-msgstr ""
-
-msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
 msgstr ""
 
 msgid "Front page"
@@ -1470,9 +1473,6 @@ msgstr ""
 msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
 msgstr ""
 
-msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
-msgstr ""
-
 msgid "Do you want to replace the existing values with new ones?"
 msgstr ""
 
@@ -1603,6 +1603,9 @@ msgid "Adding subscription failed."
 msgstr ""
 
 msgid "Subscription deletion failed."
+msgstr ""
+
+msgid "The following languages could not be removed due to usage"
 msgstr ""
 
 msgid "invalidDate"
