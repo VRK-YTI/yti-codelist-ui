@@ -8,7 +8,7 @@ import { ModalService } from '../../services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
-import { allStatuses, Status } from 'yti-common-ui/entities/status';
+import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
@@ -134,12 +134,12 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
     this.fromStatus$.next(null);
 
     if (this.isSuperUser && !this.enforceTransitionRulesForSuperUserToo) {
-      this.fromOptions = [null, ...allStatuses].map(status => ({
+      this.fromOptions = [null, ...selectableStatuses].map(status => ({
         value: status,
         name: () => this.translateService.instant(status ? status : 'Choose starting status'),
         idIdentifier: () => status ? status : 'all_selected'
       }));
-      this.toOptions = [null, ...allStatuses].map(stat => ({
+      this.toOptions = [null, ...selectableStatuses].map(stat => ({
         value: stat,
         name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
         idIdentifier: () => stat ? stat : 'all_selected'
