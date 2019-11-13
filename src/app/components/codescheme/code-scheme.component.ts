@@ -157,7 +157,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
             const displayLang = lang.getDisplayName(this.languageService, true);
             languages = languages + displayLang + ' ';
           });
-          const title = this.translateService.instant('The following languages could not be removed due to usage');
+          const title = 'The following languages could not be removed due to usage';
           this.alertModalService.openWithMessageAndTitle(title, languages);
         }
       }
