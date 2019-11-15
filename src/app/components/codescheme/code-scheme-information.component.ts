@@ -127,12 +127,15 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
       })
     }
 
-    const { externalReferences, infoDomains, defaultCode, startDate, endDate, organizations, ...rest } = this.codeScheme;
+    const { externalReferences, infoDomains, defaultCode, startDate, endDate, organizations, languageCodes, ...rest } = this.codeScheme;
+
+    this.languageCodes = languageCodes; // needed to to get all langs showing properly again after a CANCEL click
 
     infoDomains.sort(comparingLocalizable<Code>(this.languageService, infoDomain => infoDomain.prefLabel));
 
     this.codeSchemeForm.reset({
       ...rest,
+      languageCodes : this.languageCodes,
       externalReferences: externalReferences.map(link => link.clone()),
       infoDomains: infoDomains.map(infoDomain => infoDomain.clone()),
       defaultCode: defaultCode,
