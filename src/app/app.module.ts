@@ -118,6 +118,7 @@ import { SearchHitsListComponent } from './components/frontpage/app-searchhits-l
 import { LocalizableInputWithLangauageIndicatorComponent } from './components/form/localizable-input-with-langauage-indicator.component';
 import { LocalizableTextareaWithLanguageIndicatorComponent } from './components/form/localizable-textarea-with-language-indicator';
 import { LocalizableLiteralWithLanguageIndicatorComponent } from './components/form/localizable-literal-with-language-indicator.component';
+import { LocalizableLiteralWithLanguageIndicatorForAllLanguagesComponent } from './components/form/localizable-literal-with-language-indicator-for-all-languges.component';
 import {
   CodeSchemeMassMigrateCodeStatusesModalComponent,
   CodeSchemeMassMigrateCodeStatusesModalService
@@ -255,6 +256,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     LocalizableLiteralWithLanguageIndicatorComponent,
     LocalizableInputWithLanguageIndicatorForAllLangagesComponent,
     LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent,
+    LocalizableLiteralWithLanguageIndicatorForAllLanguagesComponent,
     EditableButtonsComponent,
     ErrorMessagesComponent,
     LinkShowModalComponent,

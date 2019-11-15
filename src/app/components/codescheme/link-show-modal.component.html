@@ -14,11 +14,13 @@
         </a>
       </div>
 
-      <app-localizable-literal-with-language-indicator [label]="'Link title' | translate"
-                                                       [value]="externalReference.title"></app-localizable-literal-with-language-indicator>
+      <app-localizable-literal-with-language-indicator-for-all-languages [label]="'Link title' | translate"
+                                                                         [parentElementsLanguageCodes]="languageCodes"
+                                                                         [value]="externalReference.title"></app-localizable-literal-with-language-indicator-for-all-languages>
 
-      <app-localizable-literal-with-language-indicator [label]="'Description' | translate"
-                                                       [value]="externalReference.description"></app-localizable-literal-with-language-indicator>
+      <app-localizable-literal-with-language-indicator-for-all-languages [label]="'Description' | translate"
+                                                                         [parentElementsLanguageCodes]="languageCodes"
+                                                                         [value]="externalReference.description"></app-localizable-literal-with-language-indicator-for-all-languages>
 
       <dt><label translate>URL</label></dt>
       <dd>
@@ -26,9 +28,9 @@
                                           target="_blank">{{externalReference.href}}</a></div>
       </dd>
 
-      <app-localizable-literal-with-language-indicator *ngIf="externalReference.propertyType != null"
-                                                       [label]="'Link type' | translate"
-                                                       [value]="externalReference.propertyType.prefLabel"></app-localizable-literal-with-language-indicator>
+      <app-localizable-literal-with-language-indicator-for-all-languages *ngIf="externalReference.propertyType != null"
+                                                                         [label]="'Link type' | translate"
+                                                                         [value]="externalReference.propertyType.prefLabel"></app-localizable-literal-with-language-indicator-for-all-languages>
     </div>
   </div>
 </div>
