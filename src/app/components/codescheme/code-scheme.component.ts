@@ -157,7 +157,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
           languagesThatDidNotGetDeletedEvenThoughUserWanted.forEach( lang => {
             const displayLang = lang.getDisplayName(this.languageService, true);
             if (count > 0) {
-              languages = languages + ','  + displayLang;
+              languages = languages + ', '  + displayLang;
             } else {
               languages = languages + displayLang;
             }
