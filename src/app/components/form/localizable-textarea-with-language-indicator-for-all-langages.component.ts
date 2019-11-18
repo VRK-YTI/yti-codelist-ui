@@ -56,7 +56,7 @@ import { CodePlain } from '../../entities/code-simple';
         <app-required-symbol *ngIf="required && editing"></app-required-symbol>
       </dt>
 
-      <div *ngIf="htmlIdentifierPrefix === 'codelist_feedback_channel_textarea' ">
+      <div *ngIf="htmlIdentifierPrefix === 'codelist_feedback_channel_textarea' && editing " style="margin-bottom: 1em">
         <span translate>INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL</span>
       </div>
         
