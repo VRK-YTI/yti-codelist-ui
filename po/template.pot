@@ -990,6 +990,9 @@ msgstr ""
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr ""
 
+msgid "INFO_TEXT_EMAIL_SUBSCRIPTIONS"
+msgstr ""
+
 msgid "Front page"
 msgstr ""
 
