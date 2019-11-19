@@ -12,12 +12,14 @@
         <app-localizable-input-with-language-indicator-for-all-languages [id]="'link_title_input'"
                                                                          [label]="'Link title' | translate"
                                                                          [infoText]="'INFO_TEXT_LINK_TITLE'"
+                                                                         [htmlIdentifierPrefix]="'link_title_input'"
                                                                          [parentElementsLanguageCodes]="languageCodes"
                                                                          [formControlName]="'title'"></app-localizable-input-with-language-indicator-for-all-languages>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'link_description_textarea'"
                                                                             [label]="'Description' | translate"
                                                                             [infoText]="'INFO_TEXT_LINK_DESCRIPTION'"
+                                                                            [htmlIdentifierPrefix]="'link_description_input'"
                                                                             [parentElementsLanguageCodes]="languageCodes"
                                                                             [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
