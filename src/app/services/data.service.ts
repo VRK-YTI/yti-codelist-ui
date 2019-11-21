@@ -45,6 +45,7 @@ const api = 'api';
 const terminologyContext = 'terminology';
 
 const version = 'v1';
+const system = 'system';
 const registries = 'coderegistries';
 const configuration = 'configuration';
 const codeSchemes = 'codeschemes';
@@ -70,7 +71,7 @@ const codeRegistriesBasePath = `/${apiContext}/${api}/${version}/${registries}`;
 const membersBasePath = `/${apiContext}/${api}/${version}/${members}`;
 const membersIntakeBasePath = `/${intakeContext}/${api}/${version}/${members}`;
 const usersIntakeBasePath = `/${intakeContext}/${api}/${version}/${users}`;
-const configurationIntakeBasePath = `/${intakeContext}/${api}/${configuration}`;
+const configurationIntakeBasePath = `/${intakeContext}/${api}/${version}/${system}/${configuration}`;
 const externalReferencesBasePath = `/${apiContext}/${api}/${version}/${externalReferences}`;
 const codeRegistriesIntakeBasePath = `/${intakeContext}/${api}/${version}/${registries}`;
 const infoDomainsBasePath = `/${intakeContext}/${api}/${version}/${infodomains}`;
