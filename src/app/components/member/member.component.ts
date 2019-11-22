@@ -19,6 +19,7 @@ import { MemberValueType } from '../../services/api-schema';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { CodeScheme } from '../../entities/code-scheme';
+import { AlertModalService } from '../common/alert-modal.service';
 
 @Component({
   selector: 'app-member',
@@ -45,7 +46,8 @@ export class MemberComponent implements OnInit, EditingComponent {
               private errorModalService: CodeListErrorModalService,
               private authorizationManager: AuthorizationManager,
               public languageService: LanguageService,
-              public translateService: TranslateService) {
+              public translateService: TranslateService,
+              public alertModalService: AlertModalService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -65,6 +67,12 @@ export class MemberComponent implements OnInit, EditingComponent {
     this.dataService.getMember(memberId, extensionCodeValue).subscribe(member => {
       this.member = member;
       this.locationService.atMemberPage(member);
+    }, error => { // in case the user comes thru an old broken URL, redirect here to the parent codescheme.
+      this.alertModalService.openWithMessageAndTitleAndShowOkButtonAndReturnPromise('MISSING_RESOURCE', this.translateService.instant('REDIRECTING_TO_EXTENSION_PAGE')).then(value => {
+        this.goToParentExtensionPage();
+      }).catch(() => {
+        this.goToParentExtensionPage();
+      });
     });
 
     this.dataService.getCodeScheme(registryCodeValue, schemeCodeValue).subscribe(codeScheme => {
@@ -74,6 +82,22 @@ export class MemberComponent implements OnInit, EditingComponent {
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
       this.extension = extension;
     });
+  }
+
+  goToParentExtensionPage() {
+    this.locationService.atExtensionPage(this.extension);
+    this.router.navigate(this.getRouteToExtension(this.extension.codeValue, this.codeScheme.codeValue, this.codeScheme.codeRegistry.codeValue));
+  }
+
+  getRouteToExtension(entityCodeValue: string, codeSchemeCodeValue: string, codeRegistryCodeValue: string): any[] {
+    return [
+      'extension',
+      {
+        registryCode: codeRegistryCodeValue,
+        schemeCode: codeSchemeCodeValue,
+        extensionCode: entityCodeValue
+      }
+    ];
   }
 
   get loading(): boolean {

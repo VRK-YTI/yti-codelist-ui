@@ -35,8 +35,8 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
   codeScheme: CodeScheme;
   members: MemberSimple[];
   deleting: boolean;
-  initialTabId: string|undefined = undefined;
-  numberOfMissingMembersThatGotCreated: string|null = null;
+  initialTabId: string | undefined = undefined;
+  numberOfMissingMembersThatGotCreated: string | null = null;
 
   constructor(private userService: UserService,
               private dataService: DataService,
@@ -74,11 +74,32 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     this.dataService.getExtension(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(extension => {
       this.extension = extension;
       this.locationService.atExtensionPage(extension);
+    }, error => { // in case the user comes thru an old broken URL, redirect here to the parent codescheme.
+      this.alertModalService.openWithMessageAndTitleAndShowOkButtonAndReturnPromise('MISSING_RESOURCE', this.translateService.instant('REDIRECTING_TO_CODESCHEME_PAGE')).then(value => {
+        this.goToParentCodeSchemePage();
+      }).catch(() => {
+        this.goToParentCodeSchemePage();
+      });
     });
 
     this.dataService.getSimpleMembers(registryCodeValue, schemeCodeValue, extensionCodeValue).subscribe(members => {
       this.members = members;
     });
+  }
+
+  goToParentCodeSchemePage() {
+    this.locationService.atCodeSchemePage(this.codeScheme);
+    this.router.navigate(this.getRouteToCodeScheme(this.codeScheme.codeValue, this.codeScheme.codeRegistry.codeValue));
+  }
+
+  getRouteToCodeScheme(codeSchemeCodeValue: string, codeRegistryCodeValue: string): any[] {
+    return [
+      'codescheme',
+      {
+        registryCode: codeRegistryCodeValue,
+        schemeCode: codeSchemeCodeValue
+      }
+    ];
   }
 
   ngAfterViewInit() {
@@ -166,8 +187,8 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       const modalRef = this.alertModalService.open('Please wait. This could take a while...');
       modalRef.enableClosingActions = false;
       this.dataService.createMissingMembers(this.extension.parentCodeScheme.codeRegistry.codeValue,
-                                            this.extension.parentCodeScheme.id,
-                                            this.extension.codeValue).subscribe(next => {
+        this.extension.parentCodeScheme.id,
+        this.extension.codeValue).subscribe(next => {
         const nrOfCreatedMembers: number = next.length;
         let messagePart = '';
         if (nrOfCreatedMembers === 0) {
@@ -186,7 +207,12 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
           modalRef.enableClosingActions = true;
           modalRef.showOkButton = true;
         }
-        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, { queryParams: { 'goToMembersTab': true, 'created': nrOfCreatedMembers } }));
+        this.router.navigate(['re'], { skipLocationChange: true }).then(() => this.router.navigate(this.extension.route, {
+          queryParams: {
+            'goToMembersTab': true,
+            'created': nrOfCreatedMembers
+          }
+        }));
       }, error => {
         this.errorModalService.openSubmitError(error);
       })

@@ -31,6 +31,9 @@ msgstr ""
 msgid "Choose target status"
 msgstr ""
 
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr "You will be redirected to the front page."
+
 msgid "All link types"
 msgstr ""
 
@@ -1724,6 +1727,15 @@ msgstr ""
 
 msgid "The following languages could not be removed due to usage"
 msgstr "The following languages could not be removed due to usage"
+
+msgid "MISSING_RESOURCE"
+msgstr "Resource not found"
+
+msgid "REDIRECTING_TO_CODESCHEME_PAGE"
+msgstr "You will be redirected to parent code list page."
+
+msgid "REDIRECTING_TO_EXTENSION_PAGE"
+msgstr "You will be redirected to parent extension page."
 
 msgid "invalidDate"
 msgstr "Invalid date"

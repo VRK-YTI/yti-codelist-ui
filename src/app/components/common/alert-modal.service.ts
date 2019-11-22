@@ -22,6 +22,14 @@ export class AlertModalService {
     return instance;
   }
 
+  openWithMessageAndTitleAndShowOkButtonAndReturnPromise(title: string, message: string): Promise<any> {
+    const modalRef = this.modalService.open(AlertModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
+    const instance = modalRef.componentInstance as AlertModalComponent;
+    instance.title = title;
+    instance.message = message;
+    instance.showOkButton = true;
+    return modalRef.result;
+  }
 }
 
 @Component({

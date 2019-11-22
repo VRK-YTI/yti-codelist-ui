@@ -31,6 +31,9 @@ msgstr "Valitse lähtötila"
 msgid "Choose target status"
 msgstr "Valitse kohdetila"
 
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr "Sinut uudelleenohjataan etusivulle."
+
 msgid "All link types"
 msgstr "Kaikki linkkityypit"
 
@@ -1758,6 +1761,15 @@ msgstr "Ilmoitusten poisto epäonnistui."
 
 msgid "The following languages could not be removed due to usage"
 msgstr "Seuraavia kieliä ei voitu poistaa koska ne ovat käytössä"
+
+msgid "MISSING_RESOURCE"
+msgstr "Resurssia ei löydy"
+
+msgid "REDIRECTING_TO_CODESCHEME_PAGE"
+msgstr "Sinut uudelleenohjataan koodiston sivulle."
+
+msgid "REDIRECTING_TO_EXTENSION_PAGE"
+msgstr "Sinut uudelleenohjataan laajennuksen sivulle."
 
 msgid "invalidDate"
 msgstr "Virheellinen päivämäärä"

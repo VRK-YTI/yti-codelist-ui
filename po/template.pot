@@ -22,6 +22,9 @@ msgstr ""
 msgid "Choose target status"
 msgstr ""
 
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr ""
+
 msgid "All link types"
 msgstr ""
 
@@ -1609,6 +1612,15 @@ msgid "Subscription deletion failed."
 msgstr ""
 
 msgid "The following languages could not be removed due to usage"
+msgstr ""
+
+msgid "MISSING_RESOURCE"
+msgstr ""
+
+msgid "REDIRECTING_TO_CODESCHEME_PAGE"
+msgstr ""
+
+msgid "REDIRECTING_TO_EXTENSION_PAGE"
 msgstr ""
 
 msgid "invalidDate"
