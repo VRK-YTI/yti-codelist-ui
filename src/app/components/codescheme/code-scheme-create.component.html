@@ -15,7 +15,7 @@
 
   <form [formGroup]="codeSchemeForm" #form="ngForm">
     <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-lg-4 col-md-5">
         <ng-container *ngIf="!cloning">
           <app-registry-input id="code_registry_input"
                               [label]="'Registry' | translate"
@@ -130,46 +130,9 @@
                                  (updatedListEvent)="handleLanguageCodesChangedEvent($event)"
                                  [formControlName]="'languageCodes'"></app-languagecodes-input>
 
-        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
-                                                                            [htmlIdentifierPrefix]="'codelist_description_textarea'"
-                                                                            [label]="'Description' | translate"
-                                                                            [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
-                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
-                                                                            [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_definition_textarea'"
-                                                                            [htmlIdentifierPrefix]="'codelist_definition_textarea'"
-                                                                            [label]="'Definition' | translate"
-                                                                            [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
-                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
-                                                                            [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_changenote_textarea'"
-                                                                            [htmlIdentifierPrefix]="'codelist_changenote_textarea'"
-                                                                            [label]="'Change note' | translate"
-                                                                            [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
-                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
-                                                                            [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
-        <app-literal-input [id]="'codelist_version_input'"
-                           [label]="'Version' | translate"
-                           [infoText]="'INFO_TEXT_CODELIST_VERSION'"
-                           [formControlName]="'version'"></app-literal-input>
-
-        <app-literal-input [id]="'codelist_source_input'"
-                           [label]="'Source' | translate"
-                           [infoText]="'INFO_TEXT_CODELIST_SOURCE'"
-                           [formControlName]="'source'"></app-literal-input>
-
-        <app-literal-input [id]="'codelist_legal_base_input'"
-                           [label]="'Legal base' | translate"
-                           [infoText]="'INFO_TEXT_CODELIST_LEGAL_BASE'"
-                           [formControlName]="'legalBase'"></app-literal-input>
-
-        <app-literal-input [id]="'codelist_governance_policy_input'"
-                           [label]="'Governance policy' | translate"
-                           [infoText]="'INFO_TEXT_CODELIST_GOVERNANCE_POLICY'"
-                           [formControlName]="'governancePolicy'"></app-literal-input>
 
         <ng-container *ngIf="!cloning">
           <app-status-input id="codelist_status_input"
@@ -190,6 +153,50 @@
                                        [languageCodes]="codeSchemeForm.controls['languageCodes'].value"
                                        [formControlName]="'externalReferences'"
                                        [hidden]="cloning"></app-external-references-input>
+
+
+
+      </div>
+      <div class="col-lg-4 col-md-5">
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_description_textarea'"
+                                                                            [label]="'Description' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_DESCRIPTION'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'description'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_definition_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_definition_textarea'"
+                                                                            [label]="'Definition' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_DEFINITION'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+
+        <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_changenote_textarea'"
+                                                                            [htmlIdentifierPrefix]="'codelist_changenote_textarea'"
+                                                                            [label]="'Change note' | translate"
+                                                                            [infoText]="'INFO_TEXT_CODELIST_CHANGE_NOTE'"
+                                                                            [parentElementsLanguageCodes]="initialLanguageCodes"
+                                                                            [formControlName]="'changeNote'"></app-localizable-textarea-with-language-indicator-for-all-languages>
+        <app-literal-input [id]="'codelist_version_input'"
+                           [label]="'Version' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_VERSION'"
+                           [formControlName]="'version'"></app-literal-input>
+
+        <app-literal-input [id]="'codelist_source_input'"
+                           [label]="'Source' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_SOURCE'"
+                           [formControlName]="'source'"></app-literal-input>
+
+        <app-literal-input [id]="'codelist_legal_base_input'"
+                           [label]="'Legal base' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_LEGAL_BASE'"
+                           [formControlName]="'legalBase'"></app-literal-input>
+
+        <app-literal-input [id]="'codelist_governance_policy_input'"
+                           [label]="'Governance policy' | translate"
+                           [infoText]="'INFO_TEXT_CODELIST_GOVERNANCE_POLICY'"
+                           [formControlName]="'governancePolicy'"></app-literal-input>
 
         <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_feedback_channel_textarea'"
                                                                             [htmlIdentifierPrefix]="'codelist_feedback_channel_textarea'"
