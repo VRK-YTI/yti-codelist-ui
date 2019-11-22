@@ -13,6 +13,8 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { tap } from 'rxjs/operators';
+import { AlertModalService } from '../common/alert-modal.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-code-registry',
@@ -35,7 +37,9 @@ export class RegistryComponent implements OnInit, EditingComponent {
               public languageService: LanguageService,
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
-              private errorModalService: CodeListErrorModalService) {
+              private errorModalService: CodeListErrorModalService,
+              private alertModalService: AlertModalService,
+              private translateService: TranslateService) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -51,11 +55,21 @@ export class RegistryComponent implements OnInit, EditingComponent {
     this.dataService.getCodeRegistry(registryCodeValue).subscribe(codeRegistry => {
       this.codeRegistry = codeRegistry;
       this.locationService.atRegistryPage(codeRegistry);
-    });
+    }, error => { // in case the user comes thru an old broken URL, redirect here to frontpage.
+      this.alertModalService.openWithMessageAndTitleAndShowOkButtonAndReturnPromise('MISSING_RESOURCE', this.translateService.instant('REDIRECTING_TO_FRONT_PAGE')).then(value => {
+        this.goToFrontPage();
+      }).catch(() => {
+        this.goToFrontPage();
+      })});
 
     this.dataService.getCodeSchemesForCodeRegistry(registryCodeValue).subscribe(codeSchemes => {
       this.codeSchemes = codeSchemes;
     });
+  }
+
+  goToFrontPage() {
+    this.locationService.atFrontPage();
+    this.router.navigate(['']);
   }
 
   get loading(): boolean {
