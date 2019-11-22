@@ -22,8 +22,6 @@ import { MemberSimple } from '../../entities/member-simple';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { formatDate } from '../../utils/date';
-import { AlertModalService } from '../common/alert-modal.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-code',
@@ -48,9 +46,7 @@ export class CodeComponent implements OnInit, EditingComponent {
               private editableService: EditableService,
               private confirmationModalService: CodeListConfirmationModalService,
               private errorModalService: CodeListErrorModalService,
-              private authorizationManager: AuthorizationManager,
-              private alertModalService: AlertModalService,
-              private translateService: TranslateService) {
+              private authorizationManager: AuthorizationManager) {
 
     editableService.onSave = (formValue: any) => this.save(formValue);
   }
@@ -68,32 +64,11 @@ export class CodeComponent implements OnInit, EditingComponent {
     this.dataService.getCode(registryCode, schemeCode, codeCode).subscribe(code => {
       this.code = code;
       this.locationService.atCodePage(code);
-    }, error => { // in case the user comes thru an old broken URL, redirect here to the parent codescheme.
-      this.alertModalService.openWithMessageAndTitleAndShowOkButtonAndReturnPromise('MISSING_RESOURCE', this.translateService.instant('REDIRECTING_TO_CODESCHEME_PAGE')).then(value => {
-        this.goToParentCodeSchemePage();
-      }).catch(() => {
-        this.goToParentCodeSchemePage();
-      });
     });
 
     this.dataService.getCodeScheme(registryCode, schemeCode).subscribe(codeScheme => {
       this.codeScheme = codeScheme;
     });
-  }
-
-  goToParentCodeSchemePage() {
-    this.locationService.atCodeSchemePage(this.codeScheme);
-    this.router.navigate(this.getRouteToCodeScheme(this.codeScheme.codeValue, this.codeScheme.codeRegistry.codeValue));
-  }
-
-  getRouteToCodeScheme(codeSchemeCodeValue: string, codeRegistryCodeValue: string): any[] {
-    return [
-      'codescheme',
-      {
-        registryCode: codeRegistryCodeValue,
-        schemeCode: codeSchemeCodeValue
-      }
-    ];
   }
 
   get loading(): boolean {
@@ -171,7 +146,7 @@ export class CodeComponent implements OnInit, EditingComponent {
     const extensions: Extension[] = [];
 
     extensionsArray.forEach((extension: Extension) => {
-      const extensionType: ExtensionType = <ExtensionType>{
+      const extensionType: ExtensionType = <ExtensionType> {
         id: extension.id,
         uri: extension.uri,
         url: extension.url,
@@ -197,7 +172,7 @@ export class CodeComponent implements OnInit, EditingComponent {
     const codePlainType = this.code.serializeToPlainType();
 
     membersArray.forEach(member => {
-      const memberType: MemberSimpleType = <MemberSimpleType>{
+      const memberType: MemberSimpleType = <MemberSimpleType> {
         id: member.id,
         uri: member.uri,
         url: member.url,
@@ -221,7 +196,7 @@ export class CodeComponent implements OnInit, EditingComponent {
     const memberValues: MemberValueType[] = [];
 
     memberValuesArray.forEach(memberValue => {
-      const memberValueType: MemberValueType = <MemberValueType>{
+      const memberValueType: MemberValueType = <MemberValueType> {
         id: memberValue.id,
         value: memberValue.value,
         valueType: memberValue.valueType as ValueType

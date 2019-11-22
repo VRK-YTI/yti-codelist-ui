@@ -168,12 +168,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
           modalRef.showOkButton = true;
         }
       }
-    }, error => { // in case the user comes thru an old broken URL, redirect here to frontpage.
-      this.alertModalService.openWithMessageAndTitleAndShowOkButtonAndReturnPromise('MISSING_RESOURCE', this.translateService.instant('REDIRECTING_TO_FRONT_PAGE')).then(value => {
-        this.goToFrontPage();
-      }).catch(() => {
-        this.goToFrontPage();
-      });
     });
 
     this.dataService.getPlainCodes(registryCodeValue, schemeCodeValue).subscribe(codes => {
@@ -187,11 +181,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.activatedRoute.queryParams.subscribe(params => {
       this.prefilledSearchTermForCode = params['prefilledSearchTermForCode'];
     });
-  }
-
-  goToFrontPage() {
-    this.locationService.atFrontPage();
-    this.router.navigate(['']);
   }
 
   checkSubscription() {
