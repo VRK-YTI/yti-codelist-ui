@@ -49,11 +49,13 @@
                   (click)="createANewVersionOfThisCodeSchemeFromFile()"
                   translate>Create a new version from file</button>
           <button id="update_codelist_from_file_button"
+                  *ngIf="canUpdateCodeSchemeFromFile"
                   type="button"
                   class="dropdown-item"
                   (click)="updateCodeSchemeFromFile()"
                   translate>Update code list</button>
           <button id="mass_migrate_codelist_codes_statuses_button"
+                  *ngIf="canMassMigrateCodeListsCodeStatuses"
                   type="button"
                   class="dropdown-item"
                   (click)="massMigrateCodeListsCodesStatuses()"

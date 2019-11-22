@@ -514,6 +514,16 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     return this.authorizationManager.canEdit(this.codeScheme);
   }
 
+  get canMassMigrateCodeListsCodeStatuses(): boolean {
+
+    return this.authorizationManager.canEdit(this.codeScheme);
+  }
+
+  get canUpdateCodeSchemeFromFile(): boolean {
+
+    return this.authorizationManager.canEdit(this.codeScheme);
+  }
+
   get isSuperUser(): boolean {
 
     return this.userService.user.superuser;
