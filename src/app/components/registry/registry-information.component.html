@@ -2,16 +2,16 @@
   <form [formGroup]="codeRegistryForm" #form="ngForm">
 
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-5">
         <app-literal [label]="'Registry ID' | translate"
                      [value]="codeRegistry.codeValue"
                      [infoText]="'INFO_TEXT_REGISTRY_VALUE'"></app-literal>
 
         <app-localizable-input-with-language-indicator [id]="'registry_name_input'"
-                               [label]="'Code registry name' | translate"
-                               [infoText]="'INFO_TEXT_REGISTRY_NAME'"
-                               [required]="true"
-                               [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
+                                                       [label]="'Code registry name' | translate"
+                                                       [infoText]="'INFO_TEXT_REGISTRY_NAME'"
+                                                       [required]="true"
+                                                       [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
         <app-organizations-input id="registry_organizations_input"
                                  [label]="'Organization' | translate"
@@ -20,14 +20,18 @@
                                  [formControlName]="'organizations'"></app-organizations-input>
 
         <app-localizable-textarea-with-language-indicator [id]="'registry_description_textarea'"
-                                  [label]="'Description' | translate"
-                                  [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
-                                  [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
+                                                          [label]="'Description' | translate"
+                                                          [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
+                                                          [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
 
+
+      </div>
+
+      <div class="col-md-5">
         <app-inline-clipboard [label]="'URI' | translate"
-                       [value]="getRegistryUri()"
-                       [showAsLink]="false"
-                       [infoText]="'INFO_TEXT_REGISTRY_URI'"></app-inline-clipboard>
+                              [value]="getRegistryUri()"
+                              [showAsLink]="false"
+                              [infoText]="'INFO_TEXT_REGISTRY_URI'"></app-inline-clipboard>
 
         <app-literal *ngIf="user"
                      [id]="'coderegistry_user'"

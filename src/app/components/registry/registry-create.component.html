@@ -12,7 +12,7 @@
 
   <form [formGroup]="codeRegistryForm" #form="ngForm">
     <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-lg-4 col-md-5">
         <app-literal-input [id]="'registry_value_input'"
                            [label]="'Registry ID' | translate"
                            [required]="true"
@@ -29,6 +29,11 @@
                                [required]="true"
                                [formControlName]="'prefLabel'"></app-localizable-input-with-language-indicator>
 
+
+
+      </div>
+
+      <div class="col-lg-4 col-md-5">
         <app-organizations-input id="registry_organizations_input"
                                  [label]="'Organization' | translate"
                                  [required]="true"
@@ -36,10 +41,9 @@
                                  [formControlName]="'organizations'"></app-organizations-input>
 
         <app-localizable-textarea-with-language-indicator [id]="'registry_description_textarea'"
-                                  [label]="'Description' | translate"
-                                  [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
-                                  [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
-
+                                                          [label]="'Description' | translate"
+                                                          [infoText]="'INFO_TEXT_REGISTRY_DESCRIPTION'"
+                                                          [formControlName]="'description'"></app-localizable-textarea-with-language-indicator>
       </div>
     </div>
   </form>
