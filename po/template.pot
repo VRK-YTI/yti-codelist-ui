@@ -4,9 +4,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "REDIRECTING_TO_CODESCHEME_PAGE"
-msgstr ""
-
 msgid "No codes were found with the starting status. No changes to code statuses."
 msgstr ""
 
@@ -169,9 +166,6 @@ msgid "All organizations"
 msgstr ""
 
 msgid "All extensionPropertyTypes"
-msgstr ""
-
-msgid "REDIRECTING_TO_EXTENSION_PAGE"
 msgstr ""
 
 msgid "All vocabularies"
@@ -379,14 +373,7 @@ msgstr ""
 msgid "Default code"
 msgstr ""
 
-msgid ""
-"Enforce status\r\n"
-"              transition rules"
-msgstr ""
-
-msgid ""
-"Change code statuses at\r\n"
-"              the same time"
+msgid "Change code statuses at the same time"
 msgstr ""
 
 msgid "Update code list's codes' statuses"
@@ -1519,6 +1506,9 @@ msgstr ""
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr ""
 
+msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
+msgstr ""
+
 msgid "CHOOSE STATUS?"
 msgstr ""
 
@@ -1625,6 +1615,12 @@ msgid "The following languages could not be removed due to usage"
 msgstr ""
 
 msgid "MISSING_RESOURCE"
+msgstr ""
+
+msgid "REDIRECTING_TO_CODESCHEME_PAGE"
+msgstr ""
+
+msgid "REDIRECTING_TO_EXTENSION_PAGE"
 msgstr ""
 
 msgid "invalidDate"

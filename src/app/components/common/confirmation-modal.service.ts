@@ -46,7 +46,7 @@ export class CodeListConfirmationModalService {
 
   openChangeToRestrictedStatus() {
     return this.confirmationModalService.open('CHANGE STATUS?', undefined,
-       'CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1', 'CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2');
+       'CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1', 'CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2');
   }
 
   openChooseToRestrictedStatus() {
