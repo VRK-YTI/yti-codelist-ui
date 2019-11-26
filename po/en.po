@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-19 18:01+0200\n"
+"PO-Revision-Date: 2019-11-26 13:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -1615,9 +1615,6 @@ msgstr ""
 
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Are you sure you want to change the status?"
-
-msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
-msgstr "After saving you cannot change the status back to incomplete or draft."
 
 msgid "CHOOSE STATUS?"
 msgstr ""
