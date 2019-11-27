@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
 import { Vocabulary } from '../../entities/vocabulary';
 import { LanguageService } from '../../services/language.service';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';

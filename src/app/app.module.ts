@@ -44,7 +44,7 @@ import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-c
 import { CodeCreateComponent } from './components/code/code-create.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { InformationAboutServiceComponent } from './components/information/information-about-service.component';
-import { ModalService } from './services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { ExternalReferencesInputComponent } from './components/form/external-references-input.component';
 import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
@@ -113,7 +113,6 @@ import { ExtensionCrossreferencelistComponent } from './components/extension/ext
 import { CodeSchemeSingleInputComponent } from './components/form/code-scheme-single-input.component';
 import { InlineClipboardComponent } from './components/form/inline-clipboard';
 import { ClipboardModule } from 'ngx-clipboard';
-import { AlertModalComponent, AlertModalService } from './components/common/alert-modal.service';
 import { SearchHitsListComponent } from './components/frontpage/app-searchhits-list';
 import { LocalizableInputWithLangauageIndicatorComponent } from './components/form/localizable-input-with-langauage-indicator.component';
 import { LocalizableTextareaWithLanguageIndicatorComponent } from './components/form/localizable-textarea-with-language-indicator';
@@ -298,7 +297,6 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeExtensionMemberValuesInputComponent,
     ExtensionCrossreferencelistComponent,
     CodeSchemeSingleInputComponent,
-    AlertModalComponent,
     SearchHitsListComponent
   ],
   entryComponents: [ // needed for modal components
@@ -317,8 +315,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SearchLinkedMemberModalComponent,
     TerminologyIntegrationCodeschemeModalComponent,
     CodeschemeVariantModalComponent,
-    SuggestConceptModalComponent,
-    AlertModalComponent
+    SuggestConceptModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -369,8 +366,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeschemeVariantModalService,
     SuggestConceptModalService,
     EditableService,
-    NgbActiveModal,
-    AlertModalService
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })

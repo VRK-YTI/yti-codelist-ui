@@ -37,7 +37,7 @@
     "ngx-infinite-scroll": "6.0.1",
     "rxjs": "~6.3.3",
     "simple-line-icons": "^2.4.1",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#73ff2caf640d954c060937d4cc1745d14645b2c4",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#1e1e768d386dc699ea6e0dda7671ab8e59623658",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

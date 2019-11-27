@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Injectable, Input, OnInit } from '@angular/co
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

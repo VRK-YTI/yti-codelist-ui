@@ -29,7 +29,7 @@ import { ExtensionSimple } from '../../entities/extension-simple';
 import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiResponseType } from '../../services/api-schema';
-import { AlertModalService } from '../common/alert-modal.service';
+import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { MessagingService } from '../../services/messaging-service';
 import { ConfigurationService } from '../../services/configuration.service';
 

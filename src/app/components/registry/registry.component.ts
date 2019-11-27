@@ -13,7 +13,7 @@ import { CodeListConfirmationModalService } from '../common/confirmation-modal.s
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { tap } from 'rxjs/operators';
-import { AlertModalService } from '../common/alert-modal.service';
+import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
