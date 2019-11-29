@@ -5,6 +5,7 @@ const clippyImage = require('../../../assets/clippy.svg');
 
 @Component({
   selector: 'app-inline-clipboard',
+  styleUrls: ['./inline-clipboard.scss'],
   template: `
     <dl>
       <dt>
