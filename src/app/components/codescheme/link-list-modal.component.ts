@@ -3,7 +3,7 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
 import { LinkCreateModalService } from './link-create-modal.component';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
@@ -26,10 +26,10 @@ export class LinkListModalComponent implements OnInit {
   @Input() propertyType: PropertyType;
   @Input() propertyTypes: PropertyType[];
   @Input() externalReferences: ExternalReference[];
-  
+
   selectedExternalReference: ExternalReference | undefined;
   filteredExternalReferences: ExternalReference[];
-  
+
   selectedPropertyType$ = new BehaviorSubject<PropertyType|null>(null);
   propertyTypeOptions: FilterOptions<PropertyType>;
 
@@ -98,7 +98,7 @@ export class LinkListModalComponent implements OnInit {
   }
 
   get createNewButtonLabel() {
-    const propertyTypeName = this.selectedPropertyType ? this.languageService.translate(this.selectedPropertyType.prefLabel, true) : this.translateService.instant('link'); 
+    const propertyTypeName = this.selectedPropertyType ? this.languageService.translate(this.selectedPropertyType.prefLabel, true) : this.translateService.instant('link');
     return this.translateService.instant('Create new') + ' ' + propertyTypeName.charAt(0).toLowerCase() + propertyTypeName.slice(1);
   }
 }

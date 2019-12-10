@@ -14,8 +14,8 @@
   "/terminology/*": {
     "target": "http://localhost:8001",
     "secure": false,
-    "proxyTimeout": 1800000,
-    "timeout": 1800000
+    "proxyTimeout": 180000,
+    "timeout": 180000
   },
   "/messaging-api/*": {
     "target": "http://localhost:9801",

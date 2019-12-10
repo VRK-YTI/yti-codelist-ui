@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, Injectable, OnInit, ViewChild } f
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, concat, Observable } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';

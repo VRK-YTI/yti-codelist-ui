@@ -18,7 +18,7 @@ import { changeToRestrictedStatus } from '../../utils/status-check';
 import { MemberSimple } from '../../entities/member-simple';
 import { ConfigurationService } from '../../services/configuration.service';
 import { CodeScheme } from '../../entities/code-scheme';
-import { AlertModalService } from '../common/alert-modal.service';
+import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

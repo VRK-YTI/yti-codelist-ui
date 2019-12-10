@@ -21,7 +21,7 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-lg-4 col-md-5">
         <app-literal-input [id]="'extension_codevalue_input'"
                            [label]="'LABEL_TEXT_CREATE_EXTENSION_ID' | translate"
                            [restrict]="isCodeExtension"
@@ -45,6 +45,10 @@
                      [value]="propertyType.prefLabel | translateValue:true"
                      [infoText]="'INFO_TEXT_EXTENSION_TYPE'"></app-literal>
 
+
+      </div>
+
+      <div class="col-lg-4 col-md-5">
         <app-code-scheme-input *ngIf="allowCodeSchemes"
                                id="extension_code_scheme_input"
                                [infoText]="'INFO_TEXT_EXTENSION_CODE_LISTS'"

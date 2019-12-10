@@ -16,13 +16,7 @@
   <form [formGroup]="codeForm" #form="ngForm">
 
     <div class="row">
-      <div class="col-12">
-        <app-editable-buttons [form]="form"></app-editable-buttons>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-lg-5 col-md-5">
         <app-localizable-literal [label]="'Code list' | translate"
                                  [value]="codeScheme.prefLabel"
                                  [infoText]="'INFO_TEXT_CODE_CODELIST_NAME'"></app-localizable-literal>
@@ -85,6 +79,10 @@
                                                                             [parentElementsLanguageCodes]="codeScheme.languageCodes"
                                                                             [formControlName]="'definition'"></app-localizable-textarea-with-language-indicator-for-all-languages>
 
+
+      </div>
+
+      <div class="col-lg-5 col-md-5">
         <app-literal-input [id]="'code_shortname_input'"
                            [label]="'Short name' | translate"
                            [infoText]="'INFO_TEXT_CODE_SHORT_NAME'"
@@ -125,6 +123,11 @@
           </div>
         </div>
       </div>
+
+      <div class="col-2">
+        <app-editable-buttons [form]="form"></app-editable-buttons>
+      </div>
+
     </div>
   </form>
 </div>

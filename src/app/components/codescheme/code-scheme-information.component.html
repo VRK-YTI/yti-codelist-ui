@@ -1,7 +1,7 @@
 <form [formGroup]="codeSchemeForm" #form="ngForm">
 
   <div class="row">
-    <div class="col-10">
+    <div class="col-5">
       <app-literal [label]="'Code list ID' | translate"
                    [value]="codeScheme.codeValue"
                    [infoText]="'INFO_TEXT_CODELIST_CODE_VALUE'"></app-literal>
@@ -101,7 +101,8 @@
         <div class="col-md-4" style="line-height: 45px; white-space: nowrap">
           <div class="checkbox">
             <input id="enforce_status_transition_rules_checkbox" type="checkbox" (click)="toggleEnforceTransitionRulesForSuperUserToo()">
-            <label style="vertical-align: 5%; padding-left: 5px;" for="enforce_status_transition_rules_checkbox" translate>Enforce status transition rules</label>
+            <label style="vertical-align: 5%; padding-left: 5px;" for="enforce_status_transition_rules_checkbox" translate>Enforce status
+              transition rules</label>
           </div>
         </div>
       </div>
@@ -116,11 +117,43 @@
         <div class="col-md-4" style="line-height: 45px; white-space: nowrap">
           <div class="checkbox">
             <input id="change_code_statuses_too_checkbox" type="checkbox" (click)="toggleChangeCodeStatusesToo()">
-            <label style="vertical-align: 5%; padding-left: 5px;" for="change_code_statuses_too_checkbox" translate>Change code statuses at the same time</label>
+            <label style="vertical-align: 5%; padding-left: 5px;" for="change_code_statuses_too_checkbox" translate>Change code statuses at
+              the same time</label>
           </div>
         </div>
       </div>
 
+      <app-date-range-input id="codelist_validity_input"
+                            [label]="'Validity' | translate"
+                            [infoText]="'INFO_TEXT_CODELIST_VALIDITY'"
+                            [formControlName]="'validity'"></app-date-range-input>
+
+      <app-inline-clipboard [label]="'URI' | translate"
+                            [value]="getCodeSchemeUri()"
+                            [showAsLink]="false"
+                            [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
+
+      <app-literal *ngIf="user"
+                   [id]="'codelist_user'"
+                   [label]="'Modified by' | translate"
+                   [value]="user.getDisplayName()"
+                   [infoText]="'INFO_TEXT_LAST_MODIFICATION_USER'"></app-literal>
+
+      <app-literal [id]="'codelist_last_modification'"
+                   [label]="'Last modification' | translate"
+                   [value]="codeScheme.modifiedDisplayValue"
+                   [infoText]="'INFO_TEXT_CODELIST_LAST_MODIFICATION'"></app-literal>
+
+      <app-external-references-input id="codelist_links_input"
+                                     [label]="'Links' | translate"
+                                     [codeScheme]="codeScheme"
+                                     [languageCodes]="codeSchemeForm.controls['languageCodes'].value"
+                                     [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
+                                     [formControlName]="'externalReferences'"></app-external-references-input>
+
+    </div>
+
+    <div class="col-5">
       <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_description_textarea'"
                                                                           [htmlIdentifierPrefix]="'codelist_description_textarea'"
                                                                           [label]="'Description' | translate"
@@ -165,34 +198,6 @@
                          [formControlName]="'governancePolicy'"
                          [restrict]="restricted"
                          [infoText]="'INFO_TEXT_CODELIST_GOVERNANCE_POLICY'"></app-literal-input>
-
-      <app-date-range-input id="codelist_validity_input"
-                            [label]="'Validity' | translate"
-                            [infoText]="'INFO_TEXT_CODELIST_VALIDITY'"
-                            [formControlName]="'validity'"></app-date-range-input>
-
-      <app-inline-clipboard [label]="'URI' | translate"
-                            [value]="getCodeSchemeUri()"
-                            [showAsLink]="false"
-                            [infoText]="'INFO_TEXT_URI'"></app-inline-clipboard>
-
-      <app-literal *ngIf="user"
-                   [id]="'codelist_user'"
-                   [label]="'Modified by' | translate"
-                   [value]="user.getDisplayName()"
-                   [infoText]="'INFO_TEXT_LAST_MODIFICATION_USER'"></app-literal>
-
-      <app-literal [id]="'codelist_last_modification'"
-                   [label]="'Last modification' | translate"
-                   [value]="codeScheme.modifiedDisplayValue"
-                   [infoText]="'INFO_TEXT_CODELIST_LAST_MODIFICATION'"></app-literal>
-
-      <app-external-references-input id="codelist_links_input"
-                                     [label]="'Links' | translate"
-                                     [codeScheme]="codeScheme"
-                                     [languageCodes]="codeSchemeForm.controls['languageCodes'].value"
-                                     [infoText]="'INFO_TEXT_EXTERNAL_REFERENCES'"
-                                     [formControlName]="'externalReferences'"></app-external-references-input>
 
       <app-localizable-textarea-with-language-indicator-for-all-languages [id]="'codelist_feedback_channel_textarea'"
                                                                           [htmlIdentifierPrefix]="'codelist_feedback_channel_textarea'"

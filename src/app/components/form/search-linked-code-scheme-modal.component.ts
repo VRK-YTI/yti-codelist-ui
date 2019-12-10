@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { contains } from 'yti-common-ui/utils/array';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
@@ -42,7 +42,7 @@ import { Code } from '../../entities/code';
                                [placement]="'bottom-right'"
                                style="float: right;"></app-filter-dropdown>
         </div>
-        
+
       </div>
 
       <div class="row full-height">

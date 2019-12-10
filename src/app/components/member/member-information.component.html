@@ -6,7 +6,7 @@
   <form [formGroup]="memberForm" #form="ngForm">
 
     <div class="row">
-      <div class="col-10">
+      <div class="col-5">
         <app-literal [label]="'Code list' | translate"
                      [value]="extension.parentCodeScheme.getDisplayName(languageService)"></app-literal>
 
@@ -47,7 +47,9 @@
                         [showDetailLabel]="showCodeDetailLabel"
                         [formControlName]="'code'"
                         [infoText]="'INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER'"></app-code-input>
+      </div>
 
+      <div class="col-5">
         <app-member-input id="member_relatedmember_input"
                           *ngIf="!isCodeExtension"
                           [label]="labelForTheHiearchicalBroaderCodeChoice | translate"

@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
         <label>{{label}}</label>
         <app-information-symbol [infoText]="infoText"></app-information-symbol>
       </dt>
-      <dd>{{value}}</dd>
+      <dd class="text-content-wrap">{{value}}</dd>
     </dl>
   `
 })

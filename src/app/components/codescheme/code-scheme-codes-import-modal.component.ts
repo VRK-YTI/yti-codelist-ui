@@ -4,7 +4,7 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
-import { ModalService } from '../../services/modal.service';
+import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 
 @Component({

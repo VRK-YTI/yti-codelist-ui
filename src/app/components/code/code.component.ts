@@ -22,6 +22,8 @@ import { MemberSimple } from '../../entities/member-simple';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { formatDate } from '../../utils/date';
+import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-code',

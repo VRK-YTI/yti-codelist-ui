@@ -39,7 +39,7 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-8 col-md-10">
+      <div class="col-lg-4 col-md-5">
         <div class="form-group">
           <app-literal [label]="'Extension' | translate"
                        [value]="extension.getDisplayName(languageService)"></app-literal>
@@ -65,36 +65,39 @@
                                 [value]="getCodeUri()"
                                 [showAsLink]="false"
                                 [infoText]="'INFO_TEXT_CODE_URI'"></app-inline-clipboard>
-
-          <app-inline-clipboard *ngIf="getCodeConceptUri()"
-                                id="member_code_terminology_uri"
-                                [label]="'Code vocabularies URI' | translate"
-                                [value]="getCodeConceptUri()"
-                                [showAsLink]="false"
-                                [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-inline-clipboard>
-
-          <app-code-input id="member_code_input"
-                          [label]="'Code' | translate"
-                          [codeSchemes]="this.allCodeSchemes"
-                          [required]="true"
-                          [showDetailLabel]="showCodeDetailLabel"
-                          [formControlName]="'code'"
-                          [infoText]="'INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER'"></app-code-input>
-
-          <app-member-input *ngIf="!isCodeExtension"
-                            id="member_relatedmember_input"
-                            [label]="labelForTheHiearchicalBroaderCodeChoice | translate"
-                            [codeSchemes]="this.allCodeSchemes"
-                            [extension]="extension"
-                            [formControlName]="'relatedMember'"
-                            [infoText]="infoTextForHierarchicalParentInfoButtonBased"></app-member-input>
-
-          <app-date-range-input id="member_validity_input"
-                                [label]="'Validity' | translate"
-                                [infoText]="'INFO_TEXT_MEMBER_VALIDITY'"
-                                [formControlName]="'validity'"></app-date-range-input>
         </div>
       </div>
+
+      <div class="col-lg-4 col-md-5">
+        <app-inline-clipboard *ngIf="getCodeConceptUri()"
+                              id="member_code_terminology_uri"
+                              [label]="'Code vocabularies URI' | translate"
+                              [value]="getCodeConceptUri()"
+                              [showAsLink]="false"
+                              [infoText]="'INFO_TEXT_CODE_CONCEPT_URI'"></app-inline-clipboard>
+
+        <app-code-input id="member_code_input"
+                        [label]="'Code' | translate"
+                        [codeSchemes]="this.allCodeSchemes"
+                        [required]="true"
+                        [showDetailLabel]="showCodeDetailLabel"
+                        [formControlName]="'code'"
+                        [infoText]="'INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER'"></app-code-input>
+
+        <app-member-input *ngIf="!isCodeExtension"
+                          id="member_relatedmember_input"
+                          [label]="labelForTheHiearchicalBroaderCodeChoice | translate"
+                          [codeSchemes]="this.allCodeSchemes"
+                          [extension]="extension"
+                          [formControlName]="'relatedMember'"
+                          [infoText]="infoTextForHierarchicalParentInfoButtonBased"></app-member-input>
+
+        <app-date-range-input id="member_validity_input"
+                              [label]="'Validity' | translate"
+                              [infoText]="'INFO_TEXT_MEMBER_VALIDITY'"
+                              [formControlName]="'validity'"></app-date-range-input>
+      </div>
+
     </div>
   </form>
 </div>

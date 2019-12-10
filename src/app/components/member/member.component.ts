@@ -19,6 +19,7 @@ import { MemberValueType } from '../../services/api-schema';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { CodeScheme } from '../../entities/code-scheme';
+import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 
 @Component({
   selector: 'app-member',
