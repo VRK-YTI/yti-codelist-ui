@@ -297,11 +297,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       endDate: validity.end
     });
 
-    let weNeedToAskAboutCodeStatuses: Boolean = false;
-    if (isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo(this.codeScheme.status, updatedCodeScheme.status)) {
-      weNeedToAskAboutCodeStatuses = true;
-    }
-
     const save = () => {
       this.previouslySavedCodeScheme = this.codeScheme;
       return this.dataService.saveCodeScheme(updatedCodeScheme.serialize(), 'false').pipe(tap(() => {
