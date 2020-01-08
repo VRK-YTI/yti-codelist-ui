@@ -8,7 +8,7 @@ import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
-import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
+import { selectableStatuses, Status, allowedTargetStatuses } from 'yti-common-ui/entities/status';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
@@ -33,13 +33,6 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
 
   fromStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'RETIRED', 'INVALID'] as Status[];
   toStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'RETIRED', 'INVALID'] as Status[];
-
-
-  allowedTargetStatusesFrom_INCOMPLETE = ['DRAFT'] as Status[];
-  allowedTargetStatusesFrom_DRAFT = ['INCOMPLETE', 'VALID'] as Status[];
-  allowedTargetStatusesFrom_VALID = ['RETIRED', 'INVALID'] as Status[];
-  allowedTargetStatusesFrom_RETIRED = ['VALID', 'INVALID'] as Status[];
-  allowedTargetStatusesFrom_INVALID = ['VALID', 'RETIRED'] as Status[];
 
   enforceTransitionRulesForSuperUserToo = false;
 
@@ -160,32 +153,34 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
     combineLatest(this.fromStatus$, this.toStatus$).subscribe(
       ([fromStatus, toStatus]) => {
         const chosenFromStatus: Status | null = fromStatus;
+        const allowedToStatuses = chosenFromStatus ? allowedTargetStatuses(chosenFromStatus, false) : this.toStatuses;
+
         if (chosenFromStatus === 'INCOMPLETE' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_INCOMPLETE].map(stat => ({
+          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
             value: stat,
             name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
             idIdentifier: () => stat ? stat : 'all_selected'
           }));
         } else if (chosenFromStatus === 'DRAFT' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_DRAFT].map(stat => ({
+          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
             value: stat,
             name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
             idIdentifier: () => stat ? stat : 'all_selected'
           }));
         } else if (chosenFromStatus === 'VALID' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_VALID].map(stat => ({
+          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
             value: stat,
             name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
             idIdentifier: () => stat ? stat : 'all_selected'
           }));
         } else if (chosenFromStatus === 'RETIRED' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_RETIRED].map(stat => ({
+          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
             value: stat,
             name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
             idIdentifier: () => stat ? stat : 'all_selected'
           }));
         } else if (chosenFromStatus === 'INVALID' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...this.allowedTargetStatusesFrom_INVALID].map(stat => ({
+          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
             value: stat,
             name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
             idIdentifier: () => stat ? stat : 'all_selected'
