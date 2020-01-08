@@ -20,10 +20,7 @@ import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-v
 import { switchMap, tap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 import { CodeSchemeCodesImportModalService } from './code-scheme-codes-import-modal.component';
-import {
-  changeToRestrictedStatus,
-  isCodeSchemeStatusGettingChangedValidlySoThatWeNeedToAskDoCodesStatusesUpdatedToo
-} from '../../utils/status-check';
+import { changeToRestrictedStatus } from '../../utils/status-check';
 import { CodeSchemeImportModalService } from './code-scheme-import-modal.component';
 import { ExtensionSimple } from '../../entities/extension-simple';
 import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
