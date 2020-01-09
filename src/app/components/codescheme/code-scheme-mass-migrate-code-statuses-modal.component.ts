@@ -155,38 +155,8 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
         const chosenFromStatus: Status | null = fromStatus;
         const allowedToStatuses = chosenFromStatus ? allowedTargetStatuses(chosenFromStatus, false) : this.toStatuses;
 
-        if (chosenFromStatus === 'INCOMPLETE' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
+        if (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo)) {
           this.toOptions = [null, ...allowedToStatuses].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus === 'DRAFT' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus === 'VALID' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus === 'RETIRED' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus === 'INVALID' && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...allowedToStatuses].map(stat => ({
-            value: stat,
-            name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
-            idIdentifier: () => stat ? stat : 'all_selected'
-          }));
-        } else if (chosenFromStatus === null && (!this.isSuperUser || (this.isSuperUser && this.enforceTransitionRulesForSuperUserToo))) {
-          this.toOptions = [null, ...this.toStatuses].map(stat => ({
             value: stat,
             name: () => this.translateService.instant(stat ? stat : 'Choose target status'),
             idIdentifier: () => stat ? stat : 'all_selected'
