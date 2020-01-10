@@ -92,6 +92,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
     });
 
     this.initCodeExtensions();
+
+    this.freeSuperUserFromStatusTransitionRules = true;
   }
 
   get editing() {
