@@ -75,8 +75,12 @@ import { TranslateService } from '@ngx-translate/core';
                                *ngFor="let code of searchResults; let last = last"
                                (click)="select(code)">
                               <div class="content row" [class.last]="last">
-                                  <span class="title col-md-10" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
-                                  <app-status class="status col-md-2" [status]="code.status"></app-status>
+                                <div class="col-md-8">
+                                  <span class="title float-left" [innerHTML]="code.codeValue + ' - ' + code.getDisplayName(languageService, useUILanguage)"></span>
+                                </div>
+                                <div class="col-md-4 float-right">
+                                  <app-status class="status" [status]="code.status"></app-status>
+                                </div>
                               </div>
                           </div>
                       </div>
