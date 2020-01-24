@@ -182,7 +182,7 @@ export class MemberComponent implements OnInit, EditingComponent {
 
     // TODO: Refactor this hacking so that memberValues are handled dynamically as a list in a dedicated formControl and component.
     const { validity, unaryOperator, comparisonOperator, dpmDomainDataType, dpmMetricDataType, dpmDomainReference, dpmHierarchyReference, dpmBalanceType, dpmFlowType, dpmMemberXBRLCodePrefix, ...rest } = formData;
-    const updatedMember = this.member.clone();
+    const updatedMember = this.member.cloneWithSimpleExtension();
 
     const updatedMemberValues: MemberValue[] = [];
 
