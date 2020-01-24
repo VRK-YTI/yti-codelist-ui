@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-25 09:15+0200\n"
+"PO-Revision-Date: 2020-01-24 09:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -178,6 +178,9 @@ msgstr "Kaikki organisaatiot"
 msgid "All extensionPropertyTypes"
 msgstr "Kaikki koodistotyypit"
 
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr ""
+
 msgid "All vocabularies"
 msgstr "Kaikki sanastot"
 
@@ -233,7 +236,7 @@ msgid "Last modification"
 msgstr "Viimeisin muokkaus"
 
 msgid "Enforce status transition rules"
-msgstr "Käytä tilasiirtymien validointisääntöjä."
+msgstr "Käytä tilasiirtymien validointisääntöjä"
 
 msgid "Choose action"
 msgstr "Valitse toiminto"
@@ -394,7 +397,7 @@ msgid "Default code"
 msgstr "Vakiokoodi"
 
 msgid "Change code statuses at the same time"
-msgstr "Vaihda samalla samassa tilassa olevien koodien tilat"
+msgstr "Vaihda samalla koodien tilat"
 
 msgid "Update code list's codes' statuses"
 msgstr "Muuta koodien tiloja"
@@ -540,8 +543,8 @@ msgstr "Laajennuksen nimi"
 msgid "Extension type"
 msgstr "Laajennuksen tyyppi"
 
-msgid "Automatically create a member for each code."
-msgstr "Luo automaattisesti jäsenet kaikille koodeille."
+msgid "Automatically create a member for each code"
+msgstr "Luo automaattisesti jäsenet kaikille koodeille"
 
 msgid "This extension does not have any cross references yet."
 msgstr "Tällä laajennuksella ei ole vielä yhtään koodiliitosta."
@@ -1642,7 +1645,7 @@ msgstr "VAIHDA TILAA?"
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Haluatko varmasti vaihtaa tilaa?"
 
-msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
+msgid "STATUS_CONFIRMATION_PARAGRAPH_2"
 msgstr ""
 "Tallennuksen jälkeen et voi enää vaihtaa takaisin tiloihin keskeneräinen tai luonnos."
 
@@ -1651,10 +1654,6 @@ msgstr "VALITSE TILA?"
 
 msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Haluatko varmasti valita tämän tilan?"
-
-msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
-msgstr ""
-"Tallennuksen jälkeen et voi enää vaihtaa takaisin tiloihin keskeneräinen tai luonnos."
 
 msgid "CHANGE CODE STATUSES TOO?"
 msgstr ""
@@ -1803,7 +1802,3 @@ msgstr "Jäsenen arvo on pakollinen syöte."
 
 msgid "localizableValueRequired"
 msgstr "Pakollinen syöte"
-
-#~ msgid ""
-#~ "You will be sent an e-mail regarding the following resources when they are changed."
-#~ msgstr "Sinulle lähetetään sähköpostia kun seuraaviin aineistoihin tulee muutoksia."

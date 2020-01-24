@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2019-11-19 18:01+0200\n"
+"PO-Revision-Date: 2020-01-24 09:33+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -175,6 +175,9 @@ msgstr ""
 
 msgid "All extensionPropertyTypes"
 msgstr "All types of code lists"
+
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr ""
 
 msgid "All vocabularies"
 msgstr ""
@@ -384,7 +387,7 @@ msgid "Default code"
 msgstr ""
 
 msgid "Change code statuses at the same time"
-msgstr "Change code statuses with the same current status as well"
+msgstr ""
 
 msgid "Update code list's codes' statuses"
 msgstr "Update code statuses"
@@ -530,7 +533,7 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
-msgid "Automatically create a member for each code."
+msgid "Automatically create a member for each code"
 msgstr ""
 
 msgid "This extension does not have any cross references yet."
@@ -1613,7 +1616,9 @@ msgstr ""
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Are you sure you want to change the status?"
 
-msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
+#, fuzzy
+#| msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
+msgid "STATUS_CONFIRMATION_PARAGRAPH_2"
 msgstr "After saving you cannot change the status back to incomplete or draft."
 
 msgid "CHOOSE STATUS?"
@@ -1621,9 +1626,6 @@ msgstr ""
 
 msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Are you sure you want to choose this status?"
-
-msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
-msgstr "After saving you cannot change the status back to incomplete or draft."
 
 msgid "CHANGE CODE STATUSES TOO?"
 msgstr ""

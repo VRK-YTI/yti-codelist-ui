@@ -165,6 +165,9 @@ msgstr ""
 msgid "All extensionPropertyTypes"
 msgstr ""
 
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr ""
+
 msgid "All vocabularies"
 msgstr ""
 
@@ -517,7 +520,7 @@ msgstr ""
 msgid "Extension type"
 msgstr ""
 
-msgid "Automatically create a member for each code."
+msgid "Automatically create a member for each code"
 msgstr ""
 
 msgid "This extension does not have any cross references yet."
@@ -1503,16 +1506,13 @@ msgstr ""
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr ""
 
-msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
+msgid "STATUS_CONFIRMATION_PARAGRAPH_2"
 msgstr ""
 
 msgid "CHOOSE STATUS?"
 msgstr ""
 
 msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
-msgstr ""
-
-msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
 msgstr ""
 
 msgid "CHANGE CODE STATUSES TOO?"
