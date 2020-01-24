@@ -1616,8 +1616,6 @@ msgstr ""
 msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
 msgstr "Are you sure you want to change the status?"
 
-#, fuzzy
-#| msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_2"
 msgid "STATUS_CONFIRMATION_PARAGRAPH_2"
 msgstr "After saving you cannot change the status back to incomplete or draft."
 
