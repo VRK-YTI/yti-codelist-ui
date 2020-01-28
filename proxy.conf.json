@@ -11,8 +11,8 @@
     "proxyTimeout": 1800000,
     "timeout": 1800000
   },
-  "/terminology/*": {
-    "target": "http://localhost:8001",
+  "/terminology-api/*": {
+    "target": "http://localhost:9101",
     "secure": false,
     "proxyTimeout": 180000,
     "timeout": 180000

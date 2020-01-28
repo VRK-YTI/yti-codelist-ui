@@ -4,7 +4,7 @@ import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDate
 import { EditableEntity } from './editable-entity';
 import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
-import { ExtensionType } from '../services/api-schema';
+import { ExtensionSimpleType, ExtensionType } from '../services/api-schema';
 import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodeScheme } from './code-scheme';
 import { PropertyType } from './property-type';
@@ -110,6 +110,21 @@ export class Extension implements EditableEntity {
       parentCodeScheme: this.parentCodeScheme ? this.parentCodeScheme.serialize() : undefined,
       codeSchemes: this.codeSchemes.map(cs => cs.serialize()),
       members: this.members ? this.members.map(member => member.serialize()) : undefined
+    };
+  }
+
+  serializeAsSimpleType(): ExtensionSimpleType {
+    return {
+      id: this.id,
+      uri: this.uri,
+      url: this.url,
+      codeValue: this.codeValue,
+      propertyType: this.propertyType.serialize(),
+      modified: formatDateTime(this.modified),
+      prefLabel: { ...this.prefLabel },
+      status: this.status,
+      startDate: formatDate(this.startDate),
+      endDate: formatDate(this.endDate)
     };
   }
 

@@ -108,7 +108,7 @@ export class MemberCreateComponent implements OnInit {
       startDate: formatDate(validity.start),
       endDate: formatDate(validity.end),
       relatedMember: relatedMember ? relatedMember.serialize() : undefined,
-      extension: this.extension.serialize()
+      extension: this.extension.serializeAsSimpleType()
     };
 
     const memberValues: MemberValueType[] = [];

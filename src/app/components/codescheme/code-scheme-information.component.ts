@@ -146,7 +146,7 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
     this.statusChanged = false;
     this.changeCodeStatusesToo = false;
-
+    this.freeSuperUserFromStatusTransitionRules = true;
   }
 
   ngOnDestroy() {

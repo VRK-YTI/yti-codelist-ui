@@ -108,6 +108,24 @@ export class Member implements EditableEntity {
     };
   }
 
+  serializeWithSimpleExtension(): MemberType {
+    return {
+      id: this.id,
+      uri: this.uri,
+      url: this.url,
+      prefLabel: { ...this.prefLabel },
+      created: formatDateTime(this.modified),
+      modified: formatDateTime(this.modified),
+      order: this.order ? this.order : undefined,
+      extension: this.extension.serializeAsSimpleType(),
+      relatedMember: this.relatedMember ? this.relatedMember.serialize() : undefined,
+      code: this.code.serialize(),
+      startDate: formatDate(this.startDate),
+      endDate: formatDate(this.endDate),
+      memberValues: this.memberValues.map(mv => mv.serialize())
+    };
+  }
+
   getMemberValueForLocalNameIfEnabled(extension: Extension,
                                       localName: string) {
     let memberValueValue: string | undefined;
@@ -224,5 +242,9 @@ export class Member implements EditableEntity {
 
   clone(): Member {
     return new Member(this.serialize());
+  }
+
+  cloneWithSimpleExtension(): Member {
+    return new Member(this.serializeWithSimpleExtension());
   }
 }

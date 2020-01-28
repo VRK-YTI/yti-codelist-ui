@@ -85,6 +85,8 @@ export class ExtensionInformationComponent implements OnChanges, OnDestroy, OnIn
       ...rest,
       validity: { start: startDate, end: endDate }
     });
+
+    this.freeSuperUserFromStatusTransitionRules = true;
   }
 
   fetchUserInformation() {
