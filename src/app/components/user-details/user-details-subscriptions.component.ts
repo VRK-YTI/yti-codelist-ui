@@ -39,7 +39,7 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
               private errorModalService: CodeListErrorModalService) {
 
     this.languageService.language$.subscribe(language => {
-      this.sortMessagingResources(language);
+      this.sortMessagingResources();
     });
   }
 
@@ -100,7 +100,7 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
     });
   }
 
-  sortMessagingResources(language: string) {
+  sortMessagingResources() {
 
     const resourceMap: Map<string, MessagingResource[]> | null = this.messagingResources$.getValue();
     if (resourceMap) {
