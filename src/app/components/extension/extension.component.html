@@ -21,7 +21,7 @@
                   (click)="createMember()"
                   translate>Create member</button>
           <button id="create_missing_members_button"
-                  *ngIf="canAddMember"
+                  *ngIf="canCreateMissingMembers"
                   type="button"
                   class="dropdown-item"
                   (click)="createMissingMembers()"
