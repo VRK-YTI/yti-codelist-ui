@@ -9,6 +9,7 @@ import { ConfigurationService } from '../../services/configuration.service';
 import { BehaviorSubject } from 'rxjs';
 import { MessagingService } from '../../services/messaging-service';
 import { UserService } from 'yti-common-ui/services/user.service';
+import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-user-details-subscriptions',
@@ -36,6 +37,10 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
               private userService: UserService,
               private confirmationModalService: CodeListConfirmationModalService,
               private errorModalService: CodeListErrorModalService) {
+
+    this.languageService.language$.subscribe(language => {
+      this.sortMessagingResources(language);
+    });
   }
 
   ngOnInit() {
@@ -93,6 +98,22 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
       }
       this.loading = false;
     });
+  }
+
+  sortMessagingResources(language: string) {
+
+    const resourceMap: Map<string, MessagingResource[]> | null = this.messagingResources$.getValue();
+    if (resourceMap) {
+      // @ts-ignore
+      resourceMap.get(this.APPLICATION_CODELIST).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+      // @ts-ignore
+      resourceMap.get(this.APPLICATION_TERMINOLOGY).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+      // @ts-ignore
+      resourceMap.get(this.APPLICATION_DATAMODEL).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+      // @ts-ignore
+      resourceMap.get(this.APPLICATION_COMMENTS).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+    }
+    this.messagingResources = resourceMap;
   }
 
   get messagingResources(): Map<string, MessagingResource[]> | null {
