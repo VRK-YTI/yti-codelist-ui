@@ -9,7 +9,7 @@ import { ConfigurationService } from '../../services/configuration.service';
 import { BehaviorSubject } from 'rxjs';
 import { MessagingService } from '../../services/messaging-service';
 import { UserService } from 'yti-common-ui/services/user.service';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { comparingLocalizable, comparingPrimitive } from 'yti-common-ui/utils/comparator';
 
 @Component({
   selector: 'app-user-details-subscriptions',
@@ -90,6 +90,7 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
         }
         if (resources.size > 0) {
           this.messagingResources = resources;
+          this.sortMessagingResources();
         } else {
           this.messagingResources = null;
         }
@@ -104,16 +105,23 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
 
     const resourceMap: Map<string, MessagingResource[]> | null = this.messagingResources$.getValue();
     if (resourceMap) {
-      // @ts-ignore
-      resourceMap.get(this.APPLICATION_CODELIST).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
-      // @ts-ignore
-      resourceMap.get(this.APPLICATION_TERMINOLOGY).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
-      // @ts-ignore
-      resourceMap.get(this.APPLICATION_DATAMODEL).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
-      // @ts-ignore
-      resourceMap.get(this.APPLICATION_COMMENTS).sort(comparingLocalizable<MessagingResource>(this.languageService, item => item.prefLabel ? item.prefLabel : {}));
+      this.sortApplicationResources(resourceMap, this.APPLICATION_TERMINOLOGY);
+      this.sortApplicationResources(resourceMap, this.APPLICATION_DATAMODEL);
+      this.sortApplicationResources(resourceMap, this.APPLICATION_CODELIST);
+      this.sortApplicationResources(resourceMap, this.APPLICATION_COMMENTS);
     }
     this.messagingResources = resourceMap;
+  }
+
+  sortApplicationResources(resourceMap: Map<string, MessagingResource[]>,
+                           applicationIdentifier: string) {
+    // @ts-ignore
+    resourceMap.get(applicationIdentifier).sort(comparingPrimitive<MessagingResource>(
+      resource => this.languageService.isLocalizableEmpty(resource.prefLabel))
+      .andThen(comparingPrimitive<MessagingResource>(resource =>
+        this.languageService.isLocalizableEmpty(resource.prefLabel) ? resource.uri.toLowerCase() : null))
+      .andThen(comparingLocalizable<MessagingResource>(this.languageService,
+        resource => resource.prefLabel ? resource.prefLabel : {}, true)));
   }
 
   get messagingResources(): Map<string, MessagingResource[]> | null {
