@@ -115,13 +115,15 @@ export class UserDetailsSubscriptionsComponent implements OnInit {
 
   sortApplicationResources(resourceMap: Map<string, MessagingResource[]>,
                            applicationIdentifier: string) {
-    // @ts-ignore
-    resourceMap.get(applicationIdentifier).sort(comparingPrimitive<MessagingResource>(
-      resource => this.languageService.isLocalizableEmpty(resource.prefLabel))
-      .andThen(comparingPrimitive<MessagingResource>(resource =>
-        this.languageService.isLocalizableEmpty(resource.prefLabel) ? resource.uri.toLowerCase() : null))
-      .andThen(comparingLocalizable<MessagingResource>(this.languageService,
-        resource => resource.prefLabel ? resource.prefLabel : {}, true)));
+    if (resourceMap.has(applicationIdentifier)) {
+      // @ts-ignore
+      resourceMap.get(applicationIdentifier).sort(comparingPrimitive<MessagingResource>(
+        resource => this.languageService.isLocalizableEmpty(resource.prefLabel))
+        .andThen(comparingPrimitive<MessagingResource>(resource =>
+          this.languageService.isLocalizableEmpty(resource.prefLabel) ? resource.uri.toLowerCase() : null))
+        .andThen(comparingLocalizable<MessagingResource>(this.languageService,
+          resource => resource.prefLabel ? resource.prefLabel : {}, true)));
+    }
   }
 
   get messagingResources(): Map<string, MessagingResource[]> | null {
