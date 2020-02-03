@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-12">
       <div *ngIf="externalReference.image" class="mb-4">
-        <a id="external_ref_image_link" [href]="externalReference.href" target="_blank">
+        <a id="external_ref_image_link" [href]="externalReference.href" target="_blank" rel="noopener noreferrer">
           <img class="link-image" [src]="externalReference.image" title="{{externalReference.title | translateValue}}"/>
         </a>
       </div>
@@ -25,7 +25,7 @@
       <dt><label translate>URL</label></dt>
       <dd>
         <div class="text-content-wrap"><a id="external_ref_url_link" [href]="externalReference.href"
-                                          target="_blank">{{externalReference.href}}</a></div>
+                                          target="_blank" rel="noopener noreferrer">{{externalReference.href}}</a></div>
       </dd>
 
       <app-localizable-literal-with-language-indicator-for-all-languages *ngIf="externalReference.propertyType != null"

@@ -60,20 +60,20 @@
            [routerLink]="['/registries']" translate>Registries</a>
         <a id="navigation_interoperability_platform_link"
            class="dropdown-item"
-           href="https://yhteentoimiva.suomi.fi/" target="_blank">yhteentoimiva.suomi.fi</a>
+           href="https://yhteentoimiva.suomi.fi/" target="_blank" rel="noopener noreferrer">yhteentoimiva.suomi.fi</a>
         <a id="navigation_terminologies_link"
            class="dropdown-item"
-           [href]="configurationService.terminologyUrl" target="_blank" translate>Suomi.fi Terminologies</a>
+           [href]="configurationService.terminologyUrl" target="_blank" rel="noopener noreferrer" translate>Suomi.fi Terminologies</a>
         <a id="navigation_data_vocabularies_link"
            class="dropdown-item"
-           [href]="configurationService.dataModelUrl" target="_blank" translate>Suomi.fi Data Vocabularies</a>
+           [href]="configurationService.dataModelUrl" target="_blank" rel="noopener noreferrer" translate>Suomi.fi Data Vocabularies</a>
         <a id="navigation_comments_link"
            class="dropdown-item"
-          [href]="configurationService.commentsUrl" target="_blank" translate>Suomi.fi Comments</a>
+          [href]="configurationService.commentsUrl" target="_blank" rel="noopener noreferrer" translate>Suomi.fi Comments</a>
         <a class="dropdown-item"
            id="navigation_groupmanagement_link"
            *ngIf="showGroupManagementUrl()"
-           [href]="configurationService.groupManagementUrl" target="_blank" translate>User right management</a>
+           [href]="configurationService.groupManagementUrl" target="_blank" rel="noopener noreferrer" translate>User right management</a>
       </div>
     </li>
   </ul>

@@ -45,17 +45,21 @@
         <div ngbDropdownMenu aria-labelledby="exportDropdown">
           <a id="codelist_export_excel_link" href="{{extension.url}}/members/?format=excel"
              target="_blank"
+             rel="noopener noreferrer"
              class="dropdown-item" translate>Export members Excel</a>
           <a id="codelist_export_csv_link" href="{{extension.url}}/members/?format=csv"
              target="_blank"
+             rel="noopener noreferrer"
              class="dropdown-item" translate>Export members CSV</a>
           <a id="codelist_export_cross_reference_excel_link" href="{{extension.url}}/?format=excel&crossreferencelist=true"
              *ngIf="showCrossReferenceExportFunctions"
              target="_blank"
+             rel="noopener noreferrer"
              class="dropdown-item" translate>Export Cross-Reference List Excel</a>
           <a id="codelist_export_cross_reference_csv_link" href="{{extension.url}}/members/?format=csv&crossreferencelist=true"
              *ngIf="showCrossReferenceExportFunctions"
              target="_blank"
+             rel="noopener noreferrer"
              class="dropdown-item" translate>Export Cross-Reference List CSV</a>
         </div>
       </div>

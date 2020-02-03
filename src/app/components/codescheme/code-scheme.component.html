@@ -126,25 +126,27 @@
       <div ngbDropdown class="d-inline-block float-right ml-3" placement="bottom-right">
         <button class="btn btn-action" id="exportDropdown" ngbDropdownToggle translate>Export</button>
         <div ngbDropdownMenu aria-labelledby="exportDropdown">
-          <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank"
+          <a id="codelist_export_excel_link" href='{{codeScheme.url}}/?format=excel' target="_blank" rel="noopener noreferrer"
              class="dropdown-item" translate>Export codelist Excel</a>
-          <a id="codelist_export_csv_link" href='{{codeScheme.url}}/?format=csv' target="_blank"
+          <a id="codelist_export_csv_link" href='{{codeScheme.url}}/?format=csv' target="_blank" rel="noopener noreferrer"
              class="dropdown-item" translate>Export codelist CSV</a>
-          <a id="codelist_export_codes_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank"
+          <a id="codelist_export_codes_csv_link" href='{{codeScheme.url}}/codes/?format=csv' target="_blank" rel="noopener noreferrer"
              class="dropdown-item" translate>Export codes CSV</a>
-          <a id="codelist_export_codes_excel_link" href='{{codeScheme.url}}/codes/?format=excel' target="_blank"
+          <a id="codelist_export_codes_excel_link" href='{{codeScheme.url}}/codes/?format=excel' target="_blank" rel="noopener noreferrer"
              class="dropdown-item" translate>Export codes Excel</a>
           <a id="codelist_export_json_inline_link"
              href='{{codeScheme.url}}/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=true&pretty'
              target="_blank"
+             rel="noopener noreferrer"
              class="dropdown-item" translate>Export codelist JSON</a>
           <a id="codelist_export_json_as_file_link"
              href='{{codeScheme.url}}/?format=json&embedCodes=true&embedExtensions=true&embedMembers=true&expand=extension,member,codeScheme,code,memberValue,codeRegistry,organization,valueType,externalReference,propertyType&downloadFile=false&pretty'
              target="_blank"
+             rel="noopener noreferrer"
              class="dropdown-item" translate>Show codelist JSON</a>
-          <a id="codelist_export_codes_json_array_link" href='{{codeScheme.url}}/codes/?array' target="_blank"
+          <a id="codelist_export_codes_json_array_link" href='{{codeScheme.url}}/codes/?array' target="_blank" rel="noopener noreferrer"
              class="dropdown-item" translate>Show JSON enumeration</a>
-          <a id="codelist_export_codes_json_array_download_link" href='{{codeScheme.url}}/codes/?array&downloadArray=true' target="_blank"
+          <a id="codelist_export_codes_json_array_download_link" href='{{codeScheme.url}}/codes/?array&downloadArray=true' target="_blank" rel="noopener noreferrer"
              class="dropdown-item" translate>Download JSON enumeration</a>
         </div>
       </div>
