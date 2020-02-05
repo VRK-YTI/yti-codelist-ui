@@ -19,7 +19,7 @@ import { Localizable } from 'yti-common-ui/types/localization';
                  type="text"
                  class="form-control"
                  [ngClass]="{'is-invalid': !valid}"
-                 [ngModel]="value[contentLanguage]" 
+                 [ngModel]="value[inputLanguage]"
                  (ngModelChange)="onChange($event)" />
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
@@ -35,6 +35,7 @@ export class LocalizableInputComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() id: string;
   @Input() infoText: string;
+  @Input() language: string | undefined;
   value: Localizable = {};
 
   private propagateChange: (fn: any) => void = () => {};
@@ -54,7 +55,7 @@ export class LocalizableInputComponent implements ControlValueAccessor {
   }
 
   onChange(value: string) {
-    this.value[this.contentLanguage] = value;
+    this.value[this.inputLanguage] = value;
     this.propagateChange(this.value);
   }
 
@@ -66,7 +67,10 @@ export class LocalizableInputComponent implements ControlValueAccessor {
     return this.editableService.editing && !this.restrict;
   }
 
-  get contentLanguage() {
+  get inputLanguage() {
+    if (this.language) {
+      return this.language;
+    }
     return this.languageService.contentLanguage;
   }
 

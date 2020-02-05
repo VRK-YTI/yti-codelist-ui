@@ -12,12 +12,12 @@ import { Concept } from '../../entities/concept';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { SuggestConceptModalService } from './suggest-concept';
 import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { Meta } from '../../entities/meta';
 import { comparingLocalizable, comparingPrimitive } from 'yti-common-ui/utils/comparator';
+import { SuggestConceptModalService } from './suggest-concept-modal.component';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));
@@ -303,33 +303,33 @@ export class TerminologyIntegrationCodeschemeModalComponent implements OnInit, A
     this.modal.dismiss('cancel');
   }
 
-  canSuggest() {
+  canSuggestConcept() {
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
     const vocabularyUri: string = vocabulary == null ? '' : vocabulary.uri;
     return vocabularyUri !== '' && this.search$.getValue() !== '';
   }
 
-  suggestAConcept() {
-
+  suggestConcept() {
     const vocabulary: Vocabulary | null = this.vocabulary$.getValue();
     const vocabularyName: string = vocabulary != null ? vocabulary.getDisplayName(this.languageService, true) : '';
-
-    const conceptName: Localizable = { [this.languageService.language]: this.search$.getValue() };
-    this.suggestConceptModalService.open(conceptName).then((result) => {
+    let language: string = this.languageService.contentLanguage;
+    if (language === 'all') {
+      language = this.languageService.language;
+    }
+    const conceptName: Localizable = { [language]: this.search$.getValue() };
+    this.suggestConceptModalService.open(conceptName, language).then((result) => {
       const suggestionNameLocalized: string = this.languageService.translate(result[0], true);
       const suggestionDefinitionLocalized: string = this.languageService.translate(result[1], true);
       const resultArray: string[] = [suggestionNameLocalized, suggestionDefinitionLocalized];
       this.codeListConfirmationModalService.openSuggestConcept(resultArray[0], resultArray[1], vocabularyName)
         .then(() => {
           const vocabularyUri: string = vocabulary == null ? '' : vocabulary.uri;
-          return this.dataService.suggestAConcept(resultArray[0], resultArray[1], vocabularyUri, this.languageService.contentLanguage).subscribe(next => {
-            const conceptSuggestions: Concept[] = next;
+          return this.dataService.suggestConcept(resultArray[0], resultArray[1], vocabularyUri, language).subscribe(next => {
             this.select(next[0]);
           });
         }, ignoreModalClose);
     }, ignoreModalClose);
   }
-
 }
 
 @Injectable()

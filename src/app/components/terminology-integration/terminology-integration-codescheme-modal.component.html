@@ -8,11 +8,9 @@
 </div>
 
 <div class="modal-body full-height">
-
   <div class="modal-sections">
     <div class="fixed-height-section pb-2">
       <p translate>{{terminologyIntegrationModalInstructionText}}</p>
-
       <div class="input-group input-group-lg input-group-search">
         <input class="form-control"
                id="search_concept_input"
@@ -22,7 +20,6 @@
                [(ngModel)]="search"/>
       </div>
     </div>
-
     <div class="fixed-height-section pb-2">
       <app-filter-dropdown class="d-inline-block" style="padding-right: 5px"
                            id="vocabulary_selection_dropdown"
@@ -37,7 +34,6 @@
                            [filterSubject]="language$"
                            [options]="languageOptions"></app-filter-dropdown>
     </div>
-
     <div class="pb-2">
       <span *ngIf="meta != null && meta.totalResults > meta.resultCount" id='search_concept_large_result_text'>{{
         'CONCEPT_SEARCH_MATCHED_RESULTS_LARGE' |
@@ -49,7 +45,6 @@
         count: meta.totalResults
       } }}</span>
     </div>
-
     <div class="content-box scrolling-full-height">
       <div *ngIf="!loading && hasSearchResults()" class="search-results">
         <div class="search-result"
@@ -66,27 +61,22 @@
           </div>
         </div>
       </div>
-
       <div *ngIf="!loading && !hasSearchResults()">
         <p translate class="no-results content last">No search results</p>
       </div>
-
       <div *ngIf="loading">
         <app-ajax-loading-indicator></app-ajax-loading-indicator>
       </div>
     </div>
-
     <div class="pb-2" *ngIf="!loading && (debouncedSearch$ | async)">
       <p translate style="padding-top: 10px">Concept suggestion instruction text</p>
-
       <dl>
         <dd>
           <div>
             <button id="open_terminology_modal_button_for_concept_suggestion"
                     type="button"
-                    class="btn btn-sm btn-secondary-action mt-2"
-                    (click)="suggestAConcept()" [disabled]="!canSuggest()" translate>Suggest the concept to Terminologies</button>
-            &nbsp;
+                    class="btn btn-sm btn-secondary-action mt-2 mr-2"
+                    (click)="suggestConcept()" [disabled]="!canSuggestConcept()" translate>Suggest the concept to Terminologies</button>
             <button id="cancel_modal_button_inline"
                     type="button"
                     class="btn btn-sm btn-secondary-action mt-2"
@@ -94,11 +84,8 @@
           </div>
         </dd>
       </dl>
-
     </div>
-
   </div>
-
 </div>
 
 <div class="modal-footer" *ngIf="!search">
