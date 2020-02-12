@@ -31,8 +31,8 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
   codeRegistriesLoaded = false;
   codeScheme: CodeScheme;
 
-  fromStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'RETIRED', 'INVALID'] as Status[];
-  toStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'RETIRED', 'INVALID'] as Status[];
+  fromStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'SUPERSEDED', 'RETIRED', 'INVALID'] as Status[];
+  toStatuses = ['INCOMPLETE', 'DRAFT', 'VALID', 'SUPERSEDED', 'RETIRED', 'INVALID'] as Status[];
 
   enforceTransitionRulesForSuperUserToo = false;
 
