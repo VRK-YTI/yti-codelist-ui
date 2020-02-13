@@ -13,9 +13,9 @@ import { ConfigurationService } from '../../services/configuration.service';
 export class NavigationBarComponent {
 
   availableLanguages = [
-    {code: 'fi' as Language, name: 'Suomeksi (FI)'},
-    // { code: 'sv' as Language, name: 'På svenska (SV)' },
-    {code: 'en' as Language, name: 'In English (EN)'}
+    { code: 'fi' as Language, name: 'Suomeksi (FI)' },
+    { code: 'sv' as Language, name: 'På svenska (SV)' },
+    { code: 'en' as Language, name: 'In English (EN)' }
   ];
 
   fakeableUsers: { email: string, firstName: string, lastName: string }[] = [];
