@@ -8,11 +8,13 @@ import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { UserService } from 'yti-common-ui/services/user.service';
-import { selectableStatuses, Status, allowedTargetStatuses } from 'yti-common-ui/entities/status';
+import { selectableStatuses, Status, allowedTargetStatuses, changeToRestrictedStatus } from 'yti-common-ui/entities/status';
 import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
+import { CodeListConfirmationModalService } from '../../components/common/confirmation-modal.service';
+import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 
 @Component({
   selector: 'app-code-scheme-mass-migrate-code-statuses-modal',
@@ -43,13 +45,13 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
               private errorModalService: CodeListErrorModalService,
               private userService: UserService,
               private translateService: TranslateService,
-              private alertModalService: AlertModalService) {
+              private alertModalService: AlertModalService,
+              private confirmationModalService: CodeListConfirmationModalService) {
 
     this.editableService.edit();
   }
 
   ngOnInit() {
-    // this.reset();
     this.reset();
   }
 
@@ -89,32 +91,40 @@ export class CodeSchemeMassMigrateCodeStatusesModalComponent implements AfterCon
   }
 
   saveChanges() {
-    if (!this.codeRegistry) {
-      throw new Error('Code registry must be set');
+    const save = () => {
+      if (!this.codeRegistry) {
+        throw new Error('Code registry must be set');
+      }
+
+      const modalRef = this.alertModalService.open('Please wait. This could take a while...');
+
+      this.dataService.createCodes([], this.codeRegistry.codeValue, this.codeScheme.codeValue, this.fromStatus$.value, this.toStatus$.value).subscribe(next => {
+        let messagePart = '';
+        const nrOfCodesWithStatusChanged: number = next.length;
+        if (nrOfCodesWithStatusChanged === 0) {
+          messagePart = this.translateService.instant('No codes were found with the starting status. No changes to code statuses.');
+        } else if (nrOfCodesWithStatusChanged === 1) {
+          messagePart = this.translateService.instant('Status changed to one code.');
+          modalRef.message = '' + nrOfCodesWithStatusChanged + messagePart;
+        } else {
+          const messagePart1 = this.translateService.instant('Status changed to ');
+          const messagePart2 = this.translateService.instant(' codes.');
+          messagePart = messagePart1 + nrOfCodesWithStatusChanged + messagePart2;
+        }
+        modalRef.message = messagePart;
+        this.modal.close(false);
+      }, error => {
+        this.uploading = false;
+        this.errorModalService.openSubmitError(error);
+        modalRef.cancel();
+      });
     }
 
-    const modalRef = this.alertModalService.open('Please wait. This could take a while...');
-
-    this.dataService.createCodes([], this.codeRegistry.codeValue, this.codeScheme.codeValue, this.fromStatus$.value, this.toStatus$.value).subscribe(next => {
-      let messagePart = '';
-      const nrOfCodesWithStatusChanged: number = next.length;
-      if (nrOfCodesWithStatusChanged === 0) {
-        messagePart = this.translateService.instant('No codes were found with the starting status. No changes to code statuses.');
-      } else if (nrOfCodesWithStatusChanged === 1) {
-        messagePart = this.translateService.instant('Status changed to one code.');
-        modalRef.message = '' + nrOfCodesWithStatusChanged + messagePart;
-      } else {
-        const messagePart1 = this.translateService.instant('Status changed to ');
-        const messagePart2 = this.translateService.instant(' codes.');
-        messagePart = messagePart1 + nrOfCodesWithStatusChanged + messagePart2;
-      }
-      modalRef.message = messagePart;
-      this.modal.close(false);
-    }, error => {
-      this.uploading = false;
-      this.errorModalService.openSubmitError(error);
-      modalRef.cancel();
-    });
+    if (changeToRestrictedStatus(this.fromStatus$.value!, this.toStatus$.value!)) {
+      this.confirmationModalService.openChangeToRestrictedStatus().then(() => save(), ignoreModalClose);
+    } else {
+      save();
+    }
   }
 
   toggleEnforceTransitionRulesForSuperUserToo() {
