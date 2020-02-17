@@ -276,8 +276,8 @@ export class CodeSchemeCreateComponent implements OnInit {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
-    this.codeSchemeForm.patchValue({ definition: concept.definition });
+    this.codeSchemeForm.controls['prefLabel'].setValue(concept.prefLabel);
+    this.codeSchemeForm.controls['definition'].setValue(concept.definition);
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });
   }
 

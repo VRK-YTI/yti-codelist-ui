@@ -209,6 +209,10 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted && this.extension.propertyType.context === 'Extension';
   }
 
+  get canCreateMissingMembers(): boolean {
+    return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted;
+  }
+
   get canImportMembers(): boolean {
     return this.authorizationManager.canEdit(this.extension.parentCodeScheme) && !this.extension.restricted;
   }

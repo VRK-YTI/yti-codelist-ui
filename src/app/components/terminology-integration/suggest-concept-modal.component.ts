@@ -14,14 +14,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SuggestConceptModalComponent implements OnInit {
 
-  @Input() conceptNameIncomiming: Localizable;
+  @Input() conceptNameIncoming: Localizable;
+  @Input() language: string;
 
   conceptSuggestionForm = new FormGroup({
-    conceptName: new FormControl( Validators.required),
+    conceptName: new FormControl(Validators.required),
     conceptDefinition: new FormControl(Validators.required)
   });
-
-  uiLanguage: string;
 
   constructor(public languageService: LanguageService,
               private translateService: TranslateService,
@@ -31,10 +30,9 @@ export class SuggestConceptModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.conceptSuggestionForm.patchValue({conceptName: this.conceptNameIncomiming});
-    const initialConceptDefinition = { [this.languageService.language]: '' };
-
-    this.conceptSuggestionForm.patchValue({conceptDefinition : initialConceptDefinition});
+    this.conceptSuggestionForm.patchValue({ conceptName: this.conceptNameIncoming });
+    const initialConceptDefinition = { [this.language]: '' };
+    this.conceptSuggestionForm.patchValue({ conceptDefinition: initialConceptDefinition });
   }
 
   saveValues() {
@@ -61,10 +59,11 @@ export class SuggestConceptModalService {
   constructor(private modalService: ModalService) {
   }
 
-  public open(conceptName: Localizable): Promise<Localizable[]> {
+  public open(conceptName: Localizable, language: string): Promise<Localizable[]> {
     const modalRef = this.modalService.open(SuggestConceptModalComponent, { size: 'sm', backdrop: 'static', keyboard: false });
     const instance = modalRef.componentInstance as SuggestConceptModalComponent;
-    instance.conceptNameIncomiming = conceptName;
+    instance.conceptNameIncoming = conceptName;
+    instance.language = language;
     return modalRef.result;
   }
 }

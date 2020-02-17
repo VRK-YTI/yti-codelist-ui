@@ -53,9 +53,13 @@ import { Code } from '../../entities/code';
                    class="search-result"
                    *ngFor="let codeScheme of searchResults; let last = last"
                    (click)="select(codeScheme)">
-                <div class="content" [class.last]="last">
-                  <span class="title" [innerHTML]="codeScheme.getDisplayName(languageService, useUILanguage)"></span>
+                <div class="content row" [class.last]="last">
+                  <div class="col-md-8 float-left">
+                    <span class="title" [innerHTML]="codeScheme.getDisplayName(languageService, useUILanguage)"></span>
+                  </div>
+                  <div class="col-md-4 float-right">
                   <app-status class="status" [status]="codeScheme.status"></app-status>
+                  </div>
                 </div>
               </div>
             </div>

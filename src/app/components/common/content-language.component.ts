@@ -107,7 +107,7 @@ export class ContentLanguageComponent implements OnChanges, OnInit {
         uri: '',
         url: '',
         codeValue: 'all',
-        prefLabel: { fi: 'Sisältö kaikilla kielillä', en: 'Content in all languages' },
+        prefLabel: { fi: 'Sisältö kaikilla kielillä', sv: 'Innehåll på alla språk', en: 'Content in all languages' },
         status: 'VALID',
         hierarchyLevel: 1,
       });

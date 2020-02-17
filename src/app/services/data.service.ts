@@ -810,7 +810,7 @@ export class DataService {
       .pipe(map(res => res.results.map(data => new CodeScheme(data))));
   }
 
-  suggestAConcept(suggeztion: string, definition: string, terminologyUri: string, contentLanguage: string): Observable<Concept[]> {
+  suggestConcept(suggeztion: string, definition: string, terminologyUri: string, contentLanguage: string): Observable<Concept[]> {
 
     const params = {
       'contentLanguage': contentLanguage,

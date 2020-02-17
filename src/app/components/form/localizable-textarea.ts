@@ -19,7 +19,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
                     rows="3"
                     class="form-control"
                     [ngClass]="{'is-invalid': !valid}"
-                    [ngModel]="value[contentLanguage]" 
+                    [ngModel]="value[inputLanguage]"
                     (ngModelChange)="onChange($event)"></textarea>
           <app-error-messages [id]="id + '_error_messages'" [control]="parentControl"></app-error-messages>
         </div>
@@ -34,6 +34,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
   @Input() restrict = false;
   @Input() required = false;
   @Input() id: string;
+  @Input() language: string | undefined;
   @Input() infoText: string;
   value: Localizable = {};
 
@@ -54,7 +55,7 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
   }
 
   onChange(value: string) {
-    this.value[this.contentLanguage] = value;
+    this.value[this.inputLanguage] = value;
     this.propagateChange(this.value);
   }
 
@@ -66,7 +67,10 @@ export class LocalizableTextareaComponent implements ControlValueAccessor {
     return this.editableService.editing && !this.restrict;
   }
 
-  get contentLanguage() {
+  get inputLanguage() {
+    if (this.language) {
+      return this.language;
+    }
     return this.languageService.contentLanguage;
   }
 

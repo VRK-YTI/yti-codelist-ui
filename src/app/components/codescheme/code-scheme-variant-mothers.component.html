@@ -10,7 +10,7 @@
   <tbody>
   <tr *ngFor="let variant of codeScheme.variantMothersOfThisCodeScheme">
     <td scope="row" width="30%">{{variant.validityDateRange}}</td>
-    <td width="30%"><a href="{{getVariantUri(variant.uri)}}" target="_blank">{{ getVariantDisplayName(variant) }}</a></td>
+    <td width="30%"><a href="{{getVariantUri(variant.uri)}}" target="_blank" rel="noopener noreferrer">{{ getVariantDisplayName(variant) }}</a></td>
     <td width="30%"><app-status class="pull-left" [status]="variant.status"></app-status></td>
     <td width="10%">&nbsp;</td>
   </tr>

@@ -1,0 +1,1826 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2020-02-13 16:36+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: xls-to-po 1.0\n"
+"X-Generator: Poedit 2.3\n"
+
+msgid "No codes were found with the starting status. No changes to code statuses."
+msgstr "Status har inte ändrats för en enda kod. Det gick inte att hitta utbytbara koder."
+
+msgid "Status changed to one code."
+msgstr "Status har ändrats för en kod."
+
+msgid "Status changed to "
+msgstr "Status har ändrats för "
+
+msgid " codes."
+msgstr " koden."
+
+msgid "Choose starting status"
+msgstr "Välj utgångsläge"
+
+msgid "Choose target status"
+msgstr "Välj målläge"
+
+msgid "All link types"
+msgstr "Alla typer av länkar"
+
+msgid "link"
+msgstr "länk"
+
+msgid "Select"
+msgstr "Välj"
+
+msgid "Create new"
+msgstr "Skapa ny"
+
+msgid "{{title}}"
+msgstr ""
+
+msgid ""
+"No new members created. All codes have a corresponding member already or there are no "
+"codes in the scope of the extension."
+msgstr ""
+"Nya medlemmar skapades inte. Alla koder har redan en motsvarande medlem eller tillägget "
+"omfattar inte några koder."
+
+msgid " missing member created."
+msgstr " medlem som saknas har skapats."
+
+msgid " missing members created."
+msgstr " medlemmar som saknas har skapats."
+
+msgid "Select code"
+msgstr "Välj kod"
+
+msgid "Search code"
+msgstr "Hämta kod"
+
+msgid "Add code list"
+msgstr "Lägg till kodlista"
+
+msgid "Select code list"
+msgstr "Välj kodlista"
+
+msgid "Search code list"
+msgstr "Hämta kodlista"
+
+msgid "No registry"
+msgstr "Register saknas"
+
+msgid "Valid from"
+msgstr "Startdatum"
+
+msgid "Valid to"
+msgstr "Slutdatum"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Cancel"
+msgstr "Ångra"
+
+msgid "Edit"
+msgstr "Redigera"
+
+msgid "{{errorKey}}"
+msgstr ""
+
+msgid "Add link"
+msgstr "Lägg till länk"
+
+msgid "Add information domain"
+msgstr "Lägg till informationsområde"
+
+msgid "Select information domain"
+msgstr "Välj informationsområde"
+
+msgid "Search information domain"
+msgstr "Hämta informationsområde"
+
+msgid "Copy value to clipboard"
+msgstr "Kopiera {{value}} till urklipp"
+
+msgid "Copied to clipboard"
+msgstr "Kopierades till urklipp"
+
+msgid "Add language code"
+msgstr "Lägg till språkkod"
+
+msgid "Select language code"
+msgstr "Välj språkkod"
+
+msgid "Search language code"
+msgstr "Hämta språkkod"
+
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+"Observera att innehållet i detta fält är offentligt. Använd inte personliga "
+"kontaktuppgifter!"
+
+msgid "Select member"
+msgstr "Välj medlem"
+
+msgid "Search member"
+msgstr "Hämta medlem"
+
+msgid "Add organization"
+msgstr "Välj organisation"
+
+msgid "Select organization"
+msgstr "Välj organisation"
+
+msgid "Search organization"
+msgstr "Sök organisation"
+
+msgid "Code list"
+msgstr "Kodlista"
+
+msgid "No search results"
+msgstr "Inga sökresultat"
+
+msgid "All statuses"
+msgstr "Alla statusar"
+
+msgid "Filter results"
+msgstr "Avgränsa sökresultaten"
+
+msgid "All codeschemes"
+msgstr "Alla kodlistor"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "theCodes"
+msgstr "Koder"
+
+msgid "See all results"
+msgstr "Se alla {{count}} träffar"
+
+msgid "theExtensions"
+msgstr "Tillägg"
+
+msgid "All registries"
+msgstr "Alla register"
+
+msgid "All organizations"
+msgstr "Alla organisationer"
+
+msgid "All extensionPropertyTypes"
+msgstr "Alla typer av kodlistor"
+
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr ""
+
+msgid "All vocabularies"
+msgstr "Alla ordlistor"
+
+msgid "All languages"
+msgstr "Alla språk"
+
+msgid "Reference Data"
+msgstr "Kodlistor"
+
+msgid "LABEL_TEXT_CODE_VALUE"
+msgstr "Kodens värde"
+
+msgid "Code name"
+msgstr "Kodens namn"
+
+msgid "Vocabularies URI"
+msgstr "Begreppets URI i verktyget Ordlistor"
+
+msgid "Description"
+msgstr "Beskrivning"
+
+msgid "Definition"
+msgstr "Definition"
+
+msgid "Short name"
+msgstr "Kort namn"
+
+msgid "Broader code"
+msgstr "Överordnad kod"
+
+msgid "Sub code list"
+msgstr "Anknytande kodlista"
+
+msgid "Validity"
+msgstr "Giltighet"
+
+msgid "Links"
+msgstr "Länkar"
+
+msgid "Create code"
+msgstr "Skapa kod"
+
+msgid "Get concept from Terminologies"
+msgstr "Importera begreppet från Suomi.fi-ordlistor"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "Modified by"
+msgstr "Redigerad av"
+
+msgid "Last modification"
+msgstr "Senaste redigering"
+
+msgid "Enforce status transition rules"
+msgstr "Använd valideringsreglerna för statusövergångar."
+
+msgid "Choose action"
+msgstr "Välj funktion"
+
+msgid "Delete code"
+msgstr "Ta bort kod"
+
+msgid "Registry"
+msgstr "Register"
+
+msgid "InfoDomain"
+msgstr "Informationsområde"
+
+msgid "Organization"
+msgstr "Organisation"
+
+msgid "INFORMATION"
+msgstr "UPPGIFTER"
+
+msgid "Import codes to code list"
+msgstr "Importera koder i kodlistan"
+
+msgid "INFO_TEXT_IMPORT_CODES_MODAL_HELP_TEXT"
+msgstr ""
+"Med denna funktion kan du uppdatera funktionen ”Exportera koder” att återställa material."
+
+msgid "File format"
+msgstr "Välj filformat"
+
+msgid "File to be uploaded"
+msgstr "Välj fil att importera"
+
+msgid "Import"
+msgstr "Importera"
+
+msgid "Search for code"
+msgstr "Hämta kod"
+
+msgid "code"
+msgstr "kod"
+
+msgid "codes"
+msgstr "koder"
+
+msgid "Search did not find any codes."
+msgstr "Sökningen hittade ingen kod."
+
+msgid "Expand all"
+msgstr "Visa allt"
+
+msgid "Collapse all"
+msgstr "Stäng allt"
+
+msgid "This code list does not have any codes yet."
+msgstr "Denna kodlistan har inga koder."
+
+msgid "Code list ID"
+msgstr "Kod"
+
+msgid "Code list name"
+msgstr "Kodlistans namn"
+
+msgid "Language code"
+msgstr "Språkkod"
+
+msgid "Change note"
+msgstr "Ändringsuppgift"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Source"
+msgstr "Källa"
+
+msgid "Legal base"
+msgstr "Lagrum"
+
+msgid "Governance policy"
+msgstr "Bindningsnivå"
+
+msgid "FeedbackChannel"
+msgstr "Kontakt"
+
+msgid "{{pageTitle}}"
+msgstr ""
+
+msgid "The content imported to the new version"
+msgstr "Material som importeras i den nya versionen"
+
+msgid "Create a new version with the existing content"
+msgstr "Skapa en ny version utifrån det nuvarande materialet"
+
+msgid "Create a new blank version without the existing content"
+msgstr "Skapa en ny tom version utan nuvarande material"
+
+msgid "Create the new codelist as cumulative"
+msgstr "Skapa en ny kumulativ kodlista"
+
+msgid "CODE EXTENSIONS"
+msgstr "KODTILLÄGG"
+
+msgid ""
+"Import code list by uploading a CSV- or Excel formatted file. Look up more detailed "
+"guide and information about using code list files from"
+msgstr ""
+"Importera kodlistan genom att ladda upp en fil i CSV- eller Excel-format. Se närmare "
+"anvisningar och information om att använda kodlistafiler"
+
+msgid "LINK_TXT_FROM_SERVICE_HELP"
+msgstr "i tjänstens anvisningar"
+
+msgid ""
+"Using the imported file, a new code list is created or an older code list is updated "
+"with new meta-information. Upon uploading the file, you get to review and cancel the "
+"changes if needed."
+msgstr ""
+"På basis av den importerade filen skapas en ny kodlista eller så ersätts en befintlig "
+"kodlista som motsvarar uppgifterna. Efter att filen importerats kan du ännu kontrollera "
+"de importerade uppgifterna och vid behov ångra ändringarna."
+
+msgid "Import code list from a file"
+msgstr "Importera kodlistan från fil"
+
+msgid ""
+"You can also add a new code list by creating it via the user interface of the Koodistot "
+"service."
+msgstr ""
+"Du kan även lägga till en ny kodlista genom att mata in uppgifterna via "
+"användargränssnittet för tjänsten Kodlistor."
+
+msgid "Create new code list"
+msgstr "Skapa ny kodlista"
+
+msgid "Registry for the code list"
+msgstr "Välj register"
+
+msgid "Import code list"
+msgstr "Importera kodlista"
+
+msgid "Update code list"
+msgstr "Uppdatera kodlista"
+
+msgid "INFO_TEXT_IMPORT_CODELIST_FRONTPAGE_MODAL_HELP_TEXT"
+msgstr ""
+"Med denna funktion kan du importera en ny kodlista eller uppdatera materialet som "
+"hämtats av funktionen \"Exportera kodsystem\"."
+
+msgid "INFO_TEXT_IMPORT_CODELIST_MODAL_HELP_TEXT"
+msgstr ""
+"Med denna funktion kan du uppdatera materialet som hämtats av funktionen \"Exportera "
+"kodsystem\"."
+
+msgid "Cumulative code list"
+msgstr "Kumulativt kodlista"
+
+msgid "cumulative"
+msgstr "Problem med filöverföringen. Försök igen."
+
+msgid "Default code"
+msgstr "Standardkod"
+
+msgid "Change code statuses at the same time"
+msgstr "Ändra samtidigt status för koder med samma status"
+
+msgid "Update code list's codes' statuses"
+msgstr "Ändra kodernas status"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "You will receive an email notification when this resource changes."
+msgstr "Du meddelas per e-post när det görs ändringar i detta material."
+
+msgid "Add email subscription"
+msgstr "Beställ e-postaviseringar"
+
+msgid "Remove email subscription"
+msgstr "Ta bort e-postaviseringar"
+
+msgid "Import codes"
+msgstr "Importera koder"
+
+msgid "Create a new version"
+msgstr "Skapa ny version"
+
+msgid "Create a new version from file"
+msgstr "Skapa ny version från fil"
+
+msgid "Attach variant to code list"
+msgstr "Lägg till en variant av kodlistan"
+
+msgid "Create calculation hierarchy"
+msgstr "Skapa en beräkningshierarki"
+
+msgid "Create definition hierarchy"
+msgstr "Skapa en definitionshierarki"
+
+msgid "Create cross-reference list"
+msgstr "Skapa en kodkoppling"
+
+msgid "Create DPM metric"
+msgstr "Skapa DPM metric"
+
+msgid "Create DPM explicit domain"
+msgstr "Skapa DPM explicit domain"
+
+msgid "Create DPM dimension"
+msgstr "Skapa DPM dimension"
+
+msgid "Create DPM typed domain"
+msgstr "Skapa DPM typed domain"
+
+msgid "Import extensions"
+msgstr "Importera tillägg"
+
+msgid "{{deleteCodeSchemeButtonTitle}}"
+msgstr ""
+
+msgid "Export"
+msgstr "Exportera"
+
+msgid "Export codelist Excel"
+msgstr "Exportera kodlista Excel"
+
+msgid "Export codelist CSV"
+msgstr "Exportera kodlista CSV"
+
+msgid "Export codes CSV"
+msgstr "Exportera koder CSV"
+
+msgid "Export codes Excel"
+msgstr "Exportera koder Excel"
+
+msgid "Export codelist JSON"
+msgstr "Exportera kodlista JSON"
+
+msgid "Show codelist JSON"
+msgstr "Visa kodlista JSON"
+
+msgid "Show JSON enumeration"
+msgstr "Visa JSON uppräkning"
+
+msgid "Download JSON enumeration"
+msgstr "Ladda ner JSON uppräkning"
+
+msgid "CODES"
+msgstr "KODER"
+
+msgid "EXTENSIONS"
+msgstr "TILLÄGG"
+
+msgid "versionHistory"
+msgstr "Versionshistorik"
+
+msgid "variants"
+msgstr "Varianter"
+
+msgid "Variants of this code list"
+msgstr "Följande kodlistor är varianter av detta kodlista:"
+
+msgid "Variant in other code lists"
+msgstr "Denna kodlista har definierats som en variant i följande kodlistor:"
+
+msgid "Link title"
+msgstr "Länkens namn"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Link type"
+msgstr "Länkens typ"
+
+msgid "Create new link"
+msgstr "Skapa ny länk"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "Edit link"
+msgstr "Redigera"
+
+msgid "There are no links available, please create new ones."
+msgstr "Länkarna är inte tillgängliga. Skapa nya länkar."
+
+msgid "Show link"
+msgstr "Visa länk"
+
+msgid "Ok"
+msgstr "Ok"
+
+msgid "Search for code lists"
+msgstr "Hämta kodlista"
+
+msgid "variantModalPageTitle"
+msgstr "Lägg till en variant av kodlistan"
+
+msgid "variantModalInstructionText"
+msgstr "Hämta kodlistan som ska läggas till från Kodlistor"
+
+msgid "LABEL_TEXT_CREATE_EXTENSION_ID"
+msgstr "Tilläggets kod"
+
+msgid "Extension name"
+msgstr "Tilläggets namn"
+
+msgid "Extension type"
+msgstr "Tilläggets typ"
+
+msgid "Automatically create a member for each code"
+msgstr "Skapa automatiskt medlemmar för alla koder."
+
+msgid "This extension does not have any cross references yet."
+msgstr "Detta tillägg har ännu inga kodkopplingar."
+
+msgid "LABEL_TEXT_EXTENSION_ID"
+msgstr "Tilläggets kod"
+
+msgid "Search for member"
+msgstr "Hämta medlem"
+
+msgid "member"
+msgstr "medlem"
+
+msgid "members"
+msgstr "medlemmar"
+
+msgid "Search did not find any members."
+msgstr "Sökningen hittade inga medlemmar."
+
+msgid "This extension does not have any members yet."
+msgstr "Detta tillägg saknar medlemmar."
+
+msgid "Create member"
+msgstr "Skapa medlem"
+
+msgid "Create missing members for the extension"
+msgstr "Skapa de medlemmar som saknas i tillägget"
+
+msgid "Import members"
+msgstr "Importera medlemmar"
+
+msgid "Delete extension"
+msgstr "Ta bort tillägg"
+
+msgid "Export members Excel"
+msgstr "Exportera medlemmar Excel"
+
+msgid "Export members CSV"
+msgstr "Exportera medlemmar CSV"
+
+msgid "Export Cross-Reference List Excel"
+msgstr "Exportera kodkoppling Excel"
+
+msgid "Export Cross-Reference List CSV"
+msgstr "Exportera kodkoppling CSV"
+
+msgid "CROSS-REFERENCE LIST"
+msgstr "Kodkoppling"
+
+msgid "MEMBERS"
+msgstr "MEDLEMMAR"
+
+msgid "Search term"
+msgstr "Sökterm"
+
+msgid "search result"
+msgstr "sökresultat"
+
+msgid "search results"
+msgstr "sökresultat"
+
+msgid "Frontpage long description"
+msgstr ""
+"Verktyget Kodlistor är en teknisk plattform där man kan använda och uppdatera gemensamma "
+"kodlistor och klassificeringar inom den offentliga förvaltningen. Kodlistorna och deras "
+"språkversioner är aktuella och tillförlitliga, och man kan bläddra i dem över "
+"sektorsgränserna och ladda ned dem för eget bruk. Användningen av de gemensamma "
+"kodlistorna skapar interoperabilitet mellan system och inom statistikföringen."
+
+msgid "Extend search to"
+msgstr "Sök även i"
+
+msgid "to_codes"
+msgstr "koder"
+
+msgid "to_extensions"
+msgstr "tillägg"
+
+msgid "Filter with information domain"
+msgstr "Avgränsa enligt informationsområde"
+
+msgid "Search did not find any code lists."
+msgstr "Sökningen hittade inga kodlista."
+
+msgid "Searchhits"
+msgstr "Sökresultat"
+
+msgid "Extension"
+msgstr "Tillägg"
+
+msgid "Member name"
+msgstr "Medlemmens namn"
+
+msgid "Code URI"
+msgstr "Kodens URI"
+
+msgid "Code vocabularies URI"
+msgstr "URI för kodens begrepp i verktyget Ordlistor"
+
+msgid "Code"
+msgstr "Kod"
+
+msgid "INFO_TEXT_IMPORT_MEMBERS_MODAL_HELP_TEXT"
+msgstr ""
+"Med denna funktion kan du uppdatera materialet som hämtats av funktionen \"Exportera "
+"medlemmar\"."
+
+msgid "Delete member"
+msgstr "Ta bort medlem"
+
+msgid "Impersonate user"
+msgstr "Agera som användare"
+
+msgid "LOG IN"
+msgstr "LOGGA IN"
+
+msgid "LOG OUT"
+msgstr "LOGGA UT"
+
+msgid "User details"
+msgstr "Användaruppgifter"
+
+msgid "Registries"
+msgstr "Register"
+
+msgid "Suomi.fi Terminologies"
+msgstr "Suomi.fi-ordlistor"
+
+msgid "Suomi.fi Data Vocabularies"
+msgstr "Suomi.fi-informationsmodeller"
+
+msgid "Suomi.fi Comments"
+msgstr "Suomi.fi-kommentarer"
+
+msgid "User right management"
+msgstr "Administrering av behörigheter"
+
+msgid "Create registry"
+msgstr "Skapa register"
+
+msgid "No registries found."
+msgstr "Register saknas."
+
+msgid "organizations"
+msgstr "organisationer"
+
+msgid "No organization"
+msgstr "Ingen organisation"
+
+msgid "This registry does not have any code lists yet."
+msgstr "Detta register saknar kodlista."
+
+msgid "Registry ID"
+msgstr "Kod"
+
+msgid "Registry name"
+msgstr "Registrets namn"
+
+msgid "Code registry name"
+msgstr "Registrets namn"
+
+msgid "Delete registry"
+msgstr "Ta bort register"
+
+msgid "CODE LISTS"
+msgstr "KODSYSTEM"
+
+msgid "Concept name"
+msgstr "Begreppets namn"
+
+msgid "Concept definition"
+msgstr "Begreppets definition"
+
+msgid "Suggest the concept to Terminologies"
+msgstr "Föreslå ett begrepp i verktyget Ordlistor"
+
+msgid "Search for concept"
+msgstr "Hämta begrepp"
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS_LARGE"
+msgstr ""
+"Sökningen gav {{ count }} begrepp, varav de första {{ showCount }} resultaten visas. "
+"Avgränsa sökningen för att få noggrannare resultat."
+
+msgid "CONCEPT_SEARCH_MATCHED_RESULTS"
+msgstr "{{ count }} sökresultat"
+
+msgid "{{terminologyIntegrationModalPageTitle}}"
+msgstr "Sök variant"
+
+msgid "{{terminologyIntegrationModalInstructionText}}"
+msgstr ""
+
+msgid "Concept suggestion instruction text"
+msgstr ""
+"Om begreppet inte finns, föreslå det i verktyget Ordlistor. Välj en ordlista, i vilket "
+"föreslaget ges."
+
+msgid "Email"
+msgstr "E-post"
+
+msgid "Organizations and roles"
+msgstr "Organisationer och roller"
+
+msgid "Unknown organization"
+msgstr "Okänd organisation"
+
+msgid "Waiting for approval"
+msgstr "Väntar på godkännande"
+
+msgid "Send access request"
+msgstr "Skicka begäran om behörighet"
+
+msgid "Send"
+msgstr "Sänd"
+
+msgid ""
+"You have subscribed to be notified via email when the following resources change. To "
+"remove the subscription, click the icon next to the resource."
+msgstr ""
+"Du har beställt e-postaviseringar om ändringar i följande material. För att ta bort "
+"aviseringen, klicka på ikonen bredvid materialet."
+
+msgid "Email notifications"
+msgstr "E-postaviseringar"
+
+msgid "Daily"
+msgstr "Dagligen"
+
+msgid "Code list resources"
+msgstr "Material som hänför sig kodlista"
+
+msgid "Terminology resources"
+msgstr "Material som hänför sig till ordlistor"
+
+msgid "Datamodel resources"
+msgstr "Material som hänför sig till informationsmodeller"
+
+msgid "Comments resources"
+msgstr "Material som hänför sig till kommentarer"
+
+msgid "SUBSCRIPTIONS"
+msgstr "BESTÄLLNINGAR"
+
+msgid "INFO_TEXT_CODE_REGISTRY"
+msgstr ""
+"Registret som kodlistan ingår i. Varje kodlista hör alltid till ett kodlistaregister."
+
+msgid "INFO_TEXT_INFODOMAIN"
+msgstr ""
+"Uppgift om vilket informationsområde kodlistan anknyter till. En kodlista kan omfatta "
+"flera informationsområden. Informationsområdena klassificeras enligt Klassifikationen av "
+"offentliga tjänster. Samma klassifikation av informationsområden används för såväl "
+"verktyget Kodlistor som verktygen Ordlistor och Informationsmodeller. "
+"Informationsområdet används vid sökning på startsidan för att avgränsa sökresultaten."
+
+msgid "INFO_TEXT_CODELIST_CODE_VALUE"
+msgstr ""
+"Kodlistans tekniska kod eller permanenta identifikationsuppgift som används av "
+"organisationen. Koden ska vara unikt i registret."
+
+msgid "INFO_TEXT_CODELIST_NAME"
+msgstr "Kodlistans namn som visas i rubriken och sökresultaten"
+
+msgid "INFO_TEXT_VOCABULARIES_URI"
+msgstr "Begreppets permanenta webbadress i verktyget Ordlistor."
+
+msgid "INFO_TEXT_DEFAULT_CODE"
+msgstr ""
+"Kodlistans kod som valts som standardvärde. Standardkoden används i särskilda fall."
+
+msgid "INFO_TEXT_ORGANIZATION"
+msgstr "Organisationen eller organisationerna som ansvarar för och uppdaterar kodlistan"
+
+msgid "INFO_TEXT_EXTENSION_CODE_LISTS"
+msgstr "Externa kodlistar som tillägget är länkat till"
+
+msgid "INFO_TEXT_CODELIST_ORGANIZATION"
+msgstr "Organisationen eller organisationerna som ansvarar för kodlistan"
+
+msgid "INFO_TEXT_CODELIST_DESCRIPTION"
+msgstr "Verbal beskrivning av kodlistans innehåll och användningsändamål m.m."
+
+msgid "INFO_TEXT_CODELIST_DEFINITION"
+msgstr ""
+"Definition av det begrepp som anknyter till kodlistans datainnehåll i verktyget "
+"Ordlistor eller en egen definition."
+
+msgid "INFO_TEXT_CODELIST_CHANGE_NOTE"
+msgstr ""
+"Uppgift om ändring i kodlistan, t.ex. ändringar jämfört med föregående version eller "
+"ändringar under en längre period. Viktiga ändringar för den som använder kodlistan."
+
+msgid "INFO_TEXT_CODELIST_VERSION"
+msgstr "Kodlistans versionsnummer, t.ex. 1 eller v1"
+
+msgid "INFO_TEXT_CODELIST_SHORT_NAME"
+msgstr "Kodens kortnamn eller förkortning"
+
+msgid "INFO_TEXT_CODELIST_SOURCE"
+msgstr ""
+"Kodlistans källa, t.ex. internationellt register och dess klassifikation eller kodlista, "
+"som denna kodlista bygger på. Datakällan varifrån informationen hämtas till detta "
+"register."
+
+msgid "INFO_TEXT_CODELIST_LEGAL_BASE"
+msgstr ""
+"Kodlista eller klassifikationen regleras av en lag, en författning, ett avtal, ett "
+"beslut eller annan grund. Använd författningarnas officiella namn och ange "
+"författningsnummer och paragraf. T.ex. Statsrådets förordning om befolkningsdatasystemet "
+"25.2.2010/128, 27 § eller lagen om förmyndarverksamhet 442/1999, 68 §."
+
+msgid "INFO_TEXT_CODELIST_GOVERNANCE_POLICY"
+msgstr ""
+"Kodlistans bindnings- och administrationsnivå, t.ex. internationell rekommendation, "
+"nationell rekommendation (JHS), statistikklassificering eller bindande för kommuner. "
+"Eller t.ex. reglerad genom förordning att användas inom hela den offentliga "
+"förvaltningen fr.o.m. 4.3.2017."
+
+msgid "INFO_TEXT_CODELIST_STATUS"
+msgstr ""
+"Status gällande kodlistans administration och livscykel. Tillåtna statusövergångar är: "
+"Halvfärdig => Utkast, Utkast => Halvfärdig eller Giltig, Giltig => Ur bruk eller "
+"Felaktig, Ur bruk => Giltig eller Felaktig, Felaktig => Giltig eller Ur bruk."
+
+msgid "INFO_TEXT_CODELIST_VALIDITY"
+msgstr "Den period under vilken kodlistan är i kraft."
+
+msgid "INFO_TEXT_URI"
+msgstr ""
+"Permanent identifikationsuppgift och webbadress för kodlistan. Bildas systematiskt på "
+"följande sätt http://uri.suomi.fi/codelist/[register]/[kodlistans kod]"
+
+msgid "INFO_TEXT_URI_MEMBER"
+msgstr ""
+"Permanent identifikationsuppgift och webbadress för tilläggets medlem. Bildas "
+"systematiskt på följande sätt http://uri.suomi.fi/codelist/[register]/[kodlistans kod]/"
+"extension/[tilläggets kod]/member/[medlemmens kod]"
+
+msgid "INFO_TEXT_URI_EXTENSION"
+msgstr ""
+"Permanent identifikationsuppgift och webbadress för tillägget. Bildas systematiskt på "
+"följande sätt http://uri.suomi.fi/codelist/[register]/[kodlistans kod]/extension/"
+"[tilläggets kod]"
+
+msgid "INFO_TEXT_CODELIST_LAST_MODIFICATION"
+msgstr "Tidpunkt för senaste redigering"
+
+msgid "INFO_TEXT_LAST_MODIFICATION_USER"
+msgstr "Redigerades senast av"
+
+msgid "INFO_TEXT_EXTERNAL_REFERENCES"
+msgstr ""
+"Du kan till valen lägga till länkar och välja licens samt exempelvis Anknytande "
+"standard, Användningsändamål, Licens, Förutsättning för användning, Länk, Källa"
+
+msgid "INFO_TEXT_CODELIST_VALIDITY_START_DATE"
+msgstr "Startdatum för giltigheten"
+
+msgid "INFO_TEXT_CODELIST_VALIDITY_END_DATE"
+msgstr "Slutdatum för giltigheten"
+
+msgid "INFO_TEXT_CODE_CODELIST_NAME"
+msgstr "Namnet på den kodlistan som denna kod hör till"
+
+msgid "INFO_TEXT_CODE_VALUE"
+msgstr "Kodens värde, dvs. kod"
+
+msgid "INFO_TEXT_CODE_NAME"
+msgstr "Kodens namn, dvs. etikett (label)"
+
+msgid "INFO_TEXT_CODE_STATUS"
+msgstr ""
+"Status gällande kodens administration och livscykel. Tillåtna statusövergångar är: "
+"Halvfärdig => Utkast, Utkast => Halvfärdig eller Giltig, Giltig => Ur bruk eller "
+"Felaktig, Ur bruk => Giltig eller Felaktig, Felaktig => Giltig eller Ur bruk."
+
+msgid "INFO_TEXT_CODE_DESCRIPTION"
+msgstr "Verbal beskrivning av kodens innehåll"
+
+msgid "INFO_TEXT_CODE_DEFINITION"
+msgstr ""
+"Definition av det begrepp som anknyter till kodens betydelse i verktyget Ordlistor eller "
+"en egen definition."
+
+msgid "INFO_TEXT_CODE_SHORT_NAME"
+msgstr "Kodens kortnamn eller förkortning"
+
+msgid "INFO_TEXT_CODE_VALIDITY"
+msgstr "Den period under vilken koden är i kraft."
+
+msgid "INFO_TEXT_CODE_URI"
+msgstr ""
+"Permanent identifikationsuppgift och webbadress för koden. Bildas systematiskt på "
+"följande sätt http://uri.suomi.fi/codelist/[register]/[kodlistans kod]/[kod]"
+
+msgid "INFO_TEXT_CODE_CONCEPT_URI"
+msgstr ""
+"Permanent identifikationsuppgift och webbadress för ett begrepp som kopplats till koden."
+
+msgid "INFO_TEXT_CODE_LAST_MODIFICATION"
+msgstr "Tidpunkt för senaste redigering"
+
+msgid "INFO_TEXT_CODE_EXTERNAL_REFERENCES"
+msgstr "Länkar"
+
+msgid "INFO_TEXT_CODE_VALIDITY_START_DATE"
+msgstr "Startdatum för kodens giltighet"
+
+msgid "INFO_TEXT_CODE_VALIDITY_END_DATE"
+msgstr "Slutdatum för kodens giltighet"
+
+msgid "INFO_TEXT_LANGUAGE_CODE"
+msgstr ""
+"Val av språkkod för kodlistan. De språkkoder som valts för kodlistan bestämmer på vilka "
+"språk du kan lokalisera kodlistans innehåll."
+
+msgid "INFO_TEXT_LINK_TITLE"
+msgstr "Länkens namn som visas i användargränssnittet"
+
+msgid "INFO_TEXT_LINK_DESCRIPTION"
+msgstr "Verbal beskrivning av länkens innehåll och användningsändamål"
+
+msgid "INFO_TEXT_LINK_URL"
+msgstr ""
+"Länkens adress. Länken ska vara unik för varje kodlista och ska börja med antingen "
+"http:// eller https://, annars behandlas inmatningen som felaktig och sparas inte."
+
+msgid "INFO_TEXT_LINK_TYPE"
+msgstr ""
+"Typen av länk väljs i rullgardinsmenyn. Typindelningen används för att kategorisera och "
+"ordna länkarna i användargränssnittet."
+
+msgid "INFO_TEXT_REGISTRY_VALUE"
+msgstr "Teknisk kod eller permanent identifikationsuppgift för registret"
+
+msgid "INFO_TEXT_REGISTRY_NAME"
+msgstr "Registrets namn"
+
+msgid "INFO_TEXT_REGISTRY_DESCRIPTION"
+msgstr "Verbal beskrivning av registret"
+
+msgid "INFO_TEXT_REGISTRY_ORGANIZATION"
+msgstr "Organisationen eller organisationerna som ansvarar för registret"
+
+msgid "INFO_TEXT_REGISTRY_URI"
+msgstr "Permanent identifikationsuppgift och webbadress för registret"
+
+msgid "INFO_TEXT_REGISTRY_LAST_MODIFICATION"
+msgstr "Tidpunkt för senaste redigering"
+
+msgid "INFO_TEXT_EXTENSION_CODE_LIST"
+msgstr "Kodlista till vilken denna tillägg kopplats"
+
+msgid "INFO_TEXT_EXTENSION_ID"
+msgstr "Tilläggets kod"
+
+msgid "INFO_TEXT_EXTENSION_NAME"
+msgstr "Tilläggets namn"
+
+msgid "INFO_TEXT_EXTENSION_TYPE"
+msgstr "Exempel på tillägg är beräkningshierarkier och definitionshierarkier."
+
+msgid "INFO_TEXT_EXTENSION_STATUS"
+msgstr ""
+"Status gällande tilläggets administration och livscykel. Tillåtna statusövergångar är: "
+"Halvfärdig => Utkast, Utkast => Halvfärdig eller Giltig, Giltig => Ur bruk eller "
+"Felaktig, Ur bruk => Giltig eller Felaktig, Felaktig => Giltig eller Ur bruk."
+
+msgid "INFO_TEXT_EXTENSION_VALIDITY"
+msgstr "Den period under vilken tillägget är i kraft."
+
+msgid "INFO_TEXT_EXTENSION_LAST_MODIFICATION"
+msgstr "Tidpunkt för senaste redigering"
+
+msgid "INFO_TEXT_EXTENSION_VALIDITY_START_DATE"
+msgstr "Startdatum för giltigheten"
+
+msgid "INFO_TEXT_EXTENSION_VALIDITY_END_DATE"
+msgstr "Slutdatum för giltigheten"
+
+msgid "INFO_TEXT_CREATE_EXTENSION_ID"
+msgstr "Kod eller permanent identifikationsuppgift för tillägget"
+
+msgid "INFO_TEXT_FRONTPAGE_SEARCH"
+msgstr ""
+"Sökningen omfattar enligt standardinställningen kodlistans namn. Du kan söka med "
+"kodnamnet genom att kryssa för ”Sök även i koder”."
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_W_INFODOMAIN"
+msgstr ""
+"Alla kodlistor är kategoriserade till ett informationsområde. Genom att klicka på "
+"informationsområdet kan du begränsa sökresultaten att endast visa kodlistor som omfattas "
+"av ett visst informationsområde. Ta bort sökfiltret genom att klicka på samma klass på "
+"nytt."
+
+msgid "INFO_TEXT_FRONTPAGE_FILTER_RESULTS"
+msgstr ""
+"Du kan avgränsa sökresultaten enligt organisation, register, status eller typen av "
+"kodlista. Med organisation avses kodlistans innehållsproducent som ansvarar för "
+"uppdateringen av kodlistan. Med register avses en samling kodlista som används t.ex. i "
+"samma sammanhang. Status avser statusen för kodlistans administration. Kodlistatyp avser "
+"typen av tillägg som eventuellt kopplats till kodlistan."
+
+msgid "INFO_TEXT_BROADER_CODE"
+msgstr "Kodsystemets kod bestämmer denna kods huvudnivå i hierarkin."
+
+msgid "INFO_TEXT_MEMBER_VALIDITY"
+msgstr "Den period under vilken medlemmen är i kraft"
+
+msgid "INFO_TEXT_MEMBER_VALIDITY_START_DATE"
+msgstr "Startdatum för medlemmens giltighet"
+
+msgid "INFO_TEXT_MEMBER_VALIDITY_END_DATE"
+msgstr "Slutdatum för medlemmens giltighet"
+
+msgid "INFO_TEXT_CONCEPT_NAME"
+msgstr "Föreslaget begreppsnamn"
+
+msgid "INFO_TEXT_CONCEPT_DEFINITION"
+msgstr "Preliminärt förslag till definition eller beskrivning av begreppet"
+
+msgid "INFO_TEXT_NEW_CODESCHEME_VERSION_CREATION_METHOD"
+msgstr ""
+"Du kan välja om du vill importera de nuvarande koderna, tilläggen och tilläggets "
+"medlemmar i den nya versionen av kodlistan eller skapa en ny tom version av kodlistan."
+
+msgid "INFO_TEXT_SUBCODESCHEME"
+msgstr "Extern kodlista som kopplats till koden"
+
+msgid "INFO_TEXT_CUMULATIVE"
+msgstr ""
+"En kumulativ kodlista tillåter inte att koder tas bort från någon av kodens versioner."
+
+msgid "INFO_TEXT_CUMULATIVE_CREATION_PAGE"
+msgstr ""
+"En kumulativ kodlista tillåter inte att koder tas bort från någon av kodens versioner. "
+"Kodernas överföring från version till version är garanterad."
+
+msgid "INFO_TEXT_CUMULATIVE_CODELIST_UPDATE_PAGE"
+msgstr ""
+"En kumulativ kodlista tillåter inte att koder tas bort från någon av kodens versioner. "
+"Kodernas överföring från version till version är garanterad. När en kodlista registreras "
+"som kumulativt, går det inte längre att registrera det eller dess framtida versioner som "
+"icke-kumulativa."
+
+msgid "INFO_TEXT_CHOOSE_CODE_FOR_THIS_MEMBER"
+msgstr ""
+"Välj en kod som anknyter till denna medlem från de kodlistor som kopplats till detta "
+"tillägg."
+
+msgid "INFO_TEXT_CHOOSE_OTHER_SIDE_OF_CROSS_REFERENCE"
+msgstr ""
+"Välj kodkopplingens andra part. Om detta inte går är möjligt, hänvisas det till denna "
+"medlem från en annan medlem. Det är endast möjligt att hänvisa i en riktning."
+
+msgid "INFO_TEXT_CHOOSE_HIERARCHICAL_PARENT_MEMBER"
+msgstr ""
+"Välj för denna medlem en överordnad medlem. Detta val bestämmer hierarkin mellan "
+"medlemmarna."
+
+msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
+msgstr "Responskanal för kodlistan, t.ex. e-postadress."
+
+msgid "INFO_TEXT_EMAIL_SUBSCRIPTIONS"
+msgstr ""
+"Med denna funktion väljer du att aktivera/inaktivera aviseringsfunktionen. Genom att ta "
+"bort krysset för ”Dagligen” kan du inaktivera alla aviseringar på en gång. Genom att "
+"kryssa för på nytt aktiveras aviseringar."
+
+msgid "Front page"
+msgstr "Startsida"
+
+msgid "SUPERSEDED"
+msgstr "Ersatt"
+
+msgid "SUBMITTED"
+msgstr "Väntar på godkännande"
+
+msgid "RETIRED"
+msgstr "Borttaget"
+
+msgid "VALID"
+msgstr "Gällande"
+
+msgid "INVALID"
+msgstr "Felaktig"
+
+msgid "DRAFT"
+msgstr "Utkast"
+
+msgid "INCOMPLETE"
+msgstr "Halvfärdig"
+
+msgid "required"
+msgstr "Obligatorisk inmatning"
+
+msgid "Member"
+msgstr "Medlem"
+
+msgid "value"
+msgstr "värde"
+
+msgid "Submit error"
+msgstr "Det skedde ett fel i funktionen"
+
+msgid "Unexpected error"
+msgstr "Det skedde ett oväntat fel"
+
+msgid "Edit in progress"
+msgstr "Redigeringen är halvfärdig"
+
+msgid "Are you sure that you want to continue? By continuing unsaved changes will be lost."
+msgstr ""
+"Är du säker på att du vill fortsätta? Om du fortsätter förlorar du de ändringar som inte "
+"sparats."
+
+msgid "Create code list"
+msgstr "Skapa kodlista"
+
+msgid "REMOVE LINK?"
+msgstr "TA BORT LÄNK?"
+
+msgid "REMOVE REGISTRY?"
+msgstr "TA BORT REGISTER?"
+
+msgid "REMOVE CODE?"
+msgstr "TA BORT KOD?"
+
+msgid "REMOVE CODE LIST?"
+msgstr "TA BORT KODLISTA?"
+
+msgid "REMOVE EXTENSION?"
+msgstr "TA BORT TILLÄGG?"
+
+msgid "REMOVE MEMBER?"
+msgstr "TA BORT MEDLEM?"
+
+msgid "DETACH VARIANT?"
+msgstr "Ta bort länk till varianten?"
+
+msgid "CALCULATIONHIERARCHIES"
+msgstr "BERÄKNINGSHIERARKIER"
+
+msgid "DEFINITIONHIERARCHIES"
+msgstr "DEFINITIONSHIERARKIER"
+
+msgid "CROSSREFERENCELISTS"
+msgstr "Kodkopplingar"
+
+msgid "ADMIN"
+msgstr "Administratör"
+
+msgid "DATA_MODEL_EDITOR"
+msgstr "Datamodellerare"
+
+msgid "TERMINOLOGY_EDITOR"
+msgstr "Terminologiredigerare"
+
+msgid "CODE_LIST_EDITOR"
+msgstr "Kodlistredigerare"
+
+msgid "MEMBER"
+msgstr "Medlem"
+
+msgid "ERR_MSG_USER_401"
+msgstr "Behörighet saknas"
+
+msgid "ERR_MSG_USER_404"
+msgstr "Resursen kan inte hittas"
+
+msgid "ERR_MSG_USER_406"
+msgstr "Olämpliga data"
+
+msgid "ERR_MSG_USER_500"
+msgstr "Det skedde ett oväntat fel."
+
+msgid "ERR_MSG_USER_FILE_TRANSMISSION_ERROR"
+msgstr "Det skedde ett fel när filen överfördes. Försök igen."
+
+msgid "ERR_MSG_USER_END_BEFORE_START_DATE"
+msgstr "Slutdatum före startdatumet"
+
+msgid "ERR_MSG_USER_ROW_MISSING_CODEVALUE"
+msgstr "I materialet saknas värde i kolumnen CODEVALUE på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_STATUS"
+msgstr "I materialet saknas värde i kolumnen STATUS på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_PREFLABEL_VALUE"
+msgstr ""
+"I materialet saknas det obligatoriska värdet PREFLABEL_<språkförkortning> på rad "
+"{{ identifier }}."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_EXTENSIONVALUE"
+msgstr "I materialet saknas kolumnen med rubriken EXTENSIONVALUE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CODE"
+msgstr "I materialet saknas kolumnen med rubriken CODE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_CODEVALUE"
+msgstr "I materialet saknas kolumnen med rubriken CODEVALUE."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PREFLABEL"
+msgstr "I materialet saknas kolumnen med rubriken PREFLABEL_<språkförkortning>."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_ORGANIZATION"
+msgstr "I materialet saknas kolumnen med rubriken ORGANIZATION."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_STATUS"
+msgstr "I materialet saknas kolumnen med rubriken STATUS."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_PROPERTYTYPE"
+msgstr "I materialet saknas kolumnen med rubriken PROPERTYTYPE."
+
+msgid "ERR_MSG_USER_ROW_MISSING_CODE"
+msgstr "I materialet saknas värde i kolumnen CODE på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_ORDER"
+msgstr "I materialet saknas värde i kolumnen ORDER på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_EXTENSIONVALUE"
+msgstr "I materialet saknas värde i kolumnen EXTENSIONVALUE på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ERRONEOUS_START_DATE"
+msgstr "Fel startdatum på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ERRONEOUS_END_DATE"
+msgstr "Fel slutdatum på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE"
+msgstr "Koden {{ identifier }} finns redan."
+
+msgid "ERR_MSG_USER_ALREADY_EXISTING_CODE_SCHEME"
+msgstr "Kodlistan finns redan."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_INFORMATIONDOMAIN"
+msgstr "I materialet saknas kolumnen med rubriken INFORMATIONDOMAIN."
+
+msgid "ERR_MSG_USER_BAD_INFORMATIONDOMAIN"
+msgstr "Informationsområdet för materialet hittas inte."
+
+msgid "ERR_MSG_EXISTING_CODE_MISMATCH"
+msgstr ""
+"Det befintliga kodvärdet avviker från det som importeras, ändringen kan inte göras."
+
+msgid "ERR_MSG_USER_ERROR_PARSING_EXCEL_FILE"
+msgstr "Fel vid läsning av Excel-fil. Kontrollera den importerade filens format."
+
+msgid "ERR_MSG_USER_ERROR_PARSING_CSV_FILE"
+msgstr "Fel vid läsning av CSV-fil. Kontrollera den importerade filens format."
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE"
+msgstr "I materialet hittades samma kolumn flera gånger."
+
+msgid "ERR_MSG_USER_DUPLICATE_HEADER_VALUE_WITH_IDENTIFIER"
+msgstr "I materialet hittades samma kolumn flera gånger: {{ identifier }}"
+
+msgid "ERR_MSG_BROADER_CODE_DOES_NOT_EXIST"
+msgstr "Koden för kolumnen BROADER hittas inte i materialet med koden {{ identifier }}."
+
+msgid "ERR_MSG_BROADER_CODE_SELF_REFERENCE"
+msgstr "Värdet i kolumnen BROADER hänvisar till sin egen kod."
+
+msgid "ERR_MSG_STATUS_NOT_VALID"
+msgstr "I materialet är värdet i kolumnen STATUS inte tillåtet: {{ identifier }}"
+
+msgid "ERR_MSG_SUGGESTED_STATUS_NOT_ALLOWED"
+msgstr "Status för materialet kan inte ändras till SUGGESTED."
+
+msgid "ERR_MSG_DUPLICATE_CODE_VALUE"
+msgstr "I materialet hittades flera rader med samma CODEVALUE-värde."
+
+msgid "ERR_MSG_PATH_CODE_MISMATCH"
+msgstr "Materialets kodvärde skiljer sig från gränsytans sökväg, ändringen kan inte göras."
+
+msgid "ERR_MSG_STATUS_CHANGE_NOT_ALLOWED"
+msgstr "Det är inte tillåtet att ändra materialets status."
+
+msgid "ERR_MSG_INVALID_ID"
+msgstr "I materialet är värdet i kolumnen ID inte tillåtet."
+
+msgid "ERR_MSG_INVALID_CODE_CODEVALUE"
+msgstr "Koden är felaktig. Tillåtna tecken är: a–zA–Z0–9_-.+*#&"
+
+msgid "ERR_MSG_INVALID_CODE_CODEVALUE_WITH_IDENTIFIER"
+msgstr "Koden är felaktig på raden {{ identifier }}. Tillåtna tecken är: a–zA–Z0–9_-.+*#&"
+
+msgid "ERR_MSG_INVALID_CODEVALUE"
+msgstr "Koden är felaktig. Tillåtna tecken är: a–zA–Z0–9_-"
+
+msgid "ERR_MSG_INVALID_CODEVALUE_WITH_IDENTIFIER"
+msgstr "Koden är felaktig på raden {{ identifier }}. Tillåtna tecken är: a–zA–Z0–9_-"
+
+msgid "ERR_MSG_CANT_REACH_TERMINOLOGY_API"
+msgstr "Ingen anslutning till Ordlistor."
+
+msgid "ERR_MSG_USER_ROW_MISSING_PROPERTYTYPE"
+msgstr "I materialet saknas värde i kolumnen PROPERTYTYPE på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_HREF"
+msgstr "I materialet saknas värde i kolumnen HREF på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND"
+msgstr "Koden som kopplats till medlemmen finns inte."
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_FOUND_WITH_IDENTIFIER"
+msgstr ""
+"Koden som kopplats till medlemmen finns inte med identifikationsuppgiften: "
+"{{ identifier }}"
+
+msgid "ERR_MSG_CODE_ORDER_CONTAINS_DUPLICATE_VALUES"
+msgstr "Samma värden hittades i fälten i kodens order-kolumn."
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_ALLOWED"
+msgstr ""
+"Koden som kopplats till medlemmen hör inte till detta kodsystem eller de kodsystem som "
+"kopplats till tillägget."
+
+msgid "ERR_MSG_USER_MEMBER_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Maxvärdet för medlemmarnas hierarkiska nivåer överskrids."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_NOT_SET"
+msgstr "Värdet för medlemmen har inte fastställts, eller är tomt."
+
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_NOT_FOUND"
+msgstr "Kodlistan som kopplats till tillägget finns inte."
+
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_NOT_FOUND"
+msgstr "Typindelningen som kopplats till tillägget finns inte."
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_PROPERTYTYPE_NOT_FOUND"
+msgstr "Typindelningen som kopplats till länken finns inte."
+
+msgid "ERR_MSG_USER_MEMBERS_HAVE_DUPLICATE_CODE_USE_MEMBER_ID"
+msgstr ""
+"Samma kod har kopplats till tillägget fler än en gång, använd värdet i kolumnen "
+"MEMBER_ID som referens."
+
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_EMPTY"
+msgstr "Registret innehåller kodlistor. Ta bort kodlistorna innan registret raderas."
+
+msgid "ERR_MSG_USER_MEMBER_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+"Cykliskt problem vid länkning av medlemmar i referensen {{ identifier }}. Kontrollera "
+"att det inte förekommer parallella referenser mellan medlemmarna i tilläggskedjan."
+
+msgid "ERR_MSG_USER_EXTENSION_CODESCHEME_MAPPED_TO_PARENT"
+msgstr "Det går inte att koppla den kodlista som tillägget står under till tillägget."
+
+msgid "ERR_MSG_USER_EXTENSION_PROPERTYTYPE_CHANGE_NOT_ALLOWED"
+msgstr "Det går inte att ändra tilläggstypen vid redigering."
+
+msgid "ERR_MSG_USER_CODESCHEME_NO_ORGANIZATION"
+msgstr ""
+"Ingen organisation har kopplats till kodlistan. Lägg till en organisation och försök "
+"igen."
+
+msgid "ERR_MSG_USER_CODESCHEME_DELETE_IN_USE"
+msgstr ""
+"Det går inte att ta bort kodlistan, eftersom kodlistan eller dess koder är länkade och i "
+"bruk i följande resurser: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODE_DELETE_IN_USE"
+msgstr ""
+"Det går inte att ta bort koden, eftersom det är länkat och i bruk i följande resurser: "
+"{{ identifier }}"
+
+msgid "ERR_MSG_USER_CODE_DELETE_CANT_DELETE_DEFAULT_CODE"
+msgstr "Det går inte att ta bort koden, eftersom den är en standardkod i kodlistan."
+
+msgid "ERR_MSG_USER_CODESCHEME_CANNOT_BE_DELETED"
+msgstr "Det går inte att ta bort denna kodlista."
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED"
+msgstr "Det går inte att ta bort denna kod."
+
+msgid "ERR_MSG_USER_CODE_CANNOT_BE_DELETED_BECAUSE_CUMULATIVE_CODELIST"
+msgstr ""
+"Det går inte att ta bort denna kod, eftersom den hör till ett kumulativt kodsystem."
+
+msgid "ERR_MSG_USER_CODE_HIERARCHY_MAXLEVEL_REACHED"
+msgstr "Maxvärdet för kodernas hierarkiska nivåer överskrids."
+
+msgid "ERR_MSG_USER_CODE_CYCLIC_DEPENDENCY_ISSUE"
+msgstr ""
+"Det förekommer ett cykliskt problem med kodernas länkningar. Kontrollera att det inte "
+"förekommer parallella referenser mellan koderna i deras hierarkiska kedjor."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED"
+msgstr "Medlemsvärdet är inte tillåtet."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_VALIDATION_FAILED_WITH_IDENTIFIER"
+msgstr "Medlemsvärdet är inte tillåtet på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_ROW_MISSING_MEMBERVALUE"
+msgstr ""
+"I materialet saknas ett obligatoriskt värde på rad {{ identifier }} i någon kolumn för "
+"medlemsvärde."
+
+msgid "ERR_MSG_USER_TOO_MANY_CODESCHEMES_IN_FILE"
+msgstr "Filen får innehålla endast en kodlista."
+
+msgid "ERR_MSG_USER_CODEREGISTRY_NOT_FOUND"
+msgstr "Det går inte att hitta registret."
+
+msgid "ERR_MSG_USER_CODESCHEME_NOT_FOUND"
+msgstr "Det går inte att hitta kodlistan."
+
+msgid "ERR_MSG_USER_CODE_NOT_FOUND"
+msgstr "Det går inte att hitta koden."
+
+msgid "ERR_MSG_USER_JSON_PARSING_ERROR"
+msgstr "Det skedde ett fel vid JSON-parsningen."
+
+msgid "ERR_MSG_USER_JSON_PAYLOAD_EMPTY"
+msgstr "JSON-datainnehållet är tomt."
+
+msgid "ERR_MSG_USER_INVALID_FORMAT"
+msgstr "Formatet stöds inte."
+
+msgid "ERR_MSG_USER_EXTENSIONS_SHEET_NOT_FOUND"
+msgstr ""
+"Det går inte att hitta fliken Tillägg med identifikationsuppgiften: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODES_SHEET_NOT_FOUND"
+msgstr "Det går inte att hitta fliken Koder med identifikationsuppgiften: {{ identifier }}"
+
+msgid "ERR_MSG_USER_LINKS_SHEET_NOT_FOUND"
+msgstr ""
+"Det går inte att hitta fliken Länkar med identifikationsuppgiften: {{ identifier }}"
+
+msgid "ERR_MSG_USER_MEMBERS_SHEET_NOT_FOUND"
+msgstr ""
+"Det går inte att hitta fliken Medlemmar med identifikationsuppgiften: {{ identifier }}"
+
+msgid "ERR_MSG_USER_CODESCHEMES_SHEET_NOT_FOUND"
+msgstr "Det går inte att hitta fliken Kodlistor med identifikationsuppgiften: CodeSchemes"
+
+msgid "ERR_MSG_USER_ERROR_DECODING_STRING"
+msgstr "Fel vid avkodningen av teckensträngens URL."
+
+msgid "ERR_MSG_USER_ERROR_ENCODING_STRING"
+msgstr "Fel vid kodningen av teckensträngens URL."
+
+msgid "ERR_MSG_USER_EXTENSION_NOT_FOUND"
+msgstr "Det går inte att hitta tillägget."
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_FOUND"
+msgstr "Det går inte att hitta typindelningen för materialet."
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_NOT_FOUND"
+msgstr "Det går inte att hitta länken."
+
+msgid "ERR_MSG_USER_CODESCHEME_CODEREGISTRY_DOES_NOT_MATCH"
+msgstr "Kodlistans register stämmer inte."
+
+msgid "ERR_MSG_USER_CODE_CODESCHEME_DOES_NOT_MATCH"
+msgstr "Kodens kodlista stämmer inte."
+
+msgid "ERR_MSG_USER_EXTENSION_PARENTCODESCHEME_DOES_NOT_MATCH"
+msgstr "Kodlistan på huvudnivå som kopplats till tillägget stämmer inte."
+
+msgid "ERR_MSG_USER_MEMBER_EXTENSION_DOES_NOT_MATCH"
+msgstr "Tillägget som kopplats till medlemmen stämmer inte."
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_PARSING_FAILED"
+msgstr "Fel vid parsningen av materialets typindelning."
+
+msgid "ERR_MSG_USER_MEMBER_PARSING_FAILED"
+msgstr "Fel vid parsningen av medlemmar från datamängden."
+
+msgid "ERR_MSG_USER_VALUETYPE_PARSING_FAILED"
+msgstr "Fel vid parsningen av värdets typindelning."
+
+msgid "ERR_MSG_USER_EXTERNALREFERENCE_PARSING_FAILED"
+msgstr "Fel vid parsningen av länken från datamängden."
+
+msgid "ERR_MSG_USER_EXTENSION_PARSING_FAILED"
+msgstr "Fel vid parsningen av tillägget från datamängden."
+
+msgid "ERR_MSG_USER_CODESCHEME_PARSING_FAILED"
+msgstr "Fel vid parsningen av kodlistan från datamängden."
+
+msgid "ERR_MSG_USER_CODEREGISTRY_PARSING_FAILED"
+msgstr "Fel vid parsningen av registret från datamängden."
+
+msgid "ERR_MSG_USER_CODE_PARSING_FAILED"
+msgstr "Fel vid parsningen av koder från datamängden."
+
+msgid "ERR_MSG_USER_MEMBER_RELATION_SET_TO_ITSELF"
+msgstr "En medlem på överordnad nivå kan inte ha sig själv som definition."
+
+msgid "ERR_MSG_USER_MEMBER_CODE_NOT_SET"
+msgstr "Koden för medlemmen har inte ställts in."
+
+msgid "ERR_MSG_USER_MEMBERS_ARE_EMPTY"
+msgstr "Medlemmarna är tomma."
+
+msgid "ERR_MSG_USER_MEMBERVALUE_VALUETYPE_NOT_SET"
+msgstr "Typen för medlemmens värde har inte ställts in."
+
+msgid "ERR_MSG_USER_MEMBER_ID_MISMATCH"
+msgstr "Medlemmens ID stämmer inte."
+
+msgid "ERR_MSG_USER_MEMBER_RELATION_NOT_ALLOWED_FOR_CODE_EXTENSION"
+msgstr "Länkningar mellan medlemmar är inte tillåtna i kodtillägg."
+
+msgid "ERR_MSG_USER_MEMBER_RELATION_ERROR"
+msgstr "Det gick inte att definiera medlemmen med identifikationsuppgiften: {{identifier}}"
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_MEMBER_ID"
+msgstr "Det går inte att hitta medlemmen med ID: {{identifier}}"
+
+msgid "ERR_MSG_USER_SUBCODESCHEME_NOT_FOUND"
+msgstr ""
+"Det går inte att hitta en anknytande kodlista med identifikationsuppgiften: "
+"{{ identifier }}"
+
+msgid "ERR_MSG_USER_SUBCODESCHEME_SAME_AS_CODE_CODESCHEME"
+msgstr "Den anknytande kodlistan är samma som kodens kodlista."
+
+msgid "ERR_MSG_USER_MISSING_HEADER_MEMBERVALUE"
+msgstr "I materialet saknas kolumnen med rubriken {{ identifier }}."
+
+msgid "ERR_MSG_USER_MULTIPLE_CODEEXTENSIONS_FOUND_WITH_SAME_TYPE"
+msgstr "I materialet finns flera kodtillägg av samma typ."
+
+msgid "ERR_MSG_USER_CODESCHEME_DEFAULTCODE_NOT_FOUND"
+msgstr "Det går inte att hitta standardkoden för kodlistan."
+
+msgid "ERR_MSG_USER_INCOMPLETE_SET_OF_CODES_TRYING_TO_GET_IMPORTED_TO_CUMULATIVE_CODE_LIST"
+msgstr ""
+"I filen saknas följande koder som definierats i en tidigare version av denna kumulativa "
+"kodlista:"
+
+msgid "ERR_MSG_USER_MEMBER_LINKED_FROM_ANOTHER_EXTENSION"
+msgstr "Den medlem som använts i medlemmens länkning är inte från samma tillägg."
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_UUID"
+msgstr "Det går inte att hitta medlemmen med UUID: {{identifier}}"
+
+msgid "ERR_MSG_USER_MEMBER_NOT_FOUND_WITH_URI"
+msgstr "Det går inte att hitta medlemmen med URI: {{identifier}}"
+
+msgid "ERR_MSG_USER_WRONG_CODESCHEME_IN_FILE_UPLOAD_WHEN_UPDATING_PARTICULAR_CODESCHEME"
+msgstr "Filen innehåller ett annat kodsystem än det kodsystem som uppdateras."
+
+msgid "ERR_MSG_USER_ORDER_INVALID_VALUE"
+msgstr "Värdet i kolumnen ORDER är inte tillåtet på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_EMPTY_EXCEL"
+msgstr ""
+"Excel-filen är tom. Se till att det informerande innehållet är rätt definierat och "
+"försök igen."
+
+msgid "ERR_MSG_USER_CODE_EXTENSION_MULTIPLE_MEMBERS"
+msgstr "Kodtillägget kan inte ha flera medlemmar med samma kod."
+
+msgid "ERR_MSG_USER_DUPLICATE_MEMBER_IDS_IN_FILE"
+msgstr "Följande värden i kolumnen MEMBER_ID förekommer fler än en gång: {{identifier}}."
+
+msgid "ERR_MSG_USER_MEMBER_ID_INVALID_VALUE"
+msgstr "Värdet i kolumnen MEMBER_ID är inte tillåtet på rad {{ identifier }}."
+
+msgid "ERR_MSG_USER_BAD_LANGUAGECODE"
+msgstr "I materialet finns en språkkod med värdet {{ identifier }}, som inte är tillåtet."
+
+msgid "ERR_MSG_USER_CODE_STATUS_TRANSITION_WRONG_INITIAL_STATUS"
+msgstr "Fel utgångsläge."
+
+msgid "ERR_MSG_USER_CODE_STATUS_TRANSITION_WRONG_END_STATUS"
+msgstr "Fel objektläge."
+
+msgid "ERR_MSG_USER_PROPERTYTYPE_NOT_ALLOWED_FOR_EXTENSION"
+msgstr "Typindelningen för tilläggsmaterialet tillåts inte: {{ identifier }}"
+
+msgid "ERR_MSG_USER_IMPORTED_DATA_CONTAINS_INVALID_URLS_IN_LINKS"
+msgstr "Materialet som importeras innehåller felaktiga värden i länkarnas HREF-kolumner."
+
+msgid "Do you want to replace the existing values with new ones?"
+msgstr "Vill du ersätta befintliga värden med nya?"
+
+msgid "cancelTextForCodeCreation"
+msgstr "Skapa kod utan begrepp"
+
+msgid "cancelTextForCodeSchemeCreation"
+msgstr "Skapa kodlista utan begrepp"
+
+msgid "terminologyIntegrationModalPageTitleWhenCreatingCode"
+msgstr "Skapa kodens namn genom att importera ett begrepp från verktyget Ordlistor"
+
+msgid "terminologyIntegrationModalPageTitleWhenCreatingCodeScheme"
+msgstr "Skapa kodlistans namn genom att importera ett begrepp från verktyget Ordlistor"
+
+msgid "terminologyIntegrationModalInstructionTextWhenCreatingCode"
+msgstr ""
+"Hämta det begrepp som motsvarar kodens namn i verktyget Ordlistor. Importera ett begrepp "
+"till kodens namn genom att klicka på sökresultatet. Termen och definitionen för "
+"begreppet i verktyget Ordlistor kopieras till kodens namn och definition. Även "
+"begreppets URI kopieras till verktyget Kodlistor."
+
+msgid "terminologyIntegrationModalInstructionTextWhenCreatingCodeScheme"
+msgstr ""
+"Hämta det begrepp som motsvarar kodsystemets namn i verktyget Ordlistor. Importera ett "
+"begrepp till kodsystemets namn genom att klicka på sökresultatet. Termen och "
+"definitionen för begreppet kopieras från verktyget Ordlistor till kodsystemets namn och "
+"definition. Även begreppets URI kopieras till verktyget Kodlistor."
+
+msgid "CHANGE STATUS?"
+msgstr "ÄNDRA STATUS?"
+
+msgid "CHANGE_STATUS_CONFIRMATION_PARAGRAPH_1"
+msgstr "Är du säker att du vill ändra status?"
+
+msgid "STATUS_CONFIRMATION_PARAGRAPH_2"
+msgstr "Efter att du sparat kan du inte längre ändra status till Halvfärdig eller Utkast."
+
+msgid "CHOOSE STATUS?"
+msgstr "VÄLJA STATUS?"
+
+msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_1"
+msgstr "Är du säker att du vill välja denna status?"
+
+msgid "CHANGE CODE STATUSES TOO?"
+msgstr "Ska även alla koder med status {{startStatus}} ändras till status {{endStatus}}?"
+
+msgid "searchresult"
+msgstr "sökresultat"
+
+msgid "searchresults"
+msgstr "sökresultat"
+
+msgid "SUGGEST CONCEPT?"
+msgstr "Förslag i verktyget Ordlistor"
+
+msgid "SUGGEST CONCEPT MODAL QUESTION"
+msgstr "Vill du föreslå ett begrepp {{concept}} i ordlistan {{vocabulary}}? "
+
+msgid "Are you sure you want to create the version as empty?"
+msgstr "Är du säker att du vill skapa en ny tom version?"
+
+msgid "Create extension"
+msgstr "Skapa tillägg"
+
+msgid "Cross-reference code"
+msgstr "Anknytande medlem"
+
+msgid "Broader member"
+msgstr "Överordnad medlem"
+
+msgid "CREATE MISSING MEMBERS MODAL TITLE"
+msgstr "Skapa medlemmar som saknas"
+
+msgid "CREATE MISSING MEMBERS MODAL BODY TEXT"
+msgstr ""
+"Denna funktion skapar de medlemmar som saknas i detta tillägg. De medlemmar som saknas "
+"skapas utifrån koderna i följande kodsystem, om koderna ännu inte har medlemmar."
+
+msgid "Please wait. This could take a while..."
+msgstr "Var god vänta. En eventuellt långvarig process pågår."
+
+msgid "missing members created."
+msgstr " medlemmar som saknas har skapats."
+
+msgid "extension"
+msgstr "tillägg"
+
+msgid "Searchhits:"
+msgstr "Sökträffar:"
+
+msgid "truecumulative"
+msgstr "Ja"
+
+msgid "falsecumulative"
+msgstr "Nej"
+
+msgid "Delete code list version"
+msgstr "Ta bort kodlistans version"
+
+msgid "Delete code list"
+msgstr "Ta bort kodlistans version"
+
+msgid "Export JSON"
+msgstr "Exportera JSON"
+
+msgid "Show JSON"
+msgstr "Visa JSON"
+
+msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
+msgstr ""
+"Med denna funktion kan du uppdatera materialet som hämtats av funktionen \"Exportera "
+"kodsystem\"."
+
+msgid "Change code statuses at the same time?"
+msgstr "Vill du samtidigt byta status för koderna?"
+
+msgid "CODE STATUS CHANGES RESULTS"
+msgstr "Resultat av ändrad status för koderna"
+
+msgid "pattern"
+msgstr "Inmatningen har fel form"
+
+msgid "ADD EMAIL SUBSCRIPTION TO RESOURCE REGARDING CHANGES?"
+msgstr "BESTÄLL E-POSTAVISERINGAR OM ÄNDRINGAR I MATERIALET?"
+
+msgid "REMOVE EMAIL SUBSCRIPTION TO RESOURCE?"
+msgstr "TA BORT E-POSTBESTÄLLNINGEN OM MATERIALET?"
+
+msgid "ARE YOU SURE YOU WANT TO ENABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
+msgstr "ÄR DU SÄKER ATT DU VILL AKTIVERA INSTÄLLNINGEN FÖR ATT TA EMOT E-POST?"
+
+msgid "ARE YOU SURE YOU WANT TO DISABLE THE NOTIFICATION EMAIL SUBSCRIPTION?"
+msgstr "ÄR DU SÄKER ATT DU VILL INAKTIVERA INSTÄLLNINGEN FÖR ATT TA EMOT E-POST?"
+
+msgid "Adding subscription failed."
+msgstr "Det gick inte att beställa aviseringar."
+
+msgid "Subscription deletion failed."
+msgstr "Borttagning av aviseringar misslyckades."
+
+msgid "The following languages could not be removed due to usage"
+msgstr "Följande språk kunde inte tas bort på grund av användning"
+
+msgid "invalidDate"
+msgstr "Fel datum"
+
+msgid "invalidDateRange"
+msgstr "Felaktigt datumintervall"
+
+msgid "registryCodeValueExists"
+msgstr "Registrets kod är redan i bruk."
+
+msgid "codeSchemeCodeValueExists"
+msgstr "Kodlistans kod är redan i bruk i detta register."
+
+msgid "codeValueExists"
+msgstr "Koden är redan i bruk."
+
+msgid "extensionCodeValueExists"
+msgstr "Tilläggets kod är redan i bruk i denna kodlista."
+
+msgid "externalReferenceExists"
+msgstr "Länken är redan i bruk i denna kodlista."
+
+msgid "codeValueValidationError"
+msgstr "Koden är felaktig. Tillåtna tecken är: a–zA–Z0–9_-"
+
+msgid "codeCodeValueValidationError"
+msgstr "Koden är felaktig. Tillåtna tecken är: a–zA–Z0–9_-.+*#&"
+
+msgid "memberValueUnaryOperatorRegexpValidationError"
+msgstr ""
+"I värdet för medlemmen förekommer icke tillåtna tecken. Tillåtna tecken är + och -."
+
+msgid "memberValueComparisonOperatorRegexpValidationError"
+msgstr ""
+"I värdet för medlemmen förekommer icke tillåtna tecken. Tillåtna tecken är =, <=, >=, > "
+"och <."
+
+msgid "memberValueValidatorError"
+msgstr ""
+"I värdet för medlemmen förekommer icke tillåtna tecken. Valideringen av en tillåten "
+"inmatning är {{ value }}."
+
+msgid "memberValueRequired"
+msgstr "Värdet för medlem är en obligatorisk inmatning."
+
+msgid "localizableValueRequired"
+msgstr "Obligatorisk inmatning"
+
+#~ msgid "ERR_MSG_USER_CODESCHEME_LANG_CODE_CANT_DELETE_DUE_TO_USE"
+#~ msgstr "Det gick inte att ta bort språket, eftersom det används."
+
+#~ msgid "CHOOSE_STATUS_CONFIRMATION_PARAGRAPH_2"
+#~ msgstr ""
+#~ "Efter att du sparat kan du inte längre ändra tillbaka till statusarna Halvfärdig, "
+#~ "Utkast, Förslag eller Väntar på godkännande."

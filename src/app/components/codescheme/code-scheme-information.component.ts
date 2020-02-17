@@ -185,8 +185,8 @@ export class CodeSchemeInformationComponent implements OnChanges, OnDestroy, OnI
 
     this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
       .then(() => {
-        this.codeSchemeForm.patchValue({ prefLabel: concept.prefLabel });
-        this.codeSchemeForm.patchValue({ definition: concept.definition });
+        this.codeSchemeForm.controls['prefLabel'].setValue(concept.prefLabel);
+        this.codeSchemeForm.controls['definition'].setValue(concept.definition);
       }, ignoreModalClose);
     this.codeScheme.conceptUriInVocabularies = concept.uri;
     this.codeSchemeForm.patchValue({ conceptUriInVocabularies: concept.uri });

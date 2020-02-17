@@ -141,8 +141,8 @@ export class CodeInformationComponent implements OnChanges, OnDestroy {
 
     this.confirmationModalService.openOverWriteExistingValuesFromVocabularies()
       .then(() => {
-        this.codeForm.patchValue({ prefLabel: concept.prefLabel });
-        this.codeForm.patchValue({ definition: concept.definition });
+        this.codeForm.controls['prefLabel'].setValue(concept.prefLabel);
+        this.codeForm.controls['definition'].setValue(concept.definition);
       }, ignoreModalClose);
     this.code.conceptUriInVocabularies = concept.uri;
     this.codeForm.patchValue({ conceptUriInVocabularies: concept.uri });

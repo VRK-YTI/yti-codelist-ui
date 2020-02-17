@@ -18,7 +18,7 @@ export class LanguageService implements Localizer {
 
   constructor(private translateService: TranslateService) {
 
-    translateService.addLangs(['fi', 'en']);
+    translateService.addLangs(['fi', 'sv', 'en']);
     translateService.use('fi');
     translateService.setDefaultLang('en');
     this.language$.subscribe(lang => this.translateService.use(lang));

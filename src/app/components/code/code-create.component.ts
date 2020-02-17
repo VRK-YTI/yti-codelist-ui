@@ -162,8 +162,8 @@ export class CodeCreateComponent implements OnInit, AfterViewInit {
   }
 
   putConceptStuffInPlace(concept: Concept) {
-    this.codeForm.patchValue({ prefLabel: concept.prefLabel });
-    this.codeForm.patchValue({ definition: concept.definition });
+    this.codeForm.controls['prefLabel'].setValue(concept.prefLabel);
+    this.codeForm.controls['definition'].setValue(concept.definition);
     this.codeForm.patchValue({ conceptUriInVocabularies: concept.uri });
   }
 

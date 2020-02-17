@@ -105,7 +105,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RefreshComponent } from './components/refresh.component';
 import { LanguageCodesInputComponent } from './components/form/languagecodes-input.component';
 import { HierarchyMemberComponent } from './components/member/hierarchy-member.component';
-import { SuggestConceptModalComponent, SuggestConceptModalService } from './components/terminology-integration/suggest-concept';
 import { ConfigurationService } from './services/configuration.service';
 import { CodeExtensionsInputComponent } from './components/form/code-extensions-input.component';
 import { CodeExtensionMemberValuesInputComponent } from './components/form/code-extension-member-values-input.component';
@@ -126,6 +125,10 @@ import { LocalizableInputWithLanguageIndicatorForAllLangagesComponent } from './
 import { LocalizableTextareaWithLanguageIndicatorForAllLangagesComponent } from './components/form/localizable-textarea-with-language-indicator-for-all-langages.component';
 import { UserDetailsSubscriptionsComponent } from './components/user-details/user-details-subscriptions.component';
 import { UserDetailsInformationComponent } from './components/user-details/user-details-information.component';
+import {
+  SuggestConceptModalComponent,
+  SuggestConceptModalService
+} from './components/terminology-integration/suggest-concept-modal.component';
 
 function removeEmptyValues(obj: {}) {
 
@@ -144,6 +147,10 @@ const localizations: { [lang: string]: any } = {
   fi: {
     ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/fi.po`))),
     ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po`)))
+  },
+  sv: {
+    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/sv.po`))),
+    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/sv.po`)))
   },
   en: {
     ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/en.po`))),
