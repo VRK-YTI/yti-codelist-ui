@@ -13,8 +13,8 @@
 <div class="row mb-4" *ngIf="codes.length > 0">
   <div class="col-12 search-text">
     <span *ngIf="emptySearch" translate>Search did not find any codes.</span>
-    <span *ngIf="numberOfCodes == 1"><b>1</b> {{'code' | translate}}</span>
-    <span *ngIf="numberOfCodes > 1"><b>{{numberOfCodes}}</b> {{'codes' | translate}}</span>
+    <span *ngIf="codeCount == 1"><b>1</b> {{'code' | translate}}</span>
+    <span *ngIf="codeCount > 1"><b>{{codeCount}}</b> {{'codes' | translate}}</span>
   </div>
 </div>
 
@@ -39,14 +39,19 @@
   <div id="codelist_code_list_div" class="col-md-12">
     <ul *ngIf="listedCodes.length <= 500" id="codelist_code_list_regular">
       <li *ngFor="let code of listedCodes; trackBy: codeIdentity">
-        <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>
+        <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue"></app-hierarchy-code>
       </li>
     </ul>
-    <ul *ngIf="listedCodes.length > 500" class="hugelist" id="codelist_code_list_huge">
-      <li *lazyFor="let code of listedCodes, withHeight 65">
-        <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>
-      </li>
-    </ul>
+    <virtual-scroller *ngIf="listedCodes.length > 500" class="scroller-component" #scroll [items]="listedCodes"
+                      [enableUnequalChildrenSizes]="true" [useMarginInsteadOfTranslate]="true">
+      <ul id="codelist_code_list_huge" #container>
+        <li *ngFor="let code of scroll.viewPortItems; trackBy: codeIdentity">
+          <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code"
+                              [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue"
+                              [expandCollapseListener]="itemResizeHandler"></app-hierarchy-code>
+        </li>
+      </ul>
+    </virtual-scroller>
   </div>
 
   <div class="emptyCodes" *ngIf="codes.length === 0">

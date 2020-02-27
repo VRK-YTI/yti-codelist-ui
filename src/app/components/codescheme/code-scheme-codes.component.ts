@@ -1,78 +1,101 @@
-import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
 import { CodePlain } from '../../entities/code-simple';
+import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
+import { VirtualScrollerComponent } from 'ngx-virtual-scroller';
 
 @Component({
   selector: 'app-code-scheme-codes',
   templateUrl: './code-scheme-codes.component.html',
   styleUrls: ['./code-scheme-codes.component.scss']
 })
-export class CodeSchemeCodesComponent implements OnChanges {
+export class CodeSchemeCodesComponent implements OnChanges, OnDestroy {
 
   @Input() codes: CodePlain[];
   @Input() codeScheme: CodeScheme;
   @Input() prefilledSearchTermForCode: string;
+  @ViewChild('scroll') virtualScroller: VirtualScrollerComponent;
 
-  searchTerm = '';
+  listedCodes: CodePlain[] = [];
+  parentCodes: CodePlain[] = [];
+  codeCount: number = 0;
+  hasHierarchy: boolean = false;
+
+  private sourceCodes: BehaviorSubject<CodePlain[]> = new BehaviorSubject<CodePlain[]>([]);
+  private searchTerm_: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  private subscriptions: Subscription[] = [];
+
+  constructor() {
+    this.subscriptions.push(combineLatest(this.searchTerm_, this.sourceCodes).subscribe(([term, codes]) => {
+      if (term) {
+        this.listedCodes = codes.filter(code => code.codeValue.toLowerCase().includes(term.toLowerCase()) || localizableMatches(code.prefLabel, term));
+        this.parentCodes = [];
+        this.codeCount = this.listedCodes.length;
+      } else {
+        const parentIds: { [id: string]: boolean } = {};
+        codes.forEach(code => {
+          if (code.broaderCode) {
+            parentIds[code.broaderCode.id] = true;
+          }
+        });
+        this.listedCodes = codes.filter(code => !code.broaderCode);
+        this.parentCodes = codes.filter(code => parentIds[code.id]);
+        this.codeCount = codes.length;
+      }
+      this.hasHierarchy = !!this.parentCodes.length;
+    }));
+  }
+
+  get emptySearch(): boolean {
+    return this.searchTermHasValue && this.listedCodes.length === 0;
+  }
+
+  get searchTermHasValue(): boolean {
+    return !!this.searchTerm_.getValue();
+  }
+
+  get searchTerm(): string {
+    return this.searchTerm_.getValue();
+  }
+
+  set searchTerm(value: string) {
+    this.searchTerm_.next(value);
+  }
+
+  get itemResizeHandler() {
+    return (code: CodePlain | undefined) => {
+      while (code && code.broaderCode) {
+        const parentId: string = code.broaderCode.id;
+        code = this.parentCodes.find(p => p.id === parentId);
+      }
+      if (code) {
+        console.log('Resized: ' + code.id);
+        this.virtualScroller.invalidateCachedMeasurementForItem(code);
+      } else {
+        console.error('Could not find root code for collapsed or expanded code');
+      }
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     const prefilledSearchTermForCode: SimpleChange = changes.prefilledSearchTermForCode;
     if (prefilledSearchTermForCode && prefilledSearchTermForCode.currentValue) {
-      this.searchTerm = prefilledSearchTermForCode.currentValue;
+      this.searchTerm_.next(prefilledSearchTermForCode.currentValue);
+    }
+    const codesChange: SimpleChange = changes.codes;
+    if (codesChange) {
+      this.sourceCodes.next(codesChange.currentValue ? codesChange.currentValue : []);
     }
   }
 
-  constructor() {
-  }
-
-  get listedCodes() {
-    return this.searchTerm ? this.filteredCodes : this.topLevelCodes;
-  }
-
-  get filteredCodes() {
-    return this.codes.filter(code =>
-      code.codeValue.toLowerCase().includes(this.searchTerm.toLowerCase()) || localizableMatches(code.prefLabel, this.searchTerm));
-  }
-
-  get topLevelCodes() {
-    return this.codes.filter(code => !code.broaderCode);
-  }
-
-  get parentCodes() {
-    const childCodes = this.codes.filter(code => code.broaderCode != null);
-    const broaderCodeIds = childCodes.map(code => code.broaderCode!.id);
-
-    return this.codes.filter(code => contains(broaderCodeIds, code.id));
-  }
-
-  get numberOfCodes() {
-    return this.searchTermHasValue ? this.filteredCodes.length : this.codes.length;
-  }
-
-  hasHierarchy() {
-    return this.codes.filter(code => code.broaderCode !== undefined).length > 0;
-  }
-
-  get numberOfExpanded() {
-    return this.parentCodes.filter(code => code.expanded).length;
-  }
-
-  get numberOfCollapsed() {
-    return this.parentCodes.filter(code => !code.expanded).length;
-  }
-
-  hasExpanded() {
-    return this.numberOfExpanded > 0;
-  }
-
-  hasCollapsed() {
-    return this.numberOfCollapsed > 0;
-  }
-
   expandAll() {
-    this.codes.map(code => {
+    this.codes.forEach(code => {
       if (contains(this.parentCodes, code)) {
         code.expanded = true;
       }
@@ -80,7 +103,7 @@ export class CodeSchemeCodesComponent implements OnChanges {
   }
 
   collapseAll() {
-    this.codes.map(code => {
+    this.codes.forEach(code => {
       if (contains(this.parentCodes, code)) {
         code.expanded = false;
       }
@@ -88,23 +111,15 @@ export class CodeSchemeCodesComponent implements OnChanges {
   }
 
   showExpandAll() {
-    return this.hasCollapsed() && !this.searchTerm;
+    return !this.searchTermHasValue && !!this.parentCodes.find(code => !code.expanded);
   }
 
   showCollapseAll() {
-    return this.hasExpanded() && !this.searchTerm;
+    return !this.searchTermHasValue && !!this.parentCodes.find(code => code.expanded);
   }
 
   allowExpandAllAndCollapseAll() {
-    return this.hasHierarchy && this.codes.length <= 500;
-  }
-
-  get emptySearch() {
-    return this.searchTerm && this.listedCodes.length === 0;
-  }
-
-  searchTermHasValue() {
-    return this.searchTerm ? true : false;
+    return this.sourceCodes.getValue().length <= 500 && this.hasHierarchy;
   }
 
   codeIdentity(index: number, item: CodePlain) {

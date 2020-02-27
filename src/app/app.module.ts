@@ -129,6 +129,7 @@ import {
   SuggestConceptModalComponent,
   SuggestConceptModalService
 } from './components/terminology-integration/suggest-concept-modal.component';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 function removeEmptyValues(obj: {}) {
 
@@ -340,6 +341,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     }),
     YtiCommonModule,
     LazyForModule,
+    VirtualScrollerModule,
     ClipboardModule
     // ,SelectModule
   ],

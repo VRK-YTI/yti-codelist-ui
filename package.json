@@ -35,6 +35,7 @@
     "moment": "^2.21.0",
     "ngx-clipboard": "^11.1.9",
     "ngx-infinite-scroll": "6.0.1",
+    "ngx-virtual-scroller": "^3.0.2",
     "rxjs": "~6.3.3",
     "simple-line-icons": "^2.4.1",
     "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#4c0e8c75d566241730d34148578207dcef8911ce",

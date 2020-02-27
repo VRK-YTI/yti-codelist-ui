@@ -38,11 +38,11 @@
       padding-left: 15px;
     }
   }
+}
 
-  .hugelist {
-    height: 1000px;
-    overflow-y: scroll;
-  }
+.scroller-component {
+  height: 1000px;
+  width: 100%;
 }
 
 .emptyCodes {

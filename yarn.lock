@@ -269,6 +269,11 @@
     semver "^5.3.0"
     semver-intersect "^1.1.2"
 
+"@tweenjs/tween.js@17.4.0":
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/@tweenjs/tween.js/-/tween.js-17.4.0.tgz#2e9ab3f2111906b30dfe1ef3259a9781dd211d35"
+  integrity sha512-J3fzl1F6wvh8KXVVcIuHN12xi1ZDcPA/0Vix+ZcJYwZWVHUwfIqfvzYXXEw7ybeev6477KCTt9fKydU+ajUqcg==
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -326,6 +331,11 @@
   integrity sha512-LrnsgZIfJaysFkv9rRJp4/uAyqw87oVed3s1hhF83nwbo9c7MG9g5DqR0seHP+lkX4ldmMrVolPjQSe2ZfD0yA==
   dependencies:
     source-map "*"
+
+"@types/tween.js@17.2.0":
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/@types/tween.js/-/tween.js-17.2.0.tgz#25f98311daecb165ab91ee2cd7f17a9b1e6cc30c"
+  integrity sha512-mOsqurEtFEzwgkVc/jDVE2XrjZBYTbrmDUyCr9GXmnfc6q5otokxFtKvSY/B21zgz9LVRIvRTawKczjKi57wrA==
 
 "@types/webpack-env@^1.13.6":
   version "1.14.0"
@@ -4456,6 +4466,14 @@ ngx-infinite-scroll@6.0.1:
   integrity sha512-20WcD+3Qh3O0IEFyIjt55JPTKw5W1hAxERXMUDgGDRveS3IBpBxv2DuX5vuHG/bNGC+WoTDlNR/XXScNNicRpw==
   dependencies:
     opencollective "^1.0.3"
+
+ngx-virtual-scroller@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-virtual-scroller/-/ngx-virtual-scroller-3.0.2.tgz#509b313d47c9659ca7fa7467bded3a5bba617ff7"
+  dependencies:
+    "@tweenjs/tween.js" "17.4.0"
+    "@types/tween.js" "17.2.0"
+    tslib "^1.9.0"
 
 ngx-window-token@^1.0.2:
   version "1.0.2"
