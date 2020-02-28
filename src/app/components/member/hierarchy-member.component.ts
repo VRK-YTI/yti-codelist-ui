@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberSimple } from '../../entities/member-simple';
+import { CodePlain } from '../../entities/code-simple';
 
 @Component({
   selector: 'app-hierarchy-member',
@@ -26,7 +27,8 @@ import { MemberSimple } from '../../entities/member-simple';
                               [codeRegistryCodeValue]="codeRegistryCodeValue"
                               [codeSchemeCodeValue]="codeSchemeCodeValue"
                               [extensionCodeValue]="extensionCodeValue"
-                              [ignoreHierarchy]="ignoreHierarchy"></app-hierarchy-member>
+                              [ignoreHierarchy]="ignoreHierarchy"
+                              (expandedOrCollapsed)="childExpandedOrCollapsed($event)"></app-hierarchy-member>
       </li>
     </ul>
   `
@@ -40,6 +42,7 @@ export class HierarchyMemberComponent {
   @Input() codeSchemeCodeValue: string;
   @Input() extensionCodeValue: string;
   @Input() ignoreHierarchy: boolean;
+  @Output() expandedOrCollapsed = new EventEmitter<{ member: MemberSimple, expanded: boolean }>();
 
   constructor(private router: Router,
               public languageService: LanguageService,
@@ -60,10 +63,12 @@ export class HierarchyMemberComponent {
 
   expand() {
     this.member.expanded = true;
+    this.expandedOrCollapsed.emit({ member: this.member, expanded: true });
   }
 
   collapse() {
     this.member.expanded = false;
+    this.expandedOrCollapsed.emit({ member: this.member, expanded: false });
   }
 
   hasChildren() {
@@ -88,5 +93,9 @@ export class HierarchyMemberComponent {
 
   getIdIdentifier() {
     return `${this.member.id}`;
+  }
+
+  childExpandedOrCollapsed(event: { member: MemberSimple, expanded: boolean }) {
+    this.expandedOrCollapsed.emit(event);
   }
 }

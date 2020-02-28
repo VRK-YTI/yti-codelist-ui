@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodePlain } from '../../entities/code-simple';
 import { CodeScheme } from '../../entities/code-scheme';
@@ -25,7 +25,7 @@ import { CodeScheme } from '../../entities/code-scheme';
                             [code]="code"
                             [codeScheme]="codeScheme"
                             [ignoreHierarchy]="ignoreHierarchy"
-                            [expandCollapseListener]="expandCollapseListener"></app-hierarchy-code>
+                            (expandedOrCollapsed)="childExpandedOrCollapsed($event)"></app-hierarchy-code>
       </li>
     </ul>
   `
@@ -37,7 +37,7 @@ export class HierarchyCodeComponent {
   @Input() code: CodePlain;
   @Input() codeScheme: CodeScheme;
   @Input() ignoreHierarchy: boolean;
-  @Input() expandCollapseListener?: (code: CodePlain) => void;
+  @Output() expandedOrCollapsed = new EventEmitter<{ code: CodePlain, expanded: boolean }>();
 
   constructor(private router: Router) {
   }
@@ -56,16 +56,12 @@ export class HierarchyCodeComponent {
 
   expand() {
     this.code.expanded = true;
-    if (this.expandCollapseListener) {
-      this.expandCollapseListener(this.code);
-    }
+    this.expandedOrCollapsed.emit({ code: this.code, expanded: true });
   }
 
   collapse() {
     this.code.expanded = false;
-    if (this.expandCollapseListener) {
-      this.expandCollapseListener(this.code);
-    }
+    this.expandedOrCollapsed.emit({ code: this.code, expanded: false });
   }
 
   hasChildren() {
@@ -89,5 +85,9 @@ export class HierarchyCodeComponent {
 
   getIdIdentifier(code: CodePlain) {
     return `${this.codeScheme.codeRegistry.codeValue}_${this.codeScheme.codeValue}_${code.codeValue}`;
+  }
+
+  childExpandedOrCollapsed(event: { code: CodePlain, expanded: boolean }) {
+    this.expandedOrCollapsed.emit(event);
   }
 }

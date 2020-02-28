@@ -43,12 +43,12 @@
       </li>
     </ul>
     <virtual-scroller *ngIf="listedCodes.length > 500" class="scroller-component" #scroll [items]="listedCodes"
-                      [enableUnequalChildrenSizes]="true" [useMarginInsteadOfTranslate]="true">
+                      [enableUnequalChildrenSizes]="true">
       <ul id="codelist_code_list_huge" #container>
         <li *ngFor="let code of scroll.viewPortItems; trackBy: codeIdentity">
           <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code"
                               [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue"
-                              [expandCollapseListener]="itemResizeHandler"></app-hierarchy-code>
+                              (expandedOrCollapsed)="onItemResize($event)"></app-hierarchy-code>
         </li>
       </ul>
     </virtual-scroller>

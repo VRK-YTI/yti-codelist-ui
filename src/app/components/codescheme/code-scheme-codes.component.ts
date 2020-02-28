@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
 import { contains } from 'yti-common-ui/utils/array';
 import { localizableMatches } from 'yti-common-ui/utils/localization';
@@ -11,7 +11,7 @@ import { VirtualScrollerComponent } from 'ngx-virtual-scroller';
   templateUrl: './code-scheme-codes.component.html',
   styleUrls: ['./code-scheme-codes.component.scss']
 })
-export class CodeSchemeCodesComponent implements OnChanges, OnDestroy {
+export class CodeSchemeCodesComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() codes: CodePlain[];
   @Input() codeScheme: CodeScheme;
@@ -19,15 +19,20 @@ export class CodeSchemeCodesComponent implements OnChanges, OnDestroy {
   @ViewChild('scroll') virtualScroller: VirtualScrollerComponent;
 
   listedCodes: CodePlain[] = [];
-  parentCodes: CodePlain[] = [];
   codeCount: number = 0;
-  hasHierarchy: boolean = false;
+
+  private parentCodes: CodePlain[] = [];
+  private hasHierarchy: boolean = false;
 
   private sourceCodes: BehaviorSubject<CodePlain[]> = new BehaviorSubject<CodePlain[]>([]);
   private searchTerm_: BehaviorSubject<string> = new BehaviorSubject<string>("");
   private subscriptions: Subscription[] = [];
 
+
   constructor() {
+  }
+
+  ngOnInit(): void {
     this.subscriptions.push(combineLatest(this.searchTerm_, this.sourceCodes).subscribe(([term, codes]) => {
       if (term) {
         this.listedCodes = codes.filter(code => code.codeValue.toLowerCase().includes(term.toLowerCase()) || localizableMatches(code.prefLabel, term));
@@ -62,21 +67,6 @@ export class CodeSchemeCodesComponent implements OnChanges, OnDestroy {
 
   set searchTerm(value: string) {
     this.searchTerm_.next(value);
-  }
-
-  get itemResizeHandler() {
-    return (code: CodePlain | undefined) => {
-      while (code && code.broaderCode) {
-        const parentId: string = code.broaderCode.id;
-        code = this.parentCodes.find(p => p.id === parentId);
-      }
-      if (code) {
-        console.log('Resized: ' + code.id);
-        this.virtualScroller.invalidateCachedMeasurementForItem(code);
-      } else {
-        console.error('Could not find root code for collapsed or expanded code');
-      }
-    }
   }
 
   ngOnDestroy(): void {
@@ -128,5 +118,18 @@ export class CodeSchemeCodesComponent implements OnChanges, OnDestroy {
 
   getIdIdentifier(code: CodePlain) {
     return `${this.codeScheme.codeRegistry.codeValue}_${this.codeScheme.codeValue}_${code.codeValue}`;
+  }
+
+  onItemResize(event: { code: CodePlain, expanded: boolean }) {
+    let code: CodePlain | undefined = event.code;
+    while (code && code.broaderCode) {
+      const parentId: string = code.broaderCode.id;
+      code = this.parentCodes.find(p => p.id === parentId);
+    }
+    if (code) {
+      this.virtualScroller.invalidateCachedMeasurementForItem(code);
+    } else {
+      console.error('Could not find root code for collapsed or expanded code');
+    }
   }
 }

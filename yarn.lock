@@ -4467,13 +4467,13 @@ ngx-infinite-scroll@6.0.1:
   dependencies:
     opencollective "^1.0.3"
 
-ngx-virtual-scroller@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/ngx-virtual-scroller/-/ngx-virtual-scroller-3.0.2.tgz#509b313d47c9659ca7fa7467bded3a5bba617ff7"
+ngx-virtual-scroller@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-virtual-scroller/-/ngx-virtual-scroller-4.0.2.tgz#f6d965a641942903845ac8035cc9c8c440669c93"
+  integrity sha512-QCn7J6CxyBqvba85q3+KsfgnzhKWolh1Jk6kloJJeBreeX5sqWqdvKjmTaDeZJ9otx8fDzuV+o8y27l3u6MGMQ==
   dependencies:
     "@tweenjs/tween.js" "17.4.0"
     "@types/tween.js" "17.2.0"
-    tslib "^1.9.0"
 
 ngx-window-token@^1.0.2:
   version "1.0.2"
