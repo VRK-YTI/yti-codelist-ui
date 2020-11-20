@@ -19,7 +19,7 @@ RUN ["npm", "run", "build", "--", "--prod", "--output-hashing=all"]
 
 FROM node:12.19.1-alpine
 
-# Instal tooling
+# Install tooling
 RUN apk add openssl curl ca-certificates
 
 # Install nginx repo
