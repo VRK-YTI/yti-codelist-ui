@@ -598,7 +598,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   changeLanguages(codes: CodePlain[]) {
 
-    setTimeout(this.changeLanguagesAfterTimeout(codes), 0);
+    setTimeout(() => this.changeLanguagesAfterTimeout(codes), 0);
   }
 
   toggleChangeCodeStatusesAsWellWhenSavingCodeScheme(doItOrNot: boolean) {
