@@ -1,4 +1,4 @@
-import { Role } from 'yti-common-ui/services/user.service';
+import { Role } from "@vrk-yti/yti-common-ui";
 
 export interface UserRequest {
   organizationId: string;

@@ -1,17 +1,12 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Location } from 'yti-common-ui/types/location';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { ExtensionSimpleType, ExtensionType } from '../services/api-schema';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodeScheme } from './code-scheme';
 import { PropertyType } from './property-type';
-import { contains, groupBy, index } from 'yti-common-ui/utils/array';
-import { requireDefined } from 'yti-common-ui/utils/object';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberSimple } from './member-simple';
+import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer, requireDefined, index, groupBy } from '@vrk-yti/yti-common-ui';
 
 export class Extension implements EditableEntity {
 

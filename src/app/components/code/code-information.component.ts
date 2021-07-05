@@ -5,9 +5,7 @@ import { EditableService } from '../../services/editable.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
@@ -15,7 +13,6 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { ConfigurationService } from '../../services/configuration.service';
 import { ExtensionSimple } from '../../entities/extension-simple';
 import { MemberValue } from '../../entities/member-value';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
 import { CodePlain } from '../../entities/code-simple';
@@ -24,6 +21,7 @@ import { ValueType } from '../../entities/value-type';
 import { MemberValueValidators } from '../form/member-value-validators';
 import { UserSimple } from '../../entities/user-simple';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { comparingLocalizable, ignoreModalClose, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-information',

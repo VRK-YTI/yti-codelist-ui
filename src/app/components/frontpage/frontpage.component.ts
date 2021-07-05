@@ -6,21 +6,15 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { CodeRegistry } from '../../entities/code-registry';
 import { InfoDomain } from '../../entities/info-domain';
 import { Organization } from '../../entities/organization';
-import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
 import { BehaviorSubject, combineLatest, concat, Observable, of, Subscription } from 'rxjs';
-import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
-import { anyMatching } from 'yti-common-ui/utils/array';
-import { Option } from 'yti-common-ui/components/dropdown.component';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
-import { labelNameToResourceIdIdentifier } from 'yti-common-ui/utils/resource';
 import { catchError, debounceTime, flatMap, map, skip, take, tap } from 'rxjs/operators';
 import { ObservableInput } from 'rxjs/internal/types';
-import { getInformationDomainSvgIcon } from 'yti-common-ui/utils/icons';
 import { ConfigurationService } from '../../services/configuration.service';
 import { PropertyType } from '../../entities/property-type';
+import { Option, anyMatching, comparingLocalizable, FilterOptions, getInformationDomainSvgIcon, labelNameToResourceIdIdentifier, selectableStatuses, Status } from '@vrk-yti/yti-common-ui';
 
 // XXX: fixes problem with type definition having strongly typed parameters ending with 6
 function myCombineLatest<T, T2, T3, T4, T5, T6, T7, T8, T9>(v1: ObservableInput<T>,

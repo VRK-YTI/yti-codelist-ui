@@ -3,10 +3,8 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
@@ -19,7 +17,7 @@ import { MemberValueType } from '../../services/api-schema';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { CodeScheme } from '../../entities/code-scheme';
-import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
+import { ignoreModalClose, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-member',
@@ -29,7 +27,7 @@ import { AlertModalService } from 'yti-common-ui/components/alert-modal.componen
 })
 export class MemberComponent implements OnInit, EditingComponent {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   member: Member;
   extension: Extension;
@@ -82,7 +80,7 @@ export class MemberComponent implements OnInit, EditingComponent {
     return this.member == null || this.codeScheme == null || this.extension == null || this.deleting;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -90,7 +88,7 @@ export class MemberComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

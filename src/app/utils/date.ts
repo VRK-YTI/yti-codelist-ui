@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { FormControl } from '@angular/forms';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 export interface DateRange {
   start: Moment|null;

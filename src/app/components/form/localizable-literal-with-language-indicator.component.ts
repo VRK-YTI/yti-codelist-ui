@@ -1,6 +1,6 @@
 import { Component, Input, Optional, Self } from '@angular/core';
-import { Localizable } from 'yti-common-ui/types/localization';
 import { NgControl } from '@angular/forms';
+import { Localizable } from '@vrk-yti/yti-common-ui';
 import { EditableService } from '../../services/editable.service';
 import { LanguageService } from '../../services/language.service';
 

@@ -1,17 +1,13 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Location } from 'yti-common-ui/types/location';
 import { AbstractResource } from './abstract-resource';
 import { CodeScheme } from './code-scheme';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { ExternalReference } from './external-reference';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { CodePlainType, CodeType } from '../services/api-schema';
-import { contains } from 'yti-common-ui/utils/array';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
 import { Extension } from './extension';
+import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer } from '@vrk-yti/yti-common-ui';
 
 export class Code extends AbstractResource implements EditableEntity {
 

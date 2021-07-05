@@ -3,21 +3,16 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
 import { Vocabulary } from '../../entities/vocabulary';
 import { LanguageService } from '../../services/language.service';
-import { ModalService } from 'yti-common-ui/services/modal.service';
-import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';
 import { Concept } from '../../entities/concept';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { allStatuses, Status } from 'yti-common-ui/entities/status';
 import { Code } from '../../entities/code';
 import { Meta } from '../../entities/meta';
-import { comparingLocalizable, comparingPrimitive } from 'yti-common-ui/utils/comparator';
 import { SuggestConceptModalService } from './suggest-concept-modal.component';
+import { allStatuses, comparingLocalizable, comparingPrimitive, FilterOptions, ignoreModalClose, Localizable, Localizer, ModalService, Status } from '@vrk-yti/yti-common-ui';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));

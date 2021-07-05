@@ -22,33 +22,55 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/version.txt"
+              "src/version.txt",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@vrk-yti/yti-common-ui/assets/",
+                "output": "./assets/"
+              }
             ],
             "styles": [
               "src/styles.scss",
               "node_modules/simple-line-icons/scss/simple-line-icons.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
-              "sourceMap": true,
-              "extractCss": true,
-              "namedChunks": true,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": true,
               "buildOptimizer": true
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -81,7 +103,12 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@vrk-yti/yti-common-ui/assets/",
+                "output": "./assets/"
+              }
             ]
           }
         },

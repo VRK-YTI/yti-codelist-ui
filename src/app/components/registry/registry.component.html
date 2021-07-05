@@ -40,25 +40,23 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="registry_codeschemes_tabs">
-      <ng-template ngbTabTitle>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)">
+    <li [ngbNavItem]="registry_codeschemes_tabs" id="registry_codeschemes_tabs">
+      <a ngbNavLink>
         <span translate>CODE LISTS</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-registry-code-schemes [codeRegistry]="codeRegistry" [codeSchemes]="codeSchemes"></app-code-registry-code-schemes>
       </ng-template>
-    </ngb-tab>
-
-    <ngb-tab id="registry_info_tab">
-      <ng-template ngbTabTitle>
+    </li>
+    <li [ngbNavItem]="registry_info_tab" id="registry_info_tab">
+      <a ngbNavLink>
         <span translate>INFORMATION</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-registry-information [codeRegistry]="codeRegistry"></app-code-registry-information>
       </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
 </div>

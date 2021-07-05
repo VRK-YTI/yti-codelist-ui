@@ -1,14 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Code } from '../../entities/code';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { from, Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
@@ -22,8 +19,8 @@ import { MemberSimple } from '../../entities/member-simple';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { formatDate } from '../../utils/date';
-import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
-import { TranslateService } from '@ngx-translate/core';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { ignoreModalClose, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code',
@@ -32,8 +29,7 @@ import { TranslateService } from '@ngx-translate/core';
   providers: [EditableService]
 })
 export class CodeComponent implements OnInit, EditingComponent {
-
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: ElementRef<NgbNav>;
 
   code: Code;
   codeScheme: CodeScheme;
@@ -77,15 +73,14 @@ export class CodeComponent implements OnInit, EditingComponent {
     return this.code == null || this.codeScheme == null || this.deleting;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
-
+  onNavChange(event: NgbNavChangeEvent) {
     if (this.isEditing()) {
       event.preventDefault();
 
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.nativeElement.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

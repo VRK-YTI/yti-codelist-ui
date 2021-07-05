@@ -2,17 +2,16 @@ import { EditableService } from '../../services/editable.service';
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { FormControl, FormGroup } from '@angular/forms';
-import { requiredList } from 'yti-common-ui/utils/validator';
 import { ConfigurationService } from '../../services/configuration.service';
 import { nonEmptyLocalizableValidator } from '../../utils/validators';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { UserSimple } from '../../entities/user-simple';
+import { requiredList, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-registry-information',

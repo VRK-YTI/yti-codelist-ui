@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedMemberModalService } from './search-linked-member-modal.component';
 import { DataService } from '../../services/data.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +10,7 @@ import { LanguageService } from '../../services/language.service';
 import { MemberSimple } from '../../entities/member-simple';
 import { Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
+import { ignoreModalClose } from '@vrk-yti/yti-common-ui';
 
 function addToControl<T>(control: FormControl, item: T) {
 

@@ -5,7 +5,7 @@ import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
-import { UserService } from 'yti-common-ui/services/user.service';
+import { UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-registries',

@@ -4,9 +4,9 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { Router } from '@angular/router';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
+import { ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-scheme-import-modal',

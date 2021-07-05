@@ -1,5 +1,5 @@
-import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 import { Injectable } from '@angular/core';
+import { ConfirmationModalService } from '@vrk-yti/yti-common-ui';
 import { CodeScheme } from '../../entities/code-scheme';
 
 @Injectable()

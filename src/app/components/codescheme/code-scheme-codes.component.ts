@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { contains, localizableMatches } from '@vrk-yti/yti-common-ui';
 import { CodeScheme } from '../../entities/code-scheme';
-import { contains } from 'yti-common-ui/utils/array';
-import { localizableMatches } from 'yti-common-ui/utils/localization';
 import { CodePlain } from '../../entities/code-simple';
 
 @Component({
@@ -48,7 +47,7 @@ export class CodeSchemeCodesComponent implements OnChanges {
   }
 
   get numberOfCodes() {
-    return this.searchTermHasValue ? this.filteredCodes.length : this.codes.length;
+    return this.searchTermHasValue() ? this.filteredCodes.length : this.codes.length;
   }
 
   hasHierarchy() {
@@ -96,7 +95,7 @@ export class CodeSchemeCodesComponent implements OnChanges {
   }
 
   allowExpandAllAndCollapseAll() {
-    return this.hasHierarchy && this.codes.length <= 500;
+    return this.hasHierarchy() && this.codes.length <= 500;
   }
 
   get emptySearch() {

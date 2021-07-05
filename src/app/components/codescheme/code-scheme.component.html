@@ -189,61 +189,63 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)" [activeId]="initialTabId">
-    <ngb-tab id="codelist_codes_tabs" *ngIf="codes.length > 0">
-      <ng-template ngbTabTitle>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)" [activeId]="initialTabId">
+    <li [ngbNavItem]="codelist_codes_tabs"
+        id="codelist_codes_tabs"
+        *ngIf="codes.length > 0">
+      <a ngbNavLink>
         <span translate>CODES</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-scheme-codes [codes]="codes" [codeScheme]="codeScheme"
                                [prefilledSearchTermForCode]="prefilledSearchTermForCode"></app-code-scheme-codes>
       </ng-template>
-    </ngb-tab>
+    </li>
 
-    <ngb-tab id="codelist_info_tab">
-      <ng-template ngbTabTitle>
+    <li [ngbNavItem]="codelist_info_tab" id="codelist_info_tab">
+      <a ngbNavLink>
         <span translate>INFORMATION</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-scheme-information [codeScheme]="codeScheme"
                                      [codesOfTheCodeScheme]="codes"
                                      [languageCodes]="codeScheme.languageCodes"
                                      (changeLanguage)="changeLanguages($event)"
                                      (changeCodeStatusesAsWell)="toggleChangeCodeStatusesAsWellWhenSavingCodeScheme($event)"></app-code-scheme-information>
       </ng-template>
-    </ngb-tab>
+    </li>
 
-    <ngb-tab *ngIf="extensions.length > 0" id="codelist_extensions_tab">
-      <ng-template ngbTabTitle>
+    <li *ngIf="extensions.length > 0"
+        [ngbNavItem]="codelist_extensions_tab"
+        id="codelist_extensions_tab">
+      <a ngbNavLink>
         <span translate>EXTENSIONS</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-scheme-extensions [codeScheme]="codeScheme"
                                     [extensions]="extensions"></app-code-scheme-extensions>
       </ng-template>
-    </ngb-tab>
+    </li>
 
-    <ngb-tab *ngIf="codeScheme.allVersions.length > 0" id="codelist_versionhistory_tab">
-      <ng-template ngbTabTitle>
+    <li *ngIf="codeScheme.allVersions.length > 0"
+        [ngbNavItem]="codelist_versionhistory_tab"
+        id="codelist_versionhistory_tab">
+      <a ngbNavLink>
         <span translate>versionHistory</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-scheme-versions [codeScheme]="codeScheme"></app-code-scheme-versions>
       </ng-template>
-    </ngb-tab>
+    </li>
 
-    <ngb-tab
+    <li
       *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0 || codeScheme.variantMothersOfThisCodeScheme.length > 0"
+      [ngbNavItem]="codelist_variants_tab"
       id="codelist_variants_tab">
-      <ng-template ngbTabTitle>
+      <a ngbNavLink>
         <span translate>variants</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <dt><label *ngIf="codeScheme.variantsOfThisCodeScheme.length > 0" translate>Variants of this code list</label></dt>
         <app-code-scheme-variants (detachVariantRequest)="reloadCodeScheme()"
                                   [codeScheme]="codeScheme"></app-code-scheme-variants>
@@ -251,7 +253,7 @@
         </dt>
         <app-code-scheme-variant-mothers [codeScheme]="codeScheme"></app-code-scheme-variant-mothers>
       </ng-template>
-    </ngb-tab>
-
-  </ngb-tabset>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
 </div>

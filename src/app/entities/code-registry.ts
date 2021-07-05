@@ -1,12 +1,10 @@
 import { AbstractResource } from './abstract-resource';
 import { Organization } from './organization';
 import { CodeRegistryType } from '../services/api-schema';
-import { Location } from 'yti-common-ui/types/location';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { EditableEntity } from './editable-entity';
 import { formatDateTime, formatDisplayDateTime, parseDateTime } from '../utils/date';
 import { Moment } from 'moment';
-import { Localizable } from 'yti-common-ui/types/localization';
+import { Location, Localizable, hasLocalization } from '@vrk-yti/yti-common-ui';
 
 export class CodeRegistry extends AbstractResource implements EditableEntity {
 

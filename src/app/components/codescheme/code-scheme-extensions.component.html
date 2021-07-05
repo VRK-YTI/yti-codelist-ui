@@ -1,14 +1,11 @@
 <div class="extensions row">
-
-  <ngb-tabset #secondaryTabSet="ngbTabset" class="col-md-12 exttabs">
-
-    <ngb-tab *ngFor="let propertyExtensions of extensionsByType"
-             id="codelist_extension_{{ propertyExtensions.localNameForId }}_tab">
-      <ng-template ngbTabTitle>
+  <ul ngbNav #secondaryNav="ngbNav" class="nav-tabs col-md-12 exttabs">
+    <li *ngFor="let propertyExtensions of extensionsByType"
+        [ngbNavItem]="'codelist_extension_' + propertyExtensions.localNameForId + '_tab'">
+      <a ngbNavLink>
         <span>{{propertyExtensions.label}}</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <div id="codelist_extension_list_div" class="col-md-12">
           <ul id="codelist_extension_regular">
             <li *ngFor="let extension of propertyExtensions.extensions">
@@ -19,15 +16,15 @@
           </ul>
         </div>
       </ng-template>
-    </ngb-tab>
+    </li>
 
-    <ngb-tab *ngIf="hasCodeExtensions"
-             id="codelist_codeextensions_tab">
-      <ng-template ngbTabTitle>
+    <li *ngIf="hasCodeExtensions"
+        [ngbNavItem]="codelist_codeextensions_tab"
+        id="codelist_codeextensions_tab">
+      <a ngbNavLink>
         <span translate>CODE EXTENSIONS</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <div id="codelist_codeextension_list_div" class="col-md-12">
           <ul id="codelist_codeextension_regular">
             <li *ngFor="let extension of codeExtensions">
@@ -38,8 +35,7 @@
           </ul>
         </div>
       </ng-template>
-    </ngb-tab>
-
-  </ngb-tabset>
-
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="secondaryNav"></div>
 </div>

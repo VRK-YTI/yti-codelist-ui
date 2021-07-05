@@ -61,17 +61,17 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="code_info_tab">
-      <ng-template ngbTabTitle>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)">
+    <li [ngbNavItem]="code_info_tab" id="code_info_tab">
+      <a ngbNavLink>
         <span translate>INFORMATION</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-code-information [code]="code"
                               [codeScheme]="codeScheme">
         </app-code-information>
       </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
 </div>

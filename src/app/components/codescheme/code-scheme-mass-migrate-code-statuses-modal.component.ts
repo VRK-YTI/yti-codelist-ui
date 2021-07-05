@@ -4,17 +4,12 @@ import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { Router } from '@angular/router';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
-import { UserService } from 'yti-common-ui/services/user.service';
-import { selectableStatuses, Status, allowedTargetStatuses, changeToRestrictedStatus } from 'yti-common-ui/entities/status';
-import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { CodeListConfirmationModalService } from '../../components/common/confirmation-modal.service';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
+import { AlertModalService, allowedTargetStatuses, changeToRestrictedStatus, FilterOptions, ignoreModalClose, ModalService, selectableStatuses, Status, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-scheme-mass-migrate-code-statuses-modal',

@@ -1,5 +1,4 @@
-import { Localizable } from 'yti-common-ui/types/localization';
-import { Status } from 'yti-common-ui/entities/status';
+import { Localizable, Status } from "@vrk-yti/yti-common-ui";
 
 export interface ApiResponseType {
 

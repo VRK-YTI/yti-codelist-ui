@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { EditableEntity } from '../entities/editable-entity';
 import { CodeRegistry } from '../entities/code-registry';
 import {CodeScheme} from '../entities/code-scheme';
+import { UserService } from '@vrk-yti/yti-common-ui';
 
 @Injectable()
 export class AuthorizationManager {

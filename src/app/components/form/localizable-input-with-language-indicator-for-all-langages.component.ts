@@ -2,8 +2,8 @@ import { Component, Input, OnChanges, OnInit, Optional, Self, SimpleChange, Simp
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
-import { Localizable } from 'yti-common-ui/types/localization';
 import { CodePlain } from '../../entities/code-simple';
+import { Localizable } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-localizable-input-with-language-indicator-for-all-languages',

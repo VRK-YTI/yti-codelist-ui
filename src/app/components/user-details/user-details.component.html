@@ -8,25 +8,25 @@
     <h2 translate>User details</h2>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="user_details_info_tab">
-      <ng-template ngbTabTitle>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)">
+    <li [ngbNavItem]="user_details_info_tab" id="user_details_info_tab">
+      <a ngbNavLink>
         <span translate>INFORMATION</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-user-details-information></app-user-details-information>
       </ng-template>
-    </ngb-tab>
-
-    <ngb-tab *ngIf="messagingResources" id="user_details_subscriptions_tab">
-      <ng-template ngbTabTitle>
+    </li>
+    <li *ngIf="messagingResources"
+        [ngbNavItem]="user_details_subscriptions_tab"
+        id="user_details_subscriptions_tab">
+      <a ngbNavLink>
         <span translate>SUBSCRIPTIONS</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-user-details-subscriptions [tabSet]="tabSet"></app-user-details-subscriptions>
       </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
 </div>

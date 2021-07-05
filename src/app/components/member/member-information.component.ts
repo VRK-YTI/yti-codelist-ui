@@ -3,7 +3,6 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { EditableService } from '../../services/editable.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Member } from '../../entities/member';
@@ -16,9 +15,9 @@ import { Code } from '../../entities/code';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { ConfigurationService } from '../../services/configuration.service';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { UserSimple } from '../../entities/user-simple';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { comparingLocalizable, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-member-information',

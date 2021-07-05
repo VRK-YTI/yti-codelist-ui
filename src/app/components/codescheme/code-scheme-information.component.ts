@@ -6,19 +6,16 @@ import { EditableService } from '../../services/editable.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Code } from '../../entities/code';
 import { LanguageService } from '../../services/language.service';
-import { requiredList } from 'yti-common-ui/utils/validator';
 import { validDateRange } from '../../utils/date';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { Concept } from '../../entities/concept';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodePlain } from '../../entities/code-simple';
 import { ConfigurationService } from '../../services/configuration.service';
 import { nonEmptyLocalizableValidator } from '../../utils/validators';
 import { UserSimple } from '../../entities/user-simple';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { comparingLocalizable, ignoreModalClose, requiredList, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-scheme-information',

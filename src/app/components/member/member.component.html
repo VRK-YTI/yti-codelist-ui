@@ -49,15 +49,15 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)">
-    <ngb-tab id="member_info_tab">
-      <ng-template ngbTabTitle>
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)">
+    <li [ngbNavItem]="member_info_tab" id="member_info_tab">
+      <a ngbNavLink>
         <span translate>INFORMATION</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-member-information [member]="member"></app-member-information>
       </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
 </div>

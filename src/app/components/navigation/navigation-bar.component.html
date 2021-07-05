@@ -12,7 +12,7 @@
 
     <li *ngIf="fakeableUsers.length > 0" class="nav-item dropdown" ngbDropdown>
       <a id="impersonate_user_link" class="nav-link" ngbDropdownToggle translate>Impersonate user</a>
-      <div ngbDropdownMenu>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">
         <a id={{user.email}} class="dropdown-item" *ngFor="let user of fakeableUsers" (click)="fakeUser(user.email)">
           {{user.firstName}} {{user.lastName}}
         </a>
@@ -27,7 +27,7 @@
     </li>
     <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
       <a id="select_lang_dropdown" class="dropdown-toggle nav-link btn btn-language" ngbDropdownToggle>{{language.toUpperCase()}}</a>
-      <div ngbDropdownMenu>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">
         <a *ngFor="let availableLanguage of availableLanguages"
            class="dropdown-item"
            [id]="availableLanguage.code"
@@ -41,7 +41,7 @@
       <a id="navigation_menu_dropdown" class="nav-link btn-menu" ngbDropdownToggle>
         <app-menu></app-menu>
       </a>
-      <div ngbDropdownMenu>
+      <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">
         <a id="navigation_log_out_link" class="dropdown-item" *ngIf="isLoggedIn()" (click)="logOut()">
           <i class="fas fa-sign-out-alt"></i>
           <span translate>LOG OUT</span>

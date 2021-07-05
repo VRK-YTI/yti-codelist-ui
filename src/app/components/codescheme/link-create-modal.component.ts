@@ -2,7 +2,6 @@ import { AfterViewInit, Component, Injectable, Input, OnInit } from '@angular/co
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,7 +10,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { ExternalReferenceType } from '../../services/api-schema';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
-import { httpOrHttpsUrlRegex } from 'yti-common-ui/utils/validator';
+import { httpOrHttpsUrlRegex, ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-link-create-modal',

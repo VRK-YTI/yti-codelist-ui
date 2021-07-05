@@ -1,7 +1,7 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import {CodeSchemeListItemType} from '../services/api-schema';
 import {Moment} from 'moment';
 import {parseDate, formatDisplayDateRange, formatDate} from '../utils/date';
+import { Localizable, Localizer } from '@vrk-yti/yti-common-ui';
 
 export class CodeSchemeListItem {
   id: string;

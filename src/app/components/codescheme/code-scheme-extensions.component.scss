@@ -1,6 +1,6 @@
-@import '~yti-common-ui/theme/variables';
+@import '~@vrk-yti/yti-common-ui/theme/variables';
 
-:host /deep/ .extensions {
+:host ::ng-deep .extensions {
 
   color: $primary;
   font-size: large;
@@ -10,12 +10,16 @@
     width: 20px;
   }
 
+  .tab-content {
+    width: 100%;
+  }
+
   .extension {
     cursor: pointer;
     padding: 10px 40px 10px 10px;
     background-color: $light;
     margin-top: 8px;
-    width: calc(100% - 20px);
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
@@ -40,6 +44,8 @@
   }
 
   .exttabs {
-    margin-top: -60px;
+    margin-top: -20px;
+    margin-left: -10px;
+    margin-right: 10px;
   }
 }
