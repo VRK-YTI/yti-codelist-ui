@@ -3,7 +3,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Observable } from 'rxjs';
 import { UserService } from 'yti-common-ui/services/user.service';
@@ -29,7 +29,8 @@ import { AlertModalService } from 'yti-common-ui/components/alert-modal.componen
 })
 export class MemberComponent implements OnInit, EditingComponent {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  // @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   member: Member;
   extension: Extension;
@@ -82,7 +83,7 @@ export class MemberComponent implements OnInit, EditingComponent {
     return this.member == null || this.codeScheme == null || this.extension == null || this.deleting;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -90,7 +91,7 @@ export class MemberComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

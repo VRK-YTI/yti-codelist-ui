@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   template: `<img [src]="logo" />`
 })
 export class LogoComponent {
-  logo = require('../../../assets/logo.svg');
+  // logo = require('../../../assets/logo.svg');
+// TODO: figure out how this is done with newer angular
+  logo = null;
 }

@@ -1,6 +1,6 @@
 @import '~yti-common-ui/theme/variables';
 
-:host /deep/ .codeSchemes {
+:host ::ng-deep .codeSchemes {
 
   color: $primary;
   font-size: large;

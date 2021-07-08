@@ -16,7 +16,7 @@ export class EditableService implements OnDestroy {
   saving$ = new BehaviorSubject<boolean>(false);
   cancel$ = new EventEmitter<void>();
 
-  private _onSave: (formValue: any) => Observable<any>;
+  private _onSave: ((formValue: any) => Observable<any>) | null;
 
   private loggedInSubscription: Subscription;
 
@@ -70,7 +70,7 @@ export class EditableService implements OnDestroy {
       },
       error(error: any) {
         that.saving$.next(false);
-        
+
         if (!isModalClose(error)) {
           that.errorModalService.openSubmitError(error);
         }

@@ -4,7 +4,6 @@ import { Code } from '../../entities/code';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { from, Observable } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
@@ -24,6 +23,7 @@ import { ValueType } from '../../entities/value-type';
 import { formatDate } from '../../utils/date';
 import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-code',
@@ -33,7 +33,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CodeComponent implements OnInit, EditingComponent {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  // @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   code: Code;
   codeScheme: CodeScheme;
@@ -77,7 +78,7 @@ export class CodeComponent implements OnInit, EditingComponent {
     return this.code == null || this.codeScheme == null || this.deleting;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -85,7 +86,8 @@ export class CodeComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.activeId = event.nextId;
+          // this.tabSet.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

@@ -48,7 +48,7 @@ export class CodeSchemeCodesComponent implements OnChanges {
   }
 
   get numberOfCodes() {
-    return this.searchTermHasValue ? this.filteredCodes.length : this.codes.length;
+    return this.searchTermHasValue() ? this.filteredCodes.length : this.codes.length;
   }
 
   hasHierarchy() {
@@ -96,7 +96,7 @@ export class CodeSchemeCodesComponent implements OnChanges {
   }
 
   allowExpandAllAndCollapseAll() {
-    return this.hasHierarchy && this.codes.length <= 500;
+    return this.hasHierarchy() && this.codes.length <= 500;
   }
 
   get emptySearch() {

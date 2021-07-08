@@ -3,7 +3,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { from, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -29,7 +29,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ExtensionComponent implements OnInit, EditingComponent, AfterViewInit {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  // @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   extension: Extension;
   codeScheme: CodeScheme;
@@ -105,7 +106,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     return this.extension == null || this.codeScheme == null || this.members == null || this.deleting;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -113,7 +114,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
@@ -38,7 +38,8 @@ import { ConfigurationService } from '../../services/configuration.service';
 })
 export class CodeSchemeComponent implements OnInit, EditingComponent {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  // @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   codeScheme: CodeScheme;
   previouslySavedCodeScheme: CodeScheme | undefined; // every time we just before saving, CS as it was last read from ES index goes here
@@ -182,7 +183,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   checkSubscription() {
 
-    if (this.isMessagingEnabled && !this.isAnonymous) {
+    if (this.isMessagingEnabled() && !this.isAnonymous) {
       this.messagingService.getSubscription(this.codeScheme.uri).subscribe(resource => {
         if (resource) {
           this.hasSubscription = true;
@@ -197,7 +198,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
       if (codes.length > 0) {
-        this.tabSet.activeId = 'codelist_codes_tab';
+        this.nav.activeId = 'codelist_codes_tab';
       }
     });
     this.refreshCodeScheme();
@@ -232,7 +233,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     }
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     this.languageCodes = null;
 
@@ -242,7 +243,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

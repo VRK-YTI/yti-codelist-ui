@@ -46,6 +46,9 @@ export class ExternalReference {
   }
 
   get image(): any {
+    console.warn('Unimplemented in this angular version');
+    return null;
+    /*
     switch (this.id) {
       case CCBy40LicenseLinkId:
         return require('../../assets/images/ccby40-icon-88x31.png');
@@ -54,6 +57,7 @@ export class ExternalReference {
       default:
         return null;
     }
+    */
   }
 
   serialize(): ExternalReferenceType {

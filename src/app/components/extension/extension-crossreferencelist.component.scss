@@ -6,7 +6,7 @@
   margin-top: 5px;
 }
 
-:host /deep/ .extensions {
+:host ::ng-deep .extensions {
 
   color: $primary;
   font-size: large;

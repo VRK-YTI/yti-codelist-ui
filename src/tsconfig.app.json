@@ -5,15 +5,13 @@
     "types": ["webpack-env"],
     "baseUrl": ""
   },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
   "include": [
     "main.ts",
     "polyfills.ts",
-    "../node_modules/yti-common-ui/**/*.ts"
-  ],
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts",
-    "../node_modules/yti-common-ui/**/*.spec.ts",
-    "../node_modules/yti-common-ui/node_modules"
+    "../node_modules/yti-common-ui/**/*.d.ts"
   ]
 }

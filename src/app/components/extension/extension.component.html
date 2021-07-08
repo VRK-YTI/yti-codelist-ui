@@ -90,40 +90,36 @@
     </div>
   </div>
 
-  <ngb-tabset #tabSet="ngbTabset" (tabChange)="onTabChange($event)" [activeId]="initialTabId">
-    <ngb-tab *ngIf="showCrossReferenceListTab"
-             id="extension_crossreferencelist_tab">
-      <ng-template ngbTabTitle>
+  // TODO: activeId in navs?
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)" [activeId]="initialTabId">
+    <li *ngIf="showCrossReferenceListTab"
+        [ngbNavItem]="extension_crossreferencelist_tab">
+      <a ngbNavLink>
         <span translate>CROSS-REFERENCE LIST</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-extension-crossreferencelist [members]="members"
                                [extension]="extension"></app-extension-crossreferencelist>
       </ng-template>
-    </ngb-tab>
-
-    <ngb-tab *ngIf="showMembersTab"
-             id="extension_members_tab">
-      <ng-template ngbTabTitle>
+    </li>
+    <li *ngIf="showMembersTab"
+        [ngbNavItem]="extension_members_tab">
+      <a ngbNavLink>
         <span translate>MEMBERS</span>
-      </ng-template>
-
-      <ng-template ngbTabContent *ngIf="!loading">
+      </a>
+      <ng-template ngbNavContent *ngIf="!loading">
         <app-extension-members [members]="members"
                                [extension]="extension"
                                [nrOfCreatedMissingMembers]="numberOfMissingMembersThatGotCreated"></app-extension-members>
       </ng-template>
-    </ngb-tab>
-
-    <ngb-tab id="extension_info_tab">
-      <ng-template ngbTabTitle>
+    </li>
+    <li [ngbNavItem]="extension_info_tab">
+      <a ngbNavLink>
         <span translate>INFORMATION</span>
-      </ng-template>
-
-      <ng-template ngbTabContent>
+      </a>
+      <ng-template ngbNavContent>
         <app-extension-information [extension]="extension"></app-extension-information>
       </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+    </li>
+  </ul>
 </div>

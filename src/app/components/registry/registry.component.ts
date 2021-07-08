@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ignoreModalClose } from 'yti-common-ui//utils/modal';
 import { Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
@@ -24,7 +24,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RegistryComponent implements OnInit, EditingComponent {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  // @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   codeRegistry: CodeRegistry;
   codeSchemes: CodeScheme[];
@@ -76,7 +77,7 @@ export class RegistryComponent implements OnInit, EditingComponent {
     return this.codeRegistry == null || this.codeSchemes == null;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -84,7 +85,7 @@ export class RegistryComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

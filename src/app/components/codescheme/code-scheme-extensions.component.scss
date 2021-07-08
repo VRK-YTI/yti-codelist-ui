@@ -1,6 +1,6 @@
 @import '~yti-common-ui/theme/variables';
 
-:host /deep/ .extensions {
+:host ::ng-deep .extensions {
 
   color: $primary;
   font-size: large;

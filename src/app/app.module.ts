@@ -143,6 +143,7 @@ function removeEmptyValues(obj: {}) {
   return result;
 }
 
+/*
 const localizations: { [lang: string]: any } = {
   fi: {
     ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/fi.po`))),
@@ -157,9 +158,11 @@ const localizations: { [lang: string]: any } = {
     ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/en.po`)))
   }
 };
+*/
 
 const appRoutes: Routes = [
   { path: '', component: FrontpageComponent, pathMatch: 'full' },
+  /*
   { path: 'frontpage', redirectTo: '/', pathMatch: 'full' },
   { path: 'createcode', component: CodeCreateComponent, pathMatch: 'full' },
   { path: 'createcodescheme', component: CodeSchemeCreateComponent, pathMatch: 'full' },
@@ -178,6 +181,7 @@ const appRoutes: Routes = [
   { path: 'registry', component: RegistryComponent, pathMatch: 'full' },
   // NOTE: If createRefreshRouteMatcher(['re']) starts to work after angular upgrade, then switch to that.
   { matcher: refreshRouteMatcher, component: RefreshComponent }
+  */
 ];
 
 export function refreshRouteMatcher(segments: UrlSegment[], group: UrlSegmentGroup, route: Route) {
@@ -200,7 +204,8 @@ export function resolveAuthenticatedUserEndpoint() {
 }
 
 export function createTranslateLoader(): TranslateLoader {
-  return { getTranslation: (lang: string) => of(localizations[lang]) };
+  // return { getTranslation: (lang: string) => of(localizations[lang]) };
+  return { getTranslation: (lang: string) => of('??') };
 }
 
 export function createMissingTranslationHandler(): MissingTranslationHandler {
@@ -329,12 +334,12 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot(),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader
+        useFactory: (createTranslateLoader)
       },
       missingTranslationHandler: { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler },
     }),
@@ -374,6 +379,9 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     SuggestConceptModalService,
     EditableService,
     NgbActiveModal
+  ],
+  exports: [
+    RouterModule
   ],
   bootstrap: [AppComponent]
 })

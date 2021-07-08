@@ -1,6 +1,6 @@
 @import '~yti-common-ui/theme/variables';
 
-:host /deep/ .codeRegistries {
+:host ::ng-deep .codeRegistries {
 
   color: $primary;
   font-size: large;

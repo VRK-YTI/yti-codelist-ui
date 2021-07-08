@@ -5,8 +5,8 @@ import { AuthorizationManager } from '../../services/authorization-manager.servi
 import { CodeSchemeComponent } from './code-scheme.component';
 import { Extension, groupByType, PropertyTypeExtensions } from '../../entities/extension';
 import { ExtensionImportModalService } from '../extension/extension-import-modal.component';
-import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-code-scheme-extensions',
@@ -14,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./code-scheme-extensions.component.scss']
 })
 export class CodeSchemeExtensionsComponent {
-  @ViewChild('secondaryTabSet') secondaryTabSet: NgbTabset;
+  @ViewChild('secondaryNav') secondaryNav: NgbNav;
 
   @Input() extensions: Extension[];
   @Input() codeScheme: CodeScheme;

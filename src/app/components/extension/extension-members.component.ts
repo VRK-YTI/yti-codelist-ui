@@ -61,7 +61,7 @@ export class ExtensionMembersComponent {
   }
 
   get numberOfMembers() {
-    return this.searchTermHasValue ? this.filteredMembers.length : this.members.length;
+    return this.searchTermHasValue() ? this.filteredMembers.length : this.members.length;
   }
 
   get numberOfExpanded() {
@@ -117,7 +117,7 @@ export class ExtensionMembersComponent {
   }
 
   allowExpandAllAndCollapseAll() {
-    return this.hasHierarchy && this.members.length <= 500;
+    return this.hasHierarchy() && this.members.length <= 500;
   }
 
   get howManyMissingMembersGotCreated() {
