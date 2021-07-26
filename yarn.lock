@@ -2090,10 +2090,10 @@ boolbase@^1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.2.tgz#aff23d5e0e03c31255ad437530ee6556e78e728e"
-  integrity sha512-1Ge963tyEQWJJ+8qtXFU6wgmAVj9gweEjibUdbmcCEYsn38tVwRk8107rk2vzt6cfQcRr3SlZ8aQBqaD8aqf+Q==
+bootstrap@^4.5.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
+  integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
 
 boxen@^5.0.1:
   version "5.0.1"
@@ -8323,9 +8323,9 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#c808aafedef7864c75b07360796cab65ecc5aeb1":
+"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#36885027628cb87db92e3fc1a9a7bf1c379dd5fe":
   version "0.0.0"
-  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#c808aafedef7864c75b07360796cab65ecc5aeb1"
+  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#36885027628cb87db92e3fc1a9a7bf1c379dd5fe"
 
 zone.js@~0.10.3:
   version "0.10.3"

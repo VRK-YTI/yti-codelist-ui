@@ -28,7 +28,7 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@ngx-translate/core": "^13.0.0",
     "angular-lazy-for": "^1.1.5",
-    "bootstrap": "^5.0.2",
+    "bootstrap": "^4.5.0",
     "material-design-icons": "^3.0.1",
     "moment": "^2.29.1",
     "ngx-clipboard": "^14.0.1",
@@ -36,7 +36,7 @@
     "rxjs": "~6.6.7",
     "simple-line-icons": "^2.5.5",
     "tslib": "^2.1.0",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#8b6f556990bbfbca10d4badee60cadca411cc4fd",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#36885027628cb87db92e3fc1a9a7bf1c379dd5fe",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
