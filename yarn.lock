@@ -8323,9 +8323,9 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#36885027628cb87db92e3fc1a9a7bf1c379dd5fe":
+"yti-common-ui@https://github.com/VRK-YTI/yti-common-ui.git/#62416e4eaf06b7112c6af57e04f1a1eb002b0074":
   version "0.0.0"
-  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#36885027628cb87db92e3fc1a9a7bf1c379dd5fe"
+  resolved "https://github.com/VRK-YTI/yti-common-ui.git/#62416e4eaf06b7112c6af57e04f1a1eb002b0074"
 
 zone.js@~0.10.3:
   version "0.10.3"

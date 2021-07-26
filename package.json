@@ -36,7 +36,7 @@
     "rxjs": "~6.6.7",
     "simple-line-icons": "^2.5.5",
     "tslib": "^2.1.0",
-    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#36885027628cb87db92e3fc1a9a7bf1c379dd5fe",
+    "yti-common-ui": "https://github.com/VRK-YTI/yti-common-ui.git/#62416e4eaf06b7112c6af57e04f1a1eb002b0074",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
