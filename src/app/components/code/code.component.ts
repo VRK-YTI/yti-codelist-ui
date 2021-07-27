@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Code } from '../../entities/code';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,10 +32,8 @@ import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
   providers: [EditableService]
 })
 export class CodeComponent implements OnInit, EditingComponent {
-
-  // @ViewChild('tabSet') tabSet: NgbTabset;
-  @ViewChild('nav') nav: NgbNav;
-
+  @ViewChild('nav') nav? : ElementRef<NgbNav>;
+  
   code: Code;
   codeScheme: CodeScheme;
   deleting: boolean;
