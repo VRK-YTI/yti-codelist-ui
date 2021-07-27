@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
@@ -14,7 +14,7 @@ import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./code-scheme-extensions.component.scss']
 })
 export class CodeSchemeExtensionsComponent {
-  @ViewChild('secondaryNav') secondaryNav: NgbNav;
+  @ViewChild('secondaryNav') secondaryNav: ElementRef<NgbNav>;
 
   @Input() extensions: Extension[];
   @Input() codeScheme: CodeScheme;
