@@ -32,7 +32,7 @@ import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
   providers: [EditableService]
 })
 export class CodeComponent implements OnInit, EditingComponent {
-  @ViewChild('nav') nav? : ElementRef<NgbNav>;
+  @ViewChild('nav') nav : ElementRef<NgbNav>;
   
   code: Code;
   codeScheme: CodeScheme;
@@ -77,14 +77,13 @@ export class CodeComponent implements OnInit, EditingComponent {
   }
 
   onNavChange(event: NgbNavChangeEvent) {
-
     if (this.isEditing()) {
       event.preventDefault();
 
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.nav.activeId = event.nextId;
+          this.nav.nativeElement.activeId = event.nextId;
           // this.tabSet.activeId = event.nextId;
         }, ignoreModalClose);
     }
