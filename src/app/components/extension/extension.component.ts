@@ -30,7 +30,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ExtensionComponent implements OnInit, EditingComponent, AfterViewInit {
 
   // @ViewChild('tabSet') tabSet: NgbTabset;
-  @ViewChild('nav') nav: ElementRef<NgbNav>;
+  @ViewChild('nav') nav!: ElementRef<NgbNav>;
 
   extension: Extension;
   codeScheme: CodeScheme;
