@@ -14,7 +14,7 @@ import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./code-scheme-extensions.component.scss']
 })
 export class CodeSchemeExtensionsComponent {
-  @ViewChild('secondaryNav') secondaryNav!: ElementRef<NgbNav>;
+  @ViewChild('secondaryNav') secondaryNav: ElementRef<NgbNav>;
 
   @Input() extensions: Extension[];
   @Input() codeScheme: CodeScheme;

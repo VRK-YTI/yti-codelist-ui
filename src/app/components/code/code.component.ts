@@ -33,7 +33,7 @@ import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CodeComponent implements OnInit, EditingComponent {
     // @ViewChild('tabSet') tabSet: NgbTabset;
-  @ViewChild('nav') nav!: ElementRef<NgbNav>;
+  @ViewChild('nav') nav: ElementRef<NgbNav>;
   
   code: Code;
   codeScheme: CodeScheme;
