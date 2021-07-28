@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
@@ -30,7 +30,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ExtensionComponent implements OnInit, EditingComponent, AfterViewInit {
 
   // @ViewChild('tabSet') tabSet: NgbTabset;
-  @ViewChild('nav') nav: NgbNav;
+  @ViewChild('nav') nav: ElementRef<NgbNav>;
 
   extension: Extension;
   codeScheme: CodeScheme;
@@ -114,7 +114,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.nav.activeId = event.nextId;
+          this.nav.nativeElement.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }
