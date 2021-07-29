@@ -149,16 +149,22 @@ function removeEmptyValues(obj: {}) {
 
 const localizations: { [lang: string]: any } = {
   fi: {
-    ...removeEmptyValues(JSON.parse(enPo)),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po`)))
+    ...removeEmptyValues(JSON.parse(fiPo))
+    //TODO: get more translations from yti-common-ui when it has been upgraded
+    //,
+    //...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po`)))
   },
   sv: {
-    ...removeEmptyValues(JSON.parse(svPo)),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/sv.po`)))
+    ...removeEmptyValues(JSON.parse(svPo))
+    //TODO: get more translations from yti-common-ui when it has been upgraded
+    //,
+    //...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/sv.po`)))
   },
   en: {
-    ...removeEmptyValues(JSON.parse(fiPo)),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/en.po`)))
+    ...removeEmptyValues(JSON.parse(enPo))
+    //TODO: get more translations from yti-common-ui when it has been upgraded
+    //,
+    //...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/en.po`)))
   }
 };
 
