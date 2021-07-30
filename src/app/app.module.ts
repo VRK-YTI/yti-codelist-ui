@@ -129,6 +129,9 @@ import {
   SuggestConceptModalComponent,
   SuggestConceptModalService
 } from './components/terminology-integration/suggest-concept-modal.component';
+import enPo from 'raw-loader!po-loader?format=mf!../../po/en.po';
+import svPo from 'raw-loader!po-loader?format=mf!../../po/sv.po';
+import fiPo from 'raw-loader!po-loader?format=mf!../../po/fi.po';
 
 function removeEmptyValues(obj: {}) {
 
@@ -143,22 +146,28 @@ function removeEmptyValues(obj: {}) {
   return result;
 }
 
-/*
+
 const localizations: { [lang: string]: any } = {
   fi: {
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/fi.po`))),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po`)))
+    ...removeEmptyValues(JSON.parse(fiPo))
+    //TODO: get more translations from yti-common-ui when it has been upgraded
+    //,
+    //...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po`)))
   },
   sv: {
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/sv.po`))),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/sv.po`)))
+    ...removeEmptyValues(JSON.parse(svPo))
+    //TODO: get more translations from yti-common-ui when it has been upgraded
+    //,
+    //...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/sv.po`)))
   },
   en: {
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/en.po`))),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/en.po`)))
+    ...removeEmptyValues(JSON.parse(enPo))
+    //TODO: get more translations from yti-common-ui when it has been upgraded
+    //,
+    //...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/en.po`)))
   }
 };
-*/
+
 
 const appRoutes: Routes = [
   { path: '', component: FrontpageComponent, pathMatch: 'full' },
@@ -204,8 +213,7 @@ export function resolveAuthenticatedUserEndpoint() {
 }
 
 export function createTranslateLoader(): TranslateLoader {
-  // return { getTranslation: (lang: string) => of(localizations[lang]) };
-  return { getTranslation: (lang: string) => of('??') };
+  return { getTranslation: (lang: string) => of(localizations[lang]) };
 }
 
 export function createMissingTranslationHandler(): MissingTranslationHandler {
