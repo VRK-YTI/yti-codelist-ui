@@ -12,7 +12,7 @@
   "include": [
     "main.ts",
     "polyfills.ts",
-    "../node_modules/yti-common-ui/**/*.d.ts",
-    "typings.d.ts"
+    "typings.d.ts",
+    "../node_modules/yti-common-ui/**/*.d.ts"
   ]
 }
