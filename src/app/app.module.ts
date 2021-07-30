@@ -129,9 +129,9 @@ import {
   SuggestConceptModalComponent,
   SuggestConceptModalService
 } from './components/terminology-integration/suggest-concept-modal.component';
-import enPo from 'raw-loader!po-loader?format=mf!../../../po/en.po';
-import svPo from 'raw-loader!po-loader?format=mf!../../../po/sv.po';
-import fiPo from 'raw-loader!po-loader?format=mf!../../../po/fi.po';
+import enPo from 'raw-loader!po-loader?format=mf!../../po/en.po';
+import svPo from 'raw-loader!po-loader?format=mf!../../po/sv.po';
+import fiPo from 'raw-loader!po-loader?format=mf!../../po/fi.po';
 
 function removeEmptyValues(obj: {}) {
 
@@ -213,8 +213,7 @@ export function resolveAuthenticatedUserEndpoint() {
 }
 
 export function createTranslateLoader(): TranslateLoader {
-  // return { getTranslation: (lang: string) => of(localizations[lang]) };
-  return { getTranslation: (lang: string) => of('??') };
+  return { getTranslation: (lang: string) => of(localizations[lang]) };
 }
 
 export function createMissingTranslationHandler(): MissingTranslationHandler {
