@@ -2,6 +2,7 @@
 FROM node:12.19.1-alpine@sha256:c8b5faa496b3eaaaee30e278abee431ec7dfec03e07ca0fc6ee39e31f36e5021 as builder
 
 ARG NPMRC
+ARG VERSION
 
 # Install git
 RUN apk add --update git
@@ -13,6 +14,9 @@ RUN apk add --update nginx
 ADD . /tmp
 WORKDIR /tmp
 RUN echo "$NPMRC" > .npmrc && yarn install && rm -f .npmrc
+
+# Create version.txt
+RUN echo "$VERSION" > src/version.txt
 
 # Build the dist dir containing the static files
 RUN ["npm", "run", "build", "--", "--prod", "--output-hashing=all"]
