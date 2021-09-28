@@ -17,7 +17,7 @@ ARG NPMRC
 ARG VERBOSE
 
 # checkout a specific commit id of yti-common-ui project
-ARG COMMON_UI_COMMIT_ID=cf4edee137bb84ef19b9e65a64a664ecbfdad90c
+ARG COMMON_UI_COMMIT_ID=2ff813cdce4c2e913cb6226192f3757d2599a76b
 
 RUN \
       # Install tooling

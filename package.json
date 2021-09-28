@@ -27,7 +27,7 @@
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@ngx-translate/core": "^13.0.0",
-    "@vrk-yti/yti-common-ui": "0.0.1-alpha-20210924.gcf4edee.feature-angular-library",
+    "@vrk-yti/yti-common-ui": "0.0.1-alpha-20210928.g2ff813c.feature-angular-library",
     "bootstrap": "^4.5.0",
     "material-design-icons": "^3.0.1",
     "moment": "^2.29.1",
