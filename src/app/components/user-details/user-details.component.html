@@ -9,7 +9,7 @@
   </div>
 
   <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)">
-    <li [ngbNavItem]="user_details_info_tab" id="user_details_info_tab">
+    <li ngbNavItem="user_details_info_tab" id="user_details_info_tab">
       <a ngbNavLink>
         <span translate>INFORMATION</span>
       </a>
@@ -18,7 +18,7 @@
       </ng-template>
     </li>
     <li *ngIf="messagingResources"
-        [ngbNavItem]="user_details_subscriptions_tab"
+        ngbNavItem="user_details_subscriptions_tab"
         id="user_details_subscriptions_tab">
       <a ngbNavLink>
         <span translate>SUBSCRIPTIONS</span>
