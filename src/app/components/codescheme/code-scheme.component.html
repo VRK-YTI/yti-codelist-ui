@@ -190,8 +190,8 @@
   </div>
 
   <ul ngbNav #nav="ngbNav" class="nav-tabs" (navChange)="onNavChange($event)" [activeId]="initialTabId">
-    <li ngbNavItem="codelist_codes_tabs"
-        id="codelist_codes_tabs"
+    <li ngbNavItem="codelist_codes_tab"
+        id="codelist_codes_tab"
         *ngIf="codes.length > 0">
       <a ngbNavLink>
         <span translate>CODES</span>
