@@ -1,7 +1,8 @@
 <div class="extensions row">
   <ul ngbNav #secondaryNav="ngbNav" class="nav-tabs col-md-12 exttabs">
     <li *ngFor="let propertyExtensions of extensionsByType"
-        [ngbNavItem]="'codelist_extension_' + propertyExtensions.localNameForId + '_tab'">
+        [ngbNavItem]="'codelist_extension_' + propertyExtensions.localNameForId + '_tab'"
+        [id]="'codelist_extension_' + propertyExtensions.localNameForId + '_tab'">
       <a ngbNavLink>
         <span>{{propertyExtensions.label}}</span>
       </a>
