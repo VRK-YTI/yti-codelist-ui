@@ -3,13 +3,13 @@ import { SearchHit } from '../../entities/search-hit';
 import { ConfigurationService } from '../../services/configuration.service';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
-import { Localizable } from 'yti-common-ui/types/localization';
 import { CodeScheme } from '../../entities/code-scheme';
+import { Localizable } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-searchhits-list',
   styleUrls: ['./searchhits-list.component.scss'],
-  template: `    
+  template: `
       <div *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
         <div class="deep-results-section-title" >{{'theCodes' | translate}}</div>
         <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsCodesAll && searchHitsCodesAll.length > 0">
@@ -17,14 +17,14 @@ import { CodeScheme } from '../../entities/code-scheme';
             <a  class="deep-results-show-all" *ngIf="totalNrOfSearchHitsCodes > 6" (click)="navigateToCodeSchemeFromCode(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsCodes} }})</a>
         </div>
       </div>
-      
+
       <div *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
         <div class="deep-results-section-title">{{'theExtensions' | translate}}</div>
         <div class="deep-results-section-content" style="color:#2a6ebb;" *ngIf="searchHitsExtensionsAll && searchHitsExtensionsAll.length > 0">
           <a class="deep-results-hit" title="{{allLanguagesLabel(sh.prefLabel)}}" *ngFor="let sh of searchHitsExtensionsAll" (click)="navigateToExtension(sh.entityCodeValue, sh.codeSchemeCodeValue, sh.codeRegistryCodeValue)"><span [innerHTML]="getSearchHitLabelForScreen(sh)"></span></a>
           <a  class="deep-results-show-all" *ngIf="totalNrOfSearchHitsExtensions > 6" (click)="navigateToCodeSchemeFromExtension(codeScheme.codeValue, codeScheme.codeRegistry.codeValue)">({{'See all results' | translate : {count: totalNrOfSearchHitsExtensions} }})</a>
         </div>
-        
+
       </div>
   `
 })

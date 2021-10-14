@@ -2,8 +2,8 @@ import { Component, Injectable, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExternalReference } from '../../entities/external-reference';
 import { EditableService } from '../../services/editable.service';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodePlain } from '../../entities/code-simple';
+import { ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-link-show-modal',

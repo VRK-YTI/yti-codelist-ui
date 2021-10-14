@@ -39,12 +39,10 @@ import {
   CodeSchemeCodesImportModalComponent,
   CodeSchemeCodesImportModalService
 } from './components/codescheme/code-scheme-codes-import-modal.component';
-import { AUTHENTICATED_USER_ENDPOINT, LOCALIZER, YtiCommonModule } from 'yti-common-ui';
 import { CodeSchemeCreateComponent } from './components/codescheme/code-scheme-create.component';
 import { CodeCreateComponent } from './components/code/code-create.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { InformationAboutServiceComponent } from './components/information/information-about-service.component';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { ExternalReferencesInputComponent } from './components/form/external-references-input.component';
 import { StatusInputComponent } from './components/form/status-input.component';
 import { DateInputComponent } from './components/form/date-input.component';
@@ -59,7 +57,6 @@ import {
   TerminologyIntegrationModalService
 } from './components/terminology-integration/terminology-integration-codescheme-modal.component';
 import { EditableService } from './services/editable.service';
-import { LazyForModule } from 'angular-lazy-for/dist/lazyFor.module';
 import { CodeInputComponent } from './components/form/code-input.component';
 import { CodeSchemeExtensionsComponent } from './components/codescheme/code-scheme-extensions.component';
 import { ExtensionCreateComponent } from './components/extension/extension-create.component';
@@ -129,6 +126,14 @@ import {
   SuggestConceptModalComponent,
   SuggestConceptModalService
 } from './components/terminology-integration/suggest-concept-modal.component';
+import enPo from 'raw-loader!po-loader?format=mf!../../po/en.po';
+import svPo from 'raw-loader!po-loader?format=mf!../../po/sv.po';
+import fiPo from 'raw-loader!po-loader?format=mf!../../po/fi.po';
+import fiCommonPo from 'raw-loader!po-loader?format=mf!../../node_modules/@vrk-yti/yti-common-ui/po/fi.po';
+import svCommonPo from 'raw-loader!po-loader?format=mf!../../node_modules/@vrk-yti/yti-common-ui/po/sv.po';
+import enCommonPo from 'raw-loader!po-loader?format=mf!../../node_modules/@vrk-yti/yti-common-ui/po/en.po';
+import { AUTHENTICATED_USER_ENDPOINT, LOCALIZER, ModalService, YtiCommonModule } from '@vrk-yti/yti-common-ui';
+import { LazyForDirective } from './components/common/lazyFor.directive';
 
 function removeEmptyValues(obj: {}) {
 
@@ -143,20 +148,22 @@ function removeEmptyValues(obj: {}) {
   return result;
 }
 
+
 const localizations: { [lang: string]: any } = {
   fi: {
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/fi.po`))),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/fi.po`)))
+    ...removeEmptyValues(JSON.parse(fiPo)),
+    ...removeEmptyValues(JSON.parse(fiCommonPo))
   },
   sv: {
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/sv.po`))),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/sv.po`)))
+    ...removeEmptyValues(JSON.parse(svPo)),
+    ...removeEmptyValues(JSON.parse(svCommonPo))
   },
   en: {
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!../../po/en.po`))),
-    ...removeEmptyValues(JSON.parse(require(`raw-loader!po-loader?format=mf!yti-common-ui/po/en.po`)))
+    ...removeEmptyValues(JSON.parse(enPo)),
+    ...removeEmptyValues(JSON.parse(enCommonPo))
   }
 };
+
 
 const appRoutes: Routes = [
   { path: '', component: FrontpageComponent, pathMatch: 'full' },
@@ -304,7 +311,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeExtensionMemberValuesInputComponent,
     ExtensionCrossreferencelistComponent,
     CodeSchemeSingleInputComponent,
-    SearchHitsListComponent
+    SearchHitsListComponent,
+    LazyForDirective
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -329,17 +337,16 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot(),
+    RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }),
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader
+        useFactory: (createTranslateLoader)
       },
       missingTranslationHandler: { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler },
     }),
     YtiCommonModule,
-    LazyForModule,
     ClipboardModule
     // ,SelectModule
   ],

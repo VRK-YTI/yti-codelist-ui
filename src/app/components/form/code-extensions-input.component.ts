@@ -4,8 +4,8 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { Extension } from '../../entities/extension';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { LanguageService } from '../../services/language.service';
+import { comparingLocalizable } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-extensions-input',

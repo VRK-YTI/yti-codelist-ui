@@ -3,9 +3,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { Extension } from '../../entities/extension';
+import { ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-member-import-modal',

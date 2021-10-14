@@ -2,13 +2,12 @@ import { AfterViewInit, Component, ElementRef, Injectable, OnInit, ViewChild } f
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../../services/data.service';
 import { LanguageService } from '../../services/language.service';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, concat, Observable } from 'rxjs';
 import { debounceTime, skip, take } from 'rxjs/operators';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeListErrorModalService } from '../common/error-modal.service';
-import { anyMatching } from 'yti-common-ui/utils/array';
+import { anyMatching, ModalService } from '@vrk-yti/yti-common-ui';
 
 function debounceSearch(search$: Observable<string>): Observable<string> {
   const initialSearch = search$.pipe(take(1));

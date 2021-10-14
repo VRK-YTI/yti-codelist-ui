@@ -1,6 +1,6 @@
-import { Localizable } from 'yti-common-ui/types/localization';
 import { MessagingResource } from './messaging-resource';
 import { MessagingUserType } from '../services/messaging-api-schema';
+import { Localizable } from '@vrk-yti/yti-common-ui';
 
 export class MessagingUser {
 

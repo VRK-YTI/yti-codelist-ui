@@ -3,9 +3,9 @@ import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
 import { EditableService } from '../../services/editable.service';
 import { CodeRegistry } from '../../entities/code-registry';
 import { DataService } from '../../services/data.service';
-import { Options } from 'yti-common-ui/components/dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+import { Options } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-registry-input',
@@ -25,7 +25,7 @@ import { LanguageService } from '../../services/language.service';
         </div>
         <span *ngIf="!editing">{{selection.prefLabel | translateValue:false}}</span>
       </dd>
-    </dl>  
+    </dl>
   `
 })
 export class RegistryInputComponent implements ControlValueAccessor, OnInit {

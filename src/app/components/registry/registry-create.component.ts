@@ -10,8 +10,8 @@ import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { Organization } from '../../entities/organization';
 import { map, tap } from 'rxjs/operators';
-import { requiredList } from 'yti-common-ui/utils/validator';
 import { nonEmptyLocalizableValidator } from '../../utils/validators';
+import { requiredList } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-registry-create',

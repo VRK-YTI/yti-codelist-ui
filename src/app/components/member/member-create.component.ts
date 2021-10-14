@@ -15,7 +15,7 @@ import { Code } from '../../entities/code';
 import { MemberValue } from '../../entities/member-value';
 import { ValueType } from '../../entities/value-type';
 import { ConfigurationService } from '../../services/configuration.service';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { comparingLocalizable } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-member-create',

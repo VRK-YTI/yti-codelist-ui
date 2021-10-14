@@ -2,11 +2,9 @@ import { AfterViewInit, Component, ElementRef, Injectable, Input, OnInit, ViewCh
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
-import { contains } from 'yti-common-ui/utils/array';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { Organization } from '../../entities/organization';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
+import { comparingLocalizable, contains, ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-search-linked-organizatione-modal',

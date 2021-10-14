@@ -1,12 +1,8 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Location } from 'yti-common-ui/types/location';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { ExtensionSimpleType } from '../services/api-schema';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { PropertyType } from './property-type';
-import { contains } from 'yti-common-ui/utils/array';
+import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer } from '@vrk-yti/yti-common-ui';
 
 export class ExtensionSimple {
 

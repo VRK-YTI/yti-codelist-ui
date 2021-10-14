@@ -2,12 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Member } from '../../entities/member';
 import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
-import { contains } from 'yti-common-ui/utils/array';
-import { localizableMatches } from 'yti-common-ui/utils/localization';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigurationService } from '../../services/configuration.service';
+import { contains, localizableMatches } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-extension-crossreferencelist',

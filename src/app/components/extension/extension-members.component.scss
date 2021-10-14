@@ -1,4 +1,4 @@
-@import '~yti-common-ui/theme/variables';
+@import '~@vrk-yti/yti-common-ui/theme/variables';
 
 .emptyMembers {
   margin-right: 200px;
@@ -6,7 +6,7 @@
   margin-top: 5px;
 }
 
-:host /deep/ .extensions {
+:host ::ng-deep .extensions {
 
   color: $primary;
   font-size: large;

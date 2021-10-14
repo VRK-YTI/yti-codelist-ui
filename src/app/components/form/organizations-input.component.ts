@@ -1,14 +1,13 @@
 import { Component, Input, Optional, Self } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { DataService } from '../../services/data.service';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Organization } from '../../entities/organization';
 import { SearchLinkedOrganizationModalService } from './search-linked-organization-modal.component';
 import { LanguageService } from '../../services/language.service';
+import { comparingLocalizable, ignoreModalClose } from '@vrk-yti/yti-common-ui';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
 

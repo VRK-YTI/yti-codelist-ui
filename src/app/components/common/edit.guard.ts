@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
+import { ConfirmationModalService } from '@vrk-yti/yti-common-ui';
 import { EditingComponent } from '../../services/editable.service';
-import { ConfirmationModalService } from 'yti-common-ui/components/confirmation-modal.component';
 
 @Injectable()
 export class EditGuard implements CanDeactivate<EditingComponent> {
