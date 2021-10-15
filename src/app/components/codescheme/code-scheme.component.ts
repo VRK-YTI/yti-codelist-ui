@@ -194,7 +194,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
       if (codes.length > 0) {
-        this.nav.activeId = 'codelist_codes_tab';
+        this.initialTabId = 'codelist_codes_tab';
       }
     });
     this.refreshCodeScheme();
@@ -239,7 +239,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.nav.activeId = event.nextId;
+          this.initialTabId = event.nextId;
         }, ignoreModalClose);
     }
   }
