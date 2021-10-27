@@ -84,7 +84,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
 
     this.activatedRoute.queryParams.subscribe(params => {
-      this.initialTabId = params['activeTab'];
+      this.initialTabId = params['activeTab'] ?? this.initialTabId;
     });
 
     if (!registryCodeValue || !schemeCodeValue) {
@@ -230,7 +230,6 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   }
 
   onNavChange(event: NgbNavChangeEvent) {
-
     this.languageCodes = null;
 
     if (this.isEditing()) {
