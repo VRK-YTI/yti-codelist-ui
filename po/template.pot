@@ -4,177 +4,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "No codes were found with the starting status. No changes to code statuses."
-msgstr ""
-
-msgid "Status changed to one code."
-msgstr ""
-
-msgid "Status changed to "
-msgstr ""
-
-msgid " codes."
-msgstr ""
-
-msgid "Choose starting status"
-msgstr ""
-
-msgid "Choose target status"
-msgstr ""
-
-msgid "All link types"
-msgstr ""
-
-msgid "link"
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Create new"
-msgstr ""
-
-msgid "{{title}}"
-msgstr ""
-
-msgid ""
-"No new members created. All codes have a corresponding member already or "
-"there are no codes in the scope of the extension."
-msgstr ""
-
-msgid " missing member created."
-msgstr ""
-
-msgid " missing members created."
-msgstr ""
-
-msgid "Select code"
-msgstr ""
-
-msgid "Search code"
-msgstr ""
-
-msgid "Add code list"
-msgstr ""
-
-msgid "Select code list"
-msgstr ""
-
-msgid "Search code list"
-msgstr ""
-
-msgid "No registry"
-msgstr ""
-
-msgid "Valid from"
-msgstr ""
-
-msgid "Valid to"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "{{errorKey}}"
-msgstr ""
-
-msgid "Add link"
-msgstr ""
-
-msgid "Add information domain"
-msgstr ""
-
-msgid "Select information domain"
-msgstr ""
-
-msgid "Search information domain"
-msgstr ""
-
-msgid "Copy value to clipboard"
-msgstr ""
-
-msgid "Copied to clipboard"
-msgstr ""
-
-msgid "Add language code"
-msgstr ""
-
-msgid "Select language code"
-msgstr ""
-
-msgid "Search language code"
-msgstr ""
-
-msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
-msgstr ""
-
-msgid "Select member"
-msgstr ""
-
-msgid "Search member"
-msgstr ""
-
-msgid "Add organization"
-msgstr ""
-
-msgid "Select organization"
-msgstr ""
-
-msgid "Search organization"
+msgid "Reference Data"
 msgstr ""
 
 msgid "Code list"
-msgstr ""
-
-msgid "No search results"
-msgstr ""
-
-msgid "All statuses"
-msgstr ""
-
-msgid "Filter results"
-msgstr ""
-
-msgid "All codeschemes"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
-msgid "theCodes"
-msgstr ""
-
-msgid "See all results"
-msgstr ""
-
-msgid "theExtensions"
-msgstr ""
-
-msgid "All registries"
-msgstr ""
-
-msgid "All organizations"
-msgstr ""
-
-msgid "All extensionPropertyTypes"
-msgstr ""
-
-msgid "REDIRECTING_TO_FRONT_PAGE"
-msgstr ""
-
-msgid "All vocabularies"
-msgstr ""
-
-msgid "All languages"
-msgstr ""
-
-msgid "Reference Data"
 msgstr ""
 
 msgid "LABEL_TEXT_CODE_VALUE"
@@ -258,6 +91,9 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Search for code"
 msgstr ""
 
@@ -306,9 +142,6 @@ msgstr ""
 msgid "FeedbackChannel"
 msgstr ""
 
-msgid "{{pageTitle}}"
-msgstr ""
-
 msgid "The content imported to the new version"
 msgstr ""
 
@@ -322,6 +155,9 @@ msgid "Create the new codelist as cumulative"
 msgstr ""
 
 msgid "CODE EXTENSIONS"
+msgstr ""
+
+msgid "Add code list"
 msgstr ""
 
 msgid ""
@@ -367,9 +203,6 @@ msgstr ""
 msgid "Cumulative code list"
 msgstr ""
 
-msgid "cumulative"
-msgstr ""
-
 msgid "Default code"
 msgstr ""
 
@@ -379,7 +212,13 @@ msgstr ""
 msgid "Update code list's codes' statuses"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "Name"
+msgstr ""
+
+msgid "Status"
 msgstr ""
 
 msgid "You will receive an email notification when this resource changes."
@@ -425,9 +264,6 @@ msgid "Create DPM typed domain"
 msgstr ""
 
 msgid "Import extensions"
-msgstr ""
-
-msgid "{{deleteCodeSchemeButtonTitle}}"
 msgstr ""
 
 msgid "Export"
@@ -496,6 +332,9 @@ msgstr ""
 msgid "There are no links available, please create new ones."
 msgstr ""
 
+msgid "Select"
+msgstr ""
+
 msgid "Show link"
 msgstr ""
 
@@ -509,6 +348,9 @@ msgid "variantModalPageTitle"
 msgstr ""
 
 msgid "variantModalInstructionText"
+msgstr ""
+
+msgid "No search results"
 msgstr ""
 
 msgid "LABEL_TEXT_CREATE_EXTENSION_ID"
@@ -596,6 +438,9 @@ msgid "to_extensions"
 msgstr ""
 
 msgid "Filter with information domain"
+msgstr ""
+
+msgid "Filter results"
 msgstr ""
 
 msgid "Search did not find any code lists."
@@ -698,12 +543,6 @@ msgid "CONCEPT_SEARCH_MATCHED_RESULTS_LARGE"
 msgstr ""
 
 msgid "CONCEPT_SEARCH_MATCHED_RESULTS"
-msgstr ""
-
-msgid "{{terminologyIntegrationModalPageTitle}}"
-msgstr ""
-
-msgid "{{terminologyIntegrationModalInstructionText}}"
 msgstr ""
 
 msgid "Concept suggestion instruction text"
@@ -993,6 +832,9 @@ msgstr ""
 msgid "INFO_TEXT_CODELIST_FEEDBACK_CHANNEL"
 msgstr ""
 
+msgid "INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL"
+msgstr ""
+
 msgid "INFO_TEXT_EMAIL_SUBSCRIPTIONS"
 msgstr ""
 
@@ -1021,6 +863,12 @@ msgid "INCOMPLETE"
 msgstr ""
 
 msgid "required"
+msgstr ""
+
+msgid "All statuses"
+msgstr ""
+
+msgid "All languages"
 msgstr ""
 
 msgid "Member"
@@ -1548,6 +1396,9 @@ msgstr ""
 msgid "CREATE MISSING MEMBERS MODAL BODY TEXT"
 msgstr ""
 
+msgid "All extensionPropertyTypes"
+msgstr ""
+
 msgid "Please wait. This could take a while..."
 msgstr ""
 
@@ -1566,6 +1417,12 @@ msgstr ""
 msgid "falsecumulative"
 msgstr ""
 
+msgid "theCodes"
+msgstr ""
+
+msgid "theExtensions"
+msgstr ""
+
 msgid "Delete code list version"
 msgstr ""
 
@@ -1579,6 +1436,12 @@ msgid "Show JSON"
 msgstr ""
 
 msgid "INFO_TEXT_MASS_MIGRATE_CODELIST_CODES_MODAL_HELP_TEXT"
+msgstr ""
+
+msgid "Choose starting status"
+msgstr ""
+
+msgid "Choose target status"
 msgstr ""
 
 msgid "Change code statuses at the same time?"
@@ -1651,4 +1514,120 @@ msgid "memberValueRequired"
 msgstr ""
 
 msgid "localizableValueRequired"
+msgstr ""
+
+msgid "No codes were found with the starting status. No changes to code statuses."
+msgstr ""
+
+msgid "Status changed to one code."
+msgstr ""
+
+msgid "Status changed to "
+msgstr ""
+
+msgid " codes."
+msgstr ""
+
+msgid "All link types"
+msgstr ""
+
+msgid "link"
+msgstr ""
+
+msgid "Create new"
+msgstr ""
+
+msgid ""
+"No new members created. All codes have a corresponding member already or "
+"there are no codes in the scope of the extension."
+msgstr ""
+
+msgid " missing member created."
+msgstr ""
+
+msgid " missing members created."
+msgstr ""
+
+msgid "Select code"
+msgstr ""
+
+msgid "Search code"
+msgstr ""
+
+msgid "Select code list"
+msgstr ""
+
+msgid "Search code list"
+msgstr ""
+
+msgid "No registry"
+msgstr ""
+
+msgid "Valid from"
+msgstr ""
+
+msgid "Valid to"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Add link"
+msgstr ""
+
+msgid "Add information domain"
+msgstr ""
+
+msgid "Select information domain"
+msgstr ""
+
+msgid "Search information domain"
+msgstr ""
+
+msgid "Copy value to clipboard"
+msgstr ""
+
+msgid "Copied to clipboard"
+msgstr ""
+
+msgid "Add language code"
+msgstr ""
+
+msgid "Select language code"
+msgstr ""
+
+msgid "Search language code"
+msgstr ""
+
+msgid "Select member"
+msgstr ""
+
+msgid "Search member"
+msgstr ""
+
+msgid "Add organization"
+msgstr ""
+
+msgid "Select organization"
+msgstr ""
+
+msgid "Search organization"
+msgstr ""
+
+msgid "All codeschemes"
+msgstr ""
+
+msgid "See all results"
+msgstr ""
+
+msgid "All registries"
+msgstr ""
+
+msgid "All organizations"
+msgstr ""
+
+msgid "REDIRECTING_TO_FRONT_PAGE"
+msgstr ""
+
+msgid "All vocabularies"
 msgstr ""

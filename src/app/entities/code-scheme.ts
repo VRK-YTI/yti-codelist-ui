@@ -1,20 +1,16 @@
 import { AbstractResource } from './abstract-resource';
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Location } from 'yti-common-ui/types/location';
 import { CodeRegistry } from './code-registry';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { ExternalReference } from './external-reference';
 import { EditableEntity } from './editable-entity';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { Moment } from 'moment';
 import { CodeSchemeType } from '../services/api-schema';
-import { contains } from 'yti-common-ui/utils/array';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { CodePlain } from './code-simple';
 import { ExtensionSimple } from './extension-simple';
 import { CodeSchemeListItem } from './code-scheme-list-item';
 import { Organization } from './organization';
 import { SearchHit } from './search-hit';
+import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer } from '@vrk-yti/yti-common-ui';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 

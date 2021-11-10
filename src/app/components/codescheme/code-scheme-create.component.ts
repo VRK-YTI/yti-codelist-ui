@@ -3,12 +3,9 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators }
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeSchemeType } from '../../services/api-schema';
 import { from, Observable } from 'rxjs';
-import { requiredList } from 'yti-common-ui/utils/validator';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
 import { CodePlain } from '../../entities/code-simple';
@@ -18,11 +15,10 @@ import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { LanguageService } from '../../services/language.service';
 import { flatMap, map, tap } from 'rxjs/operators';
-import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { Organization } from '../../entities/organization';
 import { nonEmptyLocalizableValidator } from '../../utils/validators';
-import { UserService } from 'yti-common-ui/services/user.service';
+import { contains, ignoreModalClose, requiredList, restrictedStatuses, Status, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-scheme-create',

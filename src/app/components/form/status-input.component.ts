@@ -1,7 +1,7 @@
 import { Component, Input, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
+import { Status } from '@vrk-yti/yti-common-ui';
 import { EditableService } from '../../services/editable.service';
-import { Status } from 'yti-common-ui/entities/status';
 
 @Component({
   selector: 'app-status-input',

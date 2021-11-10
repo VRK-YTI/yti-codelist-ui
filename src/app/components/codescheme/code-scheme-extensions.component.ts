@@ -1,20 +1,20 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CodeScheme } from '../../entities/code-scheme';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { CodeSchemeComponent } from './code-scheme.component';
 import { Extension, groupByType, PropertyTypeExtensions } from '../../entities/extension';
 import { ExtensionImportModalService } from '../extension/extension-import-modal.component';
-import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-code-scheme-extensions',
   templateUrl: './code-scheme-extensions.component.html',
   styleUrls: ['./code-scheme-extensions.component.scss']
 })
-export class CodeSchemeExtensionsComponent {
-  @ViewChild('secondaryTabSet') secondaryTabSet: NgbTabset;
+export class CodeSchemeExtensionsComponent implements OnInit, OnChanges {
+  @ViewChild('secondaryNav') secondaryNav: ElementRef<NgbNav>;
 
   @Input() extensions: Extension[];
   @Input() codeScheme: CodeScheme;
@@ -26,7 +26,17 @@ export class CodeSchemeExtensionsComponent {
               private translateService: TranslateService) {
   }
 
-  get extensionsByType(): PropertyTypeExtensions[] {
+  ngOnInit(): void {
+    this.extensionsByType = this.getExtensionsByType();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.extensionsByType = this.getExtensionsByType();
+  }
+
+  public extensionsByType: PropertyTypeExtensions[];
+
+  private getExtensionsByType(): PropertyTypeExtensions[] {
     const filteredExtensions: Extension[] = this.extensions.filter(es => es.propertyType.context === 'Extension')
     return groupByType(this.translateService, filteredExtensions);
   }

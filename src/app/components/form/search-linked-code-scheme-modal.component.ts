@@ -2,15 +2,12 @@ import { AfterViewInit, Component, ElementRef, Injectable, Input, OnDestroy, OnI
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, combineLatest, concat, Observable, Subscription } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
-import { contains } from 'yti-common-ui/utils/array';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { CodeScheme } from '../../entities/code-scheme';
 import { DataService } from '../../services/data.service';
 import { debounceTime, map, skip, take, tap } from 'rxjs/operators';
-import { selectableStatuses, Status } from 'yti-common-ui/entities/status';
-import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Code } from '../../entities/code';
+import { contains, FilterOptions, ModalService, selectableStatuses, Status } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-search-linked-code-scheme-modal',

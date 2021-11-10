@@ -1,13 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ignoreModalClose } from 'yti-common-ui//utils/modal';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { from, Observable } from 'rxjs';
 import { LanguageService } from '../../services/language.service';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
@@ -18,8 +16,8 @@ import { changeToRestrictedStatus } from '../../utils/status-check';
 import { MemberSimple } from '../../entities/member-simple';
 import { ConfigurationService } from '../../services/configuration.service';
 import { CodeScheme } from '../../entities/code-scheme';
-import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { AlertModalService, ignoreModalClose, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-extension',
@@ -29,7 +27,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ExtensionComponent implements OnInit, EditingComponent, AfterViewInit {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: ElementRef<NgbNav>;
 
   extension: Extension;
   codeScheme: CodeScheme;
@@ -105,7 +103,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
     return this.extension == null || this.codeScheme == null || this.members == null || this.deleting;
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
+  onNavChange(event: NgbNavChangeEvent) {
 
     if (this.isEditing()) {
       event.preventDefault();
@@ -113,7 +111,7 @@ export class ExtensionComponent implements OnInit, EditingComponent, AfterViewIn
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.nav.nativeElement.activeId = event.nextId;
         }, ignoreModalClose);
     }
   }

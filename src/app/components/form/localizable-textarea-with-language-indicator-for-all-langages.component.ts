@@ -2,8 +2,8 @@ import { Component, Input, OnChanges, OnInit, Optional, Self, SimpleChange, Simp
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
-import { Localizable } from 'yti-common-ui/types/localization';
 import { CodePlain } from '../../entities/code-simple';
+import { Localizable } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-localizable-textarea-with-language-indicator-for-all-languages',
@@ -59,7 +59,7 @@ import { CodePlain } from '../../entities/code-simple';
       <div *ngIf="htmlIdentifierPrefix === 'codelist_feedback_channel_textarea' && editing " style="margin-bottom: 1em">
         <span translate>INFO_TEXT_CLARIFICATION_OF_FEEDBACK_CHANNEL</span>
       </div>
-        
+
       <dd>
         <div *ngIf="editing" class="form-group">
           <div *ngFor="let lang of realLanguageCodes" class="multi-lang-repeat-textarea">

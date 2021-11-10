@@ -1,8 +1,7 @@
+import { allowedTargetStatuses, contains, restrictedStatuses, Status } from '@vrk-yti/yti-common-ui';
 import { Code } from '../entities/code';
 import { CodeScheme } from '../entities/code-scheme';
 import { Extension } from '../entities/extension';
-import { restrictedStatuses, Status, allowedTargetStatuses } from 'yti-common-ui/entities/status';
-import { contains } from 'yti-common-ui/utils/array';
 
 export type ResourceWithStatus = Code | CodeScheme | Extension;
 

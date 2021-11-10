@@ -6,18 +6,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { formatDate, validDateRange } from '../../utils/date';
 import { CodeScheme } from '../../entities/code-scheme';
 import { CodeType, ExtensionType, MemberSimpleType, MemberValueType } from '../../services/api-schema';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { from, Observable } from 'rxjs';
 import { TerminologyIntegrationModalService } from '../terminology-integration/terminology-integration-codescheme-modal.component';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { Concept } from '../../entities/concept';
 import { LocationService } from '../../services/location.service';
 import { ExternalReference } from '../../entities/external-reference';
 import { flatMap, map, tap } from 'rxjs/operators';
-import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { ExtensionSimple } from '../../entities/extension-simple';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { LanguageService } from '../../services/language.service';
 import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
@@ -25,6 +21,7 @@ import { MemberValue } from '../../entities/member-value';
 import { PropertyType } from '../../entities/property-type';
 import { ValueType } from '../../entities/value-type';
 import { MemberValueValidators } from '../form/member-value-validators';
+import { comparingLocalizable, contains, ignoreModalClose, restrictedStatuses, Status } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-create',

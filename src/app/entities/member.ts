@@ -1,16 +1,14 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
-import { Location } from 'yti-common-ui/types/location';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { EditableEntity } from './editable-entity';
 import { Moment } from 'moment';
 import { MemberType } from '../services/api-schema';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { Extension } from './extension';
 import { MemberSimple } from './member-simple';
 import { TranslateService } from '@ngx-translate/core';
 import { Code } from './code';
 import { MemberValue } from './member-value';
 import { ValueType } from './value-type';
+import { Location, Localizable, hasLocalization, Localizer } from '@vrk-yti/yti-common-ui';
 
 export class Member implements EditableEntity {
 

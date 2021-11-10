@@ -4,7 +4,6 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { EditableService } from '../../services/editable.service';
 import { LanguageService } from '../../services/language.service';
 import { validDateRange } from '../../utils/date';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { DataService } from '../../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Extension } from '../../entities/extension';
@@ -13,6 +12,7 @@ import { CodeScheme } from '../../entities/code-scheme';
 import { ConfigurationService } from '../../services/configuration.service';
 import { UserSimple } from '../../entities/user-simple';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
+import { UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-extension-information',

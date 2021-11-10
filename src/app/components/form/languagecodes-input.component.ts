@@ -2,14 +2,13 @@ import { Component, EventEmitter, Input, OnDestroy, Optional, Output, Self } fro
 import { Code } from '../../entities/code';
 import { EditableService } from '../../services/editable.service';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { SearchLinkedCodeModalService } from './search-linked-code-modal.component';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { DataService } from '../../services/data.service';
 import { Observable, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CodePlain } from '../../entities/code-simple';
 import { LanguageService } from '../../services/language.service';
+import { comparingLocalizable, ignoreModalClose } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-languagecodes-input',

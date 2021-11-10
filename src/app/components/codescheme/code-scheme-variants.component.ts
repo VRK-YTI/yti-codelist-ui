@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CodeScheme } from '../../entities/code-scheme';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { DataService } from '../../services/data.service';
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { ConfigurationService } from '../../services/configuration.service';
 import { LanguageService } from '../../services/language.service';
+import { ignoreModalClose } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-scheme-variants',

@@ -2,10 +2,9 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditableService } from '../../services/editable.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ModalService } from 'yti-common-ui/services/modal.service';
-import { Localizable } from 'yti-common-ui/types/localization';
 import { LanguageService } from '../../services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Localizable, ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-suggest-concept-modal',

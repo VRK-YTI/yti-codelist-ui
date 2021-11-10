@@ -4,18 +4,15 @@ import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationService } from '../../services/location.service';
 import { EditableService, EditingComponent } from '../../services/editable.service';
-import { NgbTabChangeEvent, NgbTabset } from '@ng-bootstrap/ng-bootstrap';
-import { ignoreModalClose } from 'yti-common-ui//utils/modal';
+import { NgbNav, NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
-import { UserService } from 'yti-common-ui/services/user.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { CodeListErrorModalService } from '../common/error-modal.service';
 import { AuthorizationManager } from '../../services/authorization-manager.service';
 import { Extension } from '../../entities/extension';
 import { ExtensionImportModalService } from '../extension/extension-import-modal.component';
 import { CodeSchemeListItem } from '../../entities/code-scheme-list-item';
-import { comparingLocalizable } from 'yti-common-ui/utils/comparator';
 import { CodeschemeVariantModalService } from '../codeschemevariant/codescheme-variant.modal.component';
 import { switchMap, tap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
@@ -26,9 +23,9 @@ import { ExtensionSimple } from '../../entities/extension-simple';
 import { CodeSchemeMassMigrateCodeStatusesModalService } from './code-scheme-mass-migrate-code-statuses-modal.component';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiResponseType } from '../../services/api-schema';
-import { AlertModalService } from 'yti-common-ui/components/alert-modal.component';
 import { MessagingService } from '../../services/messaging-service';
 import { ConfigurationService } from '../../services/configuration.service';
+import { AlertModalService, comparingLocalizable, ignoreModalClose, UserService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-code-scheme',
@@ -38,7 +35,7 @@ import { ConfigurationService } from '../../services/configuration.service';
 })
 export class CodeSchemeComponent implements OnInit, EditingComponent {
 
-  @ViewChild('tabSet') tabSet: NgbTabset;
+  @ViewChild('nav') nav: NgbNav;
 
   codeScheme: CodeScheme;
   previouslySavedCodeScheme: CodeScheme | undefined; // every time we just before saving, CS as it was last read from ES index goes here
@@ -51,7 +48,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
   deleteCodeSchemeButtonTitle = 'Delete code list';
   prefilledSearchTermForCode: string;
   initialTabId: string | undefined = undefined;
-  hasSubscription: boolean | undefined = undefined;
+  hasSubscription: boolean | null | undefined = undefined;
   changeCodeStatusesAsWellWhenSavingCodeScheme = false;
 
   constructor(private userService: UserService,
@@ -87,7 +84,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     const schemeCodeValue = this.route.snapshot.params.schemeCode;
 
     this.activatedRoute.queryParams.subscribe(params => {
-      this.initialTabId = params['activeTab'];
+      this.initialTabId = params['activeTab'] ?? this.initialTabId;
     });
 
     if (!registryCodeValue || !schemeCodeValue) {
@@ -182,7 +179,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   checkSubscription() {
 
-    if (this.isMessagingEnabled && !this.isAnonymous) {
+    if (this.isMessagingEnabled() && !this.isAnonymous) {
       this.messagingService.getSubscription(this.codeScheme.uri).subscribe(resource => {
         if (resource) {
           this.hasSubscription = true;
@@ -197,7 +194,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     this.dataService.getPlainCodes(this.codeScheme.codeRegistry.codeValue, this.codeScheme.codeValue).subscribe(codes => {
       this.codes = codes;
       if (codes.length > 0) {
-        this.tabSet.activeId = 'codelist_codes_tab';
+        this.initialTabId = 'codelist_codes_tab';
       }
     });
     this.refreshCodeScheme();
@@ -221,7 +218,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.codes == null ||
       this.extensions == null ||
       this.deleting ||
-      (!this.isAnonymous && this.hasSubscription == null);
+      (!this.isAnonymous && this.hasSubscription === null);
   }
 
   get contentLanguages(): CodePlain[] {
@@ -232,8 +229,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
     }
   }
 
-  onTabChange(event: NgbTabChangeEvent) {
-
+  onNavChange(event: NgbNavChangeEvent) {
     this.languageCodes = null;
 
     if (this.isEditing()) {
@@ -242,7 +238,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
       this.confirmationModalService.openEditInProgress()
         .then(() => {
           this.cancelEditing();
-          this.tabSet.activeId = event.nextId;
+          this.initialTabId = event.nextId;
         }, ignoreModalClose);
     }
   }
@@ -598,7 +594,7 @@ export class CodeSchemeComponent implements OnInit, EditingComponent {
 
   changeLanguages(codes: CodePlain[]) {
 
-    setTimeout(this.changeLanguagesAfterTimeout(codes), 0);
+    setTimeout(() => this.changeLanguagesAfterTimeout(codes), 0);
   }
 
   toggleChangeCodeStatusesAsWellWhenSavingCodeScheme(doItOrNot: boolean) {

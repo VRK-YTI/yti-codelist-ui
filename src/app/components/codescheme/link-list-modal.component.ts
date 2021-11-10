@@ -3,14 +3,13 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EditableService } from '../../services/editable.service';
 import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
 import { LinkCreateModalService } from './link-create-modal.component';
-import { ModalService } from 'yti-common-ui/services/modal.service';
 import { LanguageService } from '../../services/language.service';
 import { CodePlain } from '../../entities/code-simple';
 import { PropertyType } from '../../entities/property-type';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
-import { FilterOptions } from 'yti-common-ui/components/filter-dropdown.component';
 import { CodeScheme } from '../../entities/code-scheme';
+import { FilterOptions, ModalService } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-link-list-modal',

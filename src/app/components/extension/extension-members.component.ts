@@ -2,9 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Member } from '../../entities/member';
 import { Extension } from '../../entities/extension';
 import { MemberSimple } from '../../entities/member-simple';
-import { contains } from 'yti-common-ui/utils/array';
-import { localizableMatches } from 'yti-common-ui/utils/localization';
 import { Subscription } from 'rxjs';
+import { contains, localizableMatches } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-extension-members',
@@ -61,7 +60,7 @@ export class ExtensionMembersComponent {
   }
 
   get numberOfMembers() {
-    return this.searchTermHasValue ? this.filteredMembers.length : this.members.length;
+    return this.searchTermHasValue() ? this.filteredMembers.length : this.members.length;
   }
 
   get numberOfExpanded() {
@@ -117,7 +116,7 @@ export class ExtensionMembersComponent {
   }
 
   allowExpandAllAndCollapseAll() {
-    return this.hasHierarchy && this.members.length <= 500;
+    return this.hasHierarchy() && this.members.length <= 500;
   }
 
   get howManyMissingMembersGotCreated() {

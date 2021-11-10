@@ -1,11 +1,10 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
 import { formatDate, formatDateTime, formatDisplayDateTime, parseDate, parseDateTime } from '../utils/date';
 import { Moment } from 'moment';
 import { MemberSimpleType } from '../services/api-schema';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberValue } from './member-value';
 import { CodePlainWithCodeScheme } from './code-simple-with-codescheme';
+import { hasLocalization, Localizable, Localizer } from '@vrk-yti/yti-common-ui';
 
 export class MemberSimple {
 

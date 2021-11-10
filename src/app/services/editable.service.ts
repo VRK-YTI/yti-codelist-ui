@@ -1,8 +1,7 @@
 import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
-import { UserService } from 'yti-common-ui/services/user.service';
+import { isModalClose, UserService } from '@vrk-yti/yti-common-ui';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import { CodeListErrorModalService } from '../components/common/error-modal.service';
-import { isModalClose } from 'yti-common-ui/utils/modal';
 
 export interface EditingComponent {
   isEditing(): boolean;
@@ -16,7 +15,7 @@ export class EditableService implements OnDestroy {
   saving$ = new BehaviorSubject<boolean>(false);
   cancel$ = new EventEmitter<void>();
 
-  private _onSave: (formValue: any) => Observable<any>;
+  private _onSave: ((formValue: any) => Observable<any>) | null;
 
   private loggedInSubscription: Subscription;
 
@@ -70,7 +69,7 @@ export class EditableService implements OnDestroy {
       },
       error(error: any) {
         that.saving$.next(false);
-        
+
         if (!isModalClose(error)) {
           that.errorModalService.openSubmitError(error);
         }

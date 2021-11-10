@@ -1,6 +1,6 @@
-@import '~yti-common-ui/theme/variables';
+@import '~@vrk-yti/yti-common-ui/theme/variables';
 
-:host /deep/ .codes {
+:host ::ng-deep .codes {
 
   color: $primary;
   font-size: large;

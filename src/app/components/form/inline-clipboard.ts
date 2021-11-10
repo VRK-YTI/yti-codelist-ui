@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { NgbPopover, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
-const clippyImage = require('../../../assets/clippy.svg');
+const clippyImage = '../../../assets/clippy.svg';
 
 @Component({
   selector: 'app-inline-clipboard',

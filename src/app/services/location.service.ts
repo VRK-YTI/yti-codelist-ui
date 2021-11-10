@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { CodeScheme } from '../entities/code-scheme';
 import { Code } from '../entities/code';
-import { Location } from 'yti-common-ui/types/location';
+import { Location } from '@vrk-yti/yti-common-ui';
 import { Extension } from '../entities/extension';
 import { Member } from '../entities/member';
 import { CodeRegistry } from '../entities/code-registry';

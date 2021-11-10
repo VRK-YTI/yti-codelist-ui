@@ -1,6 +1,5 @@
-import { Localizable, Localizer } from 'yti-common-ui/types/localization';
+import { hasLocalization, Localizable, Localizer } from '@vrk-yti/yti-common-ui';
 import { BaseResourceType } from '../services/api-schema';
-import { hasLocalization } from 'yti-common-ui/utils/localization';
 
 export abstract class AbstractResource {
 

@@ -3,7 +3,6 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, Validators }
 import { EditableService } from '../../services/editable.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
-import { restrictedStatuses, Status } from 'yti-common-ui/entities/status';
 import { formatDate, validDateRange } from '../../utils/date';
 import { ExtensionType } from '../../services/api-schema';
 import { from, Observable } from 'rxjs';
@@ -12,8 +11,8 @@ import { Location } from '@angular/common';
 import { LocationService } from '../../services/location.service';
 import { flatMap, map, tap } from 'rxjs/operators';
 import { PropertyType } from '../../entities/property-type';
-import { contains } from 'yti-common-ui/utils/array';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
+import { contains, restrictedStatuses, Status } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-extension-create',

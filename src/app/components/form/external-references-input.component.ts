@@ -1,8 +1,6 @@
 import { Component, Input, Optional, Self, OnInit, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl } from '@angular/forms';
-import { ignoreModalClose } from 'yti-common-ui/utils/modal';
 import { ExternalReference, groupByType, PropertyTypeExternalReferences } from '../../entities/external-reference';
-import { remove } from 'yti-common-ui/utils/array';
 import { EditableService } from '../../services/editable.service';
 import { CodeListConfirmationModalService } from '../common/confirmation-modal.service';
 import { LinkEditModalService } from '../codescheme/link-edit-modal.component';
@@ -15,6 +13,7 @@ import { PropertyType } from '../../entities/property-type';
 import { LinkCreateModalService } from '../codescheme/link-create-modal.component';
 import { Subscription } from 'rxjs';
 import { CodeScheme } from '../../entities/code-scheme';
+import { ignoreModalClose, remove } from '@vrk-yti/yti-common-ui';
 
 @Component({
   selector: 'app-external-references-input',
@@ -66,7 +65,7 @@ import { CodeScheme } from '../../entities/code-scheme';
                       [id]="propertyTypeOption.idIdentifier + '_propertytype_dropdown_button'"
                       (click)="addLink(propertyTypeOption)"
                       class="dropdown-item">
-              {{propertyTypeOption.prefLabel | translateValue:true}}</button>            
+              {{propertyTypeOption.prefLabel | translateValue:true}}</button>
             </div>
           </div>
         </div>

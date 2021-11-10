@@ -1,6 +1,6 @@
-import { ErrorModalService } from 'yti-common-ui/components/error-modal.component';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorModalService } from '@vrk-yti/yti-common-ui';
 
 @Injectable()
 export class CodeListErrorModalService {
