@@ -1494,10 +1494,10 @@
     "@types/source-list-map" "*"
     source-map "^0.6.1"
 
-"@vrk-yti/yti-common-ui@0.0.1-alpha-20210924.gcf4edee.feature-angular-library":
-  version "0.0.1-alpha-20210924.gcf4edee.feature-angular-library"
-  resolved "https://npm.pkg.github.com/download/@vrk-yti/yti-common-ui/0.0.1-alpha-20210924.gcf4edee.feature-angular-library/6affcc654dad72af0a7f0af47d330f882beabbe34d169d99bcbd052999d7c997#ff01f39049255877640788bc86dfe6f7920d53e4"
-  integrity sha512-4GIDKVMBVcXtc4V6/9RiChE90n55XbHlPIxpT98T5SB4Tv7edjcTedjT2m4DgYGiEq6uQ61/9j/bY5QdsFa+rA==
+"@vrk-yti/yti-common-ui@0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@vrk-yti/yti-common-ui/0.0.1/f19ea451b00decc7a2a95bf34dc19d2a1dd8dbf1a00421757ad5d37771a1548c#d5539f2b967c7af1043531701a7473f938741028"
+  integrity sha512-0FoJTbCs7b5rowaJ7OhCiUiw4SzhAkiTFIa/aJfRpN3KhKnRlXtV56ZEwgfEVHjbJIxfuEziNtSMmkMjGyw0VA==
   dependencies:
     tslib "^2.1.0"
 

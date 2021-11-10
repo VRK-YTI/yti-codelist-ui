@@ -16,8 +16,9 @@ ARG NPMRC
 # correct registry
 ARG VERBOSE
 
-# checkout a specific commit id of yti-common-ui project
-ARG COMMON_UI_COMMIT_ID=2ff813cdce4c2e913cb6226192f3757d2599a76b
+# checkout a specific branch & commit of yti-common-ui project
+ARG COMMON_UI_BRANCH=master
+ARG COMMON_UI_COMMIT_ID=cf301e4fddf3b1b8256bee3b94e66caa59bd2415
 
 RUN \
       # Install tooling
@@ -35,6 +36,7 @@ WORKDIR /usr/src
 RUN \
       git clone https://github.com/VRK-YTI/yti-common-ui && \
       cd yti-common-ui && \
+      git -c advice.detachedHead=false checkout $COMMON_UI_BRANCH && \
       git -c advice.detachedHead=false checkout $COMMON_UI_COMMIT_ID && \
       if [ -s "/tmp/_npmrc" ]; then cp /tmp/_npmrc .npmrc; fi && \
       npm `test "$VERBOSE" = "true" && echo "--loglevel verbose"` install && \
