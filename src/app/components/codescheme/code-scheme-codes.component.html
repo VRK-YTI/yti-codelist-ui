@@ -43,9 +43,14 @@
       </li>
     </ul>
     <ul *ngIf="listedCodes.length > 500" class="hugelist" id="codelist_code_list_huge">
-      <li *lazyFor="let code of listedCodes, withHeight 65">
-        <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>
-      </li>
+      <cdk-virtual-scroll-viewport style="height: 1000px" itemSize="20">
+        <ng-container *cdkVirtualFor="let code of listedCodes">
+          <li>
+            <app-hierarchy-code id="{{getIdIdentifier(code) + '_codelist_code_listitem'}}" [codes]="codes" [code]="code" [codeScheme]="codeScheme" [ignoreHierarchy]="searchTermHasValue()"></app-hierarchy-code>
+          </li>
+        </ng-container>
+      </cdk-virtual-scroll-viewport>
+
     </ul>
   </div>
 

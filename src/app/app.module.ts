@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ResolveEnd, Route, Router, RouterModule, Routes, UrlSegment, UrlSegmentGroup } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MissingTranslationHandler, MissingTranslationHandlerParams, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './components/app.component';
@@ -133,7 +134,6 @@ import fiCommonPo from 'raw-loader!po-loader?format=mf!../../node_modules/@vrk-y
 import svCommonPo from 'raw-loader!po-loader?format=mf!../../node_modules/@vrk-yti/yti-common-ui/po/sv.po';
 import enCommonPo from 'raw-loader!po-loader?format=mf!../../node_modules/@vrk-yti/yti-common-ui/po/en.po';
 import { AUTHENTICATED_USER_ENDPOINT, LOCALIZER, ModalService, YtiCommonModule } from '@vrk-yti/yti-common-ui';
-import { LazyForDirective } from './components/common/lazyFor.directive';
 
 function removeEmptyValues(obj: {}) {
 
@@ -311,8 +311,7 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
     CodeExtensionMemberValuesInputComponent,
     ExtensionCrossreferencelistComponent,
     CodeSchemeSingleInputComponent,
-    SearchHitsListComponent,
-    LazyForDirective
+    SearchHitsListComponent
   ],
   entryComponents: [ // needed for modal components
     CodeSchemeImportModalComponent,
@@ -347,7 +346,8 @@ export function createMissingTranslationHandler(): MissingTranslationHandler {
       missingTranslationHandler: { provide: MissingTranslationHandler, useFactory: createMissingTranslationHandler },
     }),
     YtiCommonModule,
-    ClipboardModule
+    ClipboardModule,
+    ScrollingModule
     // ,SelectModule
   ],
   providers: [
