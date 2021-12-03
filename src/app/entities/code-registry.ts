@@ -62,7 +62,13 @@ export class CodeRegistry extends AbstractResource implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.organizations.map(org => org.id);
+    return this.organizations.reduce((organizationIds: string[], org: Organization) => {
+      if (org.parent) {
+        organizationIds.push(org.parent.id);
+      }
+      organizationIds.push(org.id);
+      return organizationIds;
+    }, []);
   }
 
   allowOrganizationEdit(): boolean {

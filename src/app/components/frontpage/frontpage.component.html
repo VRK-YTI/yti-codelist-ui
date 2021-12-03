@@ -121,7 +121,7 @@
               <div class="meta-information-row">
                 <ul class="organizations dot-separated-list">
                   <li class="organization" *ngFor="let org of codeScheme.organizations">
-                    {{org.prefLabel | translateValue:true}}
+                    {{(org.parent ? org.parent.prefLabel : org.prefLabel) | translateValue:true}}
                   </li>
                 </ul>
                 <span class="information-domains">

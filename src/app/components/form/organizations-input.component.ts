@@ -33,7 +33,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
       <dd>
         <div *ngIf="!editing">
           <div *ngFor="let organization of selectableOrganizations">
-            <span>{{organization.prefLabel | translateValue:true}}</span>
+            <span>{{(organization.parent ? organization.parent.prefLabel : organization.prefLabel) | translateValue:true}}</span>
           </div>
         </div>
         <div *ngIf="editing">

@@ -44,7 +44,7 @@
       </div>
       <div class="metaitem" *ngIf="extension.parentCodeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
-        <span *ngFor="let organization of extension.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
+        <span *ngFor="let organization of extension.parentCodeScheme.organizations; let last = last">{{(organization.parent ? organization.parent.prefLabel : organization.prefLabel) | translateValue:true}}{{last ? '' : ' · '}}</span>
       </div>
     </div>
   </div>

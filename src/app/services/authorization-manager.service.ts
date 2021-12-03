@@ -3,6 +3,7 @@ import { EditableEntity } from '../entities/editable-entity';
 import { CodeRegistry } from '../entities/code-registry';
 import {CodeScheme} from '../entities/code-scheme';
 import { UserService } from '@vrk-yti/yti-common-ui';
+import { Organization } from '../entities/organization';
 
 @Injectable()
 export class AuthorizationManager {
@@ -37,14 +38,23 @@ export class AuthorizationManager {
     return false;
   }
 
-  filterAllowedRegistriesForUser(codeRegistries: CodeRegistry[]): CodeRegistry[] {
+  filterAllowedRegistriesForUser(codeRegistries: CodeRegistry[], allOrganizations: Organization[]): CodeRegistry[] {
+
+    // Grant privileges for child organization users to parent organization's registry
+    const mapIds = (result: string[], organization: Organization) => {
+      const child = allOrganizations.find(org => org.parent && org.parent.id === organization.id);
+      if (child) {
+        result.push(child.id)
+      }
+      return result;
+    }
+
     return codeRegistries.filter(registry =>
-      this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.map(org => org.id)));
+       this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.reduce(mapIds, [])));
   }
 
   canCreateCodeScheme(codeRegistries: CodeRegistry[]) {
 
-    const userRegistries = this.filterAllowedRegistriesForUser(codeRegistries);
-    return this.user.superuser || (this.user.isInRoleInAnyOrganization(['ADMIN', 'CODE_LIST_EDITOR']) && userRegistries.length > 0);
+    return this.user.superuser || codeRegistries.length > 0;
   }
 }
