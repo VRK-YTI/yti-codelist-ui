@@ -7,7 +7,7 @@ import { PropertyType } from './property-type';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberSimple } from './member-simple';
 import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer, requireDefined, index, groupBy } from '@vrk-yti/yti-common-ui';
-import { Organization } from './organization';
+import { getAllOrganizationIds } from './entity-utis';
 
 export class Extension implements EditableEntity {
 
@@ -80,13 +80,7 @@ export class Extension implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.parentCodeScheme.organizations.reduce((organizationIds: string[], org: Organization) => {
-      if (org.parent) {
-        organizationIds.push(org.parent.id);
-      }
-      organizationIds.push(org.id);
-      return organizationIds;
-    }, []);
+    return getAllOrganizationIds(this.parentCodeScheme.organizations);
   }
 
   allowOrganizationEdit(): boolean {

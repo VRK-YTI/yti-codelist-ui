@@ -5,6 +5,7 @@ import { EditableEntity } from './editable-entity';
 import { formatDateTime, formatDisplayDateTime, parseDateTime } from '../utils/date';
 import { Moment } from 'moment';
 import { Location, Localizable, hasLocalization } from '@vrk-yti/yti-common-ui';
+import { getAllOrganizationIds, getMainOrganizations } from './entity-utis';
 
 export class CodeRegistry extends AbstractResource implements EditableEntity {
 
@@ -61,14 +62,12 @@ export class CodeRegistry extends AbstractResource implements EditableEntity {
     return `${this.codeValue}`;
   }
 
+  get mainOrganizations(): Organization[] {
+    return getMainOrganizations(this.organizations);
+  }
+
   getOwningOrganizationIds(): string[] {
-    return this.organizations.reduce((organizationIds: string[], org: Organization) => {
-      if (org.parent) {
-        organizationIds.push(org.parent.id);
-      }
-      organizationIds.push(org.id);
-      return organizationIds;
-    }, []);
+    return getAllOrganizationIds(this.organizations);
   }
 
   allowOrganizationEdit(): boolean {

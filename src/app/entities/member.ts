@@ -9,7 +9,7 @@ import { Code } from './code';
 import { MemberValue } from './member-value';
 import { ValueType } from './value-type';
 import { Location, Localizable, hasLocalization, Localizer } from '@vrk-yti/yti-common-ui';
-import { Organization } from './organization';
+import { getAllOrganizationIds } from './entity-utis';
 
 export class Member implements EditableEntity {
 
@@ -82,13 +82,7 @@ export class Member implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.extension.parentCodeScheme.organizations.reduce((organizationIds: string[], org: Organization) => {
-      if (org.parent) {
-        organizationIds.push(org.parent.id);
-      }
-      organizationIds.push(org.id);
-      return organizationIds;
-    }, []);
+    return getAllOrganizationIds(this.extension.parentCodeScheme.organizations);
   }
 
   allowOrganizationEdit(): boolean {

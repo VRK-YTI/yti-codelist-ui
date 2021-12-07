@@ -8,7 +8,7 @@ import { CodePlainType, CodeType } from '../services/api-schema';
 import { CodePlain } from './code-simple';
 import { Extension } from './extension';
 import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer } from '@vrk-yti/yti-common-ui';
-import { Organization } from './organization';
+import { getAllOrganizationIds } from './entity-utis';
 
 export class Code extends AbstractResource implements EditableEntity {
 
@@ -114,13 +114,7 @@ export class Code extends AbstractResource implements EditableEntity {
   }
 
   getOwningOrganizationIds(): string[] {
-    return this.codeScheme.organizations.reduce((organizationIds: string[], org: Organization) => {
-      if (org.parent) {
-        organizationIds.push(org.parent.id);
-      }
-      organizationIds.push(org.id);
-      return organizationIds;
-    }, []);
+    return getAllOrganizationIds(this.codeScheme.organizations);
   }
 
   allowOrganizationEdit(): boolean {

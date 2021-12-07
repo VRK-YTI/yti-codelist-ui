@@ -8,6 +8,7 @@ import { Organization } from '../../entities/organization';
 import { SearchLinkedOrganizationModalService } from './search-linked-organization-modal.component';
 import { LanguageService } from '../../services/language.service';
 import { comparingLocalizable, ignoreModalClose } from '@vrk-yti/yti-common-ui';
+import { getMainOrganizations } from '../../entities/entity-utis';
 
 function addToControl<T>(control: FormControl, itemToAdd: T) {
 
@@ -32,8 +33,8 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
       </dt>
       <dd>
         <div *ngIf="!editing">
-          <div *ngFor="let organization of selectableOrganizations">
-            <span>{{(organization.parent ? organization.parent.prefLabel : organization.prefLabel) | translateValue:true}}</span>
+          <div *ngFor="let organization of mainOrganizations">
+            <span>{{organization.prefLabel | translateValue:true}}</span>
           </div>
         </div>
         <div *ngIf="editing">
@@ -88,6 +89,10 @@ export class OrganizationsInputComponent implements ControlValueAccessor {
 
   get selectableOrganizations(): Organization[] {
     return (this.control.value as Organization[]).sort(comparingLocalizable<Organization>(this.languageService, organization => organization.prefLabel ? organization.prefLabel : {}));
+  }
+
+  get mainOrganizations(): Organization[] {
+    return getMainOrganizations(this.selectableOrganizations);
   }
 
   addOrganization() {

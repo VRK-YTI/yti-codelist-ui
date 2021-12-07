@@ -11,6 +11,7 @@ import { CodeSchemeListItem } from './code-scheme-list-item';
 import { Organization } from './organization';
 import { SearchHit } from './search-hit';
 import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer } from '@vrk-yti/yti-common-ui';
+import { getAllOrganizationIds, getMainOrganizations } from './entity-utis';
 
 export class CodeScheme extends AbstractResource implements EditableEntity {
 
@@ -138,14 +139,12 @@ export class CodeScheme extends AbstractResource implements EditableEntity {
     return `${this.codeRegistry.codeValue}_${this.codeValue}`;
   }
 
+  get mainOrganizations(): Organization[] {
+    return getMainOrganizations(this.organizations);
+  }
+
   getOwningOrganizationIds(): string[] {
-    return this.organizations.reduce((organizationIds: string[], org: Organization) => {
-      if (org.parent) {
-        organizationIds.push(org.parent.id);
-      }
-      organizationIds.push(org.id);
-      return organizationIds;
-    }, []);
+    return getAllOrganizationIds(this.organizations);
   }
 
   getDisplayInfoDomainListing(localizer: Localizer, useUILanguage: boolean = false): string[] {
