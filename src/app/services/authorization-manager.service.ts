@@ -44,8 +44,9 @@ export class AuthorizationManager {
     const mapIds = (result: string[], organization: Organization) => {
       const child = allOrganizations.find(org => org.parent && org.parent.id === organization.id);
       if (child) {
-        result.push(child.id)
+        result.push(child.id);
       }
+      result.push(organization.id);
       return result;
     }
 
@@ -54,7 +55,7 @@ export class AuthorizationManager {
   }
 
   canCreateCodeScheme(codeRegistries: CodeRegistry[]) {
-
+    console.info(codeRegistries)
     return this.user.superuser || codeRegistries.length > 0;
   }
 }
