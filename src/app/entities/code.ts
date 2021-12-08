@@ -8,7 +8,7 @@ import { CodePlainType, CodeType } from '../services/api-schema';
 import { CodePlain } from './code-simple';
 import { Extension } from './extension';
 import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer } from '@vrk-yti/yti-common-ui';
-import { getAllOrganizationIds } from './entity-utis';
+import { getAllOrganizationIds } from './entity-utils';
 
 export class Code extends AbstractResource implements EditableEntity {
 

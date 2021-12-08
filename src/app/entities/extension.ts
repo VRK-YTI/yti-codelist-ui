@@ -7,7 +7,7 @@ import { PropertyType } from './property-type';
 import { TranslateService } from '@ngx-translate/core';
 import { MemberSimple } from './member-simple';
 import { Location, Localizable, Status, hasLocalization, contains, restrictedStatuses, Localizer, requireDefined, index, groupBy } from '@vrk-yti/yti-common-ui';
-import { getAllOrganizationIds } from './entity-utis';
+import { getAllOrganizationIds } from './entity-utils';
 
 export class Extension implements EditableEntity {
 

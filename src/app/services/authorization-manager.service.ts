@@ -51,11 +51,10 @@ export class AuthorizationManager {
     }
 
     return codeRegistries.filter(registry =>
-       this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.reduce(mapIds, [])));
+      this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.reduce(mapIds, [])));
   }
 
   canCreateCodeScheme(codeRegistries: CodeRegistry[]) {
-    console.info(codeRegistries)
     return this.user.superuser || codeRegistries.length > 0;
   }
 }
