@@ -31,9 +31,9 @@
         <div class="metaitem">
           <span translate>Code list</span><span>: {{extension.parentCodeScheme.getDisplayName(languageService)}}</span>
         </div>
-        <div class="metaitem" *ngIf="extension.parentCodeScheme.organizations.length > 0">
+        <div class="metaitem" *ngIf="extension.parentCodeScheme.mainOrganizations.length > 0">
           <span translate>Organization</span><span>: </span>
-          <span *ngFor="let organization of extension.parentCodeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
+          <span *ngFor="let organization of extension.parentCodeScheme.mainOrganizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ', '}}</span>
         </div>
       </div>
     </div>

@@ -50,7 +50,7 @@
       <div class="metaitem" *ngIf="codeScheme.organizations.length > 0">
         <span translate>Organization</span><span>: </span>
         <span
-          *ngFor="let organization of codeScheme.organizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
+          *ngFor="let organization of codeScheme.mainOrganizations; let last = last">{{organization.prefLabel | translateValue:true}}{{last ? '' : ' · '}}</span>
       </div>
     </div>
   </div>
