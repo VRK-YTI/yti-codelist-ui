@@ -21,6 +21,11 @@ export class Organization {
     return localizer.translate(this.prefLabel, useUILanguage);
   }
 
+  getEditModeDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
+    const parentName = this.parent ? ` (${localizer.translate(this.parent.prefLabel, useUILanguage)})` : '';
+    return this.getDisplayName(localizer, useUILanguage) + parentName;
+  }
+
   getIdIdentifier(localizer: Localizer): string {
     const prefLabel = localizer.translate(this.prefLabel);
     return `${labelNameToResourceIdIdentifier(prefLabel)}`;

@@ -44,7 +44,7 @@ function removeFromControl<T>(control: FormControl, itemToRemove: T) {
                  class="fa fa-times"
                  (click)="removeOrganization(organization)"></i>
             </a>
-            <span>{{organization.getDisplayName(languageService, true)}}</span>
+            <span>{{organization.getEditModeDisplayName(languageService, true)}}</span>
           </div>
           <app-error-messages id="organization_error_messages" [control]="parentControl"></app-error-messages>
         </div>
