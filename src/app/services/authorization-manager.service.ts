@@ -38,23 +38,12 @@ export class AuthorizationManager {
     return false;
   }
 
-  filterAllowedRegistriesForUser(codeRegistries: CodeRegistry[], allOrganizations: Organization[]): CodeRegistry[] {
-
-    // Grant privileges for child organization users to parent organization's registry
-    const mapIds = (result: string[], organization: Organization) => {
-      const child = allOrganizations.find(org => org.parent && org.parent.id === organization.id);
-      if (child) {
-        result.push(child.id);
-      }
-      result.push(organization.id);
-      return result;
-    }
-
+  filterAllowedRegistriesForUser(codeRegistries: CodeRegistry[]): CodeRegistry[] {
     return codeRegistries.filter(registry =>
-      this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.reduce(mapIds, [])));
+      this.user.superuser || this.user.isInRole(['ADMIN', 'CODE_LIST_EDITOR'], registry.organizations.map(org => org.id)));
   }
 
   canCreateCodeScheme(codeRegistries: CodeRegistry[]) {
-    return this.user.superuser || codeRegistries.length > 0;
+    return this.user.superuser || codeRegistries?.length > 0;
   }
 }

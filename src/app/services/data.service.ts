@@ -118,13 +118,7 @@ export class DataService {
   }
 
   getCodeRegistriesForUser(): Observable<CodeRegistry[]> {
-
-    return this.getCodeRegistries().pipe(
-      mergeMap(reg => combineLatest([ of(reg), this.getOrganizations() ])),
-      map(([codeRegistries, organizations]) => {
-        return this.authorizationManager.filterAllowedRegistriesForUser(codeRegistries, organizations);
-      })
-    );
+    return this.getCodeRegistries().pipe(map(r => this.authorizationManager.filterAllowedRegistriesForUser(r)));
   }
 
   getOrganizations(): Observable<Organization[]> {
