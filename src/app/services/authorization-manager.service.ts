@@ -3,6 +3,7 @@ import { EditableEntity } from '../entities/editable-entity';
 import { CodeRegistry } from '../entities/code-registry';
 import {CodeScheme} from '../entities/code-scheme';
 import { UserService } from '@vrk-yti/yti-common-ui';
+import { Organization } from '../entities/organization';
 
 @Injectable()
 export class AuthorizationManager {
@@ -43,8 +44,6 @@ export class AuthorizationManager {
   }
 
   canCreateCodeScheme(codeRegistries: CodeRegistry[]) {
-
-    const userRegistries = this.filterAllowedRegistriesForUser(codeRegistries);
-    return this.user.superuser || (this.user.isInRoleInAnyOrganization(['ADMIN', 'CODE_LIST_EDITOR']) && userRegistries.length > 0);
+    return this.user.superuser || codeRegistries?.length > 0;
   }
 }

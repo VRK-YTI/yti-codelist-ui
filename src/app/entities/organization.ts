@@ -7,16 +7,23 @@ export class Organization {
   url: string;
   prefLabel: Localizable;
   description: Localizable;
+  parent?: Organization;
 
   constructor(data: OrganizationType) {
     this.id = data.id;
     this.prefLabel = data.prefLabel || {};
     this.description = data.description || {};
     this.url = data.url;
+    this.parent = data.parent ? new Organization(data.parent) : undefined;
   }
 
   getDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
     return localizer.translate(this.prefLabel, useUILanguage);
+  }
+
+  getEditModeDisplayName(localizer: Localizer, useUILanguage: boolean = false): string {
+    const parentName = this.parent ? ` (${localizer.translate(this.parent.prefLabel, useUILanguage)})` : '';
+    return this.getDisplayName(localizer, useUILanguage) + parentName;
   }
 
   getIdIdentifier(localizer: Localizer): string {
@@ -29,7 +36,8 @@ export class Organization {
       id: this.id,
       url: this.url,
       prefLabel: {...this.prefLabel},
-      description: {...this.description}
+      description: {...this.description},
+      parent: this.parent
     };
   }
 

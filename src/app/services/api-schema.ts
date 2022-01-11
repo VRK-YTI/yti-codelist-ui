@@ -173,6 +173,7 @@ export interface OrganizationType {
   prefLabel: Localizable;
   description: Localizable;
   url: string;
+  parent?: OrganizationType;
 }
 
 export interface ExtensionType {

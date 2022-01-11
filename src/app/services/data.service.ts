@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CodeScheme } from '../entities/code-scheme';
 import { CodeRegistry } from '../entities/code-registry';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { combineLatest, Observable, of } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { InfoDomain } from '../entities/info-domain';
 import { Code } from '../entities/code';
 import {
@@ -118,7 +118,6 @@ export class DataService {
   }
 
   getCodeRegistriesForUser(): Observable<CodeRegistry[]> {
-
     return this.getCodeRegistries().pipe(map(r => this.authorizationManager.filterAllowedRegistriesForUser(r)));
   }
 

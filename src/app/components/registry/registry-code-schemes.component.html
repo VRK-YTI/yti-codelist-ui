@@ -12,8 +12,8 @@
             <app-status class="status" [status]="codeScheme.status"></app-status>
             <div class="organization">
               <span *ngIf="codeScheme.organizations.length == 0" translate>No organization</span>
-              <span *ngIf="codeScheme.organizations.length == 1">{{codeScheme.organizations[0].prefLabel | translateValue:true}}</span>
-              <span *ngIf="codeScheme.organizations.length > 1">{{codeScheme.organizations.length}} {{'organizations' | translate}}</span>
+              <span *ngIf="codeScheme.mainOrganizations.length == 1">{{codeScheme.mainOrganizations[0].prefLabel | translateValue:true}}</span>
+              <span *ngIf="codeScheme.mainOrganizations.length > 1">{{codeScheme.mainOrganizations.length}} {{'organizations' | translate}}</span>
             </div>
           </div>
         </div>
