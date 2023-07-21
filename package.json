@@ -31,7 +31,7 @@
     "@vrk-yti/yti-common-ui": "0.0.1-alpha-20210928.g2ff813c.feature-angular-library",
     "bootstrap": "^4.5.0",
     "material-design-icons": "^3.0.1",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "ngx-clipboard": "^14.0.1",
     "ngx-infinite-scroll": "^10.0.1",
     "rxjs": "~6.6.7",
